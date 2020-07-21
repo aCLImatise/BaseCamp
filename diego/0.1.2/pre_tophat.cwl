@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pre_tophat.pl.cwl
+id: ../../../pre_tophat.pl.cwl
 inputs:
 - id: file_containing_files
   doc: file containing input files and ids id [tab] path.to/file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools.cwl
+id: ../../../bedtools.cwl
 inputs:
 - id: contact
   doc: Feature requests, bugs, mailing lists, etc.

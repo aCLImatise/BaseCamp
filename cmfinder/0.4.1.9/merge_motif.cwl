@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_motif.pl.cwl
+id: ../../../merge_motif.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

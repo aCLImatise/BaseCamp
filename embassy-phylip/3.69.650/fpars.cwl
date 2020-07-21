@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fpars.cwl
+id: ../../../fpars.cwl
 inputs:
 - id: weights
   doc: properties Weights file

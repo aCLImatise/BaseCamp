@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/twoBitDup.cwl
+id: ../../../twoBitDup.cwl
 inputs:
 - id: key_list
   doc: '- file to write a key list, two columns: md5sum and sequenceName NOTE: use

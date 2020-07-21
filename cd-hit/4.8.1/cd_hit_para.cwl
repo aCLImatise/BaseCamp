@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cd_hit_para.pl.cwl
+id: ../../../cd_hit_para.pl.cwl
 inputs:
 - id: queuing_system_supported
   doc: of queuing system, "PBS", "SGE" are supported, default PBS

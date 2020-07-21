@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RnaChipIntegrator.cwl
+id: ../../../RnaChipIntegrator.cwl
 inputs:
 - id: cut_off
   doc: Maximum distance allowed between peaks and genes before being omitted from

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Fast5_to_seq_summary.cwl
+id: ../../../Fast5_to_seq_summary.cwl
 inputs:
 - id: fast_five_dir
   doc: Directory containing fast5 files. Can contain multiple subdirectories

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_convert_one_align_to_another.cwl
+id: ../../../phyluce_align_convert_one_align_to_another.cwl
 inputs:
 - id: alignments
   doc: The directory containing the alignments to convert.

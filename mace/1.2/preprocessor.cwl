@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/preprocessor.py.cwl
+id: ../../../preprocessor.py.cwl
 inputs:
 - id: input_file
   doc: Input file in BAM format. BAM file must be sorted and indexed using samTools.

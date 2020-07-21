@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_extract_columns.cwl
+id: ../../../crux_extract_columns.cwl
 inputs:
 - id: tsv_file
   doc: ''

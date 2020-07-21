@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/catchr.pl_input_files.cwl
+id: ../../../catchr.pl_input_files.cwl
 inputs:
 - id: no
   doc: ''

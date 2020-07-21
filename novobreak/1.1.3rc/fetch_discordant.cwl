@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fetch_discordant.pl.cwl
+id: ../../../fetch_discordant.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

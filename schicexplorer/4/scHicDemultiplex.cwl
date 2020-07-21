@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scHicDemultiplex.cwl
+id: ../../../scHicDemultiplex.cwl
 inputs:
 - id: fastq_files_demultiplex_ri
   doc: "of fastq files to demultiplex [list of fastq files to demultiplex ...], -f\

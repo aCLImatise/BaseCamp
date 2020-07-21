@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioconvert_bam2cram.cwl
+id: ../../../bioconvert_bam2cram.cwl
 inputs:
 - id: force
   doc: 'if outfile exists, it is overwritten with this option (default: False)'

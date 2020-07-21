@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plot_bamstats.cwl
+id: ../../../plot_bamstats.cwl
 inputs:
 - id: keep_files
   doc: Do not remove temporary files.

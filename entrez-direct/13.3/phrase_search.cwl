@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phrase_search.cwl
+id: ../../../phrase_search.cwl
 inputs:
 - id: decreases_expressionproduction
   doc: decreases expression/production

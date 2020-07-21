@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/annotateRefSeqSequencesWithUniqueTaxonIDs.pl.cwl
+id: ../../../annotateRefSeqSequencesWithUniqueTaxonIDs.pl.cwl
 inputs:
 - id: refseq_directory
   doc: ''

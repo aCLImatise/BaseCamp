@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_postprocess_config_file.cwl
+id: ../../../mb_postprocess_config_file.cwl
 inputs:
 - id: prefix
   doc: ''

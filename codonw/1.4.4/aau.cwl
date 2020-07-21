@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/aau.cwl
+id: ../../../aau.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

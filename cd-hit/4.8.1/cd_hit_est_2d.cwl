@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cd_hit_est_2d.cwl
+id: ../../../cd_hit_est_2d.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

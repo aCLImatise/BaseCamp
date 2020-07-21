@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cpptraj_average.cwl
+id: ../../../cpptraj_average.cwl
 inputs:
 - id: config
   doc: Configuration file

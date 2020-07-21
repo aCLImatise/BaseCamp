@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dcmdata_tests.cwl
+id: ../../../dcmdata_tests.cwl
 inputs:
 - id: _list_list
   doc: --list        list available tests and exit

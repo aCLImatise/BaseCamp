@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SeqPurge.cwl
+id: ../../../SeqPurge.cwl
 inputs:
 - id: in_one
   doc: Forward input gzipped FASTQ file(s).

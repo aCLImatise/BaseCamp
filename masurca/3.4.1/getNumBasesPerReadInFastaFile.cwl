@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getNumBasesPerReadInFastaFile.perl.cwl
+id: ../../../getNumBasesPerReadInFastaFile.perl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

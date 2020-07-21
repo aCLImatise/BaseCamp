@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SequenceMatch.cwl
+id: ../../../SequenceMatch.cwl
 inputs:
 - id: seq_match_main
   doc: ''

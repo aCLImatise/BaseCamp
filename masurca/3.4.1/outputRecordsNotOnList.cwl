@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/outputRecordsNotOnList.cwl
+id: ../../../outputRecordsNotOnList.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splash_eval_counts.cwl
+id: ../../../splash_eval_counts.cwl
 inputs:
 - id: s
   doc: ''

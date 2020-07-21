@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Sibelia.cwl
+id: ../../../Sibelia.cwl
 inputs:
 - id: sibel_i_a
   doc: '{-s <loose|fine|far>|-k <file name>} [-o <dir name>] [--noblocks] [-r] [-a]

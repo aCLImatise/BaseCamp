@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastqToFa.cwl
+id: ../../../fastqToFa.cwl
 inputs:
 - id: verbose
   doc: '- set warning level to get some stats output during processing'

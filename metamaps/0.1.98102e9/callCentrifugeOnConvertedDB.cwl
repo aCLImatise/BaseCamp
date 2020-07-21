@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/callCentrifugeOnConvertedDB.pl.cwl
+id: ../../../callCentrifugeOnConvertedDB.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

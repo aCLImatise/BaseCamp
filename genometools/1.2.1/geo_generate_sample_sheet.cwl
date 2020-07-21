@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/geo_generate_sample_sheet.py.cwl
+id: ../../../geo_generate_sample_sheet.py.cwl
 inputs:
 - id: series_matrix_file
   doc: The GEO series matrix file.

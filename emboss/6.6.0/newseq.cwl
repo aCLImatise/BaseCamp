@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/newseq.cwl
+id: ../../../newseq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

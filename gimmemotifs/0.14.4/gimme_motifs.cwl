@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gimme_motifs.cwl
+id: ../../../gimme_motifs.cwl
 inputs:
 - id: background
   doc: Background type (random,genomic,gc,promoter,custom) or a file with background

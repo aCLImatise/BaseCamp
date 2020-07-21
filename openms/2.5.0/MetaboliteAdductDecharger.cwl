@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MetaboliteAdductDecharger.cwl
+id: ../../../MetaboliteAdductDecharger.cwl
 inputs:
 - id: in
   doc: "*        Input file  (valid formats: 'featureXML')"

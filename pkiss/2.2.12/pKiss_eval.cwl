@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pKiss_eval.cwl
+id: ../../../pKiss_eval.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_snap_train.sh.cwl
+id: ../../../gaas_snap_train.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

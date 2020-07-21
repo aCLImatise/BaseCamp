@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/analyzeChIP_Seq.pl.cwl
+id: ../../../analyzeChIP_Seq.pl.cwl
 inputs:
 - id: or
   doc: (or)

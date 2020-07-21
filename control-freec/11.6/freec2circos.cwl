@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/freec2circos.pl.cwl
+id: ../../../freec2circos.pl.cwl
 inputs:
 - id: verbose_mode
   doc: verbose mode

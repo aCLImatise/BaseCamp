@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sam2psl.py.cwl
+id: ../../../sam2psl.py.cwl
 inputs:
 - id: input
   doc: The input file in SAM format.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_mixdchlet_fit_out_mixdchlet.cwl
+id: ../../../esl_mixdchlet_fit_out_mixdchlet.cwl
 inputs:
 - id: options
   doc: ''

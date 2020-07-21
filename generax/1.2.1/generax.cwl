@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generax.cwl
+id: ../../../generax.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

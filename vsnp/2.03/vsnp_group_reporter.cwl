@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vsnp_group_reporter.py.cwl
+id: ../../../vsnp_group_reporter.py.cwl
 inputs:
 - id: vcf
   doc: 'Required: vcf file'

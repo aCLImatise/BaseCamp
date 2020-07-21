@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_format_nexus_files_for_raxml.cwl
+id: ../../../phyluce_align_format_nexus_files_for_raxml.cwl
 inputs:
 - id: alignments
   doc: 'The directory containing alignments to concatenate (NEXUS-ONLY). (default:

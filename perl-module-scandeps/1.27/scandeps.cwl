@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scandeps.pl.cwl
+id: ../../../scandeps.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

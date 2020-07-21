@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GeneFamilyAligner.cwl
+id: ../../../GeneFamilyAligner.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

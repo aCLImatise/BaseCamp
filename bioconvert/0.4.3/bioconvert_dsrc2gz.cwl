@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioconvert_dsrc2gz.cwl
+id: ../../../bioconvert_dsrc2gz.cwl
 inputs:
 - id: force
   doc: 'if outfile exists, it is overwritten with this option (default: False)'

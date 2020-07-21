@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_replace.cwl
+id: ../../../seqkit_replace.cwl
 inputs:
 - id: by_seq
   doc: replace seq

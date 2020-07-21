@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/R_scape_sim_nobps.cwl
+id: ../../../R_scape_sim_nobps.cwl
 inputs:
 - id: _be_verbose
   doc: ': be verbose'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/swipe.cwl
+id: ../../../swipe.cwl
 inputs:
 - id: db
   doc: sequence database base name (required)

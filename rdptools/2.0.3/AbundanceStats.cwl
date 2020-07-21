@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AbundanceStats.cwl
+id: ../../../AbundanceStats.cwl
 inputs:
 - id: jaccard
   doc: Compute jaccard abundance stats

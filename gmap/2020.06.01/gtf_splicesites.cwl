@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gtf_splicesites.cwl
+id: ../../../gtf_splicesites.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfclearinfo.cwl
+id: ../../../vcfclearinfo.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

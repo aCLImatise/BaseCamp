@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FaQCs.cwl
+id: ../../../FaQCs.cwl
 inputs:
 - id: file_unpaired_reads
   doc: <File> Unpaired reads

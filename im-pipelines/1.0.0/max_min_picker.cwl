@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/max_min_picker.cwl
+id: ../../../max_min_picker.cwl
 inputs:
 - id: threshold
   doc: similarity threshold (1.0 means identical)

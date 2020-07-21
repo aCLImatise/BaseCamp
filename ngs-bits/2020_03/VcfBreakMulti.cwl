@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/VcfBreakMulti.cwl
+id: ../../../VcfBreakMulti.cwl
 inputs:
 - id: in
   doc: "Input VCF file. If unset, reads from STDIN. Default value: ''"

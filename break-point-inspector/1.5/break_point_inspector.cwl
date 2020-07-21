@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/break_point_inspector.cwl
+id: ../../../break_point_inspector.cwl
 inputs:
 - id: contamination_fraction
   doc: fraction of allowable normal support per tumor support read

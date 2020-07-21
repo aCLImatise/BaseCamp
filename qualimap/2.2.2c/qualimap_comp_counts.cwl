@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qualimap_comp_counts.cwl
+id: ../../../qualimap_comp_counts.cwl
 inputs:
 - id: algorithm
   doc: 'Counting algorithm: uniquely-mapped-reads(default) or proportional'

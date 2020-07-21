@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_toil_mesos_executor.cwl
+id: ../../../_toil_mesos_executor.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

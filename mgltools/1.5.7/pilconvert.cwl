@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pilconvert.py.cwl
+id: ../../../pilconvert.py.cwl
 inputs:
 - id: convert_default_given
   doc: convert to format (default is given by extension)

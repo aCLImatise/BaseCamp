@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_auth_get_openid_configuration.cwl
+id: ../../../hca_auth_get_openid_configuration.cwl
 inputs:
 - id: host
   doc: Must be `auth.data.humancellatlas.org`.

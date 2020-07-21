@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rowsToCols.cwl
+id: ../../../rowsToCols.cwl
 inputs:
 - id: var_col
   doc: '- rows may to have various numbers of columns.'

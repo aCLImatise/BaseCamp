@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_put_bundle.cwl
+id: ../../../hca_dss_put_bundle.cwl
 inputs:
 - id: creator_uid
   doc: User ID who is creating this bundle.

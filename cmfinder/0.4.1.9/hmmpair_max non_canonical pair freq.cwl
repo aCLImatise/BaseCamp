@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmpair_max non_canonical pair freq.cwl
+id: ../../../hmmpair_max non_canonical pair freq.cwl
 inputs:
 - id: hmm_pair
   doc: ''

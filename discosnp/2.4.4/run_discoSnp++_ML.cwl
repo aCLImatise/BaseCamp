@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_discoSnp++_ML.sh.cwl
+id: ../../../run_discoSnp++_ML.sh.cwl
 inputs:
 - id: path_compiled_directory
   doc: path to compiled dsk (directory containing compiled dsk and dsk2ascii)

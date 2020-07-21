@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/eval_dualdecomp.pl.cwl
+id: ../../../eval_dualdecomp.pl.cwl
 inputs:
 - id: intput_augustus_file
   doc: 'intput AUGUSTUS file '

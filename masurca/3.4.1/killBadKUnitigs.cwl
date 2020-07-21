@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/killBadKUnitigs.cwl
+id: ../../../killBadKUnitigs.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

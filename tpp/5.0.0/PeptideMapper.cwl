@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PeptideMapper.cwl
+id: ../../../PeptideMapper.cwl
 inputs:
 - id: peptide_file
   doc: ''

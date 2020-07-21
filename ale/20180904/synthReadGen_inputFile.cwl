@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/synthReadGen_inputFile.cwl
+id: ../../../synthReadGen_inputFile.cwl
 inputs:
 - id: output_file
   doc: ''

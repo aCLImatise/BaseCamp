@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bbmapskimmer.sh.cwl
+id: ../../../bbmapskimmer.sh.cwl
 inputs:
 - id: best
   doc: (use the first best site)

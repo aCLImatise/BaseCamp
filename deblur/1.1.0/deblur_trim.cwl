@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deblur_trim.cwl
+id: ../../../deblur_trim.cwl
 inputs:
 - id: trim_length
   doc: Sequence trim length  [required]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_strip_extra_headers.cwl
+id: ../../../vcf_strip_extra_headers.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

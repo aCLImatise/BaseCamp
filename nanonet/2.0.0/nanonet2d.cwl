@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nanonet2d.cwl
+id: ../../../nanonet2d.cwl
 inputs:
 - id: no_fast_q
   doc: 'Output fastq rather than fasta. (Default: --no-fastq) (default: False)'

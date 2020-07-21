@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/download_picrust_files.py.cwl
+id: ../../../download_picrust_files.py.cwl
 inputs:
 - id: verbose
   doc: 'Print information during execution -- useful for debugging [default: False]'

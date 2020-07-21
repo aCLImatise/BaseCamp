@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dx_notebook_reconnect.cwl
+id: ../../../dx_notebook_reconnect.cwl
 inputs:
 - id: port
   doc: Local port to use for connecting.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/groupBy.cwl
+id: ../../../groupBy.cwl
 inputs:
 - id: full
   doc: 'Print all columns from input file.  The first line in the group is used. Default:

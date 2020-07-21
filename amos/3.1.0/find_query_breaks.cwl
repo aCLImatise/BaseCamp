@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/find_query_breaks.cwl
+id: ../../../find_query_breaks.cwl
 inputs:
 - id: minimum_length_alignment_report_default
   doc: 'Minimum length of alignment break to report (Default: 10)'

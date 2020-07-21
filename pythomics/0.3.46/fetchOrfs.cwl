@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fetchOrfs.py.cwl
+id: ../../../fetchOrfs.py.cwl
 inputs:
 - id: threads_run_default
   doc: 'Threads to run (default: 1)'

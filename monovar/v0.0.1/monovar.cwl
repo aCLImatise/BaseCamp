@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/monovar.cwl
+id: ../../../monovar.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

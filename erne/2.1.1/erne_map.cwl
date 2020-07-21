@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/erne_map.cwl
+id: ../../../erne_map.cwl
 inputs:
 - id: reference
   doc: reference file to use (in our format and with  .ebh extension) [REQUIRED]

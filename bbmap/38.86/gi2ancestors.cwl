@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gi2ancestors.sh.cwl
+id: ../../../gi2ancestors.sh.cwl
 inputs:
 - id: in
   doc: ''

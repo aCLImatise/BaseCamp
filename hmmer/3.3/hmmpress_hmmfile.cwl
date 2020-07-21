@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmpress_hmmfile.cwl
+id: ../../../hmmpress_hmmfile.cwl
 inputs:
 - id: options
   doc: ''

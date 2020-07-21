@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halTreeNIConservation.py.cwl
+id: ../../../halTreeNIConservation.py.cwl
 inputs:
 - id: background_bed_name
   doc: 'Name function for background bed files where genome name is specified as %s.

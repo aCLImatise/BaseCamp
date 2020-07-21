@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gimme_maelstrom.cwl
+id: ../../../gimme_maelstrom.cwl
 inputs:
 - id: h
   doc: ''

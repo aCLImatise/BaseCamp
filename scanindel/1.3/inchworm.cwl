@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/inchworm.cwl
+id: ../../../inchworm.cwl
 inputs:
 - id: reads
   doc: <str>             :fasta file containing reads

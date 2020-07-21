@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blast_and_promiscuity_filter.pl.cwl
+id: ../../../blast_and_promiscuity_filter.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

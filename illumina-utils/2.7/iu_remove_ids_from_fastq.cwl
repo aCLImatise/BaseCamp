@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iu_remove_ids_from_fastq.cwl
+id: ../../../iu_remove_ids_from_fastq.cwl
 inputs:
 - id: input_fast_q
   doc: Sequences file from which reads will be removed in FASTQ format

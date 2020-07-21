@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convert_ltrdetector.pl.cwl
+id: ../../../convert_ltrdetector.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

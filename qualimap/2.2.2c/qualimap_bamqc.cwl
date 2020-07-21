@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qualimap_bamqc.cwl
+id: ../../../qualimap_bamqc.cwl
 inputs:
 - id: bam
   doc: Input mapping file in BAM format

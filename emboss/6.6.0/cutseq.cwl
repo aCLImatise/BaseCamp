@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cutseq.cwl
+id: ../../../cutseq.cwl
 inputs:
 - id: from
   doc: integer    [Start of sequence (0)] This is the start position (inclusive) of

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fu_compare.cwl
+id: ../../../fu_compare.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

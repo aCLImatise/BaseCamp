@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ganon_build.cwl
+id: ../../../ganon_build.cwl
 inputs:
 - id: reference_files
   doc: Sequence files .fasta .fa .fna (e.g ref.fna[.gz],[ref2.fna[.gz],...,refN.fna[.gz]])

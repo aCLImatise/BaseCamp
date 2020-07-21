@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rseg.cwl
+id: ../../../rseg.cwl
 inputs:
 - id: out
   doc: 'domain output file '

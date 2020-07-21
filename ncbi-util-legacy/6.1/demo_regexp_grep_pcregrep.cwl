@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/demo_regexp_grep_pcregrep.cwl
+id: ../../../demo_regexp_grep_pcregrep.cwl
 inputs:
 - id: no
   doc: ''

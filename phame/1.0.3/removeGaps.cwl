@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/removeGaps.pl.cwl
+id: ../../../removeGaps.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

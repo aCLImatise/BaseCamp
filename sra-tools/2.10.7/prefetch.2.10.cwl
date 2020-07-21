@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prefetch.2.10.7.cwl
+id: ../../../prefetch.2.10.7.cwl
 inputs:
 - id: type
   doc: 'Specify file type to download. Default: sra'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeBigBedMotifTrack.pl.cwl
+id: ../../../makeBigBedMotifTrack.pl.cwl
 inputs:
 - id: track_name
   doc: ''

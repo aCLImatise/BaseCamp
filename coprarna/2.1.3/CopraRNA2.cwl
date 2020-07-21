@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CopraRNA2.pl.cwl
+id: ../../../CopraRNA2.pl.cwl
 inputs:
 - id: srna_seq
   doc: FASTA file with small RNA sequences (def:input_sRNA.fa)

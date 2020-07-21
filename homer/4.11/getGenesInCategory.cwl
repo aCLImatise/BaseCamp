@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getGenesInCategory.pl.cwl
+id: ../../../getGenesInCategory.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

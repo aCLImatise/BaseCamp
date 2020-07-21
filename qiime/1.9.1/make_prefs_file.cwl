@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_prefs_file.py.cwl
+id: ../../../make_prefs_file.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

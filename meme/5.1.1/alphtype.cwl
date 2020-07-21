@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alphtype.cwl
+id: ../../../alphtype.cwl
 inputs:
 - id: alphabet
   doc: ''

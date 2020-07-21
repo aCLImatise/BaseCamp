@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MotifRaptor_snpindex.cwl
+id: ../../../MotifRaptor_snpindex.cwl
 inputs:
 - id: vcf_filename
   doc: input - VCF file for SNPs, first five columns need to be CHR,POS,ID,REF,ALT

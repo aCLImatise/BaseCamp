@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fuse.sh.cwl
+id: ../../../fuse.sh.cwl
 inputs:
 - id: in
   doc: ''

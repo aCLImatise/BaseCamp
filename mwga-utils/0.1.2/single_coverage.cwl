@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/single_coverage.cwl
+id: ../../../single_coverage.cwl
 inputs:
 - id: t
   doc: ''

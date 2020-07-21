@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RepEnrich_setup.py.cwl
+id: ../../../RepEnrich_setup.py.cwl
 inputs:
 - id: n_fragments_file_one
   doc: Output location of a description file that saves the number of fragments processed

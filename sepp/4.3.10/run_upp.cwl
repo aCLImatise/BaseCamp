@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_upp.py.cwl
+id: ../../../run_upp.py.cwl
 inputs:
 - id: fragment_chunksize
   doc: 'maximum fragment chunk size of N. Helps controlling memory. [default: 20000]'

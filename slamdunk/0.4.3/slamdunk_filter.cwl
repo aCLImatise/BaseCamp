@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/slamdunk_filter.cwl
+id: ../../../slamdunk_filter.cwl
 inputs:
 - id: output_dir
   doc: Output directory for mapped BAM files.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biasaway.cwl
+id: ../../../biasaway.cwl
 inputs:
 - id: v
   doc: ''

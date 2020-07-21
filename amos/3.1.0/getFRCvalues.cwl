@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getFRCvalues.cwl
+id: ../../../getFRCvalues.cwl
 inputs:
 - id: g
   doc: ''

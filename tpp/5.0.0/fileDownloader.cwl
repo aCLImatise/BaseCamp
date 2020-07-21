@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fileDownloader.pl.cwl
+id: ../../../fileDownloader.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

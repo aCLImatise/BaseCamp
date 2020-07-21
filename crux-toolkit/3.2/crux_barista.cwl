@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_barista.cwl
+id: ../../../crux_barista.cwl
 inputs:
 - id: database
   doc: ''

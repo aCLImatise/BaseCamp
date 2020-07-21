@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bowtie_align_reads.py.cwl
+id: ../../../bowtie_align_reads.py.cwl
 inputs:
 - id: reference
   doc: Reference genome in fasta format. If you have multiple reference files, please

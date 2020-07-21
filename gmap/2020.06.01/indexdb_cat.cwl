@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/indexdb_cat.cwl
+id: ../../../indexdb_cat.cwl
 inputs:
 - id: destdir
   doc: Directory where to write cmet index files (default is value of -F, if provided;

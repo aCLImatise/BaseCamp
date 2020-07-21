@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/advntr_viewmodel.cwl
+id: ../../../advntr_viewmodel.cwl
 inputs:
 - id: h_slash_help
   doc: show this help message and exit

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stringmeup_confidence.cwl
+id: ../../../stringmeup_confidence.cwl
 inputs:
 - id: confidence_recal
   doc: ''

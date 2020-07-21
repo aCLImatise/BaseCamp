@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dsh_downsample_fastq.cwl
+id: ../../../dsh_downsample_fastq.cwl
 inputs:
 - id: about
   doc: display about message [optional]

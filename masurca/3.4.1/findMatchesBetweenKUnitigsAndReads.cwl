@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findMatchesBetweenKUnitigsAndReads.cwl
+id: ../../../findMatchesBetweenKUnitigsAndReads.cwl
 inputs:
 - id: long
   doc: Long output format (false)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xmatchview_hive.py.cwl
+id: ../../../xmatchview_hive.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

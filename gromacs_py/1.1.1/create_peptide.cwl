@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_peptide.py.cwl
+id: ../../../create_peptide.py.cwl
 inputs:
 - id: seq
   doc: Peptide sequence

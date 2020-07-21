@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/XTandemAdapter.cwl
+id: ../../../XTandemAdapter.cwl
 inputs:
 - id: in
   doc: "*                        Input file containing MS2 spectra (valid formats:\

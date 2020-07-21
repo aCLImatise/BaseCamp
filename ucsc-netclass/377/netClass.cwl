@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/netClass.cwl
+id: ../../../netClass.cwl
 inputs:
 - id: t_new_r
   doc: '- Dir of chrN.out.spec files, with RepeatMasker .out format lines describing

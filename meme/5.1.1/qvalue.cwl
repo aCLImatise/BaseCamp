@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qvalue.cwl
+id: ../../../qvalue.cwl
 inputs:
 - id: seed
   doc: (default from clock)

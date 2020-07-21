@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get.cwl
+id: ../../../get.cwl
 inputs:
 - id: id
   doc: The dataset ID/name from your Galaxy history, or a regex pattern to search

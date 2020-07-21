@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kraken_biom.cwl
+id: ../../../kraken_biom.cwl
 inputs:
 - id: max
   doc: 'Assigned reads will be recorded only if they are at or below max rank. Default:

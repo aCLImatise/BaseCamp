@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/normalize_oneD.R.cwl
+id: ../../../normalize_oneD.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

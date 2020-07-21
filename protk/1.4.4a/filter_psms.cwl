@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_psms.rb.cwl
+id: ../../../filter_psms.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

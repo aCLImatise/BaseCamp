@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf_build_index.py.cwl
+id: ../../../maf_build_index.py.cwl
 inputs:
 - id: species
   doc: only index the position of the block in the listed species

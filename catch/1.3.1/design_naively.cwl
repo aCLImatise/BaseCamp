@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/design_naively.py.cwl
+id: ../../../design_naively.py.cwl
 inputs:
 - id: add_reverse_complements
   doc: Add to the output the reverse complement of each probe

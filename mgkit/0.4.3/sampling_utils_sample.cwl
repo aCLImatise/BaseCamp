@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sampling_utils_sample.cwl
+id: ../../../sampling_utils_sample.cwl
 inputs:
 - id: prefix
   doc: 'Prefix for the file name(s) in output  [default: sample]'

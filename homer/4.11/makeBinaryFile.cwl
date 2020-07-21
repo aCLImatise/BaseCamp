@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeBinaryFile.pl.cwl
+id: ../../../makeBinaryFile.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

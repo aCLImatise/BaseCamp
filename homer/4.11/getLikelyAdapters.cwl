@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getLikelyAdapters.pl.cwl
+id: ../../../getLikelyAdapters.pl.cwl
 inputs:
 - id: len
   doc: '<#,#,...,#> (lengths of oligos to look for, default: 10,20,25,30)'

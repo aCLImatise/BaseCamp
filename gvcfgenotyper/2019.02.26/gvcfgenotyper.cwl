@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gvcfgenotyper.cwl
+id: ../../../gvcfgenotyper.cwl
 inputs:
 - id: list
   doc: <file>          plain text list of gvcfs to merge

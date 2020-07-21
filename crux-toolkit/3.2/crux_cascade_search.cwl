@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_cascade_search.cwl
+id: ../../../crux_cascade_search.cwl
 inputs:
 - id: tide_spectra_file
   doc: ''

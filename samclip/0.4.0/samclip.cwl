@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samclip.cwl
+id: ../../../samclip.cwl
 inputs:
 - id: ref
   doc: Reference genome - needs FASTA.fai index

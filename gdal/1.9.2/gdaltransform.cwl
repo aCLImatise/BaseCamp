@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdaltransform.cwl
+id: ../../../gdaltransform.cwl
 inputs:
 - id: help_general
   doc: ''

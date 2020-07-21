@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/search_unmapped_reads.cwl
+id: ../../../search_unmapped_reads.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

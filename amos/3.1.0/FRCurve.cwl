@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FRCurve.cwl
+id: ../../../FRCurve.cwl
 inputs:
 - id: params
   doc: ''

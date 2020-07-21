@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/read_analysis.py.cwl
+id: ../../../read_analysis.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

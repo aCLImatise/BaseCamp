@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phame.cwl
+id: ../../../phame.cwl
 inputs:
 - id: control_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/db_load.cwl
+id: ../../../db_load.cwl
 inputs:
 - id: ntv
   doc: ''

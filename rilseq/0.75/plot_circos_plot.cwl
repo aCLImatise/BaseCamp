@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plot_circos_plot.py.cwl
+id: ../../../plot_circos_plot.py.cwl
 inputs:
 - id: summary
   doc: 'Plot only significant interactions that appear in the summary file. (default:

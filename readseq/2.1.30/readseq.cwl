@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/readseq.cwl
+id: ../../../readseq.cwl
 inputs:
 - id: _select_sequences
   doc: '[ll]              select All sequences'

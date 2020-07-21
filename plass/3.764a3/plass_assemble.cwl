@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plass_assemble.cwl
+id: ../../../plass_assemble.cwl
 inputs:
 - id: add_self_matches
   doc: artificially add entries of queries with themselves (for clustering)

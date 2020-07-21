@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parseGapsNUCmer.pl.cwl
+id: ../../../parseGapsNUCmer.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

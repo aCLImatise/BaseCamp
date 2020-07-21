@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/geneBody_coverage2.py.cwl
+id: ../../../geneBody_coverage2.py.cwl
 inputs:
 - id: input_file
   doc: Coverage signal file in bigwig format

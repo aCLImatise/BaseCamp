@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nib_intervals_to_fasta.py.cwl
+id: ../../../nib_intervals_to_fasta.py.cwl
 inputs:
 - id: range_file
   doc: ''

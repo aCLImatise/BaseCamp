@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_snp_screen_phased_alignments.cwl
+id: ../../../phyluce_snp_screen_phased_alignments.cwl
 inputs:
 - id: alignments
   doc: The directory containing the alignment files

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/triangulateTimings.cwl
+id: ../../../triangulateTimings.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

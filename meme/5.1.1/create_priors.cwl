@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_priors.cwl
+id: ../../../create_priors.cwl
 inputs:
 - id: fast_a_file
   doc: ''

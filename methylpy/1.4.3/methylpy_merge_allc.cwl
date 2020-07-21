@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/methylpy_merge_allc.cwl
+id: ../../../methylpy_merge_allc.cwl
 inputs:
 - id: all_c_files
   doc: 'List of allc files to merge. (default: None)'

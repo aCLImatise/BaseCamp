@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clip_out_UMI_cellBC.py.cwl
+id: ../../../clip_out_UMI_cellBC.py.cwl
 inputs:
 - id: umi_len
   doc: Length of UMI

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkHgFindSpec.cwl
+id: ../../../checkHgFindSpec.cwl
 inputs:
 - id: show_searches
   doc: Show the order in which tables will be searched in general.  [This will be

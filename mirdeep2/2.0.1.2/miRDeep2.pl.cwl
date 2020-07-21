@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/miRDeep2.pl.orig.cwl
+id: ../../../miRDeep2.pl.orig.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

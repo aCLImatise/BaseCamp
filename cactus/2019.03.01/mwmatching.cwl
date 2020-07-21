@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mwmatching.py.cwl
+id: ../../../mwmatching.py.cwl
 inputs:
 - id: verbose
   doc: Verbose output

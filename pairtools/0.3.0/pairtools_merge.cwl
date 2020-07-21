@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pairtools_merge.cwl
+id: ../../../pairtools_merge.cwl
 inputs:
 - id: output
   doc: output file. If the path ends with .gz/.lz4, the output is compressed by pbgzip/lz4c.

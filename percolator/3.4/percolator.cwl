@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/percolator.cwl
+id: ../../../percolator.cwl
 inputs:
 - id: fido_grid_search_mse_threshold
   doc: Q-value threshold that will be  used in the computation of the MSE  and ROC

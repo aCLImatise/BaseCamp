@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getAlignmentWindows.cwl
+id: ../../../getAlignmentWindows.cwl
 inputs:
 - id: x_mfa_alignment
   doc: ''

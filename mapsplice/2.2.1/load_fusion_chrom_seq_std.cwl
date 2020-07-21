@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/load_fusion_chrom_seq_std.cwl
+id: ../../../load_fusion_chrom_seq_std.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

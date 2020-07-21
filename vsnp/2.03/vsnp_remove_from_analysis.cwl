@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vsnp_remove_from_analysis.py.cwl
+id: ../../../vsnp_remove_from_analysis.py.cwl
 inputs:
 - id: codes
   doc: 'Excel file containing samples to remove from analysis Column 1: to match sample

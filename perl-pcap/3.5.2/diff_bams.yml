@@ -1,0 +1,86 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: -a    The first BAM|CRAM file.
+  synonyms:
+  - -bam_a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -b    The second BAM|CRAM file.
+  synonyms:
+  - -bam_b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -r    Required for CRAM, genome.fa with co-located fai.
+  synonyms:
+  - -ref
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -c    Count flag differences
+  synonyms:
+  - -count
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -s    Don't include reads with MAPQ=0 in comparison
+  synonyms:
+  - -skipz
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -m    Full documentation.
+  synonyms:
+  - -man
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: 1.bam
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: 2.bam
+  optional: true
+command:
+- diff_bams.pl
+parent:
+subcommands: []
+help_flag: !Flag
+  description: Print a brief help message and exits.
+  synonyms:
+  - -help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "#################\n# PCAP version 3.5.2, Copyright (C) 2014-2017 ICGC/TCGA\
+  \ Pan-Cancer Analysis Project\n# PCAP comes with ABSOLUTELY NO WARRANTY\n# See LICENSE\
+  \ for full details.\n#################\nUsage:\n    diff_bams.pl 1.bam 2.bam or\
+  \ diff_bams.pl -a 1.bam -b 2.bam\n\n    It is rare that BAM files can be compared\
+  \ via MD5 due to various\n    processing information being incorporated into the\
+  \ header such as\n    input/output paths. This program works around this by only\
+  \ comparing\n    relevant information such as:\n\n      1. Same number and order\
+  \ of @SQ headers.\n      2. All reads are in same order.\n\n    You are able to\
+  \ compare a BAM vs it's corresponding CRAM\n\n      Required parameters:\n     \
+  \   -bam_a    -a    The first BAM|CRAM file.\n        -bam_b    -b    The second\
+  \ BAM|CRAM file.\n\n      Other:\n        -ref      -r    Required for CRAM, genome.fa\
+  \ with co-located fai.\n        -count    -c    Count flag differences\n       \
+  \ -skipz    -s    Don't include reads with MAPQ=0 in comparison\n        -help \
+  \    -h    Brief help message.\n        -man      -m    Full documentation.\n\n\
+  \      Run with '-m' for more detail\n\nOptions:\n    -bam_a  A valid readable BAM\
+  \ file\n\n    -bam_b  A valid readable BAM file (different to bam_a)\n\n    -skipz\
+  \  As reads with MAPQ zero can end up in multiple locations don't\n            consider\
+  \ them as a mismatch.\n\n    -help   Print a brief help message and exits.\n\n \
+  \   -man    Prints the manual page and exits.\n\n"
+generated_using:
+- --help

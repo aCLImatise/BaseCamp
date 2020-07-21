@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/df.cwl
+id: ../../../df.cwl
 inputs:
 - id: local
   doc: listing to local file systems

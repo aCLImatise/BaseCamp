@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_alignment_with_selected_path_when_overlaps.py.cwl
+id: ../../../make_alignment_with_selected_path_when_overlaps.py.cwl
 inputs:
 - id: minimum_continuous_match
   doc: 'minimum continuous match above which as overlap. Default: 10'

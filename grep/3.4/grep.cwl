@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/grep.cwl
+id: ../../../grep.cwl
 inputs:
 - id: extended_regexp
   doc: PATTERNS are extended regular expressions

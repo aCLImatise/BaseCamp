@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/excl_seqs.cwl
+id: ../../../excl_seqs.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

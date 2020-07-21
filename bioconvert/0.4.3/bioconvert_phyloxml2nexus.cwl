@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioconvert_phyloxml2nexus.cwl
+id: ../../../bioconvert_phyloxml2nexus.cwl
 inputs:
 - id: force
   doc: 'if outfile exists, it is overwritten with this option (default: False)'

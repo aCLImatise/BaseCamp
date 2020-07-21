@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/para.cwl
+id: ../../../para.cwl
 inputs:
 - id: verbose
   doc: '- set verbosity level.'

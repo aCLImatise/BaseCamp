@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SIMA.pl.cwl
+id: ../../../SIMA.pl.cwl
 inputs:
 - id: domains_perform_analysis
   doc: (Domains to perform analysis on)

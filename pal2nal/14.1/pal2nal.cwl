@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pal2nal.pl.cwl
+id: ../../../pal2nal.pl.cwl
 inputs:
 - id: output
   doc: (clustal|paml|fasta|codon) Output format; default = clustal

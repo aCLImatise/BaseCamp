@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_group_removeuser.cwl
+id: ../../../omero_group_removeuser.cwl
 inputs:
 - id: id
   doc: ID of the group

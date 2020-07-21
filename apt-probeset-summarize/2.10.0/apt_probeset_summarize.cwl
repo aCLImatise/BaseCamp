@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/apt_probeset_summarize.cwl
+id: ../../../apt_probeset_summarize.cwl
 inputs:
 - id: cel
   doc: '*.cel'

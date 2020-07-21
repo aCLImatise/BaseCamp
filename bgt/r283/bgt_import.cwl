@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bgt_import.cwl
+id: ../../../bgt_import.cwl
 inputs:
 - id: input_is_vcf
   doc: input is VCF

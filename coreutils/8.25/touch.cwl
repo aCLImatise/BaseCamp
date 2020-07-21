@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/touch.cwl
+id: ../../../touch.cwl
 inputs:
 - id: change_only_access_time
   doc: change only the access time

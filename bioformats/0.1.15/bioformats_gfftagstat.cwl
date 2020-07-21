@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioformats_gfftagstat.cwl
+id: ../../../bioformats_gfftagstat.cwl
 inputs:
 - id: source
   doc: filter GFF3 features by the specified source

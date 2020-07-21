@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tailLines.cwl
+id: ../../../tailLines.cwl
 inputs:
 - id: file
   doc: ''

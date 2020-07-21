@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/combine_tool_outputs.R.cwl
+id: ../../../combine_tool_outputs.R.cwl
 inputs:
 - id: input_dir
   doc: 'Path to the directory with standardised output .tsv files from multiple classifiers.

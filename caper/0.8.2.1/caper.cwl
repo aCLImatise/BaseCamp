@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/caper.cwl
+id: ../../../caper.cwl
 inputs:
 - id: conf
   doc: Specify config file

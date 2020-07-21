@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/strainest_est.cwl
+id: ../../../strainest_est.cwl
 inputs:
 - id: quality_thr
   doc: 'base quality threshold  [default: 20]'

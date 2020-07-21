@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CRISPRessoCompare.cwl
+id: ../../../CRISPRessoCompare.cwl
 inputs:
 - id: save_also_png
   doc: 'Save also .png images additionally to .pdf files (default: False)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mapGL.py.cwl
+id: ../../../mapGL.py.cwl
 inputs:
 - id: output
   doc: 'Output file. Default stdout. (default: stdout)'

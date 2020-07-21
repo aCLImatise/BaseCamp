@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_help.cwl
+id: ../../../omero_help.cwl
 inputs:
 - id: recursive
   doc: Also print help for all subcommands

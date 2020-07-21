@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gff_parent_types.cwl
+id: ../../../gff_parent_types.cwl
 inputs:
 - id: exclude
   doc: Feature types to exclude from consideration

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/threads.cwl
+id: ../../../threads.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

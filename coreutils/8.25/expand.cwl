@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/expand.cwl
+id: ../../../expand.cwl
 inputs:
 - id: initial
   doc: do not convert tabs after non blanks

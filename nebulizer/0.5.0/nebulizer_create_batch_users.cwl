@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nebulizer_create_batch_users.cwl
+id: ../../../nebulizer_create_batch_users.cwl
 inputs:
 - id: password
   doc: specify password for new user accounts (otherwise program will prompt for password).

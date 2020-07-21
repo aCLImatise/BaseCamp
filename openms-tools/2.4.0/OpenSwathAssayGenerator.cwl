@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/OpenSwathAssayGenerator.cwl
+id: ../../../OpenSwathAssayGenerator.cwl
 inputs:
 - id: in
   doc: "*                           Input file (valid formats: 'tsv', 'mrm', 'pqp',\

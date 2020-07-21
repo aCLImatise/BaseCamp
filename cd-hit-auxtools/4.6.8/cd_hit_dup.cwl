@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cd_hit_dup.cwl
+id: ../../../cd_hit_dup.cwl
 inputs:
 - id: input_file_fastq
   doc: Input file (FASTQ or FASTA);

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_test.cwl
+id: ../../../gsutil_test.cwl
 inputs:
 - id: run_tests_multiregional
   doc: Run tests against multi-regional US buckets. By default, tests run against

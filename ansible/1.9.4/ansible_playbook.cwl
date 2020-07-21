@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ansible_playbook.cwl
+id: ../../../ansible_playbook.cwl
 inputs:
 - id: ask_become_pass
   doc: ask for privilege escalation password

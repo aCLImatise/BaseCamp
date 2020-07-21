@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rearrange_snv_matrix.pl.cwl
+id: ../../../rearrange_snv_matrix.pl.cwl
 inputs:
 - id: t
   doc: ''

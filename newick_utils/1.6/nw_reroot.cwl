@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nw_reroot.cwl
+id: ../../../nw_reroot.cwl
 inputs:
 - id: deroot_splice_attaching
   doc: ": deroot - splice out the LCA of the ingroup, attaching its children to the\

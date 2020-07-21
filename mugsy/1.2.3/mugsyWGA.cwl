@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mugsyWGA.cwl
+id: ../../../mugsyWGA.cwl
 inputs:
 - id: _version_print
   doc: ',               --version                          print version information'

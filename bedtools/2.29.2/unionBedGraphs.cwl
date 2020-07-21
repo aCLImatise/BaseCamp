@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unionBedGraphs.cwl
+id: ../../../unionBedGraphs.cwl
 inputs:
 - id: header
   doc: Print a header line. (chrom/start/end + names of each file).

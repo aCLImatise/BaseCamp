@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cnvnator.cwl
+id: ../../../cnvnator.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

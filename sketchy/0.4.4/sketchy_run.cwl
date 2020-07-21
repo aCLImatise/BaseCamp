@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sketchy_run.cwl
+id: ../../../sketchy_run.cwl
 inputs:
 - id: fast_q
   doc: Path to input Fastq containing basecalled nanopore reads  [required]

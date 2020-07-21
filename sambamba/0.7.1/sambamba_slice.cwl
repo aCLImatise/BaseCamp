@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sambamba_slice.cwl
+id: ../../../sambamba_slice.cwl
 inputs:
 - id: output_filename
   doc: output BAM filename

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/joingenes.cwl
+id: ../../../joingenes.cwl
 inputs:
 - id: gene_sets
   doc: ',file2,...      -g file1,file2,...      where "file1,file2,...,filen" have

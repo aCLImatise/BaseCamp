@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/timeout.cwl
+id: ../../../timeout.cwl
 inputs:
 - id: preserve_status
   doc: exit with the same status as COMMAND, even when the command times out

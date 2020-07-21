@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crossblock.sh.cwl
+id: ../../../crossblock.sh.cwl
 inputs:
 - id: decontaminate_dots_h
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/add_protein_annotation.py.cwl
+id: ../../../add_protein_annotation.py.cwl
 inputs:
 - id: fast_a
   doc: A fasta file

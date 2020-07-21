@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blastbesties.cwl
+id: ../../../blastbesties.cwl
 inputs:
 - id: blast_a_vb
   doc: Blast tab result file for fastaA query against fastaB subject

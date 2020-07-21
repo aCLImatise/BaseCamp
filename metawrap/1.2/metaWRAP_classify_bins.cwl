@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metaWRAP_classify_bins.cwl
+id: ../../../metaWRAP_classify_bins.cwl
 inputs:
 - id: folder_bins_classified
   doc: folder with the bins to be classified (in fasta format)

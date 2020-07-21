@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nhmmer_target seqfile.cwl
+id: ../../../nhmmer_target seqfile.cwl
 inputs:
 - id: n_hmmer
   doc: ''

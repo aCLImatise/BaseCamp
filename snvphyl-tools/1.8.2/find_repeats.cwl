@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/find_repeats.pl.cwl
+id: ../../../find_repeats.pl.cwl
 inputs:
 - id: min_length
   doc: ': Minimum length of repeat region (150).'

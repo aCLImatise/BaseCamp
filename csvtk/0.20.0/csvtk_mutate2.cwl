@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk_mutate2.cwl
+id: ../../../csvtk_mutate2.cwl
 inputs:
 - id: digits
   doc: number of digits after the dot (default 2)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TOBIAS_PlotAggregate.cwl
+id: ../../../TOBIAS_PlotAggregate.cwl
 inputs:
 - id: tfbs
   doc: '[<bed> [<bed> ...]]           TFBS sites (*required)'

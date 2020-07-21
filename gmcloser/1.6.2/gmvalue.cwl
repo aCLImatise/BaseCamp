@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmvalue.utl_scaf.cwl
+id: ../../../gmvalue.utl_scaf.cwl
 inputs:
 - id: query
   doc: input scaffold fasta file (e.g., scaf1.fa)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bgt_bcfidx.cwl
+id: ../../../bgt_bcfidx.cwl
 inputs:
 - id: s
   doc: ''

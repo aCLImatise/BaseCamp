@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/numfmt.cwl
+id: ../../../numfmt.cwl
 inputs:
 - id: debug
   doc: print warnings about invalid input

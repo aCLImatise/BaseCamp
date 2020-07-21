@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simpleContigLoader.cwl
+id: ../../../simpleContigLoader.cwl
 inputs:
 - id: bank_path
   doc: ''

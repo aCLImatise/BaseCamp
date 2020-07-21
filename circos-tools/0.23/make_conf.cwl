@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_conf.cwl
+id: ../../../make_conf.cwl
 inputs:
 - id: cat
   doc: ''

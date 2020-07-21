@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rgt_hint_training.cwl
+id: ../../../rgt_hint_training.cwl
 inputs:
 - id: annotate_file
   doc: A annotate file containing all the states.

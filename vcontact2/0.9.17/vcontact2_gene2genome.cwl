@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcontact2_gene2genome.cwl
+id: ../../../vcontact2_gene2genome.cwl
 inputs:
 - id: source_type
   doc: Select one of the options as an input source. MetaGeneMark can be either the

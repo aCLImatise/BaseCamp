@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simkaCountProcess.cwl
+id: ../../../simkaCountProcess.cwl
 inputs:
 - id: nohup
   doc: ''

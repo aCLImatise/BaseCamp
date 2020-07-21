@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makehmmerdb_seqfile.cwl
+id: ../../../makehmmerdb_seqfile.cwl
 inputs:
 - id: binary_file
   doc: ''

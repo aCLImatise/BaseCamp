@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/evidence_modeler.pl.cwl
+id: ../../../evidence_modeler.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

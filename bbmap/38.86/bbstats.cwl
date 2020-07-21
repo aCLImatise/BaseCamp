@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bbstats.sh.cwl
+id: ../../../bbstats.sh.cwl
 inputs:
 - id: stats_dots_h
   doc: ''

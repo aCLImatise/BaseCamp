@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/whatshap_genotype.cwl
+id: ../../../whatshap_genotype.cwl
 inputs:
 - id: output
   doc: Output VCF file. Add .gz to the file name to get compressed output. If omitted,

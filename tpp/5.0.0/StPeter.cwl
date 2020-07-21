@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/StPeter.cwl
+id: ../../../StPeter.cwl
 inputs:
 - id: degen
   doc: = allow degenerate peptides in protein quantitation. Default is off.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genie_bam_tofastq.cwl
+id: ../../../genie_bam_tofastq.cwl
 inputs:
 - id: bam
   doc: Input BAM file (*require)

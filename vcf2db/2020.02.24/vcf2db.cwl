@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf2db.py.cwl
+id: ../../../vcf2db.py.cwl
 inputs:
 - id: expand
   doc: sample columns to expand into their own tables

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf_shuffle_columns.py.cwl
+id: ../../../maf_shuffle_columns.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

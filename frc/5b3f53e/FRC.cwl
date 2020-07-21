@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FRC.cwl
+id: ../../../FRC.cwl
 inputs:
 - id: pe_sam
   doc: paired end alignment file (in sam or bam format).  Orientation must be -> <-

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quasitools_quality.cwl
+id: ../../../quasitools_quality.cwl
 inputs:
 - id: output_dir
   doc: '[required]'

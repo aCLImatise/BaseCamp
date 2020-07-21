@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/toArachne.cwl
+id: ../../../toArachne.cwl
 inputs:
 - id: successful_completion
   doc: Successful completion

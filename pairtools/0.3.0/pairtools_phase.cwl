@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pairtools_phase.cwl
+id: ../../../pairtools_phase.cwl
 inputs:
 - id: output
   doc: output file. If the path ends with .gz or .lz4, the output is pbgzip-/lz4c-compressed.

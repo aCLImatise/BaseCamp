@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/humann2_renorm_table.cwl
+id: ../../../humann2_renorm_table.cwl
 inputs:
 - id: input
   doc: Original output table (tsv or biom format); default=[TSV/STDIN]

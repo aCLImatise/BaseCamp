@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sam2spliceJunc.pl.cwl
+id: ../../../sam2spliceJunc.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spliceai.cwl
+id: ../../../spliceai.cwl
 inputs:
 - id: path_input_defaults
   doc: '[input]     path to the input VCF file, defaults to standard in'

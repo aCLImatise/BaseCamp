@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfstats.cwl
+id: ../../../vcfstats.cwl
 inputs:
 - id: region
   doc: specify a region on which to target the stats, requires a BGZF compressed file

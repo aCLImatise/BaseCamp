@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/process_radtags.cwl
+id: ../../../process_radtags.cwl
 inputs:
 - id: inline_null
   doc: ':   barcode is inline with sequence, occurs only on single-end read (default).'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SpectraFilterScaler.cwl
+id: ../../../SpectraFilterScaler.cwl
 inputs:
 - id: in
   doc: "*        Input file  (valid formats: 'mzML')"

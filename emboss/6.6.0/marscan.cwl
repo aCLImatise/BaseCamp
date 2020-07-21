@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/marscan.cwl
+id: ../../../marscan.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

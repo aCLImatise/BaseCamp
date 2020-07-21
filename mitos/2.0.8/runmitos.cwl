@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runmitos.py.cwl
+id: ../../../runmitos.py.cwl
 inputs:
 - id: input
   doc: the input file

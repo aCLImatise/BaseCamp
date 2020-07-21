@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_breakseq2.py.cwl
+id: ../../../run_breakseq2.py.cwl
 inputs:
 - id: n_threads
   doc: 'Number of processes to use for parallelism (default: 1)'

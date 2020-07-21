@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_extract_sub_volume.py_volume.cwl
+id: ../../../medpy_extract_sub_volume.py_volume.cwl
 inputs:
 - id: f
   doc: ''

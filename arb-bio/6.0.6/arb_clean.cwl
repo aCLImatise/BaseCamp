@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_clean.cwl
+id: ../../../arb_clean.cwl
 inputs:
 - id: session
   doc: kill all processes running with current ARB_PID

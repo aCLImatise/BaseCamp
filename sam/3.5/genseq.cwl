@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genseq.cwl
+id: ../../../genseq.cwl
 inputs:
 - id: n_seq
   doc: number of sequences to generate

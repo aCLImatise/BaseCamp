@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/synthReadGen.cwl
+id: ../../../synthReadGen.cwl
 inputs:
 - id: id
   doc: ': set distribution used for insert length [1 = normal], 2 = poisson'

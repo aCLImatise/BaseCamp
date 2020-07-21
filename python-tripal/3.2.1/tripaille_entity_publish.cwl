@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tripaille_entity_publish.cwl
+id: ../../../tripaille_entity_publish.cwl
 inputs:
 - id: types
   doc: 'List of entity types to be published (e.g. Gene mRNA, default: all)'

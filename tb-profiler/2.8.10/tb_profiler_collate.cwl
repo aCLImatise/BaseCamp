@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tb_profiler_collate.cwl
+id: ../../../tb_profiler_collate.cwl
 inputs:
 - id: prefix
   doc: 'Sample prefix (default: tbprofiler)'

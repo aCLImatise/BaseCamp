@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CnvGeneAnnotation.cwl
+id: ../../../CnvGeneAnnotation.cwl
 inputs:
 - id: in
   doc: Input TSV file containing the CNVs.

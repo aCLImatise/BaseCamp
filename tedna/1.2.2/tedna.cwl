@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tedna.cwl
+id: ../../../tedna.cwl
 inputs:
 - id: file_one
   doc: First FASTQ file.

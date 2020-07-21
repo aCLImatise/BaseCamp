@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chakin_expression_add_biomaterial.cwl
+id: ../../../chakin_expression_add_biomaterial.cwl
 inputs:
 - id: description
   doc: Description of the biomaterial

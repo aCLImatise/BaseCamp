@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dsh_vcf_pedigree.cwl
+id: ../../../dsh_vcf_pedigree.cwl
 inputs:
 - id: about
   doc: display about message [optional]

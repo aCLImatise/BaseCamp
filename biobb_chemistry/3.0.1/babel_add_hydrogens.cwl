@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/babel_add_hydrogens.cwl
+id: ../../../babel_add_hydrogens.cwl
 inputs:
 - id: config
   doc: Configuration file

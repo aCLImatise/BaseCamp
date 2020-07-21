@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sga_haplotype_filter.cwl
+id: ../../../sga_haplotype_filter.cwl
 inputs:
 - id: verbose
   doc: display verbose output

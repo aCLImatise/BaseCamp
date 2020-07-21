@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam2wig.cwl
+id: ../../../bam2wig.cwl
 inputs:
 - id: allows_specify_region
   doc: "Allows to specify a target region, e.g. 'chr3L:10-250' This option can only\

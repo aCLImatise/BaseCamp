@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phastconsDB2hints.pl.cwl
+id: ../../../phastconsDB2hints.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

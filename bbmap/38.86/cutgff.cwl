@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cutgff.sh.cwl
+id: ../../../cutgff.sh.cwl
 inputs:
 - id: in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mega_reads_assemble_cluster.sh.cwl
+id: ../../../mega_reads_assemble_cluster.sh.cwl
 inputs:
 - id: m
   doc: ''

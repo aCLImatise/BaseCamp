@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simulate_phasing_data_from_fasta.py.cwl
+id: ../../../simulate_phasing_data_from_fasta.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

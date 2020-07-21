@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/latf_load.2.10.7.cwl
+id: ../../../latf_load.2.10.7.cwl
 inputs:
 - id: output
   doc: 'Path and Name of the output database. '

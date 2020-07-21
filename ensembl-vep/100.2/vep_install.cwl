@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vep_install.cwl
+id: ../../../vep_install.cwl
 inputs:
 - id: perl
   doc: ''

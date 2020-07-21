@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/amosvalidate.cwl
+id: ../../../amosvalidate.cwl
 inputs:
 - id: use_clear_range
   doc: '=<n>   Use the clear range of the reads? (0:no 1:yes, default: 1)'

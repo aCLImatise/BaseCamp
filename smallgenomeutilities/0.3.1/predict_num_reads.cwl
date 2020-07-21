@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/predict_num_reads.cwl
+id: ../../../predict_num_reads.cwl
 inputs:
 - id: length_trimming_default
   doc: 'Length of the sliding window for emulating read trimming (default: 10)'

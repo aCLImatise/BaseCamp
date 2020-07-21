@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/comppair.cwl
+id: ../../../comppair.cwl
 inputs:
 - id: options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ppserver.py.cwl
+id: ../../../ppserver.py.cwl
 inputs:
 - id: hd_ar
   doc: ''

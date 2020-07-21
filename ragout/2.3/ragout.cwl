@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ragout.cwl
+id: ../../../ragout.cwl
 inputs:
 - id: outdir
   doc: 'output directory (default: ragout-out)'

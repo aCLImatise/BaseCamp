@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_subtract_index.cwl
+id: ../../../crux_subtract_index.cwl
 inputs:
 - id: tide_index_one
   doc: ''

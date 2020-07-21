@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicPCA.cwl
+id: ../../../hicPCA.cwl
 inputs:
 - id: matrix
   doc: 'HiCExplorer matrix in h5 format. (default: None)'

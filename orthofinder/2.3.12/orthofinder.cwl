@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/orthofinder.cwl
+id: ../../../orthofinder.cwl
 inputs:
 - id: number_parallel_sequence
   doc: Number of parallel sequence search threads [Default = 8]

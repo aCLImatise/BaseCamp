@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/orthomclRemoveIdenticalGroups.cwl
+id: ../../../orthomclRemoveIdenticalGroups.cwl
 inputs:
 - id: groups_dot_txt
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fpa_keep.cwl
+id: ../../../fpa_keep.cwl
 inputs:
 - id: containment
   doc: Keep only containment mapping

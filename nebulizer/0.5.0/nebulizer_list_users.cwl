@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nebulizer_list_users.cwl
+id: ../../../nebulizer_list_users.cwl
 inputs:
 - id: name
   doc: list only users with matching email or user name. Can include glob-style wild-cards.

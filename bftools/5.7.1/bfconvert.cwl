@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bfconvert.cwl
+id: ../../../bfconvert.cwl
 inputs:
 - id: version
   doc: ': print the library version and exit'

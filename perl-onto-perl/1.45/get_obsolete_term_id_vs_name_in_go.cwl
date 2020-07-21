@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_obsolete_term_id_vs_name_in_go.pl.cwl
+id: ../../../get_obsolete_term_id_vs_name_in_go.pl.cwl
 inputs:
 - id: obo_input_file
   doc: OBO input file

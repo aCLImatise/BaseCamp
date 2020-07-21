@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compileSpliceCands.cwl
+id: ../../../compileSpliceCands.cwl
 inputs:
 - id: filename_potential_sites
   doc: <filename>      The potential splice sites in gff format

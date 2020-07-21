@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/interleave_reads.py.cwl
+id: ../../../interleave_reads.py.cwl
 inputs:
 - id: no_reformat
   doc: 'Do not reformat read names or enforce consistency (default: False)'

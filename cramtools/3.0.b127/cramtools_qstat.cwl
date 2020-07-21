@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cramtools_qstat.cwl
+id: ../../../cramtools_qstat.cwl
 inputs:
 - id: default_quality_score
   doc: "Use this value as a default or missing quality score. Lowest is 0, which corresponds\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chainSplit.cwl
+id: ../../../chainSplit.cwl
 inputs:
 - id: split_query_default
   doc: '- Split on query (default is on target)'

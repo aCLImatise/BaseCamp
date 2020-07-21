@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_replace.cwl
+id: ../../../goalign_replace.cwl
 inputs:
 - id: new
   doc: New string that will replace old string in sequences (default "none")

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/map2gtf.cwl
+id: ../../../map2gtf.cwl
 inputs:
 - id: annotation_do_ttl_st
   doc: ''

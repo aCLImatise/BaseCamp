@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsq.cwl
+id: ../../../rsq.cwl
 inputs:
 - id: i
   doc: ''

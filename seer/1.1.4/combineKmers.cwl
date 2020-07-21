@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/combineKmers.cwl
+id: ../../../combineKmers.cwl
 inputs:
 - id: arg_file_tab
   doc: '[ --samples ] arg    file with tab separated sample name and kmer file'

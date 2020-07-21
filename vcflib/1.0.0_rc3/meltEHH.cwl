@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/meltEHH.cwl
+id: ../../../meltEHH.cwl
 inputs:
 - id: region
   doc: ':1-1000 > STDOUT 2> STDERR          '

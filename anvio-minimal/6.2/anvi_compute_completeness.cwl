@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_compute_completeness.cwl
+id: ../../../anvi_compute_completeness.cwl
 inputs:
 - id: splits_of_interest
   doc: A file with split names. There should be only one column in the file, and each

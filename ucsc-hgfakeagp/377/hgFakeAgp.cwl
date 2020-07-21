@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hgFakeAgp.cwl
+id: ../../../hgFakeAgp.cwl
 inputs:
 - id: input_dot_fa
   doc: ''

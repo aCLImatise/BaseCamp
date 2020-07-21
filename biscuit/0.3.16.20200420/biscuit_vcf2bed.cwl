@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biscuit_vcf2bed.cwl
+id: ../../../biscuit_vcf2bed.cwl
 inputs:
 - id: extract_type_
   doc: extract type {c, cg, ch, hcg, gch, snp} [CG]

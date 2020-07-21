@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varfish_annotator.cwl
+id: ../../../varfish_annotator.cwl
 inputs:
 - id: clin_var_path
   doc: Path to Clinvar TSV file(s) to use for import, see documentation  for more

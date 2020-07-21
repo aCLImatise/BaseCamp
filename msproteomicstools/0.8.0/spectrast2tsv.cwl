@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spectrast2tsv.py.cwl
+id: ../../../spectrast2tsv.py.cwl
 inputs:
 - id: spectra_st_file
   doc: ''

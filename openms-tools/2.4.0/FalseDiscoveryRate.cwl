@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FalseDiscoveryRate.cwl
+id: ../../../FalseDiscoveryRate.cwl
 inputs:
 - id: in
   doc: "*              Identifications from searching a target-decoy database. (valid\

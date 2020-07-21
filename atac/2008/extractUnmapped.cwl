@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extractUnmapped.cwl
+id: ../../../extractUnmapped.cwl
 inputs:
 - id: extract_unmapped_sequence_a
   doc: extract all unmapped sequence in A

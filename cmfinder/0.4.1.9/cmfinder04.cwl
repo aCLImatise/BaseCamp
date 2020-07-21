@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cmfinder04.pl.cwl
+id: ../../../cmfinder04.pl.cwl
 inputs:
 - id: minc_and_score_in_final
   doc: "Pass --min-cand-score-in-final <number> to cmfinder.  WARNING: there's a difference\

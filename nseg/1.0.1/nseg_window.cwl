@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nseg_window.cwl
+id: ../../../nseg_window.cwl
 inputs:
 - id: ns_eg
   doc: ''

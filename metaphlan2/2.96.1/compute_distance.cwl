@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compute_distance.py.cwl
+id: ../../../compute_distance.py.cwl
 inputs:
 - id: ifn_alignment
   doc: ''

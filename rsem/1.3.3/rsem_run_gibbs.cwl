@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_run_gibbs.cwl
+id: ../../../rsem_run_gibbs.cwl
 inputs:
 - id: reference_name
   doc: ''

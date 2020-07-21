@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dan.cwl
+id: ../../../dan.cwl
 inputs:
 - id: window_size
   doc: integer    [20] The values of melting point and other thermodynamic properties

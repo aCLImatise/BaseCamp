@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dbSnoop.cwl
+id: ../../../dbSnoop.cwl
 inputs:
 - id: unsplit
   doc: '- if set will merge together tables split by chromosome'

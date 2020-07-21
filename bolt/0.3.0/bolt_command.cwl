@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bolt_command.cwl
+id: ../../../bolt_command.cwl
 inputs:
 - id: command
   doc: ''

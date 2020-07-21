@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/test_musicc.py.cwl
+id: ../../../test_musicc.py.cwl
 inputs:
 - id: verbose
   doc: Verbose output

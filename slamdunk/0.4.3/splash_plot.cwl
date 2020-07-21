@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splash_plot.halflifespergene.cwl
+id: ../../../splash_plot.halflifespergene.cwl
 inputs:
 - id: tc_rate
   doc: T->C conversion rate

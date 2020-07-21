@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clean.cwl
+id: ../../../clean.cwl
 inputs:
 - id: assembly
   doc: filename of assembly in FASTA format

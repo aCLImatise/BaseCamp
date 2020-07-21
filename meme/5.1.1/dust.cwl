@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dust.cwl
+id: ../../../dust.cwl
 inputs:
 - id: fast_a_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segtools_html_report.cwl
+id: ../../../segtools_html_report.cwl
 inputs:
 - id: clobber
   doc: Overwrite any existing output files.

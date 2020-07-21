@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metawatt.cwl
+id: ../../../metawatt.cwl
 inputs:
 - id: threads
   doc: '[number of threads/processors]'

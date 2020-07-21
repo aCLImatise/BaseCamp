@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Joiner.cwl
+id: ../../../Joiner.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

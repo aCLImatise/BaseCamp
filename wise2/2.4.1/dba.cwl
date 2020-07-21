@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dba.cwl
+id: ../../../dba.cwl
 inputs:
 - id: match_a
   doc: '[0.65]     match level A'

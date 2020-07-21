@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NAPSS.cwl
+id: ../../../NAPSS.cwl
 inputs:
 - id: seq_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gx_fastq_groomer.cwl
+id: ../../../gx_fastq_groomer.cwl
 inputs:
 - id: fix_id
   doc: fix inconsistent identifiers

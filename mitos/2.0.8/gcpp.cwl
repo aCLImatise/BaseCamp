@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gcpp.py.cwl
+id: ../../../gcpp.py.cwl
 inputs:
 - id: ref
   doc: reference genetic code

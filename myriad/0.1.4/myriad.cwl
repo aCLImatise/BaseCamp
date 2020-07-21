@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/myriad.cwl
+id: ../../../myriad.cwl
 inputs:
 - id: client
   doc: Run client

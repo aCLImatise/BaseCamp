@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shorah_amplicon.cwl
+id: ../../../shorah_amplicon.cwl
 inputs:
 - id: alpha
   doc: alpha in dpm sampling

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xpclr.cwl
+id: ../../../xpclr.cwl
 inputs:
 - id: out
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/conus_train.cwl
+id: ../../../conus_train.cwl
 inputs:
 - id: options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_nrdb.pl.cwl
+id: ../../../bp_nrdb.pl.cwl
 inputs:
 - id: filename_db_written
   doc: '- the filename the db is written (STDOUT by default)'

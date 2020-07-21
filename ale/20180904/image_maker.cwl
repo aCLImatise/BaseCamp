@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/image_maker.py.cwl
+id: ../../../image_maker.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

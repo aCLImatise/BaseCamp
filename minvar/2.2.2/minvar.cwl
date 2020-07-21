@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/minvar.cwl
+id: ../../../minvar.cwl
 inputs:
 - id: fast_q
   doc: input reads in fastq format

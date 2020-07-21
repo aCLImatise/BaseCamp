@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_manage_functional_annotation.pl.cwl
+id: ../../../agat_sp_manage_functional_annotation.pl.cwl
 inputs:
 - id: blast
   doc: String - Input blast ( outfmt 6 = tabular ) file that will be used to complement

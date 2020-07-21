@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/depot.cwl
+id: ../../../depot.cwl
 inputs:
 - id: depot
   doc: ''

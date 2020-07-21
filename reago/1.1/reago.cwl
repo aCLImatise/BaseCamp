@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reago.py.cwl
+id: ../../../reago.py.cwl
 inputs:
 - id: l
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FuzzyDiff.cwl
+id: ../../../FuzzyDiff.cwl
 inputs:
 - id: in_one
   doc: '*         First input file'

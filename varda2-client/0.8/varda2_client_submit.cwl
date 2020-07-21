@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varda2_client_submit.cwl
+id: ../../../varda2_client_submit.cwl
 inputs:
 - id: disease_code
   doc: Disease indication code

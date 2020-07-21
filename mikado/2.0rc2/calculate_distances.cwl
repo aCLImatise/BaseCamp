@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/calculate_distances.py.cwl
+id: ../../../calculate_distances.py.cwl
 inputs:
 - id: o
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metrics.cwl
+id: ../../../metrics.cwl
 inputs:
 - id: prefix_output_wig
   doc: 'Prefix for output wig files [default: metrics]'

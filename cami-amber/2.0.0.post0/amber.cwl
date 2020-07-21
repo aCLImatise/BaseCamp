@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/amber.py.cwl
+id: ../../../amber.py.cwl
 inputs:
 - id: gold_standard_file
   doc: Gold standard - ground truth - file

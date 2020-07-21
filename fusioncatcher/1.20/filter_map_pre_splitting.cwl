@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_map_pre_splitting.py.cwl
+id: ../../../filter_map_pre_splitting.py.cwl
 inputs:
 - id: input
   doc: The input file containing the fusion (chromosomal) coordinates for each fusion

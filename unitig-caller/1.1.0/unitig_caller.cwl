@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unitig_caller.cwl
+id: ../../../unitig_caller.cwl
 inputs:
 - id: build
   doc: Build coloured/uncoloured de Bruijn graph using Bifrost

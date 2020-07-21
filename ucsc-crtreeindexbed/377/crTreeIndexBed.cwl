@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crTreeIndexBed.cwl
+id: ../../../crTreeIndexBed.cwl
 inputs:
 - id: block_size
   doc: '- number of children per node in index tree. Default 1024'

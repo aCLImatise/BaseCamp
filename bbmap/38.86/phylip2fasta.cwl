@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phylip2fasta.sh.cwl
+id: ../../../phylip2fasta.sh.cwl
 inputs:
 - id: in
   doc: ''

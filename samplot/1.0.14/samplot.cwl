@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samplot.cwl
+id: ../../../samplot.cwl
 inputs:
 - id: v
   doc: ''

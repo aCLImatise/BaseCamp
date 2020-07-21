@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_identical.cwl
+id: ../../../goalign_identical.cwl
 inputs:
 - id: compared
   doc: Compared alignment file (default "none")

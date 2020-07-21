@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyrsa_keygen.cwl
+id: ../../../pyrsa_keygen.cwl
 inputs:
 - id: pub_out
   doc: Output filename for the public key. The public key is not saved if this option

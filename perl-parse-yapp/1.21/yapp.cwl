@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/yapp.cwl
+id: ../../../yapp.cwl
 inputs:
 - id: give_parser_module
   doc: Give your parser module the name <module> default is <grammar>

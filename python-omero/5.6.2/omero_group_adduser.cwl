@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_group_adduser.cwl
+id: ../../../omero_group_adduser.cwl
 inputs:
 - id: id
   doc: ID of the group

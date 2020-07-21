@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sort_denovo_primers.py.cwl
+id: ../../../sort_denovo_primers.py.cwl
 inputs:
 - id: hits_file
   doc: Conserved Xmers file, output file from generate_primers_denovo.py module. [REQUIRED]

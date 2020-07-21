@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pModel.cwl
+id: ../../../pModel.cwl
 inputs:
 - id: options
   doc: ''

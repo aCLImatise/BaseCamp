@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/replaceID.py.cwl
+id: ../../../replaceID.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

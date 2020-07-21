@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_kreport.py.cwl
+id: ../../../make_kreport.py.cwl
 inputs:
 - id: kraken
   doc: Kraken output file (5 tab-delimited columns, taxid in 3rd column)

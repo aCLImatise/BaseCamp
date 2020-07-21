@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/orthomclReduceGroups.cwl
+id: ../../../orthomclReduceGroups.cwl
 inputs:
 - id: groups_file
   doc: ''

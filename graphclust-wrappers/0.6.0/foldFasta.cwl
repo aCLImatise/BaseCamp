@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/foldFasta.pl.cwl
+id: ../../../foldFasta.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

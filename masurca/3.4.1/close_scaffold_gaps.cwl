@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/close_scaffold_gaps.sh.cwl
+id: ../../../close_scaffold_gaps.sh.cwl
 inputs:
 - id: r
   doc: ''

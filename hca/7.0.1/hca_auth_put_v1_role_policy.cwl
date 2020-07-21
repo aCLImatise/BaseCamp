@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_auth_put_v1_role_policy.cwl
+id: ../../../hca_auth_put_v1_role_policy.cwl
 inputs:
 - id: role_id
   doc: The name of the role.

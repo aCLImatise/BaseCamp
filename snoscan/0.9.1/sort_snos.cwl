@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sort_snos.pl.cwl
+id: ../../../sort_snos.pl.cwl
 inputs:
 - id: sort_snos_position_hit
   doc: ':  sort snos by position of hit in query sequence'

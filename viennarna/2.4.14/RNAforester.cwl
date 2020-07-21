@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RNAforester.cwl
+id: ../../../RNAforester.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

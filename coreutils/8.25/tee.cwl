@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tee.cwl
+id: ../../../tee.cwl
 inputs:
 - id: append
   doc: to the given FILEs, do not overwrite

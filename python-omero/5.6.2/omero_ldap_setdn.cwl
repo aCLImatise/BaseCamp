@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_ldap_setdn.cwl
+id: ../../../omero_ldap_setdn.cwl
 inputs:
 - id: user_id
   doc: ID of the user.

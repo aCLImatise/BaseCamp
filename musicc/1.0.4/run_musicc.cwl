@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_musicc.py.cwl
+id: ../../../run_musicc.py.cwl
 inputs:
 - id: out
   doc: 'Output destination for corrected abundance (default: MUSiCC.tab)'

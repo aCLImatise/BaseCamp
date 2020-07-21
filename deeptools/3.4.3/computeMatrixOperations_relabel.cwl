@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/computeMatrixOperations_relabel.cwl
+id: ../../../computeMatrixOperations_relabel.cwl
 inputs:
 - id: matrix_file
   doc: 'Matrix file from the computeMatrix tool. (default: None)'

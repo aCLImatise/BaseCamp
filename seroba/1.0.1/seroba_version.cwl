@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seroba_version.cwl
+id: ../../../seroba_version.cwl
 inputs:
 - id: se_rob_a
   doc: ''

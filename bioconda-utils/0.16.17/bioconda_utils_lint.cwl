@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioconda_utils_lint.cwl
+id: ../../../bioconda_utils_lint.cwl
 inputs:
 - id: packages
   doc: "Glob for package[s] to build. Default is to build all packages. Can be specified\

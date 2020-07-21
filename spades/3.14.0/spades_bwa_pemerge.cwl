@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spades_bwa_pemerge.cwl
+id: ../../../spades_bwa_pemerge.cwl
 inputs:
 - id: output_merged_reads
   doc: output merged reads only

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msa_view.cwl
+id: ../../../msa_view.cwl
 inputs:
 - id: out_format
   doc: '> chr1.ordered.ss'

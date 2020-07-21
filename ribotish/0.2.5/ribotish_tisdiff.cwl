@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ribotish_tisdiff.cwl
+id: ../../../ribotish_tisdiff.cwl
 inputs:
 - id: one
   doc: Prediction results of group 1 TIS data

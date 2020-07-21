@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/[.cwl
+id: ../../../[.cwl
 inputs:
 - id: file_exists_block
   doc: FILE exists and is block special

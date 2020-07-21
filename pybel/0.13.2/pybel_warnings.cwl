@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pybel_warnings.cwl
+id: ../../../pybel_warnings.cwl
 inputs:
 - id: path
   doc: ''

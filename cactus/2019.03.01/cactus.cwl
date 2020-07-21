@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cactus.cwl
+id: ../../../cactus.cwl
 inputs:
 - id: experiment
   doc: The file containing a link to the experiment parameters

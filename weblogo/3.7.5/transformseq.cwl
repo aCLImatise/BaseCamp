@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transformseq.cwl
+id: ../../../transformseq.cwl
 inputs:
 - id: fin
   doc: 'Sequence input file (default: stdin)'

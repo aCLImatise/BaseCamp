@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ps2pdf13.cwl
+id: ../../../ps2pdf13.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

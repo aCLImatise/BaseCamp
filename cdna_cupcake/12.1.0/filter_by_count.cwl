@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_by_count.py.cwl
+id: ../../../filter_by_count.py.cwl
 inputs:
 - id: min_count
   doc: 'Minimum FL count (default: 2)'

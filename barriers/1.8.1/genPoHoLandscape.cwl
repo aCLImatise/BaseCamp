@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genPoHoLandscape.cwl
+id: ../../../genPoHoLandscape.cwl
 inputs:
 - id: p_q_h
   doc: 'P:2 Q2 H-3 '

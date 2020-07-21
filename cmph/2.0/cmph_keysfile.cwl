@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cmph_keysfile.cwl
+id: ../../../cmph_keysfile.cwl
 inputs:
 - id: c_value_determines
   doc: 'c value determines: * the number of vertices in the graph for the algorithms

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cassiopeeknife.cwl
+id: ../../../cassiopeeknife.cwl
 inputs:
 - id: _sequence_convert
   doc: ': sequence to convert'

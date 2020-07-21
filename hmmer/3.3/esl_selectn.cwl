@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_selectn.cwl
+id: ../../../esl_selectn.cwl
 inputs:
 - id: seed
   doc: ": set random number generator's seed to <n>  [0]"

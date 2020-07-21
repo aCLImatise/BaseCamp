@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedSort.cwl
+id: ../../../bedSort.cwl
 inputs:
 - id: in_dot_bed
   doc: ''

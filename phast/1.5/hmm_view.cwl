@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmm_view.cwl
+id: ../../../hmm_view.cwl
 inputs:
 - id: assume_separate_version
   doc: 'Assume a separate version of each state for each of  <nrcats> rate categories. '

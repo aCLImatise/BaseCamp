@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafToPsl.cwl
+id: ../../../mafToPsl.cwl
 inputs:
 - id: query_src
   doc: ''

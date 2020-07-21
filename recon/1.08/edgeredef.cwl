@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/edgeredef.cwl
+id: ../../../edgeredef.cwl
 inputs:
 - id: fam_def
   doc: ''

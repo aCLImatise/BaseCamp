@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/minia_nooverlap.cwl
+id: ../../../minia_nooverlap.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

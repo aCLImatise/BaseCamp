@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/split_wiggle.pl.cwl
+id: ../../../split_wiggle.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

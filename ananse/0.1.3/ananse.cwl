@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ananse.cwl
+id: ../../../ananse.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

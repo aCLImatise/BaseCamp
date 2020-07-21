@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_auth_put_v1_user_policy.cwl
+id: ../../../hca_auth_put_v1_user_policy.cwl
 inputs:
 - id: user_id
   doc: User ID (email).

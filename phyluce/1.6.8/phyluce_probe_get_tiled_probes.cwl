@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_probe_get_tiled_probes.cwl
+id: ../../../phyluce_probe_get_tiled_probes.cwl
 inputs:
 - id: input
   doc: The path to the input file

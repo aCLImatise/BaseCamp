@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/randomizeGroupFile.pl.cwl
+id: ../../../randomizeGroupFile.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

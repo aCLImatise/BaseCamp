@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/split_long_unitigs.pl.cwl
+id: ../../../split_long_unitigs.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

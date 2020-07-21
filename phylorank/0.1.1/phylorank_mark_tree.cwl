@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phylorank_mark_tree.cwl
+id: ../../../phylorank_mark_tree.cwl
 inputs:
 - id: thresholds
   doc: 'relative divergence thresholds for taxonomic ranks (default: {"d": 0.33, "p":

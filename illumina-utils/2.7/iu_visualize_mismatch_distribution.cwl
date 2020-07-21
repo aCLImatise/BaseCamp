@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iu_visualize_mismatch_distribution.cwl
+id: ../../../iu_visualize_mismatch_distribution.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

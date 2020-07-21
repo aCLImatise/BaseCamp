@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snp_sites.cwl
+id: ../../../snp_sites.cwl
 inputs:
 - id: rmv_pc_bhv
   doc: ''

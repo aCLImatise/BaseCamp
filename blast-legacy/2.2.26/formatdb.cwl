@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/formatdb.cwl
+id: ../../../formatdb.cwl
 inputs:
 - id: parse_options_t
   doc: 'Parse options T - True: Parse SeqId and create indexes. F - False: Do not

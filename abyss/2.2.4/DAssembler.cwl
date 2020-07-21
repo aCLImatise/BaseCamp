@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DAssembler.cwl
+id: ../../../DAssembler.cwl
 inputs:
 - id: max_overlap
   doc: maximum tier overlap for consensus calling [10]

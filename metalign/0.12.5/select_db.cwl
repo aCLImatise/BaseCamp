@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/select_db.py.cwl
+id: ../../../select_db.py.cwl
 inputs:
 - id: c_mash_results
   doc: Give location of CMash query results if already done.

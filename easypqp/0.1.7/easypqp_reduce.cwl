@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/easypqp_reduce.cwl
+id: ../../../easypqp_reduce.cwl
 inputs:
 - id: in
   doc: Input PQP file.  [required]

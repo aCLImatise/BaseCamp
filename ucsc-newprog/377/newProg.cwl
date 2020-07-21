@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/newProg.cwl
+id: ../../../newProg.cwl
 inputs:
 - id: jkh_gap
   doc: '- include jkhgap.a and mysql libraries as well as jkweb.a archives '

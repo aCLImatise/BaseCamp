@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_query.cwl
+id: ../../../vcf_query.cwl
 inputs:
 - id: columns
   doc: List of comma-separated column names or one column name per line in a file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fseq.cwl
+id: ../../../fseq.cwl
 inputs:
 - id: background_directory_defaultnone
   doc: background directory (default=none)

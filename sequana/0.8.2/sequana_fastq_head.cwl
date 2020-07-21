@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequana_fastq_head.cwl
+id: ../../../sequana_fastq_head.cwl
 inputs:
 - id: nlines
   doc: Number of lines to extract.

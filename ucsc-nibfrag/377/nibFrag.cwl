@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nibFrag.cwl
+id: ../../../nibFrag.cwl
 inputs:
 - id: masked
   doc: Use lower-case characters for bases meant to be masked out.

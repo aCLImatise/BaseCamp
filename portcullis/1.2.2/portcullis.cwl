@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/portcullis.cwl
+id: ../../../portcullis.cwl
 inputs:
 - id: print_extra_information
   doc: '[ --verbose ]      Print extra information'

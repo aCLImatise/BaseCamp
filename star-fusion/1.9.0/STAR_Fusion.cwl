@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/STAR_Fusion.cwl
+id: ../../../STAR_Fusion.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

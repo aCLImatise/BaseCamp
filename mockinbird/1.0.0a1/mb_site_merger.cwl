@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_site_merger.cwl
+id: ../../../mb_site_merger.cwl
 inputs:
 - id: factor_table
   doc: ''

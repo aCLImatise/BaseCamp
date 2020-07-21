@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxmapper_run.cwl
+id: ../../../taxmapper_run.cwl
 inputs:
 - id: database
   doc: Database path for RAPseach database index

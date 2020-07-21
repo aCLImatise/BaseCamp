@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_get_collections.cwl
+id: ../../../hca_dss_get_collections.cwl
 inputs:
 - id: per_page
   doc: Max number of results to return per page.

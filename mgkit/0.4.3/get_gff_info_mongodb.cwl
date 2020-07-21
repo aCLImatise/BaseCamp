@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_gff_info_mongodb.cwl
+id: ../../../get_gff_info_mongodb.cwl
 inputs:
 - id: taxonomy
   doc: Taxonomy used to populate the lineage

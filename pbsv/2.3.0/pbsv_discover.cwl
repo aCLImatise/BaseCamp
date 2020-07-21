@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbsv_discover.cwl
+id: ../../../pbsv_discover.cwl
 inputs:
 - id: sample
   doc: STR   Override sample name tag from BAM read group.

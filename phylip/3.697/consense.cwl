@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/consense.cwl
+id: ../../../consense.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

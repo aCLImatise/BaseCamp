@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ccheck.cwl
+id: ../../../ccheck.cwl
 inputs:
 - id: reference
   doc: 'FASTA file with the likely contaminant (default: builtin mt311)'

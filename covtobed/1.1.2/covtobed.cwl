@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/covtobed.cwl
+id: ../../../covtobed.cwl
 inputs:
 - id: physical_coverage
   doc: compute physical coverage (needs paired alignments in input)

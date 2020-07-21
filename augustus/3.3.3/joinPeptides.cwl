@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/joinPeptides.pl.cwl
+id: ../../../joinPeptides.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

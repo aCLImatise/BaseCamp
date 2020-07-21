@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PCoA.py.cwl
+id: ../../../PCoA.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

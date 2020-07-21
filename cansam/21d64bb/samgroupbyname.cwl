@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samgroupbyname.cwl
+id: ../../../samgroupbyname.cwl
 inputs:
 - id: write_output_bam
   doc: Write output in BAM format

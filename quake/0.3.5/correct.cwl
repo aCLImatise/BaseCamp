@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/correct.cwl
+id: ../../../correct.cwl
 inputs:
 - id: output_errors_reads
   doc: Output errors reads even if they can't be corrected, maintaining paired end

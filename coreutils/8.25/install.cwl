@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/install.cwl
+id: ../../../install.cwl
 inputs:
 - id: strip
   doc: strip symbol tables

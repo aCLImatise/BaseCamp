@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HPC.TANmask.cwl
+id: ../../../HPC.TANmask.cwl
 inputs:
 - id: v
   doc: ''

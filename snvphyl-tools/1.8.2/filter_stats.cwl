@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_stats.pl.cwl
+id: ../../../filter_stats.pl.cwl
 inputs:
 - id: input
   doc: The psudo-alignment positions tab delimited file

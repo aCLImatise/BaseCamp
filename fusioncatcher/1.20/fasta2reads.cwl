@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta2reads.py.cwl
+id: ../../../fasta2reads.py.cwl
 inputs:
 - id: input
   doc: The input file in FASTA format.

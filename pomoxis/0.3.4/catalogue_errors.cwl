@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/catalogue_errors.cwl
+id: ../../../catalogue_errors.cwl
 inputs:
 - id: bed
   doc: '.bed file of reference regions to include. (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/edd.cwl
+id: ../../../edd.cwl
 inputs:
 - id: gap_penalty
   doc: Leave unspecificed for auto-estimation. Adjusts how sensitive EDD is to heterogeneity

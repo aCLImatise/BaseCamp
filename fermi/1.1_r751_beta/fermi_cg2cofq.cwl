@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi_cg2cofq.cwl
+id: ../../../fermi_cg2cofq.cwl
 inputs:
 - id: in_do_tcg_fq
   doc: ''

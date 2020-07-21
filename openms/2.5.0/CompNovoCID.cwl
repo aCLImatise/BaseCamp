@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CompNovoCID.cwl
+id: ../../../CompNovoCID.cwl
 inputs:
 - id: in
   doc: "*        Input file in mzML format (valid formats: 'mzML')"

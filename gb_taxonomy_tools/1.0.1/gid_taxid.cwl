@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gid_taxid.cwl
+id: ../../../gid_taxid.cwl
 inputs:
 - id: list_of_genbank_ids
   doc: ''

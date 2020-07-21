@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ThermoRawFileParser.sh.cwl
+id: ../../../ThermoRawFileParser.sh.cwl
 inputs:
 - id: input
   doc: The raw file input (Required). Specify this or an input directory -d.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dfgEval.cwl
+id: ../../../dfgEval.cwl
 inputs:
 - id: arg_calculate_posterior
   doc: '[ --ppFile ] arg                   Calculate posterior probabilities for  each

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/add_retention_times.rb.cwl
+id: ../../../add_retention_times.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

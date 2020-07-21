@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BASIC.py.cwl
+id: ../../../BASIC.py.cwl
 inputs:
 - id: type_receptor_choices
   doc: 'Type of receptor. Choices: "BCR" or "TCR" (default: BCR)'

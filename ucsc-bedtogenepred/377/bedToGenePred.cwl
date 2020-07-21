@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedToGenePred.cwl
+id: ../../../bedToGenePred.cwl
 inputs:
 - id: bed_file
   doc: ''

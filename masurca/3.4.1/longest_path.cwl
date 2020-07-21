@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/longest_path.cwl
+id: ../../../longest_path.cwl
 inputs:
 - id: threads
   doc: Number of threads (1)

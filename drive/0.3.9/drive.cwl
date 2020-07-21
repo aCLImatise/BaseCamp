@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/drive.cwl
+id: ../../../drive.cwl
 inputs:
 - id: command
   doc: ''

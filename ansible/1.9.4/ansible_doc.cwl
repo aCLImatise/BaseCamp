@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ansible_doc.cwl
+id: ../../../ansible_doc.cwl
 inputs:
 - id: module_path
   doc: Ansible modules/ directory

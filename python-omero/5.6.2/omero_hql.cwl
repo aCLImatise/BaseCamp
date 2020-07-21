@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_hql.cwl
+id: ../../../omero_hql.cwl
 inputs:
 - id: admin
   doc: Run an admin query (deprecated; use 'all')

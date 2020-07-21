@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scanwise_server.cwl
+id: ../../../scanwise_server.cwl
 inputs:
 - id: use_vanilla
   doc: use a vanilla implementation only

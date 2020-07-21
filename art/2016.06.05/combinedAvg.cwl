@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/combinedAvg.pl.cwl
+id: ../../../combinedAvg.pl.cwl
 inputs:
 - id: freq_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ifnames.bak.cwl
+id: ../../../ifnames.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

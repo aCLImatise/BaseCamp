@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_upload_files.cwl
+id: ../../../hca_upload_files.cwl
 inputs:
 - id: target_filename
   doc: Filename to use in upload area (if you wish to change it during upload). Only

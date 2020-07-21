@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deBGA_index.cwl
+id: ../../../deBGA_index.cwl
 inputs:
 - id: reference_dot_fast_a
   doc: ''

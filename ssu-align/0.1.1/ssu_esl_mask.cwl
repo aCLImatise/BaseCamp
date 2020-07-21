@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_mask.cwl
+id: ../../../ssu_esl_mask.cwl
 inputs:
 - id: output_masked_sequences
   doc: ': output masked sequences to file <f> instead of stdout'

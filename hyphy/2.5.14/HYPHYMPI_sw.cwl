@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HYPHYMPI_sw.cwl
+id: ../../../HYPHYMPI_sw.cwl
 inputs:
 - id: to
   doc: firstTime=0;

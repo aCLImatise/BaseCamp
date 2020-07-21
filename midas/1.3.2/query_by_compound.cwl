@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/query_by_compound.py.cwl
+id: ../../../query_by_compound.py.cwl
 inputs:
 - id: input_sample_output
   doc: Input to sample directories output by run_midas.py Can be a list of directories,

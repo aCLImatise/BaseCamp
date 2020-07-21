@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/redbuild.cwl
+id: ../../../redbuild.cwl
 inputs:
 - id: b
   doc: ''

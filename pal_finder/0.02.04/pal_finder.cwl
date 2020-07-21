@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pal_finder.cwl
+id: ../../../pal_finder.cwl
 inputs:
 - id: perl
   doc: ''

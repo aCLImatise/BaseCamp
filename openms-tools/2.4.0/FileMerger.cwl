@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FileMerger.cwl
+id: ../../../FileMerger.cwl
 inputs:
 - id: in
   doc: "*                  Input files separated by blank (valid formats: 'mzData',\

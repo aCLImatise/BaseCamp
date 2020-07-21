@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/IRFinder.cwl
+id: ../../../IRFinder.cwl
 inputs:
 - id: version_number_current
   doc: version number of current IRFinder.

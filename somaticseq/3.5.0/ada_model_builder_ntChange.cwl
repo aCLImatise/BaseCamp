@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ada_model_builder_ntChange.R.cwl
+id: ../../../ada_model_builder_ntChange.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

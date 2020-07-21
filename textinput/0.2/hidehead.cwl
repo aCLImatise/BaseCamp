@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hidehead.cwl
+id: ../../../hidehead.cwl
 inputs:
 - id: option
   doc: ''

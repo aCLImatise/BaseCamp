@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compress_reads_ids.py.cwl
+id: ../../../compress_reads_ids.py.cwl
 inputs:
 - id: input
   doc: The input file in FASTQ Solexa file (also given thru STDOUT or as gzipped file).

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/protk_setup.rb.cwl
+id: ../../../protk_setup.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

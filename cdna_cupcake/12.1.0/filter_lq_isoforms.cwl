@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_lq_isoforms.py.cwl
+id: ../../../filter_lq_isoforms.py.cwl
 inputs:
 - id: min_fl_count
   doc: 'Minimum FL count (default: 2).'

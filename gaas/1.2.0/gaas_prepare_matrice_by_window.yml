@@ -1,0 +1,96 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Output name of the directory that will contain results
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: positionFile
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --ad
+  args: !SimpleFlagArg
+    name: directoryWithAlignments
+  optional: true
+command:
+- gaas_prepare_matrice_by_window.pl
+parent:
+subcommands: []
+help_flag: !Flag
+  description: Display this helpful text.
+  synonyms:
+  - -h
+  - --help
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Genome Assembly Annotation Service (AGAT) - Version: v1.1.0              |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \  \n\nName:\n    gaas_prepare_matrice_by_window.pl\n\nDescription:\n    The script\
+  \ take a position file as input and a directory containing the\n    alignments.\
+  \ It will concatenates files to create mini-superMatrices\n    corresponding to\
+  \ the size of window size choosen. The aim is to check if\n    ther is a clear phylogeny\
+  \ pattern by portion of the chromosome. If hte\n    pattern is different in different\
+  \ location of the chromosome it could be\n    a hint of recombination.\n\nUsage:\n\
+  \        gaas_prepare_matrice_by_window.pl -p positionFile --ad directoryWithAlignments\
+  \ [ --output outfile ]\n        gaas_prepare_matrice_by_window.pl --help\n\n   \
+  \     gaas_prepare_matrice_by_window.pl -p Hordeum_position.txt -tsv clusters_1L_7speIN_1speOUT_noDup_withHordeum6235.tsv\
+  \ -ad ALIGNMENTS -c -o out_consens\n\n        example with -cl option\n        gaas_prepare_matrice_by_window.pl\
+  \ -p Hordeum_position.txt -tsv clusters_1L_7speIN_1speOUT_noDup_withHordeum6235.tsv\
+  \ -ad aliTest/ -c -cl Ae_longissima/D,Ae_sharonensis/D,Ae_bicornis/D,Ae_searsii/D,Ae_tauschii/D,Ae_comosa/D,Ae_uniaristata/D,Ae_umbellulata/D,Ae_caudata/D,T_urartu/A,T_boeoticum/A,Ae_speltoides/B,Ae_mutica/B\n\
+  \nOptions:\n    -p or --position\n            Input file containing position information\
+  \ related to a\n            reference in that format:\n            GeneName@ChromosomeName@PositionInNucleotide\n\
+  \n    --tsv This option define the tsv file that contain information needed to\n\
+  \    link the position to the alignments. Format like this: Nom marqueur\n    (sequence\
+  \ untiliser pour construire le cluster) \\t nombre sp \\t nombre\n    individu \\\
+  t nombre sequences \\t Toutes les entetes des sequences de\n    l'alignement seaparer\
+  \ par une tabulation\n    --ad    Input directory containing alignment files in\
+  \ fasta format. Name\n            of files should be the same those find at \"GeneName\"\
+  \ from the\n            position file.\n\n    -v, --value or --window\n        \
+  \    Allows to define the sliding window size to use to clusterize\n           \
+  \ the alignments (in megabase) (Default 1).\n\n    --nbbw  Number minimum of sequence\
+  \ that must be present within a window\n            to take it into account (Default\
+  \ 4).\n\n    --consensus, -c\n            This option when activated, will create\
+  \ consensus sequences in\n            the alignements when several individual from\
+  \ the same species\n            are present. Ae_comosa_Tr272 => Using the two first\
+  \ word linked\n            by an underscore to define the species name. Here Ae_comosa\
+  \ will\n            be used.\n\n    --consensus_list, -cl This option when activated,\
+  \ will create consensus\n    sequences in the alignements of sequences starting\
+  \ by names defined, and\n    will be grouped by Names chosen. Explantion below:\
+  \ Example:\n    Species1/A,Species2/A,Species3/B,Species4/B In this example Species1\
+  \ and\n    Species2 will create a consensus called A, and species3 and species4\n\
+  \    will create a consensus called B.\n    --consensus_threshold, -ct Optional\
+  \ treshold ranging from 0 to 100. The\n    consensus residue has to appear at least\
+  \ threshold % of the sequences at\n    a given location, otherwise a '?' character\
+  \ will be placed at that\n    location. Default value=0;\n    -o or --output\n \
+  \           Output name of the directory that will contain results\n\n    -h or\
+  \ --help\n            Display this helpful text.\n\nFeedback:\n  Did you find a\
+  \ bug?:\n    Do not hesitate to report bugs to help us keep track of the bugs and\n\
+  \    their resolution. Please use the GitHub issue tracking system available\n \
+  \   at this address:\n\n                https://github.com/NBISweden/GAAS/issues\n\
+  \n     Ensure that the bug was not already reported by searching under Issues.\n\
+  \     If you're unable to find an (open) issue addressing the problem, open a new\
+  \ one.\n     Try as much as possible to include in the issue when relevant:\n  \
+  \   - a clear description,\n     - as much relevant information as possible,\n \
+  \    - the command used,\n     - a data sample,\n     - an explanation of the expected\
+  \ behaviour that is not occurring.\n\n  Do you want to contribute?:\n    You are\
+  \ very welcome, visit this address for the Contributing\n    guidelines:\n    https://github.com/NBISweden/GAAS/blob/master/CONTRIBUTING.md\n\
+  \n"
+generated_using:
+- --help

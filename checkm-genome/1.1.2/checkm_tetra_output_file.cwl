@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkm_tetra_output_file.cwl
+id: ../../../checkm_tetra_output_file.cwl
 inputs:
 - id: t
   doc: ''

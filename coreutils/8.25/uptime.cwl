@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uptime.cwl
+id: ../../../uptime.cwl
 inputs:
 - id: option
   doc: ''

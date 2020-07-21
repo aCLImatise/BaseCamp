@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bgzip.cwl
+id: ../../../bgzip.cwl
 inputs:
 - id: write_standard_output
   doc: write on standard output, keep original files unchanged

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_fetch.pl.cwl
+id: ../../../bp_fetch.pl.cwl
 inputs:
 - id: fmt
   doc: <format> - Output format Fasta (default), EMBL, Raw, swiss or GCG

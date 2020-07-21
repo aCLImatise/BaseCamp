@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequana_taxonomy.cwl
+id: ../../../sequana_taxonomy.cwl
 inputs:
 - id: welcome
   doc: ''

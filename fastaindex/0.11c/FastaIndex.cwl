@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FastaIndex.cwl
+id: ../../../FastaIndex.cwl
 inputs:
 - id: verbose
   doc: verbose

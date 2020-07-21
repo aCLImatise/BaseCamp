@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coordinateTranslate.cwl
+id: ../../../coordinateTranslate.cwl
 inputs:
 - id: x_mfa_alignment
   doc: ''

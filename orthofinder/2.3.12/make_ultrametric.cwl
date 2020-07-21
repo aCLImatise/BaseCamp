@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_ultrametric.py.cwl
+id: ../../../make_ultrametric.py.cwl
 inputs:
 - id: root_age
   doc: Rescale branch lengths by a multiplicative factor to achieve requested root

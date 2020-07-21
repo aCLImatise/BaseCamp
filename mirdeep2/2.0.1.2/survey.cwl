@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/survey.pl.cwl
+id: ../../../survey.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

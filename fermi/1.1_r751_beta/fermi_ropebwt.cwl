@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi_ropebwt.cwl
+id: ../../../fermi_ropebwt.cwl
 inputs:
 - id: algorithm_bpr_bcr
   doc: 'algorithm: bpr or bcr [bpr]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phylics.cwl
+id: ../../../phylics.cwl
 inputs:
 - id: run
   doc: 'Run the pipeline. USAGE: phylics --run [--run_cnvs | --run_single | --run_multiple]

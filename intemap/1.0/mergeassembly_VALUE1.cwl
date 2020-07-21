@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergeassembly_VALUE1.cwl
+id: ../../../mergeassembly_VALUE1.cwl
 inputs:
 - id: merge_assembly
   doc: ''

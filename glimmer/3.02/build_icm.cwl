@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/build_icm.cwl
+id: ../../../build_icm.cwl
 inputs:
 - id: set_depth_model
   doc: Set depth of model to <num>

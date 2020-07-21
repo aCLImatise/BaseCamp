@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/formatlist.cwl
+id: ../../../formatlist.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

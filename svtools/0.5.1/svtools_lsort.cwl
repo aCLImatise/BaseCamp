@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtools_lsort.cwl
+id: ../../../svtools_lsort.cwl
 inputs:
 - id: vcf_list
   doc: file containing a line-delimited list of VCF files to combine and sort

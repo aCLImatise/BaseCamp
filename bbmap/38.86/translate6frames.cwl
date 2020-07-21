@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/translate6frames.sh.cwl
+id: ../../../translate6frames.sh.cwl
 inputs:
 - id: in
   doc: ''

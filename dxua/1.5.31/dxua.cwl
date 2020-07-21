@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dxua.cwl
+id: ../../../dxua.cwl
 inputs:
 - id: print_environment_information
   doc: '[ --env ]                       Print environment information'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/EnergyPlot.cwl
+id: ../../../EnergyPlot.cwl
 inputs:
 - id: folding_save_file
   doc: ''

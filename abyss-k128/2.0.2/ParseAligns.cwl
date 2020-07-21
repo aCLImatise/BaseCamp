@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ParseAligns.cwl
+id: ../../../ParseAligns.cwl
 inputs:
 - id: min_align
   doc: minimum alignment length

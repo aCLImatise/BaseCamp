@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clustalo.cwl
+id: ../../../clustalo.cwl
 inputs:
 - id: in_file
   doc: ={<file>,-} Multiple sequence input file (- for stdin)

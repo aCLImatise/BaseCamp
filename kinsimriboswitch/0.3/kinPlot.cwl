@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kinPlot.R.cwl
+id: ../../../kinPlot.R.cwl
 inputs:
 - id: input_file_header
   doc: Input file has a header which is used to name the state columns.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/booster.cwl
+id: ../../../booster.cwl
 inputs:
 - id: input
   doc: ': Input tree file'

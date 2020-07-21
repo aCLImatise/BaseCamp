@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MaxExpect_smp.cwl
+id: ../../../MaxExpect_smp.cwl
 inputs:
 - id: max_expect
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SpoTyping.py.cwl
+id: ../../../SpoTyping.py.cwl
 inputs:
 - id: seq
   doc: Set this if input is a fasta file that contains only a complete genomic sequence

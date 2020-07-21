@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/glpsol.cwl
+id: ../../../glpsol.cwl
 inputs:
 - id: mps
   doc: read LP/MIP problem in fixed MPS format

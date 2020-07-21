@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/align_trim_n_nbases.cwl
+id: ../../../align_trim_n_nbases.cwl
 inputs:
 - id: verbose
   doc: ''

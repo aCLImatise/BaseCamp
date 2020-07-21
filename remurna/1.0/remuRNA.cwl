@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/remuRNA.cwl
+id: ../../../remuRNA.cwl
 inputs:
 - id: na
   doc: =RNA (default) | DNA

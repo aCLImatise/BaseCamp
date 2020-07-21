@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getAbundance.cwl
+id: ../../../getAbundance.cwl
 inputs:
 - id: resultcsv_resultncsv_minabundance
   doc: '.csv <result2>.csv ... <result_n>.csv -a <minAbundance> ... '

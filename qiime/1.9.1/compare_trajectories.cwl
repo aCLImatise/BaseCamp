@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compare_trajectories.py.cwl
+id: ../../../compare_trajectories.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

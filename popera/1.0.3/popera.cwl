@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/popera.cwl
+id: ../../../popera.cwl
 inputs:
 - id: data
   doc: data file, should be sorted bam format

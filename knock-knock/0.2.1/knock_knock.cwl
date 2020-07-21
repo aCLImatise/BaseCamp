@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/knock_knock.cwl
+id: ../../../knock_knock.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AlignmentTools_rm_partialseq.cwl
+id: ../../../AlignmentTools_rm_partialseq.cwl
 inputs:
 - id: alignment_mode
   doc: 'Alignment mode: overlap, glocal, local or global. default = overlap'

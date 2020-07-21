@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mykrobe.cwl
+id: ../../../mykrobe.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

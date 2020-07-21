@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/core_overlap_plot.py.cwl
+id: ../../../core_overlap_plot.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

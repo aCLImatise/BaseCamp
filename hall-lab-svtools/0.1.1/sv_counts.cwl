@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sv_counts.sh.cwl
+id: ../../../sv_counts.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

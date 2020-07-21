@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/edalign.cwl
+id: ../../../edalign.cwl
 inputs:
 - id: mandatory_path_first
   doc: Mandatory, path to first input file

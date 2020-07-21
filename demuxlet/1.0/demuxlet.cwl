@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/demuxlet.cwl
+id: ../../../demuxlet.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

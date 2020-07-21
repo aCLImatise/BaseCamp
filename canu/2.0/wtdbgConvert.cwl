@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wtdbgConvert.cwl
+id: ../../../wtdbgConvert.cwl
 inputs:
 - id: output_prefix
   doc: output prefix

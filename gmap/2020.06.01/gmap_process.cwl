@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmap_process.cwl
+id: ../../../gmap_process.cwl
 inputs:
 - id: options
   doc: ''

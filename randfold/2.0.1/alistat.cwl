@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alistat.cwl
+id: ../../../alistat.cwl
 inputs:
 - id: report_persequence_info
   doc: ': report per-sequence info, not just a summary'

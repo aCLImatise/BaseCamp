@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/count_qmers.cwl
+id: ../../../count_qmers.cwl
 inputs:
 - id: fastq_file_count
   doc: fastq file to count

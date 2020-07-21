@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fusioncatcher_to_CG.cwl
+id: ../../../fusioncatcher_to_CG.cwl
 inputs:
 - id: input_format
   doc: File type of the file to convert

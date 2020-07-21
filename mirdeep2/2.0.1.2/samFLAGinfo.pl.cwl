@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samFLAGinfo.pl.orig.cwl
+id: ../../../samFLAGinfo.pl.orig.cwl
 inputs:
 - id: perl
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ndisasm.cwl
+id: ../../../ndisasm.cwl
 inputs:
 - id: auto_intelligent_sync
   doc: auto (intelligent) sync

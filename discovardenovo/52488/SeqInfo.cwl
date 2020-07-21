@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SeqInfo.cwl
+id: ../../../SeqInfo.cwl
 inputs:
 - id: arg_one
   doc: ''

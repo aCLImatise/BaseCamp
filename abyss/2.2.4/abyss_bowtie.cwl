@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_bowtie.cwl
+id: ../../../abyss_bowtie.cwl
 inputs:
 - id: option
   doc: ''

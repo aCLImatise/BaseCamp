@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chainSwap.cwl
+id: ../../../chainSwap.cwl
 inputs:
 - id: in_dot_chain
   doc: ''

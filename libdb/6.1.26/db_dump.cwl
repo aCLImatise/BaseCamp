@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/db_dump.cwl
+id: ../../../db_dump.cwl
 inputs:
 - id: bkl_npr_rv
   doc: ''

@@ -1,0 +1,125 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: IN_TABLE
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: DIRECTORY
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: MAP
+  optional: true
+command:
+- pathway_pipeline.py
+parent:
+subcommands: []
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: pathway_pipeline.py [-h] -i IN_TABLE -o DIRECTORY [-m MAP]\n  \
+  \                         [--skip_minpath] [--no_gap_fill]\n                   \
+  \        [--intermediate DIR] [-p PROCESSES] [--no_regroup]\n                  \
+  \         [--coverage] [-r ID_MAP] [--per_sequence_contrib]\n                  \
+  \         [--per_sequence_abun PATH]\n                           [--per_sequence_function\
+  \ PATH] [--wide_table]\n                           [--verbose] [-v]\n\nScript to\
+  \ infer the presence and abundances of pathways based on gene family abundances\
+  \ in a sample. By default, this script expects a table of EC number abundances (as\
+  \ output by PICRUSt2). However, alternative reaction to pathways mapping files can\
+  \ also be specified. By default, EC numbers are first regrouped to MetaCyc reactions,\
+  \ which are then linked to MetaCyc pathways through the default database.\n\nStratified\
+  \ output will only be output if a stratified metagenome is input (or if --per_sequence_contrib\
+  \ is set). Please note that by default stratified abundances are based on how much\
+  \ predicted genomes (e.g. sequences) contribute to the community-wide abundance,\
+  \ not the abundance of the pathway based on the predicted genes in that genome alone.\
+  \ In other words, a predicted genome might be contributing greatly to the community-wide\
+  \ pathway abundance simply because one required gene for that pathway is at extremely\
+  \ high abundance in that genome even though no other required genes for that pathway\
+  \ are present. In contrast, the --per_sequence_contrib option should be used to\
+  \ get the predicted abundance and coverage of each pathway based on the predicted\
+  \ gene families within each genome. Note that using the --per_sequence_contrib option\
+  \ can greatly increase runtime.\n\noptional arguments:\n  -h, --help           \
+  \ show this help message and exit\n  -i IN_TABLE, --input IN_TABLE\n           \
+  \             Input TSV table of gene family abundances (either the\n          \
+  \              unstratified or stratified output of\n                        metagenome_pipeline.py).\n\
+  \  -o DIRECTORY, --out_dir DIRECTORY\n                        Output folder for\
+  \ pathway abundance output.\n  -m MAP, --map MAP     Mapping of pathways to reactions.\
+  \ The default mapfile\n                        maps MetaCyc reactions to prokaryotic\
+  \ MetaCyc pathways\n                        (default: /tmp/tmpqdk0dqqj/lib/python3.6/site-packages\n\
+  \                        /picrust2/default_files/pathway_mapfiles/metacyc_path2\n\
+  \                        rxn_struc_filt_pro.txt).\n  --skip_minpath        Do not\
+  \ run MinPath to identify which pathways are\n                        present as\
+  \ a first pass (on by default).\n  --no_gap_fill         Do not perform gap filling\
+  \ before predicting pathway\n                        abundances (Gap filling is\
+  \ on otherwise by default.\n  --intermediate DIR    Output folder for intermediate\
+  \ files (will be deleted\n                        otherwise).\n  -p PROCESSES, --processes\
+  \ PROCESSES\n                        Number of processes to run in parallel (default:\
+  \ 1).\n  --no_regroup          Do not regroup input gene families to reactions as\n\
+  \                        specified in the regrouping mapfile.\n  --coverage    \
+  \        Calculate pathway coverages as well as abundances,\n                  \
+  \      which are experimental and only useful for advanced\n                   \
+  \     users.\n  -r ID_MAP, --regroup_map ID_MAP\n                        Mapfile\
+  \ of ids to regroup gene families to before\n                        running MinPath.\
+  \ The default mapfile is for regrouping\n                        EC numbers to MetaCyc\
+  \ reactions (default:\n                        /tmp/tmpqdk0dqqj/lib/python3.6/site-packages/picrust2/\n\
+  \                        default_files/pathway_mapfiles/ec_level4_to_metacyc_rx\n\
+  \                        n.tsv).\n  --per_sequence_contrib\n                   \
+  \     Flag to specify that MinPath is run on the genes\n                       \
+  \ contributed by each sequence (i.e. a predicted genome)\n                     \
+  \   individually. Note this will greatly increase the\n                        runtime.\
+  \ The output will be the predicted pathway\n                        abundance contributed\
+  \ by each individual sequence.\n                        This is in contrast to the\
+  \ default stratified output,\n                        which is the contribution\
+  \ to the community-wide\n                        pathway abundances. Experimental\
+  \ pathway coverage\n                        stratified by contributing sequence\
+  \ will also be\n                        output when --coverage is set. Options\n\
+  \                        --per_sequence_contrib and --per_sequence_function\n  \
+  \                      need to be set when this option is used (default:\n     \
+  \                   False).\n  --per_sequence_abun PATH\n                      \
+  \  Path to table of sequence abundances across samples\n                       \
+  \ normalized by marker copy number (typically the\n                        normalized\
+  \ sequence abundance table output at the\n                        metagenome pipeline\
+  \ step). This input is required when\n                        the --per_sequence_contrib\
+  \ option is set. (default:\n                        None).\n  --per_sequence_function\
+  \ PATH\n                        Path to table of function abundances per sequence,\n\
+  \                        which was outputted at the hidden-state prediction\n  \
+  \                      step. This input is required when the\n                 \
+  \       --per_sequence_contrib option is set. Note that this\n                 \
+  \       file should be the same input table as used for the\n                  \
+  \      metagenome pipeline step (default: None).\n  --wide_table          Flag to\
+  \ specify that wide-format stratified table\n                        should be output\
+  \ rather than metagenome contribution\n                        table. This is the\
+  \ deprecated method of generating\n                        stratified tables since\
+  \ it is extremely memory\n                        intensive (default: False).\n\
+  \  --verbose             If specified, print out wrapped commands and other\n  \
+  \                      details to screen.\n  -v, --version         show program's\
+  \ version number and exit\n\n    Usage examples:\n\n    Default mapping of predicted\
+  \ EC number abundances to MetaCyc pathways:\n    pathway_pipeline.py -i EC_metagenome_out/pred_metagenome_unstrat.tsv.gz\
+  \ -o pathways_out --processes 1\n\n    Mapping predicted KO abundances to legacy\
+  \ KEGG pathways (with stratified output that represents contributions to community-wide\
+  \ abundances):\n    pathway_pipeline.py -i KO_metagenome_out/pred_metagenome_strat.tsv.gz\
+  \ -o KEGG_pathways_out --no_regroup --map picrust2/picrust2/default_files/pathway_mapfiles/KEGG_pathways_to_KO.tsv\n\
+  \n    Map EC numbers to MetaCyc pathways and get stratified output corresponding\
+  \ to contribution of predicted gene family abundances within each predicted genome:\n\
+  \    pathway_pipeline.py -i EC_metagenome_out/pred_metagenome_unstrat.tsv.gz -o\
+  \ pathways_out_per_seq --per_sequence_contrib --per_sequence_abun EC_metagenome_out/seqtab_norm.tsv.gz\
+  \ --per_sequence_function EC_predicted.tsv.gz\n"
+generated_using:
+- --help

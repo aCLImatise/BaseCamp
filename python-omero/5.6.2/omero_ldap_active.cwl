@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_ldap_active.cwl
+id: ../../../omero_ldap_active.cwl
 inputs:
 - id: create
   doc: Create a new session regardless of existing ones

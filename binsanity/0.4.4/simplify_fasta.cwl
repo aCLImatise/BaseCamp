@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simplify_fasta.cwl
+id: ../../../simplify_fasta.cwl
 inputs:
 - id: specify_name_input
   doc: Specify the name of the input file

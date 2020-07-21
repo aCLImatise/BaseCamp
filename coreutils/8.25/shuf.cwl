@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shuf.cwl
+id: ../../../shuf.cwl
 inputs:
 - id: echo
   doc: treat each ARG as an input line

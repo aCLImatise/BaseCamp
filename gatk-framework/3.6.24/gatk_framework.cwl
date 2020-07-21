@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gatk_framework.cwl
+id: ../../../gatk_framework.cwl
 inputs:
 - id: analysis_type
   doc: Name of the tool to run

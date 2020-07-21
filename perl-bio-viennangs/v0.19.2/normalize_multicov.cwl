@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/normalize_multicov.pl.cwl
+id: ../../../normalize_multicov.pl.cwl
 inputs:
 - id: input_file_output
   doc: Input file in 'bedtools multicov' output format, i.e. an extended BED12 file

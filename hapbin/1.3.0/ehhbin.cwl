@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ehhbin.cwl
+id: ../../../ehhbin.cwl
 inputs:
 - id: hap
   doc: Hap file

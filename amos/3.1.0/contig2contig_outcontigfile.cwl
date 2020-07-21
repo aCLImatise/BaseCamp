@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/contig2contig_outcontigfile.cwl
+id: ../../../contig2contig_outcontigfile.cwl
 inputs:
 - id: contig_two_contig
   doc: ''

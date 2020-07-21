@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/confindr_database_setup.cwl
+id: ../../../confindr_database_setup.cwl
 inputs:
 - id: output_folder
   doc: Path to download databases to - if folder does not exist, will be created.

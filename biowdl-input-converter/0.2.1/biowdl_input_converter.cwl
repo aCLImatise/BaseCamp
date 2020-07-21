@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biowdl_input_converter.cwl
+id: ../../../biowdl_input_converter.cwl
 inputs:
 - id: output
   doc: 'The output file to which the json is written. Default: stdout'

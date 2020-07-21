@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/normalize_by_copy_number.py.cwl
+id: ../../../normalize_by_copy_number.py.cwl
 inputs:
 - id: input_otu_fp
   doc: the input otu table filepath in biom format [REQUIRED]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/loeb_2.0.sh.cwl
+id: ../../../loeb_2.0.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

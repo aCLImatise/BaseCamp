@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MapStatistics.cwl
+id: ../../../MapStatistics.cwl
 inputs:
 - id: in
   doc: "*        Input file (valid formats: 'featureXML', 'consensusXML')"

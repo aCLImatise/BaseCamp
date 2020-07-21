@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkqc.cwl
+id: ../../../checkqc.cwl
 inputs:
 - id: config
   doc: Path to the checkQC configuration file

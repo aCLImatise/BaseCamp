@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamtofastq.cwl
+id: ../../../bamtofastq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

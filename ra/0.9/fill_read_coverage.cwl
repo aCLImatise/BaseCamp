@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fill_read_coverage.cwl
+id: ../../../fill_read_coverage.cwl
 inputs:
 - id: depot
   doc: ''

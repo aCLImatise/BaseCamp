@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iu_gen_configs.cwl
+id: ../../../iu_gen_configs.cwl
 inputs:
 - id: r_one_prefix
   doc: Prefix for Read 1 to be put in every config file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deepsvr_prepare_data.cwl
+id: ../../../deepsvr_prepare_data.cwl
 inputs:
 - id: header
   doc: / --no-header          Specify whether header is present in sample file

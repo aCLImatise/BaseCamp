@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hallagram.cwl
+id: ../../../hallagram.cwl
 inputs:
 - id: strongest
   doc: isolate the N strongest associations

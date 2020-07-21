@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/methylpy.cwl
+id: ../../../methylpy.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

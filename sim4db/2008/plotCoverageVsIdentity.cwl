@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plotCoverageVsIdentity.cwl
+id: ../../../plotCoverageVsIdentity.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

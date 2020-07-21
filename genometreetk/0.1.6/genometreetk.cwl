@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genometreetk.cwl
+id: ../../../genometreetk.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

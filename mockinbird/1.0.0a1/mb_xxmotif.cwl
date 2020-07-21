@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_xxmotif.cwl
+id: ../../../mb_xxmotif.cwl
 inputs:
 - id: neg_set
   doc: set path to negative set if available.

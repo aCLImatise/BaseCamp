@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SelectLongestReads.cwl
+id: ../../../SelectLongestReads.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

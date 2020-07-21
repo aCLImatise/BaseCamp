@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/grf_nest.cwl
+id: ../../../grf_nest.cwl
 inputs:
 - id: input_fast_a
   doc: ''

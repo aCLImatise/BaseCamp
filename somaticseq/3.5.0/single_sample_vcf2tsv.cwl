@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/single_sample_vcf2tsv.py.cwl
+id: ../../../single_sample_vcf2tsv.py.cwl
 inputs:
 - id: vcf_format
   doc: 'Input file is VCF formatted. (default: None)'

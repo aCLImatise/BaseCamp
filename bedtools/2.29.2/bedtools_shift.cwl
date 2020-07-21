@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools_shift.cwl
+id: ../../../bedtools_shift.cwl
 inputs:
 - id: shift_base_pairs
   doc: Shift the BED/GFF/VCF entry -s base pairs. - (Integer) or (Float, e.g. 0.1)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_proteome_from_gff.cwl
+id: ../../../extract_proteome_from_gff.cwl
 inputs:
 - id: output_suffix
   doc: output suffix [proteome.faa]

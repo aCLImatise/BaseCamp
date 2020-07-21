@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pairalign.cwl
+id: ../../../pairalign.cwl
 inputs:
 - id: arguments
   doc: ''

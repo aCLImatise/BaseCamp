@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reducesilva.sh.cwl
+id: ../../../reducesilva.sh.cwl
 inputs:
 - id: in
   doc: ''

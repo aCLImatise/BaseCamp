@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paragraph.cwl
+id: ../../../paragraph.cwl
 inputs:
 - id: bad_align_frac
   doc: (=0.800000012)          Fraction of read that needs to  be mapped in order

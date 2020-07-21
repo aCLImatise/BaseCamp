@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmxselect.cwl
+id: ../../../gmxselect.cwl
 inputs:
 - id: c
   doc: ''

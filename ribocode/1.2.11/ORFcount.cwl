@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ORFcount.cwl
+id: ../../../ORFcount.cwl
 inputs:
 - id: stranded
   doc: 'whether the data is strand-specific, reverse means reversed strand interpretation.

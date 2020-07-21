@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splash_eval_reads.cwl
+id: ../../../splash_eval_reads.cwl
 inputs:
 - id: bed
   doc: BED file

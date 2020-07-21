@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AdapterRemoval.cwl
+id: ../../../AdapterRemoval.cwl
 inputs:
 - id: identify_adapters
   doc: 'Attempt to identify the adapter pair of PE reads, by searching for overlapping

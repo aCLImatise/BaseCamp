@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/adapt_filter_coverage.sh.cwl
+id: ../../../adapt_filter_coverage.sh.cwl
 inputs:
 - id: usage_message
   doc: usage message

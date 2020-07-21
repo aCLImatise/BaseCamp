@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arv_migrate_docker19_infile.cwl
+id: ../../../arv_migrate_docker19_infile.cwl
 inputs:
 - id: verbose
   doc: ''

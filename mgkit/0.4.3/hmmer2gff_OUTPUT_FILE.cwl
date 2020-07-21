@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmer2gff_OUTPUT_FILE.cwl
+id: ../../../hmmer2gff_OUTPUT_FILE.cwl
 inputs:
 - id: o
   doc: ''

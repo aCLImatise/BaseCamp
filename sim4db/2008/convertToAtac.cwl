@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convertToAtac.cwl
+id: ../../../convertToAtac.cwl
 inputs:
 - id: f
   doc: ''

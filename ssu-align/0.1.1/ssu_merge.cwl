@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_merge.cwl
+id: ../../../ssu_merge.cwl
 inputs:
 - id: force_allow_clobbering
   doc: ': force; allow file clobbering'

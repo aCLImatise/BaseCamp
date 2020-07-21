@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/legsta.cwl
+id: ../../../legsta.cwl
 inputs:
 - id: quiet
   doc: Don't print anything to stderr.

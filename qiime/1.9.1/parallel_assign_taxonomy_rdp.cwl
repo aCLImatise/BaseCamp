@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parallel_assign_taxonomy_rdp.py.cwl
+id: ../../../parallel_assign_taxonomy_rdp.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

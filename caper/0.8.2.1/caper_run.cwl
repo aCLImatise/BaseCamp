@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/caper_run.cwl
+id: ../../../caper_run.cwl
 inputs:
 - id: dry_run
   doc: Caper does not take any action.

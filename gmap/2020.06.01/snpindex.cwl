@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snpindex.cwl
+id: ../../../snpindex.cwl
 inputs:
 - id: source_dir
   doc: Directory where to read genome index files (default is GMAP genome directory

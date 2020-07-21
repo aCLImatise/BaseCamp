@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BuildDatabase.cwl
+id: ../../../BuildDatabase.cwl
 inputs:
 - id: name
   doc: The name of the database to create.

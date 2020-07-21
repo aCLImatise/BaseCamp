@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcffilter.cwl
+id: ../../../vcffilter.cwl
 inputs:
 - id: info_filter
   doc: specifies a filter to apply to the info fields of records, removes alleles

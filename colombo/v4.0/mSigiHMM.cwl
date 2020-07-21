@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mSigiHMM.cwl
+id: ../../../mSigiHMM.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

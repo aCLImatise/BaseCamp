@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_sliding.cwl
+id: ../../../seqkit_sliding.cwl
 inputs:
 - id: circular_genome
   doc: circular genome.

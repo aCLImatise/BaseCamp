@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/map.cwl
+id: ../../../map.cwl
 inputs:
 - id: from
   doc: Encoding of input files (default "ISO-8859-1")

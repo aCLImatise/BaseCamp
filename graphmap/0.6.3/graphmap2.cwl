@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/graphmap2.cwl
+id: ../../../graphmap2.cwl
 inputs:
 - id: tool
   doc: 'STR   Specifies the tool to run: align - the entire GraphMap pipeline. owler

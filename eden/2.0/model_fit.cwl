@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/model_fit.cwl
+id: ../../../model_fit.cwl
 inputs:
 - id: positive_input_file
   doc: 'Path tofile containing input for the positive class. (default: None)'

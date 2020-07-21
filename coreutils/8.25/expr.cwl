@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/expr.cwl
+id: ../../../expr.cwl
 inputs:
 - id: expression
   doc: ''

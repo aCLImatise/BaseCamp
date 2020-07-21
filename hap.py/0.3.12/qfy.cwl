@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qfy.py.cwl
+id: ../../../qfy.py.cwl
 inputs:
 - id: adjust_conf_regions
   doc: When hap.py was run with --adjust-conf-regions, on the original VCF, then quantify

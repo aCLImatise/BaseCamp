@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cache_mgr.2.cwl
+id: ../../../cache_mgr.2.cwl
 inputs:
 - id: report
   doc: 'report objects in cache '

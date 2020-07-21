@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nglview.cwl
+id: ../../../nglview.cwl
 inputs:
 - id: crd
   doc: coordinate filename

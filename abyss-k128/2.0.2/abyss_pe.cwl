@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_pe.cwl
+id: ../../../abyss_pe.cwl
 inputs:
 - id: ignored_for_compatibility
   doc: Ignored for compatibility.

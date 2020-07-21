@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/overlap_align.cwl
+id: ../../../overlap_align.cwl
 inputs:
 - id: fast_a_one
   doc: ''

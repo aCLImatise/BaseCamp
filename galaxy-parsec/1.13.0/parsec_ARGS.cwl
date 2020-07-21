@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parsec_ARGS.cwl
+id: ../../../parsec_ARGS.cwl
 inputs:
 - id: parsec
   doc: ''

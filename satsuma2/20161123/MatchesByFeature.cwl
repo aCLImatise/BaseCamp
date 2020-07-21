@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MatchesByFeature.cwl
+id: ../../../MatchesByFeature.cwl
 inputs:
 - id: gff_three_file
   doc: ''

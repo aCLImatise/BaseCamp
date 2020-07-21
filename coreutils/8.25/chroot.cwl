@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chroot.cwl
+id: ../../../chroot.cwl
 inputs:
 - id: groups
   doc: specify supplementary groups as g1,g2,..,gN

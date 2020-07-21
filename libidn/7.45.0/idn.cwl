@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/idn.cwl
+id: ../../../idn.cwl
 inputs:
 - id: stringprep
   doc: Prepare string according to nameprep profile

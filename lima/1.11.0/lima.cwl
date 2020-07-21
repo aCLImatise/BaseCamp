@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lima.cwl
+id: ../../../lima.cwl
 inputs:
 - id: same
   doc: Only keep same barcodes in a pair in BAM output.

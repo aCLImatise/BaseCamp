@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uniquifyTrees.cwl
+id: ../../../uniquifyTrees.cwl
 inputs:
 - id: nexus_input_file
   doc: ''

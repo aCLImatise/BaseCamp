@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_count.cwl
+id: ../../../fastq_count.cwl
 inputs:
 - id: r_one_dot_fq
   doc: ''

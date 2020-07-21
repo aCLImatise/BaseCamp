@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pybedtools.cwl
+id: ../../../pybedtools.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

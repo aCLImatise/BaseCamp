@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dr_disco_fix.cwl
+id: ../../../dr_disco_fix.cwl
 inputs:
 - id: temp_dir
   doc: 'Path in which temp files are stored (default: /tmp)'

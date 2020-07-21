@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faNoise.cwl
+id: ../../../faNoise.cwl
 inputs:
 - id: upper
   doc: '- output in upper case'

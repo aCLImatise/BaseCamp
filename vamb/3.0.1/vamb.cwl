@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vamb.cwl
+id: ../../../vamb.cwl
 inputs:
 - id: output_directory_create
   doc: output directory to create

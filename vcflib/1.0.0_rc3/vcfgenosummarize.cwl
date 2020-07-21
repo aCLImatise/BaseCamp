@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfgenosummarize.cwl
+id: ../../../vcfgenosummarize.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

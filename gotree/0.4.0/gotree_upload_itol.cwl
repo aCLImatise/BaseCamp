@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gotree_upload_itol.cwl
+id: ../../../gotree_upload_itol.cwl
 inputs:
 - id: name
   doc: iTOL tree name prefix (default "tree")

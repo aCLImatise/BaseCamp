@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gffmunger.cwl
+id: ../../../gffmunger.cwl
 inputs:
 - id: verbose
   doc: Turn on debugging [False]

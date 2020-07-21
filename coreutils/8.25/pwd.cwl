@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pwd.cwl
+id: ../../../pwd.cwl
 inputs:
 - id: logical
   doc: use PWD from environment, even if it contains symlinks

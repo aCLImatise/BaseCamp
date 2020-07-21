@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/annotate_hits_pyseer.cwl
+id: ../../../annotate_hits_pyseer.cwl
 inputs:
 - id: bwa
   doc: Location of bwa executable [default=bwa]

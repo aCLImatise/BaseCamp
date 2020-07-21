@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qpreroot.cwl
+id: ../../../qpreroot.cwl
 inputs:
 - id: use_parameters_file
   doc: '... use parameters from <file> .'

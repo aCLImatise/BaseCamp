@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/comparem_aai.cwl
+id: ../../../comparem_aai.cwl
 inputs:
 - id: evalue
   doc: 'maximum e-value for reporting an alignments (default: 0.001)'

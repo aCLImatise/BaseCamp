@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dlcpar_search.cwl
+id: ../../../dlcpar_search.cwl
 inputs:
 - id: stree
   doc: species tree file in newick format

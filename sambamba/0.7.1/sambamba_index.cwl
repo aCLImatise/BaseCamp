@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sambamba_index.cwl
+id: ../../../sambamba_index.cwl
 inputs:
 - id: n_threads
   doc: number of threads to use for decompression

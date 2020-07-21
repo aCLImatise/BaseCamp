@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/.orthomcl_post_link.sh.cwl
+id: ../../../.orthomcl_post_link.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

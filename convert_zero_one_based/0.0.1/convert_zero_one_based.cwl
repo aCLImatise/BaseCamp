@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convert_zero_one_based.cwl
+id: ../../../convert_zero_one_based.cwl
 inputs:
 - id: to_base
   doc: '[zero|one]  Specify output file format: one-based or zero- based cordinate

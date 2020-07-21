@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FidoAdapter.cwl
+id: ../../../FidoAdapter.cwl
 inputs:
 - id: in
   doc: "*                 Input: identification results (valid formats: 'idXML')"

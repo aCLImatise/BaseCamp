@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqstats.cwl
+id: ../../../seqstats.cwl
 inputs:
 - id: in_dot_fast_a_vertical_line_in_dot_fast_q
   doc: ''

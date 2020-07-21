@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gatk3_register.cwl
+id: ../../../gatk3_register.cwl
 inputs:
 - id: multiple
   doc: support multiple arguments and treat each as a NAME

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stream_atac.cwl
+id: ../../../stream_atac.cwl
 inputs:
 - id: file_count
   doc: 'scATAC-seq counts file name (default: None)'

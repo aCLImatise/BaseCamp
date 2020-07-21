@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/enrichm_predict.cwl
+id: ../../../enrichm_predict.cwl
 inputs:
 - id: log
   doc: Output logging information to this file.

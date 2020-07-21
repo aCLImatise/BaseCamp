@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/axtSwap.cwl
+id: ../../../axtSwap.cwl
 inputs:
 - id: source_do_tax_t
   doc: ''

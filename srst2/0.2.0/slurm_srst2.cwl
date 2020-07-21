@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/slurm_srst2.py.cwl
+id: ../../../slurm_srst2.py.cwl
 inputs:
 - id: wall_time
   doc: wall time (default 0-1:0 = 1 h)

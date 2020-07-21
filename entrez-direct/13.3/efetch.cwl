@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/efetch.cwl
+id: ../../../efetch.cwl
 inputs:
 - id: format
   doc: Format of record or report

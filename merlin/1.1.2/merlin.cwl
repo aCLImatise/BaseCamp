@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merlin.cwl
+id: ../../../merlin.cwl
 inputs:
 - id: tabulate
   doc: '[merlin]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_construct.cwl
+id: ../../../esl_construct.cwl
 inputs:
 - id: print_info_conflicting
   doc: ': print info on all conflicting bps in individual structures'

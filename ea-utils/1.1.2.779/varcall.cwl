@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varcall.cwl
+id: ../../../varcall.cwl
 inputs:
 - id: prefix_dot_var
   doc: Variant calls in tab delimited 'varcall' format

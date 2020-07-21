@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ribo_structure.cwl
+id: ../../../ribo_structure.cwl
 inputs:
 - id: o
   doc: ''

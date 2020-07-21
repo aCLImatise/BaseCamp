@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_filter_sites.cwl
+id: ../../../mb_filter_sites.cwl
 inputs:
 - id: padding_bp
   doc: bp added to the annotation start and ends

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vdb_validate.2.10.7.cwl
+id: ../../../vdb_validate.2.10.7.cwl
 inputs:
 - id: exhaustive
   doc: 'Continue checking object for all possible  errors (default: false) '

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/centreseq_tree.cwl
+id: ../../../centreseq_tree.cwl
 inputs:
 - id: summary_report
   doc: Path to summary_report.csv file produced by the core pipeline  [required]

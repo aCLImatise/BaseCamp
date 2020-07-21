@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rna_cd_train.cwl
+id: ../../../rna_cd_train.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

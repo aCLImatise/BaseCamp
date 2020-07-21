@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BlastAlignP.cwl
+id: ../../../BlastAlignP.cwl
 inputs:
 - id: tf_leave_stop
   doc: <T/F> Leave in stop codons T(rue)/F(alse - replace with gaps). Optional; default

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rgt_TDF.cwl
+id: ../../../rgt_TDF.cwl
 inputs:
 - id: v
   doc: ''

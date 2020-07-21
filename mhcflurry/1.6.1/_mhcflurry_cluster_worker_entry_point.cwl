@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_mhcflurry_cluster_worker_entry_point.cwl
+id: ../../../_mhcflurry_cluster_worker_entry_point.cwl
 inputs:
 - id: entry
   doc: ''

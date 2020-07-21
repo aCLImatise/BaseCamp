@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ipa2_task.cwl
+id: ../../../ipa2_task.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

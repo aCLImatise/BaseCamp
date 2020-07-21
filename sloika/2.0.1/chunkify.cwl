@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chunkify.py.cwl
+id: ../../../chunkify.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_sfetch.cwl
+id: ../../../esl_sfetch.cwl
 inputs:
 - id: output_sequences_file
   doc: ': output sequences to file <f> instead of stdout'

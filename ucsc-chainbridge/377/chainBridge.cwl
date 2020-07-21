@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chainBridge.cwl
+id: ../../../chainBridge.cwl
 inputs:
 - id: in_dot_chain
   doc: ''

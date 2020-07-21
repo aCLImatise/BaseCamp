@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/isescan.py.cwl
+id: ../../../isescan.py.cwl
 inputs:
 - id: remove_short_is
   doc: remove incomplete (partial) IS elements which include IS element with length

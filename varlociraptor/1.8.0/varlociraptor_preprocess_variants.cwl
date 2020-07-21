@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varlociraptor_preprocess_variants.cwl
+id: ../../../varlociraptor_preprocess_variants.cwl
 inputs:
 - id: omit_indels
   doc: Don't call Indels.

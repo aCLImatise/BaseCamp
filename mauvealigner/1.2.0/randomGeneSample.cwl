@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/randomGeneSample.cwl
+id: ../../../randomGeneSample.cwl
 inputs:
 - id: input_x_mfa
   doc: ''

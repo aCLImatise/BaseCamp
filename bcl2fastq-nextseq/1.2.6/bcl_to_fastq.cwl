@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcl_to_fastq.cwl
+id: ../../../bcl_to_fastq.cwl
 inputs:
 - id: input_dir
   doc: path to input directory; default is RUNFOLDER- DIR/Data/Intensities/BaseCalls

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbbamify.cwl
+id: ../../../pbbamify.cwl
 inputs:
 - id: input
   doc: FILE  The aligned non-PacBio BAM file. If not provided, stdin will be used

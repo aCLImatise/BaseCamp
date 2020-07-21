@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CAT_add_names.cwl
+id: ../../../CAT_add_names.cwl
 inputs:
 - id: _inputfile_path
   doc: ', --input_file     Path to input file. Can be either classification output

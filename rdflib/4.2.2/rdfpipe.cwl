@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rdfpipe.cwl
+id: ../../../rdfpipe.cwl
 inputs:
 - id: input_format
   doc: 'Format of the input document(s). Available input formats are: rdfa1.0, rdfa1.1,

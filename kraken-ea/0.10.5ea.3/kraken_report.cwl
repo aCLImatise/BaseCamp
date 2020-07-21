@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kraken_report.cwl
+id: ../../../kraken_report.cwl
 inputs:
 - id: db
   doc: ''

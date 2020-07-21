@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_genome_region.cwl
+id: ../../../extract_genome_region.cwl
 inputs:
 - id: naming
   doc: "[csv|seq_range|csv_seq_range] Options regarding how each new fasta record\

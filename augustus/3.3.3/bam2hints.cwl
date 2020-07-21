@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam2hints.cwl
+id: ../../../bam2hints.cwl
 inputs:
 - id: priority
   doc: -p   priority of hint group (set to 4)

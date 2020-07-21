@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RTCatalogParser.cwl
+id: ../../../RTCatalogParser.cwl
 inputs:
 - id: outfile
   doc: ''

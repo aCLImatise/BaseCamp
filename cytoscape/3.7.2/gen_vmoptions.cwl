@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gen_vmoptions.sh.cwl
+id: ../../../gen_vmoptions.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

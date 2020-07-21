@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/min_abundance_finder.pl.cwl
+id: ../../../min_abundance_finder.pl.cwl
 inputs:
 - id: file_dot_fast_q
   doc: ''

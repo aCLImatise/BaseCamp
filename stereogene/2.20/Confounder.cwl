@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Confounder.cwl
+id: ../../../Confounder.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf2kinship.cwl
+id: ../../../vcf2kinship.cwl
 inputs:
 - id: in_vcf
   doc: ': Input VCF File'

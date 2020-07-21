@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BlibToMs2.cwl
+id: ../../../BlibToMs2.cwl
 inputs:
 - id: arg_name_output
   doc: '[ --file-name ] arg                Name the output ms2 file.  Default is  <library

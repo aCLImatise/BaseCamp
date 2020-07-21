@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plot_rank_abundance_graph.py.cwl
+id: ../../../plot_rank_abundance_graph.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyensembl.cwl
+id: ../../../pyensembl.cwl
 inputs:
 - id: overwrite
   doc: Force download and indexing even if files already exist locally

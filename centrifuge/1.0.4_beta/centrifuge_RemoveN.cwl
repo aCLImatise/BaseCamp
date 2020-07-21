@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/centrifuge_RemoveN.pl.cwl
+id: ../../../centrifuge_RemoveN.pl.cwl
 inputs:
 - id: a_dot_pl
   doc: ''

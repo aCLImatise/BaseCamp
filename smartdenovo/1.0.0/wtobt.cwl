@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wtobt.cwl
+id: ../../../wtobt.cwl
 inputs:
 - id: long_reads_file
   doc: Long reads sequences file, + *

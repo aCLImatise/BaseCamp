@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdc_client_download.cwl
+id: ../../../gdc_client_download.cwl
 inputs:
 - id: debug
   doc: Enable debug logging. If a failure occurs, the program will stop.

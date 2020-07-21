@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/md_coords.cwl
+id: ../../../md_coords.cwl
 inputs:
 - id: options
   doc: ''

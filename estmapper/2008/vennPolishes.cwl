@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vennPolishes.cwl
+id: ../../../vennPolishes.cwl
 inputs:
 - id: there_numseqs_input
   doc: there are <num-seqs> in the input set

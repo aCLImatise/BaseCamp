@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ecodbtaxstat.cwl
+id: ../../../ecodbtaxstat.cwl
 inputs:
 - id: rank
   doc: 'The taxonomic rank at which frequencies have to be computed. Possible values

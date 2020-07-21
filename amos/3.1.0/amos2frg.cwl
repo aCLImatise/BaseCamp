@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/amos2frg.cwl
+id: ../../../amos2frg.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

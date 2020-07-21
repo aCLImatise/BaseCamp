@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/append_ligand.cwl
+id: ../../../append_ligand.cwl
 inputs:
 - id: config
   doc: This file can be a YAML file, JSON file or JSON string

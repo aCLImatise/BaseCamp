@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convertMaf.pl.cwl
+id: ../../../convertMaf.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_maker_get_rid_of_contig.pl.cwl
+id: ../../../gaas_maker_get_rid_of_contig.pl.cwl
 inputs:
 - id: datastore_name
   doc: Input datastore log file

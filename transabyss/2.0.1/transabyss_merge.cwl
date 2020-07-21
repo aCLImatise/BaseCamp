@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transabyss_merge.cwl
+id: ../../../transabyss_merge.cwl
 inputs:
 - id: mink
   doc: smallest k-mer size

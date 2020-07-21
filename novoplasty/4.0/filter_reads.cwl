@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_reads.pl.cwl
+id: ../../../filter_reads.pl.cwl
 inputs:
 - id: one
   doc: ''

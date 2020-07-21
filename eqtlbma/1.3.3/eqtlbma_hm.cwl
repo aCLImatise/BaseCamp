@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/eqtlbma_hm.cwl
+id: ../../../eqtlbma_hm.cwl
 inputs:
 - id: verbose
   doc: level (0/default=1/2/3)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/validateManifest.cwl
+id: ../../../validateManifest.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

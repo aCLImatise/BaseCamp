@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ref_stats.pl.cwl
+id: ../../../ref_stats.pl.cwl
 inputs:
 - id: options
   doc: ''

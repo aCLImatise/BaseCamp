@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sexdeterrmine.cwl
+id: ../../../sexdeterrmine.cwl
 inputs:
 - id: input
   doc: The input samtools depth file. Omit to read from stdin.

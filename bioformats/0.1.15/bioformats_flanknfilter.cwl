@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioformats_flanknfilter.cwl
+id: ../../../bioformats_flanknfilter.cwl
 inputs:
 - id: type
   doc: 'the input file type (default: bed)'

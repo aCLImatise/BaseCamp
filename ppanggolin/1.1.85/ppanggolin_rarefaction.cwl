@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ppanggolin_rarefaction.cwl
+id: ../../../ppanggolin_rarefaction.cwl
 inputs:
 - id: pan_genome
   doc: 'The pangenome .h5 file (default: None)'

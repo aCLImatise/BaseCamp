@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/benchmark2arachne.cwl
+id: ../../../benchmark2arachne.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

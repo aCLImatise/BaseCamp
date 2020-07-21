@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_shuffle_cols.cwl
+id: ../../../vcf_shuffle_cols.cwl
 inputs:
 - id: template
   doc: The file with the correct order of the columns.

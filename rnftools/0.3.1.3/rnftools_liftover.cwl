@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnftools_liftover.cwl
+id: ../../../rnftools_liftover.cwl
 inputs:
 - id: chain
   doc: Chain liftover file for coordinates transformation. [no transformation]

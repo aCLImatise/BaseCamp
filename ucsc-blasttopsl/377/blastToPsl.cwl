@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blastToPsl.cwl
+id: ../../../blastToPsl.cwl
 inputs:
 - id: verbose
   doc: '- n >= 3 prints each line of file after parsing. n >= 4 dumps the result of

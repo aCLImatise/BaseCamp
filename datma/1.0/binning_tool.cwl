@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/binning_tool.py.cwl
+id: ../../../binning_tool.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

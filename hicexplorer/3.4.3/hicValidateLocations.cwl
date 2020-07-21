@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicValidateLocations.cwl
+id: ../../../hicValidateLocations.cwl
 inputs:
 - id: data
   doc: The loop file from hicDetectLoops. To use files from other sources, please

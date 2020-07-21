@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fragSim.cwl
+id: ../../../fragSim.cwl
 inputs:
 - id: _fragments_default
   doc: '[number]                        Generate [number] fragments (default: 10)'

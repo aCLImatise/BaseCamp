@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iucn_sim.cwl
+id: ../../../iucn_sim.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

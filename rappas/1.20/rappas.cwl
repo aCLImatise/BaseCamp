@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rappas.cwl
+id: ../../../rappas.cwl
 inputs:
 - id: xms
   doc: -> memory allocated at startup. (m=MegaByte, g=GigaByte)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/soap.coverage.cwl
+id: ../../../soap.coverage.cwl
 inputs:
 - id: cvg
   doc: Selector for sequencing coverage mode, physical coverage mode or reads tag

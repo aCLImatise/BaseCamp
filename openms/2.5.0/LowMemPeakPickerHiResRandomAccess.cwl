@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LowMemPeakPickerHiResRandomAccess.cwl
+id: ../../../LowMemPeakPickerHiResRandomAccess.cwl
 inputs:
 - id: in
   doc: "*        Input profile data file  (valid formats: 'mzML')"

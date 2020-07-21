@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pipits_uc2otutable.cwl
+id: ../../../pipits_uc2otutable.cwl
 inputs:
 - id: i
   doc: '[REQUIRED]'

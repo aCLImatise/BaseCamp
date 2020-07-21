@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TQSfastq.py.cwl
+id: ../../../TQSfastq.py.cwl
 inputs:
 - id: verbose
   doc: Runs in Verbose mode.

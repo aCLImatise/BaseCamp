@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plink2vcf.cwl
+id: ../../../plink2vcf.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

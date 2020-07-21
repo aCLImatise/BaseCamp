@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vep_convert_cache.cwl
+id: ../../../vep_convert_cache.cwl
 inputs:
 - id: perl
   doc: ''

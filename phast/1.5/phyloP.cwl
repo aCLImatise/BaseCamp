@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyloP.cwl
+id: ../../../phyloP.cwl
 inputs:
 - id: confidence_interval
   doc: Allow for uncertainty in the estimate of the actual number of substitutions

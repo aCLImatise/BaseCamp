@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TsvSlice.cwl
+id: ../../../TsvSlice.cwl
 inputs:
 - id: cols
   doc: Comma-separated list of column names to extract.

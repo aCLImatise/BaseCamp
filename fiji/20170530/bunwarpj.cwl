@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bunwarpj.cwl
+id: ../../../bunwarpj.cwl
 inputs:
 - id: landmark_weight
   doc: ': Weight of the landmarks'

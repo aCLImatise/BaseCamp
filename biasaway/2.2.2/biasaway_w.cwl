@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biasaway_w.cwl
+id: ../../../biasaway_w.cwl
 inputs:
 - id: win_len
   doc: 'Window length (default: 100)'

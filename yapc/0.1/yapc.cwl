@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/yapc.cwl
+id: ../../../yapc.cwl
 inputs:
 - id: smoothing_window_width
   doc: "Width of the smoothing window used for the second derivative track. If the\

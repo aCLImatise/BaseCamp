@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faFrag.cwl
+id: ../../../faFrag.cwl
 inputs:
 - id: mixed
   doc: '- preserve mixed-case in FASTA file'

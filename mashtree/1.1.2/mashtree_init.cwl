@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mashtree_init.pl.cwl
+id: ../../../mashtree_init.pl.cwl
 inputs:
 - id: o
   doc: ''

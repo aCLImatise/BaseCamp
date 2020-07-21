@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gemBS_merge_bcfs.cwl
+id: ../../../gemBS_merge_bcfs.cwl
 inputs:
 - id: sample_name
   doc: Nmae of sample to be merged

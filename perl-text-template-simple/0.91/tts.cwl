@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tts.cwl
+id: ../../../tts.cwl
 inputs:
 - id: string_template_execute
   doc: String template to execute

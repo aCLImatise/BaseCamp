@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi_chkbwt.cwl
+id: ../../../fermi_chkbwt.cwl
 inputs:
 - id: load_fmindex_memory
   doc: load the FM-index as a memory mapped file

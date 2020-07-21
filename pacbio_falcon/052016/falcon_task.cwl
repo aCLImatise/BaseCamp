@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/falcon_task.cwl
+id: ../../../falcon_task.cwl
 inputs:
 - id: task
   doc: ''

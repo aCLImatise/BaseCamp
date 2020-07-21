@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SimpleSearchEngine.cwl
+id: ../../../SimpleSearchEngine.cwl
 inputs:
 - id: in
   doc: "*                                    Input file  (valid formats: 'mzML')"

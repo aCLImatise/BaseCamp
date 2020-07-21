@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pfw.cwl
+id: ../../../pfw.cwl
 inputs:
 - id: input_sequences_msa
   doc: ': input sequences in MSA format.'

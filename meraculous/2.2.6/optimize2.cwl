@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/optimize2.pl.cwl
+id: ../../../optimize2.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/isONclust_write_fastq.cwl
+id: ../../../isONclust_write_fastq.cwl
 inputs:
 - id: clusters
   doc: the file "final_clusters.csv created by isONclust."

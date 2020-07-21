@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generate_exon_exon_junctions.py.cwl
+id: ../../../generate_exon_exon_junctions.py.cwl
 inputs:
 - id: input_fusion_genes
   doc: The input file in text tab delimited format containing the fusion genes candidates

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SanitizeMePaired_GUI.py.cwl
+id: ../../../SanitizeMePaired_GUI.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mob_init.cwl
+id: ../../../mob_init.cwl
 inputs:
 - id: database_directory
   doc: Directory to download databases to. Defaults to /tmp/tmpck7ho0cl/lib/python3.8/site-

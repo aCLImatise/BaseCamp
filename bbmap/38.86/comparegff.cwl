@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/comparegff.sh.cwl
+id: ../../../comparegff.sh.cwl
 inputs:
 - id: in
   doc: ''

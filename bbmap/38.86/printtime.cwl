@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/printtime.sh.cwl
+id: ../../../printtime.sh.cwl
 inputs:
 - id: filename
   doc: ''

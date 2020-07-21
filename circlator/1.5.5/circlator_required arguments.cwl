@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/circlator_required arguments.cwl
+id: ../../../circlator_required arguments.cwl
 inputs:
 - id: circ_lator
   doc: ''

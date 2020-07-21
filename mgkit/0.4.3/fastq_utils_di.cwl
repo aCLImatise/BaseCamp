@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_utils_di.cwl
+id: ../../../fastq_utils_di.cwl
 inputs:
 - id: strip
   doc: Strip additional info

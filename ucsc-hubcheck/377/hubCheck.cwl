@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hubCheck.cwl
+id: ../../../hubCheck.cwl
 inputs:
 - id: no_tracks
   doc: "- don't check remote files for tracks, just trackDb (faster)"

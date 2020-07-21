@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam_gc_vs_qual.py.cwl
+id: ../../../bam_gc_vs_qual.py.cwl
 inputs:
 - id: reference_fasta
   doc: Reference fasta.

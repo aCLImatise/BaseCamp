@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/replaceheaders.sh.cwl
+id: ../../../replaceheaders.sh.cwl
 inputs:
 - id: in
   doc: ''

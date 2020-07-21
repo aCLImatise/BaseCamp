@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdtools_GD2VCF.cwl
+id: ../../../gdtools_GD2VCF.cwl
 inputs:
 - id: reference
   doc: File containing reference sequences in GenBank, GFF3, or FASTA format. Option

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coverage_from_bam.cwl
+id: ../../../coverage_from_bam.cwl
 inputs:
 - id: regions
   doc: 'Only process given regions. (default: None)'

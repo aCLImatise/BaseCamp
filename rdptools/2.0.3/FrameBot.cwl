@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FrameBot.cwl
+id: ../../../FrameBot.cwl
 inputs:
 - id: main
   doc: ''

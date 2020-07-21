@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/descartes_folium.cwl
+id: ../../../descartes_folium.cwl
 inputs:
 - id: trace
   doc: '(init,prune,fix,fail,done,propagate,commit,none,all,variable,general) default:

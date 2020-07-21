@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_genetrees_order_gene_tree_file.cwl
+id: ../../../phyluce_genetrees_order_gene_tree_file.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

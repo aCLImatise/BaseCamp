@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obminimize.cwl
+id: ../../../obminimize.cwl
 inputs:
 - id: set_convergence_criteria
   doc: set convergence criteria (default=1e-6)

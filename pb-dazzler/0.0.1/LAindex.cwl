@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LAindex.cwl
+id: ../../../LAindex.cwl
 inputs:
 - id: v
   doc: ''

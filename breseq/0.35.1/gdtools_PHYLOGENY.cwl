@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdtools_PHYLOGENY.cwl
+id: ../../../gdtools_PHYLOGENY.cwl
 inputs:
 - id: verbose
   doc: produce output for each mutation counted.

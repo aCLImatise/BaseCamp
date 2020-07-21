@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/design.cwl
+id: ../../../design.cwl
 inputs:
 - id: ct_structure_file
   doc: ''

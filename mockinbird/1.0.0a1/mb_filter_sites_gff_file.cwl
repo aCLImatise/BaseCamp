@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_filter_sites_gff_file.cwl
+id: ../../../mb_filter_sites_gff_file.cwl
 inputs:
 - id: padding_bp
   doc: ''

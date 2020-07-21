@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_utils_il.cwl
+id: ../../../fastq_utils_il.cwl
 inputs:
 - id: mate_one_file
   doc: ''

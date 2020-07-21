@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nucamino_hiv1b.cwl
+id: ../../../nucamino_hiv1b.cwl
 inputs:
 - id: quiet
   doc: hide non-error information output

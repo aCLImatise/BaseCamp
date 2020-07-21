@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fusioncatcher_build.py.cwl
+id: ../../../fusioncatcher_build.py.cwl
 inputs:
 - id: output
   doc: The output directory where all the outputs files  and directories will be written.

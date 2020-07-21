@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summits.py.cwl
+id: ../../../summits.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

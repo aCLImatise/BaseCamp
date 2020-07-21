@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/udiff2vcf.cwl
+id: ../../../udiff2vcf.cwl
 inputs:
 - id: no
   doc: ''

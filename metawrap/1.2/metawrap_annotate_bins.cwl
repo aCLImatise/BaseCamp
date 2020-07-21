@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metawrap_annotate_bins.cwl
+id: ../../../metawrap_annotate_bins.cwl
 inputs:
 - id: output_directory
   doc: output directory

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/je_demultiplex_illu.cwl
+id: ../../../je_demultiplex_illu.cwl
 inputs:
 - id: data_dot
   doc: 'Required. '

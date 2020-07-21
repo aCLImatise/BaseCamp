@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mismatchCounter.cwl
+id: ../../../mismatchCounter.cwl
 inputs:
 - id: annotate_match_percent
   doc: ':     annotate each match with the percent error, write to stdout'

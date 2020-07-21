@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getfeatures.py.cwl
+id: ../../../getfeatures.py.cwl
 inputs:
 - id: linear
   doc: consider genome circular

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_alimask.cwl
+id: ../../../esl_alimask.cwl
 inputs:
 - id: output_final_alignment
   doc: ': output the final alignment to file <f>, not stdout'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wtclp.cwl
+id: ../../../wtclp.cwl
 inputs:
 - id: overlap_file_readsttlentbegtendtreadsttlentbegtendtscoretidentityfloattmattmistinstdeltcigar
   doc: 'Overlap file from wtzmo, +, * Format: reads1\t+/-\tlen1\tbeg1\tend1\treads2\t+/-\tlen2\tbeg2\tend2\tscore\tidentity<float>\tmat\tmis\tins\tdel\tcigar'

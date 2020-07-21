@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AlignmentTools_align_nucl_to_prot.cwl
+id: ../../../AlignmentTools_align_nucl_to_prot.cwl
 inputs:
 - id: align_nucleotide_to_protein
   doc: ''

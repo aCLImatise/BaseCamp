@@ -1,0 +1,103 @@
+!Command
+positional:
+- !Positional
+  description: Alignment file that contains all samples and sequences in FASTA format
+  position: 0
+  name: ALIGNMENT
+  optional: false
+named:
+- !Flag
+  description: 'When set, entropy computation will assume that the reads in FASTA
+    file are unique. Frequency information of unique reads must be stored in the deflines.
+    Every defline in the FASTA file must present the frequency information in this
+    format: "freq:NUMBER", e.g. ">Read_ID|X|Y|freq:42", or ">Read_ID|freq:42|X|Y"'
+  synonyms:
+  - --uniqued
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When set, entropy computation per column will use mean quality score
+    for each column.
+  synonyms:
+  - --weighted
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If sequences are composed of amino acids, instead of nucleotides.
+  synonyms:
+  - --amino-acid-sequences
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When set, entropy values will be shown as fast as possible (some visualization
+    steps will be skipped).
+  synonyms:
+  - --quick
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When set, no figures will be shown.
+  synonyms:
+  - --no-display
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --qual-scores-file
+  args: !SimpleFlagArg
+    name: QUAL
+  optional: true
+command:
+- entropy-analysis
+parent:
+subcommands: []
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: entropy-analysis [-h] [--qual-scores-file QUAL SCORES FILE]\n \
+  \                       [--qual-scores-dict QUAL SCORES DICT]\n                \
+  \        [--qual-stats-dict QUAL STATS DICT] [--uniqued]\n                     \
+  \   [--weighted] [--amino-acid-sequences] [--quick]\n                        [--no-display]\
+  \ [--version]\n                        ALIGNMENT\n\nEntropy Analysis (version: 2.1)\n\
+  \npositional arguments:\n  ALIGNMENT             Alignment file that contains all\
+  \ samples and sequences\n                        in FASTA format\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --qual-scores-file QUAL\
+  \ SCORES FILE\n                        FASTA formatted file that contains PHRED\
+  \ base call\n                        values for each read in the alignment file\n\
+  \  --qual-scores-dict QUAL SCORES DICT\n                        Previously computed\
+  \ and serialized dictionary that\n                        contains PHRED base call\
+  \ values for each read in the\n                        alignment file. If you provide\
+  \ --qual-scores-file,\n                        that file will be used to recompute\
+  \ this dictionary\n                        and the file you refer with this parameter\
+  \ will not be\n                        ignored\n  --qual-stats-dict QUAL STATS DICT\n\
+  \                        Previously computed and serialized dictionary that\n  \
+  \                      contains PHRED base call quality score statistics for\n \
+  \                       the alignment file. If you provide --qual-scores-dict,\n\
+  \                        it will be used to recompute this dictionary and the\n\
+  \                        file you refer to with this parameter will actually\n \
+  \                       not be used\n  --uniqued             When set, entropy computation\
+  \ will assume that the\n                        reads in FASTA file are unique.\
+  \ Frequency information\n                        of unique reads must be stored\
+  \ in the deflines. Every\n                        defline in the FASTA file must\
+  \ present the frequency\n                        information in this format: \"\
+  freq:NUMBER\", e.g.\n                        \">Read_ID|X|Y|freq:42\", or \">Read_ID|freq:42|X|Y\"\
+  \n  --weighted            When set, entropy computation per column will use mean\n\
+  \                        quality score for each column.\n  --amino-acid-sequences\n\
+  \                        If sequences are composed of amino acids, instead of\n\
+  \                        nucleotides.\n  --quick               When set, entropy\
+  \ values will be shown as fast as\n                        possible (some visualization\
+  \ steps will be skipped).\n  --no-display          When set, no figures will be\
+  \ shown.\n  --version             Print version and exit.\n"
+generated_using:
+- --help

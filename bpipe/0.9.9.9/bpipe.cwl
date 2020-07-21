@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bpipe.cwl
+id: ../../../bpipe.cwl
 inputs:
 - id: auto_archive
   doc: clean up all internal files after run into given archive

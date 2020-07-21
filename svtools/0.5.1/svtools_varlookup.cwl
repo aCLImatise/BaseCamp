@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtools_varlookup.cwl
+id: ../../../svtools_varlookup.cwl
 inputs:
 - id: distance
   doc: max separation distance (bp) of adjacent loci between bedpe files [50]

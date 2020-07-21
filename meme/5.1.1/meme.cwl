@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/meme.cwl
+id: ../../../meme.cwl
 inputs:
 - id: dataset
   doc: ''

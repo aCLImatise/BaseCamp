@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf_drop_overlapping.py.cwl
+id: ../../../maf_drop_overlapping.py.cwl
 inputs:
 - id: interval
   doc: ''

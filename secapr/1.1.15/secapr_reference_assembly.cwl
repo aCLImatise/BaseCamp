@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/secapr_reference_assembly.cwl
+id: ../../../secapr_reference_assembly.cwl
 inputs:
 - id: reads
   doc: Call the folder that contains the trimmed reads, organized in a separate subfolder

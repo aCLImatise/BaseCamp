@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prosolo_single_cell_bulk.cwl
+id: ../../../prosolo_single_cell_bulk.cwl
 inputs:
 - id: exclusive_end
   doc: Assume that the END tag is exclusive (i.e. it points to the position after

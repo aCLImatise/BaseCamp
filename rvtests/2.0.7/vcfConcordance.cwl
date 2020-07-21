@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfConcordance.cwl
+id: ../../../vcfConcordance.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

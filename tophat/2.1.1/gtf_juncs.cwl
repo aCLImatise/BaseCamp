@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gtf_juncs.cwl
+id: ../../../gtf_juncs.cwl
 inputs:
 - id: transcripts_dot_gtf
   doc: ''

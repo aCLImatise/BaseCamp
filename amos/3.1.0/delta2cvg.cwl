@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/delta2cvg.cwl
+id: ../../../delta2cvg.cwl
 inputs:
 - id: min_coverage_display
   doc: '- Min coverage to display'

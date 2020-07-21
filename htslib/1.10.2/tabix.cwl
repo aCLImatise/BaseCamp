@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tabix.cwl
+id: ../../../tabix.cwl
 inputs:
 - id: zero_based
   doc: coordinates are zero-based

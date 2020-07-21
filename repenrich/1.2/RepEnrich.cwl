@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RepEnrich.py.cwl
+id: ../../../RepEnrich.py.cwl
 inputs:
 - id: paired_end
   doc: Designate this option for paired-end sequencing. Default FALSE change to TRUE

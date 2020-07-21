@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alignment_stats_from_sam.py.cwl
+id: ../../../alignment_stats_from_sam.py.cwl
 inputs:
 - id: input
   doc: Input fasta or fastq.

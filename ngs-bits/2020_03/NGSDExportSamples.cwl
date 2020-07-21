@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NGSDExportSamples.cwl
+id: ../../../NGSDExportSamples.cwl
 inputs:
 - id: out
   doc: "Output TSV file. If unset, writes to STDOUT. Default value: ''"

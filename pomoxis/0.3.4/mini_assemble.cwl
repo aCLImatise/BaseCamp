@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mini_assemble.cwl
+id: ../../../mini_assemble.cwl
 inputs:
 - id: fastx_input_reads
   doc: fastx input reads (required).

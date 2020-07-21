@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BedIntersect.cwl
+id: ../../../BedIntersect.cwl
 inputs:
 - id: in_two
   doc: Second input BED file.

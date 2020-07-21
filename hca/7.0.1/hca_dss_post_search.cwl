@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_post_search.cwl
+id: ../../../hca_dss_post_search.cwl
 inputs:
 - id: es_query
   doc: Elasticsearch query

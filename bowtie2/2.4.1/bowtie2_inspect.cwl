@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bowtie2_inspect.cwl
+id: ../../../bowtie2_inspect.cwl
 inputs:
 - id: large_index
   doc: force inspection of the 'large' index, even if a 'small' one is present.

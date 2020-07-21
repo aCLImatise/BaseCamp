@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chicViewpoint.cwl
+id: ../../../chicViewpoint.cwl
 inputs:
 - id: matrices
   doc: Path to the Hi-C matrices which store the captured Hi-C data per sample.

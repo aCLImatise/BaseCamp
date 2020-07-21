@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/catDir.cwl
+id: ../../../catDir.cwl
 inputs:
 - id: non_z
   doc: Prints file name of non-zero length files

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_probe_remove_overlapping_probes_given_config.cwl
+id: ../../../phyluce_probe_remove_overlapping_probes_given_config.cwl
 inputs:
 - id: probes
   doc: The input probe file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treebest_treedist.cwl
+id: ../../../treebest_treedist.cwl
 inputs:
 - id: tree_one
   doc: ''

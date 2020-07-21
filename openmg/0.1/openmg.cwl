@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/openmg.cwl
+id: ../../../openmg.cwl
 inputs:
 - id: jar
   doc: ''

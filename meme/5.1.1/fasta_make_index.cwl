@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_make_index.cwl
+id: ../../../fasta_make_index.cwl
 inputs:
 - id: f
   doc: ''

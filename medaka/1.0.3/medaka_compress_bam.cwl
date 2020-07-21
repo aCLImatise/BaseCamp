@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medaka_compress_bam.cwl
+id: ../../../medaka_compress_bam.cwl
 inputs:
 - id: bam_input
   doc: Bam file to compress.

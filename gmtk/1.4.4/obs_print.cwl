@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obs_print.cwl
+id: ../../../obs_print.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

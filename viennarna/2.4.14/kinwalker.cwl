@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kinwalker.cwl
+id: ../../../kinwalker.cwl
 inputs:
 - id: test
   doc: Use test sequence.

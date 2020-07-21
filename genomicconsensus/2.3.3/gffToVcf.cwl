@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gffToVcf.cwl
+id: ../../../gffToVcf.cwl
 inputs:
 - id: emit_tool_contract
   doc: 'Emit Tool Contract to stdout (default: False)'

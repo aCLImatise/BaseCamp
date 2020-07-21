@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TOBIAS_MaxPos.cwl
+id: ../../../TOBIAS_MaxPos.cwl
 inputs:
 - id: bed
   doc: Regions to search for max position within

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcftools_sort.cwl
+id: ../../../bcftools_sort.cwl
 inputs:
 - id: max_mem
   doc: '[kMG]    maximum memory to use [768M]'

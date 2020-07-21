@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedCoverage.cwl
+id: ../../../bedCoverage.cwl
 inputs:
 - id: restrict
   doc: Restrict to parts in restrict.bed

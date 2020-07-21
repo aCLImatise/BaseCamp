@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lighter.cwl
+id: ../../../lighter.cwl
 inputs:
 - id: seqfile_path_sequence
   doc: ": seq_file is the path to the sequence file. Can use multiple -r to specifiy\

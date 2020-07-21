@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dfast.cwl
+id: ../../../dfast.cwl
 inputs:
 - id: genome
   doc: Genomic FASTA file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_contig_annotate.cwl
+id: ../../../fc_contig_annotate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

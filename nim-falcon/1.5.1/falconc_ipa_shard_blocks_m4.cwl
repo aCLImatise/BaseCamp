@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/falconc_ipa_shard_blocks_m4.cwl
+id: ../../../falconc_ipa_shard_blocks_m4.cwl
 inputs:
 - id: help_syntax
   doc: 'advanced: prepend,plurals,..'

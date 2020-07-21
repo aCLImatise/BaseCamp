@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/go2csv.pl.cwl
+id: ../../../go2csv.pl.cwl
 inputs:
 - id: obo_input_file
   doc: OBO input file

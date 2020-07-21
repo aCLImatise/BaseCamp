@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tpage.cwl
+id: ../../../tpage.cwl
 inputs:
 - id: define
   doc: =value       Define template variable

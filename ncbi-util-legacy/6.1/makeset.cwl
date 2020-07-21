@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeset.cwl
+id: ../../../makeset.cwl
 inputs:
 - id: bioseqsetrelease__optional
   doc: Bioseq-set.release [String]  Optional

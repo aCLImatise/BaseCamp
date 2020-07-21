@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtk_vcfcluster.cwl
+id: ../../../svtk_vcfcluster.cwl
 inputs:
 - id: region
   doc: Restrict clustering to genomic region.

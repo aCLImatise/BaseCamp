@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crimson_fastqc.cwl
+id: ../../../crimson_fastqc.cwl
 inputs:
 - id: input
   doc: ''

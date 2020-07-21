@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/groups.cwl
+id: ../../../groups.cwl
 inputs:
 - id: option
   doc: ''

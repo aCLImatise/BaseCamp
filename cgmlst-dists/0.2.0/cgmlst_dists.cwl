@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cgmlst_dists.cwl
+id: ../../../cgmlst_dists.cwl
 inputs:
 - id: print_version_exit
   doc: Print version and exit

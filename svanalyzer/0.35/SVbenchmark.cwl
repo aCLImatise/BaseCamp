@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SVbenchmark.cwl
+id: ../../../SVbenchmark.cwl
 inputs:
 - id: ref
   doc: The fasta file that was used as the reference for the two VCF files being compared.

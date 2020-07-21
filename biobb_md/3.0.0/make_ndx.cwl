@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_ndx.cwl
+id: ../../../make_ndx.cwl
 inputs:
 - id: c
   doc: ''

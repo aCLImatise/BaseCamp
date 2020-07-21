@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gemBS_merge_bams.cwl
+id: ../../../gemBS_merge_bams.cwl
 inputs:
 - id: threads
   doc: 'Number of threads, Default: 1'

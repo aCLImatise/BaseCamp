@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmfetch_key.cwl
+id: ../../../hmmfetch_key.cwl
 inputs:
 - id: hmm_fetch
   doc: ''

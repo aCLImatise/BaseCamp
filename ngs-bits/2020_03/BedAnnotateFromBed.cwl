@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BedAnnotateFromBed.cwl
+id: ../../../BedAnnotateFromBed.cwl
 inputs:
 - id: in_two
   doc: BED file that is used as annotation source.

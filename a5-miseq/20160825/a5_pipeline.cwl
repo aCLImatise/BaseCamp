@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/a5_pipeline.pl.cwl
+id: ../../../a5_pipeline.pl.cwl
 inputs:
 - id: begin
   doc: ''

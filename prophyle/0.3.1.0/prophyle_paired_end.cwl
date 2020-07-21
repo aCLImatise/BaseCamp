@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prophyle_paired_end.py_reads_2.cwl
+id: ../../../prophyle_paired_end.py_reads_2.cwl
 inputs:
 - id: o
   doc: ''

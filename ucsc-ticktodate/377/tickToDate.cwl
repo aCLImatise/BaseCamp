@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tickToDate.cwl
+id: ../../../tickToDate.cwl
 inputs:
 - id: ticks
   doc: ''

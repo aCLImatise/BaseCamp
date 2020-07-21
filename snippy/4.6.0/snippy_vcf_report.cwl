@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snippy_vcf_report.cwl
+id: ../../../snippy_vcf_report.cwl
 inputs:
 - id: debug
   doc: "!        Output verbose debug info (default '0')."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_ncbi_get_reference_data.pl.cwl
+id: ../../../gaas_ncbi_get_reference_data.pl.cwl
 inputs:
 - id: list
   doc: List of all available databases

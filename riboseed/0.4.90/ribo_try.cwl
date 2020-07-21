@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ribo_try.cwl
+id: ../../../ribo_try.cwl
 inputs:
 - id: output
   doc: 'output directory; default: /tmp/tmpdvlbjbbn/riboSeed_sample_results'

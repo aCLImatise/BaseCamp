@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_trim_name.cwl
+id: ../../../goalign_trim_name.cwl
 inputs:
 - id: auto
   doc: Automatically generates sequence identifiers (priority over --nb-cchar)

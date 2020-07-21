@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/normalize_iHS.cwl
+id: ../../../normalize_iHS.cwl
 inputs:
 - id: s
   doc: ''

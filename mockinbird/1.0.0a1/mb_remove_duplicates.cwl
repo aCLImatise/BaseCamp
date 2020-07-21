@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_remove_duplicates.cwl
+id: ../../../mb_remove_duplicates.cwl
 inputs:
 - id: verbose
   doc: verbose output

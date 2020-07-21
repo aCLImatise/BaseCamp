@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genesplicer.cwl
+id: ../../../genesplicer.cwl
 inputs:
 - id: fast_a_file
   doc: ''

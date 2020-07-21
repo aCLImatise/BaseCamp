@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mtsv_binner.cwl
+id: ../../../mtsv_binner.cwl
 inputs:
 - id: include_flag_trigger
   doc: Include this flag to trigger debug-level logging.

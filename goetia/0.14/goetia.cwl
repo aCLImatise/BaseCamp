@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goetia.cwl
+id: ../../../goetia.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PATHOGIST_distance_output_path.cwl
+id: ../../../PATHOGIST_distance_output_path.cwl
 inputs:
 - id: bed
   doc: ''

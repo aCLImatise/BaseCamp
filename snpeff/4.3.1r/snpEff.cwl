@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snpEff.cwl
+id: ../../../snpEff.cwl
 inputs:
 - id: chr
   doc: ": Prepend 'string' to chromosome name (e.g. 'chr1' instead of '1'). Only on\

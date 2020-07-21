@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bg_bpipe.cwl
+id: ../../../bg_bpipe.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

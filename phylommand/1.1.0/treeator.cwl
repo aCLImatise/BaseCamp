@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treeator.cwl
+id: ../../../treeator.cwl
 inputs:
 - id: output
   doc: (default w).

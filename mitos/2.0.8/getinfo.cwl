@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getinfo.py.cwl
+id: ../../../getinfo.py.cwl
 inputs:
 - id: outfile
   doc: 'write values to FILE (default: stdout)'

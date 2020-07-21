@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteins_not_in_library.py.cwl
+id: ../../../proteins_not_in_library.py.cwl
 inputs:
 - id: fast_a
   doc: A fasta file

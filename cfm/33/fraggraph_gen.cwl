@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fraggraph_gen.cwl
+id: ../../../fraggraph_gen.cwl
 inputs:
 - id: smiles_or_inch_i_string
   doc: ''

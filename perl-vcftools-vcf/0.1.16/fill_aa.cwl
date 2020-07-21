@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fill_aa.cwl
+id: ../../../fill_aa.cwl
 inputs:
 - id: ancestral_allele
   doc: Prefix to ancestral allele chromosome files.

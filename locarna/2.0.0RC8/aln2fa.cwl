@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/aln2fa.pl.cwl
+id: ../../../aln2fa.pl.cwl
 inputs:
 - id: man
   doc: Full documentation

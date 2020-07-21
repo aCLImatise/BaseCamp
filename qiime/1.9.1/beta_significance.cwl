@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/beta_significance.py.cwl
+id: ../../../beta_significance.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

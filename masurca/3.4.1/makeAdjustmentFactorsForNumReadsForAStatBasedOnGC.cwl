@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeAdjustmentFactorsForNumReadsForAStatBasedOnGC.cwl
+id: ../../../makeAdjustmentFactorsForNumReadsForAStatBasedOnGC.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

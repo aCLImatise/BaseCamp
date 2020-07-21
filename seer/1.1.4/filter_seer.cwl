@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_seer.cwl
+id: ../../../filter_seer.cwl
 inputs:
 - id: arg_file_output
   doc: '[ --kmers ] arg     file of output from seer'

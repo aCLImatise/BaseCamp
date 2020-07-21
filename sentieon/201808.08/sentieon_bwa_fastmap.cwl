@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sentieon_bwa_fastmap.cwl
+id: ../../../sentieon_bwa_fastmap.cwl
 inputs:
 - id: min_smem_length
   doc: min SMEM length to output [17]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools_genomecov.cwl
+id: ../../../bedtools_genomecov.cwl
 inputs:
 - id: i_bam
   doc: 'The input file is in BAM format. Note: BAM _must_ be sorted by position'

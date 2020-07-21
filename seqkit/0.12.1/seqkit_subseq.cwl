@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_subseq.cwl
+id: ../../../seqkit_subseq.cwl
 inputs:
 - id: c_g_t
   doc: :-1    A C G T N a c g t n

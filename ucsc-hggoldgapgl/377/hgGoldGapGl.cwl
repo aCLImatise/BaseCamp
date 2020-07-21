@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hgGoldGapGl.cwl
+id: ../../../hgGoldGapGl.cwl
 inputs:
 - id: no_gl
   doc: "- don't do gl bits"

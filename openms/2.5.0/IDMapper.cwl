@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/IDMapper.cwl
+id: ../../../IDMapper.cwl
 inputs:
 - id: id
   doc: "*                        Protein/peptide identifications file (valid formats:\

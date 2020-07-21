@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sra_sort.2.10.7.cwl
+id: ../../../sra_sort.2.10.7.cwl
 inputs:
 - id: ignore_failure
   doc: 'ignore failure when sorting multiple objects  i.e. continue in spite of previous

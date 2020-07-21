@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_probe_query_multi_merge_table.cwl
+id: ../../../phyluce_probe_query_multi_merge_table.cwl
 inputs:
 - id: db
   doc: The database to query

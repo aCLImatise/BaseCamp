@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varlociraptor_call_help.cwl
+id: ../../../varlociraptor_call_help.cwl
 inputs:
 - id: for
   doc: ''

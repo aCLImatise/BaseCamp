@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/garnett_cli_post_install_tests.sh.cwl
+id: ../../../garnett_cli_post_install_tests.sh.cwl
 inputs:
 - id: action
   doc: ''

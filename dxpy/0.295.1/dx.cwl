@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dx.cwl
+id: ../../../dx.cwl
 inputs:
 - id: env_help
   doc: Display help message for overriding environment variables

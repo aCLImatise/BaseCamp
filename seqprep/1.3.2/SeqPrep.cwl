@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SeqPrep.cwl
+id: ../../../SeqPrep.cwl
 inputs:
 - id: help_message_works
   doc: 'this help message and exit (also works with no args) '

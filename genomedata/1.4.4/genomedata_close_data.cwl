@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genomedata_close_data.cwl
+id: ../../../genomedata_close_data.cwl
 inputs:
 - id: verbose
   doc: Print status updates and diagnostic messages

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getAnnoFasta.pl.cwl
+id: ../../../getAnnoFasta.pl.cwl
 inputs:
 - id: seq_file
   doc: Input a fasta file with the genomic sequences that AUGUSTUS was run on. When

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/damageprofiler.cwl
+id: ../../../damageprofiler.cwl
 inputs:
 - id: user
   doc: ''

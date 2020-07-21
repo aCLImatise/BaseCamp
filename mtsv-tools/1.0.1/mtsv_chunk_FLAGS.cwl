@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mtsv_chunk_FLAGS.cwl
+id: ../../../mtsv_chunk_FLAGS.cwl
 inputs:
 - id: input
   doc: ''

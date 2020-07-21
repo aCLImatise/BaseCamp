@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/haphpipe_assemble_scaffold.cwl
+id: ../../../haphpipe_assemble_scaffold.cwl
 inputs:
 - id: contigs_fa
   doc: Fasta file with assembled contigs

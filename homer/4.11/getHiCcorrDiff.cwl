@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getHiCcorrDiff.pl.cwl
+id: ../../../getHiCcorrDiff.pl.cwl
 inputs:
 - id: res
   doc: '<#> (resolution in bp, default: 50000)'

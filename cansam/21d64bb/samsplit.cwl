@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samsplit.cwl
+id: ../../../samsplit.cwl
 inputs:
 - id: write_output_files
   doc: Write output files in BAM format

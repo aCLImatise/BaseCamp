@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getMappingStats.pl.cwl
+id: ../../../getMappingStats.pl.cwl
 inputs:
 - id: min
   doc: <#> (minimum length to consider a sequence an adapter-dimer, def. 15)

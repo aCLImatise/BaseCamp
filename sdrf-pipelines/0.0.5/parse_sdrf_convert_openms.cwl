@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parse_sdrf_convert_openms.cwl
+id: ../../../parse_sdrf_convert_openms.cwl
 inputs:
 - id: sd_rf
   doc: SDRF file

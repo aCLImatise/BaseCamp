@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cameo_search.cwl
+id: ../../../cameo_search.cwl
 inputs:
 - id: product
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dx_log_stream.cwl
+id: ../../../dx_log_stream.cwl
 inputs:
 - id: level
   doc: Logging level to use

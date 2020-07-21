@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varlociraptor_estimate_help.cwl
+id: ../../../varlociraptor_estimate_help.cwl
 inputs:
 - id: for
   doc: ''

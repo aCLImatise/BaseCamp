@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gerpelem.cwl
+id: ../../../gerpelem.cwl
 inputs:
 - id: verbose_mode
   doc: verbose mode

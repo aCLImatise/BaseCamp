@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/find_tandem.cwl
+id: ../../../find_tandem.cwl
 inputs:
 - id: multifasta_file_scan
   doc: multifasta file to scan

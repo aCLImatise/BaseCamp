@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ClipAndMerge.cwl
+id: ../../../ClipAndMerge.cwl
 inputs:
 - id: discard_bad_reads
   doc: ': Discard reads after merging that do not fulfill the quality criteria. (default:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/round_statistics.py.cwl
+id: ../../../round_statistics.py.cwl
 inputs:
 - id: debug
   doc: Debug mode.

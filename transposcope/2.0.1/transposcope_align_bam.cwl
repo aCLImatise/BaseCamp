@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transposcope_align_bam.cwl
+id: ../../../transposcope_align_bam.cwl
 inputs:
 - id: genes
   doc: ''

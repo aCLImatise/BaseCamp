@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kraken_build.cwl
+id: ../../../kraken_build.cwl
 inputs:
 - id: download_taxonomy
   doc: Download NCBI taxonomic information

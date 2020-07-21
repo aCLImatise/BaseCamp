@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/echo.cwl
+id: ../../../echo.cwl
 inputs:
 - id: output_trailing_newline
   doc: not output the trailing newline

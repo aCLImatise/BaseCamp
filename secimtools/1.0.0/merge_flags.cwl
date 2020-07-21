@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_flags.py.cwl
+id: ../../../merge_flags.py.cwl
 inputs:
 - id: input
   doc: Input any number of flag files that have the same indexes

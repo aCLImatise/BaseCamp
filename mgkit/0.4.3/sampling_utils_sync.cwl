@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sampling_utils_sync.cwl
+id: ../../../sampling_utils_sync.cwl
 inputs:
 - id: master_file
   doc: Resampled FastQ file that is out of sync with the original pair  [required]

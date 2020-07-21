@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blasr.cwl
+id: ../../../blasr.cwl
 inputs:
 - id: ignore_hq_regions
   doc: (false)Ignore any hq regions in the region table.

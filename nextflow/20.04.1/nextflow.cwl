@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nextflow.bak_view.cwl
+id: ../../../nextflow.bak_view.cwl
 inputs:
 - id: list_repository_content
   doc: 'List repository content Default: false'

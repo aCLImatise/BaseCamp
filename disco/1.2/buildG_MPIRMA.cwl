@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/buildG_MPIRMA.cwl
+id: ../../../buildG_MPIRMA.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

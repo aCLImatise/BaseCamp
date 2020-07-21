@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/match_list_col.awk_col.cwl
+id: ../../../match_list_col.awk_col.cwl
 inputs:
 - id: match_list_cold_ot_awk
   doc: ''

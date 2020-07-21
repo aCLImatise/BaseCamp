@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chooseLines.cwl
+id: ../../../chooseLines.cwl
 inputs:
 - id: number_lines_choose
   doc: Number of lines to choose (default is all lines).

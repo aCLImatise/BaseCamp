@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spankijunc.cwl
+id: ../../../spankijunc.cwl
 inputs:
 - id: bam_file_name
   doc: BAM file name

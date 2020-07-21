@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shustring.cwl
+id: ../../../shustring.cwl
 inputs:
 - id: general
   doc: '[-q quiet - do not print shustrings; default: print shustrings] [-n nucleotide

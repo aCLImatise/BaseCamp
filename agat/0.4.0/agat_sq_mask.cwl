@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sq_mask.pl.cwl
+id: ../../../agat_sq_mask.pl.cwl
 inputs:
 - id: gff
   doc: Input GTF/GFF file.

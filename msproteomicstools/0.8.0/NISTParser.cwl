@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NISTParser.py.cwl
+id: ../../../NISTParser.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

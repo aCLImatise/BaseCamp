@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/funnel_worker_run.cwl
+id: ../../../funnel_worker_run.cwl
 inputs:
 - id: task_base_six_four
   doc: Task base64

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mlocarna_nnames.cwl
+id: ../../../mlocarna_nnames.cwl
 inputs:
 - id: man
   doc: Full documentation

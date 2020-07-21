@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf2fasta.cwl
+id: ../../../vcf2fasta.cwl
 inputs:
 - id: reference
   doc: Use this reference when decomposing samples.

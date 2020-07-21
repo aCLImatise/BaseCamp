@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phastMotif.cwl
+id: ../../../phastMotif.cwl
 inputs:
 - id: required_m_specified
   doc: (Required unless -m or -p) Use specified tree topology for all phylogenetic

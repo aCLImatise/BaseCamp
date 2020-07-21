@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/funannotate_sort.cwl
+id: ../../../funannotate_sort.cwl
 inputs:
 - id: input
   doc: Multi-fasta genome file. (Required)

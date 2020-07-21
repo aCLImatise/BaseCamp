@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abpoa.cwl
+id: ../../../abpoa.cwl
 inputs:
 - id: aln_mode
   doc: 'alignment mode [0] 0: global, 1: local, 2: extension'

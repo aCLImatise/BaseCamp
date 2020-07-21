@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fa2fq.cwl
+id: ../../../fa2fq.cwl
 inputs:
 - id: paired
   doc: if the reads are paired-end in one file

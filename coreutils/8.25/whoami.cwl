@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/whoami.cwl
+id: ../../../whoami.cwl
 inputs:
 - id: option
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bmtool.cwl
+id: ../../../bmtool.cwl
 inputs:
 - id: quiet
   doc: -q     Do not show progress indicators [off]

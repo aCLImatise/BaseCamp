@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedmap.cwl
+id: ../../../bedmap.cwl
 inputs:
 - id: chrom
   doc: 'Jump to and process data for given <chromosome> only.                   '

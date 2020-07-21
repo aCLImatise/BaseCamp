@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_kmers.py.cwl
+id: ../../../get_kmers.py.cwl
 inputs:
 - id: km_er
   doc: The software would infer it based on the name of the 'out_dir'. If it is set

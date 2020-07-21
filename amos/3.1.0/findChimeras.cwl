@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findChimeras.cwl
+id: ../../../findChimeras.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

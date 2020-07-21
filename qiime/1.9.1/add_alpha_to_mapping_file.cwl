@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/add_alpha_to_mapping_file.py.cwl
+id: ../../../add_alpha_to_mapping_file.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

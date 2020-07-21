@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dep_status.cwl
+id: ../../../dep_status.cwl
 inputs:
 - id: detail
   doc: 'include more detail in the chosen format (default: false)'

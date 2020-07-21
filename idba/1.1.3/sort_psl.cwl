@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sort_psl.cwl
+id: ../../../sort_psl.cwl
 inputs:
 - id: validate_contigs_blat
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/graphembed.cwl
+id: ../../../graphembed.cwl
 inputs:
 - id: specify_input_data
   doc: Specify input data file in CSV format.

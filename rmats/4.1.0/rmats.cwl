@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rmats.py.cwl
+id: ../../../rmats.py.cwl
 inputs:
 - id: gtf
   doc: An annotation of genes and transcripts in GTF format

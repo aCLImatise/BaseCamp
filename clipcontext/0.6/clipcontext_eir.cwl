@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clipcontext_eir.cwl
+id: ../../../clipcontext_eir.cwl
 inputs:
 - id: tr
   doc: Transcript sequence IDs list file for which to extract exon + intron regions

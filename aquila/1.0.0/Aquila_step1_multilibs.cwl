@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Aquila_step1_multilibs.cwl
+id: ../../../Aquila_step1_multilibs.cwl
 inputs:
 - id: bam_file_list
   doc: 'Required parameter, BAM file list, each BAM file is seperately by comma ",".

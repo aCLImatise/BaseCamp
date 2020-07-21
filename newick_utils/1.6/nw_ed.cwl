@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nw_ed.cwl
+id: ../../../nw_ed.cwl
 inputs:
 - id: print_modified_tree
   doc: ': do not print the (possibly modified) tree at the end of the run  (modeled

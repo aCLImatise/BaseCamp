@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/masurca.cwl
+id: ../../../masurca.cwl
 inputs:
 - id: output
   doc: Assembly script (assemble.sh)

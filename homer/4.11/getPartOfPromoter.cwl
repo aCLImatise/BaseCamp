@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getPartOfPromoter.pl.cwl
+id: ../../../getPartOfPromoter.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

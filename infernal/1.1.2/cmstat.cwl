@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cmstat.cwl
+id: ../../../cmstat.cwl
 inputs:
 - id: e
   doc: ': print bit scores that correspond to E-value threshold of <x>'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof_consensus.cwl
+id: ../../../smof_consensus.cwl
 inputs:
 - id: table
   doc: Print count table instead of consensus

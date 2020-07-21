@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbt_fastq_split.cwl
+id: ../../../rbt_fastq_split.cwl
 inputs:
 - id: chunks
   doc: ''

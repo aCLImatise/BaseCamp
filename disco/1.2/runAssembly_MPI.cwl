@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runAssembly_MPI.sh.cwl
+id: ../../../runAssembly_MPI.sh.cwl
 inputs:
 - id: ins
   doc: single read filenames (comma separated fasta/fastq/fastq.gz files).

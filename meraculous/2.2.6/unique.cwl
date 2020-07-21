@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unique.pl.cwl
+id: ../../../unique.pl.cwl
 inputs:
 - id: input_file
   doc: ''

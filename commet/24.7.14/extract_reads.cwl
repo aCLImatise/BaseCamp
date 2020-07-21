@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_reads.cwl
+id: ../../../extract_reads.cwl
 inputs:
 - id: output_results_given
   doc: ': Output results in the given file [default=stdout]'

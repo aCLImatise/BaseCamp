@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msa2bam.cwl
+id: ../../../msa2bam.cwl
 inputs:
 - id: reference
   doc: REFERENCE FASTA file or {HXB2_env, HXB2_gag, HXB2_int, HXB2_nef, HXB2_pol,

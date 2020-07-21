@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quasitools_consensus.cwl
+id: ../../../quasitools_consensus.cwl
 inputs:
 - id: bam
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findHiCCompartments.pl.cwl
+id: ../../../findHiCCompartments.pl.cwl
 inputs:
 - id: opp
   doc: (return inactive, not active regions)

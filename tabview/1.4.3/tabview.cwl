@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tabview.cwl
+id: ../../../tabview.cwl
 inputs:
 - id: encoding
   doc: Encoding, if required. If the file is UTF-8, Latin-1(iso8859-1) or a few other

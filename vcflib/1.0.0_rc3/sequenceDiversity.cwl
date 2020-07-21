@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequenceDiversity.cwl
+id: ../../../sequenceDiversity.cwl
 inputs:
 - id: target
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shuffle.cwl
+id: ../../../shuffle.cwl
 inputs:
 - id: shuffle_preserve_
   doc: ': shuffle but preserve both mono- and di-symbol composition'

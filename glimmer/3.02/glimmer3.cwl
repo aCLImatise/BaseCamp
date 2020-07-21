@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/glimmer3.cwl
+id: ../../../glimmer3.cwl
 inputs:
 - id: stop_codons
   doc: 'Use comma-separated list of codons as stop codons Sample format:  -Z tag,tga,taa'

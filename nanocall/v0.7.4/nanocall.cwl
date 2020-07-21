@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nanocall.cwl
+id: ../../../nanocall.cwl
 inputs:
 - id: t
   doc: ''

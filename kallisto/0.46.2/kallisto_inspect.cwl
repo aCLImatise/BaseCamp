@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kallisto_inspect.cwl
+id: ../../../kallisto_inspect.cwl
 inputs:
 - id: index_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sixgill_merge_metapeptidedbfiles.cwl
+id: ../../../sixgill_merge_metapeptidedbfiles.cwl
 inputs:
 - id: out
   doc: ''

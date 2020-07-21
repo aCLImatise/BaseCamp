@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trnascan_1.4.cwl
+id: ../../../trnascan_1.4.cwl
 inputs:
 - id: options
   doc: ''

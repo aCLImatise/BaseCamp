@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gfa_to_fastg.py.cwl
+id: ../../../gfa_to_fastg.py.cwl
 inputs:
 - id: gfatwofastgdotpy
   doc: ''

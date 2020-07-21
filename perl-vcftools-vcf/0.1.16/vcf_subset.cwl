@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_subset.cwl
+id: ../../../vcf_subset.cwl
 inputs:
 - id: trim_alt_alleles
   doc: Remove alternate alleles if not found in the subset

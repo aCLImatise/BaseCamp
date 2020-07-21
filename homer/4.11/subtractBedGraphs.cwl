@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/subtractBedGraphs.pl.cwl
+id: ../../../subtractBedGraphs.pl.cwl
 inputs:
 - id: cov
   doc: (to remove regions with low coverage)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transIndel_build_DNA.py.cwl
+id: ../../../transIndel_build_DNA.py.cwl
 inputs:
 - id: mapq_cut_off
   doc: :minimal MapQ in SAM for support SV event, default 15

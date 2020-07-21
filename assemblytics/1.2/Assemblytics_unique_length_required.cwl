@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Assemblytics_unique_length_required.cwl
+id: ../../../Assemblytics_unique_length_required.cwl
 inputs:
 - id: assembly_tics
   doc: ''

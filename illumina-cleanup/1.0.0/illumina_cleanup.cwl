@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/illumina_cleanup.cwl
+id: ../../../illumina_cleanup.cwl
 inputs:
 - id: exports_system_environment
   doc: 'Exports all current system environment Default: false'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/refold.cwl
+id: ../../../refold.cwl
 inputs:
 - id: save_file
   doc: ''

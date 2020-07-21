@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lwp_download.cwl
+id: ../../../lwp_download.cwl
 inputs:
 - id: a
   doc: ''

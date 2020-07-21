@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/julietflow.cwl
+id: ../../../julietflow.cwl
 inputs:
 - id: bam_ccs_file
   doc: '[arg]  BAM CCS file to process. Required.'

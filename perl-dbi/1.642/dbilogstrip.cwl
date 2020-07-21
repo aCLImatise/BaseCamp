@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dbilogstrip.cwl
+id: ../../../dbilogstrip.cwl
 inputs:
 - id: no
   doc: ''

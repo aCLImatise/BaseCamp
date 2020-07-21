@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/zrun.cwl
+id: ../../../zrun.cwl
 inputs:
 - id: command
   doc: ''

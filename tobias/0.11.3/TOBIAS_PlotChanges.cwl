@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TOBIAS_PlotChanges.cwl
+id: ../../../TOBIAS_PlotChanges.cwl
 inputs:
 - id: bin_detect
   doc: Bindetect_results.txt file from BINDetect run

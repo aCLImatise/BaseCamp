@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pm_refresh.cwl
+id: ../../../pm_refresh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

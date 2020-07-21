@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_metasv.py.cwl
+id: ../../../run_metasv.py.cwl
 inputs:
 - id: g_atk_vcf
   doc: 'VCF file or dir for gatk VCFs (default: [])'

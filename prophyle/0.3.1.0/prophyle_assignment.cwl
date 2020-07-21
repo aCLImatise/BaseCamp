@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prophyle_assignment.py.cwl
+id: ../../../prophyle_assignment.py.cwl
 inputs:
 - id: format_of_output
   doc: format of output [sam]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Corrector_HA.cwl
+id: ../../../Corrector_HA.cwl
 inputs:
 - id: set_size_default_note
   doc: 'Set kmer size, default=17. Note: this value must be set to be same as that

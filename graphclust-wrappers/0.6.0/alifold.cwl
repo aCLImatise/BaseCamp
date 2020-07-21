@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alifold.pl.cwl
+id: ../../../alifold.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

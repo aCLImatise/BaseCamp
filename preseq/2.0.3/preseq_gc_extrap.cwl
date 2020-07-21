@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/preseq_gc_extrap.cwl
+id: ../../../preseq_gc_extrap.cwl
 inputs:
 - id: output
   doc: 'coverage yield output file (default: stdout) '

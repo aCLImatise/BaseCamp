@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeblastdb.cwl
+id: ../../../makeblastdb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

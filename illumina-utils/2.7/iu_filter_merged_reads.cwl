@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iu_filter_merged_reads.cwl
+id: ../../../iu_filter_merged_reads.cwl
 inputs:
 - id: output
   doc: 'Where filtered reads will be written (default: [-i]-MAX-MISMATCH-[-m]'

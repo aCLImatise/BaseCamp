@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gthcleanrec.sh.cwl
+id: ../../../gthcleanrec.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

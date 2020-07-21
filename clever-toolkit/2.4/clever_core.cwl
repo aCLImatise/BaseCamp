@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clever_core.cwl
+id: ../../../clever_core.cwl
 inputs:
 - id: verbose_output_additional
   doc: '[ --verbose ]                      Be verbose: output additional  statistics

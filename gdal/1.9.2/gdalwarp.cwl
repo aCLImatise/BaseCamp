@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdalwarp.cwl
+id: ../../../gdalwarp.cwl
 inputs:
 - id: help_general
   doc: ''

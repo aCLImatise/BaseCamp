@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cactus_makeAlphaNumericHeaders.py.cwl
+id: ../../../cactus_makeAlphaNumericHeaders.py.cwl
 inputs:
 - id: fast_a_input_file
   doc: ''

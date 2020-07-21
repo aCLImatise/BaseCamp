@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pizzly.cwl
+id: ../../../pizzly.cwl
 inputs:
 - id: kmer_size_used
   doc: k-mer size used in kallisto

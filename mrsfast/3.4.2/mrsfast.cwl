@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mrsfast.cwl
+id: ../../../mrsfast.cwl
 inputs:
 - id: treated
   doc: sequences are not supported in this version.

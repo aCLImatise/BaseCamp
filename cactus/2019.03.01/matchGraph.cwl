@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/matchGraph.py.cwl
+id: ../../../matchGraph.py.cwl
 inputs:
 - id: is_input_filename
   doc: is the input filename

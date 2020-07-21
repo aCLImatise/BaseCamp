@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_index.pl.cwl
+id: ../../../bp_index.pl.cwl
 inputs:
 - id: fmt
   doc: <format>   - Fasta (default), swiss or EMBL

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioconvert_embl2fasta.cwl
+id: ../../../bioconvert_embl2fasta.cwl
 inputs:
 - id: force
   doc: 'if outfile exists, it is overwritten with this option (default: False)'

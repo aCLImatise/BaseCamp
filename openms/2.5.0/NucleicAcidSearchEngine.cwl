@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NucleicAcidSearchEngine.cwl
+id: ../../../NucleicAcidSearchEngine.cwl
 inputs:
 - id: in
   doc: "*                                  Input file: spectra (valid formats: 'mzML')"

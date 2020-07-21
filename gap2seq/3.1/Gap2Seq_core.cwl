@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Gap2Seq_core.cwl
+id: ../../../Gap2Seq_core.cwl
 inputs:
 - id: length
   doc: "(1 arg) :    Length of a single gap  [default '']"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wtpoa_cns.cwl
+id: ../../../wtpoa_cns.cwl
 inputs:
 - id: number_of_threads
   doc: Number of threads, [4]

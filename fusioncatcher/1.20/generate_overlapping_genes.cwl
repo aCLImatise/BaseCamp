@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generate_overlapping_genes.py.cwl
+id: ../../../generate_overlapping_genes.py.cwl
 inputs:
 - id: input_genes
   doc: Input file with genes positions.

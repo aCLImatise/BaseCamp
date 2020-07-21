@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_gccalc.pl.cwl
+id: ../../../bp_gccalc.pl.cwl
 inputs:
 - id: f
   doc: ''

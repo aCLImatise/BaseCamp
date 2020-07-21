@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf2bed.pl.cwl
+id: ../../../vcf2bed.pl.cwl
 inputs:
 - id: input_file_name
   doc: ''

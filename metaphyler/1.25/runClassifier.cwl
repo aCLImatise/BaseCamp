@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runClassifier.pl.cwl
+id: ../../../runClassifier.pl.cwl
 inputs:
 - id: perl
   doc: ''

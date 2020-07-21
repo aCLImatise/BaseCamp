@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasten_sample.cwl
+id: ../../../fasten_sample.cwl
 inputs:
 - id: num_cpus
   doc: 'Number of CPUs (default: 1)'

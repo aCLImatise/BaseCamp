@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generate_names.pl.cwl
+id: ../../../generate_names.pl.cwl
 inputs:
 - id: generate_names_do_tpl
   doc: '[ --out <output directory> ]         \ [ --verbose ]'

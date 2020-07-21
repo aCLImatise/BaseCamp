@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ntthal.cwl
+id: ../../../ntthal.cwl
 inputs:
 - id: oligo
   doc: ''

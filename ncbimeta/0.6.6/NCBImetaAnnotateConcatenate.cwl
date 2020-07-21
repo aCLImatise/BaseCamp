@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NCBImetaAnnotateConcatenate.py.cwl
+id: ../../../NCBImetaAnnotateConcatenate.py.cwl
 inputs:
 - id: an_not_file
   doc: '[--version]'

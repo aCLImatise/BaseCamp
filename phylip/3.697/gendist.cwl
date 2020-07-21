@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gendist.cwl
+id: ../../../gendist.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

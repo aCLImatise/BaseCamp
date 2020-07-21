@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sparse_update.cwl
+id: ../../../sparse_update.cwl
 inputs:
 - id: dbname
   doc: 'Name for the database. REQUIRED. '

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chromosight.cwl
+id: ../../../chromosight.cwl
 inputs:
 - id: preset
   doc: 'Generate a preset config for the given pattern. Preset configs available are

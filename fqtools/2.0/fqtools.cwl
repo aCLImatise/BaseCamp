@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fqtools.cwl
+id: ../../../fqtools.cwl
 inputs:
 - id: show_program_version
   doc: Show the program version and exit.

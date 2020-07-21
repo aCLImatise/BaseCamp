@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ggd_install.cwl
+id: ../../../ggd_install.cwl
 inputs:
 - id: channel
   doc: The ggd channel the desired recipe is stored in. (Default = genomics)

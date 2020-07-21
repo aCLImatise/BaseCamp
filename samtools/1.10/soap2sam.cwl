@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/soap2sam.pl.cwl
+id: ../../../soap2sam.pl.cwl
 inputs:
 - id: options
   doc: ''

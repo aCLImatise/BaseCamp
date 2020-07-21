@@ -1,0 +1,62 @@
+!Command
+positional:
+- !Positional
+  description: Input GFF3 file.
+  position: 0
+  name: input_GFF3_file
+  optional: false
+- !Positional
+  description: Output GTF file.
+  position: 1
+  name: output_GTF_file
+  optional: false
+named:
+- !Flag
+  description: 'GFF3 file does not contain transcripts, make each gene as a transcript.
+    (default: False)'
+  synonyms:
+  - --make-genes-as-transcripts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Types of RNAs to be extracted, e.g. mRNA,rRNA (default: None)'
+  synonyms:
+  - --RNA-patterns
+  args: !SimpleFlagArg
+    name: patterns
+  optional: true
+- !Flag
+  description: 'If GFF3 file contains reference sequences, extract them to the specified
+    file (default: None)'
+  synonyms:
+  - --extract-sequences
+  args: !SimpleFlagArg
+    name: output.fa
+  optional: true
+command:
+- rsem-gff3-to-gtf
+parent:
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: rsem-gff3-to-gtf [-h] [--make-genes-as-transcripts]\n         \
+  \               [--RNA-patterns <patterns>]\n                        [--extract-sequences\
+  \ <output.fa>]\n                        input_GFF3_file output_GTF_file\n\nConvert\
+  \ GFF3 files to GTF files.\n\npositional arguments:\n  input_GFF3_file       Input\
+  \ GFF3 file.\n  output_GTF_file       Output GTF file.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --make-genes-as-transcripts\n\
+  \                        GFF3 file does not contain transcripts, make each gene\n\
+  \                        as a transcript. (default: False)\n  --RNA-patterns <patterns>\n\
+  \                        Types of RNAs to be extracted, e.g. mRNA,rRNA\n       \
+  \                 (default: None)\n  --extract-sequences <output.fa>\n         \
+  \               If GFF3 file contains reference sequences, extract\n           \
+  \             them to the specified file (default: None)\n"
+generated_using:
+- --help

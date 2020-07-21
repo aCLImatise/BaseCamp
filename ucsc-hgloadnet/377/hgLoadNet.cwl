@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hgLoadNet.cwl
+id: ../../../hgLoadNet.cwl
 inputs:
 - id: no_bin
   doc: suppress bin field

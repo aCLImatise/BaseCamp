@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/analyze_probe_coverage.py.cwl
+id: ../../../analyze_probe_coverage.py.cwl
 inputs:
 - id: dataset
   doc: Labels for one or more target datasets (e.g., one label per species)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeMultiWigHub.pl.cwl
+id: ../../../makeMultiWigHub.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

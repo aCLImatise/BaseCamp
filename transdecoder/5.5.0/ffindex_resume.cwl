@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ffindex_resume.pl.cwl
+id: ../../../ffindex_resume.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

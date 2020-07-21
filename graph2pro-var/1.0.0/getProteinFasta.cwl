@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getProteinFasta.py.cwl
+id: ../../../getProteinFasta.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

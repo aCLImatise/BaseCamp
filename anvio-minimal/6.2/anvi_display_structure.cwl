@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_display_structure.cwl
+id: ../../../anvi_display_structure.cwl
 inputs:
 - id: structure_db
   doc: Anvi'o structure database.

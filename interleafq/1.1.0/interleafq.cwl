@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/interleafq.cwl
+id: ../../../interleafq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

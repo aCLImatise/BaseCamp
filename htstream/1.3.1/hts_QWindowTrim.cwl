@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hts_QWindowTrim.cwl
+id: ../../../hts_QWindowTrim.cwl
 inputs:
 - id: _version_print
   doc: '[ --version ]                      Version print'

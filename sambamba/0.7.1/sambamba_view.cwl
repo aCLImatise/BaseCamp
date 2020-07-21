@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sambamba_view.cwl
+id: ../../../sambamba_view.cwl
 inputs:
 - id: header
   doc: output only header to stdout (if format=bam, the header is printed as SAM)

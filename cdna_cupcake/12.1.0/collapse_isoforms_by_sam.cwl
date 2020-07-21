@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/collapse_isoforms_by_sam.py.cwl
+id: ../../../collapse_isoforms_by_sam.py.cwl
 inputs:
 - id: input
   doc: Input FA/FQ filename

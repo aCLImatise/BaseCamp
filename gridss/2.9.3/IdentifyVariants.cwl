@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/IdentifyVariants.cwl
+id: ../../../IdentifyVariants.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

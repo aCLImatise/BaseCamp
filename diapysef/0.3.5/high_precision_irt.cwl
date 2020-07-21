@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/high_precision_irt.py.cwl
+id: ../../../high_precision_irt.py.cwl
 inputs:
 - id: mq_out_dir
   doc: ''

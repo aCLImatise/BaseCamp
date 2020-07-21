@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_gradient.py_output.cwl
+id: ../../../medpy_gradient.py_output.cwl
 inputs:
 - id: v
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/average_dot.pl.cwl
+id: ../../../average_dot.pl.cwl
 inputs:
 - id: man
   doc: full documentation

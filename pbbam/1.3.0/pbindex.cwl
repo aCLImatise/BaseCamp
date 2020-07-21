@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbindex.cwl
+id: ../../../pbindex.cwl
 inputs:
 - id: in_dot_bam
   doc: FILE  Input BAM file

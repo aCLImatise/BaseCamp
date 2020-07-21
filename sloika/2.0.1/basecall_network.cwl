@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/basecall_network.py.cwl
+id: ../../../basecall_network.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

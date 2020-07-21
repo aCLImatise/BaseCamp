@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tb_profiler_lineage.cwl
+id: ../../../tb_profiler_lineage.cwl
 inputs:
 - id: bam
   doc: 'BAM file. Make sure it has been generated using the H37Rv genome (GCA_000195955.2)

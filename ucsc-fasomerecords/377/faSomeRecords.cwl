@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faSomeRecords.cwl
+id: ../../../faSomeRecords.cwl
 inputs:
 - id: exclude
   doc: '- output sequences not in the list file.'

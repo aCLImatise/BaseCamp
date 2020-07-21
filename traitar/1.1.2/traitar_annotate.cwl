@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/traitar_annotate.cwl
+id: ../../../traitar_annotate.cwl
 inputs:
 - id: gene_gff_type
   doc: if the input is amino acids the type of gene prediction GFF file can be specified

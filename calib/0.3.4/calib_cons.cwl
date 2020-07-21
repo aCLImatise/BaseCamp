@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/calib_cons.cwl
+id: ../../../calib_cons.cwl
 inputs:
 - id: parameter
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Oncotator.cwl
+id: ../../../Oncotator.cwl
 inputs:
 - id: var_0
   doc: ''

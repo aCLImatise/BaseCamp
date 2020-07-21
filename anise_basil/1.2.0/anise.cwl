@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anise.cwl
+id: ../../../anise.cwl
 inputs:
 - id: quiet
   doc: Set verbosity to a minimum.

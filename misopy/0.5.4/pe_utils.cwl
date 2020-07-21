@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pe_utils.cwl
+id: ../../../pe_utils.cwl
 inputs:
 - id: compute_insert_len
   doc: Compute insert length for given sample. Takes as input (1) a comma-separated

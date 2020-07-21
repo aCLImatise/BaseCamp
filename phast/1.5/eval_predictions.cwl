@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/eval_predictions.cwl
+id: ../../../eval_predictions.cwl
 inputs:
 - id: l
   doc: '[OPTIONS] '

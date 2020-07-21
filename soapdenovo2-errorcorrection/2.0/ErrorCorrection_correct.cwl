@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ErrorCorrection_correct.cwl
+id: ../../../ErrorCorrection_correct.cwl
 inputs:
 - id: consecutive_kmer_size
   doc: 'Consecutive Kmer Size, Default: 17'

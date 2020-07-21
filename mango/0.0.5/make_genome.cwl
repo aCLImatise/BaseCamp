@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_genome.cwl
+id: ../../../make_genome.cwl
 inputs:
 - id: parquet_disable_dictionary
   doc: ': Disable dictionary encoding (default: false)'

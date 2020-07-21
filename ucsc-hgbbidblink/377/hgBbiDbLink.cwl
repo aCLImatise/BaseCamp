@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hgBbiDbLink.cwl
+id: ../../../hgBbiDbLink.cwl
 inputs:
 - id: database
   doc: ''

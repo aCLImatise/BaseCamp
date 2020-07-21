@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/eventGenerator.py.cwl
+id: ../../../eventGenerator.py.cwl
 inputs:
 - id: i
   doc: ''

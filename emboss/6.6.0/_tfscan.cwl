@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_tfscan.cwl
+id: ../../../_tfscan.cwl
 inputs:
 - id: menu
   doc: 'menu       [V] Select class (Values: F (fungi); I (insect); P (plant); V (vertebrate);

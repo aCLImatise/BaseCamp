@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biscuit_tview.cwl
+id: ../../../biscuit_tview.cwl
 inputs:
 - id: pos_go_directly
   doc: :pos     go directly to this position

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quasirecomb.cwl
+id: ../../../quasirecomb.cwl
 inputs:
 - id: alignment_file_bam
   doc: ': Alignment file in BAM or SAM format.'

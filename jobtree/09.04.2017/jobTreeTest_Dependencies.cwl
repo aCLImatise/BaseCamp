@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jobTreeTest_Dependencies.py.cwl
+id: ../../../jobTreeTest_Dependencies.py.cwl
 inputs:
 - id: logoff
   doc: Turn off logging. (default is CRITICAL)

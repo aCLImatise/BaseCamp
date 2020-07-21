@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xander_customized_hmmer_version_for_prepare_gene.sh_directory.cwl
+id: ../../../xander_customized_hmmer_version_for_prepare_gene.sh_directory.cwl
 inputs:
 - id: gene
   doc: ''

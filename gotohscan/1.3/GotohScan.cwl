@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GotohScan.cwl
+id: ../../../GotohScan.cwl
 inputs:
 - id: arguments
   doc: ''

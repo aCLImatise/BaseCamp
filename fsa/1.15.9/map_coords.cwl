@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/map_coords.cwl
+id: ../../../map_coords.cwl
 inputs:
 - id: data
   doc: path to map, genome and alignment files

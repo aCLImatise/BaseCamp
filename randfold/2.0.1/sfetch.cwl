@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sfetch.cwl
+id: ../../../sfetch.cwl
 inputs:
 - id: name_accession_number
   doc: ': name is an accession number, not a key'

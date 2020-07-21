@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medaka_counts.cwl
+id: ../../../medaka_counts.cwl
 inputs:
 - id: print
   doc: 'print counts. (default: False)'

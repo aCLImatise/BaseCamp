@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LTR_retriever.cwl
+id: ../../../LTR_retriever.cwl
 inputs:
 - id: genome
   doc: ''

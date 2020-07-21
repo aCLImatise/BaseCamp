@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mktime.cwl
+id: ../../../mktime.cwl
 inputs:
 - id: yyyy_mm_dd
   doc: ''

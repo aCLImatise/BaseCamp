@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/addDataHeader.pl.cwl
+id: ../../../addDataHeader.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

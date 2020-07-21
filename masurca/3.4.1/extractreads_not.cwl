@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extractreads_not.pl.cwl
+id: ../../../extractreads_not.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

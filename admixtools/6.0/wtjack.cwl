@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wtjack.pl.cwl
+id: ../../../wtjack.pl.cwl
 inputs:
 - id: options
   doc: ''

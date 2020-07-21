@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segemehl.x.cwl
+id: ../../../segemehl.x.cwl
 inputs:
 - id: be_svoc_f
   doc: ''

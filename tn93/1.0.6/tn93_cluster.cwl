@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tn93_cluster.cwl
+id: ../../../tn93_cluster.cwl
 inputs:
 - id: direct_output_file
   doc: direct the output file with clusters to OUTPUT either  JSON or sets of FASTA

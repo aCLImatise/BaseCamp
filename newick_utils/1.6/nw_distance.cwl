@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nw_distance.cwl
+id: ../../../nw_distance.cwl
 inputs:
 - id: a_him_nt
   doc: ''

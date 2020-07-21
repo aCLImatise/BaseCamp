@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_bowtie.py.cwl
+id: ../../../run_bowtie.py.cwl
 inputs:
 - id: bis_map
   doc: Run bowtie with --norc

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gemma.cwl
+id: ../../../gemma.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

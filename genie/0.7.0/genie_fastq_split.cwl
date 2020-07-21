@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genie_fastq_split.cwl
+id: ../../../genie_fastq_split.cwl
 inputs:
 - id: file_path
   doc: Input FASTQ file (*require)

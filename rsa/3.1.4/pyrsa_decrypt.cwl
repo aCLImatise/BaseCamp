@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyrsa_decrypt.cwl
+id: ../../../pyrsa_decrypt.cwl
 inputs:
 - id: input
   doc: Name of the file to decrypt. Reads from stdin if not specified.

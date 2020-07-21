@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/slicedimage_checksum_out_path.cwl
+id: ../../../slicedimage_checksum_out_path.cwl
 inputs:
 - id: pretty
   doc: ''

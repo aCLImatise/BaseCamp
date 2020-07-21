@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getGCBiasStatistics.perl.cwl
+id: ../../../getGCBiasStatistics.perl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

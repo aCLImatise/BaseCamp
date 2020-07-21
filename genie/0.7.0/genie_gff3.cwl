@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genie_gff3.cwl
+id: ../../../genie_gff3.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

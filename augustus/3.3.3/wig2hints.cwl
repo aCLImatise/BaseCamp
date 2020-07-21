@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wig2hints.pl.cwl
+id: ../../../wig2hints.pl.cwl
 inputs:
 - id: width
   doc: 'Default: 40'

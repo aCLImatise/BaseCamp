@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bactopia_prepare.py.cwl
+id: ../../../bactopia_prepare.py.cwl
 inputs:
 - id: e
   doc: ''

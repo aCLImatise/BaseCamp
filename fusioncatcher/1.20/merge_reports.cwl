@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_reports.py.cwl
+id: ../../../merge_reports.py.cwl
 inputs:
 - id: input_bowtie
   doc: The report with candidate fusion genes found using the Bowtie.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/randseq.cwl
+id: ../../../randseq.cwl
 inputs:
 - id: option
   doc: ''

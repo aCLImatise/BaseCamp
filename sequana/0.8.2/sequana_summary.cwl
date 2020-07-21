@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequana_summary.cwl
+id: ../../../sequana_summary.cwl
 inputs:
 - id: file
   doc: one filename (either FastQ or BED file; see DESCRIPTION)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csb_embd.cwl
+id: ../../../csb_embd.cwl
 inputs:
 - id: psf_size
   doc: size of the point spread function (default=15)

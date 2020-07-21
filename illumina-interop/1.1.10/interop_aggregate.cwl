@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/interop_aggregate.cwl
+id: ../../../interop_aggregate.cwl
 inputs:
 - id: max_tile
   doc: '[0]: Maximum tile number to include'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/graphdump.cwl
+id: ../../../graphdump.cwl
 inputs:
 - id: k
   doc: ''

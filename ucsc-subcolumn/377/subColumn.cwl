@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/subColumn.cwl
+id: ../../../subColumn.cwl
 inputs:
 - id: list
   doc: '- Column is a comma-separated list.  Substitute all elements in list'

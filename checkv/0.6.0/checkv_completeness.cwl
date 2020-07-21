@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkv_completeness.cwl
+id: ../../../checkv_completeness.cwl
 inputs:
 - id: reference_database_path
   doc: Reference database path. By default the CHECKVDB environment variable is used

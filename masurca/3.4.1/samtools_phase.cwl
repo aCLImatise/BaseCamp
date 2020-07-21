@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools_phase.cwl
+id: ../../../samtools_phase.cwl
 inputs:
 - id: block_length
   doc: block length [13]

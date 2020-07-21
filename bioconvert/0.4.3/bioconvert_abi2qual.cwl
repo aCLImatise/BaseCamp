@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioconvert_abi2qual.cwl
+id: ../../../bioconvert_abi2qual.cwl
 inputs:
 - id: force
   doc: 'if outfile exists, it is overwritten with this option (default: False)'

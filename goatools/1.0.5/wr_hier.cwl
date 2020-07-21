@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wr_hier.py.cwl
+id: ../../../wr_hier.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

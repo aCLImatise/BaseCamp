@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_alignment.py.cwl
+id: ../../../filter_alignment.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

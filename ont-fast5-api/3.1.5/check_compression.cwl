@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/check_compression.cwl
+id: ../../../check_compression.cwl
 inputs:
 - id: input_path
   doc: Path to Fast5 file or directory of Fast5 files

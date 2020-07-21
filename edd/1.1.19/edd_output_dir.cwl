@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/edd_output_dir.cwl
+id: ../../../edd_output_dir.cwl
 inputs:
 - id: bin_size
   doc: ''

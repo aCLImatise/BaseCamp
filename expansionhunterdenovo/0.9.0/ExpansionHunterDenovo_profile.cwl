@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ExpansionHunterDenovo_profile.cwl
+id: ../../../ExpansionHunterDenovo_profile.cwl
 inputs:
 - id: reads
   doc: BAM or CRAM file with aligned reads

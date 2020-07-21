@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_extractorfs.cwl
+id: ../../../mmseqs_extractorfs.cwl
 inputs:
 - id: min_length
   doc: '1               minimum codon number in open reading frames                 '

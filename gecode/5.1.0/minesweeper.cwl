@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/minesweeper.cwl
+id: ../../../minesweeper.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transcov_COMMAND.cwl
+id: ../../../transcov_COMMAND.cwl
 inputs:
 - id: args
   doc: ''

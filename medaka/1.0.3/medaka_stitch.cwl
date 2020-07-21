@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medaka_stitch.cwl
+id: ../../../medaka_stitch.cwl
 inputs:
 - id: debug
   doc: 'Verbose logging of debug information. (default: 20)'

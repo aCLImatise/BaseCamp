@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyprophet_merge.cwl
+id: ../../../pyprophet_merge.cwl
 inputs:
 - id: out
   doc: Merged OSW output file.  [required]

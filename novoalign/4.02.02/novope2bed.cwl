@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/novope2bed.pl.cwl
+id: ../../../novope2bed.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

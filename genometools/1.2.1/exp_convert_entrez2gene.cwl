@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/exp_convert_entrez2gene.py.cwl
+id: ../../../exp_convert_entrez2gene.py.cwl
 inputs:
 - id: expression_file
   doc: The expression file.

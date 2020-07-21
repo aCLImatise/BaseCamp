@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/recover_scaffolds.pl.cwl
+id: ../../../recover_scaffolds.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

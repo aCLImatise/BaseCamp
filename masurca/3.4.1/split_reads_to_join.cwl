@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/split_reads_to_join.pl.cwl
+id: ../../../split_reads_to_join.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

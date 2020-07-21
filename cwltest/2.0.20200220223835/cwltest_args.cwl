@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cwltest_args.cwl
+id: ../../../cwltest_args.cwl
 inputs:
 - id: test
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getUnitigTypeFromAsmFile.perl.cwl
+id: ../../../getUnitigTypeFromAsmFile.perl.cwl
 inputs:
 - id: grep
   doc: ''

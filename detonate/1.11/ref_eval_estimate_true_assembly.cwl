@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ref_eval_estimate_true_assembly.cwl
+id: ../../../ref_eval_estimate_true_assembly.cwl
 inputs:
 - id: reference
   doc: The prefix of the reference built by rsem-prepare-reference. Required.

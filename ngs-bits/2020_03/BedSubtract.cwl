@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BedSubtract.cwl
+id: ../../../BedSubtract.cwl
 inputs:
 - id: in_two
   doc: Input BED file which is subtracted from 'in'.

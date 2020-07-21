@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/R_view.cwl
+id: ../../../R_view.cwl
 inputs:
 - id: _be_verbose
   doc: ': be verbose'

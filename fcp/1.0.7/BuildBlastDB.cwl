@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BuildBlastDB.py.cwl
+id: ../../../BuildBlastDB.py.cwl
 inputs:
 - id: make_blast_db_path
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqcoverage.cwl
+id: ../../../seqcoverage.cwl
 inputs:
 - id: direct_output_json
   doc: direct the output JSON to a file named OUTPUT (default=stdout)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_adapter_clipper_prime5_adapter.cwl
+id: ../../../mb_adapter_clipper_prime5_adapter.cwl
 inputs:
 - id: clip_len
   doc: ''

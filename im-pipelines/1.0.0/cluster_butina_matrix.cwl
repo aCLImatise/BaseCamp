@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cluster_butina_matrix.cwl
+id: ../../../cluster_butina_matrix.cwl
 inputs:
 - id: input
   doc: Input file, if not defined the STDIN is used

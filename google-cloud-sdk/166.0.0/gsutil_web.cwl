@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_web.cwl
+id: ../../../gsutil_web.cwl
 inputs:
 - id: m
   doc: ''

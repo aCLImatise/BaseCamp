@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/haplotyper.pl.cwl
+id: ../../../haplotyper.pl.cwl
 inputs:
 - id: options
   doc: ''

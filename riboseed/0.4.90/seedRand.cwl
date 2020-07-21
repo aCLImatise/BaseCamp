@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seedRand.py_n.cwl
+id: ../../../seedRand.py_n.cwl
 inputs:
 - id: see_dr_and_do_tpy
   doc: ''

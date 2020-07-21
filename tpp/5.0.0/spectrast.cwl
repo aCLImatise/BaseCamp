@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spectrast.cwl
+id: ../../../spectrast.cwl
 inputs:
 - id: verbose_mode
   doc: Verbose mode.

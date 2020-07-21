@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ReadSeq_split.cwl
+id: ../../../ReadSeq_split.cwl
 inputs:
 - id: seq_file_splitter
   doc: ''

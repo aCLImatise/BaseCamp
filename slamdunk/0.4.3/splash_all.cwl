@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splash_all.cwl
+id: ../../../splash_all.cwl
 inputs:
 - id: reference
   doc: Reference fasta file

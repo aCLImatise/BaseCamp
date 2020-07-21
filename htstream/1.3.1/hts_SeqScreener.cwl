@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hts_SeqScreener.cwl
+id: ../../../hts_SeqScreener.cwl
 inputs:
 - id: _version_print
   doc: '[ --version ]                      Version print'

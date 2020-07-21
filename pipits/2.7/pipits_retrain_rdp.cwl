@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pipits_retrain_rdp.cwl
+id: ../../../pipits_retrain_rdp.cwl
 inputs:
 - id: rdp_classifier_file
   doc: '[REQUIRED] RDP Classifier .jar file'

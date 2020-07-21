@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_library_id_lists.py.cwl
+id: ../../../make_library_id_lists.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

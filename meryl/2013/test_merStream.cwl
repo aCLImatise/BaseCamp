@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/test_merStream.cwl
+id: ../../../test_merStream.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

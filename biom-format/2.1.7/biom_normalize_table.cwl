@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biom_normalize_table.cwl
+id: ../../../biom_normalize_table.cwl
 inputs:
 - id: input_fp
   doc: The input BIOM table  [required]

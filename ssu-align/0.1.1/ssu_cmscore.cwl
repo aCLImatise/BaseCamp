@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_cmscore.cwl
+id: ../../../ssu_cmscore.cwl
 inputs:
 - id: generate_n_sequences
   doc: ': generate <n> sequences  [10]'

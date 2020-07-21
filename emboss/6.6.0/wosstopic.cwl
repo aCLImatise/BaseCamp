@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wosstopic.cwl
+id: ../../../wosstopic.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

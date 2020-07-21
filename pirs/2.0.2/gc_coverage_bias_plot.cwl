@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gc_coverage_bias_plot.cwl
+id: ../../../gc_coverage_bias_plot.cwl
 inputs:
 - id: no
   doc: ''

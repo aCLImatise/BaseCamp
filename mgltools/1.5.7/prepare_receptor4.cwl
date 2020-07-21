@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prepare_receptor4.py.cwl
+id: ../../../prepare_receptor4.py.cwl
 inputs:
 - id: receptorfilename
   doc: 'receptor_filename '

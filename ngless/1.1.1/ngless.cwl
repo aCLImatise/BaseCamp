@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ngless.cwl
+id: ../../../ngless.cwl
 inputs:
 - id: version_short
   doc: print just version string (useful for scripting)

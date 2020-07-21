@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halWiggleLiftover.cwl
+id: ../../../halWiggleLiftover.cwl
 inputs:
 - id: hal_file
   doc: ''

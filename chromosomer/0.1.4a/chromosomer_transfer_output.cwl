@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chromosomer_transfer_output.cwl
+id: ../../../chromosomer_transfer_output.cwl
 inputs:
 - id: f
   doc: ''

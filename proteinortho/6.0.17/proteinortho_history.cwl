@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteinortho_history.pl.cwl
+id: ../../../proteinortho_history.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

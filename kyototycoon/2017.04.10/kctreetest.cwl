@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kctreetest.cwl
+id: ../../../kctreetest.cwl
 inputs:
 - id: th
   doc: ''

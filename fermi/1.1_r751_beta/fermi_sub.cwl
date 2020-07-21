@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi_sub.cwl
+id: ../../../fermi_sub.cwl
 inputs:
 - id: c
   doc: ''

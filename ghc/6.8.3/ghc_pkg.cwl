@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ghc_pkg.cwl
+id: ../../../ghc_pkg.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

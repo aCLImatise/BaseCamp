@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cramtools_cram.cwl
+id: ../../../cramtools_cram.cwl
 inputs:
 - id: capture_all_tags
   doc: 'Capture all tags. (default: false)'

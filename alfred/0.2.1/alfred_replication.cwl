@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alfred_replication.cwl
+id: ../../../alfred_replication.cwl
 inputs:
 - id: arg_min_quality
   doc: '[ --qual ] arg (=1)          min. mapping quality'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merCounterTh_128mer.cwl
+id: ../../../merCounterTh_128mer.cwl
 inputs:
 - id: mer_size
   doc: ''

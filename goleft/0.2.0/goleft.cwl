@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goleft.cwl
+id: ../../../goleft.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

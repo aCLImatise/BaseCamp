@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/akt_kin.cwl
+id: ../../../akt_kin.cwl
 inputs:
 - id: minkin
   doc: ':                   threshold for relatedness output (none)'

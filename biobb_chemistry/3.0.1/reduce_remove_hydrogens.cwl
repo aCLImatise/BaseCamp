@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reduce_remove_hydrogens.cwl
+id: ../../../reduce_remove_hydrogens.cwl
 inputs:
 - id: config
   doc: Configuration file

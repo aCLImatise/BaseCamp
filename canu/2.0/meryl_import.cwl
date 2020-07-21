@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/meryl_import.cwl
+id: ../../../meryl_import.cwl
 inputs:
 - id: km_ers
   doc: A file consisting of kmers and values, one per line, separated by white space

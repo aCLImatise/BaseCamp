@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FPKM_count.py.cwl
+id: ../../../FPKM_count.py.cwl
 inputs:
 - id: input_file
   doc: Alignment file in BAM format (SAM is not supported). [required]

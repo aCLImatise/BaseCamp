@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/addCols.cwl
+id: ../../../addCols.cwl
 inputs:
 - id: max_cols
   doc: '- maximum number of colums (defaults to 16)'

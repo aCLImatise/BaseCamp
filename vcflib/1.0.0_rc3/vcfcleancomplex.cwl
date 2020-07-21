@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfcleancomplex.cwl
+id: ../../../vcfcleancomplex.cwl
 inputs:
 - id: vcf_file
   doc: ''

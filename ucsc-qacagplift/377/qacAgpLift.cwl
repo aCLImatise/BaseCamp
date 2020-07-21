@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qacAgpLift.cwl
+id: ../../../qacAgpLift.cwl
 inputs:
 - id: scaffold_to_chrom_dot_agp
   doc: ''

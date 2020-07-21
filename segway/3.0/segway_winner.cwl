@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segway_winner.cwl
+id: ../../../segway_winner.cwl
 inputs:
 - id: input_master
   doc: print input master file name

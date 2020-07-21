@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phsolverserver.cwl
+id: ../../../phsolverserver.cwl
 inputs:
 - id: verbose
   doc: Generate verbose output for both initialization and execution. Default is False.

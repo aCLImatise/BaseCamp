@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/netToAxt.cwl
+id: ../../../netToAxt.cwl
 inputs:
 - id: q_chain
   doc: '- net is with respect to the q side of chains.'

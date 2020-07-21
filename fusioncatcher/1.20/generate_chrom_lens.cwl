@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generate_chrom_lens.py.cwl
+id: ../../../generate_chrom_lens.py.cwl
 inputs:
 - id: input_genome
   doc: Input FASTA genome containing the genome sequences.

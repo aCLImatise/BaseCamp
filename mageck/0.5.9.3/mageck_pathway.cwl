@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mageck_pathway.cwl
+id: ../../../mageck_pathway.cwl
 inputs:
 - id: gene_ranking
   doc: The gene summary file (containing both positive and negative selection tests)

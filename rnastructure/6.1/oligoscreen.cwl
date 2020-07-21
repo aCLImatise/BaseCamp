@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/oligoscreen.cwl
+id: ../../../oligoscreen.cwl
 inputs:
 - id: list_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fu_extract.cwl
+id: ../../../fu_extract.cwl
 inputs:
 - id: input_file_dot_fa
   doc: ''

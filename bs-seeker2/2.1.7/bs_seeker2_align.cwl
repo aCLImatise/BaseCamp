@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bs_seeker2_align.py.cwl
+id: ../../../bs_seeker2_align.py.cwl
 inputs:
 - id: input
   doc: 'Input read file (FORMAT: sequences, qseq, fasta, fastq). Ex: read.fa or read.fa.gz'

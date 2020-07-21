@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_fs_usage.cwl
+id: ../../../omero_fs_usage.cwl
 inputs:
 - id: reverse
   doc: Reverse sort order

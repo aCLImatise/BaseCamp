@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_count.cwl
+id: ../../../fastq_count.cwl
 inputs:
 - id: input_fastq_gzipped
   doc: input fastq gzipped or not

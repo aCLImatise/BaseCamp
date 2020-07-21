@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/miniasm.cwl
+id: ../../../miniasm.cwl
 inputs:
 - id: prefilter_clearly_contained
   doc: prefilter clearly contained reads (2-pass required)

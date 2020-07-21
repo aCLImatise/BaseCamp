@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/netlearn.cwl
+id: ../../../netlearn.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

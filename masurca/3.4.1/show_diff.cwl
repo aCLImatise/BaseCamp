@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/show_diff.cwl
+id: ../../../show_diff.cwl
 inputs:
 - id: delta_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lofreq_alnqual.cwl
+id: ../../../lofreq_alnqual.cwl
 inputs:
 - id: bam_output_sam
   doc: BAM output (instead of SAM)

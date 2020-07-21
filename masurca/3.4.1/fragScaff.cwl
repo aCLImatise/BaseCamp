@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fragScaff.sh.cwl
+id: ../../../fragScaff.sh.cwl
 inputs:
 - id: t
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dwgsim_eval.cwl
+id: ../../../dwgsim_eval.cwl
 inputs:
 - id: int_split_mapping
   doc: 'INT     split by [0]: 0: by mapping quality 1: by alignment score 2: by suboptimal

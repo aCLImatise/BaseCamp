@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/zipHomerResults.pl.cwl
+id: ../../../zipHomerResults.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

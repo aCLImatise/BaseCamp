@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snpit_run.py.cwl
+id: ../../../snpit_run.py.cwl
 inputs:
 - id: input
   doc: the path to the VCF or FASTA file to read and classify (either can be bzip2ed/gzipped)

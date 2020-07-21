@@ -1,0 +1,80 @@
+&id001 !Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: java
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: fix-lineages
+  optional: false
+named:
+- !Flag
+  description: Maximum distance to consider closest neighbors. [Default=500]
+  synonyms:
+  - --distance
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: Fraction of closest neighbors that need to agree to perform change.
+    [Default=0.6]
+  synonyms:
+  - --fraction
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -jar
+  args: !SimpleFlagArg
+    name: lorikeet.jar
+  optional: true
+command:
+- lorikeet
+- fix-lineages
+parent: !Command
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -jar
+    args: !SimpleFlagArg
+      name: lorikeet.jar
+    optional: true
+  command:
+  - lorikeet
+  parent:
+  subcommands:
+  - *id001
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage:java -jar lorikeet.jar [instruction] [instruction options...]\n\
+    Instructions:\n\tspoligotype            Spoligotype BAM file based on digital\
+    \ spoligotyping\n\tmerge-spoligotypes     Merge multiple spoligotype files together\
+    \ in a single file\n\tmulti-type             Merge multiple spoligotype files\
+    \ together in a single file, renormalizing across multiple libraries when needed.\n\
+    \tfix-lineages           Fix lineage annotations based on phylogenetic tree and\
+    \ SNP distance matrix using a KNN classifier. \n"
+  generated_using: &id002
+  - --help
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Error: Unknown option --help\nError: Missing option --input\nError: Missing\
+  \ option --output\nError: Missing option --tree\nError: Missing option --snpmatrix\n\
+  Usage: java -jar lorikeet.jar fix-lineages [options]\n\n  -i <value> | --input <value>\n\
+  \        Input lineage information. (Output of merge-spoligotypes)\n  -o <value>\
+  \ | --output <value>\n        Output file.\n  -t <value> | --tree <value>\n    \
+  \    Phylogenetic tree file in NWK format.\n  -s <value> | --snpmatrix <value>\n\
+  \        Matrix with pairwise SNP distances (created with pelican)\n  --distance\
+  \ <value>\n        Maximum distance to consider closest neighbors. [Default=500]\n\
+  \  --fraction <value>\n        Fraction of closest neighbors that need to agree\
+  \ to perform change. [Default=0.6]\n"
+generated_using: *id002

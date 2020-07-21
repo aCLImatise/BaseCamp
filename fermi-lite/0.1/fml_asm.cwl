@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fml_asm.cwl
+id: ../../../fml_asm.cwl
 inputs:
 - id: kmer_length_disable
   doc: k-mer length for error correction (0 for auto; -1 to disable) [0]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/removebadbarcodes.sh.cwl
+id: ../../../removebadbarcodes.sh.cwl
 inputs:
 - id: in
   doc: ''

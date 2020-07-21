@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/eoulsan.sh.cwl
+id: ../../../eoulsan.sh.cwl
 inputs:
 - id: about
   doc: display information about this software

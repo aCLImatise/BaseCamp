@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spacepharer_createsetdb.cwl
+id: ../../../spacepharer_createsetdb.cwl
 inputs:
 - id: dbtype
   doc: 'Database type 0: auto, 1: amino acid 2: nucleotides [0]'

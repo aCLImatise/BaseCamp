@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmlogo.cwl
+id: ../../../hmmlogo.cwl
 inputs:
 - id: height_relent_all
   doc: ': total height = relative entropy ; all letters shown (default)'

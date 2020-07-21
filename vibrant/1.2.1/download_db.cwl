@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/download_db.sh.cwl
+id: ../../../download_db.sh.cwl
 inputs:
 - id: mode
   doc: set file mode (as in chmod), not a=rwx - umask

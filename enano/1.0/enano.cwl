@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/enano.cwl
+id: ../../../enano.cwl
 inputs:
 - id: use_compresion_default
   doc: To use MAX COMPRESION MODE. Default is FAST MODE.

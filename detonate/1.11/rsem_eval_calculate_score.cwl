@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_eval_calculate_score.cwl
+id: ../../../rsem_eval_calculate_score.cwl
 inputs:
 - id: overlap_size
   doc: 'The minimum overlap size required to join two reads together. (Default: 0)'

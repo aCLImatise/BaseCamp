@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medaka_train.cwl
+id: ../../../medaka_train.cwl
 inputs:
 - id: debug
   doc: 'Verbose logging of debug information. (default: 20)'

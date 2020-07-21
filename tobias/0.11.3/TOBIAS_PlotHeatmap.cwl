@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TOBIAS_PlotHeatmap.cwl
+id: ../../../TOBIAS_PlotHeatmap.cwl
 inputs:
 - id: tfbs
   doc: '[ [ ...]]           TFBS sites per column (*required)'

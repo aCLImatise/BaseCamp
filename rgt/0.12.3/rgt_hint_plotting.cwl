@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rgt_hint_plotting.cwl
+id: ../../../rgt_hint_plotting.cwl
 inputs:
 - id: organism
   doc: ''

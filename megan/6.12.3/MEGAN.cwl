@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MEGAN.cwl
+id: ../../../MEGAN.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

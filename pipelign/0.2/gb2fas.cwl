@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gb2fas.cwl
+id: ../../../gb2fas.cwl
 inputs:
 - id: input_dot_gb
   doc: ''

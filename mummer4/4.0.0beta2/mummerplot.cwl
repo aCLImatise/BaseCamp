@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mummerplot.cwl
+id: ../../../mummerplot.cwl
 inputs:
 - id: match_file
   doc: ''

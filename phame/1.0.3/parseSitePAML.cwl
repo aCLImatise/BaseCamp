@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parseSitePAML.pl.cwl
+id: ../../../parseSitePAML.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

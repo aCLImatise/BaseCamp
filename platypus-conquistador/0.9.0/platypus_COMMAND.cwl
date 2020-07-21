@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/platypus_COMMAND.cwl
+id: ../../../platypus_COMMAND.cwl
 inputs:
 - id: args
   doc: ''

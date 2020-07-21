@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_to_tab.cwl
+id: ../../../vcf_to_tab.cwl
 inputs:
 - id: iupac
   doc: Use one-letter IUPAC codes

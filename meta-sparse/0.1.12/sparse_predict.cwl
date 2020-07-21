@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sparse_predict.cwl
+id: ../../../sparse_predict.cwl
 inputs:
 - id: dbname
   doc: 'Name for the database folder. REQUIRED '

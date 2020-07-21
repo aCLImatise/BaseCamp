@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sirius.cwl
+id: ../../../sirius.cwl
 inputs:
 - id: arguments_dot_dot_dot
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/combine_kreports.py.cwl
+id: ../../../combine_kreports.py.cwl
 inputs:
 - id: report_files
   doc: Input kraken report files to combine (separate by spaces)

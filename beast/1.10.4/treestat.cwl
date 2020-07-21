@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treestat.cwl
+id: ../../../treestat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

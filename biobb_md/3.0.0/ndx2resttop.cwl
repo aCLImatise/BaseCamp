@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ndx2resttop.cwl
+id: ../../../ndx2resttop.cwl
 inputs:
 - id: config
   doc: This file can be a YAML file, JSON file or JSON string

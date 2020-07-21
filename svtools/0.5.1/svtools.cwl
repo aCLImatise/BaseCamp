@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtools.cwl
+id: ../../../svtools.cwl
 inputs:
 - id: support
   doc: information on obtaining support

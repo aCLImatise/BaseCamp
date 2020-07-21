@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_mrtrans.pl.cwl
+id: ../../../bp_mrtrans.pl.cwl
 inputs:
 - id: _output_filename
   doc: '- the output filename [default STDOUT]'

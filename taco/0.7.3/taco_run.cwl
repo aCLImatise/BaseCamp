@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taco_run.cwl
+id: ../../../taco_run.cwl
 inputs:
 - id: output_dir
   doc: directory where output files will be stored (if already exists then --resume

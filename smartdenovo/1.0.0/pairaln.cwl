@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pairaln.cwl
+id: ../../../pairaln.cwl
 inputs:
 - id: try_both_strands
   doc: Try both strands

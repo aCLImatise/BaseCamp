@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nf_core_list.cwl
+id: ../../../nf_core_list.cwl
 inputs:
 - id: sort
   doc: '[release|pulled|name|stars] How to sort listed pipelines'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/update_sort_bed_migrate_candidates_typical.cwl
+id: ../../../update_sort_bed_migrate_candidates_typical.cwl
 inputs:
 - id: resort_in_parallel_via_slur_m
   doc: '[ --slurm-memory <MB> ] [ --slurm-partition <SLURM partition> ] [ --slurm-workdir

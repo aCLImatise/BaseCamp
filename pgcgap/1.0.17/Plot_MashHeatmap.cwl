@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Plot_MashHeatmap.R.cwl
+id: ../../../Plot_MashHeatmap.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

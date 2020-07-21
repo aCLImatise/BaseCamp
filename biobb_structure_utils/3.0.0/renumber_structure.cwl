@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/renumber_structure.cwl
+id: ../../../renumber_structure.cwl
 inputs:
 - id: config
   doc: This file can be a YAML file, JSON file or JSON string

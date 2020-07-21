@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_put_collection.cwl
+id: ../../../hca_dss_put_collection.cwl
 inputs:
 - id: contents
   doc: A list of objects describing links to files, bundles, other collections, and

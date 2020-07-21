@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pvacseq_coverage_filter.cwl
+id: ../../../pvacseq_coverage_filter.cwl
 inputs:
 - id: normal_cov
   doc: 'Normal Coverage Cutoff. Sites above this cutoff will be considered. Default:

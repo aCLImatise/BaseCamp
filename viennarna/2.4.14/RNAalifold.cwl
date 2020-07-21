@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RNAalifold.cwl
+id: ../../../RNAalifold.cwl
 inputs:
 - id: detailed_help
   doc: Print help, including all details and hidden options, and exit

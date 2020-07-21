@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_database.py.cwl
+id: ../../../make_database.py.cwl
 inputs:
 - id: tax_file
   doc: Taxonomy file name

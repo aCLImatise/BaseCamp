@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/demultiplex_fasta.py.cwl
+id: ../../../demultiplex_fasta.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

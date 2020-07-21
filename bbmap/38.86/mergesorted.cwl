@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergesorted.sh.cwl
+id: ../../../mergesorted.sh.cwl
 inputs:
 - id: sort_temp
   doc: ''

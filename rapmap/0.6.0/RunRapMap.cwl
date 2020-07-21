@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RunRapMap.sh.cwl
+id: ../../../RunRapMap.sh.cwl
 inputs:
 - id: quasi_map
   doc: '--- maps reads to a quasi-mapping index'

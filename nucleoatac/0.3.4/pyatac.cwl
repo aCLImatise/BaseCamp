@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyatac.cwl
+id: ../../../pyatac.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/motiph.cwl
+id: ../../../motiph.cwl
 inputs:
 - id: pseudo_count
   doc: (default=0.1)

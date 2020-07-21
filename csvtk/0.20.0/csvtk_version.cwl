@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk_version.cwl
+id: ../../../csvtk_version.cwl
 inputs:
 - id: check_update
   doc: check update

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_db_server.cwl
+id: ../../../arb_db_server.cwl
 inputs:
 - id: use_asciidbversion
   doc: use ASCII-DB-version

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/principal_coordinates.py.cwl
+id: ../../../principal_coordinates.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

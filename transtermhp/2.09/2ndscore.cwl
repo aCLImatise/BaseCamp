@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/2ndscore.cwl
+id: ../../../2ndscore.cwl
 inputs:
 - id: in_dot_fast_a
   doc: ''

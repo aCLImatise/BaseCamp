@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/removecatdogmousehuman.sh.cwl
+id: ../../../removecatdogmousehuman.sh.cwl
 inputs:
 - id: in
   doc: ''

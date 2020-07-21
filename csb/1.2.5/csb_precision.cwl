@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csb_precision.cwl
+id: ../../../csb_precision.cwl
 inputs:
 - id: pdb
   doc: the PDB database (a directory containing all PDB files)

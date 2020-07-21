@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MaskPrimers.py_BARCODE.cwl
+id: ../../../MaskPrimers.py_BARCODE.cwl
 inputs:
 - id: mask_primers_do_tpy
   doc: ''

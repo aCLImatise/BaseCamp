@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trimmer.py_reads_2.fq.cwl
+id: ../../../trimmer.py_reads_2.fq.cwl
 inputs:
 - id: trimmer_do_tpy
   doc: ''

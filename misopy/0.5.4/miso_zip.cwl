@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/miso_zip.cwl
+id: ../../../miso_zip.cwl
 inputs:
 - id: to
   doc: ''

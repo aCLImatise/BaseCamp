@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_seqrange_sqfile.cwl
+id: ../../../ssu_esl_seqrange_sqfile.cwl
 inputs:
 - id: proc_idx
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/randfold_file name.cwl
+id: ../../../randfold_file name.cwl
 inputs:
 - id: rand_fold
   doc: ''

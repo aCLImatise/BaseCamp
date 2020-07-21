@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dgenies_gallery_del.cwl
+id: ../../../dgenies_gallery_del.cwl
 inputs:
 - id: id_job
   doc: Id (name) of the job to delete from the gallery

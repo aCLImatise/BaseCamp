@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extractBCITrees.cwl
+id: ../../../extractBCITrees.cwl
 inputs:
 - id: random_seed
   doc: ''

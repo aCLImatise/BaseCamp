@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pairtools_flip.cwl
+id: ../../../pairtools_flip.cwl
 inputs:
 - id: chrom_s_path
   doc: 'Chromosome order used to flip interchromosomal mates: path to a chromosomes

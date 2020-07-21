@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makblk.pl.cwl
+id: ../../../makblk.pl.cwl
 inputs:
 - id: use_reduced_alphabet
   doc: ':     use reduced alphabet'

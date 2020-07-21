@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/raSqlQuery.cwl
+id: ../../../raSqlQuery.cwl
 inputs:
 - id: no_inherit_field
   doc: "- If field is present don't inherit fields from parent"

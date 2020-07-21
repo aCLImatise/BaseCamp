@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ExpaRNA.cwl
+id: ../../../ExpaRNA.cwl
 inputs:
 - id: minmal_size_epm
   doc: '#   : # minmal size of an EPM (gamma) 2 is default and returns all EPMs with

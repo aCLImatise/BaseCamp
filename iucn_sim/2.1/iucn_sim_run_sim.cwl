@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iucn_sim_run_sim.cwl
+id: ../../../iucn_sim_run_sim.cwl
 inputs:
 - id: input_data
   doc: Path to 'simulation_input_data.pkl' file created by esimate_rates function.

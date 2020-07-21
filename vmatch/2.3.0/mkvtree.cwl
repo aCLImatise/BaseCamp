@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mkvtree.cwl
+id: ../../../mkvtree.cwl
 inputs:
 - id: index_name
   doc: ''

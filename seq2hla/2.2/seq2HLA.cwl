@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seq2HLA.cwl
+id: ../../../seq2HLA.cwl
 inputs:
 - id: one
   doc: 'File name of #1 mates (uncompressed or gzipped fastq)'

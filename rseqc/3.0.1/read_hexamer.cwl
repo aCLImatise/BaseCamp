@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/read_hexamer.py.cwl
+id: ../../../read_hexamer.py.cwl
 inputs:
 - id: input
   doc: "Read sequence in fasta or fastq format. Multiple fasta/fastq files should\

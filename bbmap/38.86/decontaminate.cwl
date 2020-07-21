@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/decontaminate.sh.cwl
+id: ../../../decontaminate.sh.cwl
 inputs:
 - id: reads
   doc: ''

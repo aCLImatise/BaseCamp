@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chopFaLines.cwl
+id: ../../../chopFaLines.cwl
 inputs:
 - id: in_dot_fa
   doc: ''

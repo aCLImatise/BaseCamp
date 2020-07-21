@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/verse.cwl
+id: ../../../verse.cwl
 inputs:
 - id: output_version_program
   doc: Output version of the program.

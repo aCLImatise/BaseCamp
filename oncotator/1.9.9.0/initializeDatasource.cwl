@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/initializeDatasource.cwl
+id: ../../../initializeDatasource.cwl
 inputs:
 - id: ds_type
   doc: ''

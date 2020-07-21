@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tripaille_analysis_load_interpro.cwl
+id: ../../../tripaille_analysis_load_interpro.cwl
 inputs:
 - id: interpro_parameters
   doc: InterProScan parameters used to produce these results

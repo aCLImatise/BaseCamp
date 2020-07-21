@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bwa_bwtupdate.cwl
+id: ../../../bwa_bwtupdate.cwl
 inputs:
 - id: the_dot_bwt
   doc: ''

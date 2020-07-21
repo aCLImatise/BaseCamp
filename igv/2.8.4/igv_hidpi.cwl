@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/igv_hidpi.cwl
+id: ../../../igv_hidpi.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

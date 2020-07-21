@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parsec.cwl
+id: ../../../parsec.cwl
 inputs:
 - id: verbose
   doc: Enables verbose mode.

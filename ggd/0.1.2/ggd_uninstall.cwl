@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ggd_uninstall.cwl
+id: ../../../ggd_uninstall.cwl
 inputs:
 - id: channel
   doc: The ggd channel of the recipe to uninstall. (Default = genomics)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tango_download.cwl
+id: ../../../tango_download.cwl
 inputs:
 - id: dl_dir
   doc: Write files to this directory. Defaults to db name in current directory. Will

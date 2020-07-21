@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scssim.cwl
+id: ../../../scssim.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

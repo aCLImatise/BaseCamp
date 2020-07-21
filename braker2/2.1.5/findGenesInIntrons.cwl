@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findGenesInIntrons.pl.cwl
+id: ../../../findGenesInIntrons.pl.cwl
 inputs:
 - id: in_gff
   doc: '[name] name of file with gtf format gene predictions'

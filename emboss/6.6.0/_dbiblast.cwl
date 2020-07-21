@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_dbiblast.cwl
+id: ../../../_dbiblast.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

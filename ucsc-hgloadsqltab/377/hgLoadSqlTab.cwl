@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hgLoadSqlTab.cwl
+id: ../../../hgLoadSqlTab.cwl
 inputs:
 - id: warn
   doc: '- warn instead of abort on mysql errors or warnings'

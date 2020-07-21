@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/assemblerflow_build.cwl
+id: ../../../assemblerflow_build.cwl
 inputs:
 - id: tasks
   doc: Space separated tasks of the pipeline

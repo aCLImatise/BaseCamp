@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/popt.cwl
+id: ../../../popt.cwl
 inputs:
 - id: s
   doc: ''

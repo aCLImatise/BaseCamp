@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sentieon_bwa_mem.cwl
+id: ../../../sentieon_bwa_mem.cwl
 inputs:
 - id: number_of_threads
   doc: number of threads [1]

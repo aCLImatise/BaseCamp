@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DBsplit.cwl
+id: ../../../DBsplit.cwl
 inputs:
 - id: a
   doc: ''

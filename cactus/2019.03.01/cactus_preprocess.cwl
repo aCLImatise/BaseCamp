@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cactus_preprocess.cwl
+id: ../../../cactus_preprocess.cwl
 inputs:
 - id: logoff
   doc: Same as --logCritical

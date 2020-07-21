@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o_generate_gephi_network_file.cwl
+id: ../../../o_generate_gephi_network_file.cwl
 inputs:
 - id: sample_mapping
   doc: Providing a sample mapping file will make Gephi file much more useful.

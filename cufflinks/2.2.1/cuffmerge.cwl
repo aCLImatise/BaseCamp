@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cuffmerge.cwl
+id: ../../../cuffmerge.cwl
 inputs:
 - id: h_slash_help
   doc: Prints the help message and exits

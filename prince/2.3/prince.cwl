@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prince.cwl
+id: ../../../prince.cwl
 inputs:
 - id: boost_output
   doc: output file for training data / training data used to predict copy numbers

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snp_filter.py.cwl
+id: ../../../snp_filter.py.cwl
 inputs:
 - id: force
   doc: 'Force processing even when result files already exist and are newer than inputs

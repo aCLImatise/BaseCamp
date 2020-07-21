@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hts_Primers.cwl
+id: ../../../hts_Primers.cwl
 inputs:
 - id: _version_print
   doc: '[ --version ]                      Version print'

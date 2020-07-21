@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transposcope_view.cwl
+id: ../../../transposcope_view.cwl
 inputs:
 - id: web_directory
   doc: The path to the web directory created by the align tool.

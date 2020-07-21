@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wellington_bootstrap.py.cwl
+id: ../../../wellington_bootstrap.py.cwl
 inputs:
 - id: footprint_sizes
   doc: 'Range of footprint sizes to try in format "from,to,step" (default: 11,26,2)'

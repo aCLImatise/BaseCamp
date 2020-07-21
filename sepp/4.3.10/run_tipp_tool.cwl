@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_tipp_tool.py.cwl
+id: ../../../run_tipp_tool.py.cwl
 inputs:
 - id: gene
   doc: use GENE's reference package

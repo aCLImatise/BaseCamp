@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_concat.cwl
+id: ../../../goalign_concat.cwl
 inputs:
 - id: output
   doc: Alignment output file (default "stdout")

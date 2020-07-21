@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csb_buildhmm.cwl
+id: ../../../csb_buildhmm.cwl
 inputs:
 - id: query_id
   doc: ID of the query, in PDB-like format (accessionCHAIN).Used for naming the output

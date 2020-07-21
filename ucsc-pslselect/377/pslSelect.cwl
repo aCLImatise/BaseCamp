@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslSelect.cwl
+id: ../../../pslSelect.cwl
 inputs:
 - id: qt_start
   doc: '- file is tab-separate rows of qName,tName,tStart'

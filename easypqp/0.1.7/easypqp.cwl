@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/easypqp.cwl
+id: ../../../easypqp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

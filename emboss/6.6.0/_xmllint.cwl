@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_xmllint.cwl
+id: ../../../_xmllint.cwl
 inputs:
 - id: no_catalogs
   doc: ': deactivate all catalogs'

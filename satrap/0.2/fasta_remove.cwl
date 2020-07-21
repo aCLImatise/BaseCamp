@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_remove.cwl
+id: ../../../fasta_remove.cwl
 inputs:
 - id: fast_a
   doc: ''

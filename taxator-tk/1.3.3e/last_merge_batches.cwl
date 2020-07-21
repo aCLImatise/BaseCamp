@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/last_merge_batches.cwl
+id: ../../../last_merge_batches.cwl
 inputs:
 - id: files
   doc: ''

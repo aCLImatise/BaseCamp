@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof_reverse.cwl
+id: ../../../smof_reverse.cwl
 inputs:
 - id: complement
   doc: take the reverse complement of the sequence

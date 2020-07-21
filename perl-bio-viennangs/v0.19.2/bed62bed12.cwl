@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bed62bed12.pl.cwl
+id: ../../../bed62bed12.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

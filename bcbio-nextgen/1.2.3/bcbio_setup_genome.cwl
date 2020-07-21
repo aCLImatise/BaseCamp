@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcbio_setup_genome.py.cwl
+id: ../../../bcbio_setup_genome.py.cwl
 inputs:
 - id: cores
   doc: number of cores to use

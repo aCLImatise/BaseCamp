@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterMRNA.cwl
+id: ../../../filterMRNA.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

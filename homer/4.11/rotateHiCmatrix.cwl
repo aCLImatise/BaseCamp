@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rotateHiCmatrix.pl.cwl
+id: ../../../rotateHiCmatrix.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

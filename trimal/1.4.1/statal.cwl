@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/statal.cwl
+id: ../../../statal.cwl
 inputs:
 - id: in
   doc: Input file in several formats (clustal, fasta, nexus, phylip, etc).

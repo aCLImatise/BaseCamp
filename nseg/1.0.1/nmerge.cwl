@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nmerge.cwl
+id: ../../../nmerge.cwl
 inputs:
 - id: dbn
   doc: ''

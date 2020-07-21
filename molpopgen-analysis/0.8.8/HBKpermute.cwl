@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HBKpermute.cwl
+id: ../../../HBKpermute.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/structureHarvester.py.cwl
+id: ../../../structureHarvester.py.cwl
 inputs:
 - id: dir
   doc: The structure Results/ directory.

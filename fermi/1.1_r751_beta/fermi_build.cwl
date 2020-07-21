@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi_build.cwl
+id: ../../../fermi_build.cwl
 inputs:
 - id: use_small_marker
   doc: use a small marker per 2^(INT+3) bytes [3]

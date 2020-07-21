@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dtc_maxn.cwl
+id: ../../../dtc_maxn.cwl
 inputs:
 - id: dtc
   doc: ''

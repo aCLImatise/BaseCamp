@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Assemblytics_max_size.cwl
+id: ../../../Assemblytics_max_size.cwl
 inputs:
 - id: assembly_tics
   doc: ''

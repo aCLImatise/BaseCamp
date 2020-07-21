@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plip.cwl
+id: ../../../plip.cwl
 inputs:
 - id: input
   doc: Input file, if not defined the STDIN is used

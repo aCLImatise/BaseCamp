@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cent_adjust.cwl
+id: ../../../cent_adjust.cwl
 inputs:
 - id: input_center
   doc: ''

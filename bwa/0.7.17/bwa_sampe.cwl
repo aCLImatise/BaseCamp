@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bwa_sampe.cwl
+id: ../../../bwa_sampe.cwl
 inputs:
 - id: maximum_insert_size
   doc: maximum insert size [500]

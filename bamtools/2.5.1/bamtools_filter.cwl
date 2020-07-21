@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamtools_filter.cwl
+id: ../../../bamtools_filter.cwl
 inputs:
 - id: in
   doc: the input BAM file(s) [stdin]

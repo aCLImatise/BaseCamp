@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scHicCorrectMatrices.cwl
+id: ../../../scHicCorrectMatrices.cwl
 inputs:
 - id: matrix
   doc: 'Matrix to reduce in h5 format. (default: None)'

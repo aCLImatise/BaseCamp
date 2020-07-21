@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Consensus.cwl
+id: ../../../Consensus.cwl
 inputs:
 - id: out
   doc: write the output FASTA file to OUTPUT

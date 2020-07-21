@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/galaxy_tool_test.cwl
+id: ../../../galaxy_tool_test.cwl
 inputs:
 - id: galaxy_url
   doc: Galaxy URL

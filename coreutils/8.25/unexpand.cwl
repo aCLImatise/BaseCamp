@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unexpand.cwl
+id: ../../../unexpand.cwl
 inputs:
 - id: all
   doc: convert all blanks, instead of just initial blanks

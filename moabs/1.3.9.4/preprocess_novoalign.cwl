@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/preprocess_novoalign.sh.cwl
+id: ../../../preprocess_novoalign.sh.cwl
 inputs:
 - id: sam_tools
   doc: ''

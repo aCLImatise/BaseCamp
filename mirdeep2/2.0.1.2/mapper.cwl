@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mapper.pl.cwl
+id: ../../../mapper.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

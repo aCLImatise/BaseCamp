@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/recosimulate.cwl
+id: ../../../recosimulate.cwl
 inputs:
 - id: reco_sim
   doc: ''

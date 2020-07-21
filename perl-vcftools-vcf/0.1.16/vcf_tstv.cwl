@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_tstv.cwl
+id: ../../../vcf_tstv.cwl
 inputs:
 - id: cat
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/replaceCopyright.cwl
+id: ../../../replaceCopyright.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

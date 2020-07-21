@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/install_slam.sh.cwl
+id: ../../../install_slam.sh.cwl
 inputs:
 - id: mode
   doc: set file mode (as in chmod), not a=rwx - umask

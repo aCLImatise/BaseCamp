@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/translate_gard.cwl
+id: ../../../translate_gard.cwl
 inputs:
 - id: input_filename_cdnexgardcsv
   doc: input filename (like CD2.nex.GARD.csv)  [required]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scf_update.cwl
+id: ../../../scf_update.cwl
 inputs:
 - id: v
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deeptools.cwl
+id: ../../../deeptools.cwl
 inputs:
 - id: multi_bam_summary
   doc: compute read coverages over bam files. Output used for plotCorrelation or plotPCA

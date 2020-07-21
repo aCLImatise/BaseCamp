@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_local_taxonomydb_query.pl.cwl
+id: ../../../bp_local_taxonomydb_query.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

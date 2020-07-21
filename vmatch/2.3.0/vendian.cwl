@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vendian.cwl
+id: ../../../vendian.cwl
 inputs:
 - id: bytes
   doc: ''

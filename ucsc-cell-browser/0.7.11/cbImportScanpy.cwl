@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cbImportScanpy.cwl
+id: ../../../cbImportScanpy.cwl
 inputs:
 - id: debug
   doc: show debug messages

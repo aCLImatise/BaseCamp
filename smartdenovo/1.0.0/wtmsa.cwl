@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wtmsa.cwl
+id: ../../../wtmsa.cwl
 inputs:
 - id: total_parallel_jobs
   doc: Total parallel jobs, [1]

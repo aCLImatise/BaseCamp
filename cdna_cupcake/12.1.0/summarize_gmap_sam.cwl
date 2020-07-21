@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summarize_gmap_sam.py.cwl
+id: ../../../summarize_gmap_sam.py.cwl
 inputs:
 - id: summarize
   doc: ''

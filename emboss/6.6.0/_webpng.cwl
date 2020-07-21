@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_webpng.cwl
+id: ../../../_webpng.cwl
 inputs:
 - id: turns_onoff_interlace
   doc: Turns on/off interlace

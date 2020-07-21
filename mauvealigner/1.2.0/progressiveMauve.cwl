@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/progressiveMauve.cwl
+id: ../../../progressiveMauve.cwl
 inputs:
 - id: island_gap_size
   doc: Alignment gaps above this size in nucleotides are considered to be islands

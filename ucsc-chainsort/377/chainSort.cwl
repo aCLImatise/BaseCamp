@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chainSort.cwl
+id: ../../../chainSort.cwl
 inputs:
 - id: target
   doc: on target start rather than score

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BICseqOneSample.pl.cwl
+id: ../../../BICseqOneSample.pl.cwl
 inputs:
 - id: lambda
   doc: ': the (positive) penalty used for BIC-seq'

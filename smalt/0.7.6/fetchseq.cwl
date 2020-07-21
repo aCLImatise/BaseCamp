@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fetchseq.cwl
+id: ../../../fetchseq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

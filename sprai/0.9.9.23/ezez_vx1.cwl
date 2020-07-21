@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ezez_vx1.pl.cwl
+id: ../../../ezez_vx1.pl.cwl
 inputs:
 - id: this
   doc: ''

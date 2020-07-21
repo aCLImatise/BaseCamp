@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmcalibrate2.cwl
+id: ../../../hmmcalibrate2.cwl
 inputs:
 - id: cpu
   doc: ': run <n> threads in parallel (if threaded)'

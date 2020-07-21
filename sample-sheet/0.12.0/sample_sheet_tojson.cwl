@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sample_sheet_tojson.cwl
+id: ../../../sample_sheet_tojson.cwl
 inputs:
 - id: path
   doc: ''

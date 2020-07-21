@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/junctionalReads.py.cwl
+id: ../../../junctionalReads.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CMV.cwl
+id: ../../../CMV.cwl
 inputs:
 - id: numeric_version
   doc: Print just the version number

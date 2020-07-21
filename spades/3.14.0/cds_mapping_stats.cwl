@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cds_mapping_stats.cwl
+id: ../../../cds_mapping_stats.cwl
 inputs:
 - id: kmer_length_use
   doc: k-mer length to use

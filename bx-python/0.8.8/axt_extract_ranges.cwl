@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/axt_extract_ranges.py.cwl
+id: ../../../axt_extract_ranges.py.cwl
 inputs:
 - id: min_cols
   doc: Minimum length (columns) required for alignment to be output

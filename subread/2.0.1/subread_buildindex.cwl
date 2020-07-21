@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/subread_buildindex.cwl
+id: ../../../subread_buildindex.cwl
 inputs:
 - id: base_name_created
   doc: base name of the index to be created

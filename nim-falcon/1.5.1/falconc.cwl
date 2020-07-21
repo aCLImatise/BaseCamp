@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/falconc.cwl
+id: ../../../falconc.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

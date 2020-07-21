@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfnormalizesvs.cwl
+id: ../../../vcfnormalizesvs.cwl
 inputs:
 - id: _reference_reffa
   doc: / --reference <ref.fa>   FASTA-format reference genome from which to pull SV

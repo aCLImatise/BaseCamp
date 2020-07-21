@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/grf_main.cwl
+id: ../../../grf_main.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

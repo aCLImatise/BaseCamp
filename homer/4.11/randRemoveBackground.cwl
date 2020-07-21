@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/randRemoveBackground.pl.cwl
+id: ../../../randRemoveBackground.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

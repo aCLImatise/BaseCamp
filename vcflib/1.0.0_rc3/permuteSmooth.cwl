@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/permuteSmooth.cwl
+id: ../../../permuteSmooth.cwl
 inputs:
 - id: s
   doc: ''

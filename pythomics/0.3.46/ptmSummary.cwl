@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ptmSummary.py.cwl
+id: ../../../ptmSummary.py.cwl
 inputs:
 - id: threads_to_run
   doc: Threads to run

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_gb2embl.pl.cwl
+id: ../../../gaas_gb2embl.pl.cwl
 inputs:
 - id: gb
   doc: Input genebank file that will be read

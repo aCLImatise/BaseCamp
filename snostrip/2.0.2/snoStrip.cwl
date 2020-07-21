@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snoStrip.pl.cwl
+id: ../../../snoStrip.pl.cwl
 inputs:
 - id: dir_output_directory
   doc: '|dir             Output directory where all retrieved information will be

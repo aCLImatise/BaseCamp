@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmpair.cwl
+id: ../../../hmmpair.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

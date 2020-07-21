@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blockclust.py.cwl
+id: ../../../blockclust.py.cwl
 inputs:
 - id: mode
   doc: 'Mode of operationPRE = Preprocessing mode. convert from reads BAM to tags

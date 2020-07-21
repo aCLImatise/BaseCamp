@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mktemp.cwl
+id: ../../../mktemp.cwl
 inputs:
 - id: directory
   doc: create a directory, not a file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_unique_names.cwl
+id: ../../../fasta_unique_names.cwl
 inputs:
 - id: r
   doc: ''

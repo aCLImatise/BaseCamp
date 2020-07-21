@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/axiome.cwl
+id: ../../../axiome.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

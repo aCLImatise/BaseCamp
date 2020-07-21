@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trim_by_kunitigs.pl.cwl
+id: ../../../trim_by_kunitigs.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

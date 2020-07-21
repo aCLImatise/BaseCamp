@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_genome.py.cwl
+id: ../../../get_genome.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the chromosomes are downloaded, e.g. homo_sapiens,

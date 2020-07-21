@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sga_cluster.cwl
+id: ../../../sga_cluster.cwl
 inputs:
 - id: verbose
   doc: display verbose output

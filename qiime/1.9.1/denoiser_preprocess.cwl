@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/denoiser_preprocess.py.cwl
+id: ../../../denoiser_preprocess.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeHKY.cwl
+id: ../../../makeHKY.cwl
 inputs:
 - id: branch_length
   doc: Assume a tree consisting of a single branch of specified length. Default value

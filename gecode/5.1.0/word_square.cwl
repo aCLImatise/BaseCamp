@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/word_square.cwl
+id: ../../../word_square.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obicount.cwl
+id: ../../../obicount.cwl
 inputs:
 - id: sequence
   doc: Prints only the number of sequence records.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varda2_client.cwl
+id: ../../../varda2_client.cwl
 inputs:
 - id: protocol
   doc: Server protocol

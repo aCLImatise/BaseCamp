@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mauveToXMFA.cwl
+id: ../../../mauveToXMFA.cwl
 inputs:
 - id: mauve_alignment_input
   doc: ''

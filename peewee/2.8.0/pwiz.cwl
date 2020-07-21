@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pwiz.py.cwl
+id: ../../../pwiz.py.cwl
 inputs:
 - id: tables
   doc: Only generate the specified tables. Multiple table names should be separated

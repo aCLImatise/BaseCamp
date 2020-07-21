@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AccurateMassSearch.cwl
+id: ../../../AccurateMassSearch.cwl
 inputs:
 - id: in
   doc: "*                FeatureXML or consensusXML file (valid formats: 'featureXML',\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedparse_bed12tobed6_bedfile.cwl
+id: ../../../bedparse_bed12tobed6_bedfile.cwl
 inputs:
 - id: append_exn
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkm_taxonomy_wf_taxon.cwl
+id: ../../../checkm_taxonomy_wf_taxon.cwl
 inputs:
 - id: ali
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/expMatrixToBarchartBed_sampleFile.cwl
+id: ../../../expMatrixToBarchartBed_sampleFile.cwl
 inputs:
 - id: auto_sql
   doc: ''

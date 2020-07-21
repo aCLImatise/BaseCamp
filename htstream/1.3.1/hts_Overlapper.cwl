@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hts_Overlapper.cwl
+id: ../../../hts_Overlapper.cwl
 inputs:
 - id: _version_print
   doc: '[ --version ]                      Version print'

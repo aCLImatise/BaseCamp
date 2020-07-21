@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lohhla.cwl
+id: ../../../lohhla.cwl
 inputs:
 - id: patient_id
   doc: patient ID

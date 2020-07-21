@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prepare_prot.py.cwl
+id: ../../../prepare_prot.py.cwl
 inputs:
 - id: input_pdb_file
   doc: Input PDB file

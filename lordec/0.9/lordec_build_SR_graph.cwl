@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lordec_build_SR_graph.cwl
+id: ../../../lordec_build_SR_graph.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rmOut2Fasta.pl.cwl
+id: ../../../rmOut2Fasta.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

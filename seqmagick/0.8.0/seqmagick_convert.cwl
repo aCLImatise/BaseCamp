@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqmagick_convert.cwl
+id: ../../../seqmagick_convert.cwl
 inputs:
 - id: alphabet
   doc: Input alphabet. Required for writing NEXUS.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cgatreport_clean.cwl
+id: ../../../cgatreport_clean.cwl
 inputs:
 - id: verbose
   doc: loglevel. The higher, the more output [default=2]

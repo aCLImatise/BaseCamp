@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chopUpPeakFile.pl.cwl
+id: ../../../chopUpPeakFile.pl.cwl
 inputs:
 - id: target_peak_file
   doc: ''

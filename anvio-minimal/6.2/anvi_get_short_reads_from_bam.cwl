@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_get_short_reads_from_bam.cwl
+id: ../../../anvi_get_short_reads_from_bam.cwl
 inputs:
 - id: profile_db
   doc: Anvi'o profile database

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_versioning_bucket_url....cwl
+id: ../../../gsutil_versioning_bucket_url....cwl
 inputs:
 - id: gs_util
   doc: ''

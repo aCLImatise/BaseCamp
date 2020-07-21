@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslLiftSubrangeBlat.cwl
+id: ../../../pslLiftSubrangeBlat.cwl
 inputs:
 - id: t_sizes
   doc: '- lift target side based on tName, using target sizes from this tab separated

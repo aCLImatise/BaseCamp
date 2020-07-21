@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svjedi.py.cwl
+id: ../../../svjedi.py.cwl
 inputs:
 - id: vcf
   doc: vcf format

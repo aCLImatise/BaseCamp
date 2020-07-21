@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msafilter.cwl
+id: ../../../msafilter.cwl
 inputs:
 - id: outdir
   doc: ': specify a directory for all output files'

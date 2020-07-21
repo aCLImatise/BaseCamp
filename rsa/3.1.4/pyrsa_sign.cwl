@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyrsa_sign.cwl
+id: ../../../pyrsa_sign.cwl
 inputs:
 - id: input
   doc: Name of the file to sign. Reads from stdin if not specified.

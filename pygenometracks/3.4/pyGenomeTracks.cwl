@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyGenomeTracks.cwl
+id: ../../../pyGenomeTracks.cwl
 inputs:
 - id: tracks
   doc: File containing the instructions to plot the tracks. The tracks.ini file can

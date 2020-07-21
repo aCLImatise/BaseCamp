@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Tm_seq.cwl
+id: ../../../Tm_seq.cwl
 inputs:
 - id: uncorrected
   doc: ''

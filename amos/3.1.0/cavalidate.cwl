@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cavalidate.cwl
+id: ../../../cavalidate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

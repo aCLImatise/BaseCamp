@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkm_tetra_plot.cwl
+id: ../../../checkm_tetra_plot.cwl
 inputs:
 - id: image_type
   doc: 'desired image type (default: png)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ovStoreConfig.cwl
+id: ../../../ovStoreConfig.cwl
 inputs:
 - id: path_seqstore_assembly
   doc: path to seqStore for this assembly

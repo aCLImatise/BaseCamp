@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/processhi_c.sh.cwl
+id: ../../../processhi_c.sh.cwl
 inputs:
 - id: in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/optimize_augustus.pl.cwl
+id: ../../../optimize_augustus.pl.cwl
 inputs:
 - id: meta_pars
   doc: 'metapars.cfg contains the names and their ranges of the meta parameters that

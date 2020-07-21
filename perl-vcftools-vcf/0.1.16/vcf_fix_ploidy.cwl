@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_fix_ploidy.cwl
+id: ../../../vcf_fix_ploidy.cwl
 inputs:
 - id: assumed_sex
   doc: M or F, required if the list is not complete in -s

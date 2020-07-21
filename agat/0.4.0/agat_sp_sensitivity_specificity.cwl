@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_sensitivity_specificity.pl.cwl
+id: ../../../agat_sp_sensitivity_specificity.pl.cwl
 inputs:
 - id: gff_one
   doc: Input GTF/GFF file 1.

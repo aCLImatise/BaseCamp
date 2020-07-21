@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/megahit_core_no_hw_accel_readstat.cwl
+id: ../../../megahit_core_no_hw_accel_readstat.cwl
 inputs:
 - id: cat
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkm_analysis.cwl
+id: ../../../checkm_analysis.cwl
 inputs:
 - id: check_m
   doc: Specify the CHeckM output File (should be the one created using --tab_table

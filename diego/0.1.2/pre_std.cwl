@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pre_std.py.cwl
+id: ../../../pre_std.py.cwl
 inputs:
 - id: list
   doc: sampleName tab-delimiter path/to/fileName

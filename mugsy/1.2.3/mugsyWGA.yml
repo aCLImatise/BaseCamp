@@ -1,0 +1,232 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: Other
+  optional: true
+named:
+- !Flag
+  description: ',               --version                          print version information'
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',               --seq <FASTA Sequence File>        multi-FASTA file
+    with all input sequences. For draft genomes, FASTA headers should be in the form
+    >seqname genomename.'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',              --aln <File1>,<File2>,...          Library of pairwise
+    alignments. Aligned multi-FASTA format (XMFA)'
+  synonyms:
+  - -al
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',               --outfile <Filename>               output filename
+    prefix (default outfile)'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',        --distance <String>                LCB chaining distance
+    (default 1000)'
+  synonyms:
+  - -distance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',       --minlength <Int>                  Minimum LCB segment span
+    (default 100)'
+  synonyms:
+  - -minlength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',          --unique [true|false]              Report unique regions
+    (default true)'
+  synonyms:
+  - -unique
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',    --duplications [true|false]        Report duplications. Requires
+    a second alignment file of pairwise duplications is passed to --aln.  (default
+    false)'
+  synonyms:
+  - -duplications
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',               --format [maf | msf]               output format (default
+    maf)'
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',       --anchorwin <Int>                  bp window to consider for
+    collapsing anchors (default 0)'
+  synonyms:
+  - -anchorwin
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[true|false]     allow anchors to contribute to multiple LCBs. Default=false
+    (default false)'
+  synonyms:
+  - -allownestedlcbs
+  - --allownestedlcbs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',          --refine <String>                  refinement method: mugsy,fsa,pecan,mlagan'
+  synonyms:
+  - -refine
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',    --segmentation <String>            Segmentation method. mugsy,enredo,mercator'
+  synonyms:
+  - -segmentation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',       --blockfile <String>               Bypass segmentation and
+    use this output file from synchain-mugsy'
+  synonyms:
+  - -blockfile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',               --gop <Int>                        gap open penalty
+    (default -13)'
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',               --gex <Int>                        gap extension penalty
+    (default -1)'
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',              --matrix <Matrix file>. Ignored.   score matrix (default
+    Blosum62)'
+  synonyms:
+  - -ma
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',              --msc <Int>                        match score (default
+    5)'
+  synonyms:
+  - -ms
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',              --mmsc <Int>                       mismatch penalty
+    (default -4)'
+  synonyms:
+  - -mm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',               --build [nj, min, max, avg, wavg]  tree building method
+    for progressive aln (default nj) nj = Neighbor-joining min = UPGMA single linkage
+    max = UPGMA complete linkage avg = UPGMA average linkage wavg = UPGMA weighted
+    average linkage Neighbor-joining creates an unrooted tree. We root that tree at
+    the last joined pair.'
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',               --infile <FASTA alignment file>    alignment file'
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -seq
+  args: !SimpleFlagArg
+    name: multi-FASTA sequence file
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -aln
+  args: !SimpleFlagArg
+    name: Aligned pairwise FASTA library
+  optional: true
+command:
+- mugsyWGA
+parent:
+subcommands: []
+help_flag: !Flag
+  description: ',               --help                             displays this help
+    message'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "*************************************************\n* mugsyWGA        \
+  \                              *\n* v1.3                                       \
+  \   *\n* Multiple whole genome aligner                 *\n* using graph based LCB\
+  \ identification          *\n* and Seqan::TCoffee                            *\n\
+  *************************************************\n\nUsage: mugsyWGA -seq <multi-FASTA\
+  \ sequence file> -aln <Aligned pairwise FASTA library> [-distance <LCB chaining\
+  \ distance>] [-minlength <LCB minimum length>] [Other options]\n\n  -h,        \
+  \       --help                             displays this help message\n  -V,   \
+  \            --version                          print version information\n\nMain\
+  \ Options:\n  -s,               --seq <FASTA Sequence File>        multi-FASTA file\
+  \ with all input sequences. For draft genomes, FASTA headers should be in the form\
+  \ >seqname genomename.\n  -al,              --aln <File1>,<File2>,...          Library\
+  \ of pairwise alignments. Aligned multi-FASTA format (XMFA)\n  -o,             \
+  \  --outfile <Filename>               output filename prefix (default outfile)\n\
+  \  -distance,        --distance <String>                LCB chaining distance (default\
+  \ 1000)\n  -minlength,       --minlength <Int>                  Minimum LCB segment\
+  \ span (default 100)\n  -unique,          --unique [true|false]              Report\
+  \ unique regions (default true)\n  -duplications,    --duplications [true|false]\
+  \        Report duplications. Requires a second alignment file of pairwise duplications\
+  \ is passed to --aln.  (default false)\n\nOther Options:\n  -f,               --format\
+  \ [maf | msf]               output format (default maf)\n  -anchorwin,       --anchorwin\
+  \ <Int>                  bp window to consider for collapsing anchors (default 0)\n\
+  \  -allownestedlcbs, --allownestedlcbs [true|false]     allow anchors to contribute\
+  \ to multiple LCBs. Default=false (default false)\n  -refine,          --refine\
+  \ <String>                  refinement method: mugsy,fsa,pecan,mlagan\n  -segmentation,\
+  \    --segmentation <String>            Segmentation method. mugsy,enredo,mercator\n\
+  \  -blockfile,       --blockfile <String>               Bypass segmentation and\
+  \ use this output file from synchain-mugsy\n\nScoring Options:\n  -g,          \
+  \     --gop <Int>                        gap open penalty (default -13)\n  -e, \
+  \              --gex <Int>                        gap extension penalty (default\
+  \ -1)\n  -ma,              --matrix <Matrix file>. Ignored.   score matrix (default\
+  \ Blosum62)\n  -ms,              --msc <Int>                        match score\
+  \ (default 5)\n  -mm,              --mmsc <Int>                       mismatch penalty\
+  \ (default -4)\n\nGuide Tree Options:\n  -b,               --build [nj, min, max,\
+  \ avg, wavg]  tree building method for progressive aln (default nj)\n          \
+  \                                             nj = Neighbor-joining\n          \
+  \                                             min = UPGMA single linkage\n     \
+  \                                                  max = UPGMA complete linkage\n\
+  \                                                       avg = UPGMA average linkage\n\
+  \                                                       wavg = UPGMA weighted average\
+  \ linkage\n                                                       Neighbor-joining\
+  \ creates an\n                                                         unrooted\
+  \ tree. We root that tree\n                                                    \
+  \     at the last joined pair.\n\nAlignment Evaluation Options:\n  -i,         \
+  \      --infile <FASTA alignment file>    alignment file\n\nERROR: Environment variable\
+  \ MUGSY_INSTALL must be set to the installation directory for mugsy\n"
+generated_using:
+- --help

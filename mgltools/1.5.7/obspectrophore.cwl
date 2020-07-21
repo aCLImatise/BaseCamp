@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obspectrophore.cwl
+id: ../../../obspectrophore.cwl
 inputs:
 - id: parameters
   doc: ''

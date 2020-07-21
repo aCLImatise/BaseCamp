@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/EukRep.cwl
+id: ../../../EukRep.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

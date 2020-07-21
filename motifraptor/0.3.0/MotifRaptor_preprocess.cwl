@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MotifRaptor_preprocess.cwl
+id: ../../../MotifRaptor_preprocess.cwl
 inputs:
 - id: g_was_summary
   doc: GWAS summary statistic file

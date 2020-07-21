@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PrimedRPA.cwl
+id: ../../../PrimedRPA.cwl
 inputs:
 - id: run_id
   doc: Desired Run ID

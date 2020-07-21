@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_cmcalibrate.cwl
+id: ../../../ssu_cmcalibrate.cwl
 inputs:
 - id: set_rng_seed
   doc: ': set RNG seed to <n> (if 0: one-time arbitrary seed)  [181]'

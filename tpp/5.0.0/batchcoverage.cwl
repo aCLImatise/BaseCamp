@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/batchcoverage.cwl
+id: ../../../batchcoverage.cwl
 inputs:
 - id: database
   doc: ''

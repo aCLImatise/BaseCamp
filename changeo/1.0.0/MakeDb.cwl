@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MakeDb.py_db_fail.cwl
+id: ../../../MakeDb.py_db_fail.cwl
 inputs:
 - id: make_db_do_tpy
   doc: ''

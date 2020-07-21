@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/panaroo_merge.cwl
+id: ../../../panaroo_merge.cwl
 inputs:
 - id: min_edge_support_sv
   doc: minimum edge support required to call structural variants in the presence/absence

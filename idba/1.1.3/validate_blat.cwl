@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/validate_blat.cwl
+id: ../../../validate_blat.cwl
 inputs:
 - id: min_contig
   doc: (=100)            minimum contigs

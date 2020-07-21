@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastx_barcode_splitter.pl.cwl
+id: ../../../fastx_barcode_splitter.pl.cwl
 inputs:
 - id: prefix
   doc: /tmp/bla_ --suffix ".txt"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gseapy_gsea.cwl
+id: ../../../gseapy_gsea.cwl
 inputs:
 - id: data
   doc: Input gene expression dataset file in txt format.Same with GSEA.

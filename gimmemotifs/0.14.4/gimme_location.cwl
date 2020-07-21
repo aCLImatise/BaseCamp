@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gimme_location.cwl
+id: ../../../gimme_location.cwl
 inputs:
 - id: set_size_w
   doc: 'Set size to W (default: determined from fastafile)'

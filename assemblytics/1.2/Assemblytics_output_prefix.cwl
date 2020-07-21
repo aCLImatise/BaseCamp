@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Assemblytics_output_prefix.cwl
+id: ../../../Assemblytics_output_prefix.cwl
 inputs:
 - id: assembly_tics
   doc: ''

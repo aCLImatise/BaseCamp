@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trace_comments.cwl
+id: ../../../trace_comments.cwl
 inputs:
 - id: get_comment
   doc: dir

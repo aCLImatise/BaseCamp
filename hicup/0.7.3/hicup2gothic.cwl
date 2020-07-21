@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicup2gothic.cwl
+id: ../../../hicup2gothic.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

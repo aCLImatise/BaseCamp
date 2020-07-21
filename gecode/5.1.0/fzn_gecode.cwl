@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fzn_gecode.cwl
+id: ../../../fzn_gecode.cwl
 inputs:
 - id: mode
   doc: '(solution, stat, gist) default: solution how to execute script'

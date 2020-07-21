@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmindex2.cwl
+id: ../../../hmmindex2.cwl
 inputs:
 - id: options
   doc: ''

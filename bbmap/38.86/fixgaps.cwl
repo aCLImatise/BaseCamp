@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fixgaps.sh.cwl
+id: ../../../fixgaps.sh.cwl
 inputs:
 - id: in
   doc: ''

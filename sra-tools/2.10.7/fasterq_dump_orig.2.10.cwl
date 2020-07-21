@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasterq_dump_orig.2.10.7.cwl
+id: ../../../fasterq_dump_orig.2.10.7.cwl
 inputs:
 - id: outfile
   doc: 'output-file '

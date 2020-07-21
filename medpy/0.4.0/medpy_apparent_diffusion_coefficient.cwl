@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_apparent_diffusion_coefficient.py.cwl
+id: ../../../medpy_apparent_diffusion_coefficient.py.cwl
 inputs:
 - id: threshold
   doc: set a fixed threshold for the input images to mask the computation

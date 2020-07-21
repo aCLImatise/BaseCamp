@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/probdist.cwl
+id: ../../../probdist.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

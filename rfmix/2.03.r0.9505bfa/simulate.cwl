@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simulate.cwl
+id: ../../../simulate.cwl
 inputs:
 - id: generations
   doc: Number of generations to simulate random mating admixture

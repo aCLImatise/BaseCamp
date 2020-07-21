@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dr_disco_is_blacklisted.cwl
+id: ../../../dr_disco_is_blacklisted.cwl
 inputs:
 - id: blacklist_junctions
   doc: Blacklist these region-to-region junctions (custom format, see files in ./share/)

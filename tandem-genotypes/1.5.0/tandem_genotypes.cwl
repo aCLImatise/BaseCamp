@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tandem_genotypes.cwl
+id: ../../../tandem_genotypes.cwl
 inputs:
 - id: genes
   doc: read genes from a genePred or BED file

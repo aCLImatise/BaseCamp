@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bvop.cwl
+id: ../../../bvop.cwl
 inputs:
 - id: performs_not_filebv
   doc: ': performs NOT on file1.bv'

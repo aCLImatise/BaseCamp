@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transform_coordinate_matrices.py.cwl
+id: ../../../transform_coordinate_matrices.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

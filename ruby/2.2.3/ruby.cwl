@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ruby.cwl
+id: ../../../ruby.cwl
 inputs:
 - id: specify_record_separator
   doc: '[octal]       specify record separator (\0, if no argument)'

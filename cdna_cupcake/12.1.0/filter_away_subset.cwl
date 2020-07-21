@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_away_subset.py.cwl
+id: ../../../filter_away_subset.py.cwl
 inputs:
 - id: fuzzy_junction
   doc: 'Fuzzy junction max dist (default: 5bp)'

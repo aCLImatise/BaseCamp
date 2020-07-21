@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hcluster_sg.cwl
+id: ../../../hcluster_sg.cwl
 inputs:
 - id: minimum_edge_weight
   doc: minimum edge weight [20]

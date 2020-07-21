@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf2revcom.pl.cwl
+id: ../../../vcf2revcom.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

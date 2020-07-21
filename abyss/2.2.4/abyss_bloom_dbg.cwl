@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_bloom_dbg.cwl
+id: ../../../abyss_bloom_dbg.cwl
 inputs:
 - id: bloom_size
   doc: overall memory budget for the assembly in bytes. Unit suffixes 'k' (kilobytes),

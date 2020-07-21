@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abricate.cwl
+id: ../../../abricate.cwl
 inputs:
 - id: debug
   doc: Verbose debug output.

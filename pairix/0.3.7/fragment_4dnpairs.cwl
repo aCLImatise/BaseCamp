@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fragment_4dnpairs.pl.cwl
+id: ../../../fragment_4dnpairs.pl.cwl
 inputs:
 - id: allow_replacement
   doc: ': allows replacing existing frag1/frag2 columns. Default: abort if the columns

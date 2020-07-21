@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_preprocess.cwl
+id: ../../../mb_preprocess.cwl
 inputs:
 - id: log_level
   doc: verbosity level of the logger

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/combig.pl.cwl
+id: ../../../combig.pl.cwl
 inputs:
 - id: bigram
   doc: ''

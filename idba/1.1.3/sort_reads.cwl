@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sort_reads.cwl
+id: ../../../sort_reads.cwl
 inputs:
 - id: paired
   doc: if the reads are paired-end in one file

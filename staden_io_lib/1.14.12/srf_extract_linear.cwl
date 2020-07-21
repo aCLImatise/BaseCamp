@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/srf_extract_linear.cwl
+id: ../../../srf_extract_linear.cwl
 inputs:
 - id: extract_linear_srf
   doc: ''

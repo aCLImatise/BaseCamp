@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stdbuf.cwl
+id: ../../../stdbuf.cwl
 inputs:
 - id: input
   doc: adjust standard input stream buffering

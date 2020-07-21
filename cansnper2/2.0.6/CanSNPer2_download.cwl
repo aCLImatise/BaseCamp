@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CanSNPer2_download.cwl
+id: ../../../CanSNPer2_download.cwl
 inputs:
 - id: db
   doc: ', --database   CanSNP database'

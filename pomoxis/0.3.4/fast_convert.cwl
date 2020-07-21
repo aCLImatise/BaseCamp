@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fast_convert.cwl
+id: ../../../fast_convert.cwl
 inputs:
 - id: discard_q
   doc: 'Discard quality information from fastq, use with --mock_q. (default: False)'

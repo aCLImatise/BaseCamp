@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ktImportFCP.cwl
+id: ../../../ktImportFCP.cwl
 inputs:
 - id: fcp_output
   doc: Results of running any FCP classification tool (except BLASTN.py, which only

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/multiple_testing_adjustment.py.cwl
+id: ../../../multiple_testing_adjustment.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

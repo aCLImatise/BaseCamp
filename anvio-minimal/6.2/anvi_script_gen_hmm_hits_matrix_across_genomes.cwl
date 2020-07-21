@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_script_gen_hmm_hits_matrix_across_genomes.cwl
+id: ../../../anvi_script_gen_hmm_hits_matrix_across_genomes.cwl
 inputs:
 - id: external_genomes
   doc: A two-column TAB-delimited flat text file that lists anvi'o contigs databases.

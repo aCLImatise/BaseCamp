@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cluster_quality.py.cwl
+id: ../../../cluster_quality.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

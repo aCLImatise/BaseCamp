@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ExpansionHunterDenovo.cwl
+id: ../../../ExpansionHunterDenovo.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

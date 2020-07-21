@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequnwinder.cwl
+id: ../../../sequnwinder.cwl
 inputs:
 - id: out
   doc: ': Ouput file prefix. All output will be put into a directory with the prefix

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ace2sam.cwl
+id: ../../../ace2sam.cwl
 inputs:
 - id: output_padded_sam
   doc: output padded SAM

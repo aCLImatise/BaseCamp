@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mspms.cwl
+id: ../../../mspms.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

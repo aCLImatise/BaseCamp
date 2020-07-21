@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fdnaml.cwl
+id: ../../../fdnaml.cwl
 inputs:
 - id: n_categories
   doc: integer    [1] Number of substitution rate categories (Integer from 1 to 9)

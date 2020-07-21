@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqtk_famask.cwl
+id: ../../../seqtk_famask.cwl
 inputs:
 - id: src_dot_fa
   doc: ''

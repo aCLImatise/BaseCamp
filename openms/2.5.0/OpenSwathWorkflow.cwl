@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/OpenSwathWorkflow.cwl
+id: ../../../OpenSwathWorkflow.cwl
 inputs:
 - id: in
   doc: "*                        Input files separated by blank (valid formats: 'mzML',\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bbrealign.sh.cwl
+id: ../../../bbrealign.sh.cwl
 inputs:
 - id: in
   doc: ''

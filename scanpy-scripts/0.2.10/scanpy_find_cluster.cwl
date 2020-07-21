@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scanpy_find_cluster.cwl
+id: ../../../scanpy_find_cluster.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

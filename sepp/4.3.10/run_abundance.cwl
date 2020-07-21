@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_abundance.py.cwl
+id: ../../../run_abundance.py.cwl
 inputs:
 - id: alignment_size
   doc: 'max alignment subset size of N [default: 10% of the total number of taxa or

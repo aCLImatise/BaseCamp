@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_table.cwl
+id: ../../../make_table.cwl
 inputs:
 - id: rows
   doc: ''

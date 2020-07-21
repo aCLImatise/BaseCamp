@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reconcile_matches.pl.cwl
+id: ../../../reconcile_matches.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

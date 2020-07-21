@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findTADsAndLoops.pl.cwl
+id: ../../../findTADsAndLoops.pl.cwl
 inputs:
 - id: cpu
   doc: <#> (max CPUs to use)

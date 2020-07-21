@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halMaskExtract.cwl
+id: ../../../halMaskExtract.cwl
 inputs:
 - id: hal_file
   doc: ''

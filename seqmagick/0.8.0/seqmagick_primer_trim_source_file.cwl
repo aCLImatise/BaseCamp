@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqmagick_primer_trim_source_file.cwl
+id: ../../../seqmagick_primer_trim_source_file.cwl
 inputs:
 - id: reverse_is_rev_comp
   doc: ''

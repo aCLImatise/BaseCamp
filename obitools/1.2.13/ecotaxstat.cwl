@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ecotaxstat.cwl
+id: ../../../ecotaxstat.cwl
 inputs:
 - id: debug
   doc: Set logging in debug mode

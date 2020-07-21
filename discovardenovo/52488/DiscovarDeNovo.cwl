@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DiscovarDeNovo.cwl
+id: ../../../DiscovarDeNovo.cwl
 inputs:
 - id: arg_one
   doc: ''

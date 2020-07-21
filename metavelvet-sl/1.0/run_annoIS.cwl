@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_annoIS.pl.cwl
+id: ../../../run_annoIS.pl.cwl
 inputs:
 - id: options
   doc: ''

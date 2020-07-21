@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqtk_listhet.cwl
+id: ../../../seqtk_listhet.cwl
 inputs:
 - id: in_dot_fa
   doc: ''

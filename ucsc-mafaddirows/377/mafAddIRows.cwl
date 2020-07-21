@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafAddIRows.cwl
+id: ../../../mafAddIRows.cwl
 inputs:
 - id: n_beds
   doc: reads in list of bed files, one per species, with N locations

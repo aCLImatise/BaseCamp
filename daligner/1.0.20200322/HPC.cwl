@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HPC.daligner.cwl
+id: ../../../HPC.daligner.cwl
 inputs:
 - id: look_kmers_averlapping
   doc: ': Look for k-mers in averlapping bands of size 2^-w.'

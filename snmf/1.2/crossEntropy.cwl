@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crossEntropy.cwl
+id: ../../../crossEntropy.cwl
 inputs:
 - id: _genotype_file_geno
   doc: -- genotype file (in .geno format)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ldsc.py.cwl
+id: ../../../ldsc.py.cwl
 inputs:
 - id: print_cov
   doc: For use with --h2/--rg. This flag tells LDSC to print the covaraince matrix

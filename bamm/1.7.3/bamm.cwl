@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamm.cwl
+id: ../../../bamm.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

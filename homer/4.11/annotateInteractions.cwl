@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/annotateInteractions.pl.cwl
+id: ../../../annotateInteractions.pl.cwl
 inputs:
 - id: res
   doc: '<#> (Resolution of analysis, default: auto detect)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/statistic.pl.cwl
+id: ../../../statistic.pl.cwl
 inputs:
 - id: n_gram
   doc: Assumes that n-grams in SOURCE file have N tokens each. N = 2 by default.

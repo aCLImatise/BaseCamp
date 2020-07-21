@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/intervene.cwl
+id: ../../../intervene.cwl
 inputs:
 - id: cite
   doc: show citation information and exit

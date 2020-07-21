@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scmap_cli_post_install_tests.sh.cwl
+id: ../../../scmap_cli_post_install_tests.sh.cwl
 inputs:
 - id: sc_map_scripts_post_install_tests_dots_h
   doc: ''

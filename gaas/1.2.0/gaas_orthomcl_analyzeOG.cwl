@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_orthomcl_analyzeOG.pl.cwl
+id: ../../../gaas_orthomcl_analyzeOG.pl.cwl
 inputs:
 - id: tree
   doc: Tree file in nhx format. If provided the analyse will focuse only on species

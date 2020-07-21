@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/install_tool_deps.cwl
+id: ../../../install_tool_deps.cwl
 inputs:
 - id: path_tool_file
   doc: '[TOOL [TOOL ...]], --tool [TOOL [TOOL ...]] Path to a tool file, tool_conf

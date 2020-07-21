@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/atoiindex.cwl
+id: ../../../atoiindex.cwl
 inputs:
 - id: source_dir
   doc: Directory where to read cmet index files (default is GMAP genome directory

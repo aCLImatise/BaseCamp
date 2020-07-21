@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/womtool.cwl
+id: ../../../womtool.cwl
 inputs:
 - id: jar
   doc: ''

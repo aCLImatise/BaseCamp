@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reconcile_tree_alignment.cwl
+id: ../../../reconcile_tree_alignment.cwl
 inputs:
 - id: input_tree
   doc: ''

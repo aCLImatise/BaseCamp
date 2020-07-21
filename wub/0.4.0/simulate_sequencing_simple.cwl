@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simulate_sequencing_simple.py_output_fastq.cwl
+id: ../../../simulate_sequencing_simple.py_output_fastq.cwl
 inputs:
 - id: n
   doc: ''

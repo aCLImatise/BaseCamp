@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arv_put.cwl
+id: ../../../arv_put.cwl
 inputs:
 - id: trash_after
   doc: Set the trash date of the resulting collection to an amount of days from the

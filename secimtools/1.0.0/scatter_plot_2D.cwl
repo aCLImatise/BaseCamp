@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scatter_plot_2D.py.cwl
+id: ../../../scatter_plot_2D.py.cwl
 inputs:
 - id: var_0
   doc: '[-f FIGURE] [-pal PALETTE] [-col COLOR]'

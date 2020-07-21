@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gtfToGenePred.cwl
+id: ../../../gtfToGenePred.cwl
 inputs:
 - id: gtf
   doc: ''

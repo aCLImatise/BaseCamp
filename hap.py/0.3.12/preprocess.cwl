@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/preprocess.cwl
+id: ../../../preprocess.cwl
 inputs:
 - id: input_vcf
   doc: VCF files to preprocess (use file:sample for a specific sample column).

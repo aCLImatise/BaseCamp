@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/model_feature.cwl
+id: ../../../model_feature.cwl
 inputs:
 - id: input_file
   doc: 'Path to file containing input. (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coverage2cytosine.cwl
+id: ../../../coverage2cytosine.cwl
 inputs:
 - id: genome_folder
   doc: ''

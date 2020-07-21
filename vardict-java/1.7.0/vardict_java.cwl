@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vardict_java.cwl
+id: ../../../vardict_java.cwl
 inputs:
 - id: down_sample
   doc: 'For downsampling fraction.  e.g. 0.7 means roughly 70% downsampling.  Default:

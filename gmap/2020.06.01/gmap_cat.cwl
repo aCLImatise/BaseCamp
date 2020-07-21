@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmap_cat.cwl
+id: ../../../gmap_cat.cwl
 inputs:
 - id: dir
   doc: Destination directory for output genome index

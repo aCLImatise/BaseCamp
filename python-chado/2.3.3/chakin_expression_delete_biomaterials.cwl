@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chakin_expression_delete_biomaterials.cwl
+id: ../../../chakin_expression_delete_biomaterials.cwl
 inputs:
 - id: names
   doc: JSON list of biomaterial names to delete.

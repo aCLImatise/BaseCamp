@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/common_errors_from_bam.cwl
+id: ../../../common_errors_from_bam.cwl
 inputs:
 - id: output_prefix
   doc: 'Prefix for outputs. (default: common_errors)'

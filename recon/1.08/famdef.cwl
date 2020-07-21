@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/famdef.cwl
+id: ../../../famdef.cwl
 inputs:
 - id: seq_list
   doc: ''

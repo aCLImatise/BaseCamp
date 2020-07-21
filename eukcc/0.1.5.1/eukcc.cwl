@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/eukcc.cwl
+id: ../../../eukcc.cwl
 inputs:
 - id: db
   doc: Path to EukCC DB

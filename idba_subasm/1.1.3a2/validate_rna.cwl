@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/validate_rna.cwl
+id: ../../../validate_rna.cwl
 inputs:
 - id: min_contig
   doc: (=100)            minimum contigs

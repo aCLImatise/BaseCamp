@@ -1,0 +1,450 @@
+&id002 !Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: BIOMATERIAL_NAME
+  optional: false
+named:
+- !Flag
+  description: Description of the biomaterial
+  synonyms:
+  - --description
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Biomaterial provider name
+  synonyms:
+  - --biomaterial_provider
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Biosample accession number
+  synonyms:
+  - --biosample_accession
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: SRA accession number
+  synonyms:
+  - --sra_accession
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Bioproject accession number
+  synonyms:
+  - --bioproject_accession
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Custom attributes (In JSON dict form)
+  synonyms:
+  - --attributes
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+command:
+- chakin
+- expression
+- add_biomaterial
+parent: &id001 !Command
+  positional: []
+  named: []
+  command:
+  - chakin
+  - expression
+  parent: !Command
+    positional: []
+    named:
+    - !Flag
+      description: Enables verbose mode.
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Name of instance in /home/ubuntu/.chakin.yml. This parameter can
+        also be set via the environment variable CHADO_INSTANCE  [default: __default;
+        required]'
+      synonyms:
+      - -i
+      - --instance
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: config file path
+      synonyms:
+      - -f
+      - --path
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    command:
+    - chakin
+    parent:
+    subcommands:
+    - *id001
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: Show the version and exit.
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "Usage: chakin [OPTIONS] COMMAND [ARGS]...\n\n  Command line wrappers\
+      \ around Python-Chado functions. While this sounds\n  unexciting, with chakin\
+      \ and jq you can easily build powerful command line\n  scripts.\n\nOptions:\n\
+      \  --version            Show the version and exit.\n  -v, --verbose        Enables\
+      \ verbose mode.\n  -i, --instance TEXT  Name of instance in /home/ubuntu/.chakin.yml.\
+      \ This\n                       parameter can also be set via the environment\
+      \ variable\n                       CHADO_INSTANCE  [default: __default; required]\n\
+      \n  -f, --path TEXT      config file path\n  -h, --help           Show this\
+      \ message and exit.\n\nCommands:\n  init        Help initialize global configuration\
+      \ (in home directory)\n  organism    Access to the chado organism table\n  export\
+      \      Export data from the chado database\n  util        Some chado utilities\n\
+      \  analysis    Access to the chado analysis table\n  feature     Access to the\
+      \ chado features\n  phylogeny   Access to the chado phylogeny content\n  load\n\
+      \  expression  Interact with expressions\n"
+    generated_using: &id003
+    - --help
+  subcommands:
+  - *id002
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: ORGANISM_ID
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: ANALYSIS_ID
+      optional: false
+    named:
+    - !Flag
+      description: "Separating character in the matrix file (ex : ','). Default character\
+        \ is tab.  [default:        ]"
+      synonyms:
+      - --separator
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: The units associated with the loaded values (ie, FPKM, RPKM, raw
+        counts)
+      synonyms:
+      - --unit
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "The feature type (e.g. 'gene', 'mRNA', 'polypeptide', 'contig')\
+        \ of the query. It must be a valid Sequence Ontology term.  [default: mRNA]"
+      synonyms:
+      - --query_type
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Match features using their name instead of their uniquename
+      synonyms:
+      - --match_on_name
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Regular expression to extract the feature name from the input file
+        (first capturing group will be used).
+      synonyms:
+      - --re_name
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Skip lines with unknown features or GO id instead of aborting everything.
+      synonyms:
+      - --skip_missing
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - chakin
+    - expression
+    - add_expression
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: chakin expression add_expression [OPTIONS] ORGANISM_ID ANALYSIS_ID\n\
+      \                                        FILE_PATH\n\n  Add an expression matrix\
+      \ file to the database\n\n  Output:\n\n      Number of expression data loaded\n\
+      \nOptions:\n  --separator TEXT   Separating character in the matrix file (ex\
+      \ : ',').\n                     Default character is tab.  [default:       \
+      \ ]\n\n  --unit TEXT        The units associated with the loaded values (ie,\
+      \ FPKM,\n                     RPKM, raw counts)\n\n  --query_type TEXT  The\
+      \ feature type (e.g. 'gene', 'mRNA', 'polypeptide',\n                     'contig')\
+      \ of the query. It must be a valid Sequence\n                     Ontology term.\
+      \  [default: mRNA]\n\n  --match_on_name    Match features using their name instead\
+      \ of their\n                     uniquename\n\n  --re_name TEXT     Regular\
+      \ expression to extract the feature name from the\n                     input\
+      \ file (first capturing group will be used).\n\n  --skip_missing     Skip lines\
+      \ with unknown features or GO id instead of\n                     aborting everything.\n\
+      \n  -h, --help         Show this message and exit.\n"
+    generated_using: *id003
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Confirm that you really do want to delete ALL of the biomaterials.
+      synonyms:
+      - --confirm
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - chakin
+    - expression
+    - delete_all_biomaterials
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: chakin expression delete_all_biomaterials [OPTIONS]\n\n  Delete\
+      \ all biomaterials\n\n  Output:\n\n      None\n\nOptions:\n  --confirm   Confirm\
+      \ that you really do want to delete ALL of the\n              biomaterials.\n\
+      \n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: 'JSON list of biomaterial names to delete.  [default: []]'
+      synonyms:
+      - --names
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: 'JSON list of biomaterial ids to delete.  [default: []]'
+      synonyms:
+      - --ids
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Delete all biomaterial associated with this organism id.
+      synonyms:
+      - --organism_id
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Delete all biomaterial associated with this analysis id.
+      synonyms:
+      - --analysis_id
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    command:
+    - chakin
+    - expression
+    - delete_biomaterial
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: chakin expression delete_biomaterial [OPTIONS]\n\n  Output:\n\
+      \n      I have no idea\n\nOptions:\n  --names TEXT        JSON list of biomaterial\
+      \ names to delete.  [default: []]\n  --ids TEXT          JSON list of biomaterial\
+      \ ids to delete.  [default: []]\n  --organism_id TEXT  Delete all biomaterial\
+      \ associated with this organism id.\n  --analysis_id TEXT  Delete all biomaterial\
+      \ associated with this analysis id.\n  -h, --help          Show this message\
+      \ and exit.\n"
+    generated_using: *id003
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: JSON list of biomaterial names to delete.
+      synonyms:
+      - --names
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: JSON list of biomaterial ids to delete.
+      synonyms:
+      - --ids
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Delete all biomaterial associated with this organism id.
+      synonyms:
+      - --organism_id
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Delete all biomaterial associated with this analysis id.
+      synonyms:
+      - --analysis_id
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    command:
+    - chakin
+    - expression
+    - delete_biomaterials
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: chakin expression delete_biomaterials [OPTIONS]\n\n  Will delete\
+      \ biomaterials based on selector. Only one selector will be\n  used.\n\n  Output:\n\
+      \n      Number of deleted biomaterials\n\nOptions:\n  --names TEXT         \
+      \  JSON list of biomaterial names to delete.\n  --ids TEXT             JSON\
+      \ list of biomaterial ids to delete.\n  --organism_id INTEGER  Delete all biomaterial\
+      \ associated with this organism\n                         id.\n\n  --analysis_id\
+      \ INTEGER  Delete all biomaterial associated with this analysis\n          \
+      \               id.\n\n  -h, --help             Show this message and exit.\n"
+    generated_using: *id003
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Limit query to the selected provider
+      synonyms:
+      - --provider_id
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Limit query to the selected biomaterial id
+      synonyms:
+      - --biomaterial_id
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Limit query to the selected organism
+      synonyms:
+      - --organism_id
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Limit query to the selected biomaterial name
+      synonyms:
+      - --biomaterial_name
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Limit query to the selected analysis_id
+      synonyms:
+      - --analysis_id
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    command:
+    - chakin
+    - expression
+    - get_biomaterials
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: chakin expression get_biomaterials [OPTIONS]\n\n  List biomaterials\
+      \ in the database\n\n  Output:\n\n      List of biomaterials\n\nOptions:\n \
+      \ --provider_id INTEGER     Limit query to the selected provider\n  --biomaterial_id\
+      \ INTEGER  Limit query to the selected biomaterial id\n  --organism_id INTEGER\
+      \     Limit query to the selected organism\n  --biomaterial_name TEXT   Limit\
+      \ query to the selected biomaterial name\n  --analysis_id INTEGER     Limit\
+      \ query to the selected analysis_id\n  -h, --help                Show this message\
+      \ and exit.\n"
+    generated_using: *id003
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Usage: chakin expression [OPTIONS] COMMAND [ARGS]...\n\n  Interact with\
+    \ expressions\n\nOptions:\n  -h, --help  Show this message and exit.\n\nCommands:\n\
+    \  add_biomaterial          Add a new biomaterial to the database Output:...\n\
+    \  add_expression           Add an expression matrix file to the database...\n\
+    \  delete_all_biomaterials  Delete all biomaterials Output: None\n  delete_biomaterial\
+    \       Output: I have no idea\n  delete_biomaterials      Will delete biomaterials\
+    \ based on selector.\n  get_biomaterials         List biomaterials in the database\
+    \ Output: List\n                           of...\n"
+  generated_using: *id003
+subcommands: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: chakin expression add_biomaterial [OPTIONS] BIOMATERIAL_NAME\n\
+  \                                         ORGANISM_ID\n\n  Add a new biomaterial\
+  \ to the database\n\n  Output:\n\n      Biomaterial details\n\nOptions:\n  --description\
+  \ TEXT           Description of the biomaterial\n  --biomaterial_provider TEXT \
+  \ Biomaterial provider name\n  --biosample_accession TEXT   Biosample accession\
+  \ number\n  --sra_accession TEXT         SRA accession number\n  --bioproject_accession\
+  \ TEXT  Bioproject accession number\n  --attributes TEXT            Custom attributes\
+  \ (In JSON dict form)\n  -h, --help                   Show this message and exit.\n"
+generated_using: *id003

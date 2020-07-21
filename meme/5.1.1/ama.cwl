@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ama.cwl
+id: ../../../ama.cwl
 inputs:
 - id: s_dbg
   doc: Use Markov background model of order <order> derived from the sequence to compute

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kakuro.cwl
+id: ../../../kakuro.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

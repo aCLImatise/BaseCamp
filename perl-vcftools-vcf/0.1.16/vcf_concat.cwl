@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_concat.cwl
+id: ../../../vcf_concat.cwl
 inputs:
 - id: check_columns
   doc: Do not concatenate, only check if the columns agree.

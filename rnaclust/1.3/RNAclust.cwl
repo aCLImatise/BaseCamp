@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RNAclust.pl.cwl
+id: ../../../RNAclust.pl.cwl
 inputs:
 - id: fast_a
   doc: <file name>                     FASTA file (required)

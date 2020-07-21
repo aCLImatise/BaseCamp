@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_mb.cwl
+id: ../../../gsutil_mb.cwl
 inputs:
 - id: specifies_default_storage
   doc: Specifies the default storage class. Default is "Standard".

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/zerone.cwl
+id: ../../../zerone.cwl
 inputs:
 - id: mock
   doc: ': given file is a mock control'

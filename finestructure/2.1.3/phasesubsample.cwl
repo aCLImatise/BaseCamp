@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phasesubsample.pl.cwl
+id: ../../../phasesubsample.pl.cwl
 inputs:
 - id: from
   doc: ''

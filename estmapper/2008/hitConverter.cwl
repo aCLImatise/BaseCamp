@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hitConverter.cwl
+id: ../../../hitConverter.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

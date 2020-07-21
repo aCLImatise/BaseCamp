@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scram_pileup.cwl
+id: ../../../scram_pileup.cwl
 inputs:
 - id: no
   doc: ''

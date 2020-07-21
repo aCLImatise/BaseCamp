@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/megahit_toolkit_read2sdbg.cwl
+id: ../../../megahit_toolkit_read2sdbg.cwl
 inputs:
 - id: km_er_k
   doc: (=21)                 kmer size

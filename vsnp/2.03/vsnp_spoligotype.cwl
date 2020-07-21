@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vsnp_spoligotype.py.cwl
+id: ../../../vsnp_spoligotype.py.cwl
 inputs:
 - id: read_one
   doc: 'Required: single read'

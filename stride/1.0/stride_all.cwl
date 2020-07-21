@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stride_all.cwl
+id: ../../../stride_all.cwl
 inputs:
 - id: read_length
   doc: median read length (if there are multiple libraries, set to the max read length)

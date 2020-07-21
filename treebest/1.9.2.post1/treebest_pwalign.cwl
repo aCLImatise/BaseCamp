@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treebest_pwalign.cwl
+id: ../../../treebest_pwalign.cwl
 inputs:
 - id: generate_full_alignment
   doc: generate full alignment

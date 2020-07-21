@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RepeatModeler.cwl
+id: ../../../RepeatModeler.cwl
 inputs:
 - id: cd_hit_dir
   doc: The path to the installation of the CD-Hit sequence clustering package.

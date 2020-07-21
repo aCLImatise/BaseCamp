@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kmc_tools.cwl
+id: ../../../kmc_tools.cwl
 inputs:
 - id: value_total_number
   doc: '<value>            - total number of threads (default: no. of CPU cores)'

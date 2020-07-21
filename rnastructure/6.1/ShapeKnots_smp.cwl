@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ShapeKnots_smp.cwl
+id: ../../../ShapeKnots_smp.cwl
 inputs:
 - id: shape_knots
   doc: ''

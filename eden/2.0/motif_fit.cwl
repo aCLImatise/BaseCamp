@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/motif_fit.cwl
+id: ../../../motif_fit.cwl
 inputs:
 - id: input_file
   doc: 'Path to a FASTA file. (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/irida_uploader.cwl
+id: ../../../irida_uploader.cwl
 inputs:
 - id: directory
   doc: Location of sequencing run to upload. Directory must be writable.

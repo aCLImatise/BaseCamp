@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/readlink.cwl
+id: ../../../readlink.cwl
 inputs:
 - id: canonicalize
   doc: canonicalise by following every symlink in every component of the given name

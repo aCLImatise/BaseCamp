@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/closeGapsInScaffFastaFile.perl.cwl
+id: ../../../closeGapsInScaffFastaFile.perl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

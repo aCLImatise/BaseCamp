@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Catrack.cwl
+id: ../../../Catrack.cwl
 inputs:
 - id: v
   doc: ''

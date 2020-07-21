@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/remove_reads_genome_transcriptome.py.cwl
+id: ../../../remove_reads_genome_transcriptome.py.cwl
 inputs:
 - id: input_map_one
   doc: The input file in BOWTIE MAP format.

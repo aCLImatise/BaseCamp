@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simkaMin.py.cwl
+id: ../../../simkaMin.py.cwl
 inputs:
 - id: in
   doc: '(1 arg) :    input file of datasets. One sample per line: id1: filename1...'

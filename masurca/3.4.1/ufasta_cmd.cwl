@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ufasta_cmd.cwl
+id: ../../../ufasta_cmd.cwl
 inputs:
 - id: arg_dot_dot_dot
   doc: ''

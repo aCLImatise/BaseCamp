@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Tandem2XML.cwl
+id: ../../../Tandem2XML.cwl
 inputs:
 - id: input_file
   doc: ''

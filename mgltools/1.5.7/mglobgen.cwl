@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mglobgen.cwl
+id: ../../../mglobgen.cwl
 inputs:
 - id: ff
   doc: select a forcefield

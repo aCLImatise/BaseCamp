@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnazMAF2BED.pl.cwl
+id: ../../../rnazMAF2BED.pl.cwl
 inputs:
 - id: seq_id
   doc: Specify the sequence identifier of the sequence which should be used as a reference

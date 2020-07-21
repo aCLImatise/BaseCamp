@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AnnotateVariants.cwl
+id: ../../../AnnotateVariants.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

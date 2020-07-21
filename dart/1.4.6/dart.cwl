@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dart.cwl
+id: ../../../dart.cwl
 inputs:
 - id: number_of_threads
   doc: number of threads [4]

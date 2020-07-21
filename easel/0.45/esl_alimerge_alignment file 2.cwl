@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_alimerge_alignment file 2.cwl
+id: ../../../esl_alimerge_alignment file 2.cwl
 inputs:
 - id: esl_ali_merge
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convertOrganismID.pl_output ID type.cwl
+id: ../../../convertOrganismID.pl_output ID type.cwl
 inputs:
 - id: convert_organ_is_middot_pl
   doc: ''

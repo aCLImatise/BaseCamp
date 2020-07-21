@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NSPDK_sparseVect.pl.cwl
+id: ../../../NSPDK_sparseVect.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

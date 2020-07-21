@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/formatrpsdb.cwl
+id: ../../../formatrpsdb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

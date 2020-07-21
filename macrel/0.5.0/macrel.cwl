@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/macrel.cwl
+id: ../../../macrel.cwl
 inputs:
 - id: keep_fast_a_headers
   doc: 'Keep complete FASTA headers [get-smorfs command] (default: False)'

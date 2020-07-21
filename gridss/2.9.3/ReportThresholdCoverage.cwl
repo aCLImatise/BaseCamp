@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ReportThresholdCoverage.cwl
+id: ../../../ReportThresholdCoverage.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

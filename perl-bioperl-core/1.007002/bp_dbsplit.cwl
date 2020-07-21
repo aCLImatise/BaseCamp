@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_dbsplit.pl.cwl
+id: ../../../bp_dbsplit.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

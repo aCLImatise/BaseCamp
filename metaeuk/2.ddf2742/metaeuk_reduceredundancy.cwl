@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metaeuk_reduceredundancy.cwl
+id: ../../../metaeuk_reduceredundancy.cwl
 inputs:
 - id: overlap
   doc: allow predictions to overlap another on the same strand. when not allowed (default),

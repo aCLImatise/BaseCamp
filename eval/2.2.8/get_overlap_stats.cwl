@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_overlap_stats.pl.cwl
+id: ../../../get_overlap_stats.pl.cwl
 inputs:
 - id: input_files_gtf
   doc: ': Input files are in GTF format.'

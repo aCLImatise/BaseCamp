@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sort2.cwl
+id: ../../../sort2.cwl
 inputs:
 - id: first_column_sort
   doc: '- First  column to sort after (Default 0)'

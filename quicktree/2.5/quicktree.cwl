@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quicktree.cwl
+id: ../../../quicktree.cwl
 inputs:
 - id: options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mia.cwl
+id: ../../../mia.cwl
 inputs:
 - id: supplied_default_matrix
   doc: (if not supplied an default matrix is used)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_actg_coordinate.cwl
+id: ../../../fc_actg_coordinate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

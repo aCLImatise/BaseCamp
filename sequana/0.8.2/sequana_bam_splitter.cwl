@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequana_bam_splitter.cwl
+id: ../../../sequana_bam_splitter.cwl
 inputs:
 - id: this
   doc: ''

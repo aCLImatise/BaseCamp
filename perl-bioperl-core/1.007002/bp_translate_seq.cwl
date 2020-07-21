@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_translate_seq.pl.cwl
+id: ../../../bp_translate_seq.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

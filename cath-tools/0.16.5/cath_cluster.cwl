@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cath_cluster.cwl
+id: ../../../cath_cluster.cwl
 inputs:
 - id: output_version_information
   doc: '[ --version ]              Output version information'

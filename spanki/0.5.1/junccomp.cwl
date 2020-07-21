@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/junccomp.cwl
+id: ../../../junccomp.cwl
 inputs:
 - id: table_default_none
   doc: 'table A (default: None)'

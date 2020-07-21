@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxonkit.cwl
+id: ../../../taxonkit.cwl
 inputs:
 - id: data_dir
   doc: directory containing nodes.dmp and names.dmp (default "/home/ubuntu/.taxonkit")

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_emperor.py.cwl
+id: ../../../make_emperor.py.cwl
 inputs:
 - id: input_coords
   doc: "Depending on the plot to be generated, can be one of the following: (1) Filepath\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/remove_alignment_gaps.cwl
+id: ../../../remove_alignment_gaps.cwl
 inputs:
 - id: species
   doc: ''

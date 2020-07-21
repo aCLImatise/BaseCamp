@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/annotate_partitions.py.cwl
+id: ../../../annotate_partitions.py.cwl
 inputs:
 - id: info
   doc: print citation information

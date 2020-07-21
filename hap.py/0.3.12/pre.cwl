@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pre.py.cwl
+id: ../../../pre.py.cwl
 inputs:
 - id: location
   doc: Comma-separated list of locations [use naming after preprocessing], when not

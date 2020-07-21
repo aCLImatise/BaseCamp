@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cmcalibrate.cwl
+id: ../../../cmcalibrate.cwl
 inputs:
 - id: set_random_length
   doc: ': set random seq length to search in Mb to <x>  [1.6]  (0.01<=x<=160.)'

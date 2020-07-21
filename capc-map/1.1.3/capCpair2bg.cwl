@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/capCpair2bg.cwl
+id: ../../../capCpair2bg.cwl
 inputs:
 - id: pairfile_input_file
   doc: pairfile       is the input file name; can use this option more than once to

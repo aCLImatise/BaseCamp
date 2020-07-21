@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/OSSolverService.cwl
+id: ../../../OSSolverService.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

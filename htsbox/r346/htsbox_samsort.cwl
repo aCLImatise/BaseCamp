@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htsbox_samsort.cwl
+id: ../../../htsbox_samsort.cwl
 inputs:
 - id: s
   doc: ''

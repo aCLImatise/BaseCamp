@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_grep.cwl
+id: ../../../seqkit_grep.cwl
 inputs:
 - id: c_g_t
   doc: :-1    A C G T N a c g t n

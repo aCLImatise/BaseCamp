@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/updateDeltaClr.cwl
+id: ../../../updateDeltaClr.cwl
 inputs:
 - id: version_print_version
   doc: '|version      - Print the version and exit;'

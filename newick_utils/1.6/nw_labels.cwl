@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nw_labels.cwl
+id: ../../../nw_labels.cwl
 inputs:
 - id: print_labels_inner
   doc: ": don't print labels of inner nodes"

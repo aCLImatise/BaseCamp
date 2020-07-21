@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkm_dist_plot.cwl
+id: ../../../checkm_dist_plot.cwl
 inputs:
 - id: image_type
   doc: 'desired image type (default: png)'

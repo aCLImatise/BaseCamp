@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phastaf.cwl
+id: ../../../phastaf.cwl
 inputs:
 - id: check
   doc: Check dependencies are installed

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pam.cwl
+id: ../../../pam.cwl
 inputs:
 - id: arg_input_bam
   doc: '[ --bam ] arg                      Input BAM file for read extraction'

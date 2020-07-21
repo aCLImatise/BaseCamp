@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_fastq_pairfq_lite.pl.cwl
+id: ../../../gaas_fastq_pairfq_lite.pl.cwl
 inputs:
 - id: in_file
   doc: For the 'addinfo' method, this would be any FASTA/Q file (or STDIN). For the

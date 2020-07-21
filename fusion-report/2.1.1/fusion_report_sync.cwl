@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fusion_report_sync.cwl
+id: ../../../fusion_report_sync.cwl
 inputs:
 - id: cosmic_usr
   doc: COSMIC username

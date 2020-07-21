@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/busco.cwl
+id: ../../../busco.cwl
 inputs:
 - id: file__fasta
   doc: FILE, --in FASTA FILE Input sequence file in FASTA format. Can be an assembled

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ncbi_database_fetcher.sh.cwl
+id: ../../../ncbi_database_fetcher.sh.cwl
 inputs:
 - id: usage_message
   doc: usage message

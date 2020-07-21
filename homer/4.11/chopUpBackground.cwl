@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chopUpBackground.pl.cwl
+id: ../../../chopUpBackground.pl.cwl
 inputs:
 - id: target_seq_file
   doc: ''

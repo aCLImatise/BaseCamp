@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mob_typer.cwl
+id: ../../../mob_typer.cwl
 inputs:
 - id: in_file
   doc: Input assembly fasta file to process

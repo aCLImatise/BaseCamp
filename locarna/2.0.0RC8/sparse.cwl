@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sparse.cwl
+id: ../../../sparse.cwl
 inputs:
 - id: galaxy_xml
   doc: Print galaxy xml wrapper.

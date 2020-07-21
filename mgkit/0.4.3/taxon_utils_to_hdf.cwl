@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxon_utils_to_hdf.cwl
+id: ../../../taxon_utils_to_hdf.cwl
 inputs:
 - id: table_name
   doc: 'Name of the table/storage to use  [default: taxa]'

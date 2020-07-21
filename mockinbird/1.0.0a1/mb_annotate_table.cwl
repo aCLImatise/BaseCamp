@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_annotate_table.cwl
+id: ../../../mb_annotate_table.cwl
 inputs:
 - id: max_n
   doc: ''

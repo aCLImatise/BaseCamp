@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/funannotate_compare.cwl
+id: ../../../funannotate_compare.cwl
 inputs:
 - id: input
   doc: List of funannotate genome folders or GBK files

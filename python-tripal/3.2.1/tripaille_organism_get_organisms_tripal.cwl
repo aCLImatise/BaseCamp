@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tripaille_organism_get_organisms_tripal.cwl
+id: ../../../tripaille_organism_get_organisms_tripal.cwl
 inputs:
 - id: organism_id
   doc: An organism entity ID

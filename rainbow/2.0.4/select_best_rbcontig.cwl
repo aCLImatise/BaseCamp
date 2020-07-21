@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/select_best_rbcontig.pl.cwl
+id: ../../../select_best_rbcontig.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

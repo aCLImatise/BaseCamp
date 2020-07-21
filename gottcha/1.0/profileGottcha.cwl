@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/profileGottcha.pl.cwl
+id: ../../../profileGottcha.pl.cwl
 inputs:
 - id: genome_vitals
   doc: =/home/me/indir/genomeVitals2.dmp          --treeFile=/home/me/indir/speciesTreeGI2.dmp

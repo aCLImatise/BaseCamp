@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PretextMap.sse42.cwl
+id: ../../../PretextMap.sse42.cwl
 inputs:
 - id: filter_include
   doc: '"seq_ [, seq_]*"'

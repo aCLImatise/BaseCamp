@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/corset.cwl
+id: ../../../corset.cwl
 inputs:
 - id: running_i_will
   doc: 'If running with -i corset or salmon_eq_classes, this will filter out a link

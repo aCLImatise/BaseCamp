@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/remove_bad_illumina.py.cwl
+id: ../../../remove_bad_illumina.py.cwl
 inputs:
 - id: input
   doc: The input file (in the newer Solexa FASTQ format, i.e. version 1.8 or newer)

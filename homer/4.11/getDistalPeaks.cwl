@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getDistalPeaks.pl.cwl
+id: ../../../getDistalPeaks.pl.cwl
 inputs:
 - id: absolute_distance_keep
   doc: '<#> (Absolute Distance from TSS to keep, default: 3000)'

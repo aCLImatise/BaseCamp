@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_shuffle.cwl
+id: ../../../seqkit_shuffle.cwl
 inputs:
 - id: keep_temp
   doc: keep tempory FASTA and .fai file when using 2-pass mode

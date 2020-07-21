@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fpcat.cwl
+id: ../../../fpcat.cwl
 inputs:
 - id: in
   doc: input fingerprint format. One of fps or fps.gz. (default guesses from filename

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/contigtax_update_newfile.cwl
+id: ../../../contigtax_update_newfile.cwl
 inputs:
 - id: contig_tax
   doc: ''

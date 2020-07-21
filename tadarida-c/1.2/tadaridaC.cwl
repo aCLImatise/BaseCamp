@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tadaridaC.r.cwl
+id: ../../../tadaridaC.r.cwl
 inputs:
 - id: file
   doc: ''

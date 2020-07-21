@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msaprobs.cwl
+id: ../../../msaprobs.cwl
 inputs:
 - id: outfile
   doc: specify the output file name (STDOUT by default)

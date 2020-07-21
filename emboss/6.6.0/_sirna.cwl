@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_sirna.cwl
+id: ../../../_sirna.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

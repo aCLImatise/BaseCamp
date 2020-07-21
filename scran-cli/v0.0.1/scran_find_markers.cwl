@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scran_find_markers.R.cwl
+id: ../../../scran_find_markers.R.cwl
 inputs:
 - id: input_sce_object
   doc: Path to the input SCE object in rds format.

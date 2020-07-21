@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/osra.cwl
+id: ../../../osra.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

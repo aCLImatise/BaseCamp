@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compare_genes.py.cwl
+id: ../../../compare_genes.py.cwl
 inputs:
 - id: out
   doc: Path to output file

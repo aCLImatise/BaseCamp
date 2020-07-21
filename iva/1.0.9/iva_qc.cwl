@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iva_qc.cwl
+id: ../../../iva_qc.cwl
 inputs:
 - id: embl_dir
   doc: Directory of reference EMBL files. If not used, must use --ref_db

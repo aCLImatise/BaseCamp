@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamQC.py.cwl
+id: ../../../bamQC.py.cwl
 inputs:
 - id: bam_file_in
   doc: 'Input BAM file (default: None)'

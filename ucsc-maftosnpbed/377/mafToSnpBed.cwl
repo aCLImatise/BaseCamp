@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafToSnpBed.cwl
+id: ../../../mafToSnpBed.cwl
 inputs:
 - id: database
   doc: ''

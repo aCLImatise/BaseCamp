@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/combineKinship.cwl
+id: ../../../combineKinship.cwl
 inputs:
 - id: out
   doc: ': Output prefix for autosomal kinship calculation'

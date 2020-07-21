@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sum.cwl
+id: ../../../sum.cwl
 inputs:
 - id: use_sum_algorithm
   doc: use BSD sum algorithm, use 1K blocks

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bismark_default.cwl
+id: ../../../bismark_default.cwl
 inputs:
 - id: bismark
   doc: ''

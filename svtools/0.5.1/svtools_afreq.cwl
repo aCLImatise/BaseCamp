@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtools_afreq.cwl
+id: ../../../svtools_afreq.cwl
 inputs:
 - id: support
   doc: ''

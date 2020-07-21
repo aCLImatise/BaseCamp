@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/acdtable.cwl
+id: ../../../acdtable.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

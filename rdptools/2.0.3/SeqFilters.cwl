@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SeqFilters.cwl
+id: ../../../SeqFilters.cwl
 inputs:
 - id: forward_primers
   doc: Comma seperated list of forward primers

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tripaille_feature_delete_orphans.cwl
+id: ../../../tripaille_feature_delete_orphans.cwl
 inputs:
 - id: job_name
   doc: Name of the job

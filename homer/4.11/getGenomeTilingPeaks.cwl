@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getGenomeTilingPeaks.cwl
+id: ../../../getGenomeTilingPeaks.cwl
 inputs:
 - id: tag_directories_analyze
   doc: '[tag directory 2] ... (tag directories to analyze)'

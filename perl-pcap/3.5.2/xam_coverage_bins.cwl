@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xam_coverage_bins.pl.cwl
+id: ../../../xam_coverage_bins.pl.cwl
 inputs:
 - id: x_am_file
   doc: -f    bam|cram file to check coverage.

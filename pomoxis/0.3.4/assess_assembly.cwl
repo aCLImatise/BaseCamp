@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/assess_assembly.cwl
+id: ../../../assess_assembly.cwl
 inputs:
 - id: reference_should_fasta
   doc: reference, should be a fasta file. If correspondng minimap2 indices do not

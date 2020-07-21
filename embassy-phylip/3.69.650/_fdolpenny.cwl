@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_fdolpenny.cwl
+id: ../../../_fdolpenny.cwl
 inputs:
 - id: weights
   doc: properties Weights file

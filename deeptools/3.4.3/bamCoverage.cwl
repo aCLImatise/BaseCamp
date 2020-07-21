@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamCoverage.cwl
+id: ../../../bamCoverage.cwl
 inputs:
 - id: bam
   doc: 'file, -b BAM file BAM file to process (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lastz_D.cwl
+id: ../../../lastz_D.cwl
 inputs:
 - id: no_mirror
   doc: don't report mirror-image alignments when using --self (default is to skip

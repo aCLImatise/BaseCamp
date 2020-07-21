@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/guidescan_guidequery.cwl
+id: ../../../guidescan_guidequery.cwl
 inputs:
 - id: path_bam_file
   doc: path to BAM file with precomputed guideRNAs. REQUIRED

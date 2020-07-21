@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lusstr.cwl
+id: ../../../lusstr.cwl
 inputs:
 - id: v
   doc: ''

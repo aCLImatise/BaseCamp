@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tiptoft_input_fastq.cwl
+id: ../../../tiptoft_input_fastq.cwl
 inputs:
 - id: tip_to_ft
   doc: ''

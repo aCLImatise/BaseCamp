@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_get_event.cwl
+id: ../../../hca_dss_get_event.cwl
 inputs:
 - id: uuid
   doc: Bundle unique ID.

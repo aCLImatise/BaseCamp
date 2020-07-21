@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_cluster_contigs.cwl
+id: ../../../anvi_cluster_contigs.cwl
 inputs:
 - id: profile_db
   doc: Anvi'o profile database

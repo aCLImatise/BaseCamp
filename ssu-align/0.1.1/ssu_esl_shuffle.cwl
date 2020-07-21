@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_shuffle.cwl
+id: ../../../ssu_esl_shuffle.cwl
 inputs:
 - id: direct_output_data
   doc: ': direct output data to file <f>'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rename_fastq_tag.cwl
+id: ../../../rename_fastq_tag.cwl
 inputs:
 - id: fast_q
   doc: ''

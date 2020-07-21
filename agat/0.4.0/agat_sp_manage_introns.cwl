@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_manage_introns.pl.cwl
+id: ../../../agat_sp_manage_introns.pl.cwl
 inputs:
 - id: plot
   doc: Allows to create an histogram in pdf of intron sizes distribution.

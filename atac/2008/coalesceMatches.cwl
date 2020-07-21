@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coalesceMatches.cwl
+id: ../../../coalesceMatches.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

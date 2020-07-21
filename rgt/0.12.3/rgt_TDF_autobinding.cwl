@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rgt_TDF_autobinding.cwl
+id: ../../../rgt_TDF_autobinding.cwl
 inputs:
 - id: input_fasta_file
   doc: Input FASTA file of the whole genome

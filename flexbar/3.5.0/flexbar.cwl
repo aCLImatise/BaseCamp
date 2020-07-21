@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flexbar.cwl
+id: ../../../flexbar.cwl
 inputs:
 - id: full_help
   doc: Display the help message with advanced options.

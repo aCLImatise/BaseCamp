@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ggd_list.cwl
+id: ../../../ggd_list.cwl
 inputs:
 - id: pattern
   doc: (Optional) pattern to match the name of the ggd data package.

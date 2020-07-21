@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/humann2_genefamilies_genus_level.cwl
+id: ../../../humann2_genefamilies_genus_level.cwl
 inputs:
 - id: input
   doc: the gene families input table

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bismark2summary.cwl
+id: ../../../bismark2summary.cwl
 inputs:
 - id: oslash_basename
   doc: Basename of the output file (optional). Generate a text file with all relevant

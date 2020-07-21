@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_display_contigs_stats.cwl
+id: ../../../anvi_display_contigs_stats.cwl
 inputs:
 - id: report_as_text
   doc: If you give this flag, Anvi'o will not open new browser to show Contigs database

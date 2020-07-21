@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qtofpeakpicker.cwl
+id: ../../../qtofpeakpicker.cwl
 inputs:
 - id: produce_help_message
   doc: '[ --help ]               produce help message'

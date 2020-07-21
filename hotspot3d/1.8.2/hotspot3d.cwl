@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hotspot3d.cwl
+id: ../../../hotspot3d.cwl
 inputs:
 - id: command
   doc: ''

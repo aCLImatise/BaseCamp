@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tgStoreCompress.cwl
+id: ../../../tgStoreCompress.cwl
 inputs:
 - id: s
   doc: ''

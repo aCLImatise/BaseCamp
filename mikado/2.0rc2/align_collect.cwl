@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/align_collect.py.cwl
+id: ../../../align_collect.py.cwl
 inputs:
 - id: script
   doc: ''

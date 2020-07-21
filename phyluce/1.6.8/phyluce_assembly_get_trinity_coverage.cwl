@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_assembly_get_trinity_coverage.cwl
+id: ../../../phyluce_assembly_get_trinity_coverage.cwl
 inputs:
 - id: assemblies
   doc: The directory containing the assemblies

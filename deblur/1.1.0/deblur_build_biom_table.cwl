@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deblur_build_biom_table.cwl
+id: ../../../deblur_build_biom_table.cwl
 inputs:
 - id: min_reads
   doc: 'In output biom table - keep only sequences appearing at least min-reads in

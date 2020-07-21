@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summarize_flags.py.cwl
+id: ../../../summarize_flags.py.cwl
 inputs:
 - id: flags
   doc: Flag file.

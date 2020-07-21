@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xmlToSql.cwl
+id: ../../../xmlToSql.cwl
 inputs:
 - id: prefix
   doc: '- A name to prefix all tables with'

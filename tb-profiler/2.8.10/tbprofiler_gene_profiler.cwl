@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tbprofiler_gene_profiler.py_collate.cwl
+id: ../../../tbprofiler_gene_profiler.py_collate.cwl
 inputs:
 - id: dir
   doc: 'Result directory (default: .)'

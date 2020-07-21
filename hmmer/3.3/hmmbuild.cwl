@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmbuild.cwl
+id: ../../../hmmbuild.cwl
 inputs:
 - id: name_hmm_s
   doc: ': name the HMM <s>'

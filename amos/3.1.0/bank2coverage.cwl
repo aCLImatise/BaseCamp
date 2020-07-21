@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bank2coverage.cwl
+id: ../../../bank2coverage.cwl
 inputs:
 - id: bank_name
   doc: ''

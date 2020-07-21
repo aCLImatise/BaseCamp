@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scaffReportToFasta.pl.cwl
+id: ../../../scaffReportToFasta.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

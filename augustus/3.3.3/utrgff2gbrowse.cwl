@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/utrgff2gbrowse.pl.cwl
+id: ../../../utrgff2gbrowse.pl.cwl
 inputs:
 - id: no
   doc: ''

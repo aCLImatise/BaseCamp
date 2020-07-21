@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proTRAC_2.4.2.pl.cwl
+id: ../../../proTRAC_2.4.2.pl.cwl
 inputs:
 - id: genome
   doc: '[file]    Name of the file that contains the genomic sequence and that was

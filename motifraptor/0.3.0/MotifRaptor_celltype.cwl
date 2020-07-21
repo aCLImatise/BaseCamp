@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MotifRaptor_celltype.cwl
+id: ../../../MotifRaptor_celltype.cwl
 inputs:
 - id: snp_hit_with_seq
   doc: 'need header and columns in this text file with sequence (CHR is only a number):

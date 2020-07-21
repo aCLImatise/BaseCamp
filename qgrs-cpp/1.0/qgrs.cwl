@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qgrs.cwl
+id: ../../../qgrs.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

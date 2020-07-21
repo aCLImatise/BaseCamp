@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/STViewer.py.cwl
+id: ../../../STViewer.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

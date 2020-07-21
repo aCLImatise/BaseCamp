@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coverage_from_fastx.cwl
+id: ../../../coverage_from_fastx.cwl
 inputs:
 - id: coverage
   doc: 'Calculate fraction of reads required for this coverage. (default: None)'

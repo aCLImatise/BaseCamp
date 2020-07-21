@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paraHub.cwl
+id: ../../../paraHub.cwl
 inputs:
 - id: machine_list
   doc: ''

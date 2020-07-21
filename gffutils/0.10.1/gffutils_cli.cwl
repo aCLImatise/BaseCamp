@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gffutils_cli.cwl
+id: ../../../gffutils_cli.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

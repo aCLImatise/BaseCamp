@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mcxarray.cwl
+id: ../../../mcxarray.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

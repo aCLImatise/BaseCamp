@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dexqv.cwl
+id: ../../../dexqv.cwl
 inputs:
 - id: v_kl
   doc: ''

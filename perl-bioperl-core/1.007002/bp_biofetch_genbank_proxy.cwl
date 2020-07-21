@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_biofetch_genbank_proxy.pl.cwl
+id: ../../../bp_biofetch_genbank_proxy.pl.cwl
 inputs:
 - id: _db
   doc: ': db'

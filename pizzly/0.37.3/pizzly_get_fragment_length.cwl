@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pizzly_get_fragment_length.py.cwl
+id: ../../../pizzly_get_fragment_length.py.cwl
 inputs:
 - id: python
   doc: ''

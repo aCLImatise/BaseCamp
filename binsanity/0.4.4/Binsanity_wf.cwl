@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Binsanity_wf.cwl
+id: ../../../Binsanity_wf.cwl
 inputs:
 - id: specify_coverage_file
   doc: Specify a Transformed Coverage File e.g Log transformed

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obgrep.cwl
+id: ../../../obgrep.cwl
 inputs:
 - id: invert_matching_print
   doc: Invert the matching, print non-matching molecules

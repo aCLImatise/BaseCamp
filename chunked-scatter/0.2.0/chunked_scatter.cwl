@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chunked_scatter.cwl
+id: ../../../chunked_scatter.cwl
 inputs:
 - id: prefix
   doc: "The prefix of the ouput files. Output will be named like: <PREFIX><N>.bed,\

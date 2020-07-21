@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spades_corrector_core.cwl
+id: ../../../spades_corrector_core.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

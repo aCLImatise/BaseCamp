@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbsTrain.cwl
+id: ../../../pbsTrain.cwl
 inputs:
 - id: nrows
   doc: Number of "rows" per dimension in the simplex grid.  Default is maximum possible

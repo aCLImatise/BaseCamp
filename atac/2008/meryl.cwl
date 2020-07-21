@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/meryl.cwl
+id: ../../../meryl.cwl
 inputs:
 - id: _compute_parameters
   doc: -- compute parameters

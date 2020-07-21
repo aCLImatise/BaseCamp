@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fmt.cwl
+id: ../../../fmt.cwl
 inputs:
 - id: crown_margin
   doc: indentation of first two lines

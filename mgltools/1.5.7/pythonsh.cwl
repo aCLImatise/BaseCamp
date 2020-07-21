@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pythonsh.cwl
+id: ../../../pythonsh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

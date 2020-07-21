@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ali2consensus.cwl
+id: ../../../ali2consensus.cwl
 inputs:
 - id: skip
   doc: skip the N first sequences

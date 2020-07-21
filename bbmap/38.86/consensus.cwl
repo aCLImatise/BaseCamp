@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/consensus.sh.cwl
+id: ../../../consensus.sh.cwl
 inputs:
 - id: in
   doc: ''

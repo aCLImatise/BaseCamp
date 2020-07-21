@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafCoverage.cwl
+id: ../../../mafCoverage.cwl
 inputs:
 - id: restrict
   doc: Restrict to parts in restrict.bed

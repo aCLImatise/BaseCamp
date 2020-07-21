@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SSAKE.cwl
+id: ../../../SSAKE.cwl
 inputs:
 - id: de_novo_assembly
   doc: (de novo) assembly  i.e Targets used to recruit reads for de novo assembly,

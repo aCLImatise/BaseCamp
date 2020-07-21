@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_dereplicate_genomes.cwl
+id: ../../../anvi_dereplicate_genomes.cwl
 inputs:
 - id: internal_genomes
   doc: "A five-column TAB-delimited flat text file. The header line must contain these\

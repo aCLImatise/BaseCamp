@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_config_drop.cwl
+id: ../../../omero_config_drop.cwl
 inputs:
 - id: name
   doc: Name of the profile to remove

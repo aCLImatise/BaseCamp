@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tag_bam_tag_value.cwl
+id: ../../../tag_bam_tag_value.cwl
 inputs:
 - id: tag_bam
   doc: ''

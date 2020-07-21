@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi_remap.cwl
+id: ../../../fermi_remap.cwl
 inputs:
 - id: skip_ending_bases
   doc: skip ending INT bases of a read pair [0]

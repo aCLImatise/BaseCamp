@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gatc.track.maker.pl.cwl
+id: ../../../gatc.track.maker.pl.cwl
 inputs:
 - id: mi_to
   doc: Process mitochondrial chromosome (not recommended)

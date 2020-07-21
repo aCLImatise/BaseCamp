@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smshrink.cwl
+id: ../../../smshrink.cwl
 inputs:
 - id: bad
   doc: ''

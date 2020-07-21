@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htsbox_bam2bed.cwl
+id: ../../../htsbox_bam2bed.cwl
 inputs:
 - id: se
   doc: ''

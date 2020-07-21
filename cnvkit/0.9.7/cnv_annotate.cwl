@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cnv_annotate.py.cwl
+id: ../../../cnv_annotate.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

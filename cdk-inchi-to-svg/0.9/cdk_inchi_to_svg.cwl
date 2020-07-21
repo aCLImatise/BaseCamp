@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cdk_inchi_to_svg.cwl
+id: ../../../cdk_inchi_to_svg.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

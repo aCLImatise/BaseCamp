@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cleanAtac.cwl
+id: ../../../cleanAtac.cwl
 inputs:
 - id: discard_match_it
   doc: discard the match if it is below this percent identity

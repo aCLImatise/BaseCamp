@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dx_mount_all_inputs.cwl
+id: ../../../dx_mount_all_inputs.cwl
 inputs:
 - id: except
   doc: Do not mount the input with this name. (May be used multiple times.)

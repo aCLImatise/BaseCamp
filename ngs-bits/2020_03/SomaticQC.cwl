@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SomaticQC.cwl
+id: ../../../SomaticQC.cwl
 inputs:
 - id: tumor_bam
   doc: Input tumor BAM file.

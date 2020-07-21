@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/imseq2ting.cwl
+id: ../../../imseq2ting.cwl
 inputs:
 - id: im_seq_folder
   doc: Path to directory containing imseq repertoires as act- file

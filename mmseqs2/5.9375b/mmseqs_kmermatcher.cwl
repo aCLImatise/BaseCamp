@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_kmermatcher.cwl
+id: ../../../mmseqs_kmermatcher.cwl
 inputs:
 - id: alph_size
   doc: '13              alphabet size [2,21]                                        '

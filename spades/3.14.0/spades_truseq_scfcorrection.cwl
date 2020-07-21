@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spades_truseq_scfcorrection.cwl
+id: ../../../spades_truseq_scfcorrection.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

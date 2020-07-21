@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scalpel_export.cwl
+id: ../../../scalpel_export.cwl
 inputs:
 - id: verbose
   doc: ': verbose mode'

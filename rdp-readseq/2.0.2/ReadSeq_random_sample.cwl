@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ReadSeq_random_sample.cwl
+id: ../../../ReadSeq_random_sample.cwl
 inputs:
 - id: num_selection
   doc: number of sequence to select for each sample. Default is the smallest sample

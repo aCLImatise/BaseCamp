@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cafe.cwl
+id: ../../../cafe.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ppanini_rocplot.cwl
+id: ../../../ppanini_rocplot.cwl
 inputs:
 - id: master_plot
   doc: plotting master figure of the paper

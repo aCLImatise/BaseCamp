@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterCorrectionOverlaps.cwl
+id: ../../../filterCorrectionOverlaps.cwl
 inputs:
 - id: no_log
   doc: don't create 'scoreFile.log'

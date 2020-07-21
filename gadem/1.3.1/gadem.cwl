@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gadem.cwl
+id: ../../../gadem.cwl
 inputs:
 - id: pos_wt
   doc: 0,1, or 2  Weight profile for positions on the sequence (see documentation).

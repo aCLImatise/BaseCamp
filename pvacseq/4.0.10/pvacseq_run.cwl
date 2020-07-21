@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pvacseq_run.cwl
+id: ../../../pvacseq_run.cwl
 inputs:
 - id: epitope_length
   doc: Length of subpeptides (neoepitopes) to predict. Multiple epitope lengths can

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seal.sh.cwl
+id: ../../../seal.sh.cwl
 inputs:
 - id: discarded_dot
   doc: Pairs will be discarded only if both are shorter.

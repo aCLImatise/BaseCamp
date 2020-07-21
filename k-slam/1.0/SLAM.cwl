@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SLAM.cwl
+id: ../../../SLAM.cwl
 inputs:
 - id: db
   doc: SLAM database file which reads will be  aligned against

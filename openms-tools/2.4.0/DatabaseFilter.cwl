@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DatabaseFilter.cwl
+id: ../../../DatabaseFilter.cwl
 inputs:
 - id: in
   doc: "*        Input FASTA file, containing a database. (valid formats: 'fasta')"

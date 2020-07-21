@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biscuit_align.cwl
+id: ../../../biscuit_align.cwl
 inputs:
 - id: number_of_threads
   doc: number of threads [1]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/homer.cwl
+id: ../../../homer.cwl
 inputs:
 - id: prot
   doc: ': Sequence type (-dna)'

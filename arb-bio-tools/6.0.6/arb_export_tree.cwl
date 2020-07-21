@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_export_tree.cwl
+id: ../../../arb_export_tree.cwl
 inputs:
 - id: bifurcated
   doc: write a bifurcated tree (default is a trifurcated tree)

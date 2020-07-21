@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msstitch_merge.cwl
+id: ../../../msstitch_merge.cwl
 inputs:
 - id: directory_to_output
   doc: Directory to output in

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crt.cwl
+id: ../../../crt.cwl
 inputs:
 - id: disable_at_files
   doc: prevent further argument file expansion

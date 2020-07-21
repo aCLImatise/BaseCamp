@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/recognizer.py.cwl
+id: ../../../recognizer.py.cwl
 inputs:
 - id: threads
   doc: Number of threads for reCOGnizer to use. Default is number of CPUs available

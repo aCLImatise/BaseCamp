@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/motif_shuffle_columns.cwl
+id: ../../../motif_shuffle_columns.cwl
 inputs:
 - id: output_file_name
   doc: output file name

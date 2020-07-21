@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tgt_concatenate_textgrids.py.cwl
+id: ../../../tgt_concatenate_textgrids.py.cwl
 inputs:
 - id: input_files
   doc: Space-separated list of paths to TextGrid files in the order they should be

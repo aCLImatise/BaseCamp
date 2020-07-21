@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mkout.cwl
+id: ../../../mkout.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

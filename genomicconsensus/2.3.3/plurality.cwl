@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plurality.cwl
+id: ../../../plurality.cwl
 inputs:
 - id: emit_tool_contract
   doc: 'Emit Tool Contract to stdout (default: False)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ovStoreDump.cwl
+id: ../../../ovStoreDump.cwl
 inputs:
 - id: mandatory_path_sequence
   doc: mandatory path to a sequence store

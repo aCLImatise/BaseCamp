@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wisestork_zscore.cwl
+id: ../../../wisestork_zscore.cwl
 inputs:
 - id: binsize
   doc: RANGE  Bin size to use. Default = 50000

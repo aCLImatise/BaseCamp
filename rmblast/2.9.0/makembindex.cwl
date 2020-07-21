@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makembindex.cwl
+id: ../../../makembindex.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

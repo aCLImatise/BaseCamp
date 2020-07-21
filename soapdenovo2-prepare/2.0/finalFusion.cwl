@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/finalFusion.cwl
+id: ../../../finalFusion.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

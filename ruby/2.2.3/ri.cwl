@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ri.cwl
+id: ../../../ri.cwl
 inputs:
 - id: _interactive_interactive
   doc: ', --[no-]interactive           In interactive mode you can repeatedly look

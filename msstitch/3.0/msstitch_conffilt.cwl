@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msstitch_conffilt.cwl
+id: ../../../msstitch_conffilt.cwl
 inputs:
 - id: input_file_format
   doc: Input file of {} format

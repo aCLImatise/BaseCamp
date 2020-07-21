@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metilene_output.pl.cwl
+id: ../../../metilene_output.pl.cwl
 inputs:
 - id: pathprefix_output_files
   doc: 'path/prefix of output files (default: input_path/)'

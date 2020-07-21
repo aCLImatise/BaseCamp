@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioformats_snpeff2bed.cwl
+id: ../../../bioformats_snpeff2bed.cwl
 inputs:
 - id: bed_three
   doc: convert to the BED3 format

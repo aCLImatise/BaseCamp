@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_errors.cwl
+id: ../../../omero_errors.cwl
 inputs:
 - id: length
   doc: Length of message to print

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scpred_train_test_split.R.cwl
+id: ../../../scpred_train_test_split.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

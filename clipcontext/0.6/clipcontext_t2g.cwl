@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clipcontext_t2g.cwl
+id: ../../../clipcontext_t2g.cwl
 inputs:
 - id: thr
   doc: 'Site score threshold for filtering --in BED file (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bias_explorer.py.cwl
+id: ../../../bias_explorer.py.cwl
 inputs:
 - id: report_pdf_biasexplorerpdf
   doc: Report PDF (bias_explorer.pdf).

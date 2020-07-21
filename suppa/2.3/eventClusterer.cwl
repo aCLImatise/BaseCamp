@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/eventClusterer.py.cwl
+id: ../../../eventClusterer.py.cwl
 inputs:
 - id: d
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/perror.cwl
+id: ../../../perror.cwl
 inputs:
 - id: info
   doc: Synonym for --help.

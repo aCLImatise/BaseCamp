@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sample_mate_pairs.pl.cwl
+id: ../../../sample_mate_pairs.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

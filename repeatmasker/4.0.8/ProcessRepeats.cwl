@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ProcessRepeats.cwl
+id: ../../../ProcessRepeats.cwl
 inputs:
 - id: ace
   doc: Creates an additional output file in ACeDB format.

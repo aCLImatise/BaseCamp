@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gff3ToGenePred.cwl
+id: ../../../gff3ToGenePred.cwl
 inputs:
 - id: in_gff_three
   doc: ''

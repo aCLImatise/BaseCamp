@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafGene.cwl
+id: ../../../mafGene.cwl
 inputs:
 - id: use_file
   doc: genePredTable argument is a genePred file name

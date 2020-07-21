@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RNAshapes_mfe_macrostate_window.cwl
+id: ../../../RNAshapes_mfe_macrostate_window.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lzop_build_offset_table.py.cwl
+id: ../../../lzop_build_offset_table.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ptx.cwl
+id: ../../../ptx.cwl
 inputs:
 - id: auto_reference
   doc: output automatically generated references

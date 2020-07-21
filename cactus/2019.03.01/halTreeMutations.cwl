@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halTreeMutations.py.cwl
+id: ../../../halTreeMutations.py.cwl
 inputs:
 - id: bed_name
   doc: ''

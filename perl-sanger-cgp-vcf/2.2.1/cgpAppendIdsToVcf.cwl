@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cgpAppendIdsToVcf.pl.cwl
+id: ../../../cgpAppendIdsToVcf.pl.cwl
 inputs:
 - id: id_start
   doc: (-g)       Will set a sequential id generator to the given integer value. If

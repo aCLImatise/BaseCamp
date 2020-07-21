@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/polymut.py.cwl
+id: ../../../polymut.py.cwl
 inputs:
 - id: id__contig
   doc: ID, --contig REFERENCE ID Focus on a subset of references in the BAM file.

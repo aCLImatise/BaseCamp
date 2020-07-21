@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tigger.cwl
+id: ../../../tigger.cwl
 inputs:
 - id: write_contig_graphs
   doc: 'Write contig graphs as dot files (fullgraph.dot and Contig-*.dot) '

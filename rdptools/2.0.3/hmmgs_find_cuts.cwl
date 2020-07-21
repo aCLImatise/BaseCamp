@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmgs_find_cuts.cwl
+id: ../../../hmmgs_find_cuts.cwl
 inputs:
 - id: cut_finder
   doc: ''

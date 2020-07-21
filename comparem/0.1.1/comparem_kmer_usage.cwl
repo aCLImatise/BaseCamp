@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/comparem_kmer_usage.cwl
+id: ../../../comparem_kmer_usage.cwl
 inputs:
 - id: counts
   doc: output raw counts instead of frequencies

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tgsgapcloser.cwl
+id: ../../../tgsgapcloser.cwl
 inputs:
 - id: sc_aff
   doc: <scaffold_file>      the input scaffold file.

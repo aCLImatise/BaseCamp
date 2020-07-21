@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GSAlign.cwl
+id: ../../../GSAlign.cwl
 inputs:
 - id: int_number_threads
   doc: INT     number of threads [8]

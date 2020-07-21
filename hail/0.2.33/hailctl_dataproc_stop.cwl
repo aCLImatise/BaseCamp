@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hailctl_dataproc_stop.cwl
+id: ../../../hailctl_dataproc_stop.cwl
 inputs:
 - id: async
   doc: Do not wait for cluster deletion.

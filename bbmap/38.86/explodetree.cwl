@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/explodetree.sh.cwl
+id: ../../../explodetree.sh.cwl
 inputs:
 - id: in
   doc: ''

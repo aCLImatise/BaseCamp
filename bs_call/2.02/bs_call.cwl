@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bs_call.cwl
+id: ../../../bs_call.cwl
 inputs:
 - id: no_split
   doc: Do not split output on contig

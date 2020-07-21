@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hypro.py.cwl
+id: ../../../hypro.py.cwl
 inputs:
 - id: modus_decide_restricted
   doc: "['restricted', 'full'], --modus ['restricted', 'full'] Modus of HyPro to decide\

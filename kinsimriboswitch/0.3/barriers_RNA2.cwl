@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/barriers_RNA2.cwl
+id: ../../../barriers_RNA2.cwl
 inputs:
 - id: full_help
   doc: Print help, including hidden options, and exit

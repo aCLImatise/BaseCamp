@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmpgmd_shard.cwl
+id: ../../../hmmpgmd_shard.cwl
 inputs:
 - id: master
   doc: ': run program as the master server'

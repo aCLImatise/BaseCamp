@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bank2sam.cwl
+id: ../../../bank2sam.cwl
 inputs:
 - id: the_bank_operated
   doc: 'The bank to be operated on. '

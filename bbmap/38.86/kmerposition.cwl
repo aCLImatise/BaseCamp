@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kmerposition.sh.cwl
+id: ../../../kmerposition.sh.cwl
 inputs:
 - id: in
   doc: ''

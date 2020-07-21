@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mango_notebook.cwl
+id: ../../../mango_notebook.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

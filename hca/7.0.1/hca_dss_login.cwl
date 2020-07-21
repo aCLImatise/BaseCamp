@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_login.cwl
+id: ../../../hca_dss_login.cwl
 inputs:
 - id: access_token
   doc: ''

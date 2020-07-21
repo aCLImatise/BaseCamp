@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prt_terms.py.cwl
+id: ../../../prt_terms.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

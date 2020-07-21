@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_gen_genomes_storage.cwl
+id: ../../../anvi_gen_genomes_storage.cwl
 inputs:
 - id: external_genomes
   doc: A two-column TAB-delimited flat text file that lists anvi'o contigs databases.

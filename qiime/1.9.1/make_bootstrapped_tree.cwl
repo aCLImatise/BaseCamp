@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_bootstrapped_tree.py.cwl
+id: ../../../make_bootstrapped_tree.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

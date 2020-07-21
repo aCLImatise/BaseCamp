@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_random.cwl
+id: ../../../goalign_random.cwl
 inputs:
 - id: amino_acids
   doc: Aminoacid sequences (otherwise, nucleotides)

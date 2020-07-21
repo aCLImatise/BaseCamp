@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ped2geno.cwl
+id: ../../../ped2geno.cwl
 inputs:
 - id: input
   doc: --help

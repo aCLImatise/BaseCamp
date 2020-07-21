@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fill_unaligned_gaps.pl.cwl
+id: ../../../fill_unaligned_gaps.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

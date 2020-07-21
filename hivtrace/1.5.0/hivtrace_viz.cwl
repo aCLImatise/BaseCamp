@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hivtrace_viz.cwl
+id: ../../../hivtrace_viz.cwl
 inputs:
 - id: hostname
   doc: 'hostname to bind to (default: 127.0.0.1'

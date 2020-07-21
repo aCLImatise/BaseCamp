@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/est_abundance.py.cwl
+id: ../../../est_abundance.py.cwl
 inputs:
 - id: input
   doc: Input kraken report file.

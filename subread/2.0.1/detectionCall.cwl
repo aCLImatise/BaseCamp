@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/detectionCall.cwl
+id: ../../../detectionCall.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

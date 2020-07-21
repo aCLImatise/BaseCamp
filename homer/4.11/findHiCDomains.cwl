@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findHiCDomains.pl.cwl
+id: ../../../findHiCDomains.pl.cwl
 inputs:
 - id: res
   doc: '<#> (resolution in bp, default: 5000)'

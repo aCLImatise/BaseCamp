@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/postfilter.sh.cwl
+id: ../../../postfilter.sh.cwl
 inputs:
 - id: in
   doc: ''

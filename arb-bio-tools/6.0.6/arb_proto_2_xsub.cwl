@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_proto_2_xsub.cwl
+id: ../../../arb_proto_2_xsub.cwl
 inputs:
 - id: prototypes_doth
   doc: ''

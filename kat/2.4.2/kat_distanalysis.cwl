@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kat_distanalysis.cwl
+id: ../../../kat_distanalysis.cwl
 inputs:
 - id: output_prefix
   doc: If present then plots are sent to files starting with this prefix.

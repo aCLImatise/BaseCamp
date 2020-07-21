@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gappa_tools_citation.cwl
+id: ../../../gappa_tools_citation.cwl
 inputs:
 - id: format
   doc: :{bibtex,markdown,both}=bibtex Output format for citations.

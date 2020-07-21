@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genometreetk_jk_taxa.cwl
+id: ../../../genometreetk_jk_taxa.cwl
 inputs:
 - id: out_group_ids
   doc: file indicating outgroup taxa

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/remove_redundant_variations.cwl
+id: ../../../remove_redundant_variations.cwl
 inputs:
 - id: reference_dot_fast_a
   doc: ''

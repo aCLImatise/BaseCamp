@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dazcon.cwl
+id: ../../../dazcon.cwl
 inputs:
 - id: v
   doc: ''

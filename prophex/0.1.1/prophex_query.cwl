@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prophex_query.cwl
+id: ../../../prophex_query.cwl
 inputs:
 - id: length_of_kmer
   doc: length of k-mer

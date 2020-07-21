@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AlignmentTools_compare_error_type.cwl
+id: ../../../AlignmentTools_compare_error_type.cwl
 inputs:
 - id: stem
   doc: Output stem (default <query_nucl.fasta>)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bactopia_tools.py.cwl
+id: ../../../bactopia_tools.py.cwl
 inputs:
 - id: bac_topia
   doc: Directory where Bactopia repository is stored.

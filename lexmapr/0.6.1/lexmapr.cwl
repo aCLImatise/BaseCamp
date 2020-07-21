@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lexmapr.cwl
+id: ../../../lexmapr.cwl
 inputs:
 - id: _output_file
   doc: '[OUTPUT], --output [OUTPUT] Output file'

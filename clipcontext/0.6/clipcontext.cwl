@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clipcontext.cwl
+id: ../../../clipcontext.cwl
 inputs:
 - id: v
   doc: ''

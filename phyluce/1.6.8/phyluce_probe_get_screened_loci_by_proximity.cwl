@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_probe_get_screened_loci_by_proximity.cwl
+id: ../../../phyluce_probe_get_screened_loci_by_proximity.cwl
 inputs:
 - id: input
   doc: The FASTA file of input sequences

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/catass.cwl
+id: ../../../catass.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

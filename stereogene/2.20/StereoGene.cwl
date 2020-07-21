@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/StereoGene.cwl
+id: ../../../StereoGene.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

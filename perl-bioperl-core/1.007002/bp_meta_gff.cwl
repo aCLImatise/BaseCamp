@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_meta_gff.pl.cwl
+id: ../../../bp_meta_gff.pl.cwl
 inputs:
 - id: of__database
   doc: of --database.

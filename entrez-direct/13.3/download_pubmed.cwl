@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/download_pubmed.cwl
+id: ../../../download_pubmed.cwl
 inputs:
 - id: pubmed_slash_usage
   doc: ''

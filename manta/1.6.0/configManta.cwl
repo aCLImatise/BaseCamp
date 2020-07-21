@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/configManta.py.cwl
+id: ../../../configManta.py.cwl
 inputs:
 - id: normal_bam
   doc: Normal sample BAM or CRAM file. May be specified more than once, multiple inputs

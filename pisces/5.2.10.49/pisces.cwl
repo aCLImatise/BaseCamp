@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pisces.cwl
+id: ../../../pisces.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

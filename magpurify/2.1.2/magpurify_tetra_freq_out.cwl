@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/magpurify_tetra_freq_out.cwl
+id: ../../../magpurify_tetra_freq_out.cwl
 inputs:
 - id: cut_off
   doc: ''

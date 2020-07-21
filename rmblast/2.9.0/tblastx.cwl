@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tblastx.cwl
+id: ../../../tblastx.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

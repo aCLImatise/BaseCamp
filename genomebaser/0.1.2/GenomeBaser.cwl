@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GenomeBaser.cwl
+id: ../../../GenomeBaser.cwl
 inputs:
 - id: check_deps
   doc: / --no-check_deps  Check that non-python dependencies exist

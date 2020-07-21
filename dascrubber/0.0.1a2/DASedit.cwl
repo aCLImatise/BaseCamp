@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DASedit.cwl
+id: ../../../DASedit.cwl
 inputs:
 - id: v
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ppanggolin_workflow.cwl
+id: ../../../ppanggolin_workflow.cwl
 inputs:
 - id: fast_a
   doc: 'A tab-separated file listing the organism names, and the fasta filepath of

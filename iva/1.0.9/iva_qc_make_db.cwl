@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iva_qc_make_db.cwl
+id: ../../../iva_qc_make_db.cwl
 inputs:
 - id: add_to_ref
   doc: 'Filename of Genbank IDs or GI numbers to be added to database. Format is:

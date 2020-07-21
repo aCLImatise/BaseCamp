@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/imfusion_ctg.cwl
+id: ../../../imfusion_ctg.cwl
 inputs:
 - id: insertions
   doc: Path to the merged insertions file from imfusion- merge.

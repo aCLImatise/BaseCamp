@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/adjustScanRankerScoreByGroup.cwl
+id: ../../../adjustScanRankerScoreByGroup.cwl
 inputs:
 - id: group_file
   doc: ''

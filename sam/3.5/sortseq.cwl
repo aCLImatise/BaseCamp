@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sortseq.cwl
+id: ../../../sortseq.cwl
 inputs:
 - id: db
   doc: '[-db seq_fn]* one or more sequence files'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quantifier.pl.orig.cwl
+id: ../../../quantifier.pl.orig.cwl
 inputs:
 - id: list_values_allowed
   doc: list all values allowed for the species parameter that have an entry at UCSC

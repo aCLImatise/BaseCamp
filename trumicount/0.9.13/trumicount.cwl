@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trumicount.cwl
+id: ../../../trumicount.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

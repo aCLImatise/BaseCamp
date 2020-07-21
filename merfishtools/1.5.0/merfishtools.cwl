@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merfishtools.cwl
+id: ../../../merfishtools.cwl
 inputs:
 - id: provide_verbose_output
   doc: Provide verbose output.

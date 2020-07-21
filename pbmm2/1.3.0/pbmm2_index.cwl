@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbmm2_index.cwl
+id: ../../../pbmm2_index.cwl
 inputs:
 - id: preset
   doc: 'STR   Set alignment mode. See below for preset parameter details. Valid choices:

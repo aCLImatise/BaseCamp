@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rmats2sashimiplot.cwl
+id: ../../../rmats2sashimiplot.cwl
 inputs:
 - id: type_event_rmats
   doc: Type of event from rMATS result used in the analysis.eventType is 'SE', 'A5SS',

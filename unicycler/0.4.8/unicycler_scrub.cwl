@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unicycler_scrub.cwl
+id: ../../../unicycler_scrub.cwl
 inputs:
 - id: input
   doc: These are the reads or assembly to be scrubbed (can be FASTA or FASTQ format

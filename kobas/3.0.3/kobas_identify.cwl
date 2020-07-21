@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kobas_identify.cwl
+id: ../../../kobas_identify.cwl
 inputs:
 - id: fg_file
   doc: foreground file, the output of annotate

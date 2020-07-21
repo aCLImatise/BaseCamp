@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sdreport.cwl
+id: ../../../sdreport.cwl
 inputs:
 - id: list_format_output
   doc: (list format) output all data fields for each record as processed

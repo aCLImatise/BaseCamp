@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kalign.cwl
+id: ../../../kalign.cwl
 inputs:
 - id: k_align_two
   doc: ''

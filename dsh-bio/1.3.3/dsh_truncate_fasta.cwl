@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dsh_truncate_fasta.cwl
+id: ../../../dsh_truncate_fasta.cwl
 inputs:
 - id: about
   doc: display about message [optional]

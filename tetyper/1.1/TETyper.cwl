@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TETyper.py.cwl
+id: ../../../TETyper.py.cwl
 inputs:
 - id: out_prefix
   doc: Prefix to use for output files. Required.

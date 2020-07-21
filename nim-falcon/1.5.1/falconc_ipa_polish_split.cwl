@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/falconc_ipa_polish_split.cwl
+id: ../../../falconc_ipa_polish_split.cwl
 inputs:
 - id: help_syntax
   doc: 'advanced: prepend,plurals,..'

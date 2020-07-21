@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_fs_logfile.cwl
+id: ../../../omero_fs_logfile.cwl
 inputs:
 - id: name
   doc: return the path of the logfile within the ManagedRepository

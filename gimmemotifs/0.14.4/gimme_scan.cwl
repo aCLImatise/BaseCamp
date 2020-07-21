@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gimme_scan.cwl
+id: ../../../gimme_scan.cwl
 inputs:
 - id: genome
   doc: Genome

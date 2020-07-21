@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bazam.cwl
+id: ../../../bazam.cwl
 inputs:
 - id: bam
   doc: BAM file to extract read pairs from

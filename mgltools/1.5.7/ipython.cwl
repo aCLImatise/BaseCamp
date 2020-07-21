@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ipython.cwl
+id: ../../../ipython.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

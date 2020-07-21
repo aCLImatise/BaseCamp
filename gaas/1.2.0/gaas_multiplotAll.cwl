@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_multiplotAll.R.cwl
+id: ../../../gaas_multiplotAll.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

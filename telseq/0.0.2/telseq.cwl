@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/telseq.cwl
+id: ../../../telseq.cwl
 inputs:
 - id: bam_list
   doc: a file that contains a list of file paths of BAMs. It should has only one column,  with

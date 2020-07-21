@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/KAligner.cwl
+id: ../../../KAligner.cwl
 inputs:
 - id: multimap
   doc: allow duplicate k-mer in the target

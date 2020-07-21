@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/guess_baits.py.cwl
+id: ../../../guess_baits.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

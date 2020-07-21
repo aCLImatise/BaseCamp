@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fetch.cwl
+id: ../../../fetch.cwl
 inputs:
 - id: config
   doc: Use <file> as configuration file

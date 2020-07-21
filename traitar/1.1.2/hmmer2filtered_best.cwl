@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmer2filtered_best.py.cwl
+id: ../../../hmmer2filtered_best.py.cwl
 inputs:
 - id: out_excl_f
   doc: domain hits filtered due to the applied thresholds

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/atlas_diff.cwl
+id: ../../../atlas_diff.cwl
 inputs:
 - id: km_er
   doc: kmer length (default:21)

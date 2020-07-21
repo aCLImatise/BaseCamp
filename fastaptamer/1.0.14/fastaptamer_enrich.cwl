@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastaptamer_enrich.cwl
+id: ../../../fastaptamer_enrich.cwl
 inputs:
 - id: x
   doc: ''

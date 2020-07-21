@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sam_to_collapsed_gff.py.cwl
+id: ../../../sam_to_collapsed_gff.py.cwl
 inputs:
 - id: convert
   doc: ''

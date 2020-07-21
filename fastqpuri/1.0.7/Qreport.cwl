@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Qreport.cwl
+id: ../../../Qreport.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/velveth.cwl
+id: ../../../velveth.cwl
 inputs:
 - id: interleaved
   doc: ': File contains paired reads interleaved in the one file (default)'

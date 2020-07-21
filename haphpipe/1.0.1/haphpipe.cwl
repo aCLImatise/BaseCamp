@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/haphpipe.cwl
+id: ../../../haphpipe.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

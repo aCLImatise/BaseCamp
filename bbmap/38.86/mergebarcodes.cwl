@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergebarcodes.sh.cwl
+id: ../../../mergebarcodes.sh.cwl
 inputs:
 - id: in
   doc: ''

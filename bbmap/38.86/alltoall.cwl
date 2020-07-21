@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alltoall.sh.cwl
+id: ../../../alltoall.sh.cwl
 inputs:
 - id: in
   doc: ''

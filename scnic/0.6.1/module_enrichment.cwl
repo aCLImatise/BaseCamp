@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/module_enrichment.py_stats.cwl
+id: ../../../module_enrichment.py_stats.cwl
 inputs:
 - id: correl_s
   doc: ''

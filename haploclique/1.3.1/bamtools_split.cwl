@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamtools_split.cwl
+id: ../../../bamtools_split.cwl
 inputs:
 - id: in
   doc: the input BAM file [stdin]

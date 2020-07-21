@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/enasearch_get_returnable_fields.cwl
+id: ../../../enasearch_get_returnable_fields.cwl
 inputs:
 - id: result
   doc: Id of a result (accessible with get_results)  [required]

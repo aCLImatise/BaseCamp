@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_gc.cwl
+id: ../../../abyss_gc.cwl
 inputs:
 - id: verbose
   doc: display verbose output

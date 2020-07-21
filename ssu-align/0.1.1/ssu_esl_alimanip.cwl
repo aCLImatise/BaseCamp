@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_alimanip.cwl
+id: ../../../ssu_esl_alimanip.cwl
 inputs:
 - id: ln_fract
   doc: ': remove sequences w/length < <x> fraction of median length'

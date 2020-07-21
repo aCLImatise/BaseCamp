@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DBGraphPep2Pro.cwl
+id: ../../../DBGraphPep2Pro.cwl
 inputs:
 - id: e
   doc: ''

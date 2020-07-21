@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MethylDackel.cwl
+id: ../../../MethylDackel.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

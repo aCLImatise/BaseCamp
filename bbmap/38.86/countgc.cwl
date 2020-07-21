@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/countgc.sh.cwl
+id: ../../../countgc.sh.cwl
 inputs:
 - id: in
   doc: ''

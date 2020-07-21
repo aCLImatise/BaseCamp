@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/download_metaseq_example_data.py.cwl
+id: ../../../download_metaseq_example_data.py.cwl
 inputs:
 - id: data_dir
   doc: Location to store downloaded and prepped data. Default is /tmp/tmpot432_h7/lib/python2.7/site-

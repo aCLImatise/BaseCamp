@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pplacer.cwl
+id: ../../../pplacer.cwl
 inputs:
 - id: specify_path_reference
   doc: Specify the path to the reference package.

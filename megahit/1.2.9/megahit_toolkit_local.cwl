@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/megahit_toolkit_local.cwl
+id: ../../../megahit_toolkit_local.cwl
 inputs:
 - id: sparsity
   doc: (=8)                sparsity of hash mapper

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/malva_geno.cwl
+id: ../../../malva_geno.cwl
 inputs:
 - id: km_er_size
   doc: size of the kmers to index (default:35)

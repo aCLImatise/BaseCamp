@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/canda.cwl
+id: ../../../canda.cwl
 inputs:
 - id: t
   doc: ''

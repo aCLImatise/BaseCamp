@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkm.cwl
+id: ../../../checkm.cwl
 inputs:
 - id: h
   doc: ''

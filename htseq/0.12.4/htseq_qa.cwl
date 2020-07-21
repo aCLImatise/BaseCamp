@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htseq_qa.cwl
+id: ../../../htseq_qa.cwl
 inputs:
 - id: type
   doc: 'type of read_file (one of: sam [default], bam, solexa- export, fastq, solexa-fastq)'

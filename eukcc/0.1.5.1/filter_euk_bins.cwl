@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_euk_bins.py.cwl
+id: ../../../filter_euk_bins.py.cwl
 inputs:
 - id: output
   doc: path for the output table

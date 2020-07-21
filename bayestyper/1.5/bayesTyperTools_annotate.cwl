@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bayesTyperTools_annotate.cwl
+id: ../../../bayesTyperTools_annotate.cwl
 inputs:
 - id: arg_variant_format
   doc: '[ --variant-file ] arg             variant file (vcf format).'

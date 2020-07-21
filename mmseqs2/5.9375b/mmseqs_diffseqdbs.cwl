@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_diffseqdbs.cwl
+id: ../../../mmseqs_diffseqdbs.cwl
 inputs:
 - id: use_seq_id
   doc: false           Sequence ID (Uniprot, GenBank, ...) is used for identifying

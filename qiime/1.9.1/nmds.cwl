@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nmds.py.cwl
+id: ../../../nmds.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

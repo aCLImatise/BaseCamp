@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merfishtools_exp.cwl
+id: ../../../merfishtools_exp.cwl
 inputs:
 - id: estimate
   doc: 'Path to write expected value and standard deviation estimates of expression

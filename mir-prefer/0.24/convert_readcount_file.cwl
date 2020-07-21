@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convert_readcount_file.py.cwl
+id: ../../../convert_readcount_file.py.cwl
 inputs:
 - id: rcn
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/retrieveMinRowCol.r.cwl
+id: ../../../retrieveMinRowCol.r.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

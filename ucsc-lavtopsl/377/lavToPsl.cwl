@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lavToPsl.cwl
+id: ../../../lavToPsl.cwl
 inputs:
 - id: target_strand
   doc: set the target strand to c (default is no strand)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_perf.cwl
+id: ../../../omero_perf.cwl
 inputs:
 - id: list
   doc: List available commands

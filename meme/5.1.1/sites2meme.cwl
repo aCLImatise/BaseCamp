@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sites2meme.cwl
+id: ../../../sites2meme.cwl
 inputs:
 - id: ext
   doc: "the file extension (with '.') of the sites files; the file name minus the\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_assembly_get_fastq_lengths.cwl
+id: ../../../phyluce_assembly_get_fastq_lengths.cwl
 inputs:
 - id: input
   doc: The directory of fastq files to summarize

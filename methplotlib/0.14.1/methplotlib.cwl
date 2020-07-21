@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/methplotlib.cwl
+id: ../../../methplotlib.cwl
 inputs:
 - id: methylation
   doc: methylation data in nanopolish, nanocompore or ont- cram format

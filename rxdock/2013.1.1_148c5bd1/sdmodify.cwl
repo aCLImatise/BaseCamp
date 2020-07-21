@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sdmodify.cwl
+id: ../../../sdmodify.cwl
 inputs:
 - id: no
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastp.cwl
+id: ../../../fastp.cwl
 inputs:
 - id: unpaired_one
   doc: for PE input, if read1 passed QC but read2 not, it will be written to unpaired1.

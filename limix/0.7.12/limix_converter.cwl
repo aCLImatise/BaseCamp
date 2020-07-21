@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/limix_converter.cwl
+id: ../../../limix_converter.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

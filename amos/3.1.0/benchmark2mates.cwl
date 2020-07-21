@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/benchmark2mates.cwl
+id: ../../../benchmark2mates.cwl
 inputs:
 - id: prefix_resulting_mates
   doc: prefix for the resulting .mates file. (required)

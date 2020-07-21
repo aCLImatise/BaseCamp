@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nudup.py.cwl
+id: ../../../nudup.py.cwl
 inputs:
 - id: paired_end
   doc: use paired end deduping with template. SAM/BAM alignment must contain paired

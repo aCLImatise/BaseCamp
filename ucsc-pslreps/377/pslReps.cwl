@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslReps.cwl
+id: ../../../pslReps.cwl
 inputs:
 - id: no_head
   doc: Don't add PSL header.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rma2info.cwl
+id: ../../../rma2info.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

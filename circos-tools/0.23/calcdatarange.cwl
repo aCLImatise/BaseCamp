@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/calcdatarange.cwl
+id: ../../../calcdatarange.cwl
 inputs:
 - id: cat
   doc: ''

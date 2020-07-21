@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/humann2_unpack_pathways.cwl
+id: ../../../humann2_unpack_pathways.cwl
 inputs:
 - id: input_genes
   doc: the gene family or EC abundance file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gapc.cwl
+id: ../../../gapc.cwl
 inputs:
 - id: try_inline_nts
   doc: '[ --inline ]              try to inline NTs'

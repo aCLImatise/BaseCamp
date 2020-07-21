@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cat.cwl
+id: ../../../cat.cwl
 inputs:
 - id: show_all
   doc: equivalent to -vET

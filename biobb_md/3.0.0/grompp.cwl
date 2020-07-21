@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/grompp.cwl
+id: ../../../grompp.cwl
 inputs:
 - id: c
   doc: ''

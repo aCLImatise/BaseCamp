@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sumatra.cwl
+id: ../../../sumatra.cwl
 inputs:
 - id: reference_sequence_shortest
   doc: ': Reference sequence length is the shortest. '

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/methylpy_bam_quality_filter.cwl
+id: ../../../methylpy_bam_quality_filter.cwl
 inputs:
 - id: input_file
   doc: 'BAM file to filter. (default: None)'

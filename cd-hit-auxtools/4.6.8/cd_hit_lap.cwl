@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cd_hit_lap.cwl
+id: ../../../cd_hit_lap.cwl
 inputs:
 - id: input_file
   doc: Input file;

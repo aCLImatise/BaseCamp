@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DBrm.cwl
+id: ../../../DBrm.cwl
 inputs:
 - id: v
   doc: ''

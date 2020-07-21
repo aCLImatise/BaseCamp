@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svim_reads.cwl
+id: ../../../svim_reads.cwl
 inputs:
 - id: verbose
   doc: 'Enable more verbose logging (default: False)'

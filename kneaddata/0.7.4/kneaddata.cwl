@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kneaddata.cwl
+id: ../../../kneaddata.cwl
 inputs:
 - id: verbose
   doc: additional output is printed

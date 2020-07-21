@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/test_haplotypes.cwl
+id: ../../../test_haplotypes.cwl
 inputs:
 - id: auto_start_dbg
   doc: "\e[1;33;49m[=<boolean value>]"

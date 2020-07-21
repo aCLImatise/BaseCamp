@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/printf.cwl
+id: ../../../printf.cwl
 inputs:
 - id: format
   doc: ''

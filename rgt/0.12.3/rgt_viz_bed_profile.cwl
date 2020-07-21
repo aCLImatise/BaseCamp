@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rgt_viz_bed_profile.cwl
+id: ../../../rgt_viz_bed_profile.cwl
 inputs:
 - id: input_experimental_matrix
   doc: Input experimental matrix or Input BED file or Input directory which contains

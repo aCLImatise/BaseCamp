@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CopomuS.py.cwl
+id: ../../../CopomuS.py.cwl
 inputs:
 - id: query
   doc: The query sequence.

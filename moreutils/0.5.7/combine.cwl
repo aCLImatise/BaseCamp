@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/combine.cwl
+id: ../../../combine.cwl
 inputs:
 - id: file_one
   doc: ''

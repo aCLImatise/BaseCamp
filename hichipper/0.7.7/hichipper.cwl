@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hichipper.cwl
+id: ../../../hichipper.cwl
 inputs:
 - id: out
   doc: Output directory name; must not be already existing [Required]  [required]

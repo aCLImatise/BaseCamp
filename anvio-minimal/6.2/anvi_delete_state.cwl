@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_delete_state.cwl
+id: ../../../anvi_delete_state.cwl
 inputs:
 - id: list_states
   doc: Show available states and exit.

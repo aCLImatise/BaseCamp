@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extractseq.cwl
+id: ../../../extractseq.cwl
 inputs:
 - id: output
   doc: 'Name of output file (default: stdout) '

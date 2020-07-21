@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stochastic.cwl
+id: ../../../stochastic.cwl
 inputs:
 - id: input_file
   doc: ''

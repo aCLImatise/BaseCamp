@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cassiopee.cwl
+id: ../../../cassiopee.cwl
 inputs:
 - id: maximum_index_depth
   doc: ': maximum index depth / max pattern size'

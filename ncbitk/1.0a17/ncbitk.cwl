@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ncbitk.cwl
+id: ../../../ncbitk.cwl
 inputs:
 - id: status
   doc: Show the current status of your genome collection

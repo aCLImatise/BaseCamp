@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dfamConsensusTool.pl.cwl
+id: ../../../dfamConsensusTool.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

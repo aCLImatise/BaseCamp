@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkTableCoords.cwl
+id: ../../../checkTableCoords.cwl
 inputs:
 - id: table
   doc: 'Check this table only.  (Default: all tables)'

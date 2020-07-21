@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/roary2panphlan.py.cwl
+id: ../../../roary2panphlan.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snap.cwl
+id: ../../../snap.cwl
 inputs:
 - id: lc_mask
   doc: treat lowercase as N

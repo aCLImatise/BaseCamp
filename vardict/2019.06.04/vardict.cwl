@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vardict.pl.cwl
+id: ../../../vardict.pl.cwl
 inputs:
 - id: minimum_determine_default
   doc: 'The minimum # of reads to determine strand bias, default 2'

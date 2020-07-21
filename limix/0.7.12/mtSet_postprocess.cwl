@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mtSet_postprocess.cwl
+id: ../../../mtSet_postprocess.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

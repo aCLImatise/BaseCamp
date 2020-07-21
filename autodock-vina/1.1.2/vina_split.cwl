@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vina_split.cwl
+id: ../../../vina_split.cwl
 inputs:
 - id: input_split_pdbqt
   doc: input to split (PDBQT)

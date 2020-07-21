@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/refinem_taxon_filter.cwl
+id: ../../../refinem_taxon_filter.cwl
 inputs:
 - id: consensus_tax_on
   doc: 'threshold for accepting a consensus taxon (default: 50.0)'

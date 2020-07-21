@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segmentation_fold_utils_estimate_energy.cwl
+id: ../../../segmentation_fold_utils_estimate_energy.cwl
 inputs:
 - id: temp_dir
   doc: 'Ppath in which temporary conifig files will be stored (default: /tmp)'

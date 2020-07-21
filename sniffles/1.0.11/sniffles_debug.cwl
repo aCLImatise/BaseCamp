@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sniffles_debug.cwl
+id: ../../../sniffles_debug.cwl
 inputs:
 - id: ivcf
   doc: Input VCF file name. Enable force calling []

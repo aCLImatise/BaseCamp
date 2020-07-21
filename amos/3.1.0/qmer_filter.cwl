@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qmer_filter.cwl
+id: ../../../qmer_filter.cwl
 inputs:
 - id: threshold
   doc: ''

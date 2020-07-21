@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdk_pixbuf_query_loaders.cwl
+id: ../../../gdk_pixbuf_query_loaders.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

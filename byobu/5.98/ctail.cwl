@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ctail.cwl
+id: ../../../ctail.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

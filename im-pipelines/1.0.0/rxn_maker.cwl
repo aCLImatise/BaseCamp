@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rxn_maker.cwl
+id: ../../../rxn_maker.cwl
 inputs:
 - id: input
   doc: Input file, if not defined the STDIN is used

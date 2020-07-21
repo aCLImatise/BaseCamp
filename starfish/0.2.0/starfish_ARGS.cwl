@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/starfish_ARGS.cwl
+id: ../../../starfish_ARGS.cwl
 inputs:
 - id: starfish
   doc: ''

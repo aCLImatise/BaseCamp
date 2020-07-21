@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getMeanAndStdevForGapsByGapNumUsingCeleraAsmFile.perl.cwl
+id: ../../../getMeanAndStdevForGapsByGapNumUsingCeleraAsmFile.perl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

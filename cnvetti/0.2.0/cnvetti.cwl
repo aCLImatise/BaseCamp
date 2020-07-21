@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cnvetti.cwl
+id: ../../../cnvetti.cwl
 inputs:
 - id: verbose
   doc: Increase verbosity

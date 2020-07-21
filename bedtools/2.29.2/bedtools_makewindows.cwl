@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools_makewindows.cwl
+id: ../../../bedtools_makewindows.cwl
 inputs:
 - id: genome_file_size
   doc: Genome file size (see notes below). Windows will be created for each chromosome

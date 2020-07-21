@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/preseq.cwl
+id: ../../../preseq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

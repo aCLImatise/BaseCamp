@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/delly_merge.cwl
+id: ../../../delly_merge.cwl
 inputs:
 - id: arg_merged_sv
   doc: '[ --outfile ] arg (="sv.bcf")      Merged SV BCF output file'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ncbi_extract_entrez2gene.py.cwl
+id: ../../../ncbi_extract_entrez2gene.py.cwl
 inputs:
 - id: gene_two_acc_file
   doc: Path of gene2accession.gz file (from ftp://ftp.ncbi.nlm.nih.gov/gene/DATA),

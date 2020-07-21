@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cath_score_align.cwl
+id: ../../../cath_score_align.cwl
 inputs:
 - id: output_version_information
   doc: '[ --version ]                Output version information'

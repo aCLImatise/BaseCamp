@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blast_align.sh.cwl
+id: ../../../blast_align.sh.cwl
 inputs:
 - id: to_blast_against
   doc: to blast against

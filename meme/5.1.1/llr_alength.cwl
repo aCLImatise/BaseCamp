@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/llr_alength.cwl
+id: ../../../llr_alength.cwl
 inputs:
 - id: freq_file
   doc: ''

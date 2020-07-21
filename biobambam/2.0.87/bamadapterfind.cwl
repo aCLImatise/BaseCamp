@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamadapterfind.cwl
+id: ../../../bamadapterfind.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

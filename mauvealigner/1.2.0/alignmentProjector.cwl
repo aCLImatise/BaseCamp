@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alignmentProjector.cwl
+id: ../../../alignmentProjector.cwl
 inputs:
 - id: input_x_mfa
   doc: ''

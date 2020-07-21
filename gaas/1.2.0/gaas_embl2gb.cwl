@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_embl2gb.pl.cwl
+id: ../../../gaas_embl2gb.pl.cwl
 inputs:
 - id: embl
   doc: Input EMBL file that will be read

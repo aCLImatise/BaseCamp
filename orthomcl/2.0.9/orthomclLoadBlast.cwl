@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/orthomclLoadBlast.cwl
+id: ../../../orthomclLoadBlast.cwl
 inputs:
 - id: config_file
   doc: ''

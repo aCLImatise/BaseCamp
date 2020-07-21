@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/verify_low_depth.pl.cwl
+id: ../../../verify_low_depth.pl.cwl
 inputs:
 - id: c
   doc: ''

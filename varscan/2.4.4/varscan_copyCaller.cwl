@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varscan_copyCaller.cwl
+id: ../../../varscan_copyCaller.cwl
 inputs:
 - id: output_file
   doc: Output file to contain the calls

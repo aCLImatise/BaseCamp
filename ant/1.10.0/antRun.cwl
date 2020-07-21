@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/antRun.pl.cwl
+id: ../../../antRun.pl.cwl
 inputs:
 - id: no
   doc: ''

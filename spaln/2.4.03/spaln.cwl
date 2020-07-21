@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spaln.cwl
+id: ../../../spaln.cwl
 inputs:
 - id: generate_local_table
   doc: Generate local lookup table for each block

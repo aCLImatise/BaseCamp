@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trawler.cwl
+id: ../../../trawler.cwl
 inputs:
 - id: directory
   doc: (optional) output directory. [DEFAULT = "TRAWLER_HOME/myResults"]

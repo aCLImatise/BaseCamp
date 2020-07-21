@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hyphy_sw.cwl
+id: ../../../hyphy_sw.cwl
 inputs:
 - id: mpireceive__fromnode
   doc: MPIReceive(-1, fromNode, result_String);

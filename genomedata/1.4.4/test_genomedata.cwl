@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/test_genomedata.py.cwl
+id: ../../../test_genomedata.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

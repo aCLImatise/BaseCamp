@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/oncofuse.cwl
+id: ../../../oncofuse.cwl
 inputs:
 - id: genome_assembly_version
   doc: 'Genome assembly version, default is hg19. Allowed values: hg18, hg19, hg38'

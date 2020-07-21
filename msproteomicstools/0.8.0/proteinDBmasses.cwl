@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteinDBmasses.py.cwl
+id: ../../../proteinDBmasses.py.cwl
 inputs:
 - id: fast_a_file
   doc: ''

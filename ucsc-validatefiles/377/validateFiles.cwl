@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/validateFiles.cwl
+id: ../../../validateFiles.cwl
 inputs:
 - id: as
   doc: If you have extra "bedPlus" fields, it's great to put a definition of each

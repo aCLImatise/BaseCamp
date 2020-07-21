@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcftools_merge.cwl
+id: ../../../bcftools_merge.cwl
 inputs:
 - id: force_samples
   doc: resolve duplicate sample names

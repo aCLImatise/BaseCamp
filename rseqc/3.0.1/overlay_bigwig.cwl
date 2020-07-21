@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/overlay_bigwig.py.cwl
+id: ../../../overlay_bigwig.py.cwl
 inputs:
 - id: bw_file_one
   doc: One BigWig file.

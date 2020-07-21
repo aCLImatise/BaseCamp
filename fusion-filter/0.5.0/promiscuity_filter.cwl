@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/promiscuity_filter.pl.cwl
+id: ../../../promiscuity_filter.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pileup.sh.cwl
+id: ../../../pileup.sh.cwl
 inputs:
 - id: in
   doc: ''

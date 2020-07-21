@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeplot.pl.cwl
+id: ../../../makeplot.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

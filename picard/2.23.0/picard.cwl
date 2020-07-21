@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/picard.cwl
+id: ../../../picard.cwl
 inputs:
 - id: picard_command_line
   doc: ''

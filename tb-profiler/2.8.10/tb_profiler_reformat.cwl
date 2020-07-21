@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tb_profiler_reformat.cwl
+id: ../../../tb_profiler_reformat.cwl
 inputs:
 - id: txt
   doc: 'Add text output (default: False)'

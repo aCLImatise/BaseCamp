@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafRanges.cwl
+id: ../../../mafRanges.cwl
 inputs:
 - id: other_db
   doc: Output ranges only for alignments that include oDb. oDB can be comma-separated

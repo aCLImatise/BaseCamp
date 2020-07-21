@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GapFiller.cwl
+id: ../../../GapFiller.cwl
 inputs:
 - id: length_word_used
   doc: 'length of the word used to hash (default: 12)'

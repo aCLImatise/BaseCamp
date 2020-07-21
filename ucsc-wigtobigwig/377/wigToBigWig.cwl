@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wigToBigWig.cwl
+id: ../../../wigToBigWig.cwl
 inputs:
 - id: block_size
   doc: '- Number of items to bundle in r-tree.  Default 256'

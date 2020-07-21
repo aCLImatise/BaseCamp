@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simkaCount.cwl
+id: ../../../simkaCount.cwl
 inputs:
 - id: nb_cores
   doc: "(1 arg) :    number of cores  [default '0']"

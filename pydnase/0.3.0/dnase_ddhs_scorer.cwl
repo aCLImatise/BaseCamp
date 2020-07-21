@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dnase_ddhs_scorer.py.cwl
+id: ../../../dnase_ddhs_scorer.py.cwl
 inputs:
 - id: low_ram_mode
   doc: 'low RAM mode (disables caching) (Default: False)'

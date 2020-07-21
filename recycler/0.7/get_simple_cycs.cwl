@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_simple_cycs.py.cwl
+id: ../../../get_simple_cycs.py.cwl
 inputs:
 - id: input
   doc: Input (SPAdes 3.50+) FASTG to process

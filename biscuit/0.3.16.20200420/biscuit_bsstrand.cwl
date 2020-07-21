@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biscuit_bsstrand.cwl
+id: ../../../biscuit_bsstrand.cwl
 inputs:
 - id: region_optional_chrx
   doc: region (optional, chrX:123-456 if missing, process the whole bam).

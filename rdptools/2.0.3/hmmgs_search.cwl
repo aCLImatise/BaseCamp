@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmgs_search.cwl
+id: ../../../hmmgs_search.cwl
 inputs:
 - id: u
   doc: ''

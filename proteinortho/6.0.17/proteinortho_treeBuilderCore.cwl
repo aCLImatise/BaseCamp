@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteinortho_treeBuilderCore.cwl
+id: ../../../proteinortho_treeBuilderCore.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

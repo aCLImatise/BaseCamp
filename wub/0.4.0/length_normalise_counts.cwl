@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/length_normalise_counts.py_output_count.cwl
+id: ../../../length_normalise_counts.py_output_count.cwl
 inputs:
 - id: f
   doc: ''

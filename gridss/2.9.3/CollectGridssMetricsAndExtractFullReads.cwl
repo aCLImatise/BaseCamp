@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CollectGridssMetricsAndExtractFullReads.cwl
+id: ../../../CollectGridssMetricsAndExtractFullReads.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

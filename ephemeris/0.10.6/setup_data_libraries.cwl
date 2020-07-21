@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/setup_data_libraries.cwl
+id: ../../../setup_data_libraries.cwl
 inputs:
 - id: training
   doc: Set defaults that make sense for training data.

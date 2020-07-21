@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterCNV.cwl
+id: ../../../filterCNV.cwl
 inputs:
 - id: cnv_region_file
   doc: ''

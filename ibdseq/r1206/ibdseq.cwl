@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ibdseq.cwl
+id: ../../../ibdseq.cwl
 inputs:
 - id: jar
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dolmove.cwl
+id: ../../../dolmove.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

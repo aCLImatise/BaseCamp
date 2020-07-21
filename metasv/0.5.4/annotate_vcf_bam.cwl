@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/annotate_vcf_bam.py.cwl
+id: ../../../annotate_vcf_bam.py.cwl
 inputs:
 - id: bam
   doc: 'BAM file (default: None)'

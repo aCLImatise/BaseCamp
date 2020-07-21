@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/comb_motif.pl.cwl
+id: ../../../comb_motif.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

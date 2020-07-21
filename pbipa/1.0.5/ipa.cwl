@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ipa.cwl
+id: ../../../ipa.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

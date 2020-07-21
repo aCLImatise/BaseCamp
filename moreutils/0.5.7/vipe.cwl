@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vipe.cwl
+id: ../../../vipe.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

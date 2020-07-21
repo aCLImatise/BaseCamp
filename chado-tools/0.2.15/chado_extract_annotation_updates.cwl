@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chado_extract_annotation_updates.cwl
+id: ../../../chado_extract_annotation_updates.cwl
 inputs:
 - id: verbose
   doc: verbose mode

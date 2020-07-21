@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_bcs.py.cwl
+id: ../../../extract_bcs.py.cwl
 inputs:
 - id: outfile
   doc: Write results to this file.

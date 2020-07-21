@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/delly_filter.cwl
+id: ../../../delly_filter.cwl
 inputs:
 - id: arg_somatic_filter
   doc: '[ --filter ] arg (=somatic)        Filter mode (somatic, germline)'

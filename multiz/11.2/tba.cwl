@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tba.cwl
+id: ../../../tba.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

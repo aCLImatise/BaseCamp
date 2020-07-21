@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hp_align_reads.cwl
+id: ../../../hp_align_reads.cwl
 inputs:
 - id: fq_one
   doc: Fastq file with read 1

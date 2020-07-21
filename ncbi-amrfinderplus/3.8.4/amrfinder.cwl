@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/amrfinder.cwl
+id: ../../../amrfinder.cwl
 inputs:
 - id: update
   doc: ''

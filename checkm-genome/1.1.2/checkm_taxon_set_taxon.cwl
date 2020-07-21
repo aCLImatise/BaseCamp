@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkm_taxon_set_taxon.cwl
+id: ../../../checkm_taxon_set_taxon.cwl
 inputs:
 - id: q
   doc: ''

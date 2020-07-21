@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/map_back.cwl
+id: ../../../map_back.cwl
 inputs:
 - id: arg_seer_file
   doc: '[ --kmers ] arg       seer kmer output file'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfsort.cwl
+id: ../../../vcfsort.cwl
 inputs:
 - id: equivalent_to_ve
   doc: equivalent to -vE

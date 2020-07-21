@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_ncbi_get_genome_tree.pl.cwl
+id: ../../../gaas_ncbi_get_genome_tree.pl.cwl
 inputs:
 - id: _taxid_specify
   doc: <--taxid> To specify a specific taxid. Allow to focus on a specific part of

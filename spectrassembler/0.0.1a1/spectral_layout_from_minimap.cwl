@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spectral_layout_from_minimap.py.cwl
+id: ../../../spectral_layout_from_minimap.py.cwl
 inputs:
 - id: root
   doc: directory where to store layout files.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_maker_merge_outputs_from_datastore.pl.cwl
+id: ../../../gaas_maker_merge_outputs_from_datastore.pl.cwl
 inputs:
 - id: path_none_assume
   doc: The path to the input directory. If none given, we assume that the script is

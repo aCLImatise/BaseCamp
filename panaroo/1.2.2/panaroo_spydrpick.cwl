@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/panaroo_spydrpick.cwl
+id: ../../../panaroo_spydrpick.cwl
 inputs:
 - id: quantile
   doc: the quantile used to determine a threshold for keeping MI values (default=0.9).

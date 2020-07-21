@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/normalize_by_median.py.cwl
+id: ../../../normalize_by_median.py.cwl
 inputs:
 - id: cut_off
   doc: 'when the median k-mer coverage level is above this number the read is not

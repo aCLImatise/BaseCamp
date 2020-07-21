@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scssim_simuvars.cwl
+id: ../../../scssim_simuvars.cwl
 inputs:
 - id: ref
   doc: reference file (.fasta)

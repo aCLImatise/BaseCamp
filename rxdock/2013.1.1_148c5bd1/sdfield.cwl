@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sdfield.cwl
+id: ../../../sdfield.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

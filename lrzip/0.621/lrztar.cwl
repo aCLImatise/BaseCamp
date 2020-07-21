@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lrztar.cwl
+id: ../../../lrztar.cwl
 inputs:
 - id: path_will_decompress_path_tarball
   doc: ': <path1> will decompress a <path1> lrzip tarball to current directory.'

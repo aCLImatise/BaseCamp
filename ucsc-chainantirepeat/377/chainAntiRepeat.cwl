@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chainAntiRepeat.cwl
+id: ../../../chainAntiRepeat.cwl
 inputs:
 - id: min_score
   doc: '- minimum score (after repeat stuff) to pass'

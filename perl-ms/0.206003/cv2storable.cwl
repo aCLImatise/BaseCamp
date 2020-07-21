@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cv2storable.pl.cwl
+id: ../../../cv2storable.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

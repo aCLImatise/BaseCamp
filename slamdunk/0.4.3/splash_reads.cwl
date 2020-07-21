@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splash_reads.cwl
+id: ../../../splash_reads.cwl
 inputs:
 - id: output_dir
   doc: Output directory for mapped BAM files.

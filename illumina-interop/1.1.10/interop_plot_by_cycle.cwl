@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/interop_plot_by_cycle.cwl
+id: ../../../interop_plot_by_cycle.cwl
 inputs:
 - id: metric_name
   doc: '[Intensity]: Metric to plot'

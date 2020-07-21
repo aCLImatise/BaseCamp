@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CanSNPer.cwl
+id: ../../../CanSNPer.cwl
 inputs:
 - id: reference
   doc: the name of the organism

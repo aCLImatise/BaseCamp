@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cactus_fasta_fragments.py.cwl
+id: ../../../cactus_fasta_fragments.py.cwl
 inputs:
 - id: fragment
   doc: length of each fragment (default is 100)

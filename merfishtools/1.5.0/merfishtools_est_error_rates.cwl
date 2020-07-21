@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merfishtools_est_error_rates.cwl
+id: ../../../merfishtools_est_error_rates.cwl
 inputs:
 - id: tsv_file
   doc: ''

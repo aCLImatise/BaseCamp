@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/WhatsGNU_get_GenBank_genomes.py.cwl
+id: ../../../WhatsGNU_get_GenBank_genomes.py.cwl
 inputs:
 - id: faa
   doc: protein faa file from GenBank

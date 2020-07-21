@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msgfplus_search.rb.cwl
+id: ../../../msgfplus_search.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

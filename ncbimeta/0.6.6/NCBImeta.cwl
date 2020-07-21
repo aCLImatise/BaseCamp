@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NCBImeta.py.cwl
+id: ../../../NCBImeta.py.cwl
 inputs:
 - id: config
   doc: Path to the yaml configuration file (ex. config.yaml).

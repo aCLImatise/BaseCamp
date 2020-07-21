@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bolt_gff3_convert.cwl
+id: ../../../bolt_gff3_convert.cwl
 inputs:
 - id: attributes
   doc: select attributes by key

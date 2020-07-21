@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_calc_cutoff_capture.cwl
+id: ../../../fc_calc_cutoff_capture.cwl
 inputs:
 - id: coverage
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_mtx_to_10x.cwl
+id: ../../../hca_mtx_to_10x.cwl
 inputs:
 - id: invalid
   doc: ''

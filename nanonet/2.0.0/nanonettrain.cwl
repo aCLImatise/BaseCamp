@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nanonettrain.cwl
+id: ../../../nanonettrain.cwl
 inputs:
 - id: train
   doc: 'Input training data, either a path to fast5 files or a single netcdf file

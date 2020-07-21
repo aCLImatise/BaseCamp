@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/slclust.cwl
+id: ../../../slclust.cwl
 inputs:
 - id: _verbosity_at
   doc: "[v] verbosity at 'info', 'debug'  "

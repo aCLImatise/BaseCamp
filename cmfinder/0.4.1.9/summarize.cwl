@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summarize.cwl
+id: ../../../summarize.cwl
 inputs:
 - id: background_gc_content
   doc: ': Background GC content '

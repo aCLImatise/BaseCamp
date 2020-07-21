@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmtime.cwl
+id: ../../../gmtime.cwl
 inputs:
 - id: time_stamp
   doc: ''

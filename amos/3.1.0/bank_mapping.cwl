@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bank_mapping.cwl
+id: ../../../bank_mapping.cwl
 inputs:
 - id: directory_path_report
   doc: The directory path of the bank to report

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/copy_snppipeline_data.py.cwl
+id: ../../../copy_snppipeline_data.py.cwl
 inputs:
 - id: which_data
   doc: 'Which of the supplied data sets to copy.  The choices are: lambdaVirusInputs          :

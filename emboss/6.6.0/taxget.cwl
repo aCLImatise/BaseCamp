@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxget.cwl
+id: ../../../taxget.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

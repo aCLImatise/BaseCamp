@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/format_tree_and_trait_table.py.cwl
+id: ../../../format_tree_and_trait_table.py.cwl
 inputs:
 - id: input_tree
   doc: the input tree (Newick format) [REQUIRED]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/check_circularity.pl.cwl
+id: ../../../check_circularity.pl.cwl
 inputs:
 - id: check_circu_rarity_do_tpl
   doc: ''

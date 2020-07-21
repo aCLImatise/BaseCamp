@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_admin_log.cwl
+id: ../../../omero_admin_log.cwl
 inputs:
 - id: level
   doc: 'The log level: trace, debug, info, warn or error (default: info)'

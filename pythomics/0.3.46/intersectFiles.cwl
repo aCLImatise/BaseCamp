@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/intersectFiles.py.cwl
+id: ../../../intersectFiles.py.cwl
 inputs:
 - id: threads_to_run
   doc: Threads to run

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clstr_quality_eval.pl.cwl
+id: ../../../clstr_quality_eval.pl.cwl
 inputs:
 - id: no
   doc: ''

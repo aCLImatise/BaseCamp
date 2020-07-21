@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tab2feature_gxt.pl.bak.cwl
+id: ../../../tab2feature_gxt.pl.bak.cwl
 inputs:
 - id: name_chromosome_track
   doc: ':          Name of the chromosome track (default: Features )'

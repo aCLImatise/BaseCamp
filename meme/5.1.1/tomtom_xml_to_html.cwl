@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tomtom_xml_to_html.cwl
+id: ../../../tomtom_xml_to_html.cwl
 inputs:
 - id: tomtom_xml_file
   doc: ''

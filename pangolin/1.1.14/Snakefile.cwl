@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Snakefile.cwl
+id: ../../../Snakefile.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

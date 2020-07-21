@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varlociraptor_call_variants.cwl
+id: ../../../varlociraptor_call_variants.cwl
 inputs:
 - id: output
   doc: Output variant calls to given path (in BCF format). If omitted, prints calls

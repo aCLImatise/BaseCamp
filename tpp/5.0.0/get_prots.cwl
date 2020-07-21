@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_prots.pl.cwl
+id: ../../../get_prots.pl.cwl
 inputs:
 - id: filter_include_string
   doc: Filter Include String

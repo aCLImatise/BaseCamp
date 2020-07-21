@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tantan.cwl
+id: ../../../tantan.cwl
 inputs:
 - id: interpret_sequences_proteins
   doc: interpret the sequences as proteins

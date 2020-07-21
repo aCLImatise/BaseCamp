@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runidba.py.cwl
+id: ../../../runidba.py.cwl
 inputs:
 - id: para_file
   doc: ''

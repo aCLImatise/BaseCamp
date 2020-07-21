@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf2dag.cwl
+id: ../../../vcf2dag.cwl
 inputs:
 - id: reference
   doc: FASTA reference file.

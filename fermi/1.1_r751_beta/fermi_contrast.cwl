@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi_contrast.cwl
+id: ../../../fermi_contrast.cwl
 inputs:
 - id: minimum_occurrence
   doc: minimum occurrence [3]

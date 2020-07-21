@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/psp_gen.cwl
+id: ../../../psp_gen.cwl
 inputs:
 - id: min_w
   doc: 'minimum width of motif to consider default: 4'

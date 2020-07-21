@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_update_db_description.cwl
+id: ../../../anvi_update_db_description.cwl
 inputs:
 - id: description
   doc: A plain text file that contains some description about the project. You can

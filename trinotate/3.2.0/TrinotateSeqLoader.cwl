@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TrinotateSeqLoader.pl.cwl
+id: ../../../TrinotateSeqLoader.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

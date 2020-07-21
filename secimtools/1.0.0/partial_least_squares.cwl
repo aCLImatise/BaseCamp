@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/partial_least_squares.py.cwl
+id: ../../../partial_least_squares.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

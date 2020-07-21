@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samPileupConsensus.cwl
+id: ../../../samPileupConsensus.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

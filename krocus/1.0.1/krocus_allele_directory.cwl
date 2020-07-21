@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/krocus_allele_directory.cwl
+id: ../../../krocus_allele_directory.cwl
 inputs:
 - id: input_dot_fast_q
   doc: ''

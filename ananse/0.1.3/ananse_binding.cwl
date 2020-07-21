@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ananse_binding.cwl
+id: ../../../ananse_binding.cwl
 inputs:
 - id: enhancers
   doc: BED file with RPKM on the 4th column

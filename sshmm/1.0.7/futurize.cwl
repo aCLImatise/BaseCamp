@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/futurize.cwl
+id: ../../../futurize.cwl
 inputs:
 - id: all_imports
   doc: Add all __future__ and future imports to each module

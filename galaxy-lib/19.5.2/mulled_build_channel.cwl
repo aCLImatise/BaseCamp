@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mulled_build_channel.cwl
+id: ../../../mulled_build_channel.cwl
 inputs:
 - id: targets
   doc: Build a single container with specific package(s).

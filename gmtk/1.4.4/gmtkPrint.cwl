@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmtkPrint.cwl
+id: ../../../gmtkPrint.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

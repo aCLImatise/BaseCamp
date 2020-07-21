@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NGSDImportOMIM.cwl
+id: ../../../NGSDImportOMIM.cwl
 inputs:
 - id: gene
   doc: OMIM 'mim2gene.txt' file from 'http://omim.org/downloads/'.

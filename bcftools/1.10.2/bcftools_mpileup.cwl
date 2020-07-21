@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcftools_mpileup.cwl
+id: ../../../bcftools_mpileup.cwl
 inputs:
 - id: illumina_one_dot_three
   doc: +      quality is in the Illumina-1.3+ encoding

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/annotate_bed.py.cwl
+id: ../../../annotate_bed.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

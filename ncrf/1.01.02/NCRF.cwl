@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NCRF.cwl
+id: ../../../NCRF.cwl
 inputs:
 - id: cat
   doc: ''

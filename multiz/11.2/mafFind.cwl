@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafFind.cwl
+id: ../../../mafFind.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

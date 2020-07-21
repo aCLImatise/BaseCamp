@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/artic_filter.cwl
+id: ../../../artic_filter.cwl
 inputs:
 - id: quiet
   doc: Do not output warnings to stderr

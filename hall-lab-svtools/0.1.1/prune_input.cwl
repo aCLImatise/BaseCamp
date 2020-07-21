@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prune_input.cwl
+id: ../../../prune_input.cwl
 inputs:
 - id: d
   doc: ''

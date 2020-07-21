@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dbTrash.cwl
+id: ../../../dbTrash.cwl
 inputs:
 - id: age
   doc: '- number of hours old to qualify for drop.  N can be a float.'

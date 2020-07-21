@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sam2vcf.pl.cwl
+id: ../../../sam2vcf.pl.cwl
 inputs:
 - id: indels_only
   doc: Ignore SNPs.

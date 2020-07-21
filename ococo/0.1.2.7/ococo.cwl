@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ococo.cwl
+id: ../../../ococo.cwl
 inputs:
 - id: input
   doc: input SAM/BAM file (- for standard input)

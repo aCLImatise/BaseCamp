@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam_alignment_qc.py.cwl
+id: ../../../bam_alignment_qc.py.cwl
 inputs:
 - id: reference_fasta
   doc: Reference fasta.

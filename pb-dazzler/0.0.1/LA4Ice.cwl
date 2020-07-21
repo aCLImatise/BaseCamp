@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LA4Ice.cwl
+id: ../../../LA4Ice.cwl
 inputs:
 - id: car_me_uf
   doc: ''

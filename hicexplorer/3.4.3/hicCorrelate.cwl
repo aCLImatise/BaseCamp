@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicCorrelate.cwl
+id: ../../../hicCorrelate.cwl
 inputs:
 - id: matrices
   doc: 'Matrices to correlate (usually .h5 but other formats are allowed). hicCorrelate

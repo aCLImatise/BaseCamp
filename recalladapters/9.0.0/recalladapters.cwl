@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/recalladapters.cwl
+id: ../../../recalladapters.cwl
 inputs:
 - id: prefix_output_filenames
   doc: Prefix of output filenames

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/peak_pie.py.cwl
+id: ../../../peak_pie.py.cwl
 inputs:
 - id: bed
   doc: BED file of e.g. peaks

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/calculate_pi.cwl
+id: ../../../calculate_pi.cwl
 inputs:
 - id: input_file_dot_txt
   doc: ''

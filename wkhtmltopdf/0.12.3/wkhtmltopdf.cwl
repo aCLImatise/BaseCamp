@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wkhtmltopdf.cwl
+id: ../../../wkhtmltopdf.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/skg_convert.py.cwl
+id: ../../../skg_convert.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

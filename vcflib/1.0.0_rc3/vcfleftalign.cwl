@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfleftalign.cwl
+id: ../../../vcfleftalign.cwl
 inputs:
 - id: reference
   doc: Use this reference as a basis for realignment.

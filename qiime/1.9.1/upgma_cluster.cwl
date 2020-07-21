@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/upgma_cluster.py.cwl
+id: ../../../upgma_cluster.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

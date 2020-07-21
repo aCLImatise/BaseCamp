@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fitevd.cwl
+id: ../../../fitevd.cwl
 inputs:
 - id: q
   doc: ''

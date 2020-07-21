@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/singularity_mount.cwl
+id: ../../../singularity_mount.cwl
 inputs:
 - id: writable
   doc: By default all Singularity containers are available as read only. This option

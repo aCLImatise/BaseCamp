@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfaddinfo.cwl
+id: ../../../vcfaddinfo.cwl
 inputs:
 - id: var_0
   doc: ''

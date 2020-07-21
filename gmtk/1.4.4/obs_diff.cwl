@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obs_diff.cwl
+id: ../../../obs_diff.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

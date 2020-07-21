@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gapShifter.cwl
+id: ../../../gapShifter.cwl
 inputs:
 - id: var_0
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamtagconversion.cwl
+id: ../../../bamtagconversion.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

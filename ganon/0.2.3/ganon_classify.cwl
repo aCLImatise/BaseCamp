@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ganon_classify.cwl
+id: ../../../ganon_classify.cwl
 inputs:
 - id: single_reads
   doc: File[s] with single-end reads .fq .fastq .fasta .fa (e.g. file1.fq[.gz],[file2.fq[.gz]

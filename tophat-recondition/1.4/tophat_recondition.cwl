@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tophat_recondition.cwl
+id: ../../../tophat_recondition.cwl
 inputs:
 - id: log_file
   doc: 'log file (optional, (default: result_dir/tophat- recondition.log)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sparse_query.cwl
+id: ../../../sparse_query.cwl
 inputs:
 - id: dbname
   doc: Name for the database. REQUIRED.

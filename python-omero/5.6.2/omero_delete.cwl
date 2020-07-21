@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_delete.cwl
+id: ../../../omero_delete.cwl
 inputs:
 - id: wait
   doc: Number of seconds to wait for the processing to complete (Indefinite < 0; No

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bpipe_torque.sh.cwl
+id: ../../../bpipe_torque.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

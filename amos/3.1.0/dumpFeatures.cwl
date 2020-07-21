@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dumpFeatures.cwl
+id: ../../../dumpFeatures.cwl
 inputs:
 - id: report_contig_iids
   doc: report contig iids instead of eids

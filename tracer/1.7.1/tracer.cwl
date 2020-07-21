@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tracer.cwl
+id: ../../../tracer.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

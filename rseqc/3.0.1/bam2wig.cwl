@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam2wig.py.cwl
+id: ../../../bam2wig.py.cwl
 inputs:
 - id: input_file
   doc: Alignment file in BAM format. BAM file must be sorted and indexed using samTools.

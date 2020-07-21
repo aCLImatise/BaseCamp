@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/screed.cwl
+id: ../../../screed.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

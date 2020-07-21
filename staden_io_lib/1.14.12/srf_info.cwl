@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/srf_info.cwl
+id: ../../../srf_info.cwl
 inputs:
 - id: count_goodbad_reads
   doc: 1 Count of good/bad reads. 2 Counts for selected chunk types. 4 Trace count

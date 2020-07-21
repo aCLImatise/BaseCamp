@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/grep.py_out.cwl
+id: ../../../grep.py_out.cwl
 inputs:
 - id: v
   doc: ''

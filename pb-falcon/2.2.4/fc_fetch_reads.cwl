@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_fetch_reads.cwl
+id: ../../../fc_fetch_reads.cwl
 inputs:
 - id: base_dir
   doc: the base working dir of a falcon assembly

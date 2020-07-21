@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/brassI_pre_filter.pl.cwl
+id: ../../../brassI_pre_filter.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

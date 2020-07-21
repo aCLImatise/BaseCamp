@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ucsc_to_json.pl.cwl
+id: ../../../ucsc_to_json.pl.cwl
 inputs:
 - id: ucsc_to_json_do_tpl
   doc: --in <database dump dir>                       \ [ --out <output directory>

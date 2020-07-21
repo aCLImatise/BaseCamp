@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shuffle2.sh.cwl
+id: ../../../shuffle2.sh.cwl
 inputs:
 - id: in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bed2nt2aa.pl.cwl
+id: ../../../bed2nt2aa.pl.cwl
 inputs:
 - id: bed
   doc: Input file in BED6 format (mandatory)

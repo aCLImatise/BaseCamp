@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simreadspe.cwl
+id: ../../../simreadspe.cwl
 inputs:
 - id: output
   doc: 'Name of output file (default: stdout) '

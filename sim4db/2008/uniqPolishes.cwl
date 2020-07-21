@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uniqPolishes.cwl
+id: ../../../uniqPolishes.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

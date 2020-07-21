@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mrnaToGene.cwl
+id: ../../../mrnaToGene.cwl
 inputs:
 - id: unique_dot
   doc: It is not removed from the name in the genePred.

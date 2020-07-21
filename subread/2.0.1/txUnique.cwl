@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/txUnique.cwl
+id: ../../../txUnique.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

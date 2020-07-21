@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flowcraft.cwl
+id: ../../../flowcraft.cwl
 inputs:
 - id: debug
   doc: Set log to debug mode

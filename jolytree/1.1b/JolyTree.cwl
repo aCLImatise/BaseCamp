@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/JolyTree.sh.cwl
+id: ../../../JolyTree.sh.cwl
 inputs:
 - id: directory_name_containing
   doc: directory name containing  FASTA-formatted contig files;  only files ending

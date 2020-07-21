@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbsrunner.pl.cwl
+id: ../../../pbsrunner.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

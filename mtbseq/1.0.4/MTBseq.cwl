@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MTBseq.cwl
+id: ../../../MTBseq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/somaticseq_parallel.py.cwl
+id: ../../../somaticseq_parallel.py.cwl
 inputs:
 - id: output_directory
   doc: 'output directory (default: .)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spectrast_create.rb.cwl
+id: ../../../spectrast_create.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

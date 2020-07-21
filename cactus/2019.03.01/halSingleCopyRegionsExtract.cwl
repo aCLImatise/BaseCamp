@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halSingleCopyRegionsExtract.cwl
+id: ../../../halSingleCopyRegionsExtract.cwl
 inputs:
 - id: hal_file
   doc: ''

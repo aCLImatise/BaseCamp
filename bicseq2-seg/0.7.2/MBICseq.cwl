@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MBICseq.cwl
+id: ../../../MBICseq.cwl
 inputs:
 - id: input_file_name
   doc: ': the input file name; default stdin'

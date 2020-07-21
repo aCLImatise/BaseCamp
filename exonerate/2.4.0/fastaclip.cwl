@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastaclip.cwl
+id: ../../../fastaclip.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

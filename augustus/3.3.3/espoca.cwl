@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/espoca.cwl
+id: ../../../espoca.cwl
 inputs:
 - id: var_0
   doc: ''

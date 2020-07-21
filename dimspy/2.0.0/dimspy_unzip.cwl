@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dimspy_unzip.cwl
+id: ../../../dimspy_unzip.cwl
 inputs:
 - id: input
   doc: file[.zip]

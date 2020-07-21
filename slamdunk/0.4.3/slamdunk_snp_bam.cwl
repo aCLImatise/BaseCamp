@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/slamdunk_snp_bam.cwl
+id: ../../../slamdunk_snp_bam.cwl
 inputs:
 - id: o
   doc: ''

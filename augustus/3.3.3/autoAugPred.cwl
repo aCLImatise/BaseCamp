@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/autoAugPred.pl.cwl
+id: ../../../autoAugPred.pl.cwl
 inputs:
 - id: genome
   doc: ''

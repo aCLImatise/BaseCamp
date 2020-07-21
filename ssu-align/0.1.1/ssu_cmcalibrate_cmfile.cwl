@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_cmcalibrate_cmfile.cwl
+id: ../../../ssu_cmcalibrate_cmfile.cwl
 inputs:
 - id: options
   doc: ''

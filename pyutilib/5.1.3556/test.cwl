@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/test.pyutilib.cwl
+id: ../../../test.pyutilib.cwl
 inputs:
 - id: dir
   doc: Top-level source directory where the tests are applied.

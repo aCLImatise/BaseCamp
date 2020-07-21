@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_bam2readdepth.cwl
+id: ../../../rsem_bam2readdepth.cwl
 inputs:
 - id: sorted_bam_input
   doc: ''

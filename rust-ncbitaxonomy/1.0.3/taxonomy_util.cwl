@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxonomy_util.cwl
+id: ../../../taxonomy_util.cwl
 inputs:
 - id: db
   doc: URL for SQLite taxonomy database

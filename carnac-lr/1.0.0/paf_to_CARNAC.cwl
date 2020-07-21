@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paf_to_CARNAC.py.cwl
+id: ../../../paf_to_CARNAC.py.cwl
 inputs:
 - id: file_dot_paf
   doc: ''

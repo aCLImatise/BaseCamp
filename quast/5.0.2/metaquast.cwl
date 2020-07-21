@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metaquast.py.cwl
+id: ../../../metaquast.py.cwl
 inputs:
 - id: fungus
   doc: Genome is fungal (primarily affects gene prediction)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dx_docker_create_asset.cwl
+id: ../../../dx_docker_create_asset.cwl
 inputs:
 - id: output_path
   doc: Project ID and path in project to upload image to (defaults to project root)

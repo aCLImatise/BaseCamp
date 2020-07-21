@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bbsplit.sh.cwl
+id: ../../../bbsplit.sh.cwl
 inputs:
 - id: var_0
   doc: (use the first best site)

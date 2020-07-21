@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sqStoreDumpMetaData.cwl
+id: ../../../sqStoreDumpMetaData.cwl
 inputs:
 - id: dump_reads_from
   doc: dump reads from 'seqStore'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/indexer.cwl
+id: ../../../indexer.cwl
 inputs:
 - id: skip_skip_junk
   doc: '|skip      skip junk [1]'

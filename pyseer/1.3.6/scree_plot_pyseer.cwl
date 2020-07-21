@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scree_plot_pyseer.cwl
+id: ../../../scree_plot_pyseer.cwl
 inputs:
 - id: max_dimensions
   doc: 'Maximum dimensions to plot [Default: 30]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pepgenome.cwl
+id: ../../../pepgenome.cwl
 inputs:
 - id: chr
   doc: 'Export chr prefix Allowed 0, 1  (default: 0)'

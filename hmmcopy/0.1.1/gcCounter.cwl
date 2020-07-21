@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gcCounter.cwl
+id: ../../../gcCounter.cwl
 inputs:
 - id: seg
   doc: Outputs in SEG format

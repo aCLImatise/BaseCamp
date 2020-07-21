@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dx_docker_run.cwl
+id: ../../../dx_docker_run.cwl
 inputs:
 - id: volume
   doc: Directory to mount inside the container. Can be supplied multiple times (e.g.

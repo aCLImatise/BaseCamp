@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mulled_build_files.cwl
+id: ../../../mulled_build_files.cwl
 inputs:
 - id: invo_lucro_path
   doc: ''

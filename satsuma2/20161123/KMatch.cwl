@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/KMatch.cwl
+id: ../../../KMatch.cwl
 inputs:
 - id: query_dot_fa
   doc: ''

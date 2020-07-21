@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/add_gff_info_kegg.cwl
+id: ../../../add_gff_info_kegg.cwl
 inputs:
 - id: email
   doc: Contact email  [required]

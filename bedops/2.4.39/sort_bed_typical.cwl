@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sort_bed_typical.cwl
+id: ../../../sort_bed_typical.cwl
 inputs:
 - id: tmpdir
   doc: useful only with --max-mem.

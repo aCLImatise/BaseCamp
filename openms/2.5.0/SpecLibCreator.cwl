@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SpecLibCreator.cwl
+id: ../../../SpecLibCreator.cwl
 inputs:
 - id: info
   doc: "*          Holds id, peptide, retention time etc. (valid formats: 'csv')"

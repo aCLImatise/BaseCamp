@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cbBuild.cwl
+id: ../../../cbBuild.cwl
 inputs:
 - id: in_it
   doc: copy sample cellbrowser.conf and desc.conf to current directory

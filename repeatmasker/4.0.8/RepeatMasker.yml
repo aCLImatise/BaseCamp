@@ -1,0 +1,1112 @@
+!Command
+positional:
+- !Positional
+  description: perc perc perc  query    position in query     matching repeat      position
+    in  repeat
+  position: 0
+  name: SW
+  optional: false
+- !Positional
+  description: '0.0 0.0 2.9 NT_001227 105436 105469  (2184) + (TAA)n    Simple        2   34    (0)  118  '
+  position: 0
+  name: '257'
+  optional: false
+- !Positional
+  description: perc perc perc  query   position in query   matching repeat      position
+    in  repeat      rat hum
+  position: 0
+  name: SW
+  optional: false
+- !Positional
+  description: 0.0  0.0 0.0 chr19 314125 314147 (58909378) +  AT_rich Low_complexity    1   23  (0)  378  -  -
+  position: 0
+  name: '23'
+  optional: false
+named: []
+command:
+- RepeatMasker
+parent:
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "RepeatMasker version open-4.0.8\n######################################################################\n\
+  RepeatMasker\nDeveloped by Arian Smit and Robert Hubley\nPlease refer to: Smit,\
+  \ AFA, Hubley, R. & Green, P \"RepeatMasker\" at\nhttp://www.repeatmasker.org\n\
+  \                                                                       \nThe interspersed\
+  \ repeat databases are modified versions of \nthose found in \"RepBase Update\"\
+  \ (http://www.girinst.org/)\n######################################################################\n\
+  \n\nRepeatMasker is a program that screens DNA sequences for interspersed\nrepeats\
+  \ and low complexity DNA sequences. The output of the program is\na detailed annotation\
+  \ of the repeats that are present in the query\nsequence as well as a modified version\
+  \ of the query sequence in which\nall the annotated repeats have been masked (default:\
+  \ replaced by\nNs). Sequence comparisons in RepeatMasker are performed by the program\n\
+  cross_match, an efficient implementation of the Smith-Waterman-Gotoh\nalgorithm\
+  \ developed by Phil Green, or by WU-Blast developed by Warren\nGish.\n\n\nThis help\
+  \ file discusses the following topics:\n\n0     Basic input and output\n\n1    \
+  \ Options\n1.1   Species and contamination check options\n1.2   Options effecting\
+  \ which repeats get masked\n1.3   Speed and search parameters\n1.4   Output and\
+  \ formatting\n1.5   ProcessRepeats options\n\n2     Methodology and quality of output\n\
+  2.1   Methodology\n2.2   Scoring matrices\n2.3   Databases\n2.4   Sensitivity and\
+  \ speed\n2.5   Selectivity and matches to coding sequences\n2.6   Low complexity\
+  \ DNA and simple repeats\n\n3     How to read the results\n3.1   The annotation\
+  \ (.out) file\n3.2   Alignments\n3.3   The summary (.tbl) file\n\n4     Applications\n\
+  4.1   Use in database searches\n4.2   Identification of DNA source and bacterial\
+  \ insertions\n4.3   DateRepeats - Masking lineage-specific repeats for genomic alignments\n\
+  4.4   Use with gene prediction programs and other applications\n\n5       References\n\
+  \n\n0  INPUT and OUTPUT\n\nInput format:\n\nSequences have to be in the ' FASTA\
+  \ format':\n\n>sequencename all kind of info\nAGCGATCGCATCGAGCGCATTCGCATGGGG\n>sequencename2\
+  \ all kind of info\nGCCCATGCGATCGAGCTTCGCTAGCATAGCGATCA\n\nThe program accepts FASTA\
+  \ format with errors and raw sequence files,\nbut does not work with other formats\
+  \ like GenBank, Staden, etc..\n\nYou can use RepeatMasker on a file containing multiple\
+  \ FASTA format\nsequences and on multiple sequence files at the same time:\n\nRepeatMasker\
+  \ *.fasta\n\nThis command will mask all files that end with .fasta in the current\n\
+  directory and give separate reports for each file. Note that if you\nhave multiple\
+  \ small sequences it is considerably faster to run\nRepeatMasker on one batch file\
+  \ than on many single sequence files. The\nsummary file will be more informative\
+  \ as well. However, analysis on\nsingle files (when larger than 2 kb each) can be\
+  \ slightly more\naccurate, since GC levels for each sequence will be calculated\
+  \ and\nused to choose appropriate parameters.\n\n\nStandard output:\n\nRepeatMasker\
+  \ returns a .masked file containing the query sequence(s)\nwith all identified repeats\
+  \ and low complexity sequences masked. These\nmasked sequences are listed and annotated\
+  \ in the .out file. The masked\nsequences are printed in the same order as they\
+  \ are in the submitted\nfile, whereas the sequences are presented alphabetically\
+  \ in the\nannotation table. The .tbl file is a summary of the repeat content of\n\
+  the analyzed sequence.\n\n\n\n1 OPTIONS\n\n1.1 Species options\n\n-species  <query\
+  \ species>   Indicate source species of query DNA\n\n-lib [filename]           \
+  \  Allows the use of a custom library\n\ncontamination checking options\n-is_only\
+  \       only clips E coli insertion elements out of FASTA  and .qual files\n-is_clip\
+  \       clips IS elements before analysis (default: IS only reported)\n-no_is  \
+  \       skips bacterial insertion element check\n-rodspec       only checks for\
+  \ rodent specific repeats (no RepeatMasker run)\n-primspec      only checks for\
+  \ primate specific repeats (no RepeatMasker run)\n\nFor detailed explanation of\
+  \ the contamination detection options, see\n\"4.2 Identification of DNA source\"\
+  \ below.\n\n\n-spec\n\nInterspersed repeats mostly are copies of transposable elements\
+  \ in\ndifferent states of erosion. Thus, dependent on the time of activity\nof the\
+  \ source transposable element, interspersed repeats generally are\nspecific to a\
+  \ (clade of) species, and different redatabase\n(http://www.ncbi.nlm.nih.gov/Taxonomy/taxonomyhome.html).\
+  \ In\nprincipal, all unique clade names occurring in this database can be\nused.\
+  \ Examples are:\n\n-species \"sus scrofa\"\n-species chimpanzee\n-species arabidopsis\n\
+  -species canidae\n-species mammals\n\nCapitalization is ignored, multiple words\
+  \ need to bound by apostrophes.\n\nRepeatMasker builds one or more repeat consensus\
+  \ files the first time\na species/group has been chosen, or when a new database\
+  \ has been\ndownloaded. These will be written in a subdirectory of the Libraries\n\
+  directory named after the date of the repeat database version and the\nLatin name\
+  \ of the clade. For example, \"-species monocotyledons\"\ncreates the file\n\"..../RepeatMasker/Libraries/20040616/liliopsida/specieslib\"\
+  . \nCurrently, only for mammalian species multiple files are created,\nbearing names\
+  \ like \"shortcutlib\" and \"longlib\", which the queries are\ncompared to sequentially.\n\
+  \nThe creation of these files takes some time (a few seconds sometimes),\nbut the\
+  \ next times RepeatMasker is run on the same species these\nexisting files will\
+  \ be used. When Wu-BlAST is used as the search\nengeine (see 1.3), blastable libraries\
+  \ are built, again as a one time\nevent for each species.\n\nAfter multiple database\
+  \ updates, the libraries could hog some space,\nand you may consider deleting the\
+  \ older\n\"..../RepeatMasker/Libraries/<date>\" directories.\n\nThe files contain\
+  \ all repeats of the RepeatMasker database that have\nbeen found in the genome of\
+  \ the given species, or have been found in a\nrelated species and are thought to\
+  \ predate the speciation time of the\ntwo. For example, -species gorilla, will create\
+  \ a gorilla repeat file\nthat is almost as big as the human file, because almost\
+  \ all repeats in\nhuman predate the 6-10 million years that separates us from the\n\
+  gorilla, though none of the consensus sequences have been derived from\nGorilla\
+  \ DNA. A repeat file for hyraxes, for which order no repeats\nhave been submitted\
+  \ to the database yet, will contain all repeats\nfound in the human genome that\
+  \ are thought to be older than the origin\nof most mammalian orders.\n\nIf a group\
+  \ of species is indicated, all repeats are included that are\nfound in any species\
+  \ belonging to this clade. Thus, \"-species diptera\"\nleads to comparison against\
+  \ repeats found in the genomes of any\ndiptera species, currently primarily represented\
+  \ by fruitfly and\nmosquitoes, and \"-species murinae\" compares the query to all\
+  \ known\nmurine repeats, including rat and mouse.\n\nNot all \"common\" English\
+  \ names occur in the taxonomy database. For\nexample, \"chimp\", \"squirrels\",\
+  \ \"grasses\", or \"carnivores\" are not\npresent. The program will suggest functional\
+  \ names using Soundex, with\noftentimes unexpected results. Using Latin names is\
+  \ always safest.\n\n\nutil/queryRepeatDatabase.pl\n\nThe script queryRepeatDatabase.pl\
+  \ in the util subdirectory of the\nRepeatMasker directory allows you to check if\
+  \ a species is covered and\nwhich repeats the query will be compared to if the species\
+  \ indication\nis used. For example, \n\nutil/queryRepeatDatabase.pl -species sorghum\
+  \ -stat\n\nshows that, besides the universal simple repeat and bacterial\ninsertion\
+  \ elements contamination checks the query will be compared to\nonly 4 sorghum specific\
+  \ repeats (some of the many maize/corn specific\nrepeats may also occur in sorghum,\
+  \ but this has not yet been studied).\nType queryRepeatDatabase.pl for further options\
+  \ with this script.\n\nThese are the numbers and bp of repeat consensus sequences\
+  \ (excluding\nsimple repeats and RNAs) as of May 2009 for the best represented clades\n\
+  \nspecies         # of consensi  total bp\nAll mammals combined   3081   4253979\n\
+  Primates *              585    902148\nRodents *               606    931299\nCarnivores\
+  \ *            130    158362\nPerissodactyls *        130    220814\nRuminants *\
+  \             112    130320\nBats *                  131    112724\nMarsupials \
+  \             554    863923\nMonotremes              102    159182\nBirds      \
+  \             425    644078\nAmphibia (mostly frog)  230    428828 \nTeleost fish\
+  \           1140   2807233\nTunicates               134    368438     \nSea urchins\
+  \             211    560185\nFlies                   306    906766\nMosquitos  \
+  \             363    914943\nOther insects           356   1080649\nNematodes  \
+  \             461    698036\nFlatworms               209    641758\nCnidarians \
+  \             911   3057775 \nFungi                   256    695278\nArabidopsis\
+  \             544   1460558\nOther dicot plants      742   2563646\nRice       \
+  \             575   1430176\nMaize / corn            439   1566688\nOther monocot\
+  \ plants    303    912057\nAlgae                   186    533952\n\n* Only order-specific\
+  \ elements; these genomes are also matched to 400+\nconsensus sequences for elements\
+  \ active before the origin of orders.\n\n\n-lib \n\nThe majority of species are\
+  \ of course not yet covered in the repeat\ndatabases and many are far from complete,\
+  \ but you may have your own\ncollection. At other times you may want to mask or\
+  \ study only a\nparticular type of repeat.\n\nFor these types of siutations, you\
+  \ can use the -lib option to\nspecify a custom library of sequences to be masked\
+  \ in the query. The\nlibrary file needs to contain sequences in FASTA format. Unless\
+  \ a full\npath is given on the command line the file is assumed to be in the\nsame\
+  \ directory as the sequence file.  \n\nThe recommended format for IDs in a custom\
+  \ library is:\n\n>repeatname#class/subclass\nor simply\n>repeatname#class\n\nIn\
+  \ this format, the data will be processed (overlapping repeats are\nmerged etc),\
+  \ alternative output (.ace or .gff) can be created and an\noverview .tbl file will\
+  \ be created. Classes that will be displayed in\nthe .tbl file are 'SINE', 'LINE',\
+  \ 'LTR', 'DNA', 'Satellite', anything\nwith 'RNA' in it, 'Simple_repeat', and 'Other'\
+  \ or 'Unknown' (the\nlatter defaults when class is missing). Subclasses are plentiful.\
+  \ They\nare not all tabulated in the .tbl file or necessarily spelled\nidentically\
+  \ as in the repeat files, so check the RepeatMasker.embl\nfile for names that can\
+  \ be parsed into the .tbl file.\n\nYou can combine the repeats available in the\
+  \ RepeatMasker library \nwith a custom set of consensus sequences.  To accomplish\
+  \ this \nuse the queryRepeatDatabase.pl tool provided in the util \ndirectory of\
+  \ the RepeatMasker distribution.  [ Running the program\nwithout any options will\
+  \ print the documentation to the screen. ]\nUse this tool to extract RepeatMasker\
+  \ sequences and concatenate\nthem to your custom sequences in a new library file.\n\
+  \ \n\n1.2 Masking options (options that determine what kind of repeats are masked)\n\
+  \n-cutoff [number] sets cutoff score for masking repeats when using -lib\n     \
+  \          (default cutoff 225)\n-nolow         does not mask low complexity DNA\
+  \ or simple repeats\n-l(ow)         same as nolow (historical)\n-(no)int       only\
+  \ masks low complex/simple repeats (no interspersed repeats)\n-alu           only\
+  \ masks Alus (and 7SLRNA, SVA and LTR5)(only for primate DNA)\n-div [number]  masks\
+  \ only those repeats that are less than [number] percent\n               diverged\
+  \ from the consensus sequence\n\n-cutoff\nWhen using a local library you may want\
+  \ to change the minimum score\nfor reporting a match. The default is 225, lowering\
+  \ it below 200 will\nusually start to give you significant numbers of false matches,\n\
+  raising it to 250 will guarantee that all matches are real. Note that\nlow complexity\
+  \ regions in otherwise complex repeat sequences in your\nlibrary are most likely\
+  \ to give false matches.\n\n\n-nolow / -l(ow)\nWith the option -nolow or -l(ow)\
+  \ only interspersed repeats are\nmasked. By default simple tandem repeats and low\
+  \ complexity\n(polypurine, AT-rich) regions are masked besides the interspersed\n\
+  repeats. For database searches the default setting is recommended, but\nsometimes,\
+  \ e.g. when using the masked sequence to predict the presence\nof exons, it may\
+  \ be better to skip the low complexity masking.\n\n\n-noint / -int\n\nWhen using\
+  \ the -noint or -int option only low complexity DNA and\nsimple repeats will be\
+  \ masked in the query sequence.\nInexact simple repeats may be spanned and hidden\
+  \ by an interspersed\nrepeat annotation.  In particular, most A-rich simple repeats\
+  \ derived\nfrom the poly A tails of SINEs and LINES are merged with the\nannotation\
+  \ of the SINE or LINE (i.e. you can't tell there is a simple\nrepeat). Thus, if\
+  \ you're interested in finding the location of\npotentially polymorphic simple repeats,\
+  \ this option is recommended.\n\n\n-norna\nBecause of their close similarity to\
+  \ SINEs and the abundance of some\nof their pseudogenes, RepeatMasker by default\
+  \ screens for matches to\nsmall pol III transcribed RNAs (mostly tRNAs and snRNAs).\
+  \ When you're\ninterested in small RNA genes, you should use the -norna option that\n\
+  leaves these sequences unmasked, while still masking SINEs.\n\n\n-alu\n-div\nYou\
+  \ can limit the masking and annotation to (primate) Alu repeats with\nthe -alu option\
+  \ and to a subset of less diverged (younger) repeats\nwith the option -div. For\
+  \ example,\n\n\"RepeatMasker -div 20 -mus mysequence\"\n\nwill mask only those rodent\
+  \ repeats and simple repeats that are less\nthan 20% diverged from the consensus\
+  \ sequence and\n\n\"RepeatMasker -div 10 -alu mysequence\"\n\nwill mask Alus that\
+  \ are less than 10% diverged from the Alu consensus\nsequences and no other repeats.\n\
+  \nThe -div option may be used to limit the masking to those repeats that\nare specific\
+  \ to a species group for use in subsequent comparison of\northologous genomic loci.\
+  \ Notice that a more sophisticated method to\nmask lineage-specific repeats (currently\
+  \ only in mammals) is now\navailable with the script DateRepeats (4.3).\n\n\n\n\
+  1.3   Options effecting speed and search parameters\n\n-q             Quick search;\
+  \ 5-10% less sensitive, 3-4 times faster than default\n-qq            Rush job;\
+  \ about 10% less sensitive,\n-s             Slow search; 0-5% more sensitive, 2.5\
+  \ times slower than default.\n-pa(rallel) [number]    \n               Number of\
+  \ processors to use in parallel (only works for \n                 batch files or\
+  \ sequences larger than 50 kb)\n-engine [crossmatch|wublast|decypher]  \n      \
+  \         Select a non-default search engine to use.  If not specified\n       \
+  \          RepeatMasker will use the default configured at install time.\n-w(ublast)\
+  \     Use WU-blast, rather than cross_match as engine\n                 **DEPRECATED**\
+  \ Use -engine [crossmatch|wublast|decypher] now.\n-frag [number] Maximum sequence\
+  \ length masked without fragmenting \n                 (default 40000).\n-maxsize\
+  \ [nr]  Maximum length for which IS- or repeat clipped sequences \n            \
+  \      can be produced (default 4000000). Memory requirements go \n            \
+  \      up with higher maxsize.\n-gc [number]   Use matrices calculated for 'number'\
+  \ percentage background \n                  GC level.\n-gccalc        Program calculates\
+  \ the GC content even for batch files/small \n                  sequences.\n-nocut\
+  \         Skips the steps in which repeats are excised.\n-noisy         Prints cross_match\
+  \ progress report to screen (defaults to \n                 .stderr file)\n\n-s\
+  \ -q -qq\nRepeatMasker can be run at four different sensitivity/speed levels,\n\
+  with the option -q providing quick (less sensitive) and -s slow\n(sensitive) results\
+  \ compared to default. The option -qq has been added\nfor when you're in a frightful\
+  \ hurry. Each higher gear is about 2-3\ntimes faster, and 90% as sensitive as the\
+  \ next lower gear. See \"2.4\nSensitivity and Speed\" below for details\n\n\n-w(ublast)\n\
+  \  **DEPRECATED** See -engine.\n\n-engine [crossmatch|wublast|decypher]\nBy default,\
+  \ RepeatMasker uses the search engine configured\nduring installation as the default.\
+  \  To use the non-default\nsearch engine you can specify it with the -engine parameter.\n\
+  \nBefore June 2004, the script MaskerAid (written by Joey Bedell, Ian\nKorf and\
+  \ Warren Gish at the St Louis Washington University Genome\nCenter) was necessary\
+  \ to use WU-BLAST with RepeatMasker, but that\nfunctionality is now built in. RepeatMasker\
+  \ includes a search engine\nobject that allows relatively straightforward integration\
+  \ of other\nsearch engines. Currently only WU-BLAST has the flexibility to accept\n\
+  all cross_match options.\n\nFor longer sequences, default RepeatMasker runs with\
+  \ WU-BLAST take\nabout as long as cross_match powered runs at -qq settings (see\
+  \ \"2.4\nSensitivity and speed\"). The speed settings have relatively little\neffect\
+  \ on the speed when using WU-BLAST, with the fastest settings\n1.25-1.75 as fast\
+  \ as the slowest settings, while the sensitivity\nincreases significantly.  Thus,\
+  \ I recommend to always run RepeatMasker\nin sensitive (-s) or default mode when\
+  \ using WU-BLAST. I've made the\ndifference in parameters between sensitive and\
+  \ default settings larger\nat -w settings, to make these speed options more meaningful\
+  \ and gain\nmore sensitivity (with little cost in speed).\n\nEven with these more\
+  \ extreme parameters, the sensitivity can't quite\nreach that of the sensitive settings\
+  \ using cross_match, but it comes\nvery close, and the huge difference in speed\
+  \ make this option\nvery attractive.\n\nThe output format with the -w option is\
+  \ identical to default and\nscores are comparable, as the same complexity adjustment\
+  \ is applied.\nThe only difference is that, when using the wublast option, hyphens\n\
+  in the sequence are retained (in default mode all non-letters were\ndeleted from\
+  \ the sequence).  WU-BLAST uses hyphens to indicate\ninsurmountable barriers and\
+  \ alignments will not span hyphens.\n\n\n-pa(rallel)\nFor sequences over 50 kb long\
+  \ or files wit multiple sequences,\nRepeatMasker can use multiple processors. When\
+  \ you type:\n\nRepeatMasker -par 10 <file>\n\nA batch file of sequences will run\
+  \ with up to 10 sequences at the\ntime, until all sequences are done, while a file\
+  \ with one large\nsequence will analyze the sequence in up to 10 fragments at the\
+  \ same\ntime. The minimum fragment size is 25 or 33 kb, the maximum 66 kb (all\n\
+  sequences over 100 kb are divided in 33-66 kb fragments). For the\nbatch files no\
+  \ minimum size exists. Thus,\n\nIf <file> contains:    RM runs in parallel:\none\
+  \ 60 kb sequence     two 30 kb fragments\none 400 kb sequence    ten 40 kb fragments\n\
+  one 1 Mb sequence     ten 50 kb fragments, twice\nten 500 bp sequences   ten 500\
+  \ bp sequences\ntwo 500 kb sequences   ten 50 kb fragments, twice\n\nProcessing\
+  \ of the detected matches takes place after all batches or\nfragments have been\
+  \ cross-matched with the databases.  \nBeware that, generally, you have a limited\
+  \ number of processor IDs\nallotted. RepeatMasker uses 4 PIDs for each parallel\
+  \ job, so if you're\nallotted 64 user PIDs, you can 'only' run 16 fragments/batches\
+  \ in\nparallel.\n\n\n-frag \nEven when the -par option is not used, RepeatMasker\
+  \ transparently\nfragments sequences over 40 kb in fragments of equal sizes with\
+  \ 1 kb\noverlaps. Similarly, sequence batches containing more than 51 kb are\nsubdivided\
+  \ in batches of 40 kb or less. The -frag option sets the\nmaximum fragment and batch\
+  \ size\n\nThe only visible effect of the fragmentation is in the alignment\nfiles,\
+  \ where alignments at the edges of the fragments can be\nduplicated and/or truncated.\
+  \  The 1 kb overlap between fragments\nalmost guarantees that there is no loss in\
+  \ sensitivity at the\nedges. Fragmentation initially was implemented to allow the\
+  \ size of\nsequences and sequence batches to be unlimited. Cross_match can be\n\
+  very memory intensive when SW alignments have to be performed in large\nmatrices.\
+  \ This may happen with short minmatch and large bandwidth\nsettings. Note that RepeatMasker\
+  \ should not croak when cross_match\nruns out of memory; it will redo the failed\
+  \ search with a higher word\nlength or smaller bandwidth until it succeeds. However,\
+  \ this will lead\nto gradually less sensitive comparisons.\n\nFragmentation also\
+  \ can improve repeat detection when a genomic\nsequence contains large regions of\
+  \ DNA with significantly different GC\nlevels (isochores), since sets of scoring\
+  \ matrices are chosen based on\nthe GC level of a fragment.\n\nSince April 2002\
+  \ the maximum fragment size is hardwired to be half of\n\"maxsize\" (see below).\n\
+  \n\n-maxsize\nTo limit the memory requirements of the script an upper boundary to\n\
+  the amount of sequence stored in a single array in the script is set\nto 4 million\
+  \ bp. This parameter can be reduced with the -maxsize\noption to a minimum of 500000,\
+  \ for severely memory-impaired computers.\n\nThe size of maxsize further determines\
+  \ the largest length single\nsequence from which E. coli insertion sequences and\
+  \ full-length\nrepeats can be clipped. Increase the size of maxsize to allow removal\n\
+  of IS elements from larger sequences, like: RepeatMasker -is_clip\n-maxsize 9999999999\
+  \ muntjakchromosome1\n\n\n-gc\n-gccalc\nNeutral mutation patterns differ significantly\
+  \ depending on the GC\nrichness of a locus and we have calculated optimal scoring\
+  \ matrices\nfor the alignment to consensus sequences in a range of background GC\n\
+  levels (see 2.2). Usually, RepeatMasker calculates the percentage of\nthe sequence\
+  \ consisting of Gs and Cs and uses the appropriate\nmatrices.  However, the program\
+  \ defaults to using 'average' 43% GC\nmatrices when the query is shorter than 2000\
+  \ bp or a batch file is\nanalyzed. This is because short sequences can diverge greatly\
+  \ from the\nGC level of the locus. For example, CpG islands and exons are more GC\n\
+  rich than the surrounding DNA, whereas a LINE-1 element can be more AT\nrich than\
+  \ the background. In a batch file, RepeatMasker analyses all\nsequences together\
+  \ with the same matrices. The percentage GC in all\nthe sequences combined may be\
+  \ inappropriate for some sequence entries;\nusing high GC level matrices in AT rich\
+  \ sequences (and vice versa) may\nresult in false masking.\n\nOne can override this\
+  \ behavior in two ways:\nWith the option -gc you can set the GC level to a certain\
+  \ percentage:\n\nRepeatMasker -gc 37 mybatchofsequences.fa\n\nlets the program use\
+  \ matrices appropriate for 37% GC background. The\nbatch could, for example, contain\
+  \ ESTs from a single locus with a\nknown GC level.  \nAlternatively, the -gccalc\
+  \ option forces RepeatMasker to use the\nactual GC level of a short sequence or\
+  \ the average GC level of a batch\nof sequences. The latter sequences, for example,\
+  \ may be contigs in a\nsequencing project.\n\n\n-nocut\nThe option -nocut skips\
+  \ a step in the default procedure for human and\nrodent queries, in which full-length\
+  \ younger insert are spliced out of\nthe query to reconstruct a pre-insertion situation.\
+  \ RepeatMasker is\ngenerally more sensitive and efficient including the deletion\
+  \ step as\nit can unearth older repeats that were interrupted by these younger\n\
+  elements.\n\n\n\n1.4  Output options\n\n-a      shows the alignments in a .align\
+  \ output file; -ali(gnments) also works\n-inv    alignments are presented in the\
+  \ orientation of the repeat (with option -a)\n\n-cut    saves a sequence (in file.cut)\
+  \ from which full-length repeats are excised\n        (temporarily disfunctional)\n\
+  -small  returns complete .masked sequence in lower case\n-xsmall returns repetitive\
+  \ regions in lowercase (rest capitals) rather than masked\n-x      returns repetitive\
+  \ regions masked with Xs rather than Ns\n\n-poly   reports simple repeats that may\
+  \ be polymorphic (in file.poly)\n-ace    creates an additional output file in ACeDB\
+  \ format\n-gff    creates an additional General Feature Finding format output\n\
+  -u      creates an untouched annotation file besides the manipulated file\n-xm \
+  \    creates an additional output file in cross_match format (for parsing)\n\n-fixed\
+  \  creates an (old style) annotation file with fixed width columns\n-no_id  leaves\
+  \ out final column with unique ID for each element\n-e(xcln) calculates repeat densities\
+  \ (in .tbl) excluding runs of >25 Ns in query\n\n-noisy  prints cross_match progress\
+  \ report to screen (defaults to .stderr file)\n\n\n-a / -ali(gnments) \n-inv\nAlignments\
+  \ are saved in a .align file when using the option -a. They\nare shown in the orientation\
+  \ of the query sequence, unless you use the\noption -inv as well, which will return\
+  \ alignments in the orientation\nof the repeats (see 3.2 Alignments).\n\n\n-cut\n\
+  The -cut option to RepeatMasker is not supported in this release.  It\nwill be rolled\
+  \ into a new annotation utility in the near future.  If\nyou need this functionality\
+  \ sooner please send an email to Robert\nHubley ( rhubley@systemsbiology.org ).\
+  \  Thanks for your patience.\n\nThe option  made the program save a file \"file.cut\"\
+  \ which contains\nan intermediate sequence in the masking progress. In this sequence\
+  \ all\nfull-length elements, young LINE-1 3' ends, and close to perfect simple\n\
+  repeats were deleted.\n\n\n-x\nWhen -x is used the repeat sequences are replaced\
+  \ by Xs instead of\nNs. The latter allows one to distinguish the masked areas from\n\
+  possibly existing ambiguous bases in the original sequence. However,\nwhen running\
+  \ BLAST searches (and maybe other programs) Xs are deleted\nout of the query and\
+  \ the returned BLAST matches will have position\nnumbers not necessarily corresponding\
+  \ to that of the original\nsequence.\n\n\n-xsmall\nWhen the option -xsmall is used\
+  \ a sequence is returned in the .masked\nfile in which repeat regions are in lower\
+  \ case and non-repetitive\nregions are in capitals.\n\n\n-poly\nYou can get a list\
+  \ of potentially polymorphic microsatellites with the\noption -poly. This is simply\
+  \ a subset of the list in .out, with\ndimeric to tetrameric repeats less than 10\
+  \ % diverged from perfection.\n\n\n-xm\nWhen using the -xm option an additional\
+  \ output file (.out.xm) is\ncreated that contains the same information as the .out\
+  \ file (excluding\nthe low-complexity/simple DNA), but then in the original cross_match\n\
+  format. This output is harder to read but there are programs that\nrequire the exact\
+  \ cross_match output format.\n\n\n-u\nThe script ProcessRepeats adjusts the original\
+  \ RepeatMasker output so\nthat the annotation more closely reflects reality. With\
+  \ the option -u\na .ori.out file is created that contains the original (but sorted)\n\
+  cross_match summary lines.\n\n\n-ace\nWith the -ace option the script creates an\
+  \ .ace file. This is merely a\nsuggestion. The columns in the table currently are:\n\
+  \nMotif_homol <repeat-name> RepeatMasker(method) <percent divergence>\n<start in\
+  \ query> <end in query> <orientation> <start in consensus>\n<end in consensus>\n\
+  \n\n-gff\nThe script creates a .gff file with the annotation in 'General Feature\n\
+  Finding' format. See http://www.sanger.ac.uk/Software/GFF for\ndetails. The current\
+  \ output follows a Sanger convention:\n\n<seqname> RepeatMasker Similarity <start\
+  \ in query> <end in query>\n<percent divergence> <orientation> . Target \"Motif:<repeat-name>\"\
+  \n<start in consensus> <end in consensus>\n\nIn this line, 'RepeatMasker' becomes\
+  \ 'RepeatMasker_SINE' if the match\nis against an Alu. I don't know why.\n\n\n\n\
+  -fixed\nSince April 1999 the column widths in the annotation table are\nadjusted\
+  \ to the maximum length of any string occurring in a column;\nthis allows long sequence\
+  \ names to be spelled out completely.\nPreviously, a fixed column width table was\
+  \ returned, which can still\nbe obtained by using the -fixed option. Parsing should\
+  \ not be effected\nby this change of default behavior, as the same number of columns\
+  \ with\nthe same formatted text are still separated by white space.\n\n\n-no_id\n\
+  Since September 2000 a column displaying a unique number (ID) for each\nintegrated\
+  \ element is printed by default. This used to be optional\n(-id). Fragments of a\
+  \ single element, separated from each other by\nsubsequent insertions of other elements,\
+  \ deletions or recombinations,\ncarry the same number. This feature allows better\
+  \ interpretation of\nthe data and should greatly help proper graphical display of\
+  \ the\nrepeats.\n\nThe column follows all other columns, except for the (rare) indication\n\
+  that an annotation overlaps another annotation (*). This change, which\nwas announced\
+  \ in the previous release, should not hinder most parsing\nscripts. If it causes\
+  \ problems, the old format can be retrieved with\nthe option -no_id.\n\n\n-excln\n\
+  The percentages displayed in the .tbl file are calculated using a\ntotal sequence\
+  \ length excluding runs of 25 Ns or more. This is useful\nwhen analyzing draft sequences\
+  \ that are often concatenated contigs\nseparated by (sometimes very) long stretches\
+  \ of Ns.  This option can\nbe used with ProcessRepeats as well. The number of Ns\
+  \ in long runs in\nthe query are apparent in the .tbl file, and you only need to\
+  \ run\nProcessRepeats with the option on the .cat file.\n\n\n-noisy\nRepeatMasker\
+  \ used to print the voluminous cross_match progress reports\nto the screen. Since\
+  \ the Dec 1998 version this output is stored in a\n.stderr file and a more informative\
+  \ much smaller progress report is\nprinted to the screen. The option -noisy allows\
+  \ one to see the\ncross-match reports coming by on the screen (yeah).\n\n\n\n1.5\
+  \  ProcessRepeats options\n\nWhen you have already run RepeatMasker and want to\
+  \ recreate the .out\nor .tbl file, you only need to rerun ProcessRepeats on the\
+  \ .cat\nfile(s), which will take just a small fraction of the time required to\n\
+  rerun RepeatMasker. Such a situation can occur when you've\naccidentally deleted\
+  \ the .out or .tbl file or want additional or\ndifferentially formatted output files.\
+  \ Note that alignment files\ncannot be created unless RepeatMasker was run with\
+  \ the -a option and\nthat the original .tbl and .out file will be overwritten unless\
+  \ you\nrename them.\n\nProcessRepeats -species mus -nolow -gff -excln myhumongousmousesequence.cat\
+  \ \n\nRepeat matches are processed differently for different query species,\nso\
+  \ the -species mus option is necessary.  With the -nolow option, the\n.out file\
+  \ will not contain information on simple repeats and low\ncomplexity DNA anymore.\
+  \ The -gff option creates an additional output\nfile in GFF format, and the -excln\
+  \ option displays the density of\nrepeats in the .tbl file as a percentage of those\
+  \ bp that are not\ncontained in long stretches of Ns.\n\n\nThe options/flags for\
+  \ ProcessRepeats are:\n\n-species  <query species>   Identical as for the RepeatMasker\
+  \ script\n\n-lib   skips most of processing, does not produce a .tbl file unless\
+  \ the\n       custom library is in the >name#class format.\n\n-nolow does not display\
+  \ simple repeats or low_complexity DNA in the annotation\n-noint skips steps specific\
+  \ to interspersed repeats, saving lots of time \n-u     creates an untouched annotation\
+  \ file besides the manipulated file\n-xm    creates an additional output file in\
+  \ cross_match format (for parsing)\n-ace   creates an additional output file in\
+  \ ACeDB format\n-gff   creates an additional Gene Feature Finding format\n-poly\
+  \  creates an output file listing only potentially polymorphic simple repeats\n\
+  -no_id leaves out final column with unique number for each element (was default)\n\
+  -fixed creates an (old style) annotation file with fixed width columns\n-excln calculates\
+  \ repeat densities excluding long stretches of Ns in the query\n-orf2   results\
+  \ in sometimes negative coordinates for L1 elements; all L1 subfamilies\n      \
+  \ are aligned over the ORF2 region, sometimes improving interpretation of data\n\
+  -a     shows the alignments in a .align output file\n\n\n\n\n2 METHODOLOGY AND QUALITY\
+  \ OF OUTPUT\n\n2.1 Methodology\n\nRepeatMasker compares the query sequence against\
+  \ one or more files of\nFASTA sequences. The sequences in the libraries provided\
+  \ with\nRepeatMasker are consensus sequences derived from alignment of\nmultiple\
+  \ copies of interspersed or satellite repeats. For interspersed\nrepeats, a consensus\
+  \ tends to approach the sequence of the\ntransposable element from which the repeat\
+  \ is derived.\n\nBoth cross_match and WU-blast perform their Smith-Waterman (SW)\n\
+  alignments by first identifying exact word matches and restricting the\nalignment\
+  \ to a band or matrix surrounding this exact\nmatch(es). Overlapping matrices are\
+  \ merged. The speed settings of\nRepeatMasker are purely changes in the minimum\
+  \ word length from which\nan alignment can be seeded and, in some cases, changes\
+  \ in the width of\nthe band. A wider bandwidth allows more gaps in the alignment\
+  \ and,\nmore importantly, increases the likelihood that neighboring matrices\noverlap.\n\
+  \nCross_match does a low complexity adjustment of the raw SW score. When\nWU-blast\
+  \ is used, the RepeatMasker script performs this adjustment. Low\ncomplexity matches\
+  \ are the primary cause of false matches, and this\nadjustment contributes significantly\
+  \ to the high selectivity of\nRepeatMasker (see 2.5)\n\nAs a result of the existence\
+  \ of many related consensus sequences in\nthe database, usually multiple repeats\
+  \ match one region in the query\nat the same time. Generally, cross_match and WU-blast\
+  \ report to the\nscript only those matches that are less than 80-90% overlapped\
+  \ by a\nhigher scoring match. This implies that, at first approximation, names\n\
+  are assigned to repeats based on the highest SW score. Given\nappropriate consensus\
+  \ sequences and alignment parameters, this is\nintuitively correct as well. However,\
+  \ the scripts have a lot of code\nto improve on this first approximation, primarily\
+  \ to deal with partial\nmatches.\n\nThe cut-off SW score above which matches are\
+  \ reported is empirically\nderived (see '2.5 selectivity' below). Note that there\
+  \ is no cut-off\ndivergence level; reported matches can be less than 60% identical.\n\
+  \nThe alignments parameters -substitution matrices, and gap initiation\nand extension\
+  \ penalties- are derived from data harbored in multiple\nalignments of a special\
+  \ subset of interspersed repeats. The derived\nmatrices are theoretically optimal\
+  \ for a series of conditions (see\nbelow). The gap penalties are sub-optimal, primarily\
+  \ because gap\nlengths have a non-linear distribution and are poorly represented\
+  \ by a\nsingle gap-extension penalty.\n\nFor primate, rodent and other mammalian\
+  \ DNA, the query is compared to\nconsecutive subsets of repeat libraries. For primates,\
+  \ perfect simple\nrepeats, full-length Alus, full-length short interspersed repeats,\
+  \ and\nyoung L1 3' ends are first (and in that order) clipped from the\nsequence\
+  \ to expose underlying older elements. Subsequently, the query\nis compared to most\
+  \ repeats, a set of ancient elements under\nespecially sensitive settings, a large\
+  \ set of long retroviral\nsequences under faster settings (to save time), and AT-rich\
+  \ L1 3' ends\nthat may have been discarded earlier as low complexity\nmatches. Finally,\
+  \ simple repeats and low complexity regions are\nmasked.\n\n\n\n2.2  Scoring matrices\n\
+  \nWe have calculated statistically optimal scoring matrices for the\nalignment of\
+  \ neutrally diverging (non-selected) sequences in human DNA\nto their original sequence.\
+  \ These matrices have been in use since the\nMay 1998 release. The matrices were\
+  \ derived from alignments of DNA\ntransposon fossils to their consensus sequences.\
+  \ A series of different\nmatrices are used dependent on the divergence level (14-25%)\
+  \ of the\nrepeats and the background GC level (35-53%, neutral mutation patterns\n\
+  differ significantly in different isochores).\n\nThese matrices are (close to) optimal\
+  \ for human genomic sequences\nlonger than 10 kb, for which length the GC level\
+  \ usually is\nrepresentative of the isochore in which the sequence lives. However,\n\
+  the GC level of small fragments can diverge a lot from the surrounding\n(e.g. a\
+  \ fragment spanning a CpG island, a GC rich exon or an AT-rich\nLINE-1 element)\
+  \ and RepeatMasker defaults to using matrices derived for\na 43% GC background when\
+  \ a sequence is shorter than 2000 bp or when a\nbatch file is submitted. When the\
+  \ appropriate background GC level is\nknown, this can be entered with the -gc option.\n\
+  \n(Note that these matrices are an integral portion of RepeatMasker and\nare covered\
+  \ under the same restrictions as the scripts and databases\nas described in the\
+  \ signed software agreement).\n\n\n\n2.3  Repeat databases\n\nThe interspersed repeat\
+  \ databases provided in the RepeatMasker package\nare maintained in synch with the\
+  \ repeat databases (RepBase Update)\ncopyrighted by the Genetic Information Research\
+  \ Institute\n(G.I.R.I.). Whereas non-mammalian libraries currently are identical\
+  \ to\nthe RepBase Update FASTA files except for formatting and corrections,\nmammalian\
+  \ databases are extensively modified. The modification\nprimarily entails inclusion\
+  \ of complete sets of subfamilies for Alu\nand L1, modifications to avoid false\
+  \ matches and false annotations,\nand subdivision in multiple sets for optimization\
+  \ of the analysis.\n\nWe transformed the RepBase database from a set of prototypes\
+  \ to a set\nof consensus sequences (described in my dissertation) to allow both\n\
+  determination of the origin of these repeats and improved detection. A\nconsensus\
+  \ properly derived from a multiple alignment of copies closely\napproaches the original\
+  \ transposable element, since substitutions\naccumulate by-and-large unselected\
+  \ in copies of transposable\nelements. Because of the latter, a copy is on average\
+  \ twice as close\nto the consensus as to any other copy. Consensus sequences are\
+  \ also\nmore sensitive search tools because directional substitution matrices\n\
+  can be used (see above).\n\nConsensus sequences would be identical to the original\
+  \ transposable\nelement if all copies were inserted at about the same time from\
+  \ a\nsingle source.  DNA transposon copies approach this ideal, but\nretroposons\
+  \ (giving rise to most repeats in our genome) live for long\nperiods in a genome\
+  \ and evolve doing so. Thus, over time the sequence\nof the transposable element\
+  \ has changed, and a single consensus does\nnot describe the original sequence of\
+  \ each copy. Also, usually at any\ntime multiple distinct sequences with a common\
+  \ origin, cousins if you\nwill, were active. This situation is reflected by the\
+  \ presence in the\ndatabases of multiple subfamilies for the more common retroposons\n\
+  (usually having the same name ending in a different number or letter.\n\nThe mammalian\
+  \ repeat libraries contain, besides consensus sequences\nfor transposon derived\
+  \ repeats, consensus satellite units, and a set\nof *small structural RNA sequences*.\
+  \ The latter have created a large\namount of processed pseudogenes in our genome,\
+  \ and in that way are\ninterspersed repeats.\n\n\n\n2.4 Sensitivity and speed  \n\
+  \nThe program can be run at four levels of sensitivity. The only\ndifference between\
+  \ these settings is the minimum match or word length\nin the initial (not quite)\
+  \ hashing step of the cross_match program\n(see the cross_match/PHRAP documentation).\
+  \ For mammalian queries, he\n\"slow\" setting will find and mask 0-5% more repetitive\
+  \ DNA sequences\nthan by default, whereas the \"quick\" settings miss 5-10%, and\
+  \ the\n\"rush\" (-qq) settings may miss 10-25% of the sequences masked by\ndefault.\
+  \ The alignments may extend more or be somewhat more accurate\nin the more sensitive\
+  \ settings as well.\n\nFollowing are benchmark times for random 1 Mbp of sequences\
+  \ of a\nvariety of different species run in parallel on 4 Pentium4 2.4Ghz\nprocessors\
+  \ with 3 GB RAM with June 2004 RepeatMasker databases. The\npercentage of the query\
+  \ masked is given in parentheses.\n\n                                ------------------------\
+  \ cross_match ------------------------\nSpecies         WUBlast (Def)    Rush  \
+  \          Quick           Default         Slow\n-------         ------------- \
+  \  -------------   -------------   -------------   -------------\nHuman        \
+  \   02:54 (39.26)   01:54 (33.91)   05:05 (36.85)   22:15 (39.92)   57:54 (40.58)\n\
+  Human-reversed  01:09 ( 1.98)   01:05 ( 2.00)   03:39 ( 2.06)   18:44 ( 2.07)  \
+  \ 53:37 ( 2.09)\nChimpanzee      03:00 (40.83)   01:50 (35.24)   04:45 (38.70) \
+  \  20:22 (41.59)   53:14 (42.24)\nMouse           03:31 (54.02)   01:47 (48.65)\
+  \   04:21 (51.74)   18:54 (54.15)   47:26 (55.18)\nRat             04:46 (66.07)\
+  \   02:05 (62.07)   04:32 (63.84)   19:41 (65.97)   48:23 (67.20)\nDog         \
+  \    02:24 (34.62)   01:32 (29.15)   03:07 (32.44)   12:29 (35.09)   30:14 (35.69)\n\
+  Arabidopsis     01:01 ( 3.02)   00:51 ( 2.95)   04:41 ( 3.00)   46:52 ( 3.12) 1:46:53\
+  \ ( 3.13)\nCiona savigny   01:25 (15.64)   01:02 (13.12)   01:30 (14.45)   06:13\
+  \ (15.90)   15:24 (16.30)\nC. elegans      02:35 (22.63)   01:38 (20.84)   02:39\
+  \ (22.52)   12:12 (23.21)   25:15 (23.59)\nDrosophila      01:59 (47.21)   01:23\
+  \ (43.08)   02:30 (45.60)   15:49 (47.51)   39:24 (48.38)\nChicken         00:42\
+  \ ( 6.52)   00:35 ( 6.18)   00:58 ( 6.42)   04:59 ( 6.53)   11:48 ( 6.58)\nFugu\
+  \            00:35 ( 5.89)   00:34 ( 5.40)   00:49 ( 5.70)   03:51 ( 5.89)   09:20\
+  \ ( 6.05)\n\n\nThe human-reversed sequence is the \"human\" sequence reversed but\
+  \ not\ncomplemented. 2% of this sequence is (properly) masked as simple\nrepeats\
+  \ or low complexity DNA.\n\nNote that for many non-mammalian species the slower\
+  \ settings do not\ndramatically increase the percentage recognized as interspersed\n\
+  repeats. Most of the repeats in the databases for these species are\nrelatively\
+  \ young and thus are easily detected. This particular 1Mbp\nArabidopsis sequence\
+  \ is an extreme example, where at slow settings in\nalmost two hours only 1800 bp\
+  \ more is masked than at rush settings in\n51 seconds (the Arabidopsis database\
+  \ is large).\n\nThe speed is also dependent on the repeat content of the sequence.\
+  \ For\nhuman sequences, Alu rich sequences are analyzed fastest, LINE rich\nsequences\
+  \ somewhat slower, repeat poor regions slower still, and long\nsatellite regions\
+  \ can take a while.\n\n\nIf you have several shorter sequences it is much faster\
+  \ to run\nRepeatMasker on a batch file (all sequences in one file). On above\ncomputer,\
+  \ in the rush mode (cross_match), a batch of 10 5 kb sequences\nis analyzed in 23\
+  \ seconds, 20 5kb in 34 sec., etc.\n\nThe user time for larger sequences or sequence\
+  \ batches (50 kb and up)\nis linearly related to the length of the query due to\
+  \ the\nfragmentation of the query sequence.\n\nThe increase in speed by using multiple\
+  \ processors is dependent on the\nusage of the computer and the above-mentioned\
+  \ non-linear relationships\nof sequence length and processing time. However, under\
+  \ the right\ncircumstances, using 2 processors can increase the speed close to\n\
+  twofold, because the most time-consuming processes are performed in\nparallel.\n\
+  \n\n\n2.5 Selectivity and matches to coding sequences \n\nThe cutoff Smith-Waterman\
+  \ scores for masking interspersed repeats are\nconservative, since masking of one\
+  \ short potentially interesting\nregion generally is more harmful than not masking\
+  \ a number of hard to\nfind matches.  If there are any false matches, they tend\
+  \ to have\nscores close to the cutoff, which is 225 for most repeats, 300 for the\n\
+  low-complexity LINE-1 search*, and 180 for the very old MIR, LINE2 and\nMER5 sequences.\n\
+  \n* most LINE-1s are detected with a 225 cut-off, but in one step in\nRepeatMasker\
+  \ the low-complexity score adjustment is turned off to find\nancient A-rich L1 elements.\n\
+  \nWith each release, we test for the occurrence of false matches in\nrandomized\
+  \ and in inverted (but not complemented) DNA including a\nrange of isochores from\
+  \ 36% to 54% GC. To retain seeds for Smith\nWaterman alignments, sequences are randomized\
+  \ at the 10 bp word\nlevel. Note that the inverted sequences retain the low complexity\
+  \ and\nsimple repeat patterns of the original sequences. Even at sensitive\nsettings,\
+  \ for which false matches are most likely, the 1998-2004\nversions of RepeatMasker\
+  \ have reported no (false) matches at all to\ninterspersed repeats in the randomized\
+  \ or inverted sequences. No\nsimple repeats were reported in the randomized queries.\n\
+  \nIn a 1999 test, RepeatMasker returned only a single probably false\nmatch (71\
+  \ bp) when analyzing a batch of 4440 coding regions in human\nmRNAs (7.2 Mb) at\
+  \ sensitive settings. The coding regions were\ncollected from GenBank, based on\
+  \ annotations, filtered for the\npresence of complete ORFs and initiator methionines,\
+  \ and made more or\nless non-redundant. When each coding region was analyzed individually\n\
+  using the -gccalc option, 5 matches (414 bp, 0.006%) were falsely\nmasked (156 bp\
+  \ at default speed, 76 bp at quick settings). In this\nanalysis each sequence was\
+  \ analyzed with matrices chosen based on the\nactual GC level, even for very short\
+  \ sequences, while in the batch\nanalysis of the coding regions the 'average' 43%\
+  \ GC matrices were\nused.\n\nThe 1998 and later versions of RepeatMasker show somewhat\
+  \ more false\nmasking when a pre-1998 version of cross_match is used. These are\n\
+  primarily the result of improper assumptions of the background\nnucleotide frequency\
+  \ used in the scoring matrix calculation when\nadjusting for the complexity of a\
+  \ match. Specifically, a very GC rich\nregion in an AT-rich isochore (like an exon)\
+  \ may improperly match a GC\nrich repeat, since the scores for C/G matches are higher\
+  \ in the used\nscoring matrix than for AT matches (calculated for this AT rich\n\
+  background) whereas the old cross_match assumed that a 50% GC\nbackground in these\
+  \ calculations and equal scores for A/T and G/C\nmatches have been given. The new\
+  \ version of cross_match reads the\ncorrect nucleotide background level from the\
+  \ matrix used.\n\n\n2.6 Simple repeats and low complexity DNA\n\nLow-complexity\
+  \ DNA \n\nBy default, along with the interspersed repeats, RepeatMasker masks\n\
+  low-complexity DNA. Simple repeats (micro-satellites) can originate at\nany site\
+  \ in the genome, and therefore have an interspersed\ncharacter. Other low-complexity\
+  \ DNA, primarily poly-purine/\npoly-pyrimidine stretches, or regions of extremely\
+  \ high AT or GC\ncontent will result in spurious matches in some database searches\
+  \ as\nwell (especially in the ungapped BLASTN searches). For example,\nextremely\
+  \ AT-rich regions consistently will give very low probability\nmatches to mitochondrial\
+  \ DNA in BLASTN searches. The settings are very\nstringent, and we think that few\
+  \ if any sequences informative in\ndatabase searches are masked as low-complexity\
+  \ DNA. However, you can\nskip the low-complexity DNA masking using the option -nolow\
+  \ or -l(ow).\n\nUnder the current settings a 100 bp stretch of DNA is masked when\
+  \ it\nis >87% AT or >89% GC, a 30 bp stretch has to contain 29 A/T (or GC)\nnucleotides.\
+  \ The settings are slightly more stringent than the\noriginal settings, partly because\
+  \ the gapped BLAST programs are less\nsensitive to short regions of low complexity\
+  \ then the old gapless\nBLAST. In coding regions I have not yet found extensive\
+  \ regions (>10\nbp) masked as low complexity DNA that would not be masked by the\n\
+  combined XNU and SEG filters routinely used in BLASTX.\n\n\nAnnotation of simple\
+  \ repeats  \n\nAlthough RepeatMasker does a good job in masking simple repeats to\n\
+  avoid spurious matches in database searches, it is not written to find\nand indicate\
+  \ all possibly polymorphic simple repeat sequences. Only\ndi- to pentameric and\
+  \ some hexameric repeats are scanned for and\nsimple repeats shorter than 20 bp\
+  \ are ignored. The -poly option prints\nout a separate list of simple repeats of\
+  \ < 10% divergence from a\nperfect repeat. However, even long perfect repeats may\
+  \ not be\npresented in this list; e.g. two perfect 40 bp long (CA)n repeats\ninterrupted\
+  \ by 10 Ts are aligned in one piece and may be reported as\nhaving > 10% divergence\
+  \ from the consensus. Many perfect hexameric or\nlonger unit repeats will be listed\
+  \ as more or less diverged smaller\nunit repeats and may not appear in the .polyout\
+  \ file.\n\nAlso note that, in the default output, simple repeats expanded from\n\
+  the poly A tails of Alus and LINE-1 are now included in the Alu or\nLINE-1 annotation.\
+  \ This cleans up the annotation a bit and lets the\nstand-alone poly A regions stand\
+  \ out (they may indicate the presence\nof a processed pseudogene). However, even\
+  \ perfect simple repeats in\nsuch tails will be hidden in the .out file.\n\nA program\
+  \ optimized to quickly find all dimeric to pentameric repeats\nis sputnik, available\
+  \ at http://espressosoftware.com/pages/sputnik.jsp. \n\n\nLocal duplications, tandem\
+  \ repeats and satellites.\n\nGary Benson's program \"Tandem Repeat Finder\" (another\
+  \ catchy name)\ncurrently is the standard for finding satellites and all other direct\n\
+  repeats (http://tandem.bu.edu/trf/trf.html).  \nAny local duplications (tandem,\
+  \ inverted, interrupted) can be detected\nwith the program miropeats (http://www.genome.ou.edu/miropeats.html),\n\
+  which presents this similarity information graphically.\n\n\n\n3  HOW TO READ THE\
+  \ RESULTS\n\n3.1 The annotation (.out) file\n\nThe annotation file contains the\
+  \ cross_match summary lines. It lists\nall best matches (above a set minimum score)\
+  \ between the query\nsequence and any of the sequences in the repeat database or\
+  \ with low\ncomplexity DNA. The term \"best matches\" reflects that a match is not\n\
+  shown if its domain is over 80% or 90% contained within the domain of\na higher\
+  \ scoring match, where the \"domain\" of a match is the region in\nthe query sequence\
+  \ that is defined by the alignment start and\nstop. These domains have been masked\
+  \ in the returned masked sequence\nfile. In the output, matches are ordered by query\
+  \ name, and for each\nquery by position of the start of the alignment.\n\nExample:\
+  \ \n\n  SW  perc perc perc  query    position in query     matching repeat     \
+  \ position in  repeat\nscore div. del. ins.  sequence begin  end  (left)    repeat\
+  \  class/family   begin end (left) ID\n...\n 1320 15.6  6.2  0.0  HSU08988  6563\
+  \ 6781 (22462) C  MER7A   DNA/MER2_type    (0)  337  104  20\n12279 10.5  2.1  1.7\
+  \  HSU08988  6782 7718 (21525) C  Tigger1 DNA/MER2_type    (0) 2418 1486  19\n 1769\
+  \ 12.9  6.6  1.9  HSU08988  7719 8022 (21221) C  AluSx   SINE/Alu         (0)  317\
+  \    1  17\n12279 10.5  2.1  1.7  HSU08988  8023 8694 (20549) C  Tigger1 DNA/MER2_type\
+  \  (932) 1486  818  19\n 2335 11.1  0.3  0.7  HSU08988  8695 9000 (20243) C  AluSg\
+  \   SINE/Alu         (5)  305    1  18\n12279 10.5  2.1  1.7  HSU08988  9001 9695\
+  \ (19548) C  Tigger1 DNA/MER2_type (1600)  818    2  19\n  721 21.2  1.4  0.0  HSU08988\
+  \  9696 9816 (19427) C  MER7A   DNA/MER2_type  (224)  122    2  20\n\nThis is a\
+  \ sequence in which a Tigger1 DNA transposon has integrated into a MER7 DNA transposon\
+  \ copy. Subsequently two Alus integrated in the Tigger1 sequence. The first line\
+  \ is interpreted as such:\n\n  1320     = Smith-Waterman score of the match, usually\
+  \ complexity adjusted\n        The SW scores are not always directly comparable.\
+  \ Sometimes\n        the complexity adjustment has been turned off, and a variety\
+  \ of\n        scoring-matrices are used dependent on repeat age and GC level.\n\n\
+  \  15.6     = % divergence = mismatches/(matches+mismatches) **\n  6.2      = %\
+  \ of bases opposite a gap in the query sequence (deleted bp)\n  0.0      = % of\
+  \ bases opposite a gap in the repeat consensus (inserted bp)\n  HSU08988 = name\
+  \ of query sequence\n  6563     = starting position of match in query sequence\n\
+  \  6781     = ending position of match in query sequence\n  (22462)  = no. of bases\
+  \ in query sequence past the ending position of match\n  C        = match is with\
+  \ the Complement of the repeat consensus sequence\n  MER7A    = name of the matching\
+  \ interspersed repeat\n  DNA/MER2_type = the class of the repeat, in this case a\
+  \ DNA transposon \n            fossil of the MER2 group (see below for list and\
+  \ references)\n  (0)      = no. of bases in (complement of) the repeat consensus\
+  \ sequence \n             prior to beginning of the match (0 means that the match\
+  \ extended \n             all the way to the end of the repeat consensus sequence)\n\
+  \  337      = starting position of match in repeat consensus sequence\n  104   \
+  \   = ending position of match in repeat consensus sequence\n  20       = unique\
+  \ identifier for individual insertions \n\n  An asterisk (*) following the final\
+  \ column (see below example)\n  indicates that there is a higher-scoring match whose\
+  \ domain partly\n  (<80%) includes the domain of the current match.\n\n** This has\
+  \ changed in August 2001: cross_match output gives the\npercent mismatches/(matches+mismatches+unaligned\
+  \ bases in query). I\ndidn't think this definition is otherwise commonly used and\
+  \ most users\nwill assume the divergence level would be\nmismatches/(matches+mismatches).\n\
+  \nNote that the SW score and divergence numbers for the three Tigger1\nlines are\
+  \ identical. This is because the information is derived from a\nsingle alignment\
+  \ (the Alus were deleted from the query before the\nalignment with the Tigger element\
+  \ was performed). The ProcessRepeats\nscript makes educated guesses if any pair\
+  \ of fragments is derived from\nthe same element or not; if so, the fragments will\
+  \ have the same ID in\nthe last column, in this example it figured that the MER7A\
+  \ fragments\nrepresent one insert.\n\nHere is another example that shows how much\
+  \ trouble ProcessRepeats\ntakes to defragment elements and how the ID can be useful\
+  \ in\ninterpreting the results:\n\n 7120 19.9 0.6 0.3 NT_001227  85631  87837 (19816)\
+  \ + L1PA16    LINE/L1       1 1885 (4964)  123  \n 2503 14.9 6.5 0.7 NT_001227 \
+  \ 87839  88241 (19412) + MSTA      LTR/MaLR      1  428    (0)  100  \n  867 12.9\
+  \ 2.7 0.0 NT_001227  88242  88388 (19265) + MSTA-int  LTR/MaLR      1  151 (1500)\
+  \  100 *\n 5219 19.5 2.9 0.6 NT_001227  88386  89342 (18311) + MSTA-int  LTR/MaLR\
+  \    629 1607   (44)  100  \n 8003  3.5 0.8 0.0 NT_001227  89362  90773 (16880)\
+  \ C L1PA3     LINE/L1     (0) 6155   4745  103  \n 7677  3.5 0.0 0.0 NT_001227 \
+  \ 90795  94059 (13594) C L1PA3     LINE/L1     (0) 6155   2872  104  \n 9050  6.5\
+  \ 0.4 0.1 NT_001227  94060  95127 (12526) C MER11C    LTR/ERVK    (0) 1071     \
+  \ 1  106  \n 7677  3.5 0.0 0.0 NT_001227  95128  97101 (10552) C L1PA3     LINE/L1\
+  \  (3282) 2873    900  104  \n 5619  7.8 0.3 0.9 NT_001227  97097  97865  (9788)\
+  \ C L1PA3     LINE/L1  (5370)  776     13  104 *\n  320 16.9 0.0 1.7 NT_001227 \
+  \ 97876  97934  (9719) + MSTA-int  LTR/MaLR   1594 1651    (0)  100  \n 1475 19.0\
+  \ 4.8 5.6 NT_001227  97935  98255  (9398) + MSTA      LTR/MaLR      1  323   (48)\
+  \  100  \n 2322 14.4 0.8 1.6 NT_001227  98256  98629  (9024) + THE1C     LTR/MaLR\
+  \      1  371    (0)  112  \n10051 12.9 3.5 4.3 NT_001227  98630 100221  (7432)\
+  \ + THE1C-int LTR/MaLR      1 1580    (0)  112  \n 2359 15.7 0.3 1.9 NT_001227 100224\
+  \ 100598  (7055) + THE1C     LTR/MaLR      3  371    (0)  112  \n 1475 19.0 4.8\
+  \ 5.6 NT_001227 100599 100646  (7007) + MSTA      LTR/MaLR    323  371    (0)  100\
+  \  \n 1360 19.4 8.2 1.7 NT_001227 100662 100955  (6698) + MSTA      LTR/MaLR   \
+  \ 114  426    (0)  113  \n11892 24.7 1.9 2.0 NT_001227 100968 101243  (6410) + L1PA16\
+  \    LINE/L1    1881 2143 (4706)  123  \n 2062 11.9 8.4 0.0 NT_001227 101244 101563\
+  \  (6090) C L1PA12    LINE/L1    (10) 6164   5818  116  \n11892 24.7 1.9 2.0 NT_001227\
+  \ 101564 105425  (2228) + L1PA16    LINE/L1    2137 5989  (860)  123  \n  257  0.0\
+  \ 0.0 2.9 NT_001227 105436 105469  (2184) + (TAA)n    Simple        2   34    (0)\
+  \  118  \n 2189 18.2 0.2 0.7 NT_001227 105470 105893  (1760) + L1PA16    LINE/L1\
+  \    6062 6483  (386)  123  \n  255  6.1 0.0 0.0 NT_001227 105896 105928  (1725)\
+  \ + (TA)n     Simple        1   33    (0)  120 *\n  369  0.0 0.0 0.0 NT_001227 105928\
+  \ 105968  (1685) + (GA)n     Simple        2   42    (0)  121  \n  305 18.8 0.0\
+  \ 1.0 NT_001227 105971 106066  (1587) + (TA)n     Simple        2   96    (0)  122\
+  \  \n 1589 21.2 1.6 1.1 NT_001227 106068 106449  (1204) + L1PA16    LINE/L1    6485\
+  \ 6868    (1)  123  \n\nThis entire 20,819 bp block of sequence is comprised by\
+  \ an L1PA16\n(#123), in which 7 or 8 elements have integrated (it is unclear to\
+  \ me\nif the MSTA #113 is a separate integration or a tandem\nduplication). There\
+  \ are at least four layers, with MER11 (#106)\ninserted in L1PA3 (#104) inserted\
+  \ in MSTA (#100, maybe in #113)\ninserted in L1PA16. L1PA16 is already primate specific,\
+  \ so that all\nthese insertions took place during primate evolution.\n\nThe ID column\
+  \ helps much in deciphering the events. It also should be\na basis for graphic display\
+  \ of RepeatMasker output.\n\n\n\n3.2  Alignments\n\nWhen using the -a option, a\
+  \ .align file is created that contains\nalignments of your query sequence to the\
+  \ matching repeat consensus\nsequences. The alignments are given in the same order\
+  \ as listed in the\n.out file. They are always in the orientation of the query;\
+  \ you can\nuse the -inv option to produce all alignments in the orientation of\n\
+  the consensus sequence.\n\nThe alignments are in the cross_match/SWAT format, in\
+  \ which mismatches\nrather than matches are indicated (transitions with an i and\n\
+  transversions with a v). The description line preceding the alignment\nis similar\
+  \ to that seen in the .out file. In the example of an\nalignment below, an old retrovirus-like\
+  \ LTR (MLT1H) has been\ninterrupted by the more recent insertion of a short DNA\
+  \ transposon\n(MADE2):\n\n384 28.89 9.24 2.17 chr1_4622259_4622561 21 77 (225) MLT1H#LTR/MaLR\
+  \ 23 88 (461) 5\n\n  chr1_4622259_       21 TGGCC-CAATTCTTTACCTCTC--TGCCTCTTGTGCCTTTTG-------G\
+  \ 60\n                              -     ? ii   i   --  iv  i-i    i    -------i\n\
+  \  MLT1H#LTR/MaL       23 TGGCCACAATTMTCCACCCCTCCCTGTATCC-ATGCCCTTTGCAATGTGA 71\n\
+  \n  chr1_4622259_       61 CTTTGCCATTTCTTCTA 77\n                              \
+  \ vii i  i i \n  MLT1H#LTR/MaL       72 CTTTGCAGCTCCTCCCA 88\n\nTransitions / transversions\
+  \ = Transitions / transversions = Unknown\nGap_init rate = Unknown\n\n\n557 11.25\
+  \ 0.00 0.00 chr1_4622259_4622561 78 157 (145) C MADE1#DNA/Mariner (0) 80 1 3\n\n\
+  \  chr1_4622259_       78 TTAGGTTGGTGCAAAAGTAATTGTGGGTTTTAGCATTTAAAGTAATACCA 127\n\
+  \                                                i  v    iv    ?        iv  \nC\
+  \ MADE1#DNA/Mar       80 TTAGGTTGGTGCAAAAGTAATTGCGGTTTTTGCCATTRAAAGTAATGGCA 31\n\
+  \n  chr1_4622259_      128 AAAACCACAACTACTTTTGCACCAACCTAA 157\n                \
+  \               i   i                   \nC MADE1#DNA/Mar       30 AAAACCGCAATTACTTTTGCACCAACCTAA\
+  \ 1\n\nTransitions / transversions = Transitions / transversions = Unknown\nGap_init\
+  \ rate = Unknown\n\n\n384 28.89 9.24 2.17 chr1_4622259_4622561 158 283 (19) MLT1H#LTR/MaLR\
+  \ 89 218 (331) 5\n\n  chr1_4622259_      158 TAGTAAAAGCAGAGGATAAT-----ATTCCTTGTCTTTGGGTTTGTCATG\
+  \ 202\n                         i -- i i ii   vv  v ----- ii     vv i    i v i v\
+  \  \n  MLT1H#LTR/MaL       89 CA--AGAGGTGGAGTCTATTTCCCCACCCCTTGAATCTGGGCTGGCCTTG\
+  \ 136\n\n  chr1_4622259_      203 TGACTCTCTTTGGCCATGGGAACATAGGCAAAAATGACT-TGTGCCCCTT\
+  \ 251\n                              iv         vvi   ii -    i  i    v-      vv\
+  \  \n  MLT1H#LTR/MaL      137 TGACTTGCTTTGGCCAATAGAATGT-GGCAGAAGTGACGGTGTGCCAGTT\
+  \ 185\n\n  chr1_4622259_      252 CTGAGCCCCGGCCTTGAGAGGTCTT-CATGCTT 283\n      \
+  \                          iv     ii     i   -  i    \n  MLT1H#LTR/MaL      186\
+  \ CTGAGCCTAGGCCTCAAGAGGCCTTGCACGCTT 218\n\nTransitions / transversions = Transitions\
+  \ / transversions = Unknown\nGap_init rate = Unknown\n\nNote that the description\
+  \ line is identical for the first and third\nalignment. Before the query was compared\
+  \ to the MLT1H consensus,\nRepeatMasker had recognized the MADE1 element and had\
+  \ removed it from\nthe query sequence to more or less reconstruct the pre-MADE1-insertion\n\
+  situation. Thus, position 21 to 283 of the query could be aligned to\nthe MLT1H\
+  \ consensus in a single piece. Since 2004 (RepeatMasker3.0 and\nup), such alignments\
+  \ are broken up to present all matches in serial\norder.\n\nAlignments are especially\
+  \ useful for designing PCR primers in a region\nfull of repeats. It is possible\
+  \ to design primers contained in a\ncommon repeat that still work in a whole genome,\
+  \ when the 3' end is in\na region that is very different from the consensus.\n\n\
+  \n\n\nDiscrepancies between alignments and the .out file\n\nDiscrepancies between\
+  \ alignments and annotation result from the\nadjustments made by the ProcessRepeats\
+  \ script to produce more legible\nannotation. This annotation also tends to be closer\
+  \ to the biological\nreality than the raw cross_match output.\n\nFor example, adjustments\
+  \ often are necessary when a repeat is\nfragmented through deletions, insertions,\
+  \ or an inversion.  Many\nsubfamilies of repeats closely resemble each other, and\
+  \ when a repeat\nis fragmented these fragments can be assigned different subfamily\n\
+  names in the raw output.  ProcessRepeats often can decide if fragments\nare derived\
+  \ from the same integrated transposable element and which\nsubfamily name is appropriate\
+  \ (subsequently given to all\nfragments). This can result in discrepancies in the\
+  \ repeat name and\nmatching positions in the consensus sequence (subfamily consensus\n\
+  sequences differ in length).\n\nIn many cases matches are fused into one annotation.\
+  \ To give a few\ncommon examples: \n\n- In large sequences that are analyzed in\
+  \ fragments consecutive\nfragments overlap and repeats in these overlaps will appear\
+  \ twice\n(partially or wholly) in the alignment file but are merged in the .out\n\
+  file.\n\n- A-rich simple repeats originated from the poly A tail of Alus and\nLINE-1s\
+  \ are incorporated in the annotation of the Alu or LINE-1.\n\n- There is an 'endless'\
+  \ number of subfamilies for retroposons which\ncan not all be represented in the\
+  \ databases and sometimes an element\nis matched by overlapping pieces of two related\
+  \ subfamilies (which\nwill be merged).\n\n- You may find large discrepancies in\
+  \ position numbering if an element\nincludes tandem repeat units. For example, MER109\
+  \ contains multiple\n~300 bp repeat units that can lead to overlapping matches.\
+  \ In the\nannotation such matches are fused.\n\n- Simple repeats or satellites that\
+  \ are longer than the number of\nunits represented in the repeat library will be\
+  \ represented by\nmultiple, genrally overlapping alignments in the .align file,\
+  \ but only\na single annotation line in the .out file.\n\n\nSpecific LINE problems:\n\
+  \nSome other discrepancies between alignments and annotations are\nspecific to LINE-like\
+  \ elements. These repeats usually do not appear as\ncomplete elements in the consensus\
+  \ database. For LINE-1, this is\nmostly due to the contrast in conservation over\
+  \ the length of its\nsequence during its evolution in the mammalian genome; the\
+  \ ~3 kb ORF2\nregion of LINE-1 has been very conserved, whereas the untranslated\n\
+  regions and ORF1 to a lesser degree have evolved very fast. Thus the\n3' end or\
+  \ 5' end of an ancient LINE-1 does not even remotely resemble\nthat of the currently\
+  \ active LINE-1, whereas the coding region for\nreverse transcriptase is closely\
+  \ related. Thus, many subfamilies have\nbeen defined for both the 5' and 3' UTRs\
+  \ (48 and 55, resp.) of LINE-1\nelements in human DNA, whereas only 11 ORF2 entries\
+  \ are present in the\ndatabase. Besides the fact that some 3' ends have multiple\
+  \ defined 5'\nends, and vice versa, the program would become very slow when each\n\
+  query is compared to 55 full length (6 to 8 kb) LINE-1 elements.\nThus, LINE-1 elements\
+  \ are presented in the database in 3 pieces, and\nthe ProcessRepeats script puts\
+  \ these pieces together. As a result both\nthe names of the repeats and position\
+  \ numbering in the consensus\nsequence are generally different in the alignments\
+  \ than in the output\nfile. The LINE2 elements are likewise broken up in 3' UTRs\
+  \ for\ndifferent subfamilies and one 5'UTR-ORF2 region.\n\nBetween LINE-1 subfamilies,\
+  \ the 3' UTR ranges from 500 bp to over 2000\nbp (in L1MC/D3), and the length of\
+  \ the 5' UTR is even more variable,\neven between subfamilies that show strong similarity\
+  \ in the 3' UTR. To\nallow the LINE-1 fragments to be put together, all position\
+  \ numbers in\nolder LINE-1 subfamilies are normalized relative to the position of\n\
+  ORF2 (the conserved part of LINE-1) in a complete L1PA2 element. Since\nsome older\
+  \ elements have much longer 5' UTRs or ORF1-ORF2 linker\nregions than L1PA2, this\
+  \ often results in the assignment of negative\nposition numbers for the 5' end of\
+  \ LINEs. Since the March2000 release,\nsuch positions and all positions in fragments\
+  \ thought to be part of\nthe same LINE-1 insert are readjusted to count from the\
+  \ 5' end (which\nis not necessarily the very 5' end of the LINE-1 source gene, as\
+  \ these\nare hard to derive for old elements). One problem with this approach\n\
+  is that positions are not adjusted in detached 3' fragments that are\nsomehow not\
+  \ recognized by the program as originating from the same\ninsertion. Thereby, the\
+  \ common origin of the 5' fragments and 3'\nfragments may become completely obscured.\
+  \ You can use the option\n'-orf2' of ProcessRepeats to retrieve an output in which\
+  \ all LINE-1s\nare numbered so that position 1 of ORF2 is aligned (resulting in\n\
+  occasionally negative positions).\n\n\n\n\n3.3  The summary (.tbl) file\n\nThe summary\
+  \ file is pretty much self-explanatory. Below is an example.\n\n==================================================\n\
+  file name: AC027410.fa\nsequences:            1\ntotal length:    152192 bp (148791\
+  \ bp excl N-runs)\nGC level:         39.59 %\nbases masked:     88734 bp ( 59.64\
+  \ %)\n==================================================\n               number\
+  \ of      length   percentage\n               elements*    occupied  of sequence\n\
+  --------------------------------------------------\nSINEs:              195    \
+  \    45195 bp    30.37 %\n      ALUs          178        43249 bp    29.07 %\n \
+  \     MIRs           17         1946 bp     1.31 %\n\nLINEs:               54  \
+  \      31173 bp    20.95 %\n      LINE1          36        24602 bp    16.53 %\n\
+  \      LINE2          18         6571 bp     4.42 %\n      L3/CR1          0   \
+  \         0 bp     0.00 %\n\nLTR elements:        13         5833 bp     3.92 %\n\
+  \      MaLRs           8         4079 bp     2.74 %\n      ERVL            0   \
+  \         0 bp     0.00 %\n      ERV_classI      5         1754 bp     1.18 %\n\
+  \      ERV_classII     0            0 bp     0.00 %\n\nDNA elements:        17 \
+  \        4459 bp     3.00 %\n      MER1_type      12         1903 bp     1.28 %\n\
+  \      MER2_type       4         2466 bp     1.66 %\n\nUnclassified:         0 \
+  \           0 bp     0.00 %\n\nTotal interspersed repeats:    86660 bp    58.24\
+  \ %\n\n\nSmall RNA:            2          124 bp     0.08 %\n\nSatellites:     \
+  \      0            0 bp     0.00 %\nSimple repeats:      22         1151 bp   \
+  \  0.77 %\nLow complexity:      22          799 bp     0.54 %\n==================================================\n\
+  \n* most repeats fragmented by insertions or deletions\n  have been counted as one\
+  \ element\nRuns of >20 Ns in query were excluded in % calcs\n\nThe query species\
+  \ was assumed to be Pan troglodytes\nRepeatMasker version 20040617 , default mode\n\
+  run with cross_match version 0.990329\nRepBase Update 9.04, RM database version\
+  \ 20040617\n----------------------------------------------------\n\nAC027410 was\
+  \ a draft sequence, with individual contigs separated by\npoly N linkers. In this\
+  \ case, the option -excln was used, so that\nthese strings of Ns were ignored for\
+  \ the percent calculations.\n\n\nThe classification in this table is well defined\
+  \ (see my reviews in\nCOGD) and forms a good basis for visual presentation and tabulation\
+  \ of\nthe repeats in your study.\n\nWe've been able to classify almost all human\
+  \ repeats, most of them\neven in subclasses. The totals for the classes often are\
+  \ higher than\nthe sum of the subclasses, because not all elements fit in a subclass\n\
+  and minor subclasses are not listed separately in the table (e.g. for\nthe human\
+  \ table the Mariner, Tc2, Piggybac, Zaphod, and Arthur\nfamilies of DNA transposons).\
+  \ The HAL1 element, derived from LINE-1,\nis added to the LINE-1 total in this table.\n\
+  \nNote that the \"MER\" subclasses have no relationship to each other. The\nterm\
+  \ MER (MEdium Reiterated repeats) was introduced for purely\nadministrative purposes\
+  \ to give the beast a name. The MER1 and MER2\ngroups were named after the first\
+  \ member of these groups identified as\nan interspersed repeat in our genome. In\
+  \ the literature they're also\nknown as the Tigger and Charlie groups.\n\nThe nomenclature\
+  \ of mammalian repeats derived from retrovirus-like\nelements is different from\
+  \ older versions. I've now divided this class\nup in the traditional class I, class\
+  \ II (ERVK), class III (ERVL)\nretroviruses and the ERVL-derived but very distinct\
+  \ non-autonomous\nMaLR elements. Since 'class III' is not an accepted classification\n\
+  yet, for now this class is called ERVL. The large MER4-group of\nnon-autonomous\
+  \ LTR elements merges seamlessly with class I endogenous\nretroviruses, making it\
+  \ hard to define, and is now incorporated in the\nlatter group. The ERV classes\
+  \ are most readily distinguished by the\nsize of the insertion site duplication:\
+  \ 4 in class I, 6 in class II,\nand 5 in class III, though there are some exceptions\
+  \ to this rule. My\nLTR classification is not based target size duplication sizes,\
+  \ but on\nthe encoded proteins in the internal sequences or, if these are not\n\
+  known, on matches to LTRs with internal sequences.\n\n\nAs described above, the\
+  \ ProcessRepeats script tries very hard to find\nout which repeat fragments were\
+  \ derived from the same insertion event\nof a transposable element, but there still\
+  \ will be a slight\noverestimate of the copy numbers.\n\n\nThere may be slight differences\
+  \ in the number of \"bases masked\" and\nthe sum of the bases annotated in this\
+  \ .tbl file. At this moment bases\nare masked based on the unprocessed matches (as\
+  \ they are in the .cat\nfile) and most of the discrepancies are accounted for by\
+  \ unmasked\nregions between flanking identical simple repeats, annotated as one\n\
+  stretch if fewer than 10 bases separate them, and fragments of repeats\nshorter\
+  \ than 10 bp which are not annotated but are masked.\n\n\n\n4    APPLICATIONS\n\n\
+  4.1  Use in database searches\n\nRepeatMasker is most commonly used to avoid spurious\
+  \ matches in\ndatabase searches. Generally this step is strongly recommended before\n\
+  doing BLASTN or BLASTX equivalent searches with mammalian DNA\nsequence.\n\nThe\
+  \ most common concern is of course if RepeatMasker ever masks coding\nregions. \
+  \ \nWe found that false matches in coding regions are extremely rare, but\ndid identify\
+  \ 38 genuine fragments of interspersed repeats (4214 bp) in\nthe (annotated) coding\
+  \ regions of the 4440 human mRNAs (7.2 Mb)\nanalyzed (excluding annotated coding\
+  \ sequences of LINE-1 elements and\nendogenous retroviruses). We verified matches\
+  \ with lower scores by\ncomparing the translation products to close homologous or\
+  \ redundant\nentries in the database (the repeat matching regions always were\n\
+  exactly missing). In the majority of these cases, the sequences appear\nto be improperly\
+  \ annotated or to represent either artificially or\nnaturally defective mRNAs (e.g.\
+  \  alternatively spliced exons comprised\nof a small fragment of a repeat).  Genuine\
+  \ overlaps of interspersed\nrepeats with coding sequences usually involve terminal\
+  \ regions of the\nORFs. Since the transposable element derived region is unique\
+  \ to the\nprotein in that (group of) species, the masking does not interfere\nwith\
+  \ database searches.\n\nHowever, some cautionary comments are necessary. First,\
+  \ a few active\ncellular genes are derived from transposable elements (see my list\
+  \ of\n50 in our genome in Lander et al. 2001). Some of these genes will be\npartially\
+  \ masked by a (related) transposon in the repeat database. EST\nand cDNA matches\
+  \ beyond the masked region should alert you.\n\nAlso remember that, currently only\
+  \ for mammals, RepeatMasker screens\nfor small RNA (pseudo)genes because of their\
+  \ similarity to SINEs. The\nnumber of matches to small RNAs are listed in the overview\
+  \ table;\n(close to) exact matches are possibly active genes, although related\n\
+  active genes not in the database may show diverged matches. If you're\ninterested\
+  \ in (small) RNA genes, you should use the -norna option to\nleave these sequences\
+  \ unmasked, while SINEs will remain masked.\n\nA final caution relates to the fact\
+  \ that 3' UTRs of transcripts are\nabout as dense in interspersed repeats as intergenic\
+  \ regions\nare. Thus, many ESTs are completely masked as repetitive DNA. I\nrecommend\
+  \ that, when you compare a genomic sequence against the EST\ndatabase or use ESTs\
+  \ as a query in nucleotide searches, you search\nwith the unmasked sequence as well;\
+  \ use a long minimum match (word\nlength/ word size) like 40 bp to identify exact\
+  \ matches and avoid most\nbackground. Unfortunately the maximum word length that\
+  \ can be used in\nthe NCBI BLASTN program is 18 (due to memory limitations).\n\n\
+  \n\n4.2  Identification of DNA source (contamination detection)\n\nBacterial insertion\
+  \ elements \n\nBacterial insertion sequences (IS elements) often pop up in foreign\n\
+  sequences, as their activity in the E. coli is not always successfully\nsuppressed\
+  \ during cloning. As late as 2002, human entries in the\n'finished' section of GenBank\
+  \ contained over a hundred IS elements.\n\nWith each run, RepeatMasker includes\
+  \ a quick check for bacterial\ninsertion elements that may have inserted during\
+  \ cloning. You can turn\nthis off with the -no_is option. The -is_only option limits\
+  \ the run to\nthis check only.\n\nWhen a full-length element is found and a target\
+  \ site duplication is\nconfirmed, its location is both reported to the screen and\
+  \ stored in a\n.alert file. The latter also contains information of possible\nmouse<->human\
+  \ contamination.\n\n-is_clip, -is_only\n\nWith the -is_only and is_clip options,\
+  \ the detected IS and one of the\nflanking repeats is clipped out to restore the\
+  \ pre-cloning artifact\nsituation before comparison with the repeat databases. The\
+  \ original\nquery FASTA file will remain unchanged. An insertion-sequence-clipped,\n\
+  but otherwise unmasked query sequence is printed to <file>.withoutIS.\n\nFor single\
+  \ sequences larger than 4 Mbp, the -maxsize option needs to\nbe set to a number\
+  \ larger than the sequence length to retrieve this\nfile.\n\nWith either of these\
+  \ options, a properly adjusted quality string is\nprinted to a file with the suffix\
+  \ .qual.withoutIS when a corresponding\nPHRED quality file (.qual) is in the same\
+  \ directory. Note that these\nnames won't be such that the clipped sequence and\
+  \ quality file form a\npair for subsequent cross_match/PHRAP work. They need to\
+  \ be renamed,\nas I assume one wants to do anyway.\n\n\nMost but not all IS elements\
+  \ can be precisely cut out. The element may\nbe at the edge of a sequence, or (rarely)\
+  \ the element may have\ninserted improperly, lacking target site duplications or\
+  \ missing\nterminal bases (internal deletion products are generally handled\nokay).\
+  \ These matches are reported, but are left untouched even in\n_is_only or is_clip\
+  \ mode.\n\nThe location of any IS element is both reported to the screen and\nstored\
+  \ in an .alert file. The latter also contains information of\npossible mouse<->human\
+  \ contamination.\n\nHere are the specifics of IS element insertions:\n\nIS1    \
+  \ 8-10 bp duplication\nIS2     5 bp duplication; published sequence was too short\n\
+  IS3     3 bp duplication\nIS4     No examples of clonal artifacts; no dup site info\n\
+  IS5     4 bp duplication; preferred target TCTAGA\nIS10    9 bp duplication; extreme\
+  \ preference for CGCTNAGCN; published\n        sequence for IS5 & 10 were too long,\
+  \ included preferred target site\nIS30    2 bp duplication\nIS150   3 bp dup, with\
+  \ one exception (4 bp); strong pref for CAGNNTGGGGCY\nIS186   10 or 11 bp dup\n\
+  Tn1000  5 bp duplication;\n\n\n\n\nHuman, mouse, or rat sequence contamination or\
+  \ mix-up.\n\nA straightforward way to distinguish murine and human DNA is by\nchecking\
+  \ for either rodent-specific or primate specific\nrepeats. Likewise, rodent or primate\
+  \ contamination in any other\nmammalian or non-mammalian background can be picked\
+  \ up as well. If\nyour lab has, say, a rat and a pink fairy armadillo sequencing\n\
+  project, rat DNA in a supposedly armadillo sequence can be picked up\nquite reliably,\
+  \ depending on the length of the query.\n\nWhen the option -rodspec or -primspec\
+  \ is used, RepeatMasker only\nchecks the query against a small library of repeats\
+  \ that have not\n(yet) been observed in the 'other' species. The locations of the\n\
+  matches are printed to <file>.alert. This function will be expanded to\nother mammals,\
+  \ when these species are starting to be sequenced in\nearnest.\n\nI've checked for\
+  \ the specificity of the reported matches quite\nextensively. Whenever two or more\
+  \ types of repeats are reported, the\nodds are that the alert is correct. Very occasionally,\
+  \ a single\nreported match could be a false alert. This is especially possible\n\
+  when a 'new' mammalian species is analyzed, because, unbeknownst to\nme, a related\
+  \ repeat may have amplified in such a genome.\n\n\nOther species contamination.\n\
+  \nWhen a supposedly mammalian clone is of non-mammalian origin, very few\nif any\
+  \ interspersed repeats will be reported by RepeatMasker. Rodent\nor primate genomic\
+  \ sequences are on average 40-50% dense in\nrecognizable interspersed repeats, so\
+  \ that any stretch of genomic DNA\nof significant length (say 30 kb or more) showing\
+  \ less than 10%\ndensity in interspersed repeats is of suspect origin. An automated\n\
+  alert for such a situation is not included, as query sequences of\ncoding regions\
+  \ or transcripts, generally of very low repeat density,\nwould constantly cause\
+  \ an alert.\n\n\n\n4.3    DateRepeats - Masking lineage-specific repeats for genomic\
+  \ alignments\n\nSince June 2003 each repeat consensus in the mammalian repeat\n\
+  libraries has a phylogenetic label. The interspersed repeat is\nexpected to be found\
+  \ in all species belonging to the specified genus,\nfamily, order, etc. The label\
+  \ is based on the presence or absence of\nrepeats at orthologous sites in different\
+  \ genomes and on the average\ndivergence of repeat copies from their derived consensus\n\
+  sequence. This phylogeny will become much more accurate and refined\nover time.\n\
+  \nThe tag allows RepeatMasker to compare queries only to repeats\nexpected to be\
+  \ found in the query species, without having to provide a\nlibrary for each species.\
+  \ For example, a rat query currently is\ncompared to repeats tagged with Rattus,\
+  \ Murinae, Muridae, Rodentia,\nEutheria, and Mammalia.\n\nIt also allows one to\
+  \ mask only those interspersed repeats that have\narrived in a genome after the\
+  \ speciation of two species. For optimal\nalignment of genomic sequences of two\
+  \ species, 'ancestral repeats'\nthat are located at orthologous sites in both genomes\
+  \ (unless deleted)\nshould not be masked, whereas 'lineage-specific' repeats should\
+  \ be\nmasked or clipped out. An experimental version of this RepeatMasker\nfeature\
+  \ has been used in the alignment of the mouse to the human\ngenome (Waterston et\
+  \ al. 2002). By clipping out rather than masking\nthe lineage-specific repeats the\
+  \ aligning fraction for the mouse\ngenome could be increased from 35% to 40% (see\
+  \ also Schwartz et al\n2003, NAR 31:3518-24, and Thomas et al 2003, Nature 424:788-93).\n\
+  \nAs of the September 2003 version, the RepeatMasker package contains a\nscript\
+  \ \"DateRepeats\" that takes a RepeatMasker .out file and creates\nannotation with\
+  \ added column(s) indicating if a repeat is expected to\nbe present in the indicated\
+  \ 'other species' as well as a sequence with\nlineage-specific repeats masked only.\
+  \ The script currently works only\nfor a few mammalian species (human, mouse, rat,\
+  \ cat, dog, cow, pig,\nhorse, rabbit), but refinement is inevitable.\n\nDateRepeats\
+  \ <repeatmasker .out files> -query <species1> -comp\n<species2> [-comp <species3>\
+  \ -mask <species2>]\n\nThe required flags are:\n-q -query <species1> the species\
+  \ that has been analyzed\n-c -comp <species2>  other mammalian species; can be used\
+  \ multiple times, adding extra \n                     columns to the annotation\
+  \ in a  <file.out_species2_species3_etc>\n\nOptional parameters are:\n-m -mask <species>\
+  \ produces a sequence file with all lineage specific repeats masked, i.e.\n    \
+  \               those predicted to be in the -query and absent in the -mask species\n\
+  \                   (sequence <file> and RepeatMasker <file.out> files must be in\
+  \ same directory)\n                   <species> must correspond to one of the -comp\
+  \ species\n-a -aggressive     also mask those repeats unclear to be lineage specific\
+  \ or ancestral\n-n -nolow          does not mask (micro)satellites or low complexity\
+  \ DNA, which are \n                   generally lineage specific, but hard to date\
+  \ \n(-a and -n have no effect unless -m is used)\n\nIn the first release of this\
+  \ script the <species> for -q, -c, and -m\nare limited to human, mouse, rat, cat,\
+  \ dog, cow, pig, horse and\nrabbit.\n\n\nFor example the command line:\nDateRepeats\
+  \ chr3_4000001_4005000.out  -q mouse -c rat -c human\nprints the following output\
+  \ to chr3_4000001_4005000.out_rat_human:\n\n  SW  perc perc perc  query   position\
+  \ in query   matching repeat      position in  repeat      rat hum\nscore  div.\
+  \ del. ins. sequence begin  end (left)  repeat   class/family  begin  end (left)\
+  \  ID\n\n12436  19.0  1.7  7.7 chr3_400    9  536 (4464) +  L1_Mur2  LINE/L1   \
+  \     1850 2408 (3469)   1    X  0  \n 2728   5.2  0.0  3.9 chr3_400  537  896 (4104)\
+  \ +  ORR1A0   LTR/MaLR          1  346    (0)   2    0  0  \n12436  19.0  1.7  7.7\
+  \ chr3_400  897 2441 (2559) +  L1_Mur2  LINE/L1        2408 3665 (2212)   1    X\
+  \  0  \n 5229   7.2  0.0  1.1 chr3_400 2442 3134 (1866) +  L1Md_F2  LINE/L1    \
+  \    5877 6580    (2)   3    0  0  \n12436  19.0  1.7  7.7 chr3_400 3135 4259  (741)\
+  \ +  L1_Mur2  LINE/L1        3665 4856 (1021)   1    X  0  \n  394  20.9  0.0  0.9\
+  \ chr3_400 4260 4351  (649) +  Lx2      LINE/L1        6892 6996    (1)   4    X\
+  \  0  \n\nThe X indicates that the repeat is expected to be present at\northologous\
+  \ sites, while the O predicts an absence. None of the above\nrepeats are found in\
+  \ the human genome. Notice that a mouse-specific\nORR1 (#2) and L1 (#4) has inserted\
+  \ into a rodent specific L1 (#1).\n\n\nA few lines of the output for\nDateRepeats\
+  \ chr19.fa.out -q rat -c mouse -c human -m mouse -a -n\nare\n1199 17.9 11.2 1.8\
+  \ chr19 313706 313990 (58909535) C  Lx9     LINE/L1         (9) 7635 7324  377 \
+  \ X  0\n  23  0.0  0.0 0.0 chr19 314125 314147 (58909378) +  AT_rich Low_complexity\
+  \    1   23  (0)  378  -  -\n 726 17.5  1.3 8.9 chr19 314152 314308 (58909217) +\
+  \  B1_Rn   SINE/Alu          2  146  (2)  379  ?  0\n 228 32.8  0.0 7.4 chr19 314355\
+  \ 314476 (58909049) C  B3      SINE/B2        (77)  139   27  380  X  0\n\nThe chr19.fa.masked_vs_mouse\
+  \ file contains a sequence appropriately\nmasked for alignment against mouse. It\
+  \ has repeats 377 & 380\nmasked. The -n flag leaves the AT-rich region unmasked,\
+  \ while the -a\nflag forced it to mask repeat 379 as well. B1_Rn is rat specific,\
+  \ but\nthe 17.5% divergence from the consensus is much higher than the\naverage\
+  \ divergence level of non-functional DNA since the rat-mouse\nsplit. It therefore\
+  \ gets the \"?\" assignment. The rules for assigning\nquestion marks are arbitrary\
+  \ (2-fold lower divergence than expected,\n1.5x higher than expected for a repeat\
+  \ at the boundary).\n\n\n4.4  Use in gene prediction and other applications\n\n\
+  Predicting genes from a masked sequence has several problems. First,\none should\
+  \ use the option -nolow to avoid masking low complexity\nregions and trinucleotide\
+  \ repeats in coding regions. But even with\nonly interspersed repeats masked, gene\
+  \ prediction programs may fail to\nidentify exons correctly. As pointed out above,\
+  \ sometimes tail ends of\ncoding regions may have originated from transposable elements.\
+  \ Some\ngene prediction programs suggest the extend of 3' UTRs. These will be\n\
+  often overestimated in masked DNA, as many genuine poly A signals are\nlocated in\
+  \ interspersed repeats. Finally, even if no coding regions\nhave been masked, splice\
+  \ sites may be compromised; e.g. the\npolypyrimidine region that contributes to\
+  \ an acceptor splice site may\nbe contained within a repeat.\n\nThus, I generally\
+  \ recommend to run a gene prediction program on\nunmasked DNA (as well) and compare\
+  \ the predicted genes and exons with\nthe RepeatMasker output. Some gene prediction\
+  \ program allow you to\nforce certain exons out of the predictions (e.g. often the\
+  \ old ORFs of\nLINE-1 elements and endogenous retroviruses are included in\ngenes).\
+  \ Work is also in progress at several sites to incorporate\nRepeatMasker into gene\
+  \ prediction programs, in which cases matches to\nrepeats are weighted in along\
+  \ with the other parameters used.\n\n\nOther uses\n\nMany people mask repeats before\
+  \ designing primers or oligo probes from\nsequence data. I've often been told that\
+  \ primers/probes designed from\nregions unmasked by RepeatMasker have a much better\
+  \ success rate. A\ncautionary note here is that unmasked regions not necessarily\
+  \ are\nunique in the genome (e.g. many lower copy repeats are not in the\ndatabase\
+  \ yet) and experiments should be performed as if no filtering\nagainst repeats has\
+  \ been done.  The alignments can help in designing\nprimers from sequences that\
+  \ are completely masked. Regions that\ndiverge much from the consensus are less\
+  \ likely to misbehave than\nothers.\n\nRepeatMasker is sometimes used during assembly\
+  \ of large genomic\nsequences.  This procedure probably is most useful in very Alu\
+  \ rich\nregions; in that situation I recommend to only mask the Alus, and\nmaybe\
+  \ limit the masking to those Alus less than 15% diverged (-div\n15).\n\nThere are\
+  \ plenty of other uses, e.g. analysis of repeats can reveal a\nlot about the evolution\
+  \ of a locus (deletions vs. insertions,\ninversions, approximate time of these events).\
+  \ When you're doing that\nyou're a specialist and don't need any help from this\
+  \ help file (maybe\nfrom some of the literature sited below though).\n\n\n\n5  REFERENCES\n\
+  \nReference for RepeatMasker\n\nWe appreciate it if you could refer to the web page\
+  \ (Smit,AFA &\nGreen,P RepeatMasker at http://www.repeatmasker.org) or otherwise\
+  \ to\nSmit, AFA & Green, P., unpublished.\n\nThe EMBL format of the RepBase Update\
+  \ database contains references for\nindividual repeats, as well as annotation with\
+  \ respect to divergence\nlevel, affiliation, copy number, etc. Much if not most\
+  \ of the\ninformation in this database is not published elsewhere. It can be\naccessed\
+  \ at http://www.girinst.org/.\n\nWe are trying to keep the nomenclature of the interspersed\
+  \ repeats in\nthe output of RepeatMasker identical to that of the reference\ndatabase.\
+  \ In most cases the names correspond to those most commonly\nused in the literature.\n\
+  \n\nThere is much too much literature out there to list these days. My own\nviews\
+  \ on the repeat structure in mammalian genomes have most recently\nbeen described\
+  \ in the following papers:\n\nWaterston et al. (2002) Initial sequencing and comparative\
+  \ analysis of\nthe mouse genome. Nature. 420(6915):5 20-62.\n\nLander E. S., et\
+  \ al. (2001). Initial sequencing and analysis of the\nhuman genome. Nature 409(6822):\
+  \ 860-921.\n\nSmit, A.F.A. (1999) Interspersed repeats and other mementos of\ntransposable\
+  \ elements in mammalian genomes. Curr Opin Genet Devel 9\n(6), 657-663.\n\nIf you\
+  \ have ideas for improvements or found a problem, drop a note\nat rhubley@systemsbiology.org\
+  \ or asmit@systemsbiology.org\n\n/*****************************************************************************\n\
+  * Copyright (C) University of Washington 1996-1999 Developed by Arian Smit,\n* Philip\
+  \ Green and Colin Wilson of the University of Washington Department of\n* Genomics.\n\
+  *\n* Copyright (C) Arian Smit 2000-2001\n*\n* Copyright (C) Institute for Systems\
+  \ Biology 2002-2009 Developed by\n* Arian Smit and Robert Hubley.\n*\n* This work\
+  \ is licensed under the Open Source License v2.1.  To view a copy\n* of this license,\
+  \ visit http://www.opensource.org/licenses/osl-2.1.php or\n* see the license.txt\
+  \ file contained in this distribution.\n/*****************************************************************************\n"
+generated_using:
+- --help

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/test_table_equality.cwl
+id: ../../../test_table_equality.cwl
 inputs:
 - id: give_verbose_output
   doc: Give verbose output

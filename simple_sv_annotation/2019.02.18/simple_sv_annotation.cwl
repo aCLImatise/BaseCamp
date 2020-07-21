@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simple_sv_annotation.py.cwl
+id: ../../../simple_sv_annotation.py.cwl
 inputs:
 - id: gene_list
   doc: File with names of genes (one per line) for prioritisation

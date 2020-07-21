@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_dicom_slices_to_volume.py_output.cwl
+id: ../../../medpy_dicom_slices_to_volume.py_output.cwl
 inputs:
 - id: s
   doc: ''

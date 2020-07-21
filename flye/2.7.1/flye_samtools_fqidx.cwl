@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flye_samtools_fqidx.cwl
+id: ../../../flye_samtools_fqidx.cwl
 inputs:
 - id: output
   doc: Write FASTQ to file.

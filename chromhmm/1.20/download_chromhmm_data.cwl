@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/download_chromhmm_data.sh.cwl
+id: ../../../download_chromhmm_data.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

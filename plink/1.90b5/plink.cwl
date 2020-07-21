@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plink.cwl
+id: ../../../plink.cwl
 inputs:
 - id: out
   doc: '[prefix]   : Specify prefix for output files.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/igraph_extract_clusters.R.cwl
+id: ../../../igraph_extract_clusters.R.cwl
 inputs:
 - id: input_i_graph_object
   doc: Path to the input igraph object in rds format.

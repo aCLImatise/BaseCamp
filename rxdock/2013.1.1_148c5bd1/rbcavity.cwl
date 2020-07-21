@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbcavity.cwl
+id: ../../../rbcavity.cwl
 inputs:
 - id: receptor_param
   doc: receptor param file (contains active site params)

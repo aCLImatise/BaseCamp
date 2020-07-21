@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hailctl_dataproc_submit.cwl
+id: ../../../hailctl_dataproc_submit.cwl
 inputs:
 - id: files
   doc: Comma-separated list of files to add to the working directory of the Hail application.

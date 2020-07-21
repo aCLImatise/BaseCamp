@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cleanPolishes.cwl
+id: ../../../cleanPolishes.cwl
 inputs:
 - id: threshold
   doc: Introns bigger than this are candidates for trimming (default = 100000).

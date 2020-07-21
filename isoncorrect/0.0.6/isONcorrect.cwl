@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/isONcorrect.cwl
+id: ../../../isONcorrect.cwl
 inputs:
 - id: fast_q
   doc: 'Path to input fastq file with reads (default: False)'

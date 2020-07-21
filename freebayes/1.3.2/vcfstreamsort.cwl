@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfstreamsort.cwl
+id: ../../../vcfstreamsort.cwl
 inputs:
 - id: window
   doc: number of sites to sort (default 10000)

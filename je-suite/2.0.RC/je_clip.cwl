@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/je_clip.cwl
+id: ../../../je_clip.cwl
 inputs:
 - id: je_clipper
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedExtendRanges.cwl
+id: ../../../bedExtendRanges.cwl
 inputs:
 - id: host
   doc: mysql host

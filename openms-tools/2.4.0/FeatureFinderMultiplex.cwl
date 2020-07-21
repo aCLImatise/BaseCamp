@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FeatureFinderMultiplex.cwl
+id: ../../../FeatureFinderMultiplex.cwl
 inputs:
 - id: in
   doc: "*                              LC-MS dataset in either centroid or profile\

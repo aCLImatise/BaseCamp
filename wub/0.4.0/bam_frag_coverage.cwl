@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam_frag_coverage.py.cwl
+id: ../../../bam_frag_coverage.py.cwl
 inputs:
 - id: reference_fasta
   doc: Reference fasta.

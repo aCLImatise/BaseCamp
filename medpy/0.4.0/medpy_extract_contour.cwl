@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_extract_contour.py.cwl
+id: ../../../medpy_extract_contour.py.cwl
 inputs:
 - id: width
   doc: Width of the contour.

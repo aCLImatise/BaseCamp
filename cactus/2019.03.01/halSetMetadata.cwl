@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halSetMetadata.cwl
+id: ../../../halSetMetadata.cwl
 inputs:
 - id: hal_file
   doc: ''

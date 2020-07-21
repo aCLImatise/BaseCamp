@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_softclip_analyzer_output_dir.cwl
+id: ../../../mb_softclip_analyzer_output_dir.cwl
 inputs:
 - id: top_n
   doc: ''

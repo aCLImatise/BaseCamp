@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getsize.cwl
+id: ../../../getsize.cwl
 inputs:
 - id: data_file
   doc: ''

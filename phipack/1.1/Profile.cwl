@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Profile.cwl
+id: ../../../Profile.cwl
 inputs:
 - id: filename_fasta_format
   doc: ': Filename = FASTA format'

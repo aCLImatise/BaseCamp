@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qpDpart.cwl
+id: ../../../qpDpart.cwl
 inputs:
 - id: use_val_as
   doc: '... use <val> as low count value.'

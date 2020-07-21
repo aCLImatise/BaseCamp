@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prot2cod.cwl
+id: ../../../prot2cod.cwl
 inputs:
 - id: option
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makechimeras.sh.cwl
+id: ../../../makechimeras.sh.cwl
 inputs:
 - id: in
   doc: ''

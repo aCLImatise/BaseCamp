@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CRISPRessoPooledWGSCompare.cwl
+id: ../../../CRISPRessoPooledWGSCompare.cwl
 inputs:
 - id: n_processes
   doc: 'Number of processes to use for CRISPResso comparison (default: 1)'

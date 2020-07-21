@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_anonymous.cwl
+id: ../../../fastq_anonymous.cwl
 inputs:
 - id: mask
   doc: Mask all nucleotides using N

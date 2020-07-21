@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_gdlib_config.cwl
+id: ../../../_gdlib_config.cwl
 inputs:
 - id: libdir
   doc: '# directory where GD library is installed'

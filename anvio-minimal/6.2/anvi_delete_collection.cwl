@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_delete_collection.cwl
+id: ../../../anvi_delete_collection.cwl
 inputs:
 - id: profile_db
   doc: Anvi'o profile database

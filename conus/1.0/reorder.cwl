@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reorder.cwl
+id: ../../../reorder.cwl
 inputs:
 - id: b
   doc: ''

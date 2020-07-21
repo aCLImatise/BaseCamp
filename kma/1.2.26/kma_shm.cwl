@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kma_shm.cwl
+id: ../../../kma_shm.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

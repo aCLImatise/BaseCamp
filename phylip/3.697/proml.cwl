@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proml.cwl
+id: ../../../proml.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fragfinder.cwl
+id: ../../../fragfinder.cwl
 inputs:
 - id: track_mod
   doc: ',file2,...         or ....'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HiLine_params.cwl
+id: ../../../HiLine_params.cwl
 inputs:
 - id: threads
   doc: RANGE  Number of threads to use, must be at least 3. Default=4

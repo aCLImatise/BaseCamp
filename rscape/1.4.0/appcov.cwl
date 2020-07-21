@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/appcov.cwl
+id: ../../../appcov.cwl
 inputs:
 - id: outdir
   doc: ': specify a directory for all output files'

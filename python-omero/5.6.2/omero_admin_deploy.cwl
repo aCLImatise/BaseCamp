@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_admin_deploy.cwl
+id: ../../../omero_admin_deploy.cwl
 inputs:
 - id: file
   doc: Application descriptor. If not provided, a default will be used

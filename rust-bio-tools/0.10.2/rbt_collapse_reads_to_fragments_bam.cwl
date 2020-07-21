@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbt_collapse_reads_to_fragments_bam.cwl
+id: ../../../rbt_collapse_reads_to_fragments_bam.cwl
 inputs:
 - id: verbose_read_names
   doc: Add list of reads that were merged for each consensus read. Note that this

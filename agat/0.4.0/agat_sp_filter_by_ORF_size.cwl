@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_filter_by_ORF_size.pl.cwl
+id: ../../../agat_sp_filter_by_ORF_size.pl.cwl
 inputs:
 - id: verbose_useful_debugging
   doc: Verbose. Useful for debugging purpose. Bolean

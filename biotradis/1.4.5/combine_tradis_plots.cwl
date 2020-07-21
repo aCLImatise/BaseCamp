@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/combine_tradis_plots.cwl
+id: ../../../combine_tradis_plots.cwl
 inputs:
 - id: p
   doc: ''

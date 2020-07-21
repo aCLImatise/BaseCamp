@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/build_taxdb.cwl
+id: ../../../build_taxdb.cwl
 inputs:
 - id: with
   doc: ''

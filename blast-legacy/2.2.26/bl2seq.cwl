@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bl2seq.cwl
+id: ../../../bl2seq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

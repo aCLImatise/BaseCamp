@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/map2assembly.cwl
+id: ../../../map2assembly.cwl
 inputs:
 - id: cpus
   doc: '|c  <integer>  Tells how many cpus to use for BLAST analysis.'

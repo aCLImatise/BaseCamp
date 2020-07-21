@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hapcmp.cwl
+id: ../../../hapcmp.cwl
 inputs:
 - id: input_regions
   doc: The input bed file specifying haplotype block  regions (use - for stdin).

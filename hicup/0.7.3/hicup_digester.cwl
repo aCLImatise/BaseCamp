@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicup_digester.cwl
+id: ../../../hicup_digester.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

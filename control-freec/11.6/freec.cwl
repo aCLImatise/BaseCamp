@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/freec.cwl
+id: ../../../freec.cwl
 inputs:
 - id: conf
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_group_add.cwl
+id: ../../../omero_group_add.cwl
 inputs:
 - id: ignore_existing
   doc: Do not fail if user already exists

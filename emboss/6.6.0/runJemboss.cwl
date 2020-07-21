@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runJemboss.sh.cwl
+id: ../../../runJemboss.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

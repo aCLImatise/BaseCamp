@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bft.cwl
+id: ../../../bft.cwl
 inputs:
 - id: build
   doc: ''

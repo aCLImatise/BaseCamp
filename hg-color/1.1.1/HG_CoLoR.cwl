@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HG_CoLoR.cwl
+id: ../../../HG_CoLoR.cwl
 inputs:
 - id: min_order
   doc: ':        Minimum k-mer size of the variable-order de Bruijn graph (default:

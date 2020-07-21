@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/neurodocker.cwl
+id: ../../../neurodocker.cwl
 inputs:
 - id: var_0
   doc: ''

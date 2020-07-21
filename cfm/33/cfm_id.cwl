@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cfm_id.cwl
+id: ../../../cfm_id.cwl
 inputs:
 - id: spectrum_file
   doc: ''

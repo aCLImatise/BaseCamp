@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TOBIAS_ATACorrect.cwl
+id: ../../../TOBIAS_ATACorrect.cwl
 inputs:
 - id: bam
   doc: A .bam-file containing reads to be corrected

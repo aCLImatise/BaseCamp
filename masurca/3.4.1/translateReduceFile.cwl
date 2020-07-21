@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/translateReduceFile.perl.cwl
+id: ../../../translateReduceFile.perl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

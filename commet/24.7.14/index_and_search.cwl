@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/index_and_search.cwl
+id: ../../../index_and_search.cwl
 inputs:
 - id: file_index_mandatory
   doc: ': A file containing the list of files to index - MANDATORY'

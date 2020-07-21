@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samToDelta.cwl
+id: ../../../samToDelta.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

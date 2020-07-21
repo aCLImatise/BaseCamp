@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_MaxBin.pl.cwl
+id: ../../../run_MaxBin.pl.cwl
 inputs:
 - id: contig
   doc: (contig file)

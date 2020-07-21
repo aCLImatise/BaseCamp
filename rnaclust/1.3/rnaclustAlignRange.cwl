@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnaclustAlignRange.pl.cwl
+id: ../../../rnaclustAlignRange.pl.cwl
 inputs:
 - id: range
   doc: <i-j>                          specifies pairwise alignments which will be

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dx_cwl_compile_tool.cwl
+id: ../../../dx_cwl_compile_tool.cwl
 inputs:
 - id: token
   doc: DNAnexus authentication token

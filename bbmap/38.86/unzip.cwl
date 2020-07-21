@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unzip.sh.cwl
+id: ../../../unzip.sh.cwl
 inputs:
 - id: in
   doc: ''

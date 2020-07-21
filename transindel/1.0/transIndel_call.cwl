@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transIndel_call.py.cwl
+id: ../../../transIndel_call.py.cwl
 inputs:
 - id: reference_genome_used
   doc: :reference genome used for VCF REF column (required for valid VCF)

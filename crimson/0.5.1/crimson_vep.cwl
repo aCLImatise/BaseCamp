@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crimson_vep.cwl
+id: ../../../crimson_vep.cwl
 inputs:
 - id: input
   doc: ''

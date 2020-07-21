@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/emirge_amplicon.py.cwl
+id: ../../../emirge_amplicon.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

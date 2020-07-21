@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biscuit_cinread.cwl
+id: ../../../biscuit_cinread.cwl
 inputs:
 - id: region
   doc: region.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clove.cwl
+id: ../../../clove.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

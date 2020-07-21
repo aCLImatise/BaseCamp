@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PlasFlow.py.cwl
+id: ../../../PlasFlow.py.cwl
 inputs:
 - id: input
   doc: Input fasta file with sequences to classify (required)

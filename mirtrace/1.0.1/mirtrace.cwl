@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mirtrace.cwl
+id: ../../../mirtrace.cwl
 inputs:
 - id: species
   doc: 'Species (miRBase encoding). EXAMPLE: "hsa" for Homo sapiens. To list all codes,

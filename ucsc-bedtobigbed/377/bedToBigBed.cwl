@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedToBigBed.cwl
+id: ../../../bedToBigBed.cwl
 inputs:
 - id: sizes_is_two_bit
   doc: -- If set, the chrom.sizes file is assumed to be a 2bit file.

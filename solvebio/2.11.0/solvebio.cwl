@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/solvebio.cwl
+id: ../../../solvebio.cwl
 inputs:
 - id: api_host
   doc: Override the default SolveBio API host

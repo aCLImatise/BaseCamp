@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Gcluster.pl.cwl
+id: ../../../Gcluster.pl.cwl
 inputs:
 - id: genbank_file_directory
   doc: A Directory containing annotated genomes as Genbank format file. To avoid a

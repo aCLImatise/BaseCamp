@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fullsimplify.cwl
+id: ../../../fullsimplify.cwl
 inputs:
 - id: fs
   doc: contained single read reduction read filename(s) (comma separated fasta/fastq)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chromosomer_simulator.cwl
+id: ../../../chromosomer_simulator.cwl
 inputs:
 - id: gap_size
   doc: the size of gaps between fragments on a chromosome

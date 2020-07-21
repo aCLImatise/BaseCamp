@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dx_jobutil_new_job.cwl
+id: ../../../dx_jobutil_new_job.cwl
 inputs:
 - id: input
   doc: An input to be added using "<input name>[:<class>]=<input value>" (provide

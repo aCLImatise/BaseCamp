@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AdapterRemovalFixPrefix.cwl
+id: ../../../AdapterRemovalFixPrefix.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

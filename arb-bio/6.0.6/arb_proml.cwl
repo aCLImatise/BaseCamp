@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_proml.cwl
+id: ../../../arb_proml.cwl
 inputs:
 - id: bootstrap
   doc: ''

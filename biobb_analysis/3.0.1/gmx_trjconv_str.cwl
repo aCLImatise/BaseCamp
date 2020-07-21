@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmx_trjconv_str.cwl
+id: ../../../gmx_trjconv_str.cwl
 inputs:
 - id: config
   doc: Configuration file

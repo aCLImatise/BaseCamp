@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_script_list.cwl
+id: ../../../omero_script_list.cwl
 inputs:
 - id: who
   doc: 'Who to execute for: user, group, user=1, group=5 (default=official)'

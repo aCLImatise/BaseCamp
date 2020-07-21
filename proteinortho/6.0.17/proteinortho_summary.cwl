@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteinortho_summary.pl.cwl
+id: ../../../proteinortho_summary.pl.cwl
 inputs:
 - id: options
   doc: -format,-f      enables the table formatting instead of the plain csv output.

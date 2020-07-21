@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbdock.cwl
+id: ../../../rbdock.cwl
 inputs:
 - id: input
   doc: input file

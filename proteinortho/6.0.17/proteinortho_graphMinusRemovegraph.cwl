@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteinortho_graphMinusRemovegraph.cwl
+id: ../../../proteinortho_graphMinusRemovegraph.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

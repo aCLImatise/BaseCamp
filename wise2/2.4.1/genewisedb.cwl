@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genewisedb.cwl
+id: ../../../genewisedb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

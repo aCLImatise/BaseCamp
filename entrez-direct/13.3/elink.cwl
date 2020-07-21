@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/elink.cwl
+id: ../../../elink.cwl
 inputs:
 - id: related
   doc: Neighbors in same database

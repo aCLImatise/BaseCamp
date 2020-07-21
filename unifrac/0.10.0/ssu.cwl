@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu.cwl
+id: ../../../ssu.cwl
 inputs:
 - id: input_biom_table
   doc: The input BIOM table.

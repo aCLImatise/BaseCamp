@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kounta.cwl
+id: ../../../kounta.cwl
 inputs:
 - id: fof_n
   doc: file     File of filenames to process

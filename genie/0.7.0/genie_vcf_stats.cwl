@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genie_vcf_stats.cwl
+id: ../../../genie_vcf_stats.cwl
 inputs:
 - id: file_path
   doc: a VCF file (*require)

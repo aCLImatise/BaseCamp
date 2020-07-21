@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_composite_LD.pl.cwl
+id: ../../../bp_composite_LD.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

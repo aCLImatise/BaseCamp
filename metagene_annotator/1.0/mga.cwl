@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mga.cwl
+id: ../../../mga.cwl
 inputs:
 - id: multiple_species_sequences
   doc: ': multiple species (sequences are individually treated)'

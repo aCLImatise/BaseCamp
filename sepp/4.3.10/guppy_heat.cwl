@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/guppy_heat.cwl
+id: ../../../guppy_heat.cwl
 inputs:
 - id: specify_filename_write
   doc: Specify the filename to write to.

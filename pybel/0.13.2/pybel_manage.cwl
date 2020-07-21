@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pybel_manage.cwl
+id: ../../../pybel_manage.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

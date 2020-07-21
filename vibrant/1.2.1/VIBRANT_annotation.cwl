@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/VIBRANT_annotation.py.cwl
+id: ../../../VIBRANT_annotation.py.cwl
 inputs:
 - id: input_fasta_file
   doc: input fasta file

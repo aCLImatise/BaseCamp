@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reverse_bed_ref_fasta.cwl
+id: ../../../reverse_bed_ref_fasta.cwl
 inputs:
 - id: reverse_bed
   doc: ''

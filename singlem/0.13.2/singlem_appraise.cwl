@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/singlem_appraise.cwl
+id: ../../../singlem_appraise.cwl
 inputs:
 - id: debug
   doc: ''

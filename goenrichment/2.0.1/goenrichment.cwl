@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goenrichment.cwl
+id: ../../../goenrichment.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

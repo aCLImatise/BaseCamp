@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ASAPRatioPeptideParser.cwl
+id: ../../../ASAPRatioPeptideParser.cwl
 inputs:
 - id: str_change_labeled
   doc: <str>    change labeled residues (default='C')

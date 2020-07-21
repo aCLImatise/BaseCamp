@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_sr_Mean2col_AllIntervalPlotMean.R.cwl
+id: ../../../gaas_sr_Mean2col_AllIntervalPlotMean.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

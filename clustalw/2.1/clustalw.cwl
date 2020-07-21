@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clustalw.cwl
+id: ../../../clustalw.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

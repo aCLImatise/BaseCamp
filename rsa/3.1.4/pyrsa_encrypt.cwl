@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyrsa_encrypt.cwl
+id: ../../../pyrsa_encrypt.cwl
 inputs:
 - id: input
   doc: Name of the file to encrypt. Reads from stdin if not specified.

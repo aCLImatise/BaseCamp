@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cortexpy_args.cwl
+id: ../../../cortexpy_args.cwl
 inputs:
 - id: cortex_py
   doc: ''

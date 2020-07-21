@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/telescope_test.cwl
+id: ../../../telescope_test.cwl
 inputs:
 - id: telescope
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeidx.pl.cwl
+id: ../../../makeidx.pl.cwl
 inputs:
 - id: ian_p
   doc: ''

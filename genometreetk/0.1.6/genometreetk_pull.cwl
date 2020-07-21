@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genometreetk_pull.cwl
+id: ../../../genometreetk_pull.cwl
 inputs:
 - id: no_validation
   doc: do not assume decorated nodes adhear to standard taxonomy

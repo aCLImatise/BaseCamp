@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kcpolymgr.cwl
+id: ../../../kcpolymgr.cwl
 inputs:
 - id: otr
   doc: ''

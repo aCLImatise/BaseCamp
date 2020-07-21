@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pygvcf2coverage.cwl
+id: ../../../pygvcf2coverage.cwl
 inputs:
 - id: threshold
   doc: DP threshold

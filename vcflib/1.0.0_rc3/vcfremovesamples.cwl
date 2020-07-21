@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfremovesamples.cwl
+id: ../../../vcfremovesamples.cwl
 inputs:
 - id: vcf_file
   doc: ''

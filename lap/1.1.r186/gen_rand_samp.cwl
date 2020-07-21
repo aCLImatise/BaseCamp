@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gen_rand_samp.py.cwl
+id: ../../../gen_rand_samp.py.cwl
 inputs:
 - id: fastq_filenames_first
   doc: Fastq filenames separated by commas that contain the first mates.

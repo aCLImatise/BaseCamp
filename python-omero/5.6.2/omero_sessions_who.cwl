@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_sessions_who.cwl
+id: ../../../omero_sessions_who.cwl
 inputs:
 - id: show_uuid
   doc: Show uuids for sessions

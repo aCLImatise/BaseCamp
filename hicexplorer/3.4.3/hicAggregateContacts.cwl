@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicAggregateContacts.cwl
+id: ../../../hicAggregateContacts.cwl
 inputs:
 - id: matrix
   doc: Path of the Hi-C matrix to plot.

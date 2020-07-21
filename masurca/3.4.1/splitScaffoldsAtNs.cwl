@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splitScaffoldsAtNs.pl.cwl
+id: ../../../splitScaffoldsAtNs.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

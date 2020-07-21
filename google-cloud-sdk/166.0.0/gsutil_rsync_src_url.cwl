@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_rsync_src_url.cwl
+id: ../../../gsutil_rsync_src_url.cwl
 inputs:
 - id: sets_named_cannedacl
   doc: Sets named canned_acl when uploaded objects created. See "gsutil help acls"

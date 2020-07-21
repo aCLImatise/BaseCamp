@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/analyze_exon_exon_mappings.py.cwl
+id: ../../../analyze_exon_exon_mappings.py.cwl
 inputs:
 - id: input
   doc: The input file in BOWTIE MAP format where the rows are sorted by the column

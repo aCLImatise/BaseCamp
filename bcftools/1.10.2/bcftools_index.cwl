@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcftools_index.cwl
+id: ../../../bcftools_index.cwl
 inputs:
 - id: csi
   doc: generate CSI-format index for VCF/BCF files [default]

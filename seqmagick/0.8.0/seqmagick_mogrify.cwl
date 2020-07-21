@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqmagick_mogrify.cwl
+id: ../../../seqmagick_mogrify.cwl
 inputs:
 - id: alphabet
   doc: Input alphabet. Required for writing NEXUS.

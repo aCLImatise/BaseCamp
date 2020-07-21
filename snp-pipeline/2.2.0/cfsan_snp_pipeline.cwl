@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cfsan_snp_pipeline.cwl
+id: ../../../cfsan_snp_pipeline.cwl
 inputs:
 - id: subcommand
   doc: run              This do-it-all script runs all the pipeline steps data             Copy

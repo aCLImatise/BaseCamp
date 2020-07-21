@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslRecalcMatch.cwl
+id: ../../../pslRecalcMatch.cwl
 inputs:
 - id: ignore_q_missing
   doc: "- pass through the record if querySeq doesn't include qName"

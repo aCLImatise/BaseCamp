@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MotifRaptor_set.cwl
+id: ../../../MotifRaptor_set.cwl
 inputs:
 - id: parameter_name
   doc: Parameter Name

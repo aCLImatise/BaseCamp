@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transform_coverage_profile.cwl
+id: ../../../transform_coverage_profile.cwl
 inputs:
 - id: specify_the_cov
   doc: Specify the cov

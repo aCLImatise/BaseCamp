@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_rarefaction_plots.py.cwl
+id: ../../../make_rarefaction_plots.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

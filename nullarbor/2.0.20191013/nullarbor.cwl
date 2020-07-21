@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nullarbor.pl.cwl
+id: ../../../nullarbor.pl.cwl
 inputs:
 - id: name
   doc: Job name

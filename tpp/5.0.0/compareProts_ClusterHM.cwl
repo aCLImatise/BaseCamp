@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compareProts_ClusterHM.pl.cwl
+id: ../../../compareProts_ClusterHM.pl.cwl
 inputs:
 - id: minimum_probability
   doc: <minimum probability>

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nebulizer_list_libraries.cwl
+id: ../../../nebulizer_list_libraries.cwl
 inputs:
 - id: use_long_format
   doc: use a long listing format that includes ids, descriptions, file sizes, dbkeys

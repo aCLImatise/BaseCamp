@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vsnp_excel_merge_files.py.cwl
+id: ../../../vsnp_excel_merge_files.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

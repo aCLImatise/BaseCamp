@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convert_coords.cwl
+id: ../../../convert_coords.cwl
 inputs:
 - id: required_name_alignment
   doc: (required) Name of file in which alignment is defined.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RefMapOpt.sh.cwl
+id: ../../../RefMapOpt.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

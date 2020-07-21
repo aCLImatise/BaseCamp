@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pmxgentop.cwl
+id: ../../../pmxgentop.cwl
 inputs:
 - id: config
   doc: This file can be a YAML file, JSON file or JSON string

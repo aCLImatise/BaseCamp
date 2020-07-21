@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/del_from_prfl.pl.cwl
+id: ../../../del_from_prfl.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

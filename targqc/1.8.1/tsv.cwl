@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tsv.cwl
+id: ../../../tsv.cwl
 inputs:
 - id: tab_view_do_tpy
   doc: ''

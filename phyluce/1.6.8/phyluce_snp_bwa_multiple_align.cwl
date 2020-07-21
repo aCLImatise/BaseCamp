@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_snp_bwa_multiple_align.cwl
+id: ../../../phyluce_snp_bwa_multiple_align.cwl
 inputs:
 - id: config
   doc: A configuration file containing the reference-to-read sample mapping and some

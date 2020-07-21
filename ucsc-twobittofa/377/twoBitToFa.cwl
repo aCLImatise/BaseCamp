@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/twoBitToFa.cwl
+id: ../../../twoBitToFa.cwl
 inputs:
 - id: seq
   doc: Restrict this to just one sequence.

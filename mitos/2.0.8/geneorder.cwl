@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/geneorder.py.cwl
+id: ../../../geneorder.py.cwl
 inputs:
 - id: outfile
   doc: 'write values to FILE (default: stdout)'

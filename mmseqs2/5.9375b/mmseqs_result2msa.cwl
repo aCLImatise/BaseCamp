@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_result2msa.cwl
+id: ../../../mmseqs_result2msa.cwl
 inputs:
 - id: comp_bias_corr
   doc: '1               correct for locally biased amino acid composition [0,1]     '

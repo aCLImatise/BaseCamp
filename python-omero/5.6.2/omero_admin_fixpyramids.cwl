@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_admin_fixpyramids.cwl
+id: ../../../omero_admin_fixpyramids.cwl
 inputs:
 - id: dry_run
   doc: Print out which files would be deleted

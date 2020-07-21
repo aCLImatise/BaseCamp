@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NGSadmix.cwl
+id: ../../../NGSadmix.cwl
 inputs:
 - id: likes
   doc: likelihood filename

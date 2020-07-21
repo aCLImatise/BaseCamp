@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fusioncatcher.py.cwl
+id: ../../../fusioncatcher.py.cwl
 inputs:
 - id: input
   doc: 'The input file(s) or directory. The files should be in FASTQ or SRA format

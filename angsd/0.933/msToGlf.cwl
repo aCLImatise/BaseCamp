@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msToGlf.cwl
+id: ../../../msToGlf.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

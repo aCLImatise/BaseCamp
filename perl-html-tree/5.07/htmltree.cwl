@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htmltree.cwl
+id: ../../../htmltree.cwl
 inputs:
 - id: sets_htmltreebuilderdebug_figure
   doc: '[number]  sets HTML::TreeBuilder::Debug to that figure.'

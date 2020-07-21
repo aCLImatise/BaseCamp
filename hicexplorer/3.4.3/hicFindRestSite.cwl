@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicFindRestSite.cwl
+id: ../../../hicFindRestSite.cwl
 inputs:
 - id: fast_a
   doc: Path to fasta file for the organism genome.

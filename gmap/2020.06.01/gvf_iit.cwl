@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gvf_iit.cwl
+id: ../../../gvf_iit.cwl
 inputs:
 - id: no
   doc: ''

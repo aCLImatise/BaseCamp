@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/intervene_pairwise.cwl
+id: ../../../intervene_pairwise.cwl
 inputs:
 - id: input_genomic_regions
   doc: '[INPUT [INPUT ...]], --input [INPUT [INPUT ...]] Input genomic regions in

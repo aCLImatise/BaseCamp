@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kat_plot_density.cwl
+id: ../../../kat_plot_density.cwl
 inputs:
 - id: not_raster_is_ed
   doc: Don't rasterise graphics (slower).

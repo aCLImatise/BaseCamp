@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splash_preparebed.cwl
+id: ../../../splash_preparebed.cwl
 inputs:
 - id: bed
   doc: BED file

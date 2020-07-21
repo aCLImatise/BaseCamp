@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/map_bed.py.cwl
+id: ../../../map_bed.py.cwl
 inputs:
 - id: single_nucleotide
   doc: If specified, assumes each region is only one nucleotide. You must specify

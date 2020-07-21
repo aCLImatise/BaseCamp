@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prophex.cwl
+id: ../../../prophex.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lineages.cwl
+id: ../../../lineages.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CRISPRessoCount.cwl
+id: ../../../CRISPRessoCount.cwl
 inputs:
 - id: guide_length
   doc: 'Lenght in bp to extract the sgRNA upstream of the tracrRNA sequence (default:

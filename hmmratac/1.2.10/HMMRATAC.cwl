@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HMMRATAC.cwl
+id: ../../../HMMRATAC.cwl
 inputs:
 - id: _bam_bam
   doc: ', --bam <BAM> Sorted BAM file containing the ATAC-seq reads'

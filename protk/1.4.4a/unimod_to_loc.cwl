@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unimod_to_loc.rb.cwl
+id: ../../../unimod_to_loc.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

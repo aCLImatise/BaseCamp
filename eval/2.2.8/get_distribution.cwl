@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_distribution.pl.cwl
+id: ../../../get_distribution.pl.cwl
 inputs:
 - id: inputs_gtf_files
   doc: ': Inputs are gtf files instead of list files'

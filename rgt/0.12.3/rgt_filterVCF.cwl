@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rgt_filterVCF.cwl
+id: ../../../rgt_filterVCF.cwl
 inputs:
 - id: t_mq
   doc: 'Threshold for mapping quality (MQ) [default: 20]'

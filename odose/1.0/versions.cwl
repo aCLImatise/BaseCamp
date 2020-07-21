@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/versions.py.cwl
+id: ../../../versions.py.cwl
 inputs:
 - id: target
   doc: Target output file for version numbers

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_probe_run_multiple_lastzs_sqlite.cwl
+id: ../../../phyluce_probe_run_multiple_lastzs_sqlite.cwl
 inputs:
 - id: db
   doc: The database in which to store results (also use --append if adding results

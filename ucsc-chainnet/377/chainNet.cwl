@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chainNet.cwl
+id: ../../../chainNet.cwl
 inputs:
 - id: min_space
   doc: '- minimum gap size to fill, default 25'

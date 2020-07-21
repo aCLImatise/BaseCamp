@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyprophet_reduce.cwl
+id: ../../../pyprophet_reduce.cwl
 inputs:
 - id: in
   doc: Scored PyProphet input file.  [required]

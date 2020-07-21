@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/roary2fripan.py.cwl
+id: ../../../roary2fripan.py.cwl
 inputs:
 - id: input
   doc: Specify Roary output (default = "gene_presence_absence.csv")

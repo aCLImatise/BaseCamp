@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/align_info.2.10.7.cwl
+id: ../../../align_info.2.10.7.cwl
 inputs:
 - id: all
   doc: 'print all information '

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coreprocess.pl.cwl
+id: ../../../coreprocess.pl.cwl
 inputs:
 - id: archive
   doc: same as -dR --preserve=all

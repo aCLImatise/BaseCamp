@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_gen_network.cwl
+id: ../../../anvi_gen_network.cwl
 inputs:
 - id: list_annotation_sources
   doc: List available functional annotation sources.

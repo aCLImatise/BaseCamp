@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/strainest_mapgenomes.cwl
+id: ../../../strainest_mapgenomes.cwl
 inputs:
 - id: genomes_dot_dot_dot
   doc: ''

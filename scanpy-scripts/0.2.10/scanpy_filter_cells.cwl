@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scanpy_filter_cells.cwl
+id: ../../../scanpy_filter_cells.cwl
 inputs:
 - id: input_format
   doc: '[anndata|loom] Input object format.  [default: anndata]'

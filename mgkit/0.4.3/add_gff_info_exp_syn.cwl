@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/add_gff_info_exp_syn.cwl
+id: ../../../add_gff_info_exp_syn.cwl
 inputs:
 - id: reference
   doc: reference sequence in fasta format  [required]

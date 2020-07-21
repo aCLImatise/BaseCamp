@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hash_exp_or.cwl
+id: ../../../hash_exp_or.cwl
 inputs:
 - id: hash_exp
   doc: ''

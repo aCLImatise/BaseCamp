@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/StoatyDive.py.cwl
+id: ../../../StoatyDive.py.cwl
 inputs:
 - id: _inputbed_path
   doc: '*.bed, --input_bed *.bed Path to the peak file in bed6 format.'

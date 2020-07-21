@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkUTR.cwl
+id: ../../../checkUTR.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

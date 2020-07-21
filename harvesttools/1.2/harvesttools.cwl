@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/harvesttools.cwl
+id: ../../../harvesttools.cwl
 inputs:
 - id: quiet_mode
   doc: (quiet mode)

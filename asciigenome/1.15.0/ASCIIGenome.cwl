@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ASCIIGenome.cwl
+id: ../../../ASCIIGenome.cwl
 inputs:
 - id: batch_file
   doc: ''

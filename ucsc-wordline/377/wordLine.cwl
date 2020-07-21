@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wordLine.cwl
+id: ../../../wordLine.cwl
 inputs:
 - id: c_sym
   doc: '- Break up words based on C symbol rules rather than white space'

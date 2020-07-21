@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uniqueMerCount.cwl
+id: ../../../uniqueMerCount.cwl
 inputs:
 - id: sorted_mer_list
   doc: ''

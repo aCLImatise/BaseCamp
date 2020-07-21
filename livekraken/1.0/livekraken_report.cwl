@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/livekraken_report.cwl
+id: ../../../livekraken_report.cwl
 inputs:
 - id: db
   doc: ''

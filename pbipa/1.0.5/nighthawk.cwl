@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nighthawk.cwl
+id: ../../../nighthawk.cwl
 inputs:
 - id: tool
   doc: ''

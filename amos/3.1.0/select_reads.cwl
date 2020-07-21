@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/select_reads.cwl
+id: ../../../select_reads.cwl
 inputs:
 - id: bank_path
   doc: ''

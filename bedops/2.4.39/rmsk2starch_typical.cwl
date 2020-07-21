@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rmsk2starch_typical.cwl
+id: ../../../rmsk2starch_typical.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

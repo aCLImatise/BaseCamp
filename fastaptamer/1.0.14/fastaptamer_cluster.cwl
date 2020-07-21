@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastaptamer_cluster.cwl
+id: ../../../fastaptamer_cluster.cwl
 inputs:
 - id: i
   doc: ''

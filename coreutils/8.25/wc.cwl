@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wc.cwl
+id: ../../../wc.cwl
 inputs:
 - id: bytes
   doc: print the byte counts

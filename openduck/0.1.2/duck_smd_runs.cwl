@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/duck_smd_runs.cwl
+id: ../../../duck_smd_runs.cwl
 inputs:
 - id: input
   doc: Equilibrated system as input

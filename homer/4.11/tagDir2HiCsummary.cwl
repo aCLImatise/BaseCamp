@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tagDir2HiCsummary.pl.cwl
+id: ../../../tagDir2HiCsummary.pl.cwl
 inputs:
 - id: tagdirtwohicfiledotpl
   doc: ''

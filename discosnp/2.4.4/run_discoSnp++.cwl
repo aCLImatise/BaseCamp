@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_discoSnp++.sh.cwl
+id: ../../../run_discoSnp++.sh.cwl
 inputs:
 - id: _prefix_string
   doc: '| --prefix <string> All out files will start with this prefix. Default="discoRes"'

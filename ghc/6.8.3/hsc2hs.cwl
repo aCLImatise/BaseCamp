@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hsc2hs.cwl
+id: ../../../hsc2hs.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

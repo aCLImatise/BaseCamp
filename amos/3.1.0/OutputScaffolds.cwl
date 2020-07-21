@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/OutputScaffolds.cwl
+id: ../../../OutputScaffolds.cwl
 inputs:
 - id: b
   doc: ''

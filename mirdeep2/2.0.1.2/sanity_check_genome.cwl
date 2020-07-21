@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sanity_check_genome.pl.cwl
+id: ../../../sanity_check_genome.pl.cwl
 inputs:
 - id: no
   doc: ''

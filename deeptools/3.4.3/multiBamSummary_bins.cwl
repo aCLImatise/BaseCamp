@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/multiBamSummary_bins.cwl
+id: ../../../multiBamSummary_bins.cwl
 inputs:
 - id: bam_files
   doc: 'FILE2 [FILE1 FILE2 ...], -b FILE1 FILE2 [FILE1 FILE2 ...] List of indexed

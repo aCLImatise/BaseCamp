@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfglbound.cwl
+id: ../../../vcfglbound.cwl
 inputs:
 - id: bound
   doc: Bound GLs to this limit.

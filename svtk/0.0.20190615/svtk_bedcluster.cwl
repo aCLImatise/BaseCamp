@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtk_bedcluster.cwl
+id: ../../../svtk_bedcluster.cwl
 inputs:
 - id: frac
   doc: Minimum reciprocal overlap fraction to link variants. [0.8]

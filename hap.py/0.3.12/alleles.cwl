@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alleles.cwl
+id: ../../../alleles.cwl
 inputs:
 - id: input_file
   doc: Input VCF file.

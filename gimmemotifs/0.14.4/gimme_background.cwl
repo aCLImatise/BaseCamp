@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gimme_background.cwl
+id: ../../../gimme_background.cwl
 inputs:
 - id: input_sequences_bed
   doc: input sequences (BED or FASTA)

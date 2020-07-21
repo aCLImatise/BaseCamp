@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_sessions_close.cwl
+id: ../../../omero_sessions_close.cwl
 inputs:
 - id: session_id
   doc: The session ID

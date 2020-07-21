@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/starseqr.py.cwl
+id: ../../../starseqr.py.cwl
 inputs:
 - id: prefix
   doc: prefix to name files. Can be string or /path/to/string

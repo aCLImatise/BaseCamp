@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chcon.cwl
+id: ../../../chcon.cwl
 inputs:
 - id: dereference
   doc: affect the referent of each symbolic link (this is the default), rather than

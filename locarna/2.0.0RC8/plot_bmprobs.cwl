@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plot_bmprobs.cwl
+id: ../../../plot_bmprobs.cwl
 inputs:
 - id: plot_bm_probs
   doc: ''

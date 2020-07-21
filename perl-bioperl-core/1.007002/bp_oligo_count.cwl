@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_oligo_count.pl.cwl
+id: ../../../bp_oligo_count.pl.cwl
 inputs:
 - id: h_slash_help
   doc: ''

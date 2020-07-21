@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyrpipe_diagnostic.py_logfile.cwl
+id: ../../../pyrpipe_diagnostic.py_logfile.cwl
 inputs:
 - id: command
   doc: Subcommand to run [report,bash,benchmark,all]

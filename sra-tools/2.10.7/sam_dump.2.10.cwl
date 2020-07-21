@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sam_dump.2.10.7.cwl
+id: ../../../sam_dump.2.10.7.cwl
 inputs:
 - id: cigar_cg
   doc: output CG version of CIGAR

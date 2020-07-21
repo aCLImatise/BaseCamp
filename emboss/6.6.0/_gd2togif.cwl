@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_gd2togif.cwl
+id: ../../../_gd2togif.cwl
 inputs:
 - id: gd_two_to_gif
   doc: ''

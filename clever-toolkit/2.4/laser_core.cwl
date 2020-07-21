@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/laser_core.cwl
+id: ../../../laser_core.cwl
 inputs:
 - id: very_verbose_caution
   doc: '[ --verbose ]                      Be (very) verbose. CAUTION: produces a  lot

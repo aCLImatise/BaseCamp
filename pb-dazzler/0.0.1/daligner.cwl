@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/daligner.cwl
+id: ../../../daligner.cwl
 inputs:
 - id: kmer_size_must
   doc: ': k-mer size (must be <= 32).'

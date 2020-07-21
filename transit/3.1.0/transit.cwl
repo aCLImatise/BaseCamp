@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transit.cwl
+id: ../../../transit.cwl
 inputs:
 - id: python
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fixTri.sh.cwl
+id: ../../../fixTri.sh.cwl
 inputs:
 - id: tri_file
   doc: ''

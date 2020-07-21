@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/read_summary.cwl
+id: ../../../read_summary.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/redepth.pl.cwl
+id: ../../../redepth.pl.cwl
 inputs:
 - id: str_input_name
   doc: '<str>   input BAM file name. '

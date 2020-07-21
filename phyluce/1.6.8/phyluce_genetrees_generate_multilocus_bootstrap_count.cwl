@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_genetrees_generate_multilocus_bootstrap_count.cwl
+id: ../../../phyluce_genetrees_generate_multilocus_bootstrap_count.cwl
 inputs:
 - id: alignments
   doc: The input directory containing alignments in phylip format

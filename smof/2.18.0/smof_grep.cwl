@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof_grep.cwl
+id: ../../../smof_grep.cwl
 inputs:
 - id: match_sequence
   doc: match sequence rather than header

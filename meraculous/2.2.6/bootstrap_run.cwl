@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bootstrap_run.sh.cwl
+id: ../../../bootstrap_run.sh.cwl
 inputs:
 - id: o
   doc: ''

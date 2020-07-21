@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uropa_summary.R.cwl
+id: ../../../uropa_summary.R.cwl
 inputs:
 - id: final_hits
   doc: file containing the final hits from UROPA.

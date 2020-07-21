@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merfishtools_multidiffexp_FLAGS.cwl
+id: ../../../merfishtools_multidiffexp_FLAGS.cwl
 inputs:
 - id: mer_fish_tools
   doc: ''

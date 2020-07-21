@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cbSeurat.cwl
+id: ../../../cbSeurat.cwl
 inputs:
 - id: in_it
   doc: copy sample seurat.conf to current directory

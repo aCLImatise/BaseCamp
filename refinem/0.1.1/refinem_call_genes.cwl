@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/refinem_call_genes.cwl
+id: ../../../refinem_call_genes.cwl
 inputs:
 - id: unbinned_file
   doc: call genes on unbinned scaffolds

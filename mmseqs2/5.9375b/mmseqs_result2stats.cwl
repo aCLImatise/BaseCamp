@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_result2stats.cwl
+id: ../../../mmseqs_result2stats.cwl
 inputs:
 - id: stat
   doc: 'can be one of: linecount, mean, doolittle, charges, seqlen, firstline.'

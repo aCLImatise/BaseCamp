@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/minnow.cwl
+id: ../../../minnow.cwl
 inputs:
 - id: a_levin_mode
   doc: The program would assume that the input matrix is obtained from Alevin

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gffread.cwl
+id: ../../../gffread.cwl
 inputs:
 - id: expose_warn_duplicate
   doc: expose (warn about) duplicate transcript IDs and other potential  problems

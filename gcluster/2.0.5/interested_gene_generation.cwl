@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/interested_gene_generation.pl.cwl
+id: ../../../interested_gene_generation.pl.cwl
 inputs:
 - id: genbank_file_directory
   doc: 'A directory containing annotated genomes as Genbank format file. To avoid

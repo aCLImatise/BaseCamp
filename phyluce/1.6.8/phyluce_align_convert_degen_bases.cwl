@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_convert_degen_bases.cwl
+id: ../../../phyluce_align_convert_degen_bases.cwl
 inputs:
 - id: alignments
   doc: 'The directory containing alignments to be screened. (default: None)'

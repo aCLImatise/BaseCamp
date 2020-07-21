@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bseqc2.cwl
+id: ../../../bseqc2.cwl
 inputs:
 - id: arg_input_bam
   doc: '[ --infile ] arg               Input BAM file.'

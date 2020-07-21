@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ktImportBLAST.cwl
+id: ../../../ktImportBLAST.cwl
 inputs:
 - id: blast_output
   doc: File containing BLAST results in tabular format ("Hit table (text)" when downloading

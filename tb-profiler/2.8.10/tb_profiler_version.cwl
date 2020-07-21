@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tb_profiler_version.cwl
+id: ../../../tb_profiler_version.cwl
 inputs:
 - id: tb_profiler
   doc: ''

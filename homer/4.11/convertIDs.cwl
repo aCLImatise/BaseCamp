@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convertIDs.pl.cwl
+id: ../../../convertIDs.pl.cwl
 inputs:
 - id: input_file
   doc: ''

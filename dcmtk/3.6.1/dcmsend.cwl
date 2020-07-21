@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dcmsend.cwl
+id: ../../../dcmsend.cwl
 inputs:
 - id: _readdataset_read
   doc: --read-dataset         read data set without file meta information

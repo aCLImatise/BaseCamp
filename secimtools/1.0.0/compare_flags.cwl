@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compare_flags.py.cwl
+id: ../../../compare_flags.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

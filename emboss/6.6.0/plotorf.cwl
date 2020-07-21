@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plotorf.cwl
+id: ../../../plotorf.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

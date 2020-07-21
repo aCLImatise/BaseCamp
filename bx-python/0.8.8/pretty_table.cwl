@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pretty_table.py.cwl
+id: ../../../pretty_table.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/swarm.cwl
+id: ../../../swarm.cwl
 inputs:
 - id: threads
   doc: number of threads to use (1)

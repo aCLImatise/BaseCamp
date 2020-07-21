@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/UpdHunter.cwl
+id: ../../../UpdHunter.cwl
 inputs:
 - id: in
   doc: Input VCF file of trio.

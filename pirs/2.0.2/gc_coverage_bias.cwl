@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gc_coverage_bias.cwl
+id: ../../../gc_coverage_bias.cwl
 inputs:
 - id: reference_sequence_file
   doc: 'a reference sequence file about FA format '

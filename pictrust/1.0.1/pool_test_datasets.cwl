@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pool_test_datasets.py.cwl
+id: ../../../pool_test_datasets.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

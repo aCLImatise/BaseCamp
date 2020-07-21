@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PhiSpy.py_infile.cwl
+id: ../../../PhiSpy.py_infile.cwl
 inputs:
 - id: m
   doc: ''

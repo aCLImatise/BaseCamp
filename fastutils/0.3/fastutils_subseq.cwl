@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastutils_subseq.cwl
+id: ../../../fastutils_subseq.cwl
 inputs:
 - id: input_file_fastx
   doc: input file in fastx format. Use - for stdin.

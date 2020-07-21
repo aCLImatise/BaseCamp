@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ReadSeq_select_seqs.cwl
+id: ../../../ReadSeq_select_seqs.cwl
 inputs:
 - id: seq_length
   doc: minimum length of sequence

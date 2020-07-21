@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ErrorCorrection_connect.cwl
+id: ../../../ErrorCorrection_connect.cwl
 inputs:
 - id: str_query_file
   doc: <str>   Query a file, *.fq, *.fa

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafFilter.cwl
+id: ../../../mafFilter.cwl
 inputs:
 - id: tolerate
   doc: '- Just ignore bad input rather than aborting.'

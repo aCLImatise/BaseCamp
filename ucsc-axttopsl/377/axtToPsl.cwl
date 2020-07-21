@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/axtToPsl.cwl
+id: ../../../axtToPsl.cwl
 inputs:
 - id: in_do_tax_t
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genePredToGtf.cwl
+id: ../../../genePredToGtf.cwl
 inputs:
 - id: database
   doc: ''

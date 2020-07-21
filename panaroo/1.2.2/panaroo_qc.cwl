@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/panaroo_qc.cwl
+id: ../../../panaroo_qc.cwl
 inputs:
 - id: threads
   doc: number of threads to use (default=1)

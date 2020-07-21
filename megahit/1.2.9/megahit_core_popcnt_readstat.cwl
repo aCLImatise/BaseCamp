@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/megahit_core_popcnt_readstat.cwl
+id: ../../../megahit_core_popcnt_readstat.cwl
 inputs:
 - id: cat
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bolt_vcf_filter.cwl
+id: ../../../bolt_vcf_filter.cwl
 inputs:
 - id: file_path
   doc: a VCF file (*require)

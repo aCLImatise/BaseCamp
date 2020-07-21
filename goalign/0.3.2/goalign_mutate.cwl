@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_mutate.cwl
+id: ../../../goalign_mutate.cwl
 inputs:
 - id: output
   doc: Mutated alignment output file (default "stdout")

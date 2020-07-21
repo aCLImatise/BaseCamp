@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pvacseq_download_example_data.cwl
+id: ../../../pvacseq_download_example_data.cwl
 inputs:
 - id: destination_directory
   doc: Directory for downloading example data

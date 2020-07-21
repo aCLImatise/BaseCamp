@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/diego.py.cwl
+id: ../../../diego.py.cwl
 inputs:
 - id: table
   doc: table of splice junction supports per sample with gene information (created

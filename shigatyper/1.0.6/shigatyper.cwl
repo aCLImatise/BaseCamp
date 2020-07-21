@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shigatyper.cwl
+id: ../../../shigatyper.cwl
 inputs:
 - id: n
   doc: ''

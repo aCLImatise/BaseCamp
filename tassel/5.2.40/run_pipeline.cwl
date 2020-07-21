@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_pipeline.pl.cwl
+id: ../../../run_pipeline.pl.cwl
 inputs:
 - id: file_load_plugin
   doc: ''

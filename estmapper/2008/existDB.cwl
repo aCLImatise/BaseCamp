@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/existDB.cwl
+id: ../../../existDB.cwl
 inputs:
 - id: stuff
   doc: ''

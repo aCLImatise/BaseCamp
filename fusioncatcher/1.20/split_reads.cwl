@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/split_reads.py.cwl
+id: ../../../split_reads.py.cwl
 inputs:
 - id: input
   doc: The input file in FASTQ format (Solexa). Can be given as gzipped file too.

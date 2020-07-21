@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/align_cache.2.10.7.cwl
+id: ../../../align_cache.2.10.7.cwl
 inputs:
 - id: threshold
   doc: "cache PRIMARY_ALIGNMENT records with  difference between values of ALIGN_ID\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arrive.cwl
+id: ../../../arrive.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

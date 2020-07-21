@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/array_as_vcf.cwl
+id: ../../../array_as_vcf.cwl
 inputs:
 - id: path
   doc: 'Path to array file (default: None)'

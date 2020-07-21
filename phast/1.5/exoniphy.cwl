@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/exoniphy.cwl
+id: ../../../exoniphy.cwl
 inputs:
 - id: data_path
   doc: 'Path to the directory with phast data. Exoniphy default models should  be

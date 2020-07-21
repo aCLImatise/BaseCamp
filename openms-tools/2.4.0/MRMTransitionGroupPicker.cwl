@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MRMTransitionGroupPicker.cwl
+id: ../../../MRMTransitionGroupPicker.cwl
 inputs:
 - id: in
   doc: "*        Input file (valid formats: 'mzML')"

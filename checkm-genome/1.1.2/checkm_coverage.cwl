@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkm_coverage.cwl
+id: ../../../checkm_coverage.cwl
 inputs:
 - id: extension
   doc: 'extension of bins (other files in directory are ignored) (default: fna)'

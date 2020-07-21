@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spring.cwl
+id: ../../../spring.cwl
 inputs:
 - id: _compress
   doc: '[ --compress ]               compress'

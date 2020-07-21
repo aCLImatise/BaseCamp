@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alignmentSieve.cwl
+id: ../../../alignmentSieve.cwl
 inputs:
 - id: bam
   doc: An indexed BAM file.

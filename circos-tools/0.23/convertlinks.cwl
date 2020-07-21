@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convertlinks.cwl
+id: ../../../convertlinks.cwl
 inputs:
 - id: cat
   doc: ''

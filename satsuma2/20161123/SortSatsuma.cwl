@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SortSatsuma.cwl
+id: ../../../SortSatsuma.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

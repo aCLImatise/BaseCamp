@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/advntr_genotype.cwl
+id: ../../../advntr_genotype.cwl
 inputs:
 - id: a_slash_alignment_file
   doc: alignment file in SAM/BAM/CRAM format

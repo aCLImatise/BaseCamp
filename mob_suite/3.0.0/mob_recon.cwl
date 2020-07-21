@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mob_recon.cwl
+id: ../../../mob_recon.cwl
 inputs:
 - id: outdir
   doc: Output Directory to put results

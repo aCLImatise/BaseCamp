@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/circos.cwl
+id: ../../../circos.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

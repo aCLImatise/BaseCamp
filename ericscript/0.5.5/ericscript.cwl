@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ericscript.pl.cwl
+id: ../../../ericscript.pl.cwl
 inputs:
 - id: db_folder
   doc: where database is stored. Default is ERICSCRIPT_FOLDER/lib/

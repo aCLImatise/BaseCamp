@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdal_translate.cwl
+id: ../../../gdal_translate.cwl
 inputs:
 - id: help_general
   doc: ''

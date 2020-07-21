@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mendelscan_sibd.cwl
+id: ../../../mendelscan_sibd.cwl
 inputs:
 - id: ped_file
   doc: Pedigree file in 6-column tab-delimited format

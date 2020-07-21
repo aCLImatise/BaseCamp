@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mast_xml_to_txt.cwl
+id: ../../../mast_xml_to_txt.cwl
 inputs:
 - id: mast_xml_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mockinbird_flip_mate_output_bam.cwl
+id: ../../../mockinbird_flip_mate_output_bam.cwl
 inputs:
 - id: mock_in_bird
   doc: ''

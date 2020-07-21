@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svict.cwl
+id: ../../../svict.cwl
 inputs:
 - id: i
   doc: ''

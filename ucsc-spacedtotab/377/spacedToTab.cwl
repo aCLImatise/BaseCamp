@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spacedToTab.cwl
+id: ../../../spacedToTab.cwl
 inputs:
 - id: sizes
   doc: ',Y,Z - Force it to have columns of the given widths. The final char in each

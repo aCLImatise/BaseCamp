@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/grf_dbn.cwl
+id: ../../../grf_dbn.cwl
 inputs:
 - id: input_fast_a
   doc: ''

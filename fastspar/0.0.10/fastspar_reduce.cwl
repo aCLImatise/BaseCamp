@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastspar_reduce.cwl
+id: ../../../fastspar_reduce.cwl
 inputs:
 - id: r_slash_correlation_table
   doc: Correlation input table

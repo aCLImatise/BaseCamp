@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam2pairs.cwl
+id: ../../../bam2pairs.cwl
 inputs:
 - id: position_leftmost_position
   doc: ": position is left-most position (default 5'end)."

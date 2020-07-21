@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/infer_bp_v4.pl.cwl
+id: ../../../infer_bp_v4.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

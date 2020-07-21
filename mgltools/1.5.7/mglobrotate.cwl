@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mglobrotate.cwl
+id: ../../../mglobrotate.cwl
 inputs:
 - id: ob_rotate
   doc: ''

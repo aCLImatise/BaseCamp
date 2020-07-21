@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/untangle.cwl
+id: ../../../untangle.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

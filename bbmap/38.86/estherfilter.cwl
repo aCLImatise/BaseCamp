@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/estherfilter.sh.cwl
+id: ../../../estherfilter.sh.cwl
 inputs:
 - id: query
   doc: ''

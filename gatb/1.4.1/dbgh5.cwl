@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dbgh5.cwl
+id: ../../../dbgh5.cwl
 inputs:
 - id: no_mph_f
   doc: "(0 arg) :    don't construct the MPHF"

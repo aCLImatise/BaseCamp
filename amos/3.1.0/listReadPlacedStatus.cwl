@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/listReadPlacedStatus.cwl
+id: ../../../listReadPlacedStatus.cwl
 inputs:
 - id: disregard_bank_locks
   doc: Disregard bank locks and write permissions (spy mode)

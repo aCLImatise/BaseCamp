@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_get_unique.cwl
+id: ../../../rsem_get_unique.cwl
 inputs:
 - id: number_of_threads
   doc: ''

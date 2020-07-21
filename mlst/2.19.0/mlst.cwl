@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mlst.cwl
+id: ../../../mlst.cwl
 inputs:
 - id: check
   doc: Just check dependencies and exit (default OFF)

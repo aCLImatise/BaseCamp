@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/docking_py.cwl
+id: ../../../docking_py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

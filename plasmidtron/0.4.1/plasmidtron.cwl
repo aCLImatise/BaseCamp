@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plasmidtron.cwl
+id: ../../../plasmidtron.cwl
 inputs:
 - id: action
   doc: Control how the traits kmers are filtered for assembly [union]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/juliet.cwl
+id: ../../../juliet.cwl
 inputs:
 - id: config
   doc: Defines genes of interest within the reference for reporting purposes. Enter

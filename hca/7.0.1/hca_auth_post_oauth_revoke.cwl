@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_auth_post_oauth_revoke.cwl
+id: ../../../hca_auth_post_oauth_revoke.cwl
 inputs:
 - id: token
   doc: The refresh token to revoke.

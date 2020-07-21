@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vsnp_bruc_mlst.py.cwl
+id: ../../../vsnp_bruc_mlst.py.cwl
 inputs:
 - id: read_one
   doc: 'Required: single read'

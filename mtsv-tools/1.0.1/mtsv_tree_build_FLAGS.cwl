@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mtsv_tree_build_FLAGS.cwl
+id: ../../../mtsv_tree_build_FLAGS.cwl
 inputs:
 - id: index
   doc: ''

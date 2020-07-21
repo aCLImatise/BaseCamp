@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pysradb_search.cwl
+id: ../../../pysradb_search.cwl
 inputs:
 - id: save_to
   doc: Save metadata dataframe to file

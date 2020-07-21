@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/closestBed.cwl
+id: ../../../closestBed.cwl
 inputs:
 - id: addition_closest_feature
   doc: In addition to the closest feature in B,  report its distance to A as an extra

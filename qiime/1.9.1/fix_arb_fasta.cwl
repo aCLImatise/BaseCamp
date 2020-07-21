@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fix_arb_fasta.py.cwl
+id: ../../../fix_arb_fasta.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

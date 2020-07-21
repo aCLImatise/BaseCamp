@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/insert_mol_no_vmd.py.cwl
+id: ../../../insert_mol_no_vmd.py.cwl
 inputs:
 - id: f_sys
   doc: Input PDB file of the system

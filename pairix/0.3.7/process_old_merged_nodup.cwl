@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/process_old_merged_nodup.sh.cwl
+id: ../../../process_old_merged_nodup.sh.cwl
 inputs:
 - id: preset_pairs_mergednodups
   doc: 'preset: pairs, merged_nodups, old_merged_nodups, gff, bed, sam, vcf, psltbl

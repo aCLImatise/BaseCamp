@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafSplit.cwl
+id: ../../../mafSplit.cwl
 inputs:
 - id: use_hashed_name
   doc: 'For use only with -byTarget. Instead of auto-incrementing an integer or requiring

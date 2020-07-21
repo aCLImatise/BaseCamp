@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flye_samtools_idxstats.cwl
+id: ../../../flye_samtools_idxstats.cwl
 inputs:
 - id: threads
   doc: Number of additional threads to use [0]

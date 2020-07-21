@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/singlem_renew.cwl
+id: ../../../singlem_renew.cwl
 inputs:
 - id: debug
   doc: ''

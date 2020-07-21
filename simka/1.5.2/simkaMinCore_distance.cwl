@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simkaMinCore_distance.cwl
+id: ../../../simkaMinCore_distance.cwl
 inputs:
 - id: in_one
   doc: '(1 arg) :    filename to a sketch file to compare with -in2'

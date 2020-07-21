@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deepbgc_train.cwl
+id: ../../../deepbgc_train.cwl
 inputs:
 - id: model
   doc: Path to JSON model config file

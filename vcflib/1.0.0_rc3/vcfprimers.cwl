@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfprimers.cwl
+id: ../../../vcfprimers.cwl
 inputs:
 - id: fast_a_reference
   doc: FASTA reference file to use to obtain primer sequences

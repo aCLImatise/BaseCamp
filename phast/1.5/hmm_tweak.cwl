@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmm_tweak.cwl
+id: ../../../hmm_tweak.cwl
 inputs:
 - id: var_0
   doc: Operate on transitions *from* states corresponding to the  specified category

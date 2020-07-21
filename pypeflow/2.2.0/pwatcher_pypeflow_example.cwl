@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pwatcher_pypeflow_example.cwl
+id: ../../../pwatcher_pypeflow_example.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sam2fq.cwl
+id: ../../../sam2fq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

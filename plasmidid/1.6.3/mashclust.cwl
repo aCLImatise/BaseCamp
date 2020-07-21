@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mashclust.py.cwl
+id: ../../../mashclust.py.cwl
 inputs:
 - id: input
   doc: REQUIRED.Input FASTA file

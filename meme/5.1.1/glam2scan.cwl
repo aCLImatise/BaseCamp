@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/glam2scan.cwl
+id: ../../../glam2scan.cwl
 inputs:
 - id: alphabet
   doc: ''

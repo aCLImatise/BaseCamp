@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segmentation_fold.cwl
+id: ../../../segmentation_fold.cwl
 inputs:
 - id: s
   doc: ''

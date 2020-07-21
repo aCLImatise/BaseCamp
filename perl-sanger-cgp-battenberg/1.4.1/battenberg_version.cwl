@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/battenberg_version.pl.cwl
+id: ../../../battenberg_version.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

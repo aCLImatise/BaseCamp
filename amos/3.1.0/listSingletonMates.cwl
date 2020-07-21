@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/listSingletonMates.cwl
+id: ../../../listSingletonMates.cwl
 inputs:
 - id: bank_path
   doc: ''

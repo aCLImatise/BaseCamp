@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/format_fasta.cwl
+id: ../../../format_fasta.cwl
 inputs:
 - id: input_fast_a
   doc: Path to input fasta.

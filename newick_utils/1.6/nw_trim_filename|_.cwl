@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nw_trim_filename|_.cwl
+id: ../../../nw_trim_filename|_.cwl
 inputs:
 - id: maximum_depth_expressed
   doc: ': the maximum depth is expressed in number of ancestors, not distance. Nodes

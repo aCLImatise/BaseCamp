@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/normalize_bigwig.py.cwl
+id: ../../../normalize_bigwig.py.cwl
 inputs:
 - id: bw_file
   doc: Input BigWig file. [required]

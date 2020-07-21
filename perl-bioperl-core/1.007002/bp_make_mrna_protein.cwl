@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_make_mrna_protein.pl.cwl
+id: ../../../bp_make_mrna_protein.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

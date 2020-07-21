@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/batchAnnotatePeaksHistogram.pl.cwl
+id: ../../../batchAnnotatePeaksHistogram.pl.cwl
 inputs:
 - id: usage
   doc: ''

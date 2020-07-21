@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_ncbi_prep_uce_align_files_for_ncbi.cwl
+id: ../../../phyluce_ncbi_prep_uce_align_files_for_ncbi.cwl
 inputs:
 - id: alignments
   doc: The directory containing alignments

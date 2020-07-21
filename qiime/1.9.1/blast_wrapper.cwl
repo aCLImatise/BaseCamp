@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blast_wrapper.py.cwl
+id: ../../../blast_wrapper.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

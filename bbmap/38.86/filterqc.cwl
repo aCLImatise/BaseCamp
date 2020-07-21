@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterqc.sh.cwl
+id: ../../../filterqc.sh.cwl
 inputs:
 - id: in
   doc: ''

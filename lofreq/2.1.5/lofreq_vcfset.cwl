@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lofreq_vcfset.cwl
+id: ../../../lofreq_vcfset.cwl
 inputs:
 - id: _vcf_file
   doc: '| --vcf1 FILE      1st VCF input file (bgzip supported)'

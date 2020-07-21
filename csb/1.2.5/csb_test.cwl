@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csb_test.cwl
+id: ../../../csb_test.cwl
 inputs:
 - id: type
   doc: Type of tests to load from each namespace (default=any)

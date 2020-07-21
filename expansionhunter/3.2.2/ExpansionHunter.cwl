@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ExpansionHunter.cwl
+id: ../../../ExpansionHunter.cwl
 inputs:
 - id: print_version_number
   doc: '[ --version ]                      Print version number'

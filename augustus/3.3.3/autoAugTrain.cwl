@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/autoAugTrain.pl.cwl
+id: ../../../autoAugTrain.pl.cwl
 inputs:
 - id: training_set
   doc: ''

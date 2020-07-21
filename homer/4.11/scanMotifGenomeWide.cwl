@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scanMotifGenomeWide.pl.cwl
+id: ../../../scanMotifGenomeWide.pl.cwl
 inputs:
 - id: five_p
   doc: (report positions centered on the 5' start of the motif)

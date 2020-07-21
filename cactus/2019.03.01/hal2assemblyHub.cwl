@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hal2assemblyHub.py.cwl
+id: ../../../hal2assemblyHub.py.cwl
 inputs:
 - id: hub
   doc: a single-word name of the directory containing the track hub files. Not displayed

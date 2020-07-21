@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bigsi.cwl
+id: ../../../bigsi.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafft_distance.cwl
+id: ../../../mafft_distance.cwl
 inputs:
 - id: pd
   doc: ''

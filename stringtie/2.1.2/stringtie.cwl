@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stringtie.cwl
+id: ../../../stringtie.cwl
 inputs:
 - id: estimate_abundance_requires
   doc: estimate the abundance of given reference transcripts (requires -G)

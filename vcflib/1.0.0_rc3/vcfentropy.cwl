@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfentropy.cwl
+id: ../../../vcfentropy.cwl
 inputs:
 - id: fast_a_reference
   doc: FASTA reference file to use to obtain flanking sequences

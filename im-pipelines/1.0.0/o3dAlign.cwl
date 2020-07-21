@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o3dAlign.cwl
+id: ../../../o3dAlign.cwl
 inputs:
 - id: qmol_idx
   doc: Query molecule index in SD file if not the first

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cfm_train.cwl
+id: ../../../cfm_train.cwl
 inputs:
 - id: input_filename
   doc: ''

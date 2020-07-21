@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/message_extract.cwl
+id: ../../../message_extract.cwl
 inputs:
 - id: m
   doc: ''

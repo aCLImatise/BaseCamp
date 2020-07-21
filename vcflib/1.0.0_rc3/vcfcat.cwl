@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfcat.cwl
+id: ../../../vcfcat.cwl
 inputs:
 - id: file_one
   doc: ''

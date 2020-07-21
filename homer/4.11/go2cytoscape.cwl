@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/go2cytoscape.pl.cwl
+id: ../../../go2cytoscape.pl.cwl
 inputs:
 - id: gotwocytosapedotpl
   doc: ''

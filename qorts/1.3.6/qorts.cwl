@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qorts.cwl
+id: ../../../qorts.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

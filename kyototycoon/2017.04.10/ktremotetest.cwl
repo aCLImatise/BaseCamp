@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ktremotetest.cwl
+id: ../../../ktremotetest.cwl
 inputs:
 - id: th
   doc: ''

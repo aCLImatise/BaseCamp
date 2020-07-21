@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ngsPSMC.cwl
+id: ../../../ngsPSMC.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

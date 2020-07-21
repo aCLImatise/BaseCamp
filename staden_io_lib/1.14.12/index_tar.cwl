@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/index_tar.cwl
+id: ../../../index_tar.cwl
 inputs:
 - id: d
   doc: ''

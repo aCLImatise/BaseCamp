@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ensembl_extract_protein_coding_exon_annotations.py.cwl
+id: ../../../ensembl_extract_protein_coding_exon_annotations.py.cwl
 inputs:
 - id: annotation_file
   doc: Path of Ensembl gene annotation file (in GTF format). The file may be gzip'ed.

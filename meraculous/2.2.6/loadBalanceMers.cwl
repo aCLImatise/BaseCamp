@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/loadBalanceMers.pl.cwl
+id: ../../../loadBalanceMers.pl.cwl
 inputs:
 - id: mer_count_file
   doc: ''

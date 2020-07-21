@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_seqrange_nproc.cwl
+id: ../../../ssu_esl_seqrange_nproc.cwl
 inputs:
 - id: ssu_esl_seq_range
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cstacks.cwl
+id: ../../../cstacks.cwl
 inputs:
 - id: in_path
   doc: ': path to the directory containing Stacks files.'

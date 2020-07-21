@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getSuperReadInsertCountsFromReadPlacementFileTwoPasses.cwl
+id: ../../../getSuperReadInsertCountsFromReadPlacementFileTwoPasses.cwl
 inputs:
 - id: output
   doc: Output file

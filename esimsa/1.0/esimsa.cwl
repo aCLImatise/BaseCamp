@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esimsa.cwl
+id: ../../../esimsa.cwl
 inputs:
 - id: peak_list
   doc: ''

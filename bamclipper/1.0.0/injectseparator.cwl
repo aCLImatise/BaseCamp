@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/injectseparator.pl.cwl
+id: ../../../injectseparator.pl.cwl
 inputs:
 - id: no
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/megahit_core_no_hw_accel_count.cwl
+id: ../../../megahit_core_no_hw_accel_count.cwl
 inputs:
 - id: km_er_k
   doc: (=21)                 kmer size

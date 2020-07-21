@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_divide.cwl
+id: ../../../goalign_divide.cwl
 inputs:
 - id: out_fast_a
   doc: Output files in fasta format

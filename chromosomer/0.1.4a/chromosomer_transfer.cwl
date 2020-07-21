@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chromosomer_transfer.cwl
+id: ../../../chromosomer_transfer.cwl
 inputs:
 - id: format
   doc: 'the format of a file of annotated features (bed, gff3 or vcf) (default: bed)'

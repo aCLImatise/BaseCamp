@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PTModel.cwl
+id: ../../../PTModel.cwl
 inputs:
 - id: in_positive
   doc: "*            Input file with positive examples (valid formats: 'idXML')"

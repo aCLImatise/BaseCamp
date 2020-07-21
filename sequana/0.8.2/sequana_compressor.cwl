@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequana_compressor.cwl
+id: ../../../sequana_compressor.cwl
 inputs:
 - id: quiet
   doc: set verbosity off

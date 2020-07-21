@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stride.cwl
+id: ../../../stride.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

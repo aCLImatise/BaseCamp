@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Decharger.cwl
+id: ../../../Decharger.cwl
 inputs:
 - id: in
   doc: "*        Input file  (valid formats: 'featureXML')"

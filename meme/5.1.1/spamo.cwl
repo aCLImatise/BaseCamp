@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spamo.cwl
+id: ../../../spamo.cwl
 inputs:
 - id: create_directory_write
   doc: create the directory and write output files in it; not compatible with -oc

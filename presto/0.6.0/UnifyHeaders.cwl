@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/UnifyHeaders.py_unify_fail.cwl
+id: ../../../UnifyHeaders.py_unify_fail.cwl
 inputs:
 - id: unify_headers_do_tpy
   doc: ''

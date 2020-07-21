@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mega_reads_assemble_nomatch.sh.cwl
+id: ../../../mega_reads_assemble_nomatch.sh.cwl
 inputs:
 - id: m
   doc: ''

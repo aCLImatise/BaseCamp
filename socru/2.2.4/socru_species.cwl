@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/socru_species.cwl
+id: ../../../socru_species.cwl
 inputs:
 - id: extended
   doc: 'Extended information about the species databases (default: False)'

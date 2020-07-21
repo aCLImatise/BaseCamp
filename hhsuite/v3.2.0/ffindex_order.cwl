@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ffindex_order.cwl
+id: ../../../ffindex_order.cwl
 inputs:
 - id: order_filename
   doc: ''

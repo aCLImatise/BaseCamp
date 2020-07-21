@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quorum_error_correct_reads.cwl
+id: ../../../quorum_error_correct_reads.cwl
 inputs:
 - id: thread
   doc: Number of threads (1)

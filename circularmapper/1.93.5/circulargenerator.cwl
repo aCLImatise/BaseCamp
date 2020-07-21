@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/circulargenerator.cwl
+id: ../../../circulargenerator.cwl
 inputs:
 - id: elongation
   doc: the elongation factor [INT]

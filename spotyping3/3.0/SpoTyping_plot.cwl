@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SpoTyping_plot.r.cwl
+id: ../../../SpoTyping_plot.r.cwl
 inputs:
 - id: options
   doc: ''

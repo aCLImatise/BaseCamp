@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ppanggolin_panrgp.cwl
+id: ../../../ppanggolin_panrgp.cwl
 inputs:
 - id: fast_a
   doc: 'A tab-separated file listing the organism names, and the fasta filepath of

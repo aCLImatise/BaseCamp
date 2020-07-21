@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tb_region_list_to_bed.cwl
+id: ../../../tb_region_list_to_bed.cwl
 inputs:
 - id: chromosome_name
   doc: Chromosome name to use in BED

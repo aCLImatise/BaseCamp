@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rm.cwl
+id: ../../../rm.cwl
 inputs:
 - id: force
   doc: ignore nonexistent files and arguments, never prompt

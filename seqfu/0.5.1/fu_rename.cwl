@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fu_rename.cwl
+id: ../../../fu_rename.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

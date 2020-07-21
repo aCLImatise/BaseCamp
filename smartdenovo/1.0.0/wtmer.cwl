@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wtmer.cwl
+id: ../../../wtmer.cwl
 inputs:
 - id: long_reads_file
   doc: Long reads sequences file, + *

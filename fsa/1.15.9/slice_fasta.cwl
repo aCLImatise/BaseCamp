@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/slice_fasta.cwl
+id: ../../../slice_fasta.cwl
 inputs:
 - id: fast_a_file
   doc: ''

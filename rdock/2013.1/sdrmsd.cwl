@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sdrmsd.cwl
+id: ../../../sdrmsd.cwl
 inputs:
 - id: fit
   doc: Superpose molecules before RMSD calculation

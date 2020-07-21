@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteinortho_cleanupblastgraph.cwl
+id: ../../../proteinortho_cleanupblastgraph.cwl
 inputs:
 - id: blast_graph
   doc: ''

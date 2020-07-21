@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeBigWig.pl.cwl
+id: ../../../makeBigWig.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

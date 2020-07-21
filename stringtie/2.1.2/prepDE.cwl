@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prepDE.py.cwl
+id: ../../../prepDE.py.cwl
 inputs:
 - id: input
   doc: 'the parent directory of the sample sub-directories or a textfile listing the

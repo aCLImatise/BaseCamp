@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runHiCpca.pl.cwl
+id: ../../../runHiCpca.pl.cwl
 inputs:
 - id: res
   doc: '<#> (resolution in bp, default: 50000)'

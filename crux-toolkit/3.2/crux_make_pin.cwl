@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_make_pin.cwl
+id: ../../../crux_make_pin.cwl
 inputs:
 - id: target_input
   doc: ''

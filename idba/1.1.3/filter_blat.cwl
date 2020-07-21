@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_blat.cwl
+id: ../../../filter_blat.cwl
 inputs:
 - id: min_contig
   doc: (=100)            minimum contigs

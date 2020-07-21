@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkAgpAndFa.cwl
+id: ../../../checkAgpAndFa.cwl
 inputs:
 - id: exclude
   doc: "- Ignore seq (e.g. chrM for which we usually get sequence from GenBank but\

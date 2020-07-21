@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bigWigMerge.cwl
+id: ../../../bigWigMerge.cwl
 inputs:
 - id: threshold
   doc: "- don't output values at or below this threshold. Default is 0.0"

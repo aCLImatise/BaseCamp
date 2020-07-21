@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gene_annotation_parser.py.cwl
+id: ../../../gene_annotation_parser.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_merges_mega_reads.pl.cwl
+id: ../../../extract_merges_mega_reads.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

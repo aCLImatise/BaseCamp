@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcftools_polysomy.cwl
+id: ../../../bcftools_polysomy.cwl
 inputs:
 - id: peak_size
   doc: minimum peak size (0-1, larger is stricter) [0.1]

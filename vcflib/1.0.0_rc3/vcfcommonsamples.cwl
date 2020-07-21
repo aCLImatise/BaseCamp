@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfcommonsamples.cwl
+id: ../../../vcfcommonsamples.cwl
 inputs:
 - id: var_0
   doc: ''

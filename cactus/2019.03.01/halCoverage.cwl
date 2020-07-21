@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halCoverage.cwl
+id: ../../../halCoverage.cwl
 inputs:
 - id: hal_file
   doc: ''

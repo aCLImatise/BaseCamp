@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/artic.cwl
+id: ../../../artic.cwl
 inputs:
 - id: v
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/homo_trim.cwl
+id: ../../../homo_trim.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/strainest_map2snp.cwl
+id: ../../../strainest_map2snp.cwl
 inputs:
 - id: reference
   doc: ''

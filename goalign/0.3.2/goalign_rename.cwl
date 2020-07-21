@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_rename.cwl
+id: ../../../goalign_rename.cwl
 inputs:
 - id: clean_names
   doc: Replaces special characters (tabs, spaces, newick characters) with '-' from

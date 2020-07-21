@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genomepy_search.cwl
+id: ../../../genomepy_search.cwl
 inputs:
 - id: provider
   doc: provider

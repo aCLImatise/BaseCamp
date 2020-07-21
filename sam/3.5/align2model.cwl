@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/align2model.cwl
+id: ../../../align2model.cwl
 inputs:
 - id: option
   doc: ''

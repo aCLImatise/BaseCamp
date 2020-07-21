@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fusioncatcher_batch.py.cwl
+id: ../../../fusioncatcher_batch.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

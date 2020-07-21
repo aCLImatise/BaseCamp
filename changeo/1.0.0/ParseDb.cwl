@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ParseDb.py_split.cwl
+id: ../../../ParseDb.py_split.cwl
 inputs:
 - id: list_tab_delimited
   doc: 'A list of tab delimited database files. (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bwa_samse.cwl
+id: ../../../bwa_samse.cwl
 inputs:
 - id: n
   doc: ''

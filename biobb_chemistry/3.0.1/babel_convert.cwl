@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/babel_convert.cwl
+id: ../../../babel_convert.cwl
 inputs:
 - id: config
   doc: Configuration file

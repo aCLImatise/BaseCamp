@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seq_trim_fastq.py.cwl
+id: ../../../seq_trim_fastq.py.cwl
 inputs:
 - id: left
   doc: Number of base pairs to trim from the left.

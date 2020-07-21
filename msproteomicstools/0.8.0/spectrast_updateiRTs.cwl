@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spectrast_updateiRTs.py.cwl
+id: ../../../spectrast_updateiRTs.py.cwl
 inputs:
 - id: spectra_st_file
   doc: ''

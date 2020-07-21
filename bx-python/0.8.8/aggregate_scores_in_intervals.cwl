@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/aggregate_scores_in_intervals.py.cwl
+id: ../../../aggregate_scores_in_intervals.py.cwl
 inputs:
 - id: binned
   doc: "'score_file' is actually a directory of binned array files"

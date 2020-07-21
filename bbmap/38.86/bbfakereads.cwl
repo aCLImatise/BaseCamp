@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bbfakereads.sh.cwl
+id: ../../../bbfakereads.sh.cwl
 inputs:
 - id: in
   doc: ''

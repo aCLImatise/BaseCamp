@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FEELnc_codpot.pl.cwl
+id: ../../../FEELnc_codpot.pl.cwl
 inputs:
 - id: man
   doc: Open man page

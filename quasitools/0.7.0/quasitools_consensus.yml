@@ -1,0 +1,729 @@
+&id004 !Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: BAM
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: REFERENCE
+  optional: false
+named: []
+command:
+- quasitools
+- consensus
+parent: &id001 !Command
+  positional: []
+  named:
+  - !Flag
+    description: Enables verbose mode.
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - quasitools
+  parent:
+  subcommands:
+  - &id002 !Command
+    positional: []
+    named: []
+    command:
+    - quasitools
+    - complexity
+    parent: *id001
+    subcommands:
+    - !Command
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: REFERENCE_LOCATION
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: BAM_LOCATION
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: K
+        optional: false
+      named:
+      - !Flag
+        description: User defined A filter between 0 and 100, inclusive. Abundancesbelow
+          the filter size will be removed from each positionallist. The default is
+          0 (i.e. no filtering).
+        synonyms:
+        - -f
+        - --haplotype_filter
+        args: !SimpleFlagArg
+          name: FLOAT
+        optional: true
+      - !Flag
+        description: Output the quasispecies complexity in CSV format to the specified
+          file.
+        synonyms:
+        - -o
+        - --output_location
+        args: !SimpleFlagArg
+          name: PATH
+        optional: true
+      command:
+      - quasitools
+      - complexity
+      - bam
+      parent: *id002
+      subcommands: []
+      help_flag: !Flag
+        description: Show this message and exit.
+        synonyms:
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Usage: quasitools complexity bam [OPTIONS] REFERENCE_LOCATION BAM_LOCATION\
+        \ K\n\n  Reports the per-amplicon (fasta)  or k-mer complexity of the pileup,\
+        \ for\n  each k-mer position in the reference complexity (bam and reference)\
+        \ of a\n  quasispecies using several measures outlined in the following work:\n\
+        \n  Gregori, Josep, et al. \"Viral quasispecies complexity measures.\" Virology\n\
+        \  493 (2016): 227-237.\n\nOptions:\n  -f, --haplotype_filter FLOAT  User\
+        \ defined A filter between 0 and 100,\n                                inclusive.\
+        \ Abundancesbelow the filter size\n                                will be\
+        \ removed from each positionallist. The\n                                default\
+        \ is 0 (i.e. no filtering).\n\n  -o, --output_location PATH    Output the\
+        \ quasispecies complexity in CSV\n                                format to\
+        \ the specified file.\n\n  --help                        Show this message\
+        \ and exit.\n"
+      generated_using: &id003
+      - --help
+    - !Command
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: FASTA_LOCATION
+        optional: false
+      named:
+      - !Flag
+        description: Output the quasispecies complexity in CSV format to the specified
+          file.
+        synonyms:
+        - -o
+        - --output_location
+        args: !SimpleFlagArg
+          name: PATH
+        optional: true
+      command:
+      - quasitools
+      - complexity
+      - fasta
+      parent: *id002
+      subcommands: []
+      help_flag: !Flag
+        description: Show this message and exit.
+        synonyms:
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Usage: quasitools complexity fasta [OPTIONS] FASTA_LOCATION\n\n\
+        \  Reports the per-amplicon (fasta)  or k-mer complexity of the pileup, for\n\
+        \  each k-mer position in the reference complexity (bam and reference) of\
+        \ a\n  quasispecies using several measures outlined in the following work:\n\
+        \n  Gregori, Josep, et al. \"Viral quasispecies complexity measures.\" Virology\n\
+        \  493 (2016): 227-237.\n\nOptions:\n  -o, --output_location PATH  Output\
+        \ the quasispecies complexity in CSV format\n                            \
+        \  to the specified file.\n\n  --help                      Show this message\
+        \ and exit.\n"
+      generated_using: *id003
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: quasitools complexity [OPTIONS] COMMAND [ARGS]...\n\n  Reports\
+      \ the per-amplicon (fasta) or k-mer complexity of the pileup, for\n  each k-mer\
+      \ position in the reference complexity (bam and reference) of a\n  quasispecies\
+      \ using several measures outlined in the following work:\n\n  Gregori, Josep,\
+      \ et al. \"Viral quasispecies complexity measures.\" Virology\n  493 (2016):\
+      \ 227-237.\n\nOptions:\n  --help  Show this message and exit.\n\nCommands:\n\
+      \  bam    Calculates various quasispecies complexity measures on next\n    \
+      \     generation sequenced data from a BAM file and it's corresponding\n   \
+      \      reference file.\n\n  fasta  Calculates various quasispecies complexity\
+      \ measures on a multiple\n         aligned FASTA file.\n"
+    generated_using: *id003
+  - *id004
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: REFERENCE
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: BAM
+      optional: true
+    named:
+    - !Flag
+      description: / -dn, --dont_normalize Normalize read count data so that the read
+        counts per 4-tuple (A, C, T, G) sum to one.
+      synonyms:
+      - -n
+      - --normalize
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: / -os, --output_similarity Output an angular distance matrix (by
+        default), or output a cosine similarity matrix (cosine similarity is not a
+        metric)
+      synonyms:
+      - -od
+      - --output_distance
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Set the start base position of the reference to use in the distance
+        or similarity calculation. Start position is one-indexed. I.e. it must be
+        between one and the total length of the reference sequence(s), inclusive.
+      synonyms:
+      - -s
+      - --startpos
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Set the end base position of the reference to use in the distance
+        or similarity calculation. End position is one-indexed. I.e. it must be between
+        one and the total length of the reference sequence(s), inclusive.
+      synonyms:
+      - -e
+      - --endpos
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Output the quasispecies distance or similarity matrix in CSV format
+        in a file.
+      synonyms:
+      - -o
+      - --output
+      args: !SimpleFlagArg
+        name: FILENAME
+      optional: true
+    - !Flag
+      description: Ignore contiguous start and end pileup regions with no coverage.
+      synonyms:
+      - -t
+      - --truncate
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Ignore all pileup regions with no coverage.
+      synonyms:
+      - -r
+      - --remove_no_coverage
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Do not ignore pileup regions with no coverage.
+      synonyms:
+      - -k
+      - --keep_no_coverage
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - quasitools
+    - distance
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: quasitools distance [OPTIONS] REFERENCE [BAM]...\n\n  Quasitools\
+      \ distance produces a measure of evolutionary distance [0 - 1]\n  between quasispecies,\
+      \ computed using the angular cosine distance function\n  defined below.\n\n\
+      \  Cosine similarity = (u * v) / ( ||u|| * ||v|| )\n\n  Angular Cosine Distance\
+      \ = 2 * ACOS(Cosine similarity) / PI\n\n  The tool outputs by default an angular\
+      \ cosine distance matrix. Use the\n  flag defined below to instead output a\
+      \ similarity matrix.\n\n  By default the data is normalized and all regions\
+      \ of the pileup with no\n  coverage are removed.\n\n  It is possible to truncate\
+      \ only the contiguous start and end regions of\n  the pileup that have no coverage,\
+      \ or keep all no coverage regions in the\n  pileup.\n\n  Normalization is done\
+      \ dividing base read counts (A, C, T, G) inside every\n  4-tuple by the sum\
+      \ of the read counts inside the same tuple. The\n  normalized read counts inside\
+      \ each 4-tuple sum to one.\n\nOptions:\n  -n, --normalize / -dn, --dont_normalize\n\
+      \                                  Normalize read count data so that the read\n\
+      \                                  counts per 4-tuple (A, C, T, G) sum to one.\n\
+      \n  -od, --output_distance / -os, --output_similarity\n                    \
+      \              Output an angular distance matrix (by\n                     \
+      \             default), or output a cosine similarity\n                    \
+      \              matrix (cosine similarity is not a metric)\n\n  -s, --startpos\
+      \ INTEGER          Set the start base position of the reference\n          \
+      \                        to use in the distance or similarity\n            \
+      \                      calculation. Start position is one-indexed.\n       \
+      \                           I.e. it must be between one and the total\n    \
+      \                              length of the reference sequence(s),\n      \
+      \                            inclusive.\n\n  -e, --endpos INTEGER          \
+      \  Set the end base position of the reference\n                            \
+      \      to use in the distance or similarity\n                              \
+      \    calculation. End position is one-indexed.\n                           \
+      \       I.e. it must be between one and the total\n                        \
+      \          length of the reference sequence(s),\n                          \
+      \        inclusive.\n\n  -o, --output FILENAME           Output the quasispecies\
+      \ distance or\n                                  similarity matrix in CSV format\
+      \ in a file.\n\n  -t, --truncate                  Ignore contiguous start and\
+      \ end pileup\n                                  regions with no coverage.\n\n\
+      \  -r, --remove_no_coverage        Ignore all pileup regions with no coverage.\n\
+      \  -k, --keep_no_coverage          Do not ignore pileup regions with no\n  \
+      \                                coverage.\n\n  --help                     \
+      \     Show this message and exit.\n"
+    generated_using: *id003
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: CSV
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: REFERENCE
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: OFFSET
+      optional: false
+    named: []
+    command:
+    - quasitools
+    - dnds
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: quasitools dnds [OPTIONS] CSV REFERENCE OFFSET\n\nOptions:\n\
+      \  -o, --output FILENAME\n  --help                 Show this message and exit.\n"
+    generated_using: *id003
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: BAM
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: REFERENCE
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: VARIANTS
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: BED4_FILE
+      optional: false
+    named: []
+    command:
+    - quasitools
+    - drmutations
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: quasitools drmutations [OPTIONS] BAM REFERENCE VARIANTS BED4_FILE\n\
+      \                              MUTATION_DB\n\nOptions:\n  -f, --min_freq FLOAT\
+      \            the minimum required frequency.\n  -t, --reporting_threshold INTEGER\n\
+      \                                  the minimum percentage required for an entry\n\
+      \                                  in the drugresistant report.\n\n  -o, --output\
+      \ FILENAME\n  --help                          Show this message and exit.\n"
+    generated_using: *id003
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: FORWARD
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: REVERSE
+      optional: true
+    named:
+    - !Flag
+      description: Generate a mixed base consensus sequence.
+      synonyms:
+      - -gc
+      - --generate_consensus
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: RANGE Minimum percentage a base needs to be incorporated into the
+        consensus sequence.
+      synonyms:
+      - -cp
+      - --consensus_pct
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Suppress all normal output.
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Iteratively trim reads based on filter values if enabled. Remove
+        reads which do not meet filter values if disabled.
+      synonyms:
+      - -tr
+      - --trim_reads
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Mask low coverage regions in reads if below minimum read quality.
+        This option and --ns cannot be both enabled simultaneously.
+      synonyms:
+      - -mr
+      - --mask_reads
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Minimum quality for a position in a read to be masked.
+      synonyms:
+      - -rq
+      - --min_read_qual
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Reads which fall short of the specified length will be filtered
+        out.
+      synonyms:
+      - -lc
+      - --length_cutoff
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Reads that have a median or mean quality score (depending on the
+        score type specified) less than the score cutoff value will be filtered out.
+      synonyms:
+      - -sc
+      - --score_cutoff
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: / -mn, --mean     Use either median score (default) or mean score
+        for the score cutoff value.
+      synonyms:
+      - -me
+      - --median
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Flag to enable the filtering of n's.  This option and --mask_reads
+        cannot be both enabled simultaneously.
+      synonyms:
+      - -n
+      - --ns
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Error rate for the sequencing platform.
+      synonyms:
+      - -e
+      - --error_rate
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    - !Flag
+      description: Minimum quality for variant to be considered later on in the pipeline.
+      synonyms:
+      - -vq
+      - --min_variant_qual
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Minimum required read depth for variant to be considered later
+        on in the pipeline.
+      synonyms:
+      - -md
+      - --min_dp
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: The minimum required allele count for variant to be considered
+        later on in the pipeline.
+      synonyms:
+      - -ma
+      - --min_ac
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: The minimum required frequency for mutation to be considered in
+        drug resistance report.
+      synonyms:
+      - -mf
+      - --min_freq
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    - !Flag
+      description: Specify FASTA sequence identifier to be used in the consensus report.
+      synonyms:
+      - -i
+      - --id
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    command:
+    - quasitools
+    - hydra
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: quasitools hydra [OPTIONS] FORWARD [REVERSE]\n\nOptions:\n\
+      \  -o, --output_dir DIRECTORY      [required]\n  -m, --mutation_db FILE\n  -rt,\
+      \ --reporting_threshold INTEGER RANGE\n                                  Minimum\
+      \ mutation frequency percent to\n                                  report.\n\
+      \n  -gc, --generate_consensus       Generate a mixed base consensus sequence.\n\
+      \  -cp, --consensus_pct INTEGER RANGE\n                                  Minimum\
+      \ percentage a base needs to be\n                                  incorporated\
+      \ into the consensus sequence.\n\n  -q, --quiet                     Suppress\
+      \ all normal output.\n  -tr, --trim_reads               Iteratively trim reads\
+      \ based on filter\n                                  values if enabled. Remove\
+      \ reads which do not\n                                  meet filter values if\
+      \ disabled.\n\n  -mr, --mask_reads               Mask low coverage regions in\
+      \ reads if below\n                                  minimum read quality. This\
+      \ option and --ns\n                                  cannot be both enabled\
+      \ simultaneously.\n\n  -rq, --min_read_qual INTEGER    Minimum quality for a\
+      \ position in a read to\n                                  be masked.\n\n  -lc,\
+      \ --length_cutoff INTEGER    Reads which fall short of the specified\n     \
+      \                             length will be filtered out.\n\n  -sc, --score_cutoff\
+      \ INTEGER     Reads that have a median or mean quality\n                   \
+      \               score (depending on the score type\n                       \
+      \           specified) less than the score cutoff value\n                  \
+      \                will be filtered out.\n\n  -me, --median / -mn, --mean    \
+      \ Use either median score (default) or mean\n                              \
+      \    score for the score cutoff value.\n\n  -n, --ns                       \
+      \ Flag to enable the filtering of n's.  This\n                             \
+      \     option and --mask_reads cannot be both\n                             \
+      \     enabled simultaneously.\n\n  -e, --error_rate FLOAT          Error rate\
+      \ for the sequencing platform.\n  -vq, --min_variant_qual INTEGER\n        \
+      \                          Minimum quality for variant to be considered\n  \
+      \                                later on in the pipeline.\n\n  -md, --min_dp\
+      \ INTEGER           Minimum required read depth for variant to\n           \
+      \                       be considered later on in the pipeline.\n\n  -ma, --min_ac\
+      \ INTEGER           The minimum required allele count for\n                \
+      \                  variant to be considered later on in the\n              \
+      \                    pipeline.\n\n  -mf, --min_freq FLOAT           The minimum\
+      \ required frequency for mutation\n                                  to be considered\
+      \ in drug resistance report.\n\n  -i, --id TEXT                   Specify FASTA\
+      \ sequence identifier to be used\n                                  in the consensus\
+      \ report.\n\n  --help                          Show this message and exit.\n"
+    generated_using: *id003
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: FORWARD
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: REVERSE
+      optional: true
+    named:
+    - !Flag
+      description: '[required]'
+      synonyms:
+      - -o
+      - --output_dir
+      args: !SimpleFlagArg
+        name: DIRECTORY
+      optional: true
+    - !Flag
+      description: Iteratively trim reads based on filter values if enabled. Remove
+        reads which do not meet filter values if disabled.
+      synonyms:
+      - -tr
+      - --trim_reads
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Mask low quality regions in reads if below minimum read quality.
+        This option and --ns cannot be both enabled simultaneously.
+      synonyms:
+      - -mr
+      - --mask_reads
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Minimum quality for positions in read if masking is enabled.
+      synonyms:
+      - -rq
+      - --min_read_qual
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Reads which fall short of the specified length will be filtered
+        out.
+      synonyms:
+      - -lc
+      - --length_cutoff
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Reads that have a median or mean quality score (depending on the
+        score type specified) less than the score cutoff value will be filtered out.
+      synonyms:
+      - -sc
+      - --score_cutoff
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: / -mn, --mean   Use either median score (default) or mean score
+        for the score cutoff value.
+      synonyms:
+      - -me
+      - --median
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Flag to enable the filtering of n's. This option and --mask_reads
+        cannot be both enabled simultaneously.
+      synonyms:
+      - -n
+      - --ns
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - quasitools
+    - quality
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: quasitools quality [OPTIONS] FORWARD [REVERSE]\n\n  Quasitools\
+      \ quality performs quality control on FASTQ reads and outputs the\n  filtered\
+      \ FASTQ reads in the specified directory.\n\nOptions:\n  -o, --output_dir DIRECTORY\
+      \    [required]\n  -tr, --trim_reads             Iteratively trim reads based\
+      \ on filter values\n                                if enabled. Remove reads\
+      \ which do not meet\n                                filter values if disabled.\n\
+      \n  -mr, --mask_reads             Mask low quality regions in reads if below\n\
+      \                                minimum read quality. This option and --ns\n\
+      \                                cannot be both enabled simultaneously.\n\n\
+      \  -rq, --min_read_qual INTEGER  Minimum quality for positions in read if\n\
+      \                                masking is enabled.\n\n  -lc, --length_cutoff\
+      \ INTEGER  Reads which fall short of the specified length\n                \
+      \                will be filtered out.\n\n  -sc, --score_cutoff INTEGER   Reads\
+      \ that have a median or mean quality score\n                               \
+      \ (depending on the score type specified) less\n                           \
+      \     than the score cutoff value will be filtered\n                       \
+      \         out.\n\n  -me, --median / -mn, --mean   Use either median score (default)\
+      \ or mean\n                                score for the score cutoff value.\n\
+      \n  -n, --ns                      Flag to enable the filtering of n's. This\n\
+      \                                option and --mask_reads cannot be both enabled\n\
+      \                                simultaneously.\n\n  --help               \
+      \         Show this message and exit.\n"
+    generated_using: *id003
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show the version and exit.
+    synonyms:
+    - --ver
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+  help_text: "Usage: quasitools [OPTIONS] COMMAND [ARGS]...\n\n  A collection of tools\
+    \ for Viral Quasispecies.\n\nOptions:\n  -v, --verbose     Enables verbose mode.\n\
+    \  --ver, --version  Show the version and exit.\n  --help            Show this\
+    \ message and exit.\n\nCommands:\n  aacoverage   Builds an amino acid census and\
+    \ returns its coverage.\n  call\n  complexity   Reports the per-amplicon (fasta)\
+    \ or k-mer complexity of the...\n  consensus    Generate a consensus sequence\
+    \ from a BAM file.\n  distance     Calculate the evolutionary distance between\
+    \ viral quasispecies\n               using angular cosine distance.\n\n  dnds\
+    \         Calculate the dn/ds value for each region in a bed file.\n  drmutations\
+    \  Identifies amino acid mutations.\n  hydra        Identify HIV Drug Resistance\
+    \ in a next generation sequencing\n               dataset.\n\n  quality      Perform\
+    \ quality control on FASTQ reads.\n"
+  generated_using: *id003
+subcommands: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: quasitools consensus [OPTIONS] BAM REFERENCE\n\nOptions:\n  -p,\
+  \ --percentage INTEGER  percentage to include base in mixture.\n  -i, --id TEXT\
+  \             specify default FASTA sequence identifier to be\n                \
+  \            used for sequences without an RG tag.\n\n  -o, --output FILENAME\n\
+  \  --help                    Show this message and exit.\n"
+generated_using: *id003

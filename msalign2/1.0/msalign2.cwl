@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msalign2.cwl
+id: ../../../msalign2.cwl
 inputs:
 - id: one
   doc: ''

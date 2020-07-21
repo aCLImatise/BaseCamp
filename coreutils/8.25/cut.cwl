@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cut.cwl
+id: ../../../cut.cwl
 inputs:
 - id: zero_terminated
   doc: line delimiter is NUL, not newline

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_tool.cwl
+id: ../../../fasta_tool.cwl
 inputs:
 - id: summary
   doc: For functions that can report data for every sequence (nt_count), use this

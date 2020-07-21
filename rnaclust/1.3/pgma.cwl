@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pgma.cwl
+id: ../../../pgma.cwl
 inputs:
 - id: names
   doc: ''

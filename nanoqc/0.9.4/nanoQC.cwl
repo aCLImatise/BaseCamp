@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nanoQC.cwl
+id: ../../../nanoQC.cwl
 inputs:
 - id: outdir
   doc: Specify directory in which output has to be created.

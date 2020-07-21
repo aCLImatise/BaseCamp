@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vispr.cwl
+id: ../../../vispr.cwl
 inputs:
 - id: debug
   doc: Print debug info.

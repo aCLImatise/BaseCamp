@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hera.cwl
+id: ../../../hera.cwl
 inputs:
 - id: output_directory_default
   doc: ':      Output directory (default: ./)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mloc2stockholm.pl.cwl
+id: ../../../mloc2stockholm.pl.cwl
 inputs:
 - id: file
   doc: '[MANDATORY]     File to convert into stockholm format'

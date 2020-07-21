@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RankMotifs.cwl
+id: ../../../RankMotifs.cwl
 inputs:
 - id: b
   doc: ''

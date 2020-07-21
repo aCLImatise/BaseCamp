@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kmercountexact.sh.cwl
+id: ../../../kmercountexact.sh.cwl
 inputs:
 - id: in
   doc: ''

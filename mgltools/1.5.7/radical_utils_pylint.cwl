@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/radical_utils_pylint.sh.cwl
+id: ../../../radical_utils_pylint.sh.cwl
 inputs:
 - id: find
   doc: ''

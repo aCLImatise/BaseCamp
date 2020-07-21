@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_perfdiag.cwl
+id: ../../../gsutil_perfdiag.cwl
 inputs:
 - id: sets_number_use_downloading
   doc: Sets the number of objects to use when downloading and uploading files during

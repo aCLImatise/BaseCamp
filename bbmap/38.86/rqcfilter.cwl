@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rqcfilter.sh.cwl
+id: ../../../rqcfilter.sh.cwl
 inputs:
 - id: rqc_filter_two_dots_h
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CircleCompare.cwl
+id: ../../../CircleCompare.cwl
 inputs:
 - id: predicted_ct
   doc: ''

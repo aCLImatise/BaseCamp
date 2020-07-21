@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rad_haplotyper.pl.cwl
+id: ../../../rad_haplotyper.pl.cwl
 inputs:
 - id: input_vcf_file
   doc: input vcf file

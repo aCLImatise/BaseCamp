@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kmer_mask.cwl
+id: ../../../kmer_mask.cwl
 inputs:
 - id: mdb
   doc: load masking kmers from meryl 'mer-database'

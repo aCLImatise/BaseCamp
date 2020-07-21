@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/solvate.cwl
+id: ../../../solvate.cwl
 inputs:
 - id: config
   doc: This file can be a YAML file, JSON file or JSON string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/observation_metadata_correlation.py.cwl
+id: ../../../observation_metadata_correlation.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

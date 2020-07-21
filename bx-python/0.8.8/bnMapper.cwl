@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bnMapper.py.cwl
+id: ../../../bnMapper.py.cwl
 inputs:
 - id: format
   doc: 'Output format. BED4 output reports all aligned blocks as separate BED records.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergeSTR.cwl
+id: ../../../mergeSTR.cwl
 inputs:
 - id: v_cfs
   doc: Comma-separated list of VCF files to merge (must be sorted, bgzipped and indexed)

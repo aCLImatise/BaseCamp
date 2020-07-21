@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dcmftest.cwl
+id: ../../../dcmftest.cwl
 inputs:
 - id: file_dot_dot_dot
   doc: ''

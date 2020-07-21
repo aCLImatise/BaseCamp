@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metabat2.cwl
+id: ../../../metabat2.cwl
 inputs:
 - id: i
   doc: '[ --inFile ] arg               Contigs in (gzipped) fasta file format [Mandatory]'

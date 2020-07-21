@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam2wig.sh.cwl
+id: ../../../bam2wig.sh.cwl
 inputs:
 - id: bed_graph
   doc: 'Produce a BED GRAPH instead of a WIGGLE file. Default: false'

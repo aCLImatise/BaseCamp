@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequenza_utils_seqz_binning.cwl
+id: ../../../sequenza_utils_seqz_binning.cwl
 inputs:
 - id: seq_z
   doc: A seqz file.

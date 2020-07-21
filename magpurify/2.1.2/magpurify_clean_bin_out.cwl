@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/magpurify_clean_bin_out.cwl
+id: ../../../magpurify_clean_bin_out.cwl
 inputs:
 - id: mag_purify
   doc: ''

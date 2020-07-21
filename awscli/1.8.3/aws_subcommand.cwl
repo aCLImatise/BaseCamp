@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/aws_subcommand.cwl
+id: ../../../aws_subcommand.cwl
 inputs:
 - id: aws
   doc: ''

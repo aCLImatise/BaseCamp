@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pmp_bf.cwl
+id: ../../../pmp_bf.cwl
 inputs:
 - id: verbosity
   doc: '[1|2|3|4] (default 2)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alfred_pwalign.cwl
+id: ../../../alfred_pwalign.cwl
 inputs:
 - id: arg_gap_open
   doc: '[ --gapopen ] arg (=-10)           gap open'

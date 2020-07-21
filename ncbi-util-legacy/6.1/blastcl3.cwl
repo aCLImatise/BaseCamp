@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blastcl3.cwl
+id: ../../../blastcl3.cwl
 inputs:
 - id: alignment_view_options
   doc: 'alignment view options:'

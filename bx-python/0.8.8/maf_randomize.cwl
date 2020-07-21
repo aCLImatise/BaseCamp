@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf_randomize.py.cwl
+id: ../../../maf_randomize.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

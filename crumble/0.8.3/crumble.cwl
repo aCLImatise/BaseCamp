@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crumble.cwl
+id: ../../../crumble.cwl
 inputs:
 - id: one
   doc: ': -p0 -Q75 -D150 -X1  - M0.5 -Z0.1 -V0.5 -P3.0 -s1.0,5 -i2.0,1 -m5'

@@ -1,0 +1,87 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: file.vcf
+  optional: false
+named:
+- !Flag
+  description: Regions to mask (tabix indexed), multiple files can be given
+  synonyms:
+  - -b
+  - --bed-mask
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Do self-masking of clustered variants within this range.
+  synonyms:
+  - -c
+  - --cluster
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Flanking sequence length [100]
+  synonyms:
+  - -l
+  - --length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: The character to use or "lc" for lowercase. This option must preceed
+    -b, -v or -c in order to take effect. With multiple files works as a switch on
+    the command line, see the example below [N]
+  synonyms:
+  - -m
+  - --mask-char
+  args: !SimpleFlagArg
+    name: char|lc
+  optional: true
+- !Flag
+  description: The reference sequence.
+  synonyms:
+  - -r
+  - --refseq
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Mask known variants in the flanking sequence, multiple files can be
+    given (tabix indexed)
+  synonyms:
+  - -v
+  - --vcf-mask
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+command:
+- fill-fs
+parent:
+subcommands: []
+help_flag: !Flag
+  description: ', -?, --help                  This help message.'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "About: Annotate VCF with flanking sequence (INFO/FS tag)\nUsage: fill-fs\
+  \ [OPTIONS] file.vcf\nOptions:\n   -b, --bed-mask <file>           Regions to mask\
+  \ (tabix indexed), multiple files can be given\n   -c, --cluster <int>         \
+  \    Do self-masking of clustered variants within this range.\n   -l, --length <int>\
+  \              Flanking sequence length [100]\n   -m, --mask-char <char|lc>    \
+  \   The character to use or \"lc\" for lowercase. This option must preceed\n   \
+  \                                    -b, -v or -c in order to take effect. With\
+  \ multiple files works\n                                        as a switch on the\
+  \ command line, see the example below [N]\n   -r, --refseq <file>             The\
+  \ reference sequence.\n   -v, --vcf-mask <file>           Mask known variants in\
+  \ the flanking sequence, multiple files can be given (tabix indexed)\n   -h, -?,\
+  \ --help                  This help message.\nExample:\n   # Mask variants from\
+  \ the VCF file with N's and use lowercase for the bed file regions\n   fill-fs file.vcf\
+  \ -v mask.vcf -m lc -b mask.bed\n\n"
+generated_using:
+- --help

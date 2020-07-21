@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam_ref_tab.py.cwl
+id: ../../../bam_ref_tab.py.cwl
 inputs:
 - id: tab_separated_file
   doc: Tab separated file to save reference table.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vkmz_tabular.cwl
+id: ../../../vkmz_tabular.cwl
 inputs:
 - id: input
   doc: Path to tabular file.

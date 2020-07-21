@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_rcorrector.pl.cwl
+id: ../../../run_rcorrector.pl.cwl
 inputs:
 - id: comma_separated_files
   doc: ': comma separated files for single-end data sets'

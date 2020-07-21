@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslxToFa.cwl
+id: ../../../pslxToFa.cwl
 inputs:
 - id: in_dot_psl
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nucleoatac_merge.cwl
+id: ../../../nucleoatac_merge.cwl
 inputs:
 - id: occ_peaks
   doc: Output from occ utility

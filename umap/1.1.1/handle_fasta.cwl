@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/handle_fasta.py.cwl
+id: ../../../handle_fasta.py.cwl
 inputs:
 - id: complement
   doc: Create a double genome with both + and - strand information

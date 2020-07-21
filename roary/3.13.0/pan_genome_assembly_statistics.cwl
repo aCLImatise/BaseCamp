@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pan_genome_assembly_statistics.cwl
+id: ../../../pan_genome_assembly_statistics.cwl
 inputs:
 - id: number_of_threads
   doc: 'number of threads [1]        '

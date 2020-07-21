@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fill_an_ac.cwl
+id: ../../../fill_an_ac.cwl
 inputs:
 - id: in_dot_vcf
   doc: ''

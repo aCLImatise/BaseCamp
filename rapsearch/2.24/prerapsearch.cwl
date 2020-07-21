@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prerapsearch.cwl
+id: ../../../prerapsearch.cwl
 inputs:
 - id: splits_database_specified
   doc: (splits the database into specified number of files)

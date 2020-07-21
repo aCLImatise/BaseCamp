@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tbprofiler_odds_ratios.py.cwl
+id: ../../../tbprofiler_odds_ratios.py.cwl
 inputs:
 - id: samples
   doc: 'NGS Platform (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequenza_utils_seqz_merge.cwl
+id: ../../../sequenza_utils_seqz_merge.cwl
 inputs:
 - id: output
   doc: Output file. For gzip compressed output name the file ending in .gz. Default

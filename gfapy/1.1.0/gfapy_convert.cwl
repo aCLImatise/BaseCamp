@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gfapy_convert.cwl
+id: ../../../gfapy_convert.cwl
 inputs:
 - id: filename
   doc: ''

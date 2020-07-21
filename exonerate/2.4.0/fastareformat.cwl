@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastareformat.cwl
+id: ../../../fastareformat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

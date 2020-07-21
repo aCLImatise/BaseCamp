@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RNAz.cwl
+id: ../../../RNAz.cwl
 inputs:
 - id: forward
   doc: Score forward strand

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/export2sam.pl.cwl
+id: ../../../export2sam.pl.cwl
 inputs:
 - id: read_one
   doc: read1 export file or '-' for stdin (mandatory) (file may be gzipped with ".gz"

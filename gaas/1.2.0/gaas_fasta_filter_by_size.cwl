@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_fasta_filter_by_size.pl.cwl
+id: ../../../gaas_fasta_filter_by_size.pl.cwl
 inputs:
 - id: fast_a
   doc: Input fasta file.

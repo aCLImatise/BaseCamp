@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/recycle.py.cwl
+id: ../../../recycle.py.cwl
 inputs:
 - id: graph
   doc: '(spades 3.50+) assembly graph FASTG file to process; recommended for spades

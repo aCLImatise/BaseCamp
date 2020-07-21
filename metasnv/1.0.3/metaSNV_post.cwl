@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metaSNV_post.py.cwl
+id: ../../../metaSNV_post.py.cwl
 inputs:
 - id: coverage_breadth_minimal
   doc: 'Coverage breadth: minimal horizontal genome coverage percentage per sample

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/outputAlekseysJellyfishReductionFile.perl.cwl
+id: ../../../outputAlekseysJellyfishReductionFile.perl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

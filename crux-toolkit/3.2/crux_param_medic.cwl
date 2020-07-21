@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_param_medic.cwl
+id: ../../../crux_param_medic.cwl
 inputs:
 - id: spectrum_file
   doc: ''

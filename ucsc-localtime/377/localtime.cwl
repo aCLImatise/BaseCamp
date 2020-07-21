@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/localtime.cwl
+id: ../../../localtime.cwl
 inputs:
 - id: time_stamp
   doc: ''

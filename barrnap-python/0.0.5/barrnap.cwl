@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/barrnap.py.cwl
+id: ../../../barrnap.py.cwl
 inputs:
 - id: kingdom
   doc: 'whether to look for eukaryotic, archaeal, or bacterial rDNA; default: bac'

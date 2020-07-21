@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dcmrecv.cwl
+id: ../../../dcmrecv.cwl
 inputs:
 - id: xf
   doc: '--config-file          [f]ilename, [p]rofile: string use profile p from configuration

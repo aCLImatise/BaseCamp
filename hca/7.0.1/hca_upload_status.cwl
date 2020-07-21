@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_upload_status.cwl
+id: ../../../hca_upload_status.cwl
 inputs:
 - id: env
   doc: Environment the upload area was created in (default is based on currently selected

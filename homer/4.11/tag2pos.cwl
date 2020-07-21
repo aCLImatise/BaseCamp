@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tag2pos.pl.cwl
+id: ../../../tag2pos.pl.cwl
 inputs:
 - id: tag_file
   doc: ''

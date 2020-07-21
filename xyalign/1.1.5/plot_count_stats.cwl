@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plot_count_stats.cwl
+id: ../../../plot_count_stats.cwl
 inputs:
 - id: input
   doc: Full path to file containing table output by CHROM_STATS

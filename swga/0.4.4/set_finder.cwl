@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/set_finder.cwl
+id: ../../../set_finder.cwl
 inputs:
 - id: _find_cliques
   doc: --all          Find all cliques.

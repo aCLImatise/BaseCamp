@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sketchy_feature_drop.cwl
+id: ../../../sketchy_feature_drop.cwl
 inputs:
 - id: index
   doc: Path to feature index input file.  [required]

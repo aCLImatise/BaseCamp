@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/novoalign_license_register.cwl
+id: ../../../novoalign_license_register.cwl
 inputs:
 - id: multiple
   doc: support multiple arguments and treat each as a NAME

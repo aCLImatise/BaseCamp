@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ktImportMETAREP_BLAST.cwl
+id: ../../../ktImportMETAREP_BLAST.cwl
 inputs:
 - id: meta_rep_folder
   doc: Unpacked METAREP data folder. By default, separate datasets will be created

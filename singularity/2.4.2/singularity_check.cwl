@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/singularity_check.cwl
+id: ../../../singularity_check.cwl
 inputs:
 - id: low
   doc: 'Specify low threshold (all checks, default) '

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getTargetsDef.cwl
+id: ../../../getTargetsDef.cwl
 inputs:
 - id: files_to_tax_ids
   doc: ''

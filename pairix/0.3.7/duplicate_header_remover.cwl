@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/duplicate_header_remover.pl.cwl
+id: ../../../duplicate_header_remover.pl.cwl
 inputs:
 - id: no
   doc: ''

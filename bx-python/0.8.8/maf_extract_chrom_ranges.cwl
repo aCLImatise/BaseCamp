@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf_extract_chrom_ranges.py.cwl
+id: ../../../maf_extract_chrom_ranges.py.cwl
 inputs:
 - id: min_cols
   doc: Minimum length (columns) required for alignment to be output

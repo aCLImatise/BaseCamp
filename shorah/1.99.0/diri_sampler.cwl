@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/diri_sampler.cwl
+id: ../../../diri_sampler.cwl
 inputs:
 - id: files
   doc: -i <input data file>

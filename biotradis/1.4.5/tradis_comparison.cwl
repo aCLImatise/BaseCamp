@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tradis_comparison.R.cwl
+id: ../../../tradis_comparison.R.cwl
 inputs:
 - id: f
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/schurs_lemma.cwl
+id: ../../../schurs_lemma.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

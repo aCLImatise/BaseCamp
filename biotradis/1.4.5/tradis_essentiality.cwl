@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tradis_essentiality.R.cwl
+id: ../../../tradis_essentiality.R.cwl
 inputs:
 - id: data_dot_tab
   doc: ''

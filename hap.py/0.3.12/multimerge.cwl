@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/multimerge.cwl
+id: ../../../multimerge.cwl
 inputs:
 - id: input_file
   doc: The input files

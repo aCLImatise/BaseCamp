@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ebisearch_get_query_results.cwl
+id: ../../../ebisearch_get_query_results.cwl
 inputs:
 - id: domain
   doc: Domain id in EBI (accessible with get_domains)

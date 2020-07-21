@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nf_core_licences.cwl
+id: ../../../nf_core_licences.cwl
 inputs:
 - id: json
   doc: Print output in JSON

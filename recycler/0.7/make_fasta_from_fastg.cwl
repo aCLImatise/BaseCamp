@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_fasta_from_fastg.py.cwl
+id: ../../../make_fasta_from_fastg.py.cwl
 inputs:
 - id: graph
   doc: '(spades 3.50+) FASTG file to process [recommended: before_rr.fastg]'

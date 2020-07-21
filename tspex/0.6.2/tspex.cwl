@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tspex.cwl
+id: ../../../tspex.cwl
 inputs:
 - id: log
   doc: 'Log-transform expression values. (default: False)'

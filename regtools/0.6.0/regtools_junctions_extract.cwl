@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/regtools_junctions_extract.cwl
+id: ../../../regtools_junctions_extract.cwl
 inputs:
 - id: minimum_anchor_length
   doc: Minimum anchor length. Junctions which satisfy a minimum  anchor length on

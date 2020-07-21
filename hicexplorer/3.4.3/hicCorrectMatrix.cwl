@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicCorrectMatrix.cwl
+id: ../../../hicCorrectMatrix.cwl
 inputs:
 - id: filter_threshold
   doc: <upper threshold> -o corrected_matrix

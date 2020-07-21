@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segtools_relabel.cwl
+id: ../../../segtools_relabel.cwl
 inputs:
 - id: quiet
   doc: Do not print diagnostic messages.

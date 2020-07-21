@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/split_otu_table_by_taxonomy.py.cwl
+id: ../../../split_otu_table_by_taxonomy.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

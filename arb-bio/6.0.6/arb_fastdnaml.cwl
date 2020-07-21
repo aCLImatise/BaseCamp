@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_fastdnaml.cwl
+id: ../../../arb_fastdnaml.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_merged_sequences.pl.cwl
+id: ../../../create_merged_sequences.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

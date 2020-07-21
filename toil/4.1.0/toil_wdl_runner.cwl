@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/toil_wdl_runner.cwl
+id: ../../../toil_wdl_runner.cwl
 inputs:
 - id: outdir
   doc: Optionally specify the directory that outputs are written to. Default is the

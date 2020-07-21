@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/variant_recoder.cwl
+id: ../../../variant_recoder.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

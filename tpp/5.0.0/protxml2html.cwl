@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/protxml2html.pl.cwl
+id: ../../../protxml2html.pl.cwl
 inputs:
 - id: file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/join_paired_ends.py.cwl
+id: ../../../join_paired_ends.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

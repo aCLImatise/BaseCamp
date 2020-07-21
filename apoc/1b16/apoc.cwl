@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/apoc.cwl
+id: ../../../apoc.cwl
 inputs:
 - id: block
   doc: Load a block of concatenated pdb files.

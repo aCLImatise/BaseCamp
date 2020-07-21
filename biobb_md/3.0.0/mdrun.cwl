@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mdrun.cwl
+id: ../../../mdrun.cwl
 inputs:
 - id: c
   doc: ''

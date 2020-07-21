@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_seq_length.pl.cwl
+id: ../../../bp_seq_length.pl.cwl
 inputs:
 - id: f_slash_format
   doc: "- Specify the database format ('fasta' is default). This script uses SeqIO\

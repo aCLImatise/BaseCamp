@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fix_sqn_date.cwl
+id: ../../../fix_sqn_date.cwl
 inputs:
 - id: sqn
   doc: Input SQN file to change date

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/novo2paf.cwl
+id: ../../../novo2paf.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

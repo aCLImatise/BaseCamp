@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/outputJoinedPairs.perl.cwl
+id: ../../../outputJoinedPairs.perl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

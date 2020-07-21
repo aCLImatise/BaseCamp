@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/raToLines.cwl
+id: ../../../raToLines.cwl
 inputs:
 - id: in_do_tra
   doc: ''

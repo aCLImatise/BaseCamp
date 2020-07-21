@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o_smart_trim.cwl
+id: ../../../o_smart_trim.cwl
 inputs:
 - id: min_percent
   doc: Even if there is only one read that is too short and therefore full of gap

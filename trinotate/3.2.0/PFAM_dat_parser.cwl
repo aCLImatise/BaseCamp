@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PFAM_dat_parser.pl.cwl
+id: ../../../PFAM_dat_parser.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

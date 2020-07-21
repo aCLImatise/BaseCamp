@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hal2mafMP.py.cwl
+id: ../../../hal2mafMP.py.cwl
 inputs:
 - id: num_proc
   doc: 'Maximum number of processes to create. If neither --sliceSize or --splitBySequence

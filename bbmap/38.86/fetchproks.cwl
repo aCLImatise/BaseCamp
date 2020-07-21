@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fetchproks.sh.cwl
+id: ../../../fetchproks.sh.cwl
 inputs:
 - id: url
   doc: ''

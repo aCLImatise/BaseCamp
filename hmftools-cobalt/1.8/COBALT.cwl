@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/COBALT.cwl
+id: ../../../COBALT.cwl
 inputs:
 - id: gc_profile
   doc: Location of GC Profile

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/novoutil_biseqstrandfixer.cwl
+id: ../../../novoutil_biseqstrandfixer.cwl
 inputs:
 - id: input_dots_am
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TurboFold.cwl
+id: ../../../TurboFold.cwl
 inputs:
 - id: configuration_file
   doc: ''

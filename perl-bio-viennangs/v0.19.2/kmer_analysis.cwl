@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kmer_analysis.pl_STRING.cwl
+id: ../../../kmer_analysis.pl_STRING.cwl
 inputs:
 - id: f
   doc: ''

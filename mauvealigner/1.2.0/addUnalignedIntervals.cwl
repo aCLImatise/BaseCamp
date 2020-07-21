@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/addUnalignedIntervals.cwl
+id: ../../../addUnalignedIntervals.cwl
 inputs:
 - id: input_interval_file
   doc: ''

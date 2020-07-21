@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sga_gapfill.cwl
+id: ../../../sga_gapfill.cwl
 inputs:
 - id: verbose
   doc: display verbose output

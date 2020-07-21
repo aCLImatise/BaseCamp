@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/manorm.cwl
+id: ../../../manorm.cwl
 inputs:
 - id: verbose
   doc: Enable verbose log messages.

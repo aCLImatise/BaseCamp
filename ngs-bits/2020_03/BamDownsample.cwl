@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BamDownsample.cwl
+id: ../../../BamDownsample.cwl
 inputs:
 - id: in
   doc: Input BAM file.

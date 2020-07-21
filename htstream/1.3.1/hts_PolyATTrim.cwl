@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hts_PolyATTrim.cwl
+id: ../../../hts_PolyATTrim.cwl
 inputs:
 - id: _version_print
   doc: '[ --version ]                      Version print'

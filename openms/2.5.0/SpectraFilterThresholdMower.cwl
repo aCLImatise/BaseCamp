@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SpectraFilterThresholdMower.cwl
+id: ../../../SpectraFilterThresholdMower.cwl
 inputs:
 - id: in
   doc: "*        Input file  (valid formats: 'mzML')"

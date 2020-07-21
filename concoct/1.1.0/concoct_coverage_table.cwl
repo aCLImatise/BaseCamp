@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/concoct_coverage_table.py.cwl
+id: ../../../concoct_coverage_table.py.cwl
 inputs:
 - id: sample_names
   doc: File with sample names, one line each. Should be same nr of bamfiles. Default

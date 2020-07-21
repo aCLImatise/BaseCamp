@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeTagDirectory.cwl
+id: ../../../makeTagDirectory.cwl
 inputs:
 - id: force_five_th
   doc: '(5th column of BED file contains # of reads mapping to position)'

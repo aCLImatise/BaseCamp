@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof_permute.cwl
+id: ../../../smof_permute.cwl
 inputs:
 - id: word_size
   doc: size of each word (default=1)

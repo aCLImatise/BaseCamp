@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simkaMinCore.cwl
+id: ../../../simkaMinCore.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mpi.pl.cwl
+id: ../../../mpi.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

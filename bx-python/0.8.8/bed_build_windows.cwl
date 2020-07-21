@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bed_build_windows.py.cwl
+id: ../../../bed_build_windows.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

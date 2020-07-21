@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chainsaw.cwl
+id: ../../../chainsaw.cwl
 inputs:
 - id: filter
   doc: ': add a protein list filter'

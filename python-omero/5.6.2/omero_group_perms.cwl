@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_group_perms.cwl
+id: ../../../omero_group_perms.cwl
 inputs:
 - id: id
   doc: ID of the group

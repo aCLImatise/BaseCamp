@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/featureCollapser.py.cwl
+id: ../../../featureCollapser.py.cwl
 inputs:
 - id: threads_to_run
   doc: Threads to run

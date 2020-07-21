@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faOneRecord.cwl
+id: ../../../faOneRecord.cwl
 inputs:
 - id: in_dot_fa
   doc: ''

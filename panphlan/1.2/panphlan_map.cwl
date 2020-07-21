@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/panphlan_map.py.cwl
+id: ../../../panphlan_map.py.cwl
 inputs:
 - id: input
   doc: Short read input files. If no file is specified, panphlan_map reads from standard

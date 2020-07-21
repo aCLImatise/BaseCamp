@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HiLine_same_frag_and_strand.cwl
+id: ../../../HiLine_same_frag_and_strand.cwl
 inputs:
 - id: sort
   doc: / --no-sort  Sort and index output. Default=sort

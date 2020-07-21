@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/guppy_classification.cwl
+id: ../../../guppy_classification.cwl
 inputs:
 - id: fat
   doc: makes trees with edges fattened in proportion to the number of reads

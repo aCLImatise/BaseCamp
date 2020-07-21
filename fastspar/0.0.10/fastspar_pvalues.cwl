@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastspar_pvalues.cwl
+id: ../../../fastspar_pvalues.cwl
 inputs:
 - id: c_slash_otu_table
   doc: OTU input table used to generated correlations

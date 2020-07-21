@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bwise.cwl
+id: ../../../bwise.cwl
 inputs:
 - id: input_fasta_pairedend
   doc: input fasta or (compressed .gz if -c option is != 0) paired-end read files.

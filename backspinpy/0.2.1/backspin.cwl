@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/backspin.cwl
+id: ../../../backspin.cwl
 inputs:
 - id: hbv
   doc: ''

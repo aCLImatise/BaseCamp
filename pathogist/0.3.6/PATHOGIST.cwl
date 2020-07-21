@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PATHOGIST.cwl
+id: ../../../PATHOGIST.cwl
 inputs:
 - id: loglevel
   doc: Set the logging level

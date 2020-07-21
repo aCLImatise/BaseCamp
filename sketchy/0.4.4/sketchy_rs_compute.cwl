@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sketchy_rs_compute.cwl
+id: ../../../sketchy_rs_compute.cwl
 inputs:
 - id: progress
   doc: progress switch > 0

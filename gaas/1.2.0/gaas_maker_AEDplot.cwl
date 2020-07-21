@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_maker_AEDplot.pl.cwl
+id: ../../../gaas_maker_AEDplot.pl.cwl
 inputs:
 - id: output
   doc: Output name of the pdf file created. If none provided, the default output is

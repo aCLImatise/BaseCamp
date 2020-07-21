@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/draw_basepair_track.pl.cwl
+id: ../../../draw_basepair_track.pl.cwl
 inputs:
 - id: thickness
   doc: Thickness in pixels of the drawn lines. Defaults to 2.

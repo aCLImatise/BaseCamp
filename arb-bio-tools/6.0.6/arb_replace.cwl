@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_replace.cwl
+id: ../../../arb_replace.cwl
 inputs:
 - id: linemode_parse_line_separately
   doc: linemode, parse each line separately

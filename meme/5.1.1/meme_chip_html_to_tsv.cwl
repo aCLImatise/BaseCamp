@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/meme_chip_html_to_tsv.cwl
+id: ../../../meme_chip_html_to_tsv.cwl
 inputs:
 - id: meme_chip_html_file
   doc: ''

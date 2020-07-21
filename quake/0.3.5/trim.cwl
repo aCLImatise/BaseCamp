@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trim.cwl
+id: ../../../trim.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

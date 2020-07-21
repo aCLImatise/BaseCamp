@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jaspar2meme.cwl
+id: ../../../jaspar2meme.cwl
 inputs:
 - id: jaspar_directory_vertical_line_pfm_bundle
   doc: ''

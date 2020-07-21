@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PATHOGIST_run.cwl
+id: ../../../PATHOGIST_run.cwl
 inputs:
 - id: new_config
   doc: write a blank configuration file at path given by CONFIG

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/enumerate_paths.py.cwl
+id: ../../../enumerate_paths.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

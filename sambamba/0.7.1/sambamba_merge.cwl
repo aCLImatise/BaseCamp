@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sambamba_merge.cwl
+id: ../../../sambamba_merge.cwl
 inputs:
 - id: n_threads
   doc: number of threads to use for compression/decompression

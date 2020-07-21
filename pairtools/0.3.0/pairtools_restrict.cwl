@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pairtools_restrict.cwl
+id: ../../../pairtools_restrict.cwl
 inputs:
 - id: frags
   doc: a tab-separated BED file with the positions of restriction fragments (chrom,

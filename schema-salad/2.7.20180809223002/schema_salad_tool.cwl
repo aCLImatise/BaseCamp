@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/schema_salad_tool.cwl
+id: ../../../schema_salad_tool.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

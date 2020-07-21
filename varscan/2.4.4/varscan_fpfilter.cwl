@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varscan_fpfilter.cwl
+id: ../../../varscan_fpfilter.cwl
 inputs:
 - id: min_var_count
   doc: Minimum number of variant-supporting reads [4]

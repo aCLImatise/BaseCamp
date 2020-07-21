@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convertNISTLibraryToTSV.py.cwl
+id: ../../../convertNISTLibraryToTSV.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

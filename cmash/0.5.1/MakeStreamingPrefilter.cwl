@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MakeStreamingPrefilter.py_range.cwl
+id: ../../../MakeStreamingPrefilter.py_range.cwl
 inputs:
 - id: make_streaming_prefilter_do_tpy
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/readseq.cwl
+id: ../../../readseq.cwl
 inputs:
 - id: wid
   doc: '[th]=#            sequence line width'

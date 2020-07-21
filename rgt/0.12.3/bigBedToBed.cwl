@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bigBedToBed.cwl
+id: ../../../bigBedToBed.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

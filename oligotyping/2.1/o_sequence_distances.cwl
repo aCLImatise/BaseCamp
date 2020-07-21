@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o_sequence_distances.cwl
+id: ../../../o_sequence_distances.cwl
 inputs:
 - id: output_file
   doc: Output file to store results

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_rewrite.cwl
+id: ../../../gsutil_rewrite.cwl
 inputs:
 - id: continues_silently_printing
   doc: Continues silently (without printing error messages) despite errors when rewriting

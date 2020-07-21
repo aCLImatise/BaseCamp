@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/polish_with_illumina_assembly.sh.cwl
+id: ../../../polish_with_illumina_assembly.sh.cwl
 inputs:
 - id: r
   doc: ''

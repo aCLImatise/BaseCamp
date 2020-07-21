@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/refinem_modify_bin.cwl
+id: ../../../refinem_modify_bin.cwl
 inputs:
 - id: min_len
   doc: minimum length of scaffold to allow it to be added to a genome

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cactus_covered_intervals.cwl
+id: ../../../cactus_covered_intervals.cwl
 inputs:
 - id: query_offsets
   doc: input query names contain offsets, as described below (by default input query

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasten_validate.cwl
+id: ../../../fasten_validate.cwl
 inputs:
 - id: n
   doc: ''

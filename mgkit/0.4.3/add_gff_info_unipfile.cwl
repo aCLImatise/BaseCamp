@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/add_gff_info_unipfile.cwl
+id: ../../../add_gff_info_unipfile.cwl
 inputs:
 - id: mapping_file
   doc: Uniprot mapping file  [required]

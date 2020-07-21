@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ggd_get_files.cwl
+id: ../../../ggd_get_files.cwl
 inputs:
 - id: channel
   doc: The ggd channel of the recipe to find. (Default = genomics)

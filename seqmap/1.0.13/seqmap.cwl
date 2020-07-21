@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqmap.cwl
+id: ../../../seqmap.cwl
 inputs:
 - id: number_of_mismatches
   doc: ''

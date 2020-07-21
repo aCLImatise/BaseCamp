@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cdbfasta.cwl
+id: ../../../cdbfasta.cwl
 inputs:
 - id: program_version_exit
   doc: program version and exit

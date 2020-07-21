@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gthsplit.cwl
+id: ../../../gthsplit.cwl
 inputs:
 - id: alignment_score
   doc: ''

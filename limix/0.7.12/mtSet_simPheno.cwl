@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mtSet_simPheno.cwl
+id: ../../../mtSet_simPheno.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

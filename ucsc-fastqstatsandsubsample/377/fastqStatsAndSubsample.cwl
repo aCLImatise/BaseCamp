@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastqStatsAndSubsample.cwl
+id: ../../../fastqStatsAndSubsample.cwl
 inputs:
 - id: sample_size
   doc: '- default 100000'

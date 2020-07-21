@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/irida_sistr_results.cwl
+id: ../../../irida_sistr_results.cwl
 inputs:
 - id: irid_a_url
   doc: The URL to the IRIDA instance.

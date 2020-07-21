@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LAsort.cwl
+id: ../../../LAsort.cwl
 inputs:
 - id: verbose_mode_output
   doc: ': Verbose mode, output statistics as proceed.'

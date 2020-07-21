@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof_stat.cwl
+id: ../../../smof_stat.cwl
 inputs:
 - id: delimiter
   doc: output delimiter

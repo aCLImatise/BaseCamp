@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chromosomer_fragmentmap.cwl
+id: ../../../chromosomer_fragmentmap.cwl
 inputs:
 - id: ratio_threshold
   doc: 'the least ratio of two greatest fragment alignment scores to determine the

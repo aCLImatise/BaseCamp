@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/md5sum_lite.cwl
+id: ../../../md5sum_lite.cwl
 inputs:
 - id: no
   doc: ''

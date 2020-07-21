@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dkfzbiasfilter.py.cwl
+id: ../../../dkfzbiasfilter.py.cwl
 inputs:
 - id: temp_folder
   doc: 'Path to the folder where temporary files are stored [default: /tmp]'

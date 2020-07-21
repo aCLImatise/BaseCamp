@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jellyfish_arg....cwl
+id: ../../../jellyfish_arg....cwl
 inputs:
 - id: jellyfish
   doc: ''

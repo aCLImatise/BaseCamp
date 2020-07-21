@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_genetrees_sort_multilocus_bootstraps.cwl
+id: ../../../phyluce_genetrees_sort_multilocus_bootstraps.cwl
 inputs:
 - id: input
   doc: The input directory containing bootstrap replicates for each locus

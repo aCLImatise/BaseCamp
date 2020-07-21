@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ref_eval.cwl
+id: ../../../ref_eval.cwl
 inputs:
 - id: scores
   doc: 'The groups of scores to compute, separated by commas (e.g., --scores=nucl,contig,kc).

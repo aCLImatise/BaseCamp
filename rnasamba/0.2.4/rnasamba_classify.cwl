@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnasamba_classify.cwl
+id: ../../../rnasamba_classify.cwl
 inputs:
 - id: protein_fast_a
   doc: 'output FASTA file containing translated sequences for the predicted coding

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genie_bed_count.cwl
+id: ../../../genie_bed_count.cwl
 inputs:
 - id: file_path
   doc: A bam file (*require)

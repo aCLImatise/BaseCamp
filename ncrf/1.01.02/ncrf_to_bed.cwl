@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ncrf_to_bed.py.cwl
+id: ../../../ncrf_to_bed.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

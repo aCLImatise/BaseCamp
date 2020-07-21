@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_get_bundles_all.cwl
+id: ../../../hca_dss_get_bundles_all.cwl
 inputs:
 - id: replica
   doc: Replica to fetch from.

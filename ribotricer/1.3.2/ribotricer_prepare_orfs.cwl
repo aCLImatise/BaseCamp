@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ribotricer_prepare_orfs.cwl
+id: ../../../ribotricer_prepare_orfs.cwl
 inputs:
 - id: gtf
   doc: Path to GTF file  [required]

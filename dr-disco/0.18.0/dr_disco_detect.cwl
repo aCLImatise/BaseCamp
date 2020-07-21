@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dr_disco_detect.cwl
+id: ../../../dr_disco_detect.cwl
 inputs:
 - id: min_e_score
   doc: Minimal score to initiate pulling sub-graphs (larger numbers boost performance

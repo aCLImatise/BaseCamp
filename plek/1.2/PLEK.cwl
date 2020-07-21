@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PLEK.py.cwl
+id: ../../../PLEK.py.cwl
 inputs:
 - id: fast_a
   doc: The name of a fasta file, its sequences are to be predicted.

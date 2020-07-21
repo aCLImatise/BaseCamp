@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/db_hotbackup.cwl
+id: ../../../db_hotbackup.cwl
 inputs:
 - id: cd_uvv
   doc: ''

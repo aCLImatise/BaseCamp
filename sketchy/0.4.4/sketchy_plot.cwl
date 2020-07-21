@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sketchy_plot.cwl
+id: ../../../sketchy_plot.cwl
 inputs:
 - id: index
   doc: 'Path to genotype feature index used in: sketchy evaluate  [required]'

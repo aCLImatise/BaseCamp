@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcftools_concat.cwl
+id: ../../../bcftools_concat.cwl
 inputs:
 - id: allow_overlaps
   doc: First coordinate of the next file can precede last record of the current file.

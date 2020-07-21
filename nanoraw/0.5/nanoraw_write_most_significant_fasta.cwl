@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nanoraw_write_most_significant_fasta.cwl
+id: ../../../nanoraw_write_most_significant_fasta.cwl
 inputs:
 - id: base_call_subgroups
   doc: "FAST5 subgroup (under Analyses/[corrected-group]) where individual template\

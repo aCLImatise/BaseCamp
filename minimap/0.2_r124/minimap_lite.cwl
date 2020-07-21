@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/minimap_lite.cwl
+id: ../../../minimap_lite.cwl
 inputs:
 - id: target_dot_fa
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_exons.cwl
+id: ../../../get_exons.cwl
 inputs:
 - id: include_noncoding
   doc: ''

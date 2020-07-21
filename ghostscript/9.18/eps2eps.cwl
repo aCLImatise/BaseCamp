@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/eps2eps.cwl
+id: ../../../eps2eps.cwl
 inputs:
 - id: switches_dot_dot_dot
   doc: ''

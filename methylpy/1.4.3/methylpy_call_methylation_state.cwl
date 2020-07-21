@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/methylpy_call_methylation_state.cwl
+id: ../../../methylpy_call_methylation_state.cwl
 inputs:
 - id: input_file
   doc: 'bam file that contains mapped bisulfite sequencing reads. (default: None)'

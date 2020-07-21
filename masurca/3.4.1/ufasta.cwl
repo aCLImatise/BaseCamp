@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ufasta.cwl
+id: ../../../ufasta.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

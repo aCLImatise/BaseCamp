@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcftools_reheader.cwl
+id: ../../../bcftools_reheader.cwl
 inputs:
 - id: fai
   doc: update sequences and their lengths from the .fai file

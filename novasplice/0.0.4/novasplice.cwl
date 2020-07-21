@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/novasplice.cwl
+id: ../../../novasplice.cwl
 inputs:
 - id: vcf
   doc: Full path to the sorted vcf file being used

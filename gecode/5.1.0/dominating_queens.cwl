@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dominating_queens.cwl
+id: ../../../dominating_queens.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

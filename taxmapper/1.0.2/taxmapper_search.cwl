@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxmapper_search.cwl
+id: ../../../taxmapper_search.cwl
 inputs:
 - id: forward
   doc: Forward reads in fasta or fastq format

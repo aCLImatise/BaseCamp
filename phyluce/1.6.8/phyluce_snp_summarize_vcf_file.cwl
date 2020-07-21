@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_snp_summarize_vcf_file.cwl
+id: ../../../phyluce_snp_summarize_vcf_file.cwl
 inputs:
 - id: input
   doc: The vcf file to process

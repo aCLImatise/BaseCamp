@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_sw.cwl
+id: ../../../goalign_sw.cwl
 inputs:
 - id: gap_extend
   doc: Score for extending a gap  (default -0.5)

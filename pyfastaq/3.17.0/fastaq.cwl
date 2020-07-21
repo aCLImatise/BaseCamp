@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastaq.cwl
+id: ../../../fastaq.cwl
 inputs:
 - id: command
   doc: ''

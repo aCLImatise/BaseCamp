@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mageck.cwl
+id: ../../../mageck.cwl
 inputs:
 - id: v
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/estpost.entropy.cwl
+id: ../../../estpost.entropy.cwl
 inputs:
 - id: in_file_one_dot_hdf_five
   doc: ''

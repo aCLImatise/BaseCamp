@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scagaire.cwl
+id: ../../../scagaire.cwl
 inputs:
 - id: database_file
   doc: 'Database file of species to genes. Defaults to bundled (default: None)'

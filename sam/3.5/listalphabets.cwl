@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/listalphabets.cwl
+id: ../../../listalphabets.cwl
 inputs:
 - id: option
   doc: ''

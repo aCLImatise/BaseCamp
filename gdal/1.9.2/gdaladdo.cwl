@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdaladdo.cwl
+id: ../../../gdaladdo.cwl
 inputs:
 - id: r
   doc: ''

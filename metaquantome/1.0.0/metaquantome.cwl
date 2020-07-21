@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metaquantome.cwl
+id: ../../../metaquantome.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

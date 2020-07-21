@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/test_seqCache.cwl
+id: ../../../test_seqCache.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

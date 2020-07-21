@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_top.py.cwl
+id: ../../../create_top.py.cwl
 inputs:
 - id: input_pdb_file
   doc: Input PDB file

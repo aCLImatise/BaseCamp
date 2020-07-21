@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/keepbestcopy.sh.cwl
+id: ../../../keepbestcopy.sh.cwl
 inputs:
 - id: keep_best_dots_h
   doc: ''

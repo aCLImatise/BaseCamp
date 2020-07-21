@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastatrans.cwl
+id: ../../../fastatrans.cwl
 inputs:
 - id: contig_file
   doc: ''

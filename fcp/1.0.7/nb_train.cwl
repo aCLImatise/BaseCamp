@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nb_train.cwl
+id: ../../../nb_train.cwl
 inputs:
 - id: contact
   doc: Print contact information.

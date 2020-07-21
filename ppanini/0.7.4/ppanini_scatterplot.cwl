@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ppanini_scatterplot.cwl
+id: ../../../ppanini_scatterplot.cwl
 inputs:
 - id: master_plot
   doc: plotting master figure of the paper

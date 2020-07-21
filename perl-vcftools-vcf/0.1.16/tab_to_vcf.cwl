@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tab_to_vcf.cwl
+id: ../../../tab_to_vcf.cwl
 inputs:
 - id: id
   doc: The column ID.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runReadsMapping.pl.cwl
+id: ../../../runReadsMapping.pl.cwl
 inputs:
 - id: referencefasta
   doc: '<reference_fasta> '

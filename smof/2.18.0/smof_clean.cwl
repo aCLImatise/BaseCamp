@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof_clean.cwl
+id: ../../../smof_clean.cwl
 inputs:
 - id: _type_np
   doc: '|p, --type n|p    sequence type'

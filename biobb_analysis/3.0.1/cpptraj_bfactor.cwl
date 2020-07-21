@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cpptraj_bfactor.cwl
+id: ../../../cpptraj_bfactor.cwl
 inputs:
 - id: config
   doc: Configuration file

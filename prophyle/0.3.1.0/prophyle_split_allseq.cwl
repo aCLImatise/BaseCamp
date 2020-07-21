@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prophyle_split_allseq.py.cwl
+id: ../../../prophyle_split_allseq.py.cwl
 inputs:
 - id: fasta_file
   doc: Fasta file [stdin]

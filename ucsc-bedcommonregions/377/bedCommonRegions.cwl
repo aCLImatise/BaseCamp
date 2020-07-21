@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedCommonRegions.cwl
+id: ../../../bedCommonRegions.cwl
 inputs:
 - id: file_n
   doc: ''

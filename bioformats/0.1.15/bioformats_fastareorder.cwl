@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioformats_fastareorder.cwl
+id: ../../../bioformats_fastareorder.cwl
 inputs:
 - id: ignore_missing
   doc: ignore sequences in the specified order file that are missing in the input

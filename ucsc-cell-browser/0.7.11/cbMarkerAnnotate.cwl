@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cbMarkerAnnotate.cwl
+id: ../../../cbMarkerAnnotate.cwl
 inputs:
 - id: debug
   doc: show debug messages

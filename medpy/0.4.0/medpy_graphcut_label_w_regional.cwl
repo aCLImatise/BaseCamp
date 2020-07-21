@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_graphcut_label_w_regional.py.cwl
+id: ../../../medpy_graphcut_label_w_regional.py.cwl
 inputs:
 - id: boundary
   doc: The boundary term to use. Note that difference of means (means) requires the

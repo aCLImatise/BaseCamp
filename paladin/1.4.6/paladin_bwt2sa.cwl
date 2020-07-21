@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paladin_bwt2sa.cwl
+id: ../../../paladin_bwt2sa.cwl
 inputs:
 - id: i
   doc: ''

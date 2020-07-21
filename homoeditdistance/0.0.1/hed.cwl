@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hed.cwl
+id: ../../../hed.cwl
 inputs:
 - id: string_one
   doc: first string. Use quotation marks around your string (e.g. "STRING")for the

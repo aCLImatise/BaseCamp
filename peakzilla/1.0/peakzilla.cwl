@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/peakzilla.py.cwl
+id: ../../../peakzilla.py.cwl
 inputs:
 - id: model_peaks
   doc: 'number of most highly enriched regions used to estimate peak size: default

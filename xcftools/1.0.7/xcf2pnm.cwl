@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xcf2pnm.cwl
+id: ../../../xcf2pnm.cwl
 inputs:
 - id: show_version_
   doc: show version (--version)

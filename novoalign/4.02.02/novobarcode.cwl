@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/novobarcode.cwl
+id: ../../../novobarcode.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

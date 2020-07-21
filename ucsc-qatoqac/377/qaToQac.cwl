@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qaToQac.cwl
+id: ../../../qaToQac.cwl
 inputs:
 - id: in_dot_qa
   doc: ''

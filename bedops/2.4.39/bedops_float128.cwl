@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedops_float128.cwl
+id: ../../../bedops_float128.cwl
 inputs:
 - id: chrom
   doc: Jump to and process data for given <chromosome> only.

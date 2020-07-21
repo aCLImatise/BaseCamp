@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blast_formatter.cwl
+id: ../../../blast_formatter.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

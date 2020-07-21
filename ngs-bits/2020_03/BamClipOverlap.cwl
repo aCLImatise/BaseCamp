@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BamClipOverlap.cwl
+id: ../../../BamClipOverlap.cwl
 inputs:
 - id: in
   doc: Input bam file. Needs to be sorted by name.

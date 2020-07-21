@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterlinks.cwl
+id: ../../../filterlinks.cwl
 inputs:
 - id: links
   doc: ''

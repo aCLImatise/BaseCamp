@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/capC_MAP_getchromsizes.cwl
+id: ../../../capC_MAP_getchromsizes.cwl
 inputs:
 - id: bed_file_continaing
   doc: bed file continaing list of restriction enzyme fragments for genome

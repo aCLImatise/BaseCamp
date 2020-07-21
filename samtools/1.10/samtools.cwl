@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools.pl_showALEN.cwl
+id: ../../../samtools.pl_showALEN.cwl
 inputs:
 - id: no
   doc: ''

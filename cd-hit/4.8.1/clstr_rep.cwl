@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clstr_rep.pl.cwl
+id: ../../../clstr_rep.pl.cwl
 inputs:
 - id: no
   doc: ''

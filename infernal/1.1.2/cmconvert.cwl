@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cmconvert.cwl
+id: ../../../cmconvert.cwl
 inputs:
 - id: ascii_output_models
   doc: ': ascii:  output models in INFERNAL 1.1 ASCII format  [default]'

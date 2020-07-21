@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/methylpy_filter_allc.cwl
+id: ../../../methylpy_filter_allc.cwl
 inputs:
 - id: all_c_files
   doc: 'allc files to filter. (default: None)'

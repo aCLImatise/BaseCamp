@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compute.cwl
+id: ../../../compute.cwl
 inputs:
 - id: use_total_segregating
   doc: ': use the total # of segregating sites, rather than # of mutations'

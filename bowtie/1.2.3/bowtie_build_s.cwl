@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bowtie_build_s.cwl
+id: ../../../bowtie_build_s.cwl
 inputs:
 - id: reference_files_fasta
   doc: reference files are Fasta (default)

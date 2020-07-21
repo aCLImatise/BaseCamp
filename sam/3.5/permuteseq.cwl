@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/permuteseq.cwl
+id: ../../../permuteseq.cwl
 inputs:
 - id: db
   doc: a sequence file

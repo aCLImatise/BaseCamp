@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_assembly_filter_seqs_from_fastas.cwl
+id: ../../../phyluce_assembly_filter_seqs_from_fastas.cwl
 inputs:
 - id: proportion
   doc: Proportion of the median length that will serve as cut off (default=0.5)

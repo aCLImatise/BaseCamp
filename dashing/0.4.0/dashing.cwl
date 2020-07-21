@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dashing.cwl
+id: ../../../dashing.cwl
 inputs:
 - id: subcommand
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nnrFilter.cwl
+id: ../../../nnrFilter.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nw_condense.cwl
+id: ../../../nw_condense.cwl
 inputs:
 - id: unicifies_leaf_labels
   doc: ': unicifies leaf labels by visiting the tree in Newick order and removing

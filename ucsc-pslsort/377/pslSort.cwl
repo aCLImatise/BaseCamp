@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslSort.cwl
+id: ../../../pslSort.cwl
 inputs:
 - id: no_head
   doc: Do not write psl header.

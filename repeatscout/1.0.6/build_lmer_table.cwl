@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/build_lmer_table.cwl
+id: ../../../build_lmer_table.cwl
 inputs:
 - id: tandem
   doc: '--- tandem distance window (def: 500)'

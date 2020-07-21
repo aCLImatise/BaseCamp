@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gen_reliab_dot.pl.cwl
+id: ../../../gen_reliab_dot.pl.cwl
 inputs:
 - id: reliability_file
   doc: reliability file

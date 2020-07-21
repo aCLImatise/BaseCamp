@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kmc_tools_simple.cwl
+id: ../../../kmc_tools_simple.cwl
 inputs:
 - id: ci
   doc: '<value>  - exclude k-mers occurring less than <value> times '

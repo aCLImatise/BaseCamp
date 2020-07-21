@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hailctl_dataproc.cwl
+id: ../../../hailctl_dataproc.cwl
 inputs:
 - id: beta
   doc: Force use of `beta` in gcloud commands

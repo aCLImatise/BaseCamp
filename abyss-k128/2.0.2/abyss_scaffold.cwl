@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_scaffold.cwl
+id: ../../../abyss_scaffold.cwl
 inputs:
 - id: km_er
   doc: length of a k-mer

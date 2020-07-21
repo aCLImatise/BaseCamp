@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi_seqrank.cwl
+id: ../../../fermi_seqrank.cwl
 inputs:
 - id: fermi
   doc: ''

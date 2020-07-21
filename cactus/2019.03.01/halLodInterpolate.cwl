@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halLodInterpolate.py.cwl
+id: ../../../halLodInterpolate.py.cwl
 inputs:
 - id: max_block
   doc: 'maximum desired number of blocks to ever display at once. (default: 223)'

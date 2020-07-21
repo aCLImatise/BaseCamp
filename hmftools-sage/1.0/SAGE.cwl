@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SAGE.cwl
+id: ../../../SAGE.cwl
 inputs:
 - id: coding_regions
   doc: Coding regions bed file to search for inframe indels

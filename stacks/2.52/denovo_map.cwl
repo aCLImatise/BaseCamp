@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/denovo_map.pl.cwl
+id: ../../../denovo_map.pl.cwl
 inputs:
 - id: samples
   doc: ': path to the directory containing the samples reads files.'

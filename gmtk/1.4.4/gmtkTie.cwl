@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmtkTie.cwl
+id: ../../../gmtkTie.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

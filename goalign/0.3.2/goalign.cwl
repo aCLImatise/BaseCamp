@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign.cwl
+id: ../../../goalign.cwl
 inputs:
 - id: align
   doc: Alignment input file (default "stdin")

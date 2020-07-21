@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/megahit_core_popcnt_seq2sdbg.cwl
+id: ../../../megahit_core_popcnt_seq2sdbg.cwl
 inputs:
 - id: host_mem
   doc: (=0)                memory to be used. No more than 95% of the free memory

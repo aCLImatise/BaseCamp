@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_summarizeresult.cwl
+id: ../../../mmseqs_summarizeresult.cwl
 inputs:
 - id: false_add_convert
   doc: false           add backtrace string (convert to alignments with mmseqs convertalis

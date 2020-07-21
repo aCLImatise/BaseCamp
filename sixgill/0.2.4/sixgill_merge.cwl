@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sixgill_merge.cwl
+id: ../../../sixgill_merge.cwl
 inputs:
 - id: out
   doc: output file

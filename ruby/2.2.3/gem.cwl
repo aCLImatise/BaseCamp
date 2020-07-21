@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gem.cwl
+id: ../../../gem.cwl
 inputs:
 - id: h_slash_help
   doc: ''

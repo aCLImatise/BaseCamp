@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafsInRegion.cwl
+id: ../../../mafsInRegion.cwl
 inputs:
 - id: outdir
   doc: '- output separate files named by bed name field to outDir'

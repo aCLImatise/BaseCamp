@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf_mask_cpg.py.cwl
+id: ../../../maf_mask_cpg.py.cwl
 inputs:
 - id: mask
   doc: Character to use as mask ('?' is default)

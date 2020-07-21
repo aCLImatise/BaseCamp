@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_rename.cwl
+id: ../../../seqkit_rename.cwl
 inputs:
 - id: by_name
   doc: check duplication by full name instead of just id

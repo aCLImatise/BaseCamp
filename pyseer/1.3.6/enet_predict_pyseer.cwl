@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/enet_predict_pyseer.cwl
+id: ../../../enet_predict_pyseer.cwl
 inputs:
 - id: threshold
   doc: Threshold to pick binary predictions

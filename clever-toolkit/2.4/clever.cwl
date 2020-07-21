@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clever.cwl
+id: ../../../clever.cwl
 inputs:
 - id: sorted
   doc: Input BAM file is sorted by position. Note that this requires alternative alignments

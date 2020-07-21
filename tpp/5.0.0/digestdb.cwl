@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/digestdb.cwl
+id: ../../../digestdb.cwl
 inputs:
 - id: num_set_minimum
   doc: <num>     set minimum peptide mass (<num> is a float; default=800.00)

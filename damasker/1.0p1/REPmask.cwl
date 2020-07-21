@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/REPmask.cwl
+id: ../../../REPmask.cwl
 inputs:
 - id: v
   doc: ''

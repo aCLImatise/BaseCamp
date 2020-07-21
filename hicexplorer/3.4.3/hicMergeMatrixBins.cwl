@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicMergeMatrixBins.cwl
+id: ../../../hicMergeMatrixBins.cwl
 inputs:
 - id: num_bins
   doc: 'Number of bins to merge. (default: None)'

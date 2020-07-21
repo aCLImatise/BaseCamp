@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reformat_transcripts.cwl
+id: ../../../reformat_transcripts.cwl
 inputs:
 - id: no_escape
   doc: 'If specified and output format is GTF2, special characters in column 9 will

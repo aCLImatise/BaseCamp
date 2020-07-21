@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/split_fastx.py_output_dir.cwl
+id: ../../../split_fastx.py_output_dir.cwl
 inputs:
 - id: i
   doc: ''

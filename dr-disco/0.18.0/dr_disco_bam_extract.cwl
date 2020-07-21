@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dr_disco_bam_extract.cwl
+id: ../../../dr_disco_bam_extract.cwl
 inputs:
 - id: region_one
   doc: ''

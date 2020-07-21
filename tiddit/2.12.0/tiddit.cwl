@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tiddit.cwl
+id: ../../../tiddit.cwl
 inputs:
 - id: sv
   doc: call structural variation

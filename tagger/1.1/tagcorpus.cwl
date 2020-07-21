@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tagcorpus.cwl
+id: ../../../tagcorpus.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

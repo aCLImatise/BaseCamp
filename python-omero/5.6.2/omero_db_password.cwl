@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_db_password.cwl
+id: ../../../omero_db_password.cwl
 inputs:
 - id: empty
   doc: Remove the password, allowing any for login when guest.

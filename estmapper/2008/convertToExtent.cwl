@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convertToExtent.cwl
+id: ../../../convertToExtent.cwl
 inputs:
 - id: be_chatty
   doc: be chatty

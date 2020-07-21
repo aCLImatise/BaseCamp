@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nebulizer_install_tool.cwl
+id: ../../../nebulizer_install_tool.cwl
 inputs:
 - id: install_resolver_dependencies
   doc: "[yes|no] install dependencies through a resolver that supports installation\

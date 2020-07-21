@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/concat.cwl
+id: ../../../concat.cwl
 inputs:
 - id: specify_directory_where
   doc: Specify directory where alignments are

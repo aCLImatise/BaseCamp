@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_unflatten_seq.pl.cwl
+id: ../../../bp_unflatten_seq.pl.cwl
 inputs:
 - id: input_file_input
   doc: '|input FILE input file (can also be specified as last argument)'

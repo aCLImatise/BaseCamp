@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RNAshapes_shapes_microstate.cwl
+id: ../../../RNAshapes_shapes_microstate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

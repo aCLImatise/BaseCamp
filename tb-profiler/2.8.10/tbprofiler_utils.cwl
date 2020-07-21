@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tbprofiler_utils.py_gbcf_lineage.cwl
+id: ../../../tbprofiler_utils.py_gbcf_lineage.cwl
 inputs:
 - id: prefix
   doc: 'Sample prefix (default: tbprofiler)'

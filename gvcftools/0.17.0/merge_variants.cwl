@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_variants.cwl
+id: ../../../merge_variants.cwl
 inputs:
 - id: ref
   doc: samtools reference sequence (required)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/InternalCalibration.cwl
+id: ../../../InternalCalibration.cwl
 inputs:
 - id: in
   doc: "*                                Input peak file (valid formats: 'mzML')"

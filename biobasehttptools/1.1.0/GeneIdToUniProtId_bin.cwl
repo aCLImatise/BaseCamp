@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GeneIdToUniProtId_bin.cwl
+id: ../../../GeneIdToUniProtId_bin.cwl
 inputs:
 - id: verbose
   doc: Loud verbosity

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sraX.cwl
+id: ../../../sraX.cwl
 inputs:
 - id: output_directory_store
   doc: "|output     Directory to store obtained results [/path/to/output_dir]. While\

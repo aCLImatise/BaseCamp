@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/identifyHMM.cwl
+id: ../../../identifyHMM.cwl
 inputs:
 - id: marker_db
   doc: Provide HMM file of markers. Markers should have a descriptive ID name.

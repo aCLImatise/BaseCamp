@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/haphpipe_summary_stats.cwl
+id: ../../../haphpipe_summary_stats.cwl
 inputs:
 - id: dir_list
   doc: List of directories which include the required files, one on each line

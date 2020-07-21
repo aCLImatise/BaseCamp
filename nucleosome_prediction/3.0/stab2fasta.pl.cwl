@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stab2fasta.pl.bak.cwl
+id: ../../../stab2fasta.pl.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

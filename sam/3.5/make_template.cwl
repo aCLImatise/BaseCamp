@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_template.cwl
+id: ../../../make_template.cwl
 inputs:
 - id: option
   doc: ''

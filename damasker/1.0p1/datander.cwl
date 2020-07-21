@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/datander.cwl
+id: ../../../datander.cwl
 inputs:
 - id: v
   doc: ''

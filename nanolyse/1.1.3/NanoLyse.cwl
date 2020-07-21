@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NanoLyse.cwl
+id: ../../../NanoLyse.cwl
 inputs:
 - id: reference
   doc: Specify a reference fasta file against which to filter.

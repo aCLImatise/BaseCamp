@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bttcmp.cwl
+id: ../../../bttcmp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

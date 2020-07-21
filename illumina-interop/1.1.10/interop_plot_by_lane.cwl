@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/interop_plot_by_lane.cwl
+id: ../../../interop_plot_by_lane.cwl
 inputs:
 - id: metric_name
   doc: '[ClusterCount]: Metric to plot'

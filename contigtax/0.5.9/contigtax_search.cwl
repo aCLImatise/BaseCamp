@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/contigtax_search.cwl
+id: ../../../contigtax_search.cwl
 inputs:
 - id: mode
   doc: "Choice of search mode for diamond: 'blastx' (default) for DNA query sequences\

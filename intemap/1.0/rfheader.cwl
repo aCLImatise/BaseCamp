@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rfheader.cwl
+id: ../../../rfheader.cwl
 inputs:
 - id: refine
   doc: ''

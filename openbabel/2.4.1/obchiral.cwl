@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obchiral.cwl
+id: ../../../obchiral.cwl
 inputs:
 - id: filename
   doc: ''

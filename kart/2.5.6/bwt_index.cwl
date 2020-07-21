@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bwt_index.cwl
+id: ../../../bwt_index.cwl
 inputs:
 - id: ref_file
   doc: ''

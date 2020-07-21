@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lncrna.cwl
+id: ../../../lncrna.cwl
 inputs:
 - id: web
   doc: 'flag if you want website written visualizing transcripts that were filtered

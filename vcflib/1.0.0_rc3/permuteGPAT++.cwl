@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/permuteGPAT++.cwl
+id: ../../../permuteGPAT++.cwl
 inputs:
 - id: permute_gp_at
   doc: ''

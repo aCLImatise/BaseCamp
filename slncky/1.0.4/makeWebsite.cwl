@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeWebsite.cwl
+id: ../../../makeWebsite.cwl
 inputs:
 - id: file
   doc: ''

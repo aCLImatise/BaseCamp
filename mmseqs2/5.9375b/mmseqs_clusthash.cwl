@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_clusthash.cwl
+id: ../../../mmseqs_clusthash.cwl
 inputs:
 - id: alph_size
   doc: '3               alphabet size [2,21]                                        '

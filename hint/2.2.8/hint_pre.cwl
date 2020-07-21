@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hint_pre.cwl
+id: ../../../hint_pre.cwl
 inputs:
 - id: data
   doc: Hi-C raw data with fastq format, two mates seperate with a comma ',', or bam

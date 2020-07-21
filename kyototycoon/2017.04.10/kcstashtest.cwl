@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kcstashtest.cwl
+id: ../../../kcstashtest.cwl
 inputs:
 - id: th
   doc: ''

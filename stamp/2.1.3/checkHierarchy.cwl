@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkHierarchy.py.cwl
+id: ../../../checkHierarchy.py.cwl
 inputs:
 - id: stamp_profile
   doc: STAMP profile to evaluate

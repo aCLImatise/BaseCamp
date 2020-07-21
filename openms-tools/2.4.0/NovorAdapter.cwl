@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NovorAdapter.cwl
+id: ../../../NovorAdapter.cwl
 inputs:
 - id: executable
   doc: Novor.jar

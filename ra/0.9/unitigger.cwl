@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unitigger.cwl
+id: ../../../unitigger.cwl
 inputs:
 - id: depot
   doc: ''

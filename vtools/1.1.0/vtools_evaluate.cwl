@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vtools_evaluate.cwl
+id: ../../../vtools_evaluate.cwl
 inputs:
 - id: call_vcf
   doc: Path to VCF with calls to be evaluated [required]

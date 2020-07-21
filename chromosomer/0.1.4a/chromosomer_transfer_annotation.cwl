@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chromosomer_transfer_annotation.cwl
+id: ../../../chromosomer_transfer_annotation.cwl
 inputs:
 - id: f
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/curesim.cwl
+id: ../../../curesim.cwl
 inputs:
 - id: jar
   doc: ''

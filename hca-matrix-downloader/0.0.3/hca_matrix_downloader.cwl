@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_matrix_downloader.cwl
+id: ../../../hca_matrix_downloader.cwl
 inputs:
 - id: project
   doc: The project's Project Title, Project Label or link- derived ID, obtained from

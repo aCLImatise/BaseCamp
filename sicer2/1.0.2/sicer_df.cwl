@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sicer_df.cwl
+id: ../../../sicer_df.cwl
 inputs:
 - id: treatment_file
   doc: Name of the sample file you wish to run SICER on. This can either be the relative

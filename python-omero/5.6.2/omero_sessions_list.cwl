@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_sessions_list.cwl
+id: ../../../omero_sessions_list.cwl
 inputs:
 - id: no_purge
   doc: Do not remove inactive sessions

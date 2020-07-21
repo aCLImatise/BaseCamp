@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simulate.py.cwl
+id: ../../../simulate.py.cwl
 inputs:
 - id: copy
   doc: 'Number of copies to simulate per input sequence (default: 1)'

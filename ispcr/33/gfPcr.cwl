@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gfPcr.cwl
+id: ../../../gfPcr.cwl
 inputs:
 - id: name
   doc: '- Name to use in bed output.'

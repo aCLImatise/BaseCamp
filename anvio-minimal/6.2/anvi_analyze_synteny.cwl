@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_analyze_synteny.cwl
+id: ../../../anvi_analyze_synteny.cwl
 inputs:
 - id: n_gram_window_range
   doc: 'The range of window sizes of Ngrams to analyze for synteny patterns.Please

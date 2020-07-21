@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_most.cwl
+id: ../../../fasta_most.cwl
 inputs:
 - id: min
   doc: <length>  minimum length to accept

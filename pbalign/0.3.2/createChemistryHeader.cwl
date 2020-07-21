@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/createChemistryHeader.py_output_header_file.cwl
+id: ../../../createChemistryHeader.py_output_header_file.cwl
 inputs:
 - id: debug
   doc: ''

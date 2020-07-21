@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_bsfinder_inputfile.cwl
+id: ../../../mb_bsfinder_inputfile.cwl
 inputs:
 - id: threshold
   doc: ''

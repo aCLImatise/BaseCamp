@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_alimap_msafile2.cwl
+id: ../../../esl_alimap_msafile2.cwl
 inputs:
 - id: esl_ali_map
   doc: ''

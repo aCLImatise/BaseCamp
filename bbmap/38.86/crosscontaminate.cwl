@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crosscontaminate.sh.cwl
+id: ../../../crosscontaminate.sh.cwl
 inputs:
 - id: in
   doc: ''

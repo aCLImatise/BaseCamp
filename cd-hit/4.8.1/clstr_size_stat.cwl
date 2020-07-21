@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clstr_size_stat.pl.cwl
+id: ../../../clstr_size_stat.pl.cwl
 inputs:
 - id: cl_str_file
   doc: ''

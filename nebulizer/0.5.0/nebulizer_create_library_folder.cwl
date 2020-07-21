@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nebulizer_create_library_folder.cwl
+id: ../../../nebulizer_create_library_folder.cwl
 inputs:
 - id: description
   doc: description of the new folder

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/micro_razers.cwl
+id: ../../../micro_razers.cwl
 inputs:
 - id: output
   doc: 'Change output filename. (use - to dump to stdout in razers format) Default:

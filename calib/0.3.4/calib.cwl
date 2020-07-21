@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/calib.cwl
+id: ../../../calib.cwl
 inputs:
 - id: _inputforward_type
   doc: '--input-forward                   (type: string;   REQUIRED paramter)'

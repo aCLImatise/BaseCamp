@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pedmerge.cwl
+id: ../../../pedmerge.cwl
 inputs:
 - id: output
   doc: ''

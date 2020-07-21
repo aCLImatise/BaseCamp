@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scaden.cwl
+id: ../../../scaden.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

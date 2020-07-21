@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pathogen_profiler_gather.py.cwl
+id: ../../../pathogen_profiler_gather.py.cwl
 inputs:
 - id: samples
   doc: 'NGS Platform (default: None)'

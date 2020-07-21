@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_calculate_credibility_intervals.cwl
+id: ../../../rsem_calculate_credibility_intervals.cwl
 inputs:
 - id: reference_name
   doc: ''

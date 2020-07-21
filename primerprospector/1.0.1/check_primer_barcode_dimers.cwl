@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/check_primer_barcode_dimers.py.cwl
+id: ../../../check_primer_barcode_dimers.py.cwl
 inputs:
 - id: barcodes
   doc: Filepath of barcodes to score input primer(s) against. [REQUIRED]

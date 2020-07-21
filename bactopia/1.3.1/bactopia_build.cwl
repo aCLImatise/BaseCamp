@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bactopia_build.py.cwl
+id: ../../../bactopia_build.py.cwl
 inputs:
 - id: ext
   doc: 'Extension of the Conda environment files. Default: .yml'

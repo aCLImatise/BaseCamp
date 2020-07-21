@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sj_visualizer.pl.cwl
+id: ../../../sj_visualizer.pl.cwl
 inputs:
 - id: splice_junctions_mapped
   doc: Splice junctions from mapped RNA-seq data in BED6 format

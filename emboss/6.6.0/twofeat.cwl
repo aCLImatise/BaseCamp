@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/twofeat.cwl
+id: ../../../twofeat.cwl
 inputs:
 - id: a_type
   doc: "string     [*] By default every feature in the feature table is allowed. You\

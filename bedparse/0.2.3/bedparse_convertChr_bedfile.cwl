@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedparse_convertChr_bedfile.cwl
+id: ../../../bedparse_convertChr_bedfile.cwl
 inputs:
 - id: assembly
   doc: ''

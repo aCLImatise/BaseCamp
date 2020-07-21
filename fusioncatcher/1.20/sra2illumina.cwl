@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sra2illumina.py.cwl
+id: ../../../sra2illumina.py.cwl
 inputs:
 - id: input_one
   doc: The input FASTQ file downloaded from SRA.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/saffrontree.cwl
+id: ../../../saffrontree.cwl
 inputs:
 - id: km_er
   doc: Kmer to use, depends on read length [31]

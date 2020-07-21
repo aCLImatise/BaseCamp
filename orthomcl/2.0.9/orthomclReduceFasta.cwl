@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/orthomclReduceFasta.cwl
+id: ../../../orthomclReduceFasta.cwl
 inputs:
 - id: fast_a_file
   doc: ''

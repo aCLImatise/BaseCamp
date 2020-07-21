@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fimo.cwl
+id: ../../../fimo.cwl
 inputs:
 - id: thresh
   doc: (default = 1e-4)

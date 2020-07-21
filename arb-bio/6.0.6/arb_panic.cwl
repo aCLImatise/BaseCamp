@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_panic.cwl
+id: ../../../arb_panic.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

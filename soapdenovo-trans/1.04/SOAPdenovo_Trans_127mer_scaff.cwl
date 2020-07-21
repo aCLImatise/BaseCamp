@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SOAPdenovo_Trans_127mer_scaff.cwl
+id: ../../../SOAPdenovo_Trans_127mer_scaff.cwl
 inputs:
 - id: string_inputgraph_prefix
   doc: '<string>        inputGraph: prefix of input graph file name'

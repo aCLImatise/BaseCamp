@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/focus.cwl
+id: ../../../focus.cwl
 inputs:
 - id: query
   doc: Path to directory with FAST(A/Q) files

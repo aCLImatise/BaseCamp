@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslMap.pl.cwl
+id: ../../../pslMap.pl.cwl
 inputs:
 - id: in
   doc: psl input file, e.g. from an alignment of transcript reads against mRNA sequences

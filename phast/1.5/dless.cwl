@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dless.cwl
+id: ../../../dless.cwl
 inputs:
 - id: in_del_history
   doc: (for use with --indel-model) Use the specified indel history (see indelHistory).

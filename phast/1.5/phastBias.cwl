@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phastBias.cwl
+id: ../../../phastBias.cwl
 inputs:
 - id: bgc
   doc: 'The B parameter describes the strength of gBGC.  It must be > 0. Too low of

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hhconsensus.cwl
+id: ../../../hhconsensus.cwl
 inputs:
 - id: query_alignment_am
   doc: 'query alignment (A2M, A3M, or FASTA), or query HMM          '

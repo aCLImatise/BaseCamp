@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/structure.py.cwl
+id: ../../../structure.py.cwl
 inputs:
 - id: number_of_populations
   doc: (number of populations)

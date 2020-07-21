@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treeass.cwl
+id: ../../../treeass.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqmagick.cwl
+id: ../../../seqmagick.cwl
 inputs:
 - id: verbose
   doc: Be more verbose. Specify -vv or -vvv for even more

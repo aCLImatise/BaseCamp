@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_gdcmpgif.cwl
+id: ../../../_gdcmpgif.cwl
 inputs:
 - id: gdc_mpg_if
   doc: ''

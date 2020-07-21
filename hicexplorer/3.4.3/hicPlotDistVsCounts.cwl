@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicPlotDistVsCounts.cwl
+id: ../../../hicPlotDistVsCounts.cwl
 inputs:
 - id: matrices
   doc: Hi-C normalized (corrected) matrices. Each path should be separated by a space.

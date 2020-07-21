@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ParseHeaders.py_headers.cwl
+id: ../../../ParseHeaders.py_headers.cwl
 inputs:
 - id: parse_headers_do_tpy
   doc: ''

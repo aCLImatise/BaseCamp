@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_rsync.cwl
+id: ../../../gsutil_rsync.cwl
 inputs:
 - id: a
   doc: ''

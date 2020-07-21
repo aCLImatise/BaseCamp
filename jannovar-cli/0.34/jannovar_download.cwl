@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jannovar_download.cwl
+id: ../../../jannovar_download.cwl
 inputs:
 - id: database
   doc: Name of database to download, can be given multiple times

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MakeNodeGraph.py.cwl
+id: ../../../MakeNodeGraph.py.cwl
 inputs:
 - id: fp_rate
   doc: 'False positive rate. (default: 0.0001)'

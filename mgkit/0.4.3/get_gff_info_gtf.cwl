@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_gff_info_gtf.cwl
+id: ../../../get_gff_info_gtf.cwl
 inputs:
 - id: gene_id
   doc: 'GFF attribute to use for the GTF *gene_id* attribute [default: gene_id]'

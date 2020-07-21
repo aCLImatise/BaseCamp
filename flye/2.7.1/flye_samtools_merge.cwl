@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flye_samtools_merge.cwl
+id: ../../../flye_samtools_merge.cwl
 inputs:
 - id: reference
   doc: Reference sequence FASTA FILE [null]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convert_table.py.cwl
+id: ../../../convert_table.py.cwl
 inputs:
 - id: output
   doc: Path to output. Corresponds to folder name if multiple files are output, otherwise

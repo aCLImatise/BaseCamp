@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tRNAscan_SE.cwl
+id: ../../../tRNAscan_SE.cwl
 inputs:
 - id: search_eukaryotic_trnas
   doc: ': search for eukaryotic tRNAs (default)'

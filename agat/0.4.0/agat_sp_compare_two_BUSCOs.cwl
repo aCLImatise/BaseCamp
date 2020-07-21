@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_compare_two_BUSCOs.pl.cwl
+id: ../../../agat_sp_compare_two_BUSCOs.pl.cwl
 inputs:
 - id: fone
   doc: 'STRING: Input busco folder1'

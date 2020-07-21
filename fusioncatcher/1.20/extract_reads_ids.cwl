@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_reads_ids.py.cwl
+id: ../../../extract_reads_ids.py.cwl
 inputs:
 - id: input
   doc: The input file in FASTQ format.

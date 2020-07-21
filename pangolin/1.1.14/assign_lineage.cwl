@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/assign_lineage.py.cwl
+id: ../../../assign_lineage.py.cwl
 inputs:
 - id: format
   doc: what format is the tree file. This is passed to dendropy. default is 'nexus'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_giftogd2.cwl
+id: ../../../_giftogd2.cwl
 inputs:
 - id: gift_ogd_two
   doc: ''

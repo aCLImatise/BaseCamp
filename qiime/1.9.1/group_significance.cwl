@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/group_significance.py.cwl
+id: ../../../group_significance.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sampei.cwl
+id: ../../../sampei.cwl
 inputs:
 - id: max_peaks_per_scan
   doc: (default = 20)

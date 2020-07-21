@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/validate_gtf.pl.cwl
+id: ../../../validate_gtf.pl.cwl
 inputs:
 - id: output_list_inframe
   doc: ': output list of inframe stop genes.'

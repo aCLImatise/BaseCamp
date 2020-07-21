@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_get_markov.cwl
+id: ../../../fasta_get_markov.cwl
 inputs:
 - id: sequence
   doc: ''

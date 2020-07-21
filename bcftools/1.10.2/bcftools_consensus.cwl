@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcftools_consensus.cwl
+id: ../../../bcftools_consensus.cwl
 inputs:
 - id: chain
   doc: write a chain file for liftover

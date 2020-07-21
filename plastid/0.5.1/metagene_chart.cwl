@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metagene_chart.cwl
+id: ../../../metagene_chart.cwl
 inputs:
 - id: labels
   doc: Sample names for each metagene profile (optional).

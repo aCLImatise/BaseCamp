@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/munge_sumstats.py.cwl
+id: ../../../munge_sumstats.py.cwl
 inputs:
 - id: sum_stats
   doc: Input filename.

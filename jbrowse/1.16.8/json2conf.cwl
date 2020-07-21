@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/json2conf.pl.cwl
+id: ../../../json2conf.pl.cwl
 inputs:
 - id: file_dot_json
   doc: ''

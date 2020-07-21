@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LAI.cwl
+id: ../../../LAI.cwl
 inputs:
 - id: genome
   doc: '[file]  The genome file that is used to generate everything.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maker2eval_gtf.cwl
+id: ../../../maker2eval_gtf.cwl
 inputs:
 - id: maker_two_eval
   doc: ''

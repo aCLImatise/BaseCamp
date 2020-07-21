@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parsnp.cwl
+id: ../../../parsnp.cwl
 inputs:
 - id: query
   doc: Specify (assembled) query genome to use, in addition to genomes found in genome

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/preparseGenome.pl.cwl
+id: ../../../preparseGenome.pl.cwl
 inputs:
 - id: window
   doc: <#> (size of window around ref positions to prepare, default=50000)

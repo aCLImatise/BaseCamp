@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/calcprobs.py.cwl
+id: ../../../calcprobs.py.cwl
 inputs:
 - id: input
   doc: 'Read structures from input file. Format must be dot- bracket structures, each

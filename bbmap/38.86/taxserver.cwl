@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxserver.sh.cwl
+id: ../../../taxserver.sh.cwl
 inputs:
 - id: tree
   doc: ''

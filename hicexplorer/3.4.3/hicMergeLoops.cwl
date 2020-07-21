@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicMergeLoops.cwl
+id: ../../../hicMergeLoops.cwl
 inputs:
 - id: input_files
   doc: The loop files from hicDetectLoops. To use files from other sources, please

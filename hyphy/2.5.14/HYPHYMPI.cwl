@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HYPHYMPI.cwl
+id: ../../../HYPHYMPI.cwl
 inputs:
 - id: calculator_mode_causes
   doc: calculator mode; causes HyPhy to drop into an expression evaluation until 'exit'

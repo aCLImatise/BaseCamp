@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/variant_caller.cwl
+id: ../../../variant_caller.cwl
 inputs:
 - id: _input_sorted
   doc: '[input.bam] -- input sorted bam file'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_stage_1.prl.cwl
+id: ../../../filter_stage_1.prl.cwl
 inputs:
 - id: no
   doc: ''

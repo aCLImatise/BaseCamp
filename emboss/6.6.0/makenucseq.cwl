@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makenucseq.cwl
+id: ../../../makenucseq.cwl
 inputs:
 - id: codon_file
   doc: codon      Optional codon usage file. Nucleotide sequences will be created

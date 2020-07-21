@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clstr_renumber.pl.cwl
+id: ../../../clstr_renumber.pl.cwl
 inputs:
 - id: no
   doc: ''

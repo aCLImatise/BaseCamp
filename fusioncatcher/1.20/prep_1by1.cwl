@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prep_1by1.py.cwl
+id: ../../../prep_1by1.py.cwl
 inputs:
 - id: fusions
   doc: The input list of fusions for which the supporting reads should be extracted.

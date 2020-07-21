@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/do_partition.py.cwl
+id: ../../../do_partition.py.cwl
 inputs:
 - id: info
   doc: print citation information

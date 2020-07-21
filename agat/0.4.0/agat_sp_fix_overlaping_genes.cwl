@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_fix_overlaping_genes.pl.cwl
+id: ../../../agat_sp_fix_overlaping_genes.pl.cwl
 inputs:
 - id: file
   doc: Input GTF/GFF file.

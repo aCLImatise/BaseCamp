@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/map2slim.cwl
+id: ../../../map2slim.cwl
 inputs:
 - id: will_force_mapslim
   doc: This will force map2slim to give counts of the assoc file, rather than map

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phastOdds.cwl
+id: ../../../phastOdds.cwl
 inputs:
 - id: features
   doc: (Required unless -w or -y) File defining features to be scored (GFF, BED, or

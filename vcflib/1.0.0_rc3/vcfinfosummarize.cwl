@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfinfosummarize.cwl
+id: ../../../vcfinfosummarize.cwl
 inputs:
 - id: field
   doc: Summarize this field in the INFO column

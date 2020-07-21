@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bed_intersect_basewise.py.cwl
+id: ../../../bed_intersect_basewise.py.cwl
 inputs:
 - id: bed_file_one
   doc: ''

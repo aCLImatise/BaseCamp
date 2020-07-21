@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/testformat.sh.cwl
+id: ../../../testformat.sh.cwl
 inputs:
 - id: file
   doc: ''

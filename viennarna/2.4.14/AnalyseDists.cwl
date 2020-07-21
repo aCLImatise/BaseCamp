@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AnalyseDists.cwl
+id: ../../../AnalyseDists.cwl
 inputs:
 - id: x
   doc: ''

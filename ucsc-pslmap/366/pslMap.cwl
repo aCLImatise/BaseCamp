@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslMap.cwl
+id: ../../../pslMap.cwl
 inputs:
 - id: in_psl
   doc: ''

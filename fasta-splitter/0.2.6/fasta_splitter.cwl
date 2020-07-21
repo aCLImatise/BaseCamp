@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_splitter.cwl
+id: ../../../fasta_splitter.cwl
 inputs:
 - id: n_parts
   doc: '- Divide into <N> parts'

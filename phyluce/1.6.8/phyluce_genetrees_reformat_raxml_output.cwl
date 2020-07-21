@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_genetrees_reformat_raxml_output.cwl
+id: ../../../phyluce_genetrees_reformat_raxml_output.cwl
 inputs:
 - id: gene_trees
   doc: The path to the directory containing RAxML best trees

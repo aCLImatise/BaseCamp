@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/traitar_new.cwl
+id: ../../../traitar_new.cwl
 inputs:
 - id: hmm_model_f
   doc: hmm database compatible with the phenotype archive

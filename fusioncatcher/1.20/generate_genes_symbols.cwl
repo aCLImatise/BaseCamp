@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generate_genes_symbols.py.cwl
+id: ../../../generate_genes_symbols.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the genes positions are downloaded, e.g.

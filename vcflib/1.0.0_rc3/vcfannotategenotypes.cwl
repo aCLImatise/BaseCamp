@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfannotategenotypes.cwl
+id: ../../../vcfannotategenotypes.cwl
 inputs:
 - id: annotation_tag
   doc: ''

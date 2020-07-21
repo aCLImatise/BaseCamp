@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kcutilmgr.cwl
+id: ../../../kcutilmgr.cwl
 inputs:
 - id: d
   doc: ''

@@ -1,0 +1,393 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '... > exfile'
+  synonyms:
+  - --showtargetgff
+  args: !SimpleFlagArg
+    name: T
+  optional: true
+- !Flag
+  description: '... -o gthfile'
+  synonyms:
+  - -skipalignmentout
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: cores.
+  synonyms:
+  - --genome
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: true.
+  synonyms:
+  - --useexisting
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+command:
+- braker.pl
+parent:
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nbraker.pl     Pipeline for predicting genes with GeneMark-EX and AUGUSTUS\
+  \ with\n            RNA-Seq\n\nSYNOPSIS\n\nbraker.pl [OPTIONS] --genome=genome.fa\
+  \ --bam=rnaseq.bam\n\nINPUT FILE OPTIONS\n\n--genome=genome.fa                 \
+  \ fasta file with DNA sequences\n--bam=rnaseq.bam                    bam file with\
+  \ spliced alignments from\n                                    RNA-Seq\n--hints=hints.gff\
+  \                   Alternatively to calling braker.pl with a\n                \
+  \                    bam file, it is possible to call it with a\n              \
+  \                      file that contains introns extracted from\n             \
+  \                       RNA-Seq (or other data) in gff format.\n               \
+  \                     This flag also allows the usage of hints\n               \
+  \                     from additional extrinsic sources for gene\n             \
+  \                       prediction with AUGUSTUS. To consider such\n           \
+  \                         additional extrinsic information, you need\n         \
+  \                           to use the flag --extrinsicCfgFiles to\n           \
+  \                         specify parameters for all sources in the\n          \
+  \                          hints file (including the source \"E\" for\n        \
+  \                            intron hints from RNA-Seq). If you ran\n          \
+  \                          ProtHint before calling BRAKER, specify\n           \
+  \                         the files prothint_augustus.gff and\n                \
+  \                    evidence_augustus.gff, here.\n--prothints=hints.gff       \
+  \        If BRAKER is called with hints produced\n                             \
+  \       by ProtHint, specify the file\n                                    prothint.gff,\
+  \ here. Will possibly concatenated\n                                    with hints\
+  \ RNA-Seq hints if called with\n                                    --etpmode.\n\
+  --evidence=evidence.gff             If BRAKER is called with hints produced\n  \
+  \                                  by ProtHint, specify the file \n            \
+  \                        evidence.gff, here. Will possibly be \n               \
+  \                     concatenated with evidence from RNA-Seq\n                \
+  \                    if called with --etpmode.\n--prot_seq=prot.fa             \
+  \     A protein sequence file in multiple fasta\n                              \
+  \      format. This file will be used to generate\n                            \
+  \        protein hints for AUGUSTUS by running one\n                           \
+  \         of the three alignment tools Exonerate\n                             \
+  \       (--prg=exonerate), Spaln (--prg=spaln) or\n                            \
+  \        GenomeThreader (--prg=gth). Default is\n                              \
+  \      GenomeThreader if the tool is not\n                                    specified.\
+  \  Currently, hints from protein\n                                    sequences\
+  \ are only used in the prediction\n                                    step with\
+  \ AUGUSTUS.\n--prot_aln=prot.aln                 Alignment file generated from aligning\n\
+  \                                    protein sequences against the genome with\n\
+  \                                    either Exonerate (--prg=exonerate), or\n  \
+  \                                  Spaln (--prg=spaln), or GenomeThreader\n    \
+  \                                (--prg=gth).\n                                \
+  \    To prepare alignment file, run Spaln2 with\n                              \
+  \      the following command:\n                                    spaln -O0 ...\
+  \ > spalnfile\n                                    To prepare alignment file, run\
+  \ Exonerate\n                                    with the following command:\n \
+  \                                   exonerate --model protein2genome \\\n      \
+  \                                  --showtargetgff T ... > exfile\n            \
+  \                        To prepare alignment file, run\n                      \
+  \              GenomeThreader with the following command:\n                    \
+  \                gth -genomic genome.fa  -protein \\\n                         \
+  \               protein.fa -gff3out \\\n                                       \
+  \ -skipalignmentout ... -o gthfile\n                                    A valid\
+  \ option prg=... must be specified\n                                    in combination\
+  \ with --prot_aln. Generating\n                                    tool will not\
+  \ be guessed.\n                                    Currently, hints from protein\
+  \ alignment\n                                    files are only used in the prediction\
+  \ step\n                                    with AUGUSTUS.\n\nFREQUENTLY USED OPTIONS\n\
+  \n--species=sname                     Species name. Existing species will not be\n\
+  \                                    overwritten. Uses Sp_1 etc., if no species\n\
+  \                                    is assigned\n--AUGUSTUS_ab_initio         \
+  \       output ab initio predictions by AUGUSTUS\n                             \
+  \       in addition to predictions with hints by\n                             \
+  \       AUGUSTUS\n--softmasking                       Softmasking option for soft\
+  \ masked genome\n                                    files. (Disabled by default.)\n\
+  --esmode                            Run GeneMark-ES (genome sequence only) and \n\
+  \                                    train AUGUSTUS on long genes predicted by \n\
+  \                                    GeneMark-ES. Final predictions are ab initio\n\
+  --epmode                            Run GeneMark-EP with intron hints provided\n\
+  \                                    from protein data. This mode is not \n    \
+  \                                comptabile with using the aligners\n          \
+  \                          GenomeThreader, Exonerate and Spaln (stand alone) \n\
+  \                                    within braker.pl. ProtHint (with Spaln) as\
+  \ \n                                    alignment producing software is compatible.\n\
+  --etpmode                           Run GeneMark-ETP with hints provided from\n\
+  \                                    proteins and RNA-Seq data. This mode is not\n\
+  \                                    compatible with using the aligners\n      \
+  \                              GenomeThreader, Exonerate and Spaln (stand alone)\
+  \ \n                                    within braker.pl. ProtHint (with Spaln)\n\
+  \                                    as alignment poducing pipeline is \n      \
+  \                              compatible.\n--gff3                             \
+  \ Output in GFF3 format (default is gtf\n                                    format)\n\
+  --cores                             Specifies the maximum number of cores that\n\
+  \                                    can be used during computation. Be aware:\n\
+  \                                    optimize_augustus.pl will use max. 8\n    \
+  \                                cores; augustus will use max. nContigs in\n   \
+  \                                 --genome=file cores.\n--workingdir=/path/to/wd/\
+  \           Set path to working directory. In the\n                            \
+  \        working directory results and temporary\n                             \
+  \       files are stored\n--nice                              Execute all system\
+  \ calls within braker.pl\n                                    and its submodules\
+  \ with bash \"nice\"\n                                    (default nice value)\n\
+  \n--alternatives-from-evidence=true   Output alternative transcripts based on\n\
+  \                                    explicit evidence from hints (default is\n\
+  \                                    true).\n--crf                             \
+  \  Execute CRF training for AUGUSTUS;\n                                    resulting\
+  \ parameters are only kept for\n                                    final predictions\
+  \ if they show higher\n                                    accuracy than HMM parameters.\n\
+  --keepCrf                           keep CRF parameters even if they are not\n \
+  \                                   better than HMM parameters\n--UTR=on       \
+  \                     create UTR training examples from RNA-Seq\n              \
+  \                      coverage data; requires options\n                       \
+  \             --bam=rnaseq.bam and --softmasking.\n                            \
+  \        Alternatively, if UTR parameters already\n                            \
+  \        exist, training step will be skipped and\n                            \
+  \        those pre-existing parameters are used.\n--prg=ph|gth|exonerate|spaln \
+  \       Alignment tool for generating hints from\n                             \
+  \       similarity of protein sequence data to\n                               \
+  \     genome data. Method ph (ProtHint with Spaln)\n                           \
+  \         is generally suitable; gth (GenomeThreader),\n                       \
+  \             exonerate (Exonerate) or Spaln2\n                                \
+  \    (spaln) are suitable for proteins of closely\n                            \
+  \        related species, only.\n                                    This option\
+  \ should be specified correctly in \n                                    case --prot_seq\
+  \ or --prot_aln options are used\n                                    (--prot_aln\
+  \ option is not required of hints\n                                    for AUGUSTUS\
+  \ were generated with ProtHint, in\n                                    that case,\
+  \ hints are provided with --hints=file\n                                    and\
+  \ --prg=ph is not required).\n--gth2traingenes                    Generate training\
+  \ gene structures for\n                                    AUGUSTUS from GenomeThreader\
+  \ alignments.\n                                    (These genes can either be used\
+  \ for\n                                    training AUGUSTUS alone with\n      \
+  \                              --trainFromGth; or in addition to\n             \
+  \                       GeneMark-ET training genes if also a\n                 \
+  \                   bam-file is supplied.)\n--trainFromGth                     \
+  \ No GeneMark-Training, train AUGUSTUS from\n                                  \
+  \  GenomeThreader alignments\n--makehub                           Create track data\
+  \ hub with make_hub.py \n                                    for visualizing BRAKER\
+  \ results with the\n                                    UCSC GenomeBrowser\n--email\
+  \                             E-mail address for creating track data hub\n--version\
+  \                           Print version number of braker.pl\n--help          \
+  \                    Print this help message\n\nCONFIGURATION OPTIONS (TOOLS CALLED\
+  \ BY BRAKER)\n\n--AUGUSTUS_CONFIG_PATH=/path/       Set path to config directory\
+  \ of AUGUSTUS\n                                    (if not specified as environment\n\
+  \                                    variable). BRAKER1 will assume that the\n \
+  \                                   directories ../bin and ../scripts of\n     \
+  \                               AUGUSTUS are located relative to the\n         \
+  \                           AUGUSTUS_CONFIG_PATH. If this is not the\n         \
+  \                           case, please specify AUGUSTUS_BIN_PATH\n           \
+  \                         (and AUGUSTUS_SCRIPTS_PATH if required).\n           \
+  \                         The braker.pl commandline argument\n                 \
+  \                   --AUGUSTUS_CONFIG_PATH has higher priority\n               \
+  \                     than the environment variable with the\n                 \
+  \                   same name.\n--AUGUSTUS_BIN_PATH=/path/          Set path to\
+  \ the AUGUSTUS directory that\n                                    contains binaries,\
+  \ i.e. augustus and\n                                    etraining. This variable\
+  \ must only be set\n                                    if AUGUSTUS_CONFIG_PATH\
+  \ does not have\n                                    ../bin and ../scripts of AUGUSTUS\
+  \ relative\n                                     to its location i.e. for global\
+  \ AUGUSTUS\n                                    installations. BRAKER1 will assume\
+  \ that\n                                    the directory ../scripts of AUGUSTUS\
+  \ is\n                                    located relative to the AUGUSTUS_BIN_PATH.\n\
+  \                                    If this is not the case, please specify\n \
+  \                                   --AUGUSTUS_SCRIPTS_PATH.\n--AUGUSTUS_SCRIPTS_PATH=/path/\
+  \      Set path to AUGUSTUS directory that\n                                   \
+  \ contains scripts, i.e. splitMfasta.pl.\n                                    This\
+  \ variable must only be set if\n                                    AUGUSTUS_CONFIG_PATH\
+  \ or AUGUSTUS_BIN_PATH\n                                    do not contains the\
+  \ ../scripts directory\n                                    of AUGUSTUS relative\
+  \ to their location,\n                                    i.e. for special cases\
+  \ of a global\n                                    AUGUSTUS installation.\n--BAMTOOLS_PATH=/path/to/\
+  \           Set path to bamtools (if not specified as\n                        \
+  \            environment BAMTOOLS_PATH variable). Has\n                        \
+  \            higher priority than the environment\n                            \
+  \        variable.\n--GENEMARK_PATH=/path/to/           Set path to GeneMark-ET\
+  \ (if not specified\n                                    as environment GENEMARK_PATH\
+  \ variable).\n                                    Has higher priority than environment\n\
+  \                                    variable.\n--SAMTOOLS_PATH=/path/to/      \
+  \     Optionally set path to samtools (if not\n                                \
+  \    specified as environment SAMTOOLS_PATH\n                                  \
+  \  variable) to fix BAM files automatically,\n                                 \
+  \   if necessary. Has higher priority than\n                                   \
+  \ environment variable.\n--ALIGNMENT_TOOL_PATH=/path/to/tool Set path to alignment\
+  \ tool\n                                    (prothint.py, GenomeThreader, Spaln,\
+  \ or Exonerate)\n                                    if not specified as environment\n\
+  \                                    ALIGNMENT_TOOL_PATH variable. Has higher\n\
+  \                                    priority than environment variable.\n--DIAMOND_PATH=/path/to/diamond\
+  \     Set path to diamond, this is an alternative\n                            \
+  \        to NCIB blast; you only need to specify one \n                        \
+  \            out of DIAMOND_PATH or BLAST_PATH, not both.\n                    \
+  \                DIAMOND is a lot faster that BLAST and yields \n              \
+  \                      highly similar results for BRAKER.\n--BLAST_PATH=/path/to/blastall\
+  \      Set path to NCBI blastall and formatdb\n                                \
+  \    executables if not specified as\n                                    environment\
+  \ variable. Has higher priority\n                                    than environment\
+  \ variable.\n--PYTHON3_PATH=/path/to             Set path to python3 executable\
+  \ (if not \n                                    specified as envirnonment variable\
+  \ and if\n                                    executable is not in your $PATH).\n\
+  --MAKEHUB_PATH=/path/to             Set path to make_hub.py (if option --makehub\n\
+  \                                    is used).\n--CDBTOOLS_PATH=/path/to       \
+  \     cdbfasta/cdbyank are required for running\n                              \
+  \      fix_in_frame_stop_codon_genes.py. Usage of\n                            \
+  \        that script can be skipped with option \n                             \
+  \       '--skip_fixing_broken_genes'.\n\n\nEXPERT OPTIONS\n\n--augustus_args=\"\
+  --some_arg=bla\"    One or several command line arguments to\n                 \
+  \                   be passed to AUGUSTUS, if several\n                        \
+  \            arguments are given, separate them by\n                           \
+  \         whitespace, i.e.\n                                    \"--first_arg=sth\
+  \ --second_arg=sth\".\n--skipGeneMark-ES                   Skip GeneMark-ES and\
+  \ use provided\n                                    GeneMark-ES output (e.g. provided\
+  \ with \n                                    --geneMarkGtf=genemark.gtf)\n--skipGeneMark-ET\
+  \                   Skip GeneMark-ET and use provided\n                        \
+  \            GeneMark-ET output (e.g. provided with \n                         \
+  \           --geneMarkGtf=genemark.gtf)\n--skipGeneMark-EP                   Skip\
+  \ GeneMark-EP and use provided\n                                    GeneMark-EP\
+  \ output (e.g. provided with\n                                    --geneMarkGtf=genemark.gtf)\n\
+  --skipGeneMark-ETP                  Skip GeneMark-ETP and use provided\n       \
+  \                             GeneMark-ETP output (e.g. provided with\n        \
+  \                            --geneMarkGtf=genemark.gtf)\n--geneMarkGtf=file.gtf\
+  \              If skipGeneMark-ET is used, braker will by\n                    \
+  \                default look in the working directory in\n                    \
+  \                folder GeneMarkET for an already existing\n                   \
+  \                 gtf file. Instead, you may provide such a\n                  \
+  \                  file from another location. If geneMarkGtf\n                \
+  \                    option is set, skipGeneMark-ES/ET/EP/ETP is\n             \
+  \                       automatically also set.\n--rounds                      \
+  \      The number of optimization rounds used in\n                             \
+  \       optimize_augustus.pl (default 5)\n--skipAllTraining                   Skip\
+  \ GeneMark-EX (training and\n                                    prediction), skip\
+  \ AUGUSTUS training, only\n                                    runs AUGUSTUS with\
+  \ pre-trained and already\n                                    existing parameters\
+  \ (not recommended).\n                                    Hints from input are still\
+  \ generated.\n                                    This option automatically sets\n\
+  \                                    --useexisting to true.\n--useexisting     \
+  \                  Use the present config and parameter files\n                \
+  \                    if they exist for 'species'; will overwrite\n             \
+  \                       original parameters if BRAKER performs\n               \
+  \                     an AUGUSTUS training.\n--filterOutShort                  \
+  \  It may happen that a \"good\" training gene,\n                              \
+  \      i.e. one that has intron support from\n                                 \
+  \   RNA-Seq in all introns predicted by\n                                    GeneMark-EX,\
+  \ is in fact too short. This flag\n                                    will discard\
+  \ such genes that have\n                                    supported introns and\
+  \ a neighboring\n                                    RNA-Seq supported intron upstream\
+  \ of the\n                                    start codon within the range of the\n\
+  \                                    maximum CDS size of that gene and with a\n\
+  \                                    multiplicity that is at least as high as\n\
+  \                                    20% of the average intron multiplicity of\n\
+  \                                    that gene.\n--skipOptimize                \
+  \      Skip optimize parameter step (not\n                                    recommended).\n\
+  --skipGetAnnoFromFasta              Skip calling the python3 script\n          \
+  \                          getAnnoFastaFromJoingenes.py from the\n             \
+  \                       AUGUSTUS tool suite. This script requires\n            \
+  \                        python3, biopython and re (regular \n                 \
+  \                   expressions) to be installed. It produces\n                \
+  \                    coding sequence and protein FASTA files \n                \
+  \                    from AUGUSTUS gene predictions and provides\n             \
+  \                       information about genes with in-frame stop \n          \
+  \                          codons. If you enable this flag, these files \n     \
+  \                               will not be produced and python3 and \n        \
+  \                            the required modules will not be necessary\n      \
+  \                              for running braker.pl.\n--skip_fixing_broken_genes\
+  \          If you do not have python3, you can choose\n                        \
+  \            to skip the fixing of stop codon including\n                      \
+  \              genes (not recommended).\n--fungus                            GeneMark-EX\
+  \ option: run algorithm with\n                                    branch point model\
+  \ (most useful for fungal\n                                    genomes)\n--rnaseq2utr_args=params\
+  \            Expert option: pass alternative parameters\n                      \
+  \              to rnaseq2utr as string, default parameters:\n                  \
+  \                  -r 76 -v 100 -n 15 -i 0.7 -m 0.3 -w 70 \n                   \
+  \                 -c 100 -p 0.5 \n--eval=reference.gtf                Reference\
+  \ set to evaluate predictions\n                                    against (using\
+  \ the eval package)\n--AUGUSTUS_hints_preds=s            File with AUGUSTUS hints\
+  \ predictions; will\n                                    use this file as basis\
+  \ for UTR training;\n                                    only UTR training and prediction\
+  \ is\n                                    performed if this option is given.\n--flanking_DNA=n\
+  \                    Size of flanking region, must only be\n                   \
+  \                 specified if --AUGUSTUS_hints_preds is given\n               \
+  \                     (for UTR training in a separate braker.pl \n             \
+  \                       run that builds on top of an existing run)\n--verbosity=n\
+  \                       0 -> run braker.pl quiet (no log)\n                    \
+  \                1 -> only log warnings\n                                    2 ->\
+  \ also log configuration\n                                    3 -> log all major\
+  \ steps\n                                    4 -> very verbose, log also small steps\n\
+  --downsampling_lambda=d             The distribution of introns in training\n  \
+  \                                  gene structures generated by GeneMark-EX\n  \
+  \                                  has a huge weight on single-exon and\n      \
+  \                              few-exon genes. Specifying the lambda\n         \
+  \                           parameter of a poisson distribution will\n         \
+  \                           make braker call a script for downsampling\n       \
+  \                             of training gene structures according to\n       \
+  \                             their number of introns distribution, i.e.\n     \
+  \                               genes with none or few exons will be\n         \
+  \                           downsampled, genes with many exons will be\n       \
+  \                             kept. Default value is 2. \n                     \
+  \               If you want to avoid downsampling, you have \n                 \
+  \                   to specify 0. \n--checkSoftware                     Only check\
+  \ whether all required software\n                                    is installed,\
+  \ no execution of BRAKER\n--nocleanup                         Skip deletion of all\
+  \ files that are typically not \n                                    used in an\
+  \ annotation project after \n                                    running braker.pl.\
+  \ (For tracking any \n                                    problems with a braker.pl\
+  \ run, you \n                                    might want to keep these files,\
+  \ therefore\n                                    nocleanup can be activated.)\n\
+  --genemark_hintsfile=hints.gff      Hints file for GeneMark-ETP produced by a\n\
+  \                                    previous BRAKER run. Excluding contents or\n\
+  \                                    evidence.gff.\n\n\nDEVELOPMENT OPTIONS (PROBABLY\
+  \ STILL DYSFUNCTIONAL)\n\n--splice_sites=patterns             list of splice site\
+  \ patterns for UTR\n                                    prediction; default: GTAG,\
+  \ extend like this:\n                                    --splice_sites=GTAG,ATAC,...\n\
+  \                                    this option only affects UTR training\n   \
+  \                                 example generation, not gene prediction\n    \
+  \                                by AUGUSTUS\n--overwrite                      \
+  \   Overwrite existing files (except for\n                                    species\
+  \ parameter files) Beware, currently\n                                    not implemented\
+  \ properly!\n--extrinsicCfgFiles=file1,file2,... Depending on the mode in which\
+  \ braker.pl\n                                    is executed, it may require one\
+  \ ore several\n                                    extrinsicCfgFiles. Don't use\
+  \ this option\n                                    unless you know what you are\
+  \ doing!\n--stranded=+,-,+,-,...              If UTRs are trained, i.e.~strand-specific\n\
+  \                                    bam-files are supplied and coverage \n    \
+  \                                information is extracted for gene prediction, \n\
+  \                                    create stranded ep hints. The order of \n \
+  \                                   strand specifications must correspond to the\n\
+  \                                    order of bam files. Possible values are\n \
+  \                                   +, -, .\n                                  \
+  \  If stranded data is provided, ONLY coverage\n                               \
+  \     data from the stranded data is used to \n                                \
+  \    generate UTR examples! Coverage data from \n                              \
+  \      unstranded data is used in the prediction\n                             \
+  \       step, only.\n                                    The stranded label is applied\
+  \ to coverage\n                                    data, only. Intron hints are\
+  \ generated\n                                    from all libraries treated as \"\
+  unstranded\"\n                                    (because splice site filtering\
+  \ eliminates\n                                    intron hints from the wrong strand,\
+  \ anyway).\n--optCfgFile=ppx.cfg                Optional custom config file for\
+  \ AUGUSTUS\n                                    for running PPX (currently not\n\
+  \                                    implemented)\n--grass                     \
+  \        Switch this flag on if you are using braker.pl \n                     \
+  \               for predicting genes in grasses with \n                        \
+  \            GeneMark-EX. The flag will enable\n                               \
+  \     GeneMark-EX to handle GC-heterogenicity\n                                \
+  \    within genes more properly.\n                                    NOTHING IMPLEMENTED\
+  \ FOR GRASS YET!\n--transmasked_fasta=file.fa         Transmasked genome FASTA file\
+  \ for GeneMark-EX\n                                    (to be used instead of the\
+  \ regular genome\n                                    FASTA file).  \n--min_contig=INT\
+  \                    Minimal contig length for GeneMark-EX, could\n            \
+  \                        for example be set to 10000 if transmasked_fasta\n    \
+  \                                option is used because transmasking might\n   \
+  \                                 introduce many very short contigs.\n--translation_table=INT\
+  \             Change translation table from non-standard\n                     \
+  \               to something else. \n                                    DOES NOT\
+  \ WORK YET BECAUSE BRAKER DOESNT\n                                    SWITCH TRANSLATION\
+  \ TABLE FOR GENEMARK-EX, YET!\n--gc_probability=DECIMAL            Probablity for\
+  \ donor splice site pattern GC \n                                    for gene prediction\
+  \ with GeneMark-EX,\n                                    default value is 0.001\n\
+  \n\nDESCRIPTION\n\nExample:\n\n\nbraker.pl [OPTIONS] --genome=genome.fa --species=speciesname\
+  \ \\\n    --bam=accepted_hits.bam\nbraker.pl [OPTIONS] --genome=genome.fa --species=speciesname\
+  \ \\\n    --hints=rnaseq.gff\n\nTo run with protein data from remote species and\
+  \ GeneMark-EP:\n\nbraker.pl [OPTIONS] --genome=genome.fa --hints=proteinintrons.gff\
+  \ --epmode=1\n\nTo run with protein data from a very closely related species:\n\n\
+  braker.pl [OPTIONS] --genome=genome.fa --prot_seq=proteins.fa --prg=gth \\\n   \
+  \ --gth2traingenes --trainFromGth\n\n"
+generated_using:
+- --help

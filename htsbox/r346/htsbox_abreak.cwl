@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htsbox_abreak.cwl
+id: ../../../htsbox_abreak.cwl
 inputs:
 - id: assume_input_bam
   doc: assume the input is BAM (default is SAM)

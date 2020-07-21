@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sqStoreCreate.cwl
+id: ../../../sqStoreCreate.cwl
 inputs:
 - id: technology_status
   doc: 'seqFile1 [seqFile2] [...] '

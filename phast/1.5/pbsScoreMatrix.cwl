@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbsScoreMatrix.cwl
+id: ../../../pbsScoreMatrix.cwl
 inputs:
 - id: branch_length
   doc: Output a matrix for a branch of the specified length, rather than a matrix

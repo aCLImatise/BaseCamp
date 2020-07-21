@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkFlowSet.R.cwl
+id: ../../../checkFlowSet.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

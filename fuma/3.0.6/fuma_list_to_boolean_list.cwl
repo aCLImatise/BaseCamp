@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fuma_list_to_boolean_list.cwl
+id: ../../../fuma_list_to_boolean_list.cwl
 inputs:
 - id: output
   doc: output filename; '-' for stdout

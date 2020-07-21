@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metaseq_cli.cwl
+id: ../../../metaseq_cli.cwl
 inputs:
 - id: from_string
   doc: Assume `windows` specifies a genomic coordinate of the form 'chrom:start-stop'

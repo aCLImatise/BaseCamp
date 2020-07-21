@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splitnextera.sh.cwl
+id: ../../../splitnextera.sh.cwl
 inputs:
 - id: in
   doc: ''

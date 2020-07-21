@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bsp2sam.py.cwl
+id: ../../../bsp2sam.py.cwl
 inputs:
 - id: out
   doc: output file name. (required)

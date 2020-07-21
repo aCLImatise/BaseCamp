@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/consensus_tree.py.cwl
+id: ../../../consensus_tree.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cestat_cov.cwl
+id: ../../../cestat_cov.cwl
 inputs:
 - id: display_compatible_version
   doc: Display the compatible bank version

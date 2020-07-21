@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/singlem_pipe.cwl
+id: ../../../singlem_pipe.cwl
 inputs:
 - id: threads
   doc: Use N threads.

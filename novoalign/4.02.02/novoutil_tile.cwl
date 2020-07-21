@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/novoutil_tile.cwl
+id: ../../../novoutil_tile.cwl
 inputs:
 - id: sets_read_default
   doc: Sets read length. Default 70.    -n 99     The maximum number of N's in a read.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Sreport.cwl
+id: ../../../Sreport.cwl
 inputs:
 - id: file_extension_mandatory
   doc: file (with NO extension). Mandatory option.

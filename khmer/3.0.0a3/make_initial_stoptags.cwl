@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_initial_stoptags.py.cwl
+id: ../../../make_initial_stoptags.py.cwl
 inputs:
 - id: info
   doc: print citation information

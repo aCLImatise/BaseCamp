@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unicycler_align.cwl
+id: ../../../unicycler_align.cwl
 inputs:
 - id: ref
   doc: FASTA file containing one or more reference sequences

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qtlseq.cwl
+id: ../../../qtlseq.cwl
 inputs:
 - id: _ref_reference
   doc: ', --ref         Reference fasta.'

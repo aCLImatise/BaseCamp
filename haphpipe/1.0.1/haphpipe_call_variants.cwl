@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/haphpipe_call_variants.cwl
+id: ../../../haphpipe_call_variants.cwl
 inputs:
 - id: aln_bam
   doc: Alignment file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trainGlimmerHMM.cwl
+id: ../../../trainGlimmerHMM.cwl
 inputs:
 - id: i_isochores_considered
   doc: ',i2,...,in  isochores to be considered (e.g. if two isochores are desired

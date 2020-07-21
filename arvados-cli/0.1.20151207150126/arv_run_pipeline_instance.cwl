@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arv_run_pipeline_instance.cwl
+id: ../../../arv_run_pipeline_instance.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

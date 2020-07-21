@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_term_local_neighbourhood.pl.cwl
+id: ../../../get_term_local_neighbourhood.pl.cwl
 inputs:
 - id: obo_input_file
   doc: OBO input file

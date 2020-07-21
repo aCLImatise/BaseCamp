@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bbcountunique.sh.cwl
+id: ../../../bbcountunique.sh.cwl
 inputs:
 - id: in
   doc: ''

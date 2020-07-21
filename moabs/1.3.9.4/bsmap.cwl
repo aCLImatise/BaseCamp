@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bsmap.cwl
+id: ../../../bsmap.cwl
 inputs:
 - id: str_query_format
   doc: <str>   query a file, FASTA/FASTQ/BAM format

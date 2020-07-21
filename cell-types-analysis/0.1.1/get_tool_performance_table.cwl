@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_tool_performance_table.R.cwl
+id: ../../../get_tool_performance_table.R.cwl
 inputs:
 - id: input_dir
   doc: Path to the directory with standardised output .tsv files from multiple methods

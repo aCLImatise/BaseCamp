@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/toolshed.cwl
+id: ../../../toolshed.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

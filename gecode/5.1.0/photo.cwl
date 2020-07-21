@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/photo.cwl
+id: ../../../photo.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

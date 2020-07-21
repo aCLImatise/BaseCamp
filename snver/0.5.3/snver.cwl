@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snver.cwl
+id: ../../../snver.cwl
 inputs:
 - id: input_file_required
   doc: <input file (required) >

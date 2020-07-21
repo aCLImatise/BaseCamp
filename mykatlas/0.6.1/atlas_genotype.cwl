@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/atlas_genotype.cwl
+id: ../../../atlas_genotype.cwl
 inputs:
 - id: km_er
   doc: kmer length (default:21)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/basil.cwl
+id: ../../../basil.cwl
 inputs:
 - id: quiet
   doc: Only print on errors.

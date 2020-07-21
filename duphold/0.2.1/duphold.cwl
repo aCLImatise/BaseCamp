@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/duphold.cwl
+id: ../../../duphold.cwl
 inputs:
 - id: vcf
   doc: path to sorted SV VCF/BCF

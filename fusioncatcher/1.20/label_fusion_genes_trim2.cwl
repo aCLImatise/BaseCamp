@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/label_fusion_genes_trim2.py.cwl
+id: ../../../label_fusion_genes_trim2.py.cwl
 inputs:
 - id: input
   doc: The input file in text tab delimited format containing the fusion genes candidates

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_test.cwl
+id: ../../../create_test.cwl
 inputs:
 - id: debug
   doc: Print debug information (very verbose) to file /tmp/tmpeksbd5_3/create_test.log

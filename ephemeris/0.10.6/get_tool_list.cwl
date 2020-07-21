@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_tool_list.cwl
+id: ../../../get_tool_list.cwl
 inputs:
 - id: output_file
   doc: 'tool_list.yml output file (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halLiftover.cwl
+id: ../../../halLiftover.cwl
 inputs:
 - id: out_bed_version
   doc: specified. [default = 0]

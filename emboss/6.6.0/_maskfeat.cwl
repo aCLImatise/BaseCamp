@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_maskfeat.cwl
+id: ../../../_maskfeat.cwl
 inputs:
 - id: type
   doc: "string     [repeat*] By default any feature in the feature table with a type\

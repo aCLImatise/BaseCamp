@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_concatdbs.cwl
+id: ../../../mmseqs_concatdbs.cwl
 inputs:
 - id: preserve_keys
   doc: false           the keys of the two DB should be distinct, and they will be

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msa_split.cwl
+id: ../../../msa_split.cwl
 inputs:
 - id: ref_idx
   doc: (For use with --windows or --by-index) Index of frame of reference for split

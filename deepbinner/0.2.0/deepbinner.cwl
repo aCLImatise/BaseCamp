@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deepbinner.cwl
+id: ../../../deepbinner.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ghmm_config.cwl
+id: ../../../ghmm_config.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

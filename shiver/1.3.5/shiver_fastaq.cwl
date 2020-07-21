@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shiver_fastaq.cwl
+id: ../../../shiver_fastaq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/whatshap_compare.cwl
+id: ../../../whatshap_compare.cwl
 inputs:
 - id: sample
   doc: Name of the sample to process. If not given, use first sample found in VCF.

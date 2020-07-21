@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vsnp_alignment_vcf.py.cwl
+id: ../../../vsnp_alignment_vcf.py.cwl
 inputs:
 - id: read_one
   doc: 'Required: single read, R1 when Illumina read'

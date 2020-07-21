@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rpsblast.cwl
+id: ../../../rpsblast.cwl
 inputs:
 - id: alignment_view_options
   doc: 'alignment view options:'

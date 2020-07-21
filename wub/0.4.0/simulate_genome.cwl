@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simulate_genome.py.cwl
+id: ../../../simulate_genome.py.cwl
 inputs:
 - id: number_of_chromosomes
   doc: Number of chromosomes (23).

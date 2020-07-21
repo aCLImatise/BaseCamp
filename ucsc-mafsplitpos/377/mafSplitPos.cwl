@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafSplitPos.cwl
+id: ../../../mafSplitPos.cwl
 inputs:
 - id: chrom
   doc: Restrict to one chromosome

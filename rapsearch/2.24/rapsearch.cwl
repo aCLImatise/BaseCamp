@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rapsearch.cwl
+id: ../../../rapsearch.cwl
 inputs:
 - id: query_file_fasta
   doc: ': query file or stdin (FASTA or FASTQ format)'

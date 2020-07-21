@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_expterm.py.cwl
+id: ../../../make_expterm.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

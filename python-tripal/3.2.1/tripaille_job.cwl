@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tripaille_job.cwl
+id: ../../../tripaille_job.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

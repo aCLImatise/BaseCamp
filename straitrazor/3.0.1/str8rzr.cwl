@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/str8rzr.cwl
+id: ../../../str8rzr.cwl
 inputs:
 - id: reverse_complement_
   doc: (no reverse complement-- this turns off the default behavior of reverse-complementing

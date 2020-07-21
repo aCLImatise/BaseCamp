@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergeNotCombined.cwl
+id: ../../../mergeNotCombined.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

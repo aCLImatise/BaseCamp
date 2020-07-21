@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CollapseTagWithContext.cwl
+id: ../../../CollapseTagWithContext.cwl
 inputs:
 - id: default_g
   doc: (default 4g)

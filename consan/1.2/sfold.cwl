@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sfold.cwl
+id: ../../../sfold.cwl
 inputs:
 - id: options
   doc: ''

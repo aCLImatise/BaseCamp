@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Clustering.cwl
+id: ../../../Clustering.cwl
 inputs:
 - id: main
   doc: ''

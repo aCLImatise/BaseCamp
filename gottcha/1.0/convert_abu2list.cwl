@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convert_abu2list.pl.cwl
+id: ../../../convert_abu2list.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

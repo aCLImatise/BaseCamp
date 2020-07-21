@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uniqueseq.cwl
+id: ../../../uniqueseq.cwl
 inputs:
 - id: db
   doc: '[-db seq_filen]*   one or more sequence files OR'

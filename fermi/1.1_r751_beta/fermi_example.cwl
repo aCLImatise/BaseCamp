@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi_example.cwl
+id: ../../../fermi_example.cwl
 inputs:
 - id: ceu
   doc: ''

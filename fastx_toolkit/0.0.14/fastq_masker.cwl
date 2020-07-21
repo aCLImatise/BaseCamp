@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_masker.cwl
+id: ../../../fastq_masker.cwl
 inputs:
 - id: v
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/readstats.py.cwl
+id: ../../../readstats.py.cwl
 inputs:
 - id: info
   doc: print citation information

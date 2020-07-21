@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/single_to_multi_fast5.cwl
+id: ../../../single_to_multi_fast5.cwl
 inputs:
 - id: input_path
   doc: Folder containing single read fast5 files

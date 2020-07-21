@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_position_from_sam.py_fastafile.cwl
+id: ../../../get_position_from_sam.py_fastafile.cwl
 inputs:
 - id: r
   doc: ''

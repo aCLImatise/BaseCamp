@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DBsplit.cwl
+id: ../../../DBsplit.cwl
 inputs:
 - id: target_size_blocks
   doc: ': Target size of blocks (in Mbp).'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/orthomclSortGroupsFile.cwl
+id: ../../../orthomclSortGroupsFile.cwl
 inputs:
 - id: groups_dot_txt
   doc: ''

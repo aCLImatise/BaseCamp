@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mamotif.cwl
+id: ../../../mamotif.cwl
 inputs:
 - id: v
   doc: ''

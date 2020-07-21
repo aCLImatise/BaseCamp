@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hgGcPercent.cwl
+id: ../../../hgGcPercent.cwl
 inputs:
 - id: win
   doc: '- change windows size (default 20000)'

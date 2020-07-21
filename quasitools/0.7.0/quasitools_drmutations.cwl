@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quasitools_drmutations.cwl
+id: ../../../quasitools_drmutations.cwl
 inputs:
 - id: bam
   doc: ''

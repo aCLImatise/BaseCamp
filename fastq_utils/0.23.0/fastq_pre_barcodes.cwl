@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_pre_barcodes.cwl
+id: ../../../fastq_pre_barcodes.cwl
 inputs:
 - id: one_zero_x
   doc: ': use 10X UMI tags (UB and UY) instead of the default tags defined in the

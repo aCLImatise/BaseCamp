@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_longseqdist.cwl
+id: ../../../abyss_longseqdist.cwl
 inputs:
 - id: km_er
   doc: length of a k-mer

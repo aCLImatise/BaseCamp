@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scHicCluster.cwl
+id: ../../../scHicCluster.cwl
 inputs:
 - id: schic_matrix_m
   doc: 'scHi-C matrix, -m scool scHi-C matrix The single cell Hi-C interaction matrices

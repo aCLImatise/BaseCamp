@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/module_availability.cwl
+id: ../../../module_availability.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

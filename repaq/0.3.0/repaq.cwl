@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/repaq.cwl
+id: ../../../repaq.cwl
 inputs:
 - id: stdin
   doc: input from STDIN. If the STDIN is interleaved paired-end FASTQ, please also

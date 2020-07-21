@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hitea.cwl
+id: ../../../hitea.cwl
 inputs:
 - id: input_file_format
   doc: ':          Input file in pairsam format or unsorted-lossless bam format'

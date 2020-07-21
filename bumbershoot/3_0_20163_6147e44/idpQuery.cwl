@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/idpQuery.cwl
+id: ../../../idpQuery.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obabel.cwl
+id: ../../../obabel.cwl
 inputs:
 - id: i
   doc: ''

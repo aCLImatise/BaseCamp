@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_ncbi_get_sequence_from_list.pl.cwl
+id: ../../../gaas_ncbi_get_sequence_from_list.pl.cwl
 inputs:
 - id: line
   doc: Integer, number of line to avoid. Allow to avoid headers.

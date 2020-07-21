@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/read_filter_redact.2.cwl
+id: ../../../read_filter_redact.2.cwl
 inputs:
 - id: file
   doc: 'File containing SpotId-s to redact '

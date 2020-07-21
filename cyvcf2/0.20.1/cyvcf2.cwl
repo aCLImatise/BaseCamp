@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cyvcf2.cwl
+id: ../../../cyvcf2.cwl
 inputs:
 - id: chrom
   doc: Specify what chromosome to include.

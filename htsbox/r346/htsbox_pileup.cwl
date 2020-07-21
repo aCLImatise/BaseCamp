@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htsbox_pileup.cwl
+id: ../../../htsbox_pileup.cwl
 inputs:
 - id: reference_genome
   doc: reference genome [null]

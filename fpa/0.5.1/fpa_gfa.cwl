@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fpa_gfa.cwl
+id: ../../../fpa_gfa.cwl
 inputs:
 - id: containment
   doc: Keep containment overlap

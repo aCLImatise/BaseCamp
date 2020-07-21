@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/color_chrs.pl.cwl
+id: ../../../color_chrs.pl.cwl
 inputs:
 - id: colors
   doc: File with list of "chr hap color".

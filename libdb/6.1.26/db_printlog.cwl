@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/db_printlog.cwl
+id: ../../../db_printlog.cwl
 inputs:
 - id: nrv
   doc: ''

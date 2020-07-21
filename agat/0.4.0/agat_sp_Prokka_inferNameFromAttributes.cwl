@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_Prokka_inferNameFromAttributes.pl.cwl
+id: ../../../agat_sp_Prokka_inferNameFromAttributes.pl.cwl
 inputs:
 - id: _output_
   doc: ', --output , --out or --outfile Output GFF file. If no output file is specified,

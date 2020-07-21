@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_user_email.cwl
+id: ../../../omero_user_email.cwl
 inputs:
 - id: names
   doc: Print user names along with email addresses

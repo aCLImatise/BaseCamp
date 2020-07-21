@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamintervalcomment.cwl
+id: ../../../bamintervalcomment.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

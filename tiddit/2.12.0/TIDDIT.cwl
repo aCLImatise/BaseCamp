@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TIDDIT.py.cwl
+id: ../../../TIDDIT.py.cwl
 inputs:
 - id: sv
   doc: call structural variation

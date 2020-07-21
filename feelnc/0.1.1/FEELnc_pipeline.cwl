@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FEELnc_pipeline.sh.cwl
+id: ../../../FEELnc_pipeline.sh.cwl
 inputs:
 - id: candidate
   doc: ''

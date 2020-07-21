@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_run1_logger.cwl
+id: ../../../fc_run1_logger.cwl
 inputs:
 - id: fc_run_one
   doc: ''

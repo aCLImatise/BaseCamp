@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nanoraw_plot_multi_correction.cwl
+id: ../../../nanoraw_plot_multi_correction.cwl
 inputs:
 - id: fast_five_based_irs
   doc: Directories containing fast5 files.

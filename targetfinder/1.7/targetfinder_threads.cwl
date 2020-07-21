@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/targetfinder_threads.pl.cwl
+id: ../../../targetfinder_threads.pl.cwl
 inputs:
 - id: input_small_rna
   doc: Input small RNA sequences file (FASTA-format)

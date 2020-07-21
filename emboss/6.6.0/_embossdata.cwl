@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_embossdata.cwl
+id: ../../../_embossdata.cwl
 inputs:
 - id: show_all
   doc: toggle     Show all potential EMBOSS data files

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mtSet_analyze.cwl
+id: ../../../mtSet_analyze.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generate_tumor_genes.py.cwl
+id: ../../../generate_tumor_genes.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the list of genes is generated, e.g. homo_sapiens,

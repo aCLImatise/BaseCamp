@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getmlst.py.cwl
+id: ../../../getmlst.py.cwl
 inputs:
 - id: repository_url
   doc: URL for MLST repository XML index

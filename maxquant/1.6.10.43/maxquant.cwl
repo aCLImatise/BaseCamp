@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maxquant.cwl
+id: ../../../maxquant.cwl
 inputs:
 - id: complete
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeMatchLists.pl.cwl
+id: ../../../makeMatchLists.pl.cwl
 inputs:
 - id: no
   doc: ''

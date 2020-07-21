@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_longest_ORF_per_transcript.pl.cwl
+id: ../../../get_longest_ORF_per_transcript.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

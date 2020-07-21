@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generate_combined_sequence.cwl
+id: ../../../generate_combined_sequence.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

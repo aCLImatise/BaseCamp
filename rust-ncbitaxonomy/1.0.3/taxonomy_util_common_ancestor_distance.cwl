@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxonomy_util_common_ancestor_distance.cwl
+id: ../../../taxonomy_util_common_ancestor_distance.cwl
 inputs:
 - id: only_canonical
   doc: Only consider canonical taxonomic ranks

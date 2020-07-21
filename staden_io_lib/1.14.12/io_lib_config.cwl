@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/io_lib_config.cwl
+id: ../../../io_lib_config.cwl
 inputs:
 - id: cflags
   doc: C and preprocessor flags (eg -I/foo/include)

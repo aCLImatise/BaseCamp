@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convert_trace.cwl
+id: ../../../convert_trace.cwl
 inputs:
 - id: in_format
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quorum_create_database.cwl
+id: ../../../quorum_create_database.cwl
 inputs:
 - id: size
   doc: '*Initial hash size'

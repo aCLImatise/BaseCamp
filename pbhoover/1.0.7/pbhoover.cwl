@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbhoover.cwl
+id: ../../../pbhoover.cwl
 inputs:
 - id: consensus
   doc: Call consensus (output all positions to VCF)

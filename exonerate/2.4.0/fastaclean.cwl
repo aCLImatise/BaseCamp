@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastaclean.cwl
+id: ../../../fastaclean.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dreg.cwl
+id: ../../../dreg.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

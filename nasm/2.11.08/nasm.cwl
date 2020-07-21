@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nasm.cwl
+id: ../../../nasm.cwl
 inputs:
 - id: assemble_scitech_tasm
   doc: assemble in SciTech TASM compatible mode

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdaldem.cwl
+id: ../../../gdaldem.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

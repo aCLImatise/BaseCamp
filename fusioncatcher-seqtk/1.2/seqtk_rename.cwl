@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqtk_rename.cwl
+id: ../../../seqtk_rename.cwl
 inputs:
 - id: in_dot_fq
   doc: ''

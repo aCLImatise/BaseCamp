@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/align_trim.cwl
+id: ../../../align_trim.cwl
 inputs:
 - id: normalise
   doc: ''

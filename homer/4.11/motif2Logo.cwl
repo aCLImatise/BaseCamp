@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/motif2Logo.pl.cwl
+id: ../../../motif2Logo.pl.cwl
 inputs:
 - id: pdf
   doc: '(create a pdf: "motif file".pdf: default creates a PNG image)'

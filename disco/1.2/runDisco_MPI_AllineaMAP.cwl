@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runDisco_MPI_AllineaMAP.sh.cwl
+id: ../../../runDisco_MPI_AllineaMAP.sh.cwl
 inputs:
 - id: ins
   doc: single read filenames (comma separated fasta/fastq/fastq.gz file).

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fuse.cwl
+id: ../../../fuse.cwl
 inputs:
 - id: min_coverage
   doc: Minimal coverage to call a position. [50]

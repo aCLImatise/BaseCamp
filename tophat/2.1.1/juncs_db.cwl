@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/juncs_db.cwl
+id: ../../../juncs_db.cwl
 inputs:
 - id: min_anchor
   doc: ''

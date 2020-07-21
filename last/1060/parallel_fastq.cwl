@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parallel_fastq.cwl
+id: ../../../parallel_fastq.cwl
 inputs:
 - id: parallel
   doc: ''

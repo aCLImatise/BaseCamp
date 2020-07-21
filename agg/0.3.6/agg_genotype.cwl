@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agg_genotype.cwl
+id: ../../../agg_genotype.cwl
 inputs:
 - id: regions
   doc: region to genotype eg. chr1 or chr20:5000000-6000000

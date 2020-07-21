@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bxcl_seqqc.cwl
+id: ../../../bxcl_seqqc.cwl
 inputs:
 - id: files
   doc: F1    Pair of input FastQ files.

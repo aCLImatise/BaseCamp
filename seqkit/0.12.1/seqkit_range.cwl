@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_range.cwl
+id: ../../../seqkit_range.cwl
 inputs:
 - id: range
   doc: range. e.g., 1:12 for first 12 records (head -n 12), -12:-1 for last 12 records

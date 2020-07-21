@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/augustus2gbrowse.pl.cwl
+id: ../../../augustus2gbrowse.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

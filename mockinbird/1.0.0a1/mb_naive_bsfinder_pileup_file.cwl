@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_naive_bsfinder_pileup_file.cwl
+id: ../../../mb_naive_bsfinder_pileup_file.cwl
 inputs:
 - id: min_transitions
   doc: ''

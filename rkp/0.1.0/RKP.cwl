@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RKP.py.cwl
+id: ../../../RKP.py.cwl
 inputs:
 - id: a
   doc: ''

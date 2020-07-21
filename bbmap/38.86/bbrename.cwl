@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bbrename.sh.cwl
+id: ../../../bbrename.sh.cwl
 inputs:
 - id: rename_dots_h
   doc: ''

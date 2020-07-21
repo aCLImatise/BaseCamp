@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_graph_to_contig.cwl
+id: ../../../fc_graph_to_contig.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

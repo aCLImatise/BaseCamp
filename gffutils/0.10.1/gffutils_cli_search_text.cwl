@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gffutils_cli_search_text.cwl
+id: ../../../gffutils_cli_search_text.cwl
 inputs:
 - id: feature_type
   doc: ''

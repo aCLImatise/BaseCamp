@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/emma.cwl
+id: ../../../emma.cwl
 inputs:
 - id: only_d_end
   doc: toggle     [N] Only produce dendrogram file

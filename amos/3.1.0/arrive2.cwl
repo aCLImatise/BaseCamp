@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arrive2.cwl
+id: ../../../arrive2.cwl
 inputs:
 - id: ignore_overlap_degrees
   doc: Ignore 3' overlap degrees > <n>

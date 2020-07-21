@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/attach_pileupVAF.py.cwl
+id: ../../../attach_pileupVAF.py.cwl
 inputs:
 - id: my_vcf_file
   doc: 'My VCF (default: None)'

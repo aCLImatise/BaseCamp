@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools_pairtopair.cwl
+id: ../../../bedtools_pairtopair.cwl
 inputs:
 - id: minimum_overlap_required
   doc: Minimum overlap required as fraction of A (e.g. 0.05). Default is 1E-9 (effectively

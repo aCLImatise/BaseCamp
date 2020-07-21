@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/watchmedo.cwl
+id: ../../../watchmedo.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

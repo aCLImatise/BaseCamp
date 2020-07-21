@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/atlas_validation.py.cwl
+id: ../../../atlas_validation.py.cwl
 inputs:
 - id: data_dir
   doc: Path to the directory with SDRF and data files

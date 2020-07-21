@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/askocli.cwl
+id: ../../../askocli.cwl
 inputs:
 - id: command
   doc: ''

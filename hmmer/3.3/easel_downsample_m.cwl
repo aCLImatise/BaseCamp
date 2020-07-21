@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/easel_downsample_m.cwl
+id: ../../../easel_downsample_m.cwl
 inputs:
 - id: options
   doc: ''

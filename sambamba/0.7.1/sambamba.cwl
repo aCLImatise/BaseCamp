@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sambamba.cwl
+id: ../../../sambamba.cwl
 inputs:
 - id: quiet_mode_show
   doc: quiet mode (do not show banner)

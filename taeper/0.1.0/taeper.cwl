@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taeper.cwl
+id: ../../../taeper.cwl
 inputs:
 - id: input_dir
   doc: Directory where files are located.

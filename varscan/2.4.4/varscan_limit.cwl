@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varscan_limit.cwl
+id: ../../../varscan_limit.cwl
 inputs:
 - id: positions_file
   doc: '- a file of chromosome-positions, tab delimited, or VCF'

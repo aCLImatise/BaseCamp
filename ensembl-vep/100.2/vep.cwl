@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vep.cwl
+id: ../../../vep.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

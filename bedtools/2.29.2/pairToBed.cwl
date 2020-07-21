@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pairToBed.cwl
+id: ../../../pairToBed.cwl
 inputs:
 - id: a_bam
   doc: The A input file is in BAM format.  Output will be BAM as well. Replaces -a.

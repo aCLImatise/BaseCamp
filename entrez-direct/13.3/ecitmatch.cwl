@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ecitmatch.cwl
+id: ../../../ecitmatch.cwl
 inputs:
 - id: journal
   doc: Journal Title

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msdiff.cwl
+id: ../../../msdiff.cwl
 inputs:
 - id: arg__set
   doc: '[ --precision ] arg (=9.9999999999999995e-07) : set floating point precision

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runBESST.cwl
+id: ../../../runBESST.cwl
 inputs:
 - id: deactivate_pathfinder_module
   doc: Deactivate pathfinder module for including smaller contigs.

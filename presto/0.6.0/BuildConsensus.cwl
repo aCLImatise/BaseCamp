@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BuildConsensus.py.cwl
+id: ../../../BuildConsensus.py.cwl
 inputs:
 - id: list_fastafastq_files
   doc: 'A list of FASTA/FASTQ files containing sequences to process. (default: None)'

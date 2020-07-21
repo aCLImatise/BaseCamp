@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/netToBed.cwl
+id: ../../../netToBed.cwl
 inputs:
 - id: max_gap
   doc: '- break up at gaps of given size or more'

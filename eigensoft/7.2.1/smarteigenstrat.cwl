@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smarteigenstrat.cwl
+id: ../../../smarteigenstrat.cwl
 inputs:
 - id: bad
   doc: ''

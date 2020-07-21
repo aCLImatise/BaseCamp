@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treebest_simulate.cwl
+id: ../../../treebest_simulate.cwl
 inputs:
 - id: duplication_probability
   doc: duplication probability [0.05]

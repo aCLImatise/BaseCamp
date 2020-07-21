@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/epa_ng.cwl
+id: ../../../epa_ng.cwl
 inputs:
 - id: verbose
   doc: Display debug output.

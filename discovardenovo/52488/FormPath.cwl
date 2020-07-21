@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FormPath.cwl
+id: ../../../FormPath.cwl
 inputs:
 - id: arg_one
   doc: ''

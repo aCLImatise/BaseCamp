@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/multic.cwl
+id: ../../../multic.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

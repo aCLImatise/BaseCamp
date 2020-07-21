@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/combineHubs.pl.cwl
+id: ../../../combineHubs.pl.cwl
 inputs:
 - id: new_hub_dir
   doc: ''

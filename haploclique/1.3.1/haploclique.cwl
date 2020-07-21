@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/haploclique.cwl
+id: ../../../haploclique.cwl
 inputs:
 - id: gff
   doc: Option to create GFF File from output. <output> is used as prefix.

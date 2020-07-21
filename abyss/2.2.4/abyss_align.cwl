@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_align.cwl
+id: ../../../abyss_align.cwl
 inputs:
 - id: verbose
   doc: display verbose output

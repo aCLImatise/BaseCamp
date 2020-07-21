@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/terminate.cwl
+id: ../../../terminate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

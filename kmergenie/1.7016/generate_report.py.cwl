@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generate_report.py.bak.cwl
+id: ../../../generate_report.py.bak.cwl
 inputs:
 - id: name_report_file
   doc: 'name of the report file (default: [prefix]_report.html)'

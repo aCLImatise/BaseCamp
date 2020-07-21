@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RapClust.cwl
+id: ../../../RapClust.cwl
 inputs:
 - id: config
   doc: Config file describing the experimental setup  [required]

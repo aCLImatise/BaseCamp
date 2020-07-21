@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segment_juncs.cwl
+id: ../../../segment_juncs.cwl
 inputs:
 - id: ref_dot_fa
   doc: ''

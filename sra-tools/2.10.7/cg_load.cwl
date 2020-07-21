@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cg_load.2.cwl
+id: ../../../cg_load.2.cwl
 inputs:
 - id: map
   doc: 'MAP input directory path containing files '

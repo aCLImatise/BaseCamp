@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nebulizer_list_installed_tools.cwl
+id: ../../../nebulizer_list_installed_tools.cwl
 inputs:
 - id: name
   doc: only list tool repositories matching NAME. Can include glob-style wild-cards.

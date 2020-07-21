@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LA4Falcon.cwl
+id: ../../../LA4Falcon.cwl
 inputs:
 - id: smfocargyufmpi
   doc: ''

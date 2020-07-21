@@ -1,0 +1,106 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: -b   BAM/CRAM file to be processed.
+  synonyms:
+  - -bam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -o   Folder to output result to.
+  synonyms:
+  - -outdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to genome.fa. - Actually using fa.fai but for convention just
+    provide '.fa' file
+  synonyms:
+  - -reference
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -t   Number of threads to use. [1]
+  synonyms:
+  - -threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -f   Ignore reads with the filter flags [int]
+  synonyms:
+  - -filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -p   Only process this step then exit, optionally set -index bamToBw
+    - Per chromosome BigWigs generateBw - Generates merged BigWig
+  synonyms:
+  - -process
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -i   Optionally restrict '-p' to single job bwamem - 1..<lane_count>
+  synonyms:
+  - -index
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -j   For a parallel step report the number of jobs required
+  synonyms:
+  - -jobs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -m   Full documentation.
+  synonyms:
+  - -man
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- bamToBw.pl
+parent:
+subcommands: []
+help_flag: !Flag
+  description: Print a brief help message and exits.
+  synonyms:
+  - -help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "#################\n# PCAP version 3.5.2, Copyright (C) 2014-2017 ICGC/TCGA\
+  \ Pan-Cancer Analysis Project\n# PCAP comes with ABSOLUTELY NO WARRANTY\n# See LICENSE\
+  \ for full details.\n#################\nUsage:\n    bamToBw.pl [options] [file(s)...]\n\
+  \n      Required parameters:\n        -bam       -b   BAM/CRAM file to be processed.\n\
+  \        -outdir    -o   Folder to output result to.\n        -reference -r   Path\
+  \ to genome.fa.\n                         - Actually using fa.fai but for convention\
+  \ just provide '.fa' file\n\n      Optional parameters:\n        -threads   -t \
+  \  Number of threads to use. [1]\n        -filter    -f   Ignore reads with the\
+  \ filter flags [int]\n\n      Targeted processing:\n        -process   -p   Only\
+  \ process this step then exit, optionally set -index\n                         \
+  \    bamToBw - Per chromosome BigWigs\n                          generateBw - Generates\
+  \ merged BigWig\n\n        -index     -i   Optionally restrict '-p' to single job\n\
+  \                          bwamem - 1..<lane_count>\n\n      Other:\n        -jobs\
+  \      -j   For a parallel step report the number of jobs required\n        -help\
+  \      -h   Brief help message.\n        -man       -m   Full documentation.\n\n\
+  \      Basic usage:\n        bamToBw.pl -t 16 -b in.bam -o out.bw\n\n      Advanced/farm\
+  \ usage:\n        bamToBw.pl -b in.bam -o out.bw -p bamToBw -i 1..X\n         #\
+  \ X can be determined with 'bamToBw.pl -b in.bam -o out.bw -j'\n         # once\
+  \ all above steps completed\n        bamToBw.pl -b in.bam -o out.bw -p generateBw\
+  \ -i 1\n\n\n      Run with '-m' for possible input file types.\n\nOptions:\n   \
+  \ -outdir Directory to write output to. During processing a temp folder\n      \
+  \      will be generated in this area, should the process fail only\n          \
+  \  delete this if you are unable to resume the process.\n\n            Final output\
+  \ files include: <SAMPLE>.bam, <SAMPLE>.bam.bai,\n            <SAMPLE>.md5, <SAMPLE>.met\n\
+  \n    -threads\n            Number of threads to be used in processing.\n\n    \
+  \        If perl is not compiled with threading some steps will not run\n      \
+  \      in parallel..\n\n    -help   Print a brief help message and exits.\n\n  \
+  \  -man    Prints the manual page and exits.\n\n  Targeted Processing:\n    -process\n\
+  \            If you want to run the code in a more efficient manner then this\n\
+  \            allows each procesing type to be executed in isolation. You can\n \
+  \           restrict to a single process within the block by specifying\n      \
+  \      -index as well.\n\n"
+generated_using:
+- --help

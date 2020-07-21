@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafOrder.cwl
+id: ../../../mafOrder.cwl
 inputs:
 - id: maf_in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BPbtab.cwl
+id: ../../../BPbtab.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pm_merge.cwl
+id: ../../../pm_merge.cwl
 inputs:
 - id: whole_name
   doc: '[bcwkMG] -true -type [bcdpflsD] -uid N'

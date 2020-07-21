@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_kraken_assess_liftover.pl.cwl
+id: ../../../agat_sp_kraken_assess_liftover.pl.cwl
 inputs:
 - id: gff
   doc: Input gtf file produced by Kraken.

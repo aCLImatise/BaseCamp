@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SOAPdenovo_63mer_map.cwl
+id: ../../../SOAPdenovo_63mer_map.cwl
 inputs:
 - id: configfile_config_file
   doc: 'configFile: the config file of solexa reads'

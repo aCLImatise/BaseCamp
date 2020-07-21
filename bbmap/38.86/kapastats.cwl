@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kapastats.sh.cwl
+id: ../../../kapastats.sh.cwl
 inputs:
 - id: in
   doc: ''

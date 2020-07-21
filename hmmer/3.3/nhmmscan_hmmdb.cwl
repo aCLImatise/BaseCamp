@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nhmmscan_hmmdb.cwl
+id: ../../../nhmmscan_hmmdb.cwl
 inputs:
 - id: options
   doc: ''

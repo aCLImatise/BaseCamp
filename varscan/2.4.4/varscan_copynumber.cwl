@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varscan_copynumber.cwl
+id: ../../../varscan_copynumber.cwl
 inputs:
 - id: min_base_qual
   doc: '- Minimum base quality to count for coverage [20]'

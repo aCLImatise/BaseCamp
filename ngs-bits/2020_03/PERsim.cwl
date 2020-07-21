@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PERsim.cwl
+id: ../../../PERsim.cwl
 inputs:
 - id: roi
   doc: Target region BED file.

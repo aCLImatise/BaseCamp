@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genePredToMafFrames.cwl
+id: ../../../genePredToMafFrames.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

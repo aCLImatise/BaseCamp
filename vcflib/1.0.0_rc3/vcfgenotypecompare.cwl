@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfgenotypecompare.cwl
+id: ../../../vcfgenotypecompare.cwl
 inputs:
 - id: other_genotype_tag
   doc: ''

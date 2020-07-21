@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/orthomclExtractProteinIdsFromGroupsFile.cwl
+id: ../../../orthomclExtractProteinIdsFromGroupsFile.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

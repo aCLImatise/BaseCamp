@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transposcope_align.cwl
+id: ../../../transposcope_align.cwl
 inputs:
 - id: genes
   doc: Path to refFlat.txt (If information regarding the nearest gene should be included.)

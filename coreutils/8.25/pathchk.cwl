@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pathchk.cwl
+id: ../../../pathchk.cwl
 inputs:
 - id: check_most_posix
   doc: check for most POSIX systems

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/out_to_chain.py.cwl
+id: ../../../out_to_chain.py.cwl
 inputs:
 - id: species
   doc: "SPECIES Names of target and query species (respectively) in the alignment.\

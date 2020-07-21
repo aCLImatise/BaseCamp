@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools_bedcov.cwl
+id: ../../../samtools_bedcov.cwl
 inputs:
 - id: in_dot_bed
   doc: ''

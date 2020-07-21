@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ref_map.pl.cwl
+id: ../../../ref_map.pl.cwl
 inputs:
 - id: samples
   doc: ': path to the directory containing the samples BAM (or SAM) alignment files.'

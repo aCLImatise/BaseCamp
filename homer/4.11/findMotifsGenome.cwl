@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findMotifsGenome.pl.cwl
+id: ../../../findMotifsGenome.pl.cwl
 inputs:
 - id: len
   doc: '<#>[,<#>,<#>...] (motif length, default=8,10,12) [NOTE: values greater 12

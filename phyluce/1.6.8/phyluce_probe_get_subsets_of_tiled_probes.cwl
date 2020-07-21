@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_probe_get_subsets_of_tiled_probes.cwl
+id: ../../../phyluce_probe_get_subsets_of_tiled_probes.cwl
 inputs:
 - id: probes
   doc: The probe file to filter.

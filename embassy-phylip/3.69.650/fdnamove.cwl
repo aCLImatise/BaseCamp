@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fdnamove.cwl
+id: ../../../fdnamove.cwl
 inputs:
 - id: weights
   doc: properties Weights file - ignore sites with weight zero

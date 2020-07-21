@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_to_fastq.cwl
+id: ../../../fasta_to_fastq.cwl
 inputs:
 - id: qv
   doc: ": Assign this as the fake quality values (default: '^')"

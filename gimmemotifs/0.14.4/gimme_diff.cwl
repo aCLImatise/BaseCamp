@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gimme_diff.cwl
+id: ../../../gimme_diff.cwl
 inputs:
 - id: pfm_file
   doc: 'PFM file with motifs (default: gimme.vertebrate.v5.0.pfm)'

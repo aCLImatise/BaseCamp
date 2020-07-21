@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generate_plot.py.cwl
+id: ../../../generate_plot.py.cwl
 inputs:
 - id: define_location_working
   doc: Define the location of your working directory

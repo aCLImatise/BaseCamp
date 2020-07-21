@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf_interval_alignibility.py.cwl
+id: ../../../maf_interval_alignibility.py.cwl
 inputs:
 - id: species
   doc: Comma separated list of species to include

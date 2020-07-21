@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fill_ref_md5.cwl
+id: ../../../fill_ref_md5.cwl
 inputs:
 - id: dictionary
   doc: Where to read/write computed MD5s. Opened in append mode, existing records

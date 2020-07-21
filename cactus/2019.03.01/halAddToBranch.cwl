@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halAddToBranch.cwl
+id: ../../../halAddToBranch.cwl
 inputs:
 - id: in_file
   doc: ''

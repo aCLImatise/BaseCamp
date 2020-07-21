@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nthseqset.cwl
+id: ../../../nthseqset.cwl
 inputs:
 - id: number
   doc: integer    [1] The number of the sequence set to output (Integer 1 or more)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/srf_index_hash.cwl
+id: ../../../srf_index_hash.cwl
 inputs:
 - id: check_existing_index
   doc: check an existing index, don't re-index

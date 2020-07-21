@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/refseq_masher_contains.cwl
+id: ../../../refseq_masher_contains.cwl
 inputs:
 - id: mash_bin
   doc: Mash binary path (default="mash")

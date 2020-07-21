@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AssembleBreakends.cwl
+id: ../../../AssembleBreakends.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

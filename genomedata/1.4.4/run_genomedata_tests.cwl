@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_genomedata_tests.py.cwl
+id: ../../../run_genomedata_tests.py.cwl
 inputs:
 - id: verbose
   doc: Verbose output

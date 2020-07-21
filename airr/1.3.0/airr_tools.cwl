@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/airr_tools.cwl
+id: ../../../airr_tools.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

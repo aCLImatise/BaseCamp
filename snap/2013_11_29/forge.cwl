@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/forge.cwl
+id: ../../../forge.cwl
 inputs:
 - id: boost
   doc: (file of ID <int>)

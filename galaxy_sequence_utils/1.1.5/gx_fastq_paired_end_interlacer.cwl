@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gx_fastq_paired_end_interlacer.cwl
+id: ../../../gx_fastq_paired_end_interlacer.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

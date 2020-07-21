@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/priority2meme.cwl
+id: ../../../priority2meme.cwl
 inputs:
 - id: numbers
   doc: use numbers instead of strings as motif names;

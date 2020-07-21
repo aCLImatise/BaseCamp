@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mglbabel.cwl
+id: ../../../mglbabel.cwl
 inputs:
 - id: i
   doc: ''

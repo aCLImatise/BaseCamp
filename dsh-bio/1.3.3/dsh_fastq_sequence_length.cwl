@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dsh_fastq_sequence_length.cwl
+id: ../../../dsh_fastq_sequence_length.cwl
 inputs:
 - id: about
   doc: display about message [optional]

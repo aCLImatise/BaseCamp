@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TOBIAS_Log2Table.cwl
+id: ../../../TOBIAS_Log2Table.cwl
 inputs:
 - id: log_files
   doc: '[ [ ...]]  Logfiles from PlotAggregate'

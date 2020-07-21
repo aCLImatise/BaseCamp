@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chira_extract.py.cwl
+id: ../../../chira_extract.py.cwl
 inputs:
 - id: _loci_input
   doc: ', --loci           Input BED file with alignments (default: None)'

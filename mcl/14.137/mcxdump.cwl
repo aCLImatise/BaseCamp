@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mcxdump.cwl
+id: ../../../mcxdump.cwl
 inputs:
 - id: imx
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mean.cwl
+id: ../../../mean.cwl
 inputs:
 - id: option
   doc: ''

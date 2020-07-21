@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kart.cwl
+id: ../../../kart.cwl
 inputs:
 - id: number_of_threads
   doc: number of threads [4]

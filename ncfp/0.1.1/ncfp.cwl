@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ncfp.cwl
+id: ../../../ncfp.cwl
 inputs:
 - id: uniprot
   doc: 'treat input sequences as UniProt FASTA (default: False)'

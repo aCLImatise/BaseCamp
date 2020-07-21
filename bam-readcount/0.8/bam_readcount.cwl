@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam_readcount.cwl
+id: ../../../bam_readcount.cwl
 inputs:
 - id: output_version_number
   doc: '[ --version ]                      output the version number'

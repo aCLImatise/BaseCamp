@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fusion_report_run.cwl
+id: ../../../fusion_report_run.cwl
 inputs:
 - id: eric_script
   doc: EricScript output file

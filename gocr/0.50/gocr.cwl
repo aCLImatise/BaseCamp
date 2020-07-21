@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gocr.tcl.cwl
+id: ../../../gocr.tcl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

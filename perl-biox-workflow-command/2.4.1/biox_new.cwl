@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biox_new.cwl
+id: ../../../biox_new.cwl
 inputs:
 - id: plugins_opts
   doc: Options for application plugins [Key-Value]

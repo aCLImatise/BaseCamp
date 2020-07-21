@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pybel_manage_drop.cwl
+id: ../../../pybel_manage_drop.cwl
 inputs:
 - id: yes
   doc: Confirm the action without prompting.

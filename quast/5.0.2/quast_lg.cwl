@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quast_lg.py.cwl
+id: ../../../quast_lg.py.cwl
 inputs:
 - id: k_mer_size
   doc: 'Size of k used in --k-mer-stats [default: 101]'

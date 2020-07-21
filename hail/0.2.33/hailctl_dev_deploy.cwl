@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hailctl_dev_deploy.cwl
+id: ../../../hailctl_dev_deploy.cwl
 inputs:
 - id: branch
   doc: Fully-qualified branch, e.g., hail-is/hail:feature.

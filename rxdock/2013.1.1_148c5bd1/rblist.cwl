@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rblist.cwl
+id: ../../../rblist.cwl
 inputs:
 - id: inputsdfile_input_ligand
   doc: <InputSDFile> - input ligand SD file

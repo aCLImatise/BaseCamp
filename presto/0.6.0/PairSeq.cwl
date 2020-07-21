@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PairSeq.py.cwl
+id: ../../../PairSeq.py.cwl
 inputs:
 - id: ordered_list_headprimary
   doc: 'An ordered list of FASTA/FASTQ files containing head/primary sequences. (default:

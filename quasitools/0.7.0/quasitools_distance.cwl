@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quasitools_distance.cwl
+id: ../../../quasitools_distance.cwl
 inputs:
 - id: normalize
   doc: / -dn, --dont_normalize Normalize read count data so that the read counts per

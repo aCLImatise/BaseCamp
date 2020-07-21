@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_organelle_from_reads.py.cwl
+id: ../../../get_organelle_from_reads.py.cwl
 inputs:
 - id: input_file_forward
   doc: 'Input file with forward paired-end reads (format: fastq/fastq.gz/fastq.tar.gz).'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_relationship_id_vs_relationship_def.pl.cwl
+id: ../../../get_relationship_id_vs_relationship_def.pl.cwl
 inputs:
 - id: obo_input_file
   doc: OBO input file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxtree.sh.cwl
+id: ../../../taxtree.sh.cwl
 inputs:
 - id: x_mx_two_zero_g
   doc: specify 20 gigs of RAM.  The max is typically 85% of physical memory.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wdl_run.cwl
+id: ../../../wdl_run.cwl
 inputs:
 - id: inputs
   doc: Path to JSON file to define inputs

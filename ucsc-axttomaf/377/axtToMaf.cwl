@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/axtToMaf.cwl
+id: ../../../axtToMaf.cwl
 inputs:
 - id: score
   doc: '- recalculate score '

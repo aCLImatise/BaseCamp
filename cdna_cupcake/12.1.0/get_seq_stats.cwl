@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_seq_stats.py.cwl
+id: ../../../get_seq_stats.py.cwl
 inputs:
 - id: b
   doc: ''

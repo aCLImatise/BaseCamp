@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_flanks.pl.cwl
+id: ../../../bp_flanks.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

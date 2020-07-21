@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/logcounter.cwl
+id: ../../../logcounter.cwl
 inputs:
 - id: threads
   doc: use N parallel threads [1]

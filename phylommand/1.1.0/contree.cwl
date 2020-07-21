@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/contree.cwl
+id: ../../../contree.cwl
 inputs:
 - id: as_last_argument
   doc: as last argument).

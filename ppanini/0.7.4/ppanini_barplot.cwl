@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ppanini_barplot.cwl
+id: ../../../ppanini_barplot.cwl
 inputs:
 - id: p_panini_input
   doc: Gene abundance table

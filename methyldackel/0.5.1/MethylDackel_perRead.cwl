@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MethylDackel_perRead.cwl
+id: ../../../MethylDackel_perRead.cwl
 inputs:
 - id: ref_dot_fa
   doc: Reference genome in fasta format. This must be indexed with samtools faidx

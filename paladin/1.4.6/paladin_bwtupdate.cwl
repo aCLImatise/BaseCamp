@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paladin_bwtupdate.cwl
+id: ../../../paladin_bwtupdate.cwl
 inputs:
 - id: the_dot_bwt
   doc: ''

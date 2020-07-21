@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kissreads_graph.cwl
+id: ../../../kissreads_graph.cwl
 inputs:
 - id: this_message_exit
   doc: this message and exit

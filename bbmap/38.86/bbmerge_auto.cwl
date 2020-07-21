@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bbmerge_auto.sh.cwl
+id: ../../../bbmerge_auto.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

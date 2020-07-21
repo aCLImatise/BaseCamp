@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/evalCGP.pl.cwl
+id: ../../../evalCGP.pl.cwl
 inputs:
 - id: eval_exec_dir
   doc: Directory that contains the executable evaluate_gtf.pl from the eval package.

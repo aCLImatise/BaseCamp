@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_hla.py.cwl
+id: ../../../get_hla.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the sequences are downloaded. Default is

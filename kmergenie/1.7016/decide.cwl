@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/decide.bak.cwl
+id: ../../../decide.bak.cwl
 inputs:
 - id: diploid
   doc: use the diploid model

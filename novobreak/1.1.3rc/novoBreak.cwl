@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/novoBreak.cwl
+id: ../../../novoBreak.cwl
 inputs:
 - id: tumor_bam_file
   doc: Tumor bam file

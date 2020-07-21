@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summarize_sample_GFF_junctions.py_output_prefix.cwl
+id: ../../../summarize_sample_GFF_junctions.py_output_prefix.cwl
 inputs:
 - id: summarize_sample_gff_junctions_do_tpy
   doc: ''

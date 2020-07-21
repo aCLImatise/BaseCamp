@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/m8_btop_msa.pl.cwl
+id: ../../../m8_btop_msa.pl.cwl
 inputs:
 - id: help
   doc: description

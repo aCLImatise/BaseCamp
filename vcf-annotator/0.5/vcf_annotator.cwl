@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_annotator.cwl
+id: ../../../vcf_annotator.cwl
 inputs:
 - id: output
   doc: File to write VCF output to (Default STDOUT).

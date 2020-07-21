@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ppanini_join_tables.cwl
+id: ../../../ppanini_join_tables.cwl
 inputs:
 - id: verbose
   doc: additional output is printed

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MarkRepeats.cwl
+id: ../../../MarkRepeats.cwl
 inputs:
 - id: b
   doc: ''

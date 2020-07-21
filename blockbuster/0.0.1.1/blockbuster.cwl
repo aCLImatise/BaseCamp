@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blockbuster.x.cwl
+id: ../../../blockbuster.x.cwl
 inputs:
 - id: file
   doc: ''

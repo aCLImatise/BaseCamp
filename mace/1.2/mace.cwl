@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mace.py.cwl
+id: ../../../mace.py.cwl
 inputs:
 - id: forward
   doc: BigWig format file containing coverage calcualted from reads mapped to *forward*

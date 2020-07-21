@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Admin_EnsemblReferenceFileGenerator.pl.cwl
+id: ../../../Admin_EnsemblReferenceFileGenerator.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

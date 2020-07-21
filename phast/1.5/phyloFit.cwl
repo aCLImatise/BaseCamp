@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyloFit.cwl
+id: ../../../phyloFit.cwl
 inputs:
 - id: cat_map
   doc: '"NCATS = 3; CDS 1-3" --do-cats 1,2,3 mammals.fa'

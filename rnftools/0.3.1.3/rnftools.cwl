@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnftools.cwl
+id: ../../../rnftools.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

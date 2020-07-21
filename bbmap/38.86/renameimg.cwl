@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/renameimg.sh.cwl
+id: ../../../renameimg.sh.cwl
 inputs:
 - id: in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qiimeToMaaslin.py.cwl
+id: ../../../qiimeToMaaslin.py.cwl
 inputs:
 - id: normalize_data_values
   doc: Don't normalize data values by column sums

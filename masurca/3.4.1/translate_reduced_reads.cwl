@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/translate_reduced_reads.pl.cwl
+id: ../../../translate_reduced_reads.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

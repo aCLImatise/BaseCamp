@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/promoterwise.cwl
+id: ../../../promoterwise.cwl
 inputs:
 - id: align
   doc: '[normal/motif] use normal DBA or motif alignment [normal]'

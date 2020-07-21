@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fa_coords.cwl
+id: ../../../fa_coords.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

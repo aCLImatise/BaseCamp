@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reduce_alignment.cwl
+id: ../../../reduce_alignment.cwl
 inputs:
 - id: start
   doc: ''

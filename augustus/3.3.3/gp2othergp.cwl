@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gp2othergp.pl.cwl
+id: ../../../gp2othergp.pl.cwl
 inputs:
 - id: no
   doc: ''

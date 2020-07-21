@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genePredToBigGenePred.cwl
+id: ../../../genePredToBigGenePred.cwl
 inputs:
 - id: known
   doc: input file is a genePred in knownGene format

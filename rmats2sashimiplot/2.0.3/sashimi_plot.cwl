@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sashimi_plot.cwl
+id: ../../../sashimi_plot.cwl
 inputs:
 - id: plot_insert_len
   doc: Plot the insert length distribution from a given insert length (*.insert_len)

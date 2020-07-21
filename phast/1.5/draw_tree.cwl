@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/draw_tree.cwl
+id: ../../../draw_tree.cwl
 inputs:
 - id: print_option_implies
   doc: Print "diagonal" branches, instead of "right-angle" or  "square" ones (produces

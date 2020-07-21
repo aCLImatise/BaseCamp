@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PhosphoScoring.cwl
+id: ../../../PhosphoScoring.cwl
 inputs:
 - id: in
   doc: "*                       Input file with MS/MS spectra (valid formats: 'mzML')"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mask_quality.py.cwl
+id: ../../../mask_quality.py.cwl
 inputs:
 - id: format_input_axt
   doc: Format of input (axt or maf)

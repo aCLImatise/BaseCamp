@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/testcore.cwl
+id: ../../../testcore.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

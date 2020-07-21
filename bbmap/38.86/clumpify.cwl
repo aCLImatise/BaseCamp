@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clumpify.sh.cwl
+id: ../../../clumpify.sh.cwl
 inputs:
 - id: compression_dot
   doc: Should be disabled for paired reads.

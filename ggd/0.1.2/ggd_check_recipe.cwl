@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ggd_check_recipe.cwl
+id: ../../../ggd_check_recipe.cwl
 inputs:
 - id: debug
   doc: (Optional) Set the stdout log level to debug

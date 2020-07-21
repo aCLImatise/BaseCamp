@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SVwiden.cwl
+id: ../../../SVwiden.cwl
 inputs:
 - id: ref
   doc: Specify the path to the multi-fasta file that serves as a reference for the

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnaQUAST.py.cwl
+id: ../../../rnaQUAST.py.cwl
 inputs:
 - id: reference
   doc: Single file (or several files for meta RNA) with reference genome in FASTA

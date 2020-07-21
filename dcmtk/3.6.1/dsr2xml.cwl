@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dsr2xml.cwl
+id: ../../../dsr2xml.cwl
 inputs:
 - id: _quiet_quiet
   doc: --quiet                 quiet mode, print no warnings and errors

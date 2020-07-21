@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ktutilserv.cwl
+id: ../../../ktutilserv.cwl
 inputs:
 - id: host
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snippy.cwl
+id: ../../../snippy.cwl
 inputs:
 - id: citation
   doc: Print citation for referencing snippy

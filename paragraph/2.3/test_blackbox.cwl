@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/test_blackbox.cwl
+id: ../../../test_blackbox.cwl
 inputs:
 - id: g_test_also_run_disabled_tests
   doc: Run all disabled tests too.

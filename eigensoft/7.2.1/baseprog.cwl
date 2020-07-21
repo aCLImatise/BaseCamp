@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/baseprog.cwl
+id: ../../../baseprog.cwl
 inputs:
 - id: bad
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NanoStat.cwl
+id: ../../../NanoStat.cwl
 inputs:
 - id: outdir
   doc: Specify directory for output, only in combination with -n.

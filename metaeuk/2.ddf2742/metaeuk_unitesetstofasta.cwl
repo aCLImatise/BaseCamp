@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metaeuk_unitesetstofasta.cwl
+id: ../../../metaeuk_unitesetstofasta.cwl
 inputs:
 - id: protein
   doc: translate the joint exons coding sequence to amino acids [0,1] [0]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getscu.cwl
+id: ../../../getscu.cwl
 inputs:
 - id: _key_ggggeeee
   doc: '--key                  [k]ey: gggg,eeee="str", path or dic. name="str" override

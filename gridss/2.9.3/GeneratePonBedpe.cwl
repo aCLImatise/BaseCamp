@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GeneratePonBedpe.cwl
+id: ../../../GeneratePonBedpe.cwl
 inputs:
 - id: normal_dot
   doc: "Default value: 75.0. This option can be set to 'null' to clear the default\

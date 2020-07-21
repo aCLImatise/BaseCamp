@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msms2cp.pl.cwl
+id: ../../../msms2cp.pl.cwl
 inputs:
 - id: msms_output_dot_txt
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TOBIAS_MergePDF.cwl
+id: ../../../TOBIAS_MergePDF.cwl
 inputs:
 - id: input
   doc: '[ [ ...]]  PDF files to join'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_snp_pipeline.sh.cwl
+id: ../../../run_snp_pipeline.sh.cwl
 inputs:
 - id: force
   doc: 'Force processing even when result files already exist and are newer than inputs

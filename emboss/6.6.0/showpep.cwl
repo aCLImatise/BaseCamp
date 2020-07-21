@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/showpep.cwl
+id: ../../../showpep.cwl
 inputs:
 - id: format
   doc: 'menu       [2] Display format (Values: 0 (Enter your own list of things to

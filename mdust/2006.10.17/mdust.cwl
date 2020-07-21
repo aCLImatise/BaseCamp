@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mdust.cwl
+id: ../../../mdust.cwl
 inputs:
 - id: w
   doc: ''

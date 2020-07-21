@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/precheck.py.cwl
+id: ../../../precheck.py.cwl
 inputs:
 - id: min_reads
   doc: 'The minimum number of reads required in each single- stranded family. Default:

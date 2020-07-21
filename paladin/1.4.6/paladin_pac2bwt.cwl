@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paladin_pac2bwt.cwl
+id: ../../../paladin_pac2bwt.cwl
 inputs:
 - id: in_dot_pac
   doc: ''

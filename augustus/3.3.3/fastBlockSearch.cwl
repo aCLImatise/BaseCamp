@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastBlockSearch.cwl
+id: ../../../fastBlockSearch.cwl
 inputs:
 - id: fast_blocks_search
   doc: ''

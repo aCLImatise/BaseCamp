@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dconvlum.cwl
+id: ../../../dconvlum.cwl
 inputs:
 - id: in_file
   doc: VeriLUM characteristic curve file to be converted

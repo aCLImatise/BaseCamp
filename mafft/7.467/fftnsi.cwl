@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fftnsi.cwl
+id: ../../../fftnsi.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

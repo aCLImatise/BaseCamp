@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta2revcom.pl.cwl
+id: ../../../fasta2revcom.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

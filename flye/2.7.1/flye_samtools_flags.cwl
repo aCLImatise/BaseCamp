@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flye_samtools_flags.cwl
+id: ../../../flye_samtools_flags.cwl
 inputs:
 - id: zero_x_one
   doc: PAIRED        .. paired-end (or multiple-segment) sequencing technology

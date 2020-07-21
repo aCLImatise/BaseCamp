@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spankisim_transcripts.cwl
+id: ../../../spankisim_transcripts.cwl
 inputs:
 - id: output_directory_default
   doc: 'Output directory (default: ./sims_out/)'

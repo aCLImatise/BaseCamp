@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rmap_pe.cwl
+id: ../../../rmap_pe.cwl
 inputs:
 - id: output
   doc: 'output file name '

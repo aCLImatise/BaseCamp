@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/beeml2meme.cwl
+id: ../../../beeml2meme.cwl
 inputs:
 - id: bg
   doc: 'file with background frequencies of letters default: uniform background'

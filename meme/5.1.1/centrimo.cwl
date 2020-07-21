@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/centrimo.cwl
+id: ../../../centrimo.cwl
 inputs:
 - id: output_directory_default
   doc: "output directory; default: 'centrimo_out'"

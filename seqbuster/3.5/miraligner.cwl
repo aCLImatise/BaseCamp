@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/miraligner.cwl
+id: ../../../miraligner.cwl
 inputs:
 - id: add
   doc: 'nt allowed for addition processes Default: 3'

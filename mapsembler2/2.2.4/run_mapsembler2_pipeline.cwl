@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_mapsembler2_pipeline.sh.cwl
+id: ../../../run_mapsembler2_pipeline.sh.cwl
 inputs:
 - id: file_containing_fasta
   doc: ': file containing starters (fasta)'

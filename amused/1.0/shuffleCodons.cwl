@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shuffleCodons.rb.cwl
+id: ../../../shuffleCodons.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

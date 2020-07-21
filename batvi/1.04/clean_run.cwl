@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clean_run.sh.cwl
+id: ../../../clean_run.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

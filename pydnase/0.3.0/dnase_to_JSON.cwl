@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dnase_to_JSON.py_output.cwl
+id: ../../../dnase_to_JSON.py_output.cwl
 inputs:
 - id: w
   doc: ''

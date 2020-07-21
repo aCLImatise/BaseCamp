@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simulate_errors.py_output_fasta.cwl
+id: ../../../simulate_errors.py_output_fasta.cwl
 inputs:
 - id: e
   doc: ''

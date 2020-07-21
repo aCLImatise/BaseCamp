@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/asp_cp.cwl
+id: ../../../asp_cp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

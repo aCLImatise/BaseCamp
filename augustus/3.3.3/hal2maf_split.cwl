@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hal2maf_split.pl.cwl
+id: ../../../hal2maf_split.pl.cwl
 inputs:
 - id: hal_file
   doc: F is the input hal file

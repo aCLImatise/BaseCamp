@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/albatradis_annotation.cwl
+id: ../../../albatradis_annotation.cwl
 inputs:
 - id: feature_size
   doc: 'Feature size (default: 198)'

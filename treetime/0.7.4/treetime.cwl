@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treetime.cwl
+id: ../../../treetime.cwl
 inputs:
 - id: tree
   doc: Name of file containing the tree in newick, nexus, or phylip format. If none

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nohup.cwl
+id: ../../../nohup.cwl
 inputs:
 - id: command
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/annotateTranscripts.pl.cwl
+id: ../../../annotateTranscripts.pl.cwl
 inputs:
 - id: no_repeats
   doc: (skip repeat annotation)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools_multicov.cwl
+id: ../../../bedtools_multicov.cwl
 inputs:
 - id: bams
   doc: The bam files.

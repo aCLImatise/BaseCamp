@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/addOligos.pl.cwl
+id: ../../../addOligos.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

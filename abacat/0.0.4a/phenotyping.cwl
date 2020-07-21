@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phenotyping.py.cwl
+id: ../../../phenotyping.py.cwl
 inputs:
 - id: input
   doc: 'Input genome. Must be either: a valid contigs file or a json genome file.'

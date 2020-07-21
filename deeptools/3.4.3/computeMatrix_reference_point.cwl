@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/computeMatrix_reference_point.cwl
+id: ../../../computeMatrix_reference_point.cwl
 inputs:
 - id: regions_filename
   doc: 'File name or names, in BED or GTF format, containing the regions to plot.

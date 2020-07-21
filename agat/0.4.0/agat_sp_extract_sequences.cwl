@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_extract_sequences.pl.cwl
+id: ../../../agat_sp_extract_sequences.pl.cwl
 inputs:
 - id: full
   doc: Boolean - This option allows dealing with multifeature like cds or exon, to

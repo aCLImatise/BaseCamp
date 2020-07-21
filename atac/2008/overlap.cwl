@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/overlap.cwl
+id: ../../../overlap.cwl
 inputs:
 - id: matches_one
   doc: ''

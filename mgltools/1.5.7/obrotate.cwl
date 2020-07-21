@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obrotate.cwl
+id: ../../../obrotate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

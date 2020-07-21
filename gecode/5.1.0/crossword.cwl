@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crossword.cwl
+id: ../../../crossword.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

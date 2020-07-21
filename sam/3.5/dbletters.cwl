@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dbletters.cwl
+id: ../../../dbletters.cwl
 inputs:
 - id: db
   doc: '[-db seq_filen]*     one or more sequence files'

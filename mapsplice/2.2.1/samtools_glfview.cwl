@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools_glfview.cwl
+id: ../../../samtools_glfview.cwl
 inputs:
 - id: glf_view
   doc: ''

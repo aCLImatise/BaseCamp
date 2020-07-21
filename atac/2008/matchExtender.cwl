@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/matchExtender.cwl
+id: ../../../matchExtender.cwl
 inputs:
 - id: no
   doc: ''

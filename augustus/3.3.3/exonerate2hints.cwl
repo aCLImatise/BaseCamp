@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/exonerate2hints.pl.cwl
+id: ../../../exonerate2hints.pl.cwl
 inputs:
 - id: priority
   doc: priority of hint group (default 4)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergesketch.sh.cwl
+id: ../../../mergesketch.sh.cwl
 inputs:
 - id: list_dot
   doc: in= is optional so wildcards may be used.

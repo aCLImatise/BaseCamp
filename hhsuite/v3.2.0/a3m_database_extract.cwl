@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/a3m_database_extract.cwl
+id: ../../../a3m_database_extract.cwl
 inputs:
 - id: i
   doc: ''

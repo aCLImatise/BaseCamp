@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fprotpars.cwl
+id: ../../../fprotpars.cwl
 inputs:
 - id: weights
   doc: properties Phylip weights file (optional)

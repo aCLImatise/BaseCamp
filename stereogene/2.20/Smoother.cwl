@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Smoother.cwl
+id: ../../../Smoother.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

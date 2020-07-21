@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta2esd.cwl
+id: ../../../fasta2esd.cwl
 inputs:
 - id: alphabet
   doc: '[unknown] '

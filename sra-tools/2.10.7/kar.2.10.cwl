@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kar.2.10.7.cwl
+id: ../../../kar.2.10.7.cwl
 inputs:
 - id: create
   doc: 'Create new archive. '

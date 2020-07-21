@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prophyle_propagation_preprocessing.py.cwl
+id: ../../../prophyle_propagation_preprocessing.py.cwl
 inputs:
 - id: rate_sampling_tree
   doc: rate of sampling the tree [no sampling]

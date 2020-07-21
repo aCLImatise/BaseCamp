@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alleleCounter.pl.cwl
+id: ../../../alleleCounter.pl.cwl
 inputs:
 - id: allele_counts_do_tpl
   doc: "Required: -bam      -b      BAM/CRAM file (expects co-located index) - if\

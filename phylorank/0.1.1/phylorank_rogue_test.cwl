@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phylorank_rogue_test.cwl
+id: ../../../phylorank_rogue_test.cwl
 inputs:
 - id: out_group_tax_on
   doc: taxon to use as outgroup (e.g., d__Archaea); imples tree should be rooted

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MapAlignerPoseClustering.cwl
+id: ../../../MapAlignerPoseClustering.cwl
 inputs:
 - id: in
   doc: "*               Input files to align (all must have the same file type) (valid\

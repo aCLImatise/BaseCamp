@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SCFtoCTG.cwl
+id: ../../../SCFtoCTG.cwl
 inputs:
 - id: input_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/yacrd_split.cwl
+id: ../../../yacrd_split.cwl
 inputs:
 - id: input
   doc: path to sequence input (fasta|fastq) compression is autodetect (none|gzip|bzip2|lzma)

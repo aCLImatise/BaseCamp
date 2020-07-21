@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stubmaker.pl.cwl
+id: ../../../stubmaker.pl.cwl
 inputs:
 - id: verbose_outputbe_quiet
   doc: Verbose Outputbe quiet

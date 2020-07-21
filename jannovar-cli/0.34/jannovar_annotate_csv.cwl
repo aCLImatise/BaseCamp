@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jannovar_annotate_csv.cwl
+id: ../../../jannovar_annotate_csv.cwl
 inputs:
 - id: database
   doc: Path to database .ser file

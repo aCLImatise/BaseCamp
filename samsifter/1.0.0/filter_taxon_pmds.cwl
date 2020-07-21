@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_taxon_pmds.cwl
+id: ../../../filter_taxon_pmds.cwl
 inputs:
 - id: input
   doc: 'specify SAM file to be analysed (default: STDIN)'

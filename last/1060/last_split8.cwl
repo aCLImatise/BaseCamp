@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/last_split8.cwl
+id: ../../../last_split8.cwl
 inputs:
 - id: format
   doc: 'output format: MAF, MAF+ (default=MAF+)'

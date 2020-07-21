@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fusionsam2junc_filteranchor_newfmt.cwl
+id: ../../../fusionsam2junc_filteranchor_newfmt.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

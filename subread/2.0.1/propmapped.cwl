@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/propmapped.cwl
+id: ../../../propmapped.cwl
 inputs:
 - id: input_file_containing
   doc: An input file containing read mapping results. Both SAM or BAM formats are

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AccessionToTaxId.cwl
+id: ../../../AccessionToTaxId.cwl
 inputs:
 - id: verbose
   doc: Loud verbosity

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/combineThree_o.py.cwl
+id: ../../../combineThree_o.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

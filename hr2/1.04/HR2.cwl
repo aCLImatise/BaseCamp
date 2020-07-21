@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HR2.exe.cwl
+id: ../../../HR2.exe.cwl
 inputs:
 - id: key_mass_decimals
   doc: key   mass (6 decimals shown)

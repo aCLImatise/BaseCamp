@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tadtool_command.cwl
+id: ../../../tadtool_command.cwl
 inputs:
 - id: plot
   doc: Main interactive TADtool plotting window

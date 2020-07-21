@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/motif.cwl
+id: ../../../motif.cwl
 inputs:
 - id: verbosity
   doc: 'Increase output verbosity (default: None)'

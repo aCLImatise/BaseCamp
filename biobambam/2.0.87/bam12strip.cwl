@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam12strip.cwl
+id: ../../../bam12strip.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

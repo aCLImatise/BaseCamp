@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fdnapenny.cwl
+id: ../../../fdnapenny.cwl
 inputs:
 - id: out_gr_no
   doc: integer    [0] Species number to use as outgroup (Integer 0 or more)

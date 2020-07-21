@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MapCaller.cwl
+id: ../../../MapCaller.cwl
 inputs:
 - id: bwtindexprefix
   doc: BWT_Index_Prefix

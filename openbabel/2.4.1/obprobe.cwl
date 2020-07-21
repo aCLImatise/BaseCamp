@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obprobe.cwl
+id: ../../../obprobe.cwl
 inputs:
 - id: step_size
   doc: step size

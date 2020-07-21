@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/count_seq.cwl
+id: ../../../count_seq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

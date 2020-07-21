@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/weeder2.cwl
+id: ../../../weeder2.cwl
 inputs:
 - id: f
   doc: ''

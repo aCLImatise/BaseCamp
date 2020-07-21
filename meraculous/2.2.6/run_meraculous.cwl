@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_meraculous.sh.cwl
+id: ../../../run_meraculous.sh.cwl
 inputs:
 - id: label
   doc: "<label>                : provide a label name for new runs ( Default: 'run'\

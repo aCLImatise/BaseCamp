@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kallisto_bus.cwl
+id: ../../../kallisto_bus.cwl
 inputs:
 - id: verbose
   doc: Print out progress information every 1M proccessed reads

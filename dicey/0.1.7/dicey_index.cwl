@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dicey_index.cwl
+id: ../../../dicey_index.cwl
 inputs:
 - id: arg_output_file
   doc: '[ --output ] arg (="genome.fm9")  output file'

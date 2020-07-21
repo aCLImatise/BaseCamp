@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf_translate_chars.py.cwl
+id: ../../../maf_translate_chars.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

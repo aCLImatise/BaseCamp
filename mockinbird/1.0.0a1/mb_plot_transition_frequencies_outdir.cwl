@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_plot_transition_frequencies_outdir.cwl
+id: ../../../mb_plot_transition_frequencies_outdir.cwl
 inputs:
 - id: coverage
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nucleoatac_nfr.cwl
+id: ../../../nucleoatac_nfr.cwl
 inputs:
 - id: bed
   doc: Peaks in bed format

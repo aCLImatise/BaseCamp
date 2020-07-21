@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmgs_build.cwl
+id: ../../../hmmgs_build.cwl
 inputs:
 - id: read_file
   doc: 'fasta or fastq files containing the reads to build the graph from '

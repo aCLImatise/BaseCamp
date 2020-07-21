@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/modifymodel.cwl
+id: ../../../modifymodel.cwl
 inputs:
 - id: no
   doc: ''

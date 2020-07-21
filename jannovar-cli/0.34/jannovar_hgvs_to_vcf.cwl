@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jannovar_hgvs_to_vcf.cwl
+id: ../../../jannovar_hgvs_to_vcf.cwl
 inputs:
 - id: reference_fast_a
   doc: Path to reference FASTA file

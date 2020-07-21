@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamToPsl.cwl
+id: ../../../bamToPsl.cwl
 inputs:
 - id: dots
   doc: '- output progress dot(.) every N alignments processed'

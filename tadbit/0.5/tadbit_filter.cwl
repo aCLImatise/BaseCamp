@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tadbit_filter.cwl
+id: ../../../tadbit_filter.cwl
 inputs:
 - id: force
   doc: overwrite previously run job

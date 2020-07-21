@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkPeakFile.pl.cwl
+id: ../../../checkPeakFile.pl.cwl
 inputs:
 - id: peak_slash_pos_file
   doc: ''

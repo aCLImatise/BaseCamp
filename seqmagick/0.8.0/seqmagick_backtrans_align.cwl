@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqmagick_backtrans_align.cwl
+id: ../../../seqmagick_backtrans_align.cwl
 inputs:
 - id: out_file
   doc: 'Output destination. Default: STDOUT'

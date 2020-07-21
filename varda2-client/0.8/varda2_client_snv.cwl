@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varda2_client_snv.cwl
+id: ../../../varda2_client_snv.cwl
 inputs:
 - id: position
   doc: Locus position

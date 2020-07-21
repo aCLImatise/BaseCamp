@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/motus_calc_motu.cwl
+id: ../../../motus_calc_motu.cwl
 inputs:
 - id: str_sample_name
   doc: STR   sample name

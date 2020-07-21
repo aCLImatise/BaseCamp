@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arcs.cwl
+id: ../../../arcs.cwl
 inputs:
 - id: fof_name
   doc: text file listing input filenames

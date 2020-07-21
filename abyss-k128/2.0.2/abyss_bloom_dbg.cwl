@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_bloom_dbg.cwl
+id: ../../../abyss_bloom_dbg.cwl
 inputs:
 - id: __assemblyfasta
   doc: '[options] <FASTQ> [FASTQ]... > assembly.fasta'

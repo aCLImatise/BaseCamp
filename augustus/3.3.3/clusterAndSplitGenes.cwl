@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clusterAndSplitGenes.pl.cwl
+id: ../../../clusterAndSplitGenes.pl.cwl
 inputs:
 - id: verbose
   doc: 'threshold: minimal number of dependencies between two genes in order to force

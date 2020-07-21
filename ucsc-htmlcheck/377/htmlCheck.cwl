@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htmlCheck.cwl
+id: ../../../htmlCheck.cwl
 inputs:
 - id: how
   doc: ''

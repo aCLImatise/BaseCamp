@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/psass_pileup.cwl
+id: ../../../psass_pileup.cwl
 inputs:
 - id: alignment_files_dot_dot_dot
   doc: ''

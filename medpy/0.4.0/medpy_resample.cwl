@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_resample.py_spacing.cwl
+id: ../../../medpy_resample.py_spacing.cwl
 inputs:
 - id: o
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfutils.pl_qstats_vcfutils.pl.cwl
+id: ../../../vcfutils.pl_qstats_vcfutils.pl.cwl
 inputs:
 - id: no
   doc: ''

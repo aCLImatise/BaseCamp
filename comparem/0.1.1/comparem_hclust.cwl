@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/comparem_hclust.cwl
+id: ../../../comparem_hclust.cwl
 inputs:
 - id: method
   doc: 'clustering method to use. (default: average)'

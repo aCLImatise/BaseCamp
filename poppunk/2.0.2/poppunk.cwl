@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/poppunk.cwl
+id: ../../../poppunk.cwl
 inputs:
 - id: easy_run
   doc: Create clusters from assemblies with default settings

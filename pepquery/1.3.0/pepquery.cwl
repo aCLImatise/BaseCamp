@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pepquery.cwl
+id: ../../../pepquery.cwl
 inputs:
 - id: aa
   doc: Whether or not to consider aa substitution modifications when perform modification

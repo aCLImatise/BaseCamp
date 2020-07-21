@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FGS_gff.py.cwl
+id: ../../../FGS_gff.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

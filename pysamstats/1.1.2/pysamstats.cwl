@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pysamstats.cwl
+id: ../../../pysamstats.cwl
 inputs:
 - id: type
   doc: 'Type of statistics to print, one of: alignment_binned, baseq, baseq_ext, baseq_ext_strand,

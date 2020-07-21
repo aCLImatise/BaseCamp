@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk_pretty.cwl
+id: ../../../csvtk_pretty.cwl
 inputs:
 - id: align_right
   doc: align right

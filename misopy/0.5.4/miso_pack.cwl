@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/miso_pack.cwl
+id: ../../../miso_pack.cwl
 inputs:
 - id: pack
   doc: Pack a MISO output containing dir(s). Takes as input a directory or a comma-separated

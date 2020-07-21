@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compalign.cwl
+id: ../../../compalign.cwl
 inputs:
 - id: only_compare_marked
   doc: ': only compare under marked #=CS consensus structure'

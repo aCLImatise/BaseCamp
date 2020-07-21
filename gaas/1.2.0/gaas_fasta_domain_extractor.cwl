@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_fasta_domain_extractor.pl.cwl
+id: ../../../gaas_fasta_domain_extractor.pl.cwl
 inputs:
 - id: i
   doc: ''

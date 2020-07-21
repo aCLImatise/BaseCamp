@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam2mr.cwl
+id: ../../../bam2mr.cwl
 inputs:
 - id: output
   doc: 'Name of output file '

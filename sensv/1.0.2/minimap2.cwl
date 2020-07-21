@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/minimap2.cwl
+id: ../../../minimap2.cwl
 inputs:
 - id: use_homopolymercompressed_kmer
   doc: use homopolymer-compressed k-mer (preferrable for PacBio)

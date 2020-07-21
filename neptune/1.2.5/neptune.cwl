@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/neptune.cwl
+id: ../../../neptune.cwl
 inputs:
 - id: inclusion
   doc: The inclusion targets in FASTA format.

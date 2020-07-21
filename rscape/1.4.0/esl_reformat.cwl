@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_reformat.cwl
+id: ../../../esl_reformat.cwl
 inputs:
 - id: convert_dna_alphabet
   doc: ': convert to DNA alphabet (U->T)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dr_disco_integrate.cwl
+id: ../../../dr_disco_integrate.cwl
 inputs:
 - id: gtf
   doc: Use gene annotation for estimating fusion genes and improve classification

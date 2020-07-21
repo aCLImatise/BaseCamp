@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/illuminapairedend.cwl
+id: ../../../illuminapairedend.cwl
 inputs:
 - id: fast_a_output
   doc: Output sequences in obitools fasta format

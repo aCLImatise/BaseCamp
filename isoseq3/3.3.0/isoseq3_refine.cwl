@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/isoseq3_refine.cwl
+id: ../../../isoseq3_refine.cwl
 inputs:
 - id: min_polya_length
   doc: INT   Minimum poly(A) tail length. [20]

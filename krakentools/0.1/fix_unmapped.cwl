@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fix_unmapped.py.cwl
+id: ../../../fix_unmapped.py.cwl
 inputs:
 - id: input_file
   doc: Input file containing accession IDs to map. Multi- column files accepted. Only

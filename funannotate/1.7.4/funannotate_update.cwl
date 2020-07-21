@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/funannotate_update.cwl
+id: ../../../funannotate_update.cwl
 inputs:
 - id: fast_a
   doc: Genome in FASTA format

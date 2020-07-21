@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyrsa_verify.cwl
+id: ../../../pyrsa_verify.cwl
 inputs:
 - id: input
   doc: Name of the file to verify. Reads from stdin if not specified.

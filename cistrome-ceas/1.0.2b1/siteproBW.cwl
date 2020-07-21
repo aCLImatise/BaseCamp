@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/siteproBW.cwl
+id: ../../../siteproBW.cwl
 inputs:
 - id: bw
   doc: input bigWIG file. Multiple bigWIG files can be given via -w (--bw) individually

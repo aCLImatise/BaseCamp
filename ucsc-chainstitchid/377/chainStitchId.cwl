@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chainStitchId.cwl
+id: ../../../chainStitchId.cwl
 inputs:
 - id: in_dot_chain
   doc: ''

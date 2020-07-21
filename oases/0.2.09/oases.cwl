@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/oases.cwl
+id: ../../../oases.cwl
 inputs:
 - id: unused_reads
   doc: ': export unused reads in UnusedReads.fa file (default: no)'

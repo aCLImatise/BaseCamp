@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxmapper.cwl
+id: ../../../taxmapper.cwl
 inputs:
 - id: v
   doc: ''

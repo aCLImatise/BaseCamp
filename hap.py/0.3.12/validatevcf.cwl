@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/validatevcf.cwl
+id: ../../../validatevcf.cwl
 inputs:
 - id: input_vcf
   doc: VCF file to validate.

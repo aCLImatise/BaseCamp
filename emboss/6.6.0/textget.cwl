@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/textget.cwl
+id: ../../../textget.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/krocus.cwl
+id: ../../../krocus.cwl
 inputs:
 - id: filtered_reads_file
   doc: 'Filename to save matching reads to (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scssim_learn.cwl
+id: ../../../scssim_learn.cwl
 inputs:
 - id: bam
   doc: normal BAM file

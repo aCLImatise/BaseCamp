@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedWeedOverlapping.cwl
+id: ../../../bedWeedOverlapping.cwl
 inputs:
 - id: max_overlap
   doc: '- maximum overlapping ratio, default 0 (any overlap)'

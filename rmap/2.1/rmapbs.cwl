@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rmapbs.cwl
+id: ../../../rmapbs.cwl
 inputs:
 - id: output
   doc: 'output file name '

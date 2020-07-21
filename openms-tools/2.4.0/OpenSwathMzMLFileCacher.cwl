@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/OpenSwathMzMLFileCacher.cwl
+id: ../../../OpenSwathMzMLFileCacher.cwl
 inputs:
 - id: in
   doc: "*                Input mzML file (valid formats: 'mzML', 'sqMass')"

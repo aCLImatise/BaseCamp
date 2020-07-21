@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_auth_post_oauth_token.cwl
+id: ../../../hca_auth_post_oauth_token.cwl
 inputs:
 - id: log_level
   doc: ''

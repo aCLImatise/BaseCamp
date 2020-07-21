@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plot_semivariogram.py.cwl
+id: ../../../plot_semivariogram.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

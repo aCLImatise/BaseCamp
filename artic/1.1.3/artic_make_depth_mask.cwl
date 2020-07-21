@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/artic_make_depth_mask.cwl
+id: ../../../artic_make_depth_mask.cwl
 inputs:
 - id: warn_rg_coverage
   doc: if set, a warning will be issued if the BAM file has pileup regions where coverage

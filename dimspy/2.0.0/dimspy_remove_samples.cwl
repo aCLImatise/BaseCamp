@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dimspy_remove_samples.cwl
+id: ../../../dimspy_remove_samples.cwl
 inputs:
 - id: input
   doc: HDF5 file that contains a peak matrix object or list of peaklist objects from

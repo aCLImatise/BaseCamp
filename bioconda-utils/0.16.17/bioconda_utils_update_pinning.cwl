@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioconda_utils_update_pinning.cwl
+id: ../../../bioconda_utils_update_pinning.cwl
 inputs:
 - id: bump_only_python
   doc: 'Bump package build numbers even if the only applicable pinning change is the

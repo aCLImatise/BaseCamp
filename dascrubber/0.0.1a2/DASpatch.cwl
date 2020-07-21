@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DASpatch.cwl
+id: ../../../DASpatch.cwl
 inputs:
 - id: v
   doc: ''

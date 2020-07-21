@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pirs_simulate.cwl
+id: ../../../pirs_simulate.cwl
 inputs:
 - id: set_read_length
   doc: Set read length

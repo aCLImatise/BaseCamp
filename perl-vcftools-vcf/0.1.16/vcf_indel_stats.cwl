@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_indel_stats.cwl
+id: ../../../vcf_indel_stats.cwl
 inputs:
 - id: in_dot_vcf
   doc: ''

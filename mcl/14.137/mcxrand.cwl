@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mcxrand.cwl
+id: ../../../mcxrand.cwl
 inputs:
 - id: imx
   doc: ''

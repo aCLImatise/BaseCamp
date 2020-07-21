@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lofreq2_somatic.py.cwl
+id: ../../../lofreq2_somatic.py.cwl
 inputs:
 - id: verbose
   doc: Be verbose

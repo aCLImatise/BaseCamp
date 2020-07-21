@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkm_taxon_set.cwl
+id: ../../../checkm_taxon_set.cwl
 inputs:
 - id: quiet
   doc: suppress console output

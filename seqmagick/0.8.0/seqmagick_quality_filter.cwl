@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqmagick_quality_filter.cwl
+id: ../../../seqmagick_quality_filter.cwl
 inputs:
 - id: input_qual
   doc: The quality scores associated with the input file. Only used if input file

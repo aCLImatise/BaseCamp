@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastspar_bootstrap.cwl
+id: ../../../fastspar_bootstrap.cwl
 inputs:
 - id: c_slash_otu_table
   doc: OTU input table

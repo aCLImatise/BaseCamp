@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_oncokb.py.cwl
+id: ../../../get_oncokb.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the known fusion genes are downloaded, e.g.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmtkEMtrain.cwl
+id: ../../../gmtkEMtrain.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

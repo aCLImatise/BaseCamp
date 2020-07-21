@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools_fisher.cwl
+id: ../../../bedtools_fisher.cwl
 inputs:
 - id: merge_overlapping_intervals
   doc: Merge overlapping intervals before - looking at overlap.

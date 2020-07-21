@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getDiffExpression.pl.cwl
+id: ../../../getDiffExpression.pl.cwl
 inputs:
 - id: rna
   doc: (for analyzeRNA.pl formatted input, default)

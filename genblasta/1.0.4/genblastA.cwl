@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genblastA.cwl
+id: ../../../genblastA.cwl
 inputs:
 - id: search_program_used
   doc: Search program used to produce blast-format sequence alignments, can be either

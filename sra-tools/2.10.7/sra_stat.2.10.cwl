@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sra_stat.2.10.7.cwl
+id: ../../../sra_stat.2.10.7.cwl
 inputs:
 - id: xml
   doc: 'output as XML, default is text '

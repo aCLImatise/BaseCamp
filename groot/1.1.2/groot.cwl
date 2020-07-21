@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/groot.cwl
+id: ../../../groot.cwl
 inputs:
 - id: index_dir
   doc: directory for to write/read the GROOT index files

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_gd2topng.cwl
+id: ../../../_gd2topng.cwl
 inputs:
 - id: gd_two_to_png
   doc: ''

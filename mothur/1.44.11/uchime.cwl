@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uchime.cwl
+id: ../../../uchime.cwl
 inputs:
 - id: x_a
   doc: help

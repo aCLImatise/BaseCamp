@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kmds.cwl
+id: ../../../kmds.cwl
 inputs:
 - id: arg_dsm_kmer
   doc: '[ --kmers ] arg       dsm kmer output file (not needed if using  --mds_concat)'

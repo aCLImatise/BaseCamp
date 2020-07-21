@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_wait.cwl
+id: ../../../arb_wait.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

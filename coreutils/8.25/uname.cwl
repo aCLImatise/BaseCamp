@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uname.cwl
+id: ../../../uname.cwl
 inputs:
 - id: all
   doc: 'all information, in the following order, except omit -p and -i if unknown:'

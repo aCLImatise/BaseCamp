@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/comparePolishes.cwl
+id: ../../../comparePolishes.cwl
 inputs:
 - id: i
   doc: ''

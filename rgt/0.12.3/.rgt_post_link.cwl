@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/.rgt_post_link.sh.cwl
+id: ../../../.rgt_post_link.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unfazed.cwl
+id: ../../../unfazed.cwl
 inputs:
 - id: dn_ms
   doc: 'valid VCF OR BED file of the DNMs of interest> If BED, must contain chrom,

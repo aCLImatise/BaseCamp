@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_genetrees_locus_stats.cwl
+id: ../../../phyluce_genetrees_locus_stats.cwl
 inputs:
 - id: config
   doc: The gene tree configuration file

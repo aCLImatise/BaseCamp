@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cpptraj_image.cwl
+id: ../../../cpptraj_image.cwl
 inputs:
 - id: config
   doc: Configuration file

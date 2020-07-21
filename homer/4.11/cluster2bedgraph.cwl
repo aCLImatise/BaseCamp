@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cluster2bedgraph.pl.cwl
+id: ../../../cluster2bedgraph.pl.cwl
 inputs:
 - id: cluster_distance_file
   doc: ''

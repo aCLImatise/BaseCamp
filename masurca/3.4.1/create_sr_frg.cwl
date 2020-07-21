@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_sr_frg.pl.cwl
+id: ../../../create_sr_frg.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

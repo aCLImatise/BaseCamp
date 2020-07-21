@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dca.cwl
+id: ../../../dca.cwl
 inputs:
 - id: norm_type
   doc: 'Type of size factor estimation. Possible values: deseq, zheng. (default: zheng)'

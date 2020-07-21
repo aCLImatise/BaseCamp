@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/debinhex.pl.cwl
+id: ../../../debinhex.pl.cwl
 inputs:
 - id: output_given_directory
   doc: Output in given directory (default outputs in file's directory)

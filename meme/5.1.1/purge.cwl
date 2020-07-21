@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/purge.cwl
+id: ../../../purge.cwl
 inputs:
 - id: file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alfred_consensus.cwl
+id: ../../../alfred_consensus.cwl
 inputs:
 - id: f
   doc: '[ --format ] arg (=bam)            input format [bam|fasta]'

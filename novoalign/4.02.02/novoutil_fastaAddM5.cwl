@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/novoutil_fastaAddM5.cwl
+id: ../../../novoutil_fastaAddM5.cwl
 inputs:
 - id: in
   doc: is the fasta files to be processed. Input files may be compressed with gzip

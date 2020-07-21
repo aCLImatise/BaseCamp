@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_non_conversion.cwl
+id: ../../../filter_non_conversion.cwl
 inputs:
 - id: bismark
   doc: ''

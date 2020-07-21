@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gatech_pmp2hints.pl.cwl
+id: ../../../gatech_pmp2hints.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

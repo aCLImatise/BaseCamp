@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/socru_rebuild_profile.cwl
+id: ../../../socru_rebuild_profile.cwl
 inputs:
 - id: output_file
   doc: 'Output filename (default: updated_profile.txt)'

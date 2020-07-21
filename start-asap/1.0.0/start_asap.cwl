@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/start_asap.cwl
+id: ../../../start_asap.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

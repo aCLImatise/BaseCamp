@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnftools_validate.cwl
+id: ../../../rnftools_validate.cwl
 inputs:
 - id: fast_q
   doc: FASTQ file to be validated.

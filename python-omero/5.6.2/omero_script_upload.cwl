@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_script_upload.cwl
+id: ../../../omero_script_upload.cwl
 inputs:
 - id: official
   doc: If set, creates a system script. Must be an admin

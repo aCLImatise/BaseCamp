@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ttest.py.cwl
+id: ../../../ttest.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

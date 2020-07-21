@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_list_short_introns.pl.cwl
+id: ../../../agat_sp_list_short_introns.pl.cwl
 inputs:
 - id: ref_file
   doc: Input GTF/GFF file.

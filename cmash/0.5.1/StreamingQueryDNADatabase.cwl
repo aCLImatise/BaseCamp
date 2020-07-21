@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/StreamingQueryDNADatabase.py.cwl
+id: ../../../StreamingQueryDNADatabase.py.cwl
 inputs:
 - id: threads
   doc: 'Number of threads to use (default: 8)'

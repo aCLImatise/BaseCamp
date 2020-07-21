@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coordinate_adapter.sh.cwl
+id: ../../../coordinate_adapter.sh.cwl
 inputs:
 - id: usage_message
   doc: usage message

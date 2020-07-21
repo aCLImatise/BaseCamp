@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_auth_delete_v1_group.cwl
+id: ../../../hca_auth_delete_v1_group.cwl
 inputs:
 - id: group_id
   doc: The name of the group.

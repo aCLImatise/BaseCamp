@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/aadder_run.cwl
+id: ../../../aadder_run.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

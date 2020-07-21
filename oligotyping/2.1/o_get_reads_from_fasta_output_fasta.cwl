@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o_get_reads_from_fasta_output_fasta.cwl
+id: ../../../o_get_reads_from_fasta_output_fasta.cwl
 inputs:
 - id: s
   doc: ''

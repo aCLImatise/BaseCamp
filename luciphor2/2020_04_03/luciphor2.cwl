@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/luciphor2.cwl
+id: ../../../luciphor2.cwl
 inputs:
 - id: jar
   doc: ''

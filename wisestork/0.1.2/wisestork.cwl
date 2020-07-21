@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wisestork.cwl
+id: ../../../wisestork.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

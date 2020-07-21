@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phd2afg.cwl
+id: ../../../phd2afg.cwl
 inputs:
 - id: directory_where_located
   doc: directory where phd files are located

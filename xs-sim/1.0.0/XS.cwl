@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/XS.cwl
+id: ../../../XS.cwl
 inputs:
 - id: verbose_mode
   doc: verbose mode

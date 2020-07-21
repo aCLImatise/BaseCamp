@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parallel.cwl
+id: ../../../parallel.cwl
 inputs:
 - id: command
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_join.cwl
+id: ../../../fastq_join.cwl
 inputs:
 - id: o
   doc: ''

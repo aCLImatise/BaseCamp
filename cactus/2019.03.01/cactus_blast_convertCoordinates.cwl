@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cactus_blast_convertCoordinates.cwl
+id: ../../../cactus_blast_convertCoordinates.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

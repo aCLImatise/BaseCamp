@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CRISPResso.cwl
+id: ../../../CRISPResso.cwl
 inputs:
 - id: split_paired_end
   doc: 'Splits a single fastq file contating paired end reads in two files before

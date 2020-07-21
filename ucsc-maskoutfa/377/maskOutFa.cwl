@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maskOutFa.cwl
+id: ../../../maskOutFa.cwl
 inputs:
 - id: soft
   doc: '- puts masked parts in lower case other in upper.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hp_predict_haplo.cwl
+id: ../../../hp_predict_haplo.cwl
 inputs:
 - id: fq_one
   doc: Fastq file with read 1

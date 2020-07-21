@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tpp_models.pl.cwl
+id: ../../../tpp_models.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

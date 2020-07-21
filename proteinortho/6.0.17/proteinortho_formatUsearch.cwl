@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteinortho_formatUsearch.pl.cwl
+id: ../../../proteinortho_formatUsearch.pl.cwl
 inputs:
 - id: no
   doc: ''

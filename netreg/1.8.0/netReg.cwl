@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/netReg.cwl
+id: ../../../netReg.cwl
 inputs:
 - id: arg_filename_design
   doc: '[ --design ] arg                  Filename of the design matrix X.'

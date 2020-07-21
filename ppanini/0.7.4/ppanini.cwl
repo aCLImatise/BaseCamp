@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ppanini.cwl
+id: ../../../ppanini.cwl
 inputs:
 - id: input_table
   doc: 'REQUIRED: Gene abundance table with metadata'

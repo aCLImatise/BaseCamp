@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cd_hit_clstr_2_blm8.pl.cwl
+id: ../../../cd_hit_clstr_2_blm8.pl.cwl
 inputs:
 - id: no
   doc: ''

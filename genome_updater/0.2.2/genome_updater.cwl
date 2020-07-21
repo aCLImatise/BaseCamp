@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genome_updater.sh.cwl
+id: ../../../genome_updater.sh.cwl
 inputs:
 - id: print_debug_information
   doc: print debug information and exit

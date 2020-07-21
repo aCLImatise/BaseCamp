@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/entropy_score.cwl
+id: ../../../entropy_score.cwl
 inputs:
 - id: nowrap
   doc: Use the actual input coordinates without any wraparound that would be needed

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dimspy_sample_filter.cwl
+id: ../../../dimspy_sample_filter.cwl
 inputs:
 - id: input
   doc: HDF5 file or tab-delimited file that contains a peak matrix.

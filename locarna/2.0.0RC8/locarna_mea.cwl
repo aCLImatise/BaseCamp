@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/locarna_mea.pl.cwl
+id: ../../../locarna_mea.pl.cwl
 inputs:
 - id: man
   doc: documentation

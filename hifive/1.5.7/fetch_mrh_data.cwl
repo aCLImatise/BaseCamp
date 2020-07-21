@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fetch_mrh_data.cwl
+id: ../../../fetch_mrh_data.cwl
 inputs:
 - id: chrom
   doc: The first region chromosome.

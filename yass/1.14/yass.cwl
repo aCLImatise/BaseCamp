@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/yass.cwl
+id: ../../../yass.cwl
 inputs:
 - id: display_alignment_positions
   doc: '0 : Display alignment positions (kept for compatibility) 1 : Display alignment

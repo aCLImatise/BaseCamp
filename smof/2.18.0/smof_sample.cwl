@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof_sample.cwl
+id: ../../../smof_sample.cwl
 inputs:
 - id: number
   doc: sample size (default=1)

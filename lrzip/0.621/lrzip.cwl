@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lrzip.cwl
+id: ../../../lrzip.cwl
 inputs:
 - id: check
   doc: check integrity of file written on decompression

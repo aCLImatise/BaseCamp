@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/json2gff_ARGS.cwl
+id: ../../../json2gff_ARGS.cwl
 inputs:
 - id: json_two_gff
   doc: ''

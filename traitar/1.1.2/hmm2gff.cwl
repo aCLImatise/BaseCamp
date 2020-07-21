@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmm2gff.py.cwl
+id: ../../../hmm2gff.py.cwl
 inputs:
 - id: map
   doc: ''

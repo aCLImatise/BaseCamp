@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/capC_MAP.cwl
+id: ../../../capC_MAP.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

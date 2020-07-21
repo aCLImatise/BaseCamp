@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/revtrans_jarmo.py.cwl
+id: ../../../revtrans_jarmo.py.cwl
 inputs:
 - id: gap_in
   doc: Specify gap characters in the input sequences. Default is '.-~'

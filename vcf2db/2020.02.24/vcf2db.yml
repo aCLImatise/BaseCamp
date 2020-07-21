@@ -1,0 +1,85 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: Take
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: a
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: VCF
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: and
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: create
+  optional: false
+- !Positional
+  description: ''
+  position: 5
+  name: a
+  optional: false
+- !Positional
+  description: ''
+  position: 6
+  name: gemini
+  optional: false
+- !Positional
+  description: ''
+  position: 7
+  name: compatible
+  optional: false
+- !Positional
+  description: ''
+  position: 8
+  name: database
+  optional: false
+named:
+- !Flag
+  description: sample columns to expand into their own tables
+  synonyms:
+  - --expand
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? gt_ref_depths
+      ? gt_types
+      ? gt_quals
+      ? gt_depths
+      ? gt_alt_depths
+      ? gt_alt_freqs
+  optional: true
+command:
+- vcf2db.py
+parent:
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: \nTake a VCF and create a gemini compatible database\n\n      \
+  \ [-h] [--a-ok A_OK] [-e INFO_EXCLUDE] [--impacts-field IMPACTS_FIELD]\n       [--legacy-compression]\n\
+  \       [--expand {gt_depths,gt_ref_depths,gt_alt_freqs,gt_alt_depths,gt_quals,gt_types}]\n\
+  \       VCF ped db\n\npositional arguments:\n  VCF\n  ped\n  db\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --a-ok A_OK        \
+  \   list of info names to include even with Number=A (will\n                   \
+  \     error if they have > 1 value\n  -e INFO_EXCLUDE, --info-exclude INFO_EXCLUDE\n\
+  \                        don't save this field to the database. May be\n       \
+  \                 specified multiple times.\n  --impacts-field IMPACTS_FIELD\n \
+  \                       this field should be propagated to the variant_impacts\n\
+  \                        table. by default, only CSQ/EFF/ANN fields are added.\n\
+  \                        the field can be suffixed with a type of ':i' or ':f'\n\
+  \                        to indicate int or float to override the default of\n \
+  \                       string. e.g. AF:f\n  --legacy-compression\n  --expand {gt_depths,gt_ref_depths,gt_alt_freqs,gt_alt_depths,gt_quals,gt_types}\n\
+  \                        sample columns to expand into their own tables\n"
+generated_using:
+- --help

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/eufindtRNA.cwl
+id: ../../../eufindtRNA.cwl
 inputs:
 - id: options
   doc: ''

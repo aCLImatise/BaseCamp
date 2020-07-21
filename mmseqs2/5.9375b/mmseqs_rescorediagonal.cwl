@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_rescorediagonal.cwl
+id: ../../../mmseqs_rescorediagonal.cwl
 inputs:
 - id: add_self_matches
   doc: false           artificially add entries of queries with themselves (for clustering)

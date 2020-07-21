@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/knock_knock_build_targets.cwl
+id: ../../../knock_knock_build_targets.cwl
 inputs:
 - id: project_directory
   doc: the base directory to store input data, reference annotations, and analysis

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmeralign_seqfile.cwl
+id: ../../../hmmeralign_seqfile.cwl
 inputs:
 - id: options
   doc: ''

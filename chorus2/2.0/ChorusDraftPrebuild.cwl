@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ChorusDraftPrebuild.cwl
+id: ../../../ChorusDraftPrebuild.cwl
 inputs:
 - id: input
   doc: Fasta format input file contains short sequences

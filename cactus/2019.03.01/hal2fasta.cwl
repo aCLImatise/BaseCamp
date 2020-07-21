@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hal2fasta.cwl
+id: ../../../hal2fasta.cwl
 inputs:
 - id: in_hal_path
   doc: ''

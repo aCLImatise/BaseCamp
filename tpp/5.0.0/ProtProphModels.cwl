@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ProtProphModels.pl.cwl
+id: ../../../ProtProphModels.pl.cwl
 inputs:
 - id: _specify_file
   doc: -- Specify protXML file to process.

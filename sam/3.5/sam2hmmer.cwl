@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sam2hmmer.cwl
+id: ../../../sam2hmmer.cwl
 inputs:
 - id: option
   doc: ''

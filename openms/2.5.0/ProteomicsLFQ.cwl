@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ProteomicsLFQ.cwl
+id: ../../../ProteomicsLFQ.cwl
 inputs:
 - id: in
   doc: "*                                           Input files (valid formats: 'mzML')"

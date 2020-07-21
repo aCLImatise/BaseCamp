@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/srf2fasta.cwl
+id: ../../../srf2fasta.cwl
 inputs:
 - id: c
   doc: ''

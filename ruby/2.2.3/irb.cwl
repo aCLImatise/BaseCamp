@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/irb.cwl
+id: ../../../irb.cwl
 inputs:
 - id: program_file
   doc: ''

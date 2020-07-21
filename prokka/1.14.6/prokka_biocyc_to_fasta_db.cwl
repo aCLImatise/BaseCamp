@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prokka_biocyc_to_fasta_db.cwl
+id: ../../../prokka_biocyc_to_fasta_db.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_seqconvert.pl.cwl
+id: ../../../bp_seqconvert.pl.cwl
 inputs:
 - id: from
   doc: ''

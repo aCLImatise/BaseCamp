@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/haphpipe_assemble_01.cwl
+id: ../../../haphpipe_assemble_01.cwl
 inputs:
 - id: read_one
   doc: ''

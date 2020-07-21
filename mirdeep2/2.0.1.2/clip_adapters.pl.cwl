@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clip_adapters.pl.orig.cwl
+id: ../../../clip_adapters.pl.orig.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

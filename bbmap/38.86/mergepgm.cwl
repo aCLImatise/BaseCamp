@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergepgm.sh.cwl
+id: ../../../mergepgm.sh.cwl
 inputs:
 - id: in
   doc: ''

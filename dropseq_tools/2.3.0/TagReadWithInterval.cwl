@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TagReadWithInterval.cwl
+id: ../../../TagReadWithInterval.cwl
 inputs:
 - id: default_g
   doc: (default 4g)

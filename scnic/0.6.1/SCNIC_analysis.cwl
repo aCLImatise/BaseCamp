@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SCNIC_analysis.py.cwl
+id: ../../../SCNIC_analysis.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

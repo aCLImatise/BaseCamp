@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ProbeMatch.cwl
+id: ../../../ProbeMatch.cwl
 inputs:
 - id: max_dist
   doc: Give a max distance

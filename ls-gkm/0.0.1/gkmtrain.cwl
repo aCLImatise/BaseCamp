@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gkmtrain.cwl
+id: ../../../gkmtrain.cwl
 inputs:
 - id: set_function_default
   doc: '<0 ~ 5>   set kernel function (default: 4 wgkm) NOTE: RBF kernels (3 and 5)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/edlib_aligner.cwl
+id: ../../../edlib_aligner.cwl
 inputs:
 - id: specified_there_will
   doc: If specified, there will be no score or alignment output (silent mode).

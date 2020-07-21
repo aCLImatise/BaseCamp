@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_input.py.cwl
+id: ../../../filter_input.py.cwl
 inputs:
 - id: paired_end_one_dot_fast_a
   doc: ''

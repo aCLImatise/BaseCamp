@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gotree_support_round.cwl
+id: ../../../gotree_support_round.cwl
 inputs:
 - id: precision
   doc: Rounding support precision (x means 10^-x) (default 3)

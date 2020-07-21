@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SeqSplitter.py.cwl
+id: ../../../SeqSplitter.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

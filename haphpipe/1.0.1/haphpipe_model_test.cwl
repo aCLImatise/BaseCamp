@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/haphpipe_model_test.cwl
+id: ../../../haphpipe_model_test.cwl
 inputs:
 - id: seqs
   doc: Alignment in FASTA or PHYLIP format

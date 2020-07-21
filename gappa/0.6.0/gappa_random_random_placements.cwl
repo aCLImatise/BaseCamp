@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gappa_random_random_placements.cwl
+id: ../../../gappa_random_random_placements.cwl
 inputs:
 - id: reference_tree
   doc: REQUIRED File containing a reference tree in newick format.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_dida_OPTION.cwl
+id: ../../../abyss_dida_OPTION.cwl
 inputs:
 - id: readlink
   doc: ''

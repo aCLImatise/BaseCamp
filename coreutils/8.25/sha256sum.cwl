@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sha256sum.cwl
+id: ../../../sha256sum.cwl
 inputs:
 - id: binary
   doc: read in binary mode

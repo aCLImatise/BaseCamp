@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/exploc_p.cwl
+id: ../../../exploc_p.cwl
 inputs:
 - id: man
   doc: full documentation

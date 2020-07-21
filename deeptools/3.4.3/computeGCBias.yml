@@ -1,0 +1,181 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'file, -b bam file Sorted BAM file. (default: None)'
+  synonyms:
+  - --bamfile
+  args: !SimpleFlagArg
+    name: bam
+  optional: true
+- !Flag
+  description: 'The effective genome size is the portion of the genome that is mappable.
+    Large fractions of the genome are stretches of NNNN that should be discarded.
+    Also, if repetitive regions were not included in the mapping of reads, the effective
+    genome size needs to be adjusted accordingly. A table of values is available here:
+    http ://deeptools.readthedocs.io/en/latest/content/feature/ effectiveGenomeSize.html
+    . (default: None)'
+  synonyms:
+  - --effectiveGenomeSize
+  args: !SimpleFlagArg
+    name: EFFECTIVEGENOMESIZE
+  optional: true
+- !Flag
+  description: 'FILE, -g 2bit FILE Genome in two bit format. Most genomes can be found
+    here: http://hgdownload.cse.ucsc.edu/gbdb/ Search for the .2bit ending. Otherwise,
+    fasta files can be converted to 2bit using the UCSC programm called faToTwoBit
+    available for different plattforms at http://hgdownload.cse.ucsc.edu/admin/exe/
+    (default: None)'
+  synonyms:
+  - --genome
+  args: !SimpleFlagArg
+    name: 2bit
+  optional: true
+- !Flag
+  description: 'Path to save the file containing the observed and expected read frequencies
+    per %GC-content. This file is needed to run the correctGCBias tool. This is a
+    text file. (default: None)'
+  synonyms:
+  - --GCbiasFrequenciesFile
+  - -freq
+  - -o
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Number of processors to use. Type "max/2" to use half the maximum
+    number of processors or "max" to use all available processors. (Default: 1)'
+  synonyms:
+  - --numberOfProcessors
+  - -p
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Set to see processing messages. (default: False)'
+  synonyms:
+  - --verbose
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'NAME  If given, a diagnostic image summarizing the GC-bias will be
+    saved. (default: None)'
+  synonyms:
+  - --biasPlot
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'image format type. If given, this option overrides the image format
+    based on the plotFile ending. The available options are: "png", "eps", "pdf",
+    "plotly" and "svg" (default: None)'
+  synonyms:
+  - --plotFileFormat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'To plot the reads per %GC over a regionthe size of the region is required.
+    By default, the bin size is set to 300 bases, which is close to the standard fragment
+    size for Illumina machines. However, if the depth of sequencing is low, a larger
+    bin size will be required, otherwise many bins will not overlap with any read
+    (Default: 300)'
+  synonyms:
+  - --regionSize
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: file.bam
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: mm9.2bit
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: '200'
+  optional: true
+command:
+- computeGCBias
+parent:
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: \n computeGCBias -b file.bam --effectiveGenomeSize 2150570000 -g\
+  \ mm9.2bit -l 200 --GCbiasFrequenciesFile freq.txt [options]\n\nComputes the GC-bias\
+  \ using Benjamini's method [Benjamini & Speed (2012).\nNucleic Acids Research, 40(10).\
+  \ doi: 10.1093/nar/gks001]. The GC-bias is\nvisualized and the resulting table can\
+  \ be used tocorrect the bias with\n`correctGCBias`.\n\nRequired arguments:\n  --bamfile\
+  \ bam file, -b bam file\n                        Sorted BAM file. (default: None)\n\
+  \  --effectiveGenomeSize EFFECTIVEGENOMESIZE\n                        The effective\
+  \ genome size is the portion of the genome\n                        that is mappable.\
+  \ Large fractions of the genome are\n                        stretches of NNNN that\
+  \ should be discarded. Also, if\n                        repetitive regions were\
+  \ not included in the mapping of\n                        reads, the effective genome\
+  \ size needs to be adjusted\n                        accordingly. A table of values\
+  \ is available here: http\n                        ://deeptools.readthedocs.io/en/latest/content/feature/\n\
+  \                        effectiveGenomeSize.html . (default: None)\n  --genome\
+  \ 2bit FILE, -g 2bit FILE\n                        Genome in two bit format. Most\
+  \ genomes can be found\n                        here: http://hgdownload.cse.ucsc.edu/gbdb/\
+  \ Search for\n                        the .2bit ending. Otherwise, fasta files can\
+  \ be\n                        converted to 2bit using the UCSC programm called\n\
+  \                        faToTwoBit available for different plattforms at\n    \
+  \                    http://hgdownload.cse.ucsc.edu/admin/exe/ (default:\n     \
+  \                   None)\n  --GCbiasFrequenciesFile FILE, -freq FILE, -o FILE\n\
+  \                        Path to save the file containing the observed and\n   \
+  \                     expected read frequencies per %GC-content. This file\n   \
+  \                     is needed to run the correctGCBias tool. This is a\n     \
+  \                   text file. (default: None)\n\nOptional arguments:\n  --fragmentLength\
+  \ FRAGMENTLENGTH, -l FRAGMENTLENGTH\n                        Fragment length used\
+  \ for the sequencing. If paired-end\n                        reads are used, the\
+  \ fragment length is computed based\n                        from the bam file (default:\
+  \ None)\n  --help, -h            show this help message and exit\n  --sampleSize\
+  \ SAMPLESIZE\n                        Number of sampling points to be considered.\
+  \ (Default:\n                        50000000.0)\n  --extraSampling BED file\n \
+  \                       BED file containing genomic regions for which extra\n  \
+  \                      sampling is required because they are underrepresented\n\
+  \                        in the genome. (default: None)\n  --version           \
+  \  show program's version number and exit\n  --region CHR:START:END, -r CHR:START:END\n\
+  \                        Region of the genome to limit the operation to - this\n\
+  \                        is useful when testing parameters to reduce the\n     \
+  \                   computing time. The format is chr:start:end, for\n         \
+  \               example --region chr10 or --region\n                        chr10:456700:891000.\
+  \ (default: None)\n  --blackListFileName BED file [BED file ...], -bl BED file [BED\
+  \ file ...]\n                        A BED or GTF file containing regions that should\
+  \ be\n                        excluded from all analyses. Currently this works by\n\
+  \                        rejecting genomic chunks that happen to overlap an\n  \
+  \                      entry. Consequently, for BAM files, if a read\n         \
+  \               partially overlaps a blacklisted region or a fragment\n        \
+  \                spans over it, then the read/fragment might still be\n        \
+  \                considered. Please note that you should adjust the\n          \
+  \              effective genome size, if relevant. (default: None)\n  --numberOfProcessors\
+  \ INT, -p INT\n                        Number of processors to use. Type \"max/2\"\
+  \ to use half\n                        the maximum number of processors or \"max\"\
+  \ to use all\n                        available processors. (Default: 1)\n  --verbose,\
+  \ -v         Set to see processing messages. (default: False)\n\nDiagnostic plot\
+  \ options:\n  --biasPlot FILE NAME  If given, a diagnostic image summarizing the\
+  \ GC-bias\n                        will be saved. (default: None)\n  --plotFileFormat\
+  \      image format type. If given, this option overrides the\n                \
+  \        image format based on the plotFile ending. The\n                      \
+  \  available options are: \"png\", \"eps\", \"pdf\", \"plotly\"\n              \
+  \          and \"svg\" (default: None)\n  --regionSize INT      To plot the reads\
+  \ per %GC over a regionthe size of the\n                        region is required.\
+  \ By default, the bin size is set to\n                        300 bases, which is\
+  \ close to the standard fragment\n                        size for Illumina machines.\
+  \ However, if the depth of\n                        sequencing is low, a larger\
+  \ bin size will be required,\n                        otherwise many bins will not\
+  \ overlap with any read\n                        (Default: 300)\n"
+generated_using:
+- --help

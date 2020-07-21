@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/slopBed.cwl
+id: ../../../slopBed.cwl
 inputs:
 - id: increase_bedgffvcf_pairs
   doc: Increase the BED/GFF/VCF entry -b base pairs in each direction. - (Integer)

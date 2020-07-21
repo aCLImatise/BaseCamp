@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_subontology_from.pl.cwl
+id: ../../../get_subontology_from.pl.cwl
 inputs:
 - id: obo_input_file
   doc: OBO input file

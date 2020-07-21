@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/m9B_btop_msa.pl.cwl
+id: ../../../m9B_btop_msa.pl.cwl
 inputs:
 - id: masked_lib_out
   doc: -- FASTA format library of MSA sequences

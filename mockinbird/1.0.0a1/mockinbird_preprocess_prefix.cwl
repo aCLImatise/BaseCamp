@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mockinbird_preprocess_prefix.cwl
+id: ../../../mockinbird_preprocess_prefix.cwl
 inputs:
 - id: log_level
   doc: ''

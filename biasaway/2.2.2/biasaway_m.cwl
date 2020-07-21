@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biasaway_m.cwl
+id: ../../../biasaway_m.cwl
 inputs:
 - id: foreground
   doc: Foreground file in fasta format

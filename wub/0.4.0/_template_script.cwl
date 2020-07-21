@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_template_script.py.cwl
+id: ../../../_template_script.py.cwl
 inputs:
 - id: input
   doc: Input.

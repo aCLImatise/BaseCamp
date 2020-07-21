@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FidoChooseParameters.cwl
+id: ../../../FidoChooseParameters.cwl
 inputs:
 - id: p
   doc: ''

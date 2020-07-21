@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sketchy_list.cwl
+id: ../../../sketchy_list.cwl
 inputs:
 - id: path
   doc: Path to sketchy home directory [~/.sketchy]

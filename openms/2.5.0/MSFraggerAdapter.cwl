@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MSFraggerAdapter.cwl
+id: ../../../MSFraggerAdapter.cwl
 inputs:
 - id: java_executable
   doc: The Java executable. Usually Java is on the system PATH. If Java is not found,

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deepbgc_pipeline.cwl
+id: ../../../deepbgc_pipeline.cwl
 inputs:
 - id: output
   doc: Custom output directory path

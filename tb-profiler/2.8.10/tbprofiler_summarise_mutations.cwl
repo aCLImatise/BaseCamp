@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tbprofiler_summarise_mutations.py.cwl
+id: ../../../tbprofiler_summarise_mutations.py.cwl
 inputs:
 - id: dir
   doc: 'NGS Platform (default: results)'

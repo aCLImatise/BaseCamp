@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/saddle2dot.pl.cwl
+id: ../../../saddle2dot.pl.cwl
 inputs:
 - id: cut
   doc: '<Int>  Set cutoff to <Int> (default: 1000)'

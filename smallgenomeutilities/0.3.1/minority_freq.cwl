@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/minority_freq.cwl
+id: ../../../minority_freq.cwl
 inputs:
 - id: start
   doc: 'Starting position of the region of interest, 0-based indexing (default: None)'

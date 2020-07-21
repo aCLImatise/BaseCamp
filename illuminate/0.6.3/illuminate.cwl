@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/illuminate.cwl
+id: ../../../illuminate.cwl
 inputs:
 - id: verbose
   doc: 'Increase verbosity           '

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_AGP2chromosome.pl.cwl
+id: ../../../gaas_AGP2chromosome.pl.cwl
 inputs:
 - id: agp
   doc: Input AGP file

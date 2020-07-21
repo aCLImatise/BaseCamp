@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_pasta.py.cwl
+id: ../../../run_pasta.py.cwl
 inputs:
 - id: aligned
   doc: If used, then the input file be will treated as aligned for the purposes of

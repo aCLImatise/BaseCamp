@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_admin_diagnostics.cwl
+id: ../../../omero_admin_diagnostics.cwl
 inputs:
 - id: no_logs
   doc: Skip log parsing

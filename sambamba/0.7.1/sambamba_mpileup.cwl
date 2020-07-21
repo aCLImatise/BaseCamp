@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sambamba_mpileup.cwl
+id: ../../../sambamba_mpileup.cwl
 inputs:
 - id: regions
   doc: provide BED file with regions (no need to duplicate it in samtools args); all

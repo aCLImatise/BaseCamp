@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/analyze_diff_expr.pl.cwl
+id: ../../../analyze_diff_expr.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

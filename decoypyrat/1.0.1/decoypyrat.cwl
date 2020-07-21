@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/decoypyrat.cwl
+id: ../../../decoypyrat.cwl
 inputs:
 - id: cleavage_sites
   doc: A list of amino acids at which to cleave during digestion. Default = KR

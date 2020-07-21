@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RTEvaluation.cwl
+id: ../../../RTEvaluation.cwl
 inputs:
 - id: in
   doc: "*             Input file (valid formats: 'idXML')"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/whatshap_unphase.cwl
+id: ../../../whatshap_unphase.cwl
 inputs:
 - id: vcf
   doc: VCF file. Use "-" to read from standard input

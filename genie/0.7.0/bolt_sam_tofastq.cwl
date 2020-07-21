@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bolt_sam_tofastq.cwl
+id: ../../../bolt_sam_tofastq.cwl
 inputs:
 - id: excluded_flags
   doc: excluded flags (int16)

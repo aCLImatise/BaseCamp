@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gapToLift.cwl
+id: ../../../gapToLift.cwl
 inputs:
 - id: chr
   doc: '- work only on given chrom'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snpmutator.cwl
+id: ../../../snpmutator.cwl
 inputs:
 - id: num_simulations
   doc: 'Number of mutated sequences to generate. (default: 100)'

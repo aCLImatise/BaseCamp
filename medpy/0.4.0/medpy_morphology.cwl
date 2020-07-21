@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_morphology.py.cwl
+id: ../../../medpy_morphology.py.cwl
 inputs:
 - id: type
   doc: The type of the morphological operation.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/centrifuge_class.cwl
+id: ../../../centrifuge_class.cwl
 inputs:
 - id: query_input_files_fastq
   doc: query input files are FASTQ .fq/.fastq (default)

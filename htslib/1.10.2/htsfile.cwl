@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htsfile.cwl
+id: ../../../htsfile.cwl
 inputs:
 - id: view
   doc: Write textual form of FILEs to standard output

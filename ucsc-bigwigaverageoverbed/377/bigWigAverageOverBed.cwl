@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bigWigAverageOverBed.cwl
+id: ../../../bigWigAverageOverBed.cwl
 inputs:
 - id: minmax
   doc: '- include two additional columns containing the min and max observed in the

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/err_correct_w_genome.py.cwl
+id: ../../../err_correct_w_genome.py.cwl
 inputs:
 - id: generate
   doc: ''

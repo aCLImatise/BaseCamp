@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genomestrip.cwl
+id: ../../../genomestrip.cwl
 inputs:
 - id: java_options
   doc: ''

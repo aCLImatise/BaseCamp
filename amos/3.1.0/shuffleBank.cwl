@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shuffleBank.cwl
+id: ../../../shuffleBank.cwl
 inputs:
 - id: bank
   doc: bank where assembly is stored

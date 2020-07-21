@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MyriMatchAdapter.cwl
+id: ../../../MyriMatchAdapter.cwl
 inputs:
 - id: in
   doc: "*                            Input file (valid formats: 'mzML')"

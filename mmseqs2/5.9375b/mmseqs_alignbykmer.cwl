@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_alignbykmer.cwl
+id: ../../../mmseqs_alignbykmer.cwl
 inputs:
 - id: kmer_size_range
   doc: '4               k-mer size in the range [6,7] (0: set automatically to optimum)'

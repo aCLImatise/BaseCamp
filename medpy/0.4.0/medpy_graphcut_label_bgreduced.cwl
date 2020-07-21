@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_graphcut_label_bgreduced.py.cwl
+id: ../../../medpy_graphcut_label_bgreduced.py.cwl
 inputs:
 - id: set_flag_override
   doc: Set this flag to silently override files that exist.

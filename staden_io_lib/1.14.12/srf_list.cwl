@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/srf_list.cwl
+id: ../../../srf_list.cwl
 inputs:
 - id: count_only_list
   doc: Count only - do not list filenames

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Digestor.cwl
+id: ../../../Digestor.cwl
 inputs:
 - id: in
   doc: "*                  Input file (valid formats: 'fasta')"

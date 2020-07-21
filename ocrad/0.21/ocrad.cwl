@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ocrad.cwl
+id: ../../../ocrad.cwl
 inputs:
 - id: append
   doc: append text to output file

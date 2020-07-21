@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convertToEBD.py_outputFile.cwl
+id: ../../../convertToEBD.py_outputFile.cwl
 inputs:
 - id: convert_to_ebd_do_tpy
   doc: ''

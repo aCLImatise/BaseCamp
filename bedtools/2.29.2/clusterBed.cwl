@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clusterBed.cwl
+id: ../../../clusterBed.cwl
 inputs:
 - id: force_strandedness_only
   doc: Force strandedness.  That is, only merge features that are the same strand.

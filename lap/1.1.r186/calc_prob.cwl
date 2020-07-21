@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/calc_prob.py.cwl
+id: ../../../calc_prob.py.cwl
 inputs:
 - id: input
   doc: filename for input reads separated by commas. Must enter a fasta OR fastq filename.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TransDecoder.Predict.cwl
+id: ../../../TransDecoder.Predict.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

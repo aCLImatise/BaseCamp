@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runDATMA.sh.cwl
+id: ../../../runDATMA.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

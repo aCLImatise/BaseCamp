@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pan_genome_core_alignment.cwl
+id: ../../../pan_genome_core_alignment.cwl
 inputs:
 - id: output_filename
   doc: output filename [core_gene_alignment.aln]

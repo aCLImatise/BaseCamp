@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/strainest_mapstats_MAPPED.cwl
+id: ../../../strainest_mapstats_MAPPED.cwl
 inputs:
 - id: examples
   doc: strainest mapstats mapped.fna stats

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flye_samtools_faidx.cwl
+id: ../../../flye_samtools_faidx.cwl
 inputs:
 - id: output
   doc: Write FASTA to file.

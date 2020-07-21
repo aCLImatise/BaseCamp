@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/intersection_matrix.py.cwl
+id: ../../../intersection_matrix.py.cwl
 inputs:
 - id: frac
   doc: Instead of counts, report fraction overlapped

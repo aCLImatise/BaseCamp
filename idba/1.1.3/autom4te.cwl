@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/autom4te.bak.cwl
+id: ../../../autom4te.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

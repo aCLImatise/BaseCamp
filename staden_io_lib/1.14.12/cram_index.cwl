@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cram_index.cwl
+id: ../../../cram_index.cwl
 inputs:
 - id: filename_dot_cram
   doc: ''

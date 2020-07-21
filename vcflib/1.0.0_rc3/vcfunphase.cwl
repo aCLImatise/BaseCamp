@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfunphase.cwl
+id: ../../../vcfunphase.cwl
 inputs:
 - id: vcf_file
   doc: ''

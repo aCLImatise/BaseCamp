@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdtools_COUNT.cwl
+id: ../../../gdtools_COUNT.cwl
 inputs:
 - id: verbose
   doc: produce output for each mutation counted.

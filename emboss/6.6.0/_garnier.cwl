@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_garnier.cwl
+id: ../../../_garnier.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chakin_expression.cwl
+id: ../../../chakin_expression.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

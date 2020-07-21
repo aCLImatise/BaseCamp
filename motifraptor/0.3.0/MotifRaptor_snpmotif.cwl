@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MotifRaptor_snpmotif.cwl
+id: ../../../MotifRaptor_snpmotif.cwl
 inputs:
 - id: workdir
   doc: Working directory

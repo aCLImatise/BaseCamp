@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tripaille_entity_add_entity.cwl
+id: ../../../tripaille_entity_add_entity.cwl
 inputs:
 - id: params
   doc: Values to populate the entity fields

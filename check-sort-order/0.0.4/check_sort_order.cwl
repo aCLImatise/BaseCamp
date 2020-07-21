@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/check_sort_order.cwl
+id: ../../../check_sort_order.cwl
 inputs:
 - id: genome
   doc: a genome file of chromosome sizes and order

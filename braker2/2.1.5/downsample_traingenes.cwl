@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/downsample_traingenes.pl.cwl
+id: ../../../downsample_traingenes.pl.cwl
 inputs:
 - id: lambda
   doc: Parameter lambda of Poisson distribution (default value is 0)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scanpy_neighbors.cwl
+id: ../../../scanpy_neighbors.cwl
 inputs:
 - id: input_format
   doc: '[anndata|loom] Input object format.  [default: anndata]'

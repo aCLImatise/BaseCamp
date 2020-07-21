@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteinortho_compareProteinorthoGraphs.pl.cwl
+id: ../../../proteinortho_compareProteinorthoGraphs.pl.cwl
 inputs:
 - id: file_a
   doc: ''

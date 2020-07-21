@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/centersToGEM.pl.cwl
+id: ../../../centersToGEM.pl.cwl
 inputs:
 - id: no
   doc: ''

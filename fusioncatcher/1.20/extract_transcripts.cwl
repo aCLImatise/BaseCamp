@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_transcripts.py.cwl
+id: ../../../extract_transcripts.py.cwl
 inputs:
 - id: input_genes
   doc: Input file with Ensembl genes ids.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/notseq.cwl
+id: ../../../notseq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

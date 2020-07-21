@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/marvel.cwl
+id: ../../../marvel.cwl
 inputs:
 - id: from
   doc: Bio import SeqIO

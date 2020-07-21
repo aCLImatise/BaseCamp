@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/overlapConvert.cwl
+id: ../../../overlapConvert.cwl
 inputs:
 - id: needed_coords_default
   doc: seqStore (needed for -coords, the default)

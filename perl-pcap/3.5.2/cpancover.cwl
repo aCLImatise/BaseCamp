@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cpancover.cwl
+id: ../../../cpancover.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

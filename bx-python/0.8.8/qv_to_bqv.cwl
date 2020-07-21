@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qv_to_bqv.py.cwl
+id: ../../../qv_to_bqv.py.cwl
 inputs:
 - id: qual_file
   doc: ''

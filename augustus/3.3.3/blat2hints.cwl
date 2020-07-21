@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blat2hints.pl.cwl
+id: ../../../blat2hints.pl.cwl
 inputs:
 - id: priority
   doc: priority of hint group (default 4)

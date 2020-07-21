@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unify_bowtie.py.cwl
+id: ../../../unify_bowtie.py.cwl
 inputs:
 - id: job_id
   doc: If not using a cluster for submitting jobs, specify the job_id by integer ranging

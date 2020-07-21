@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scagaire_species.cwl
+id: ../../../scagaire_species.cwl
 inputs:
 - id: overview
   doc: 'Print out an overview of the database (default: False)'

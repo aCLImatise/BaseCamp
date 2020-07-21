@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_gff_info_sequence.cwl
+id: ../../../get_gff_info_sequence.cwl
 inputs:
 - id: reverse
   doc: Reverse complement sequences on the - strand

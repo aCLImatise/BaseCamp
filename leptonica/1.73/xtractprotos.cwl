@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xtractprotos.cwl
+id: ../../../xtractprotos.cwl
 inputs:
 - id: preprocess_only_compile
   doc: Preprocess only; do not compile, assemble or link.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cs_chart.cwl
+id: ../../../cs_chart.cwl
 inputs:
 - id: in
   doc: input files, made by 'count' subprogram

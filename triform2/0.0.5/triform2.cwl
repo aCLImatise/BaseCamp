@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/triform2.cwl
+id: ../../../triform2.cwl
 inputs:
 - id: treatment
   doc: Treatment (pull-down) file(s) in bam/bed/bed.gz/bed.bz2 format.

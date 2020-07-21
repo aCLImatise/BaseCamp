@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/go2xml.cwl
+id: ../../../go2xml.cwl
 inputs:
 - id: obj_yaml
   doc: a YAML representation of a GO::Model::Graph object

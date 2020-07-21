@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/migmap.cwl
+id: ../../../migmap.cwl
 inputs:
 - id: number_reads_take
   doc: Number of reads to take. [default = all]

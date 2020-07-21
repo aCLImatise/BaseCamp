@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ibs.cwl
+id: ../../../ibs.cwl
 inputs:
 - id: glf_slash_f
   doc: 'input GLF filename:'

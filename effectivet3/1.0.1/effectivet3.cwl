@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/effectivet3.cwl
+id: ../../../effectivet3.cwl
 inputs:
 - id: jar
   doc: ''

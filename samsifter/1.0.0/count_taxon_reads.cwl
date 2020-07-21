@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/count_taxon_reads.cwl
+id: ../../../count_taxon_reads.cwl
 inputs:
 - id: input
   doc: 'specify SAM file to be analysed (default: STDIN)'

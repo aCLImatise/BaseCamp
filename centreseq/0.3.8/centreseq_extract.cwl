@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/centreseq_extract.cwl
+id: ../../../centreseq_extract.cwl
 inputs:
 - id: in_dir
   doc: Path to your centreseq output directory [required]

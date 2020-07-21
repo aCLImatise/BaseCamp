@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TextExporter.cwl
+id: ../../../TextExporter.cwl
 inputs:
 - id: in
   doc: "*                                     Input file  (valid formats: 'featureXML',\

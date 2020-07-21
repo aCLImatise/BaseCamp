@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wiggle_to_array_tree.py.cwl
+id: ../../../wiggle_to_array_tree.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

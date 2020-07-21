@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parse_table.cwl
+id: ../../../parse_table.cwl
 inputs:
 - id: cat
   doc: ''

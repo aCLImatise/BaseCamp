@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chainToAxt.cwl
+id: ../../../chainToAxt.cwl
 inputs:
 - id: max_gap
   doc: gap sized allowed without breaking, default 100

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/subsetdb.cwl
+id: ../../../subsetdb.cwl
 inputs:
 - id: str__strings_match
   doc: <str>    strings to match

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/singlem_summarise.cwl
+id: ../../../singlem_summarise.cwl
 inputs:
 - id: debug
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nw_distance_filename|_.cwl
+id: ../../../nw_distance_filename|_.cwl
 inputs:
 - id: matrix_mode_print
   doc: ': in matrix mode, print a triangular matrix. In other modes, print values

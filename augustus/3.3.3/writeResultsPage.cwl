@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/writeResultsPage.pl.cwl
+id: ../../../writeResultsPage.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obfit.cwl
+id: ../../../obfit.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

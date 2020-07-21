@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_auth_post_v1_policies_evaluate.cwl
+id: ../../../hca_auth_post_v1_policies_evaluate.cwl
 inputs:
 - id: principal
   doc: Attested user identifier.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/preseq_c_curve.cwl
+id: ../../../preseq_c_curve.cwl
 inputs:
 - id: output
   doc: 'yield output file (default: stdout) '

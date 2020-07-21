@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halSummarizeMutations.cwl
+id: ../../../halSummarizeMutations.cwl
 inputs:
 - id: hal_file
   doc: ''

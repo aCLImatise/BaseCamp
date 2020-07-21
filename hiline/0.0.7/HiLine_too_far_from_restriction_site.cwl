@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HiLine_too_far_from_restriction_site.cwl
+id: ../../../HiLine_too_far_from_restriction_site.cwl
 inputs:
 - id: sort
   doc: / --no-sort  Sort and index output. Default=sort

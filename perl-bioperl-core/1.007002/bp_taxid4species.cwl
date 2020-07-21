@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_taxid4species.pl.cwl
+id: ../../../bp_taxid4species.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

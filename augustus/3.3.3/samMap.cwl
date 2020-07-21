@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samMap.pl.cwl
+id: ../../../samMap.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cbImportCellranger.cwl
+id: ../../../cbImportCellranger.cwl
 inputs:
 - id: debug
   doc: show debug messages

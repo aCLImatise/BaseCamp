@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/upstream_coords.awk.cwl
+id: ../../../upstream_coords.awk.cwl
 inputs:
 - id: len
   doc: ''

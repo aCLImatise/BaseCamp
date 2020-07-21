@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HYPHYMPI_sa.cwl
+id: ../../../HYPHYMPI_sa.cwl
 inputs:
 - id: fprintfstdout
   doc: fprintf(stdout, "Input file contained 3 or fewer sequences - not much inference

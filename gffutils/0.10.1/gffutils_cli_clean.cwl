@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gffutils_cli_clean.cwl
+id: ../../../gffutils_cli_clean.cwl
 inputs:
 - id: filename
   doc: GFF or GTF file to use

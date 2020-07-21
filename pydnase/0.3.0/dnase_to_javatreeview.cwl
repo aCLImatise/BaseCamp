@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dnase_to_javatreeview.py.cwl
+id: ../../../dnase_to_javatreeview.py.cwl
 inputs:
 - id: window_size
   doc: 'Size of flanking area around centre of the regions to plot (default: 100)'

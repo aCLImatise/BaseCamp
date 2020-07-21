@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phylophlan_setup_database.cwl
+id: ../../../phylophlan_setup_database.cwl
 inputs:
 - id: input
   doc: 'Specify the path to either the folder containing the marker files or the file

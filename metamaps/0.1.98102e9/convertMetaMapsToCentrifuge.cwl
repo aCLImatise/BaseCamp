@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convertMetaMapsToCentrifuge.pl.cwl
+id: ../../../convertMetaMapsToCentrifuge.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

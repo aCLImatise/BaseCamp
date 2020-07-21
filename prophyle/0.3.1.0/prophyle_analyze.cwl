@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prophyle_analyze.py.cwl
+id: ../../../prophyle_analyze.py.cwl
 inputs:
 - id: statistics_use_computation
   doc: "['w', 'u', 'wl', 'ul'] Statistics to use for the computation of histograms:\

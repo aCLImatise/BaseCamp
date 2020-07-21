@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_complement_annotations.pl.cwl
+id: ../../../agat_sp_complement_annotations.pl.cwl
 inputs:
 - id: ref
   doc: Input GTF/GFF file used as reference.

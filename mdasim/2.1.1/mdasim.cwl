@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mdasim.cwl
+id: ../../../mdasim.cwl
 inputs:
 - id: log
   doc: = file name for a log file of all single nucleotide errors that happen during

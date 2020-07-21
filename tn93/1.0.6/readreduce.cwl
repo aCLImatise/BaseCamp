@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/readreduce.cwl
+id: ../../../readreduce.cwl
 inputs:
 - id: direct_output_file
   doc: direct the output to a file named OUTPUT (default=stdout)

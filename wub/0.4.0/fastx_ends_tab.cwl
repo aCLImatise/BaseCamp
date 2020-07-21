@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastx_ends_tab.py.cwl
+id: ../../../fastx_ends_tab.py.cwl
 inputs:
 - id: i
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kggseq.cwl
+id: ../../../kggseq.cwl
 inputs:
 - id: x_mx_on_eg
   doc: ''

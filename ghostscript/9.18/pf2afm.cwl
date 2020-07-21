@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pf2afm.cwl
+id: ../../../pf2afm.cwl
 inputs:
 - id: d_no_display
   doc: ''

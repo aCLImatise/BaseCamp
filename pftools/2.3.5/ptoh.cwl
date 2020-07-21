@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ptoh.cwl
+id: ../../../ptoh.cwl
 inputs:
 - id: emulate_domain_
   doc: ': emulate domain- or semi-global alignment mode.'

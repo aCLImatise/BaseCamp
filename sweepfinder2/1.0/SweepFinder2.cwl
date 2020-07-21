@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SweepFinder2.cwl
+id: ../../../SweepFinder2.cwl
 inputs:
 - id: to
   doc: ''

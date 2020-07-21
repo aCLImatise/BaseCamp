@@ -1,6 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmpair_size of poly_N flanking seqs in forward
-  prob calculations.cwl
+id: ../../../hmmpair_size of poly_N flanking seqs in forward prob calculations.cwl
 inputs:
 - id: hmm_pair
   doc: ''

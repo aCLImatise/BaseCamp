@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmx_rms.cwl
+id: ../../../gmx_rms.cwl
 inputs:
 - id: config
   doc: Configuration file

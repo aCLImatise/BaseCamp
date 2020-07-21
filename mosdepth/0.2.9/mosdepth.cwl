@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mosdepth.cwl
+id: ../../../mosdepth.cwl
 inputs:
 - id: threads
   doc: 'number of BAM decompression threads [default: 0]'

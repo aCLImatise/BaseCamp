@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coordinate_mapper.py.cwl
+id: ../../../coordinate_mapper.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

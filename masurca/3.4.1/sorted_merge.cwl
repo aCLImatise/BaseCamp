@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sorted_merge.cwl
+id: ../../../sorted_merge.cwl
 inputs:
 - id: key
   doc: Key (1 base column number) for sorting (1)

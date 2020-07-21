@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treerecs.cwl
+id: ../../../treerecs.cwl
 inputs:
 - id: sample_size
   doc: size of the tree sampling (default value = 1).

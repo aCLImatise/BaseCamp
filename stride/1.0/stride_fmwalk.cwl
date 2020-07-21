@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stride_fmwalk.cwl
+id: ../../../stride_fmwalk.cwl
 inputs:
 - id: verbose
   doc: display verbose output

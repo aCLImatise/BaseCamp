@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bl_pileup_stats.cwl
+id: ../../../bl_pileup_stats.cwl
 inputs:
 - id: specify_pileup_file
   doc: specify the PILEUP input file

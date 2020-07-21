@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kallisto_pseudo.cwl
+id: ../../../kallisto_pseudo.cwl
 inputs:
 - id: quant
   doc: Quantify using EM algorithm (only in batch mode)

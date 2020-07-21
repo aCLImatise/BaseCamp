@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/novoalign_license_register_basename.cwl
+id: ../../../novoalign_license_register_basename.cwl
 inputs:
 - id: novo_align_license_register
   doc: ''

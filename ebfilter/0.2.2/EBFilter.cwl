@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/EBFilter.cwl
+id: ../../../EBFilter.cwl
 inputs:
 - id: format_mutation_file
   doc: the format of mutation file vcf or annovar (tsv) format

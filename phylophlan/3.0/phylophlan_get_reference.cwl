@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phylophlan_get_reference.cwl
+id: ../../../phylophlan_get_reference.cwl
 inputs:
 - id: get
   doc: 'Specify the taxonomic label for which download the set of reference genomes.

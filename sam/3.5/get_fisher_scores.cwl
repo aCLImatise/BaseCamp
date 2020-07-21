@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_fisher_scores.cwl
+id: ../../../get_fisher_scores.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

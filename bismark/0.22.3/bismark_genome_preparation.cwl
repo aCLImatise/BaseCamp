@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bismark_genome_preparation.cwl
+id: ../../../bismark_genome_preparation.cwl
 inputs:
 - id: arguments
   doc: ''

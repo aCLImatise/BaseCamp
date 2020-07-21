@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clusterGenes.cwl
+id: ../../../clusterGenes.cwl
 inputs:
 - id: table_n
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tfastx36.cwl
+id: ../../../tfastx36.cwl
 inputs:
 - id: compare_forward_strand
   doc: compare forward strand only

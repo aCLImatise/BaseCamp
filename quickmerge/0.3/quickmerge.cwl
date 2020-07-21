@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quickmerge.cwl
+id: ../../../quickmerge.cwl
 inputs:
 - id: d
   doc: ''

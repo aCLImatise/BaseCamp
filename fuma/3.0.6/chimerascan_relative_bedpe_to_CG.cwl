@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chimerascan_relative_bedpe_to_CG.cwl
+id: ../../../chimerascan_relative_bedpe_to_CG.cwl
 inputs:
 - id: gene_annotation
   doc: gene_features.txt file used by chimersacan

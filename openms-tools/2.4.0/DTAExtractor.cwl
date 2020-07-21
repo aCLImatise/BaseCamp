@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DTAExtractor.cwl
+id: ../../../DTAExtractor.cwl
 inputs:
 - id: in
   doc: "*        Input file  (valid formats: 'mzML')"

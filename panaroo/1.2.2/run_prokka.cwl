@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_prokka.cwl
+id: ../../../run_prokka.cwl
 inputs:
 - id: threads
   doc: number of threads to use (default=1)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/refinem_taxon_profile.cwl
+id: ../../../refinem_taxon_profile.cwl
 inputs:
 - id: per_to_classify
   doc: 'minimum percentage of genes to assign a scaffold to a taxonomic group (default:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ezclermont.cwl
+id: ../../../ezclermont.cwl
 inputs:
 - id: min_length
   doc: 'minimum contig length to consider.default: 500'

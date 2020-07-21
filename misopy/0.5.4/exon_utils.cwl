@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/exon_utils.cwl
+id: ../../../exon_utils.cwl
 inputs:
 - id: to
   doc: ''

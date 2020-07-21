@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parallel_run.pl.cwl
+id: ../../../parallel_run.pl.cwl
 inputs:
 - id: file_directory
   doc: File directory

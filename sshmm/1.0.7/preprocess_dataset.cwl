@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/preprocess_dataset.cwl
+id: ../../../preprocess_dataset.cwl
 inputs:
 - id: disable_filtering
   doc: skip the filtering step

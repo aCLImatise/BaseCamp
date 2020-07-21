@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summary_get_organelle_output.py.cwl
+id: ../../../summary_get_organelle_output.py.cwl
 inputs:
 - id: output_csv_file
   doc: Output csv file.

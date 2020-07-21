@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dataframeSumAllValues.r.cwl
+id: ../../../dataframeSumAllValues.r.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

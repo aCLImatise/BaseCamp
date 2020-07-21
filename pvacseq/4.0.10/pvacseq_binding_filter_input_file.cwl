@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pvacseq_binding_filter_input_file.cwl
+id: ../../../pvacseq_binding_filter_input_file.cwl
 inputs:
 - id: b
   doc: ''

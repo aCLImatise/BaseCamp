@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qtlplot.cwl
+id: ../../../qtlplot.cwl
 inputs:
 - id: _vcf_vcf
   doc: ', --vcf            VCF file which contains parent, bulk1, and bulk2 in this

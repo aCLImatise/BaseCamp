@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phytime.cwl
+id: ../../../phytime.cwl
 inputs:
 - id: _datatype_mdatatypem
   doc: "(or --datatype) \e[00;04mdata_type\e[00;00m \e[00;04mdata_type\e[00;00m is\

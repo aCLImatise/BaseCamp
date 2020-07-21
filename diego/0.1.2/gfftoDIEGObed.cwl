@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gfftoDIEGObed.pl.cwl
+id: ../../../gfftoDIEGObed.pl.cwl
 inputs:
 - id: gff_file_eg
   doc: gff file e.g. from ENSMBL

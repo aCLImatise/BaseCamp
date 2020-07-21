@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fgmp.cwl
+id: ../../../fgmp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

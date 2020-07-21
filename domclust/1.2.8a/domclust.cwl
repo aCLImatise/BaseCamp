@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/domclust.cwl
+id: ../../../domclust.cwl
 inputs:
 - id: use_similarity_measure
   doc: use similarity as a measure of relatedness [on]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools_mpileup.cwl
+id: ../../../samtools_mpileup.cwl
 inputs:
 - id: assume_quality_illumina
   doc: assume the quality is in the Illumina-1.3+ encoding

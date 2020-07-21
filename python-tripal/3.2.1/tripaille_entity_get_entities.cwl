@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tripaille_entity_get_entities.cwl
+id: ../../../tripaille_entity_get_entities.cwl
 inputs:
 - id: entity
   doc: Name of the entity type (e.g. Organism)

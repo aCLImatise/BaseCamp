@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/age_align.cwl
+id: ../../../age_align.cwl
 inputs:
 - id: age_align
   doc: '[-version] [-indel|-tdup|-inv|-invl|-invr] [-match=value:1] [-mismatch=value:-2]

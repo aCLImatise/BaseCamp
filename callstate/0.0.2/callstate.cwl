@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/callstate.cwl
+id: ../../../callstate.cwl
 inputs:
 - id: threads
   doc: 'Number of BAM decompression threads [default: 4]'

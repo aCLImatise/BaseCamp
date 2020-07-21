@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/variantbreak.cwl
+id: ../../../variantbreak.cwl
 inputs:
 - id: annotation_file_dir
   doc: 'path to single annotation file or directory containing annotation  files of

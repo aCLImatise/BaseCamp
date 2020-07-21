@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/categorize_by_function.py.cwl
+id: ../../../categorize_by_function.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

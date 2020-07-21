@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_bipartite_network.py.cwl
+id: ../../../make_bipartite_network.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/OMSSAAdapter.cwl
+id: ../../../OMSSAAdapter.cwl
 inputs:
 - id: in
   doc: "*                            Input file  (valid formats: 'mzML')"

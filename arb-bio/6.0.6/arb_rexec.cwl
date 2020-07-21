@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_rexec.cwl
+id: ../../../arb_rexec.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ClonalFrameML.cwl
+id: ../../../ClonalFrameML.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

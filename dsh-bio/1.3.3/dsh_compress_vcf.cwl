@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dsh_compress_vcf.cwl
+id: ../../../dsh_compress_vcf.cwl
 inputs:
 - id: about
   doc: display about message [optional]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_fastq_interleave.py.cwl
+id: ../../../gaas_fastq_interleave.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mtsv_signature.cwl
+id: ../../../mtsv_signature.cwl
 inputs:
 - id: family
   doc: Enable to search for a common FAMILY among hits for a read (takes priority

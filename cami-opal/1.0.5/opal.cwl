@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/opal.py.cwl
+id: ../../../opal.py.cwl
 inputs:
 - id: gold_standard_file
   doc: Gold standard file

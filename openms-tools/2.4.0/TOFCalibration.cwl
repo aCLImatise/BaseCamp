@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TOFCalibration.cwl
+id: ../../../TOFCalibration.cwl
 inputs:
 - id: in
   doc: "*              Input peak or raw data file  (valid formats: 'mzML')"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crowded_chess.cwl
+id: ../../../crowded_chess.cwl
 inputs:
 - id: bkqbrkbb
   doc: ..Q.....        ....R...        B..B..BB        .K...K..

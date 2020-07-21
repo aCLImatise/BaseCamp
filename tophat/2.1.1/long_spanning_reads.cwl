@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/long_spanning_reads.cwl
+id: ../../../long_spanning_reads.cwl
 inputs:
 - id: reads_dot_fa_slashdot_fq
   doc: ''

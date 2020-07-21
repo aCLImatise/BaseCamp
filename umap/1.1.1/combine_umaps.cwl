@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/combine_umaps.py.cwl
+id: ../../../combine_umaps.py.cwl
 inputs:
 - id: out_dir
   doc: If not specified, a subfolder will be created in kmer_dir names as globalmap_k<smallestkmer>tok<largestkmer>

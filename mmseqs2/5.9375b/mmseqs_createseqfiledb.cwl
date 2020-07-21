@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_createseqfiledb.cwl
+id: ../../../mmseqs_createseqfiledb.cwl
 inputs:
 - id: min_sequences
   doc: '1               minimum number of sequences a cluster may contain           '

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/knock_knock_table.cwl
+id: ../../../knock_knock_table.cwl
 inputs:
 - id: group
   doc: if specified, the single group name to generate tables for; if not specified,

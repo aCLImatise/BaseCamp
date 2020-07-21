@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stripSubsetLCBs.cwl
+id: ../../../stripSubsetLCBs.cwl
 inputs:
 - id: input_x_mfa
   doc: ''

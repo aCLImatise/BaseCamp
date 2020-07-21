@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_translatenucs.cwl
+id: ../../../mmseqs_translatenucs.cwl
 inputs:
 - id: add_orf_stop
   doc: 'false           add * at complete start and end                             '

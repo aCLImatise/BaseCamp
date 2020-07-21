@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/upimapi.py.cwl
+id: ../../../upimapi.py.cwl
 inputs:
 - id: input
   doc: Input filename - can be a list of IDs (one per line) or a BLAST TSV file -

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extractDEs.cwl
+id: ../../../extractDEs.cwl
 inputs:
 - id: output
   doc: 'Write output to this file (STDOUT if omitted). '

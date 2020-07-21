@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ReadSeq_reverse_comp.cwl
+id: ../../../ReadSeq_reverse_comp.cwl
 inputs:
 - id: check
   doc: If set, will check orientation of the rRNA sequenc, only reverse complement

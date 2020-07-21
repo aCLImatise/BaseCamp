@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbt_vcf_to_txt.cwl
+id: ../../../rbt_vcf_to_txt.cwl
 inputs:
 - id: genotypes
   doc: Display genotypes.

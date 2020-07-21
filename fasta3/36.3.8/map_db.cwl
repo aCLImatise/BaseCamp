@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/map_db.cwl
+id: ../../../map_db.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

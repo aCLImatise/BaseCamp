@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/isONclust.cwl
+id: ../../../isONclust.cwl
 inputs:
 - id: fast_q
   doc: 'Path to consensus fastq file(s) (default: False)'

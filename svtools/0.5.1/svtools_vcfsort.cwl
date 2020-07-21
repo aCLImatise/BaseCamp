@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtools_vcfsort.cwl
+id: ../../../svtools_vcfsort.cwl
 inputs:
 - id: support
   doc: ''

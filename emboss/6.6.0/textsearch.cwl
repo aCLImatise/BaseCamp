@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/textsearch.cwl
+id: ../../../textsearch.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

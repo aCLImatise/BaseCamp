@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pm_invert.cwl
+id: ../../../pm_invert.cwl
 inputs:
 - id: whole_name
   doc: '[bcwkMG] -true -type [bcdpflsD] -uid N'

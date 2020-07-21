@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CIRCexplorer2_denovo.cwl
+id: ../../../CIRCexplorer2_denovo.cwl
 inputs:
 - id: ref
   doc: Gene annotation.

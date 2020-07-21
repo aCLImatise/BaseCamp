@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/magpurify_conspecific.cwl
+id: ../../../magpurify_conspecific.cwl
 inputs:
 - id: mash_dist
   doc: 'Mash distance to reference genomes (default: 0.05)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metilene.cwl
+id: ../../../metilene.cwl
 inputs:
 - id: var_0
   doc: ''

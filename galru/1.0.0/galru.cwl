@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/galru.cwl
+id: ../../../galru.cwl
 inputs:
 - id: db_dir
   doc: 'Base directory for species databases, defaults to bundled (default: None)'

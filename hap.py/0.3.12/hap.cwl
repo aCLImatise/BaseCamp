@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hap.py.cwl
+id: ../../../hap.py.cwl
 inputs:
 - id: reference
   doc: Specify a reference file.

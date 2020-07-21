@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/glistcompare.cwl
+id: ../../../glistcompare.cwl
 inputs:
 - id: union
   doc: '- union of input lists'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dowtjack.cwl
+id: ../../../dowtjack.cwl
 inputs:
 - id: bad
   doc: ''

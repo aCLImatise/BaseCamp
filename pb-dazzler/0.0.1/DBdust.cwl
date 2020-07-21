@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DBdust.cwl
+id: ../../../DBdust.cwl
 inputs:
 - id: dust_algorithm_window
   doc: ': DUST algorithm window size.'

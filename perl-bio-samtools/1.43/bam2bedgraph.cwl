@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam2bedgraph.cwl
+id: ../../../bam2bedgraph.cwl
 inputs:
 - id: in_dot_bam
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam_load.2.cwl
+id: ../../../bam_load.2.cwl
 inputs:
 - id: output
   doc: 'Path and Name of the output database. '

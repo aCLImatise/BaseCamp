@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parse_sdrf.cwl
+id: ../../../parse_sdrf.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

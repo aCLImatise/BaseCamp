@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sim_reads.cwl
+id: ../../../sim_reads.cwl
 inputs:
 - id: depth
   doc: (=30)                  sequencing depth of the sample

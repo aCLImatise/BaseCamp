@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_markers.py.cwl
+id: ../../../extract_markers.py.cwl
 inputs:
 - id: mpa_pkl
   doc: ''

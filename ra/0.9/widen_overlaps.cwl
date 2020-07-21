@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/widen_overlaps.cwl
+id: ../../../widen_overlaps.cwl
 inputs:
 - id: depot
   doc: ''

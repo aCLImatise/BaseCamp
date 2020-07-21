@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/relocaTE2.py.cwl
+id: ../../../relocaTE2.py.cwl
 inputs:
 - id: bam
   doc: Name of BAM file of read mapped reference genome

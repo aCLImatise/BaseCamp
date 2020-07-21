@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RNA_fragment_size.py.cwl
+id: ../../../RNA_fragment_size.py.cwl
 inputs:
 - id: input
   doc: Input BAM file

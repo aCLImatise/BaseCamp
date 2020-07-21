@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AMAS.py_command.cwl
+id: ../../../AMAS.py_command.cwl
 inputs:
 - id: concat
   doc: Concatenate input alignments

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plotPCA.cwl
+id: ../../../plotPCA.cwl
 inputs:
 - id: transpose
   doc: Perform the PCA on the transposed matrix, (i.e., on the matrix where rows are

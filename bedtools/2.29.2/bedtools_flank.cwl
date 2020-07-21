@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools_flank.cwl
+id: ../../../bedtools_flank.cwl
 inputs:
 - id: create_flanking_intervals
   doc: Create flanking interval(s) using -b base pairs in each direction. - (Integer)

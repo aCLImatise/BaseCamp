@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_intensity_range_standardization.py.cwl
+id: ../../../medpy_intensity_range_standardization.py.cwl
 inputs:
 - id: verbose
   doc: Verbose output

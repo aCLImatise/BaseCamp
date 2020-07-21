@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/OpenSwathAnalyzer.cwl
+id: ../../../OpenSwathAnalyzer.cwl
 inputs:
 - id: in
   doc: "*                    Input file containing the chromatograms. (valid formats:\

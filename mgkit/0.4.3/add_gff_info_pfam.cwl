@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/add_gff_info_pfam.cwl
+id: ../../../add_gff_info_pfam.cwl
 inputs:
 - id: id_attr
   doc: In which attribute the Pfam ID/ACCESSION is stored (defaults to *gene_id*)

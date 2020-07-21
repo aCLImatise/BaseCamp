@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simkaMinCore_info.cwl
+id: ../../../simkaMinCore_info.cwl
 inputs:
 - id: in
   doc: '(1 arg) :    filename to a sketch file'

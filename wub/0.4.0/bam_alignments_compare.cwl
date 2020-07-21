@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam_alignments_compare.py.cwl
+id: ../../../bam_alignments_compare.py.cwl
 inputs:
 - id: tolerance_when_performing
   doc: Tolerance when performing coarse comparison of alignments (50).

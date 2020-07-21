@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metaxa2_dc.cwl
+id: ../../../metaxa2_dc.cwl
 inputs:
 - id: o
   doc: ''

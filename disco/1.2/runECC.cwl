@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runECC.sh.cwl
+id: ../../../runECC.sh.cwl
 inputs:
 - id: ins
   doc: single read filenames (comma separated fasta/fastq/fastq.gz files).

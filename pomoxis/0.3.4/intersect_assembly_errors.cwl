@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/intersect_assembly_errors.cwl
+id: ../../../intersect_assembly_errors.cwl
 inputs:
 - id: reference_should_fasta
   doc: reference, should be a fasta file. If correspondng bwa indices do not exist

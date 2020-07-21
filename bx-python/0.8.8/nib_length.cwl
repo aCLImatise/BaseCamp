@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nib_length.py.cwl
+id: ../../../nib_length.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

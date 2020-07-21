@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scpred_get_feature_space.R.cwl
+id: ../../../scpred_get_feature_space.R.cwl
 inputs:
 - id: input_object
   doc: Path to the input object of scPred or seurat class in .rds format

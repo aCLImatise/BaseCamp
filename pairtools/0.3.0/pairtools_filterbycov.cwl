@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pairtools_filterbycov.cwl
+id: ../../../pairtools_filterbycov.cwl
 inputs:
 - id: output
   doc: output file for pairs from low coverage regions. If the path ends with .gz

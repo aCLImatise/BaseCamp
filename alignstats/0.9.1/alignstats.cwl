@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alignstats.cwl
+id: ../../../alignstats.cwl
 inputs:
 - id: print_verbose_output
   doc: Print verbose runtime information output to stderr.

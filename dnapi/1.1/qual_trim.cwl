@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qual_trim.py.cwl
+id: ../../../qual_trim.py.cwl
 inputs:
 - id: asciiencoded_quality_offset
   doc: 'ASCII-encoded quality offset, e.g. 33 or 64 (default: 33)'

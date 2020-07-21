@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simread.cwl
+id: ../../../simread.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

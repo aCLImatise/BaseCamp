@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/processfrag.sh.cwl
+id: ../../../processfrag.sh.cwl
 inputs:
 - id: process_frags_dots_h
   doc: ''

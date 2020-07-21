@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/decompose.cwl
+id: ../../../decompose.cwl
 inputs:
 - id: min_entropy
   doc: 'Minimum entropy for a component to have in order to be picked as a discriminant.

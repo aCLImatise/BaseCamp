@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_cap_occupancy_outputfile.cwl
+id: ../../../mb_cap_occupancy_outputfile.cwl
 inputs:
 - id: quantile
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/delta_filter_wrapper.py.cwl
+id: ../../../delta_filter_wrapper.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

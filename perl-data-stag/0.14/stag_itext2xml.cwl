@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stag_itext2xml.pl.cwl
+id: ../../../stag_itext2xml.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

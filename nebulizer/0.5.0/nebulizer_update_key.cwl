@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nebulizer_update_key.cwl
+id: ../../../nebulizer_update_key.cwl
 inputs:
 - id: new_url
   doc: specify new URL for Galaxy instance

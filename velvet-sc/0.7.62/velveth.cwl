@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/velveth.cwl
+id: ../../../velveth.cwl
 inputs:
 - id: strand_specific
   doc: ': for strand specific transcriptome sequencing data (default: off)'

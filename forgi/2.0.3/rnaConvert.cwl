@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnaConvert.py.cwl
+id: ../../../rnaConvert.py.cwl
 inputs:
 - id: keep_length_one_stems
   doc: For all input formats except forgi bg/cg files, this controlls whether stems

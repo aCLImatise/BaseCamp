@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clipcontext_exb.cwl
+id: ../../../clipcontext_exb.cwl
 inputs:
 - id: max_dist
   doc: 'Maximum distance of CLIP peak region end to nearest exon end for CLIP region

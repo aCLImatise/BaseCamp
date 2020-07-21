@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faToTab.cwl
+id: ../../../faToTab.cwl
 inputs:
 - id: type
   doc: sequence type, dna or protein, default is dna

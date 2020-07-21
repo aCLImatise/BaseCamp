@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ngs_disambiguate.cwl
+id: ../../../ngs_disambiguate.cwl
 inputs:
 - id: d
   doc: ''

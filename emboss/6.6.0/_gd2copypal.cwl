@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_gd2copypal.cwl
+id: ../../../_gd2copypal.cwl
 inputs:
 - id: gd_two_copy_pal
   doc: ''

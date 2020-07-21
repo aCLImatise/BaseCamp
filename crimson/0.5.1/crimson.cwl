@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crimson.cwl
+id: ../../../crimson.cwl
 inputs:
 - id: fmt
   doc: '[json|yaml]  Output file format. Default: json.'

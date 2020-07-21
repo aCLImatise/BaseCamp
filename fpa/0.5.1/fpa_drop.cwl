@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fpa_drop.cwl
+id: ../../../fpa_drop.cwl
 inputs:
 - id: containment
   doc: Drop containment mapping

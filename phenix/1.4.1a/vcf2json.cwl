@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf2json.py.cwl
+id: ../../../vcf2json.py.cwl
 inputs:
 - id: input
   doc: path to a VCF file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof_uniq.cwl
+id: ../../../smof_uniq.cwl
 inputs:
 - id: count
   doc: writes (count|header) in tab-delimited format

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/behst_download_data.sh.cwl
+id: ../../../behst_download_data.sh.cwl
 inputs:
 - id: mode
   doc: set file mode (as in chmod), not a=rwx - umask

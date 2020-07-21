@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxonkit_version.cwl
+id: ../../../taxonkit_version.cwl
 inputs:
 - id: check_update
   doc: check update

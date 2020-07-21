@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/triangle2list.pl.cwl
+id: ../../../triangle2list.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

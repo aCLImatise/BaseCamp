@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lavToAxt.cwl
+id: ../../../lavToAxt.cwl
 inputs:
 - id: in_dot_lav
   doc: ''

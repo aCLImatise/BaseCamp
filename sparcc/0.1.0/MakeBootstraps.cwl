@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MakeBootstraps.py.cwl
+id: ../../../MakeBootstraps.py.cwl
 inputs:
 - id: number_create_default
   doc: Number of simulated datasets to create (100 default).

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/regtools_junctions_annotate.cwl
+id: ../../../regtools_junctions_annotate.cwl
 inputs:
 - id: single_exon_genes
   doc: single exon genes

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_parallel_sate.cwl
+id: ../../../phyluce_align_parallel_sate.cwl
 inputs:
 - id: sate_conf
   doc: '[--cores CORES]'

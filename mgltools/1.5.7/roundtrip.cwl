@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/roundtrip.cwl
+id: ../../../roundtrip.cwl
 inputs:
 - id: file_one
   doc: ''

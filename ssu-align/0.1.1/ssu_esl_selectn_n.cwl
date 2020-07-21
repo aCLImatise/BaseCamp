@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_selectn_n.cwl
+id: ../../../ssu_esl_selectn_n.cwl
 inputs:
 - id: options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convert_bowtie_output.pl.cwl
+id: ../../../convert_bowtie_output.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

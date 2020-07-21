@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/minialign.cwl
+id: ../../../minialign.cwl
 inputs:
 - id: load_preset_params
   doc: load preset params {pacbio,ont,ava} [ont]

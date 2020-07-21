@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pizzly_flatten_json.py.cwl
+id: ../../../pizzly_flatten_json.py.cwl
 inputs:
 - id: python
   doc: ''

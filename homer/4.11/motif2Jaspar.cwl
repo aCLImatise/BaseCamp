@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/motif2Jaspar.pl.cwl
+id: ../../../motif2Jaspar.pl.cwl
 inputs:
 - id: motif_file
   doc: ''

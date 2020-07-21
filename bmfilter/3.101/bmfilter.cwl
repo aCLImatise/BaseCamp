@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bmfilter.cwl
+id: ../../../bmfilter.cwl
 inputs:
 - id: quality_channels
   doc: -q 0           Number of quality channers for reads (0|1)

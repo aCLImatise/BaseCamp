@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/miR_PREFeR.py.cwl
+id: ../../../miR_PREFeR.py.cwl
 inputs:
 - id: command
   doc: ''

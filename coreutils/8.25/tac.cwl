@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tac.cwl
+id: ../../../tac.cwl
 inputs:
 - id: before
   doc: the separator before instead of after

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hilive_build.cwl
+id: ../../../hilive_build.cwl
 inputs:
 - id: print_licensing_information
   doc: '[ --license ]         Print licensing information and exit'

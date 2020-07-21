@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/droppe.py.cwl
+id: ../../../droppe.py.cwl
 inputs:
 - id: input
   doc: Tab separeted text file such that one line has two reads which are paired (i.e.

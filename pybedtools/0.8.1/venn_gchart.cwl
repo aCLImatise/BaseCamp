@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/venn_gchart.py.cwl
+id: ../../../venn_gchart.py.cwl
 inputs:
 - id: file_use_leftmost
   doc: File to use for the left-most circle

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/interop_summary.cwl
+id: ../../../interop_summary.cwl
 inputs:
 - id: level
   doc: '[5]: Level of summary information: 0: total, 1: non-index, 2: Read, 3: Lane,

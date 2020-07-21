@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_plot_heatmap.cwl
+id: ../../../mb_plot_heatmap.cwl
 inputs:
 - id: downstream
   doc: set downstream range

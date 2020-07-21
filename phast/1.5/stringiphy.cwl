@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stringiphy.cwl
+id: ../../../stringiphy.cwl
 inputs:
 - id: exons_dot_gff
   doc: ''

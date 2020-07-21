@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compute_prior_dist.cwl
+id: ../../../compute_prior_dist.cwl
 inputs:
 - id: num_bins
   doc: ''

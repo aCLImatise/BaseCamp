@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta2shrep_gspan.pl.cwl
+id: ../../../fasta2shrep_gspan.pl.cwl
 inputs:
 - id: _selects_shreps
   doc: '0 # selects all shreps'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mango_submit.cwl
+id: ../../../mango_submit.cwl
 inputs:
 - id: parquet_disable_dictionary
   doc: ': Disable dictionary encoding (default: false)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bed_to_juncs.cwl
+id: ../../../bed_to_juncs.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

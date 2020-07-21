@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/feature_alignment.py.cwl
+id: ../../../feature_alignment.py.cwl
 inputs:
 - id: in
   doc: A list of mProphet output files containing all peakgroups (use quotes around

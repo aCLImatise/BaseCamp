@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coverage_stats.cwl
+id: ../../../coverage_stats.cwl
 inputs:
 - id: name_hxb_
   doc: Name of target contig, e.g. HXB2:2253-2256

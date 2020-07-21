@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cortexpy.cwl
+id: ../../../cortexpy.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

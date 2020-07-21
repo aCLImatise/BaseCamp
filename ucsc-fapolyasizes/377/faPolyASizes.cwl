@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faPolyASizes.cwl
+id: ../../../faPolyASizes.cwl
 inputs:
 - id: in_dot_fa
   doc: ''

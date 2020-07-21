@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbsv_call.cwl
+id: ../../../pbsv_call.cwl
 inputs:
 - id: chunk_length
   doc: STR   Process in chunks of N reference bp. [1M]

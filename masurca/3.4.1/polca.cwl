@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/polca.sh.cwl
+id: ../../../polca.sh.cwl
 inputs:
 - id: a
   doc: ''

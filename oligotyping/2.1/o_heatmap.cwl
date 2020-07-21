@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o_heatmap.R.cwl
+id: ../../../o_heatmap.R.cwl
 inputs:
 - id: metadata
   doc: Metadata file

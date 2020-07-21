@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pysradb.cwl
+id: ../../../pysradb.cwl
 inputs:
 - id: citation
   doc: how to cite

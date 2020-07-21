@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_prepare_matrice_by_window.pl.cwl
+id: ../../../gaas_prepare_matrice_by_window.pl.cwl
 inputs:
 - id: output
   doc: Output name of the directory that will contain results

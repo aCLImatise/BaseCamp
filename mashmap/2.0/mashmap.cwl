@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mashmap.cwl
+id: ../../../mashmap.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

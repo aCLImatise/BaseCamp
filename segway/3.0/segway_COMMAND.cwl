@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segway_COMMAND.cwl
+id: ../../../segway_COMMAND.cwl
 inputs:
 - id: segway
   doc: ''

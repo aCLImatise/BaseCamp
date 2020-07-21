@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svm_classify.cwl
+id: ../../../svm_classify.cwl
 inputs:
 - id: verbosity_level_default
   doc: '[0..3]  -> verbosity level (default 2)'

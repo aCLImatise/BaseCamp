@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rgt_viz_integration.cwl
+id: ../../../rgt_viz_integration.cwl
 inputs:
 - id: i_html
   doc: Integrate all the html files within the given directory and generate index.html

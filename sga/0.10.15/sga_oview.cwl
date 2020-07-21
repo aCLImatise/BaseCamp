@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sga_oview.cwl
+id: ../../../sga_oview.cwl
 inputs:
 - id: verbose
   doc: display verbose output

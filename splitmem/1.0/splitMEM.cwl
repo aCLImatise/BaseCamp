@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splitMEM.cwl
+id: ../../../splitMEM.cwl
 inputs:
 - id: file
   doc: Load sequence from file

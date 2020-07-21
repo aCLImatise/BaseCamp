@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phylophlan_metagenomic.cwl
+id: ../../../phylophlan_metagenomic.cwl
 inputs:
 - id: input
   doc: 'Input folder containing the metagenomic bins to be indexed (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segtools_preprocess.cwl
+id: ../../../segtools_preprocess.cwl
 inputs:
 - id: clobber
   doc: Overwrite any existing output files.

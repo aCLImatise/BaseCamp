@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_fasta_get_longestORF.pl.cwl
+id: ../../../gaas_fasta_get_longestORF.pl.cwl
 inputs:
 - id: fast_a
   doc: Nucleotide fasta file.

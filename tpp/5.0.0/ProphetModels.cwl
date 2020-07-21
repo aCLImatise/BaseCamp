@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ProphetModels.pl.cwl
+id: ../../../ProphetModels.pl.cwl
 inputs:
 - id: _specify_pepxml
   doc: -- Specify pepXML file to be processed.

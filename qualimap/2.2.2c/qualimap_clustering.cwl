@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qualimap_clustering.cwl
+id: ../../../qualimap_clustering.cwl
 inputs:
 - id: bin_size
   doc: Size of the bin (default is 100)

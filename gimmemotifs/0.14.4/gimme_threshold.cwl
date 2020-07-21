@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gimme_threshold.cwl
+id: ../../../gimme_threshold.cwl
 inputs:
 - id: h
   doc: ''

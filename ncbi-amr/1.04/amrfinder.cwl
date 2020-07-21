@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/amrfinder.pl.cwl
+id: ../../../amrfinder.pl.cwl
 inputs:
 - id: help_text
   doc: help text

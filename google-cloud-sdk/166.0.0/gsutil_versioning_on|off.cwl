@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_versioning_on|off.cwl
+id: ../../../gsutil_versioning_on|off.cwl
 inputs:
 - id: gs_util
   doc: ''

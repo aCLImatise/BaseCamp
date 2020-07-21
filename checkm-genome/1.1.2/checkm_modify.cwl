@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkm_modify.cwl
+id: ../../../checkm_modify.cwl
 inputs:
 - id: add
   doc: ID of sequence to add to bin (may specify multiple times)

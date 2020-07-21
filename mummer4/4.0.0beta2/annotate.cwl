@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/annotate.cwl
+id: ../../../annotate.cwl
 inputs:
 - id: gap_file
   doc: ''

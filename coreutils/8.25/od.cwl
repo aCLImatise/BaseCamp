@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/od.cwl
+id: ../../../od.cwl
 inputs:
 - id: address_radix
   doc: output format for file offsets; RADIX is one of [doxn], for Decimal, Octal,

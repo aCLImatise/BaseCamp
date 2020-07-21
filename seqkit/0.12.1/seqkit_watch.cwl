@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_watch.cwl
+id: ../../../seqkit_watch.cwl
 inputs:
 - id: bins
   doc: number of histogram bins (default -1)

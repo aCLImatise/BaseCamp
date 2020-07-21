@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_sync_dat_and_embl.pl.cwl
+id: ../../../gaas_sync_dat_and_embl.pl.cwl
 inputs:
 - id: dat
   doc: Input dat file provided by ENA

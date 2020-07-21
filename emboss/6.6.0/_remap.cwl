@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_remap.cwl
+id: ../../../_remap.cwl
 inputs:
 - id: enzymes
   doc: "string     [all] The name 'all' reads in all enzyme names from the REBASE\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/aln_seqs.pl.cwl
+id: ../../../aln_seqs.pl.cwl
 inputs:
 - id: man
   doc: documentation

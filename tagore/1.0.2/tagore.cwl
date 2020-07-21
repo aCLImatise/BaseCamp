@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tagore.cwl
+id: ../../../tagore.cwl
 inputs:
 - id: input
   doc: Input BED-like file

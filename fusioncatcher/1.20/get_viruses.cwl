@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_viruses.py.cwl
+id: ../../../get_viruses.py.cwl
 inputs:
 - id: output
   doc: The output directory where the chromosomes are stored. Default is '.'.

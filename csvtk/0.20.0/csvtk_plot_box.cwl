@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk_plot_box.cwl
+id: ../../../csvtk_plot_box.cwl
 inputs:
 - id: box_width
   doc: box width

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/read_fastx.py.cwl
+id: ../../../read_fastx.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

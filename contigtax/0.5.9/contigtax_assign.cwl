@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/contigtax_assign.cwl
+id: ../../../contigtax_assign.cwl
 inputs:
 - id: format
   doc: Type of file format for diamond results. blast=blast tabular output, 'contigtax'=blast

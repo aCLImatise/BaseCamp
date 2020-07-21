@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_quality_boxplot_graph.sh.cwl
+id: ../../../fastq_quality_boxplot_graph.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

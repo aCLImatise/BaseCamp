@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/colorinterpolate.cwl
+id: ../../../colorinterpolate.cwl
 inputs:
 - id: start
   doc: ',y1,z1 -end x2,y2,z2 -steps STEPS'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/removeDuplicate.cwl
+id: ../../../removeDuplicate.cwl
 inputs:
 - id: gff_three
   doc: ''

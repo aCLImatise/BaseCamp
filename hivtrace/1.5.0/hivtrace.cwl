@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hivtrace.cwl
+id: ../../../hivtrace.cwl
 inputs:
 - id: input
   doc: FASTA file

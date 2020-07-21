@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Assemble.cwl
+id: ../../../Assemble.cwl
 inputs:
 - id: km_er_length_slash_k
   doc: ': length of kmer, default: 25.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/collectReadSequencesForLocalGapClosing.cwl
+id: ../../../collectReadSequencesForLocalGapClosing.cwl
 inputs:
 - id: faux_reads_file
   doc: '*Name of the faux reads file'

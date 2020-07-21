@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GraphicsMagick++_config.cwl
+id: ../../../GraphicsMagick++_config.cwl
 inputs:
 - id: graphicsmagick
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/intron_exon_reads.py.cwl
+id: ../../../intron_exon_reads.py.cwl
 inputs:
 - id: gff
   doc: GFF or GTF file containing annotations

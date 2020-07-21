@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crb_blast.cwl
+id: ../../../crb_blast.cwl
 inputs:
 - id: query
   doc: query fasta file

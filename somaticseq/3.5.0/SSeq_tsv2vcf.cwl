@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SSeq_tsv2vcf.py.cwl
+id: ../../../SSeq_tsv2vcf.py.cwl
 inputs:
 - id: tsv_in
   doc: 'TSV in (default: None)'

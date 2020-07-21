@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ppanggolin_graph.cwl
+id: ../../../ppanggolin_graph.cwl
 inputs:
 - id: pan_genome
   doc: 'The pangenome .h5 file (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf_tile_2bit.py.cwl
+id: ../../../maf_tile_2bit.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

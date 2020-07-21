@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coords2clnt.py.cwl
+id: ../../../coords2clnt.py.cwl
 inputs:
 - id: outfile
   doc: Write results to this file.

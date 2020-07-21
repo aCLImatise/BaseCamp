@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Trinotate_report_writer.pl.cwl
+id: ../../../Trinotate_report_writer.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

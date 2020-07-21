@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sbt.cwl
+id: ../../../sbt.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

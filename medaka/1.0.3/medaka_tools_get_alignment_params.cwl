@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medaka_tools_get_alignment_params.cwl
+id: ../../../medaka_tools_get_alignment_params.cwl
 inputs:
 - id: model
   doc: 'Model to use. {r103_min_high_g345, r103_min_high_g360, r103_prom_high_g360,

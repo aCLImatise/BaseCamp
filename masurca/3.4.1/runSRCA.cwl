@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runSRCA.pl.cwl
+id: ../../../runSRCA.pl.cwl
 inputs:
 - id: output
   doc: Assembly script (assemble.sh)

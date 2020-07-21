@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/testMIRfix.sh.cwl
+id: ../../../testMIRfix.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

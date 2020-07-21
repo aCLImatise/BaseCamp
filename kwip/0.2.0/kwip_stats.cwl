@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kwip_stats.cwl
+id: ../../../kwip_stats.cwl
 inputs:
 - id: hashes
   doc: ''

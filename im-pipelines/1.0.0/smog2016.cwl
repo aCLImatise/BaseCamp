@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smog2016.cwl
+id: ../../../smog2016.cwl
 inputs:
 - id: input
   doc: Input file, if not defined the STDIN is used

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_pipeline.cwl
+id: ../../../crux_pipeline.cwl
 inputs:
 - id: mass_spectra
   doc: ''

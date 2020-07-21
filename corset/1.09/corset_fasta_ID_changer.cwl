@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/corset_fasta_ID_changer.cwl
+id: ../../../corset_fasta_ID_changer.cwl
 inputs:
 - id: cluster_file
   doc: ''

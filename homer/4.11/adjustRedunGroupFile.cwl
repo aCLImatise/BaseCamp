@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/adjustRedunGroupFile.pl.cwl
+id: ../../../adjustRedunGroupFile.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

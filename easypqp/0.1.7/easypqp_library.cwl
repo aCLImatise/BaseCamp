@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/easypqp_library.cwl
+id: ../../../easypqp_library.cwl
 inputs:
 - id: out
   doc: Output TSV peptide query parameter file. [required]

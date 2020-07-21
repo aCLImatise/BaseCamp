@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snpgenie.pl.cwl
+id: ../../../snpgenie.pl.cwl
 inputs:
 - id: workdir
   doc: =/home/kimura/HPV/SNPs/ --outdir=/home/kimura/HPV/SNPs/diversity/ > SNPGenie_HPV.out

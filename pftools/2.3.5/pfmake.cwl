@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pfmake.cwl
+id: ../../../pfmake.cwl
 inputs:
 - id: global_alignment_mode
   doc: ': global alignment mode.'

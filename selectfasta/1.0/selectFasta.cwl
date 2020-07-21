@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/selectFasta.cwl
+id: ../../../selectFasta.cwl
 inputs:
 - id: fast_q
   doc: 'FILE  (fastq file to select reads from) '

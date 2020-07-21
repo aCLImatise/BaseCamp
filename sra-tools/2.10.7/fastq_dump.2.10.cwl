@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_dump.2.10.7.cwl
+id: ../../../fastq_dump.2.10.7.cwl
 inputs:
 - id: accession
   doc: Replaces accession derived from <path> in filename(s) and deflines (only for

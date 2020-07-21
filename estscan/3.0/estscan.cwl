@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/estscan.cwl
+id: ../../../estscan.cwl
 inputs:
 - id: one_sequence_output
   doc: All in one sequence output

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hivnetworkannotate.cwl
+id: ../../../hivnetworkannotate.cwl
 inputs:
 - id: output_annotated_file
   doc: '[OUTPUT], --output [OUTPUT] Output the annotated JSON network file to'

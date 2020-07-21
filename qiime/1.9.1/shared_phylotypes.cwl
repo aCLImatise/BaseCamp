@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shared_phylotypes.py.cwl
+id: ../../../shared_phylotypes.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

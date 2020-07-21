@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_run_ebseq.cwl
+id: ../../../rsem_run_ebseq.cwl
 inputs:
 - id: ng_vector
   doc: "This option provides the grouping information required by EBSeq for isoform-level\

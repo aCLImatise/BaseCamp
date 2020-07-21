@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pacbio_post_process.cwl
+id: ../../../pacbio_post_process.cwl
 inputs:
 - id: min_contig_length
   doc: Minimum length of contigs [2000]

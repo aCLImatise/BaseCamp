@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/swalign.cwl
+id: ../../../swalign.cwl
 inputs:
 - id: match_score_default
   doc: 'Match score (default: 2)'

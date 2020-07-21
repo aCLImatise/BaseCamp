@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/axtSort.cwl
+id: ../../../axtSort.cwl
 inputs:
 - id: query
   doc: '- Sort by query position, not target'

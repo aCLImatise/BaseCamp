@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_mixdchlet_gen.cwl
+id: ../../../esl_mixdchlet_gen.cwl
 inputs:
 - id: set_number_seed
   doc: ': set random number seed  [0]'

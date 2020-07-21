@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_for_ebseq_calculate_clustering_info.cwl
+id: ../../../rsem_for_ebseq_calculate_clustering_info.cwl
 inputs:
 - id: k
   doc: ''

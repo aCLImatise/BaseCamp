@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dna_mutation_mutation.cwl
+id: ../../../dna_mutation_mutation.cwl
 inputs:
 - id: dna_mutation
   doc: ''

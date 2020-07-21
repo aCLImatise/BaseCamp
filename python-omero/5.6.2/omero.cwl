@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero.cwl
+id: ../../../omero.cwl
 inputs:
 - id: debug
   doc: Use 'help debug' for more information

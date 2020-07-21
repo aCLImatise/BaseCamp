@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof_tail.cwl
+id: ../../../smof_tail.cwl
 inputs:
 - id: entries
   doc: print last K entries; or use -n +K to output starting with the Kth

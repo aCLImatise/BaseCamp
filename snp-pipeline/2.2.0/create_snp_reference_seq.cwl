@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_snp_reference_seq.py.cwl
+id: ../../../create_snp_reference_seq.py.cwl
 inputs:
 - id: force
   doc: 'Force processing even when result file already exists and is newer than inputs

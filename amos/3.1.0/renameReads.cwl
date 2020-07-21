@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/renameReads.cwl
+id: ../../../renameReads.cwl
 inputs:
 - id: bank_name
   doc: ''

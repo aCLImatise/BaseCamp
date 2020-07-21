@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sslm2sam.cwl
+id: ../../../sslm2sam.cwl
 inputs:
 - id: output
   doc: output SAM-filename; '-' for stdout

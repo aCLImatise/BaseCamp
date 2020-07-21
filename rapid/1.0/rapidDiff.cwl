@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rapidDiff.sh.cwl
+id: ../../../rapidDiff.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

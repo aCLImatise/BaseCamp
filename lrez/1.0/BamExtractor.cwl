@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BamExtractor.cwl
+id: ../../../BamExtractor.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

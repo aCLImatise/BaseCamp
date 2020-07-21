@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_mask.cwl
+id: ../../../goalign_mask.cwl
 inputs:
 - id: length
   doc: Length of the sub alignment (default 10)

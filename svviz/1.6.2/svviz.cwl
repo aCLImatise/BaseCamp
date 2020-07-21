@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svviz.cwl
+id: ../../../svviz.cwl
 inputs:
 - id: bam
   doc: sorted, indexed bam file containing reads of interest to plot; can be specified

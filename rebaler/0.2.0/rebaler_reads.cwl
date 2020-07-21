@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rebaler_reads.cwl
+id: ../../../rebaler_reads.cwl
 inputs:
 - id: d
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/EMBLmyGFF3_prokka_example.cwl
+id: ../../../EMBLmyGFF3_prokka_example.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

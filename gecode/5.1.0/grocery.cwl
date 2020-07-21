@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/grocery.cwl
+id: ../../../grocery.cwl
 inputs:
 - id: trace
   doc: '(init,prune,fix,fail,done,propagate,commit,none,all,variable,general) default:

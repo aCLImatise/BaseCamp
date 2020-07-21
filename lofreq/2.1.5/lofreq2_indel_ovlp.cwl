@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lofreq2_indel_ovlp.py.cwl
+id: ../../../lofreq2_indel_ovlp.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

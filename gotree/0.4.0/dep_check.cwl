@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dep_check.cwl
+id: ../../../dep_check.cwl
 inputs:
 - id: suppress_output_default
   doc: 'Suppress non-error output (default: false)'

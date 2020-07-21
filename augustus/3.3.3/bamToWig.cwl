@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamToWig.py.cwl
+id: ../../../bamToWig.py.cwl
 inputs:
 - id: bam_file
   doc: Input file in Bam format.

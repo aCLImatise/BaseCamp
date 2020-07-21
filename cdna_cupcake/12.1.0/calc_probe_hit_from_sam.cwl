@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/calc_probe_hit_from_sam.py.cwl
+id: ../../../calc_probe_hit_from_sam.py.cwl
 inputs:
 - id: gtf
   doc: Input is GTF instead of SAM

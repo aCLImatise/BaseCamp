@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_iam.cwl
+id: ../../../gsutil_iam.cwl
 inputs:
 - id: performs_recursively_objects
   doc: Performs "iam set" recursively to all objects under the specified bucket.

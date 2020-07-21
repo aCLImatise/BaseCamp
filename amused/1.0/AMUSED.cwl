@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AMUSED.cwl
+id: ../../../AMUSED.cwl
 inputs:
 - id: _query_sequences
   doc: = query sequences

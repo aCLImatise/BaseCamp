@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phylorank_bl_table.cwl
+id: ../../../phylorank_bl_table.cwl
 inputs:
 - id: step_size
   doc: 'step size for mean branch length criterion (default: 0.01)'

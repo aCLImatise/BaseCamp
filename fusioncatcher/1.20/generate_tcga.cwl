@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generate_tcga.py.cwl
+id: ../../../generate_tcga.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the list of allowed candidate fusion genes

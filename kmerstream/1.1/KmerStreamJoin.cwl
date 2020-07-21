@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/KmerStreamJoin.cwl
+id: ../../../KmerStreamJoin.cwl
 inputs:
 - id: verbose
   doc: Print output at the end

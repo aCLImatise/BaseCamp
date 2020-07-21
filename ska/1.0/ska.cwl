@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ska.cwl
+id: ../../../ska.cwl
 inputs:
 - id: subcommand
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam2cfg.pl.cwl
+id: ../../../bam2cfg.pl.cwl
 inputs:
 - id: minimum_mapping_quality
   doc: Minimum mapping quality [35]

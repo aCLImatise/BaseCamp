@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/humann2_reduce_table.cwl
+id: ../../../humann2_reduce_table.cwl
 inputs:
 - id: verbose
   doc: additional output is printed

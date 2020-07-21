@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ogrtindex.cwl
+id: ../../../ogrtindex.cwl
 inputs:
 - id: accept_different_schemas
   doc: ': by default ogrtindex checks that all layers inserted into the index have

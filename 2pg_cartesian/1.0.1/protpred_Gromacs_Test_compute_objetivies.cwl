@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/protpred_Gromacs_Test_compute_objetivies.cwl
+id: ../../../protpred_Gromacs_Test_compute_objetivies.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

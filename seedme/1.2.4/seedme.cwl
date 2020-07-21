@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seedme.py.cwl
+id: ../../../seedme.py.cwl
 inputs:
 - id: api_key
   doc: Specify your apikey at SeedMe.org

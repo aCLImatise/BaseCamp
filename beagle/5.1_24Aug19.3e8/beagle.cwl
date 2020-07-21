@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/beagle.cwl
+id: ../../../beagle.cwl
 inputs:
 - id: jar
   doc: ''

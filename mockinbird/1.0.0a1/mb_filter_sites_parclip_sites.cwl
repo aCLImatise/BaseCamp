@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_filter_sites_parclip_sites.cwl
+id: ../../../mb_filter_sites_parclip_sites.cwl
 inputs:
 - id: padding_bp
   doc: ''

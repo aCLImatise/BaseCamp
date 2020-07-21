@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_phase.py.cwl
+id: ../../../fc_phase.py.cwl
 inputs:
 - id: logging_config_fn
   doc: 'Optional standard Python logging config (default: None)'

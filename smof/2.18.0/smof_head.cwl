@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof_head.cwl
+id: ../../../smof_head.cwl
 inputs:
 - id: entries
   doc: print first K entries; or use -n -K to print all but the last K entries

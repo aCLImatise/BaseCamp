@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/evaluate_contigtax.py.cwl
+id: ../../../evaluate_contigtax.py.cwl
 inputs:
 - id: t
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/randomgenome.sh.cwl
+id: ../../../randomgenome.sh.cwl
 inputs:
 - id: len
   doc: ''

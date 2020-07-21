@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ectyper.cwl
+id: ../../../ectyper.cwl
 inputs:
 - id: input
   doc: Location of E. coli genome file(s). Can be a single file, a comma-separated

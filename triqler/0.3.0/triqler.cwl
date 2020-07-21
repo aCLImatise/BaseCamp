@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/triqler.cwl
+id: ../../../triqler.cwl
 inputs:
 - id: out_file
   doc: 'Path to output file (writing in TSV format). N.B. if more than 2 treatment

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FC.cwl
+id: ../../../FC.cwl
 inputs:
 - id: input
   doc: 'The input file(s) or directory. The files should be in FASTQ or SRA format

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BedAnnotateFreq.cwl
+id: ../../../BedAnnotateFreq.cwl
 inputs:
 - id: bam
   doc: Input BAM file(s).

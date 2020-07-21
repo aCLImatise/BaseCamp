@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vtools_stats.cwl
+id: ../../../vtools_stats.cwl
 inputs:
 - id: input
   doc: Input VCF file  [required]

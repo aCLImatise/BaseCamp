@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_Trinity_gene_to_trans_map.pl.cwl
+id: ../../../get_Trinity_gene_to_trans_map.pl.cwl
 inputs:
 - id: no
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blast_to_link.sh.cwl
+id: ../../../blast_to_link.sh.cwl
 inputs:
 - id: usage_message
   doc: usage message

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pvacseq_coverage_filter_input_file.cwl
+id: ../../../pvacseq_coverage_filter_input_file.cwl
 inputs:
 - id: normal_cov
   doc: ''

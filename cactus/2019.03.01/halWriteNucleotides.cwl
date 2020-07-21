@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halWriteNucleotides.cwl
+id: ../../../halWriteNucleotides.cwl
 inputs:
 - id: in_file
   doc: ''

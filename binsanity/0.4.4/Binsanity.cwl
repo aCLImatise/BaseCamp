@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Binsanity.cwl
+id: ../../../Binsanity.cwl
 inputs:
 - id: specify_coverage_file
   doc: Specify a Coverage File

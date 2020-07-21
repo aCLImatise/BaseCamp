@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maker.cwl
+id: ../../../maker.cwl
 inputs:
 - id: genome
   doc: '|g <file>    Overrides the genome file path in the control files'

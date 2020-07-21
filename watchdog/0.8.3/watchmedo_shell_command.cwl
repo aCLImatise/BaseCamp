@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/watchmedo_shell_command.cwl
+id: ../../../watchmedo_shell_command.cwl
 inputs:
 - id: command
   doc: "shell command executed in response to matching events. These interpolation\

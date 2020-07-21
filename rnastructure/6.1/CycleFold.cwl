@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CycleFold.cwl
+id: ../../../CycleFold.cwl
 inputs:
 - id: sequence
   doc: ''

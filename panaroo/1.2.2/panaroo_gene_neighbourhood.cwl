@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/panaroo_gene_neighbourhood.cwl
+id: ../../../panaroo_gene_neighbourhood.cwl
 inputs:
 - id: gene
   doc: gene of interest

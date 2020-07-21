@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_tab2fx.cwl
+id: ../../../seqkit_tab2fx.cwl
 inputs:
 - id: comment_line_prefix
   doc: comment line prefix (default [#,//])

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summation.pl.cwl
+id: ../../../summation.pl.cwl
 inputs:
 - id: fast_q_read_avg_file_one
   doc: ''

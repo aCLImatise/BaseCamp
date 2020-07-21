@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xa2multi.pl.cwl
+id: ../../../xa2multi.pl.cwl
 inputs:
 - id: no
   doc: ''

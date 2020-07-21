@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convert_qr.cwl
+id: ../../../convert_qr.cwl
 inputs:
 - id: it
   doc: Input file from QuasiRecomb, usually 'quasispecies.fasta' for transmitter

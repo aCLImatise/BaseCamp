@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/novo2maq.cwl
+id: ../../../novo2maq.cwl
 inputs:
 - id: turns_smithwaterman_check
   doc: '|off Turns on or off the Smith-Waterman check of indels. When only indels

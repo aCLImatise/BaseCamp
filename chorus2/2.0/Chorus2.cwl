@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Chorus2.cwl
+id: ../../../Chorus2.cwl
 inputs:
 - id: jellyfish
   doc: The path where Jellyfish software installed

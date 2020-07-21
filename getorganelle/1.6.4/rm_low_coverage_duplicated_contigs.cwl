@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rm_low_coverage_duplicated_contigs.py.cwl
+id: ../../../rm_low_coverage_duplicated_contigs.py.cwl
 inputs:
 - id: cov_t
   doc: 'With ratio (coverage of query/coverage of subject) below which, the query

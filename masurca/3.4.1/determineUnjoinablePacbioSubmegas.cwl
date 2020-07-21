@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/determineUnjoinablePacbioSubmegas.perl.cwl
+id: ../../../determineUnjoinablePacbioSubmegas.perl.cwl
 inputs:
 - id: inputfile_name_file
   doc: (inputFile is the name of the file with k-unitig pairs and gap sizes)

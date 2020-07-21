@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnftools_sam2roc.cwl
+id: ../../../rnftools_sam2roc.cwl
 inputs:
 - id: sam
   doc: SAM/BAM with aligned RNF reads(- for standard input).

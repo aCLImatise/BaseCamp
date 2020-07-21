@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/slivar_tsv.cwl
+id: ../../../slivar_tsv.cwl
 inputs:
 - id: ped
   doc: required ped file describing the trios in the VCF

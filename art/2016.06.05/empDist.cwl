@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/empDist.pl.cwl
+id: ../../../empDist.pl.cwl
 inputs:
 - id: freq_file
   doc: ''

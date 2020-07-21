@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DuplexFold.cwl
+id: ../../../DuplexFold.cwl
 inputs:
 - id: seq_file_one
   doc: ''

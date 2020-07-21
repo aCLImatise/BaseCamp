@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simulate_sequences.py.cwl
+id: ../../../simulate_sequences.py.cwl
 inputs:
 - id: number_of_sequences
   doc: Number of sequences (1).

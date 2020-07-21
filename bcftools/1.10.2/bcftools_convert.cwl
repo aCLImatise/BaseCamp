@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcftools_convert.cwl
+id: ../../../bcftools_convert.cwl
 inputs:
 - id: exclude
   doc: exclude sites for which the expression is true

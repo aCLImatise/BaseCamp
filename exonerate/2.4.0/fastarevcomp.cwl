@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastarevcomp.cwl
+id: ../../../fastarevcomp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

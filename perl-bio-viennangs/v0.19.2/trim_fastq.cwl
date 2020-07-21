@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trim_fastq.pl.cwl
+id: ../../../trim_fastq.pl.cwl
 inputs:
 - id: fast_q
   doc: Fastq file for trimming

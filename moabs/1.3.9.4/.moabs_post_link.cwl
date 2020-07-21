@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/.moabs_post_link.sh.cwl
+id: ../../../.moabs_post_link.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

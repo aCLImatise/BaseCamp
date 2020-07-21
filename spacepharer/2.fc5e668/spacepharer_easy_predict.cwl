@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spacepharer_easy_predict.cwl
+id: ../../../spacepharer_easy_predict.cwl
 inputs:
 - id: comp_bias_corr
   doc: Correct for locally biased amino acid composition (range 0-1) [1]

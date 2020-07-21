@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslPosTarget.cwl
+id: ../../../pslPosTarget.cwl
 inputs:
 - id: in_psl
   doc: ''

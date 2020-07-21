@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proot.cwl
+id: ../../../proot.cwl
 inputs:
 - id: path_use_path
   doc: '*path*     Use *path* as the new guest root file-system, default is /.'

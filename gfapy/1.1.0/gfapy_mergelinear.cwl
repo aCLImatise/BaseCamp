@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gfapy_mergelinear.cwl
+id: ../../../gfapy_mergelinear.cwl
 inputs:
 - id: redundant
   doc: create redundant paths, similar to the contigs constructed by Readjoiner

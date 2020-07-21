@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ConsensusMapNormalizer.cwl
+id: ../../../ConsensusMapNormalizer.cwl
 inputs:
 - id: in
   doc: "*               Input file (valid formats: 'consensusXML')"

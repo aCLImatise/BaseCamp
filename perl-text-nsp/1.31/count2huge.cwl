@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/count2huge.pl.cwl
+id: ../../../count2huge.pl.cwl
 inputs:
 - id: split
   doc: 'Split the bigrams list into smaller pieces. Each file has N bigrams. N is

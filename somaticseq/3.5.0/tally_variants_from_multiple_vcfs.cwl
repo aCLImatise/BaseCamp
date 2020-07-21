@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tally_variants_from_multiple_vcfs.py.cwl
+id: ../../../tally_variants_from_multiple_vcfs.py.cwl
 inputs:
 - id: vcf_files
   doc: 'multiple vcf files (default: None)'

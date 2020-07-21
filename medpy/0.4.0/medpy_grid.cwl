@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_grid.py.cwl
+id: ../../../medpy_grid.py.cwl
 inputs:
 - id: example
   doc: 'Option 1/2: Supply an image to create the grid volume by example (i.e. with

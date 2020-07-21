@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/expressionFromGenomicSet.py.cwl
+id: ../../../expressionFromGenomicSet.py.cwl
 inputs:
 - id: dist
   doc: 'threshDist of GenomicReginSet.filter_by_gene_association_old. [default: 50000]'

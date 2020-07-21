@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_mega_reads.cwl
+id: ../../../create_mega_reads.cwl
 inputs:
 - id: size
   doc: '*Number of k-mers in SuperReads'

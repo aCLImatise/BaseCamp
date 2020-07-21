@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faSplit.cwl
+id: ../../../faSplit.cwl
 inputs:
 - id: how
   doc: ''

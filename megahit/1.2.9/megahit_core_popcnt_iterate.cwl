@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/megahit_core_popcnt_iterate.cwl
+id: ../../../megahit_core_popcnt_iterate.cwl
 inputs:
 - id: contig_file
   doc: (*) contigs file, fasta/fastq format, output by assembler

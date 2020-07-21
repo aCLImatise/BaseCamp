@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_gen_transcript_plots.cwl
+id: ../../../rsem_gen_transcript_plots.cwl
 inputs:
 - id: sample_name
   doc: ''

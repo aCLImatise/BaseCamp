@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extractJoinableAndNextPassReadsFromJoinKUnitigs.perl.cwl
+id: ../../../extractJoinableAndNextPassReadsFromJoinKUnitigs.perl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

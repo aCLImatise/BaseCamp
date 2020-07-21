@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/buildMetaphyler.pl.cwl
+id: ../../../buildMetaphyler.pl.cwl
 inputs:
 - id: norm_vertical_line_un_norm
   doc: ''

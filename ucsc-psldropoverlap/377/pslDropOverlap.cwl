@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslDropOverlap.cwl
+id: ../../../pslDropOverlap.cwl
 inputs:
 - id: in_dot_psl
   doc: ''

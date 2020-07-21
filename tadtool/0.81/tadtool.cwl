@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tadtool.cwl
+id: ../../../tadtool.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

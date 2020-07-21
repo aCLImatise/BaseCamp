@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shiver_init.sh.cwl
+id: ../../../shiver_init.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

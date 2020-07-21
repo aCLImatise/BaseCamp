@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/KmerFilter.cwl
+id: ../../../KmerFilter.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_consensus.cwl
+id: ../../../vcf_consensus.cwl
 inputs:
 - id: haplotype
   doc: Apply only variants for the given haplotype (1,2)

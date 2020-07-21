@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/invertkey.sh.cwl
+id: ../../../invertkey.sh.cwl
 inputs:
 - id: invert_sketch_dots_h
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/isect_mercator_alignment_gff.cwl
+id: ../../../isect_mercator_alignment_gff.cwl
 inputs:
 - id: type
   doc: only look at features of particular type

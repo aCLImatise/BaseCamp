@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_junction_bed12.py.cwl
+id: ../../../merge_junction_bed12.py.cwl
 inputs:
 - id: delim
   doc: 'Delimiter for merged names. Default: ;'

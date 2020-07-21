@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_pepcoil.cwl
+id: ../../../_pepcoil.cwl
 inputs:
 - id: window
   doc: integer    [28] Window size (Integer from 7 to 28)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sumtrees.py.cwl
+id: ../../../sumtrees.py.cwl
 inputs:
 - id: source_format
   doc: Format of all input trees (defaults to handling either NEXUS or NEWICK through

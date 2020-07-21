@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/falconc_bam2clippedFasta.cwl
+id: ../../../falconc_bam2clippedFasta.cwl
 inputs:
 - id: help_syntax
   doc: 'advanced: prepend,plurals,..'

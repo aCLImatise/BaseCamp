@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_netinstall.pl.cwl
+id: ../../../bp_netinstall.pl.cwl
 inputs:
 - id: dev
   doc: Use the development version of bioperl from git

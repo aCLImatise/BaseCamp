@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hulk_smash.cwl
+id: ../../../hulk_smash.cwl
 inputs:
 - id: algorithm
   doc: tells HULK which sketching algorithm to use [histosketch kmv khf] (default

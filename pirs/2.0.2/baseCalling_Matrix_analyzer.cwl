@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/baseCalling_Matrix_analyzer.cwl
+id: ../../../baseCalling_Matrix_analyzer.cwl
 inputs:
 - id: matrix_file
   doc: matrix file

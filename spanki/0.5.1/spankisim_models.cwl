@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spankisim_models.cwl
+id: ../../../spankisim_models.cwl
 inputs:
 - id: i
   doc: ''

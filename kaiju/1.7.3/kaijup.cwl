@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kaijup.cwl
+id: ../../../kaijup.cwl
 inputs:
 - id: name_database_file
   doc: Name of database file (.fmi) file

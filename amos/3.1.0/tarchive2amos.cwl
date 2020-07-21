@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tarchive2amos.cwl
+id: ../../../tarchive2amos.cwl
 inputs:
 - id: file_containing_ranges
   doc: '- file containing clear ranges for the reads.  If this file is provided, any

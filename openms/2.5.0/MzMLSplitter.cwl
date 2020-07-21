@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MzMLSplitter.cwl
+id: ../../../MzMLSplitter.cwl
 inputs:
 - id: in
   doc: "*        Input file (valid formats: 'mzML')"

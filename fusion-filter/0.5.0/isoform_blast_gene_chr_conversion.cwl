@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/isoform_blast_gene_chr_conversion.pl.cwl
+id: ../../../isoform_blast_gene_chr_conversion.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

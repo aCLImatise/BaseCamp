@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sfld_postprocess.cwl
+id: ../../../sfld_postprocess.cwl
 inputs:
 - id: no_search
   doc: "| -S         don't run search if output files exist"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pilon.cwl
+id: ../../../pilon.cwl
 inputs:
 - id: genome
   doc: The input genome we are trying to improve, which must be the reference used

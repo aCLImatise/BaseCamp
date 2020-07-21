@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_tool.py.cwl
+id: ../../../merge_tool.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/methylpy_paired_end_pipeline.cwl
+id: ../../../methylpy_paired_end_pipeline.cwl
 inputs:
 - id: read_one_files
   doc: 'list of all the read 1 fastq files you would like to run through the pipeline.

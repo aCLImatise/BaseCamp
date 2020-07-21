@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pickle_cat.py.cwl
+id: ../../../pickle_cat.py.cwl
 inputs:
 - id: pickle_file
   doc: Input pickle file.

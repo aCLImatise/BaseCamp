@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/readqc.sh.cwl
+id: ../../../readqc.sh.cwl
 inputs:
 - id: in
   doc: ''

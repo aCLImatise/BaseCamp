@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools_rmdup.cwl
+id: ../../../samtools_rmdup.cwl
 inputs:
 - id: rmdup_se_reads
   doc: rmdup for SE reads

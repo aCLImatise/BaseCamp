@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SpectraMerger.cwl
+id: ../../../SpectraMerger.cwl
 inputs:
 - id: in
   doc: "*               Input mzML file. (valid formats: 'mzML')"

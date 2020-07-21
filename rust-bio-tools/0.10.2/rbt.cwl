@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbt.cwl
+id: ../../../rbt.cwl
 inputs:
 - id: verbose
   doc: Verbose output.

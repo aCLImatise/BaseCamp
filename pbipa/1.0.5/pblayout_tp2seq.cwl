@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pblayout_tp2seq.cwl
+id: ../../../pblayout_tp2seq.cwl
 inputs:
 - id: use_seq_ids
   doc: The input tiling path contains sequence IDs instead of read names.

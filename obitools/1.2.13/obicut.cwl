@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obicut.cwl
+id: ../../../obicut.cwl
 inputs:
 - id: begin
   doc: python expression to be evaluated in the sequence context. The attribute name

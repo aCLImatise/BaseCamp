@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scrambleFasta.pl.cwl
+id: ../../../scrambleFasta.pl.cwl
 inputs:
 - id: number_scrambled_output
   doc: '<#> (Number of scrambled output sequences, defulat: 5x input)'

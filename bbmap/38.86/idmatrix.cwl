@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/idmatrix.sh.cwl
+id: ../../../idmatrix.sh.cwl
 inputs:
 - id: in
   doc: ''

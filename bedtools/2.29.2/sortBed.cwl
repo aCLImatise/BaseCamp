@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sortBed.cwl
+id: ../../../sortBed.cwl
 inputs:
 - id: size_a
   doc: Sort by feature size in ascending order.

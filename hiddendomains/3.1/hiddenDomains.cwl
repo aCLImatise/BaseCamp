@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hiddenDomains.cwl
+id: ../../../hiddenDomains.cwl
 inputs:
 - id: g
   doc: ''

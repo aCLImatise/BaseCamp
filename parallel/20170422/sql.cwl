@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sql.cwl
+id: ../../../sql.cwl
 inputs:
 - id: db_url
   doc: ''

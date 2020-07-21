@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_water.cwl
+id: ../../../_water.cwl
 inputs:
 - id: gap_open
   doc: float      [10.0 for any sequence] The gap open penalty is the score taken

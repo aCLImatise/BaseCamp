@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ConvertHeaders.py_convert_fail.cwl
+id: ../../../ConvertHeaders.py_convert_fail.cwl
 inputs:
 - id: convert_headers_do_tpy
   doc: ''

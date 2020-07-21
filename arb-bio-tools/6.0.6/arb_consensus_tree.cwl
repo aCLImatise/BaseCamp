@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_consensus_tree.cwl
+id: ../../../arb_consensus_tree.cwl
 inputs:
 - id: write_consensus_tree
   doc: write consensus tree to outfile

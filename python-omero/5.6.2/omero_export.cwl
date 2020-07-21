@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_export.cwl
+id: ../../../omero_export.cwl
 inputs:
 - id: file
   doc: Filename to export to or '-' for stdout. File may not exist

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_count_vectors.cwl
+id: ../../../get_count_vectors.cwl
 inputs:
 - id: out_prefix
   doc: 'Prefix to prepend to output files (default: no prefix)'

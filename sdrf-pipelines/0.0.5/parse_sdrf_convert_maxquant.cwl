@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parse_sdrf_convert_maxquant.cwl
+id: ../../../parse_sdrf_convert_maxquant.cwl
 inputs:
 - id: sd_rf
   doc: SDRF file

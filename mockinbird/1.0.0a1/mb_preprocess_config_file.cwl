@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_preprocess_config_file.cwl
+id: ../../../mb_preprocess_config_file.cwl
 inputs:
 - id: log_level
   doc: ''

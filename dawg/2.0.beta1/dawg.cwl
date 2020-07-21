@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dawg.cwl
+id: ../../../dawg.cwl
 inputs:
 - id: help_trick
   doc: display description of common control variables

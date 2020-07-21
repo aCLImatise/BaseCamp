@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/inflate_denoiser_output.py.cwl
+id: ../../../inflate_denoiser_output.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

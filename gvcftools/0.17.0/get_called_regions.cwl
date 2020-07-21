@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_called_regions.cwl
+id: ../../../get_called_regions.cwl
 inputs:
 - id: gvc_f
   doc: ''

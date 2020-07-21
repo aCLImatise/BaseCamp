@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tango.cwl
+id: ../../../tango.cwl
 inputs:
 - id: v
   doc: ''

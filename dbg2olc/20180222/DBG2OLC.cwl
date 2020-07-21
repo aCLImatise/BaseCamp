@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DBG2OLC.cwl
+id: ../../../DBG2OLC.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

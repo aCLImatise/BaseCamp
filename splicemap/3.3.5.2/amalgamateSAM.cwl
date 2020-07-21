@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/amalgamateSAM.cwl
+id: ../../../amalgamateSAM.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

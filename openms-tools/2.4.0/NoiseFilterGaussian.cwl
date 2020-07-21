@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NoiseFilterGaussian.cwl
+id: ../../../NoiseFilterGaussian.cwl
 inputs:
 - id: in
   doc: "*        Input raw data file  (valid formats: 'mzML')"

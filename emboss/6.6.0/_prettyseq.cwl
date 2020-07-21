@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_prettyseq.cwl
+id: ../../../_prettyseq.cwl
 inputs:
 - id: range
   doc: range      [Whole sequence] Range(s) to translate

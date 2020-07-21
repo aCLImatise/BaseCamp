@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gffutils_cli_common.cwl
+id: ../../../gffutils_cli_common.cwl
 inputs:
 - id: db
   doc: Database to use. If a GFF or GTF file is provided instead for this argument,

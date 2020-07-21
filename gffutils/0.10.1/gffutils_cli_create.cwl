@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gffutils_cli_create.cwl
+id: ../../../gffutils_cli_create.cwl
 inputs:
 - id: output
   doc: 'Database to create. Default is to append ".db" to the end of the input filename

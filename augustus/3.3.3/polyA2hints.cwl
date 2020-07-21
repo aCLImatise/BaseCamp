@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/polyA2hints.pl.cwl
+id: ../../../polyA2hints.pl.cwl
 inputs:
 - id: swap_strand
   doc: swap strand, currently use this for polyT files

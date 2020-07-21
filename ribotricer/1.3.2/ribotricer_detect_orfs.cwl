@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ribotricer_detect_orfs.cwl
+id: ../../../ribotricer_detect_orfs.cwl
 inputs:
 - id: bam
   doc: Path to BAM file  [required]

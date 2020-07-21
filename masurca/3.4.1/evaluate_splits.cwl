@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/evaluate_splits.pl.cwl
+id: ../../../evaluate_splits.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

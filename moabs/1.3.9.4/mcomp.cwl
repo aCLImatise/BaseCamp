@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mcomp.cwl
+id: ../../../mcomp.cwl
 inputs:
 - id: do_dmcs_can
   doc: (=1)              doDmcScan;

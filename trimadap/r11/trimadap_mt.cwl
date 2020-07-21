@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trimadap_mt.cwl
+id: ../../../trimadap_mt.cwl
 inputs:
 - id: five
   doc: 5'-end adapter

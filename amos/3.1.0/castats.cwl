@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/castats.cwl
+id: ../../../castats.cwl
 inputs:
 - id: min_qual
   doc: <n>   Minimum quality value threshhold to report as bad quality (default 20)

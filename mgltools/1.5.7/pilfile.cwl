@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pilfile.py.cwl
+id: ../../../pilfile.py.cwl
 inputs:
 - id: list_supported_formats
   doc: list supported file formats

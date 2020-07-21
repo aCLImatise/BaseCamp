@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pirs_simulate_OPTIONS....cwl
+id: ../../../pirs_simulate_OPTIONS....cwl
 inputs:
 - id: no_gc_content_bias
   doc: Do not simulate GC bias.  The GC bias profile will not be used.

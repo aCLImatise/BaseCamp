@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halRenameSequences.cwl
+id: ../../../halRenameSequences.cwl
 inputs:
 - id: hal_file
   doc: ''

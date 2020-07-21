@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Fexact.cwl
+id: ../../../Fexact.cwl
 inputs:
 - id: i
   doc: ''

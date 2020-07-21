@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mglobconformer.cwl
+id: ../../../mglobconformer.cwl
 inputs:
 - id: ob_conformer
   doc: ''

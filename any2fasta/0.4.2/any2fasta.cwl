@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/any2fasta.cwl
+id: ../../../any2fasta.cwl
 inputs:
 - id: print_version_exit
   doc: Print version and exit

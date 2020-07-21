@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafAddQRows.cwl
+id: ../../../mafAddQRows.cwl
 inputs:
 - id: divisor
   doc: is value to divide Q value by.  Default is 5.

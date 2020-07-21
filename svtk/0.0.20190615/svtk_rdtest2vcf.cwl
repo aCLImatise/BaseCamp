@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtk_rdtest2vcf.cwl
+id: ../../../svtk_rdtest2vcf.cwl
 inputs:
 - id: contigs
   doc: Reference fasta index (.fai). If provided, contigs in index will be used in

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ting.cwl
+id: ../../../ting.cwl
 inputs:
 - id: tcr_sequences
   doc: File holding TCRs

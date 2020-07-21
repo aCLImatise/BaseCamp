@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_q_ranker.cwl
+id: ../../../crux_q_ranker.cwl
 inputs:
 - id: fragmentation_spectra
   doc: ''

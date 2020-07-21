@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gffutils_cli_search.cwl
+id: ../../../gffutils_cli_search.cwl
 inputs:
 - id: feature_type
   doc: 'Restrict to a particular featuretype. This can be faster than doing a grep

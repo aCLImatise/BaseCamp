@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gddiag.cwl
+id: ../../../gddiag.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Kinfold.cwl
+id: ../../../Kinfold.cwl
 inputs:
 - id: full_help
   doc: Print help, including hidden options, and exit

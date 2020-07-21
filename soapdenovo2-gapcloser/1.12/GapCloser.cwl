@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GapCloser.cwl
+id: ../../../GapCloser.cwl
 inputs:
 - id: string_input_file_name
   doc: <string>        input scaffold file name, required.

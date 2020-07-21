@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nf_core_launch.cwl
+id: ../../../nf_core_launch.cwl
 inputs:
 - id: params
   doc: Local parameter settings file in JSON.

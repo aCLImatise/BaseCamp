@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbmm2_align.cwl
+id: ../../../pbmm2_align.cwl
 inputs:
 - id: chunk_size
   doc: INT    Process N records per chunk. [100]

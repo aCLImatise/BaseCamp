@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clumpMaker.cwl
+id: ../../../clumpMaker.cwl
 inputs:
 - id: penalty_clump_start
   doc: penalty for clump start, default 50000

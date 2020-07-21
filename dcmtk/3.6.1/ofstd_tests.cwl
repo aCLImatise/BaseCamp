@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ofstd_tests.cwl
+id: ../../../ofstd_tests.cwl
 inputs:
 - id: list
   doc: list available tests and exit

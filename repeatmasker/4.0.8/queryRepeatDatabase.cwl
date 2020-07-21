@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/queryRepeatDatabase.pl.cwl
+id: ../../../queryRepeatDatabase.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

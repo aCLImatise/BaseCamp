@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pKiss_shapes.cwl
+id: ../../../pKiss_shapes.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

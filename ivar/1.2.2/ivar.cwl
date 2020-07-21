@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ivar.cwl
+id: ../../../ivar.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

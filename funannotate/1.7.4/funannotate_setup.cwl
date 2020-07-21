@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/funannotate_setup.cwl
+id: ../../../funannotate_setup.cwl
 inputs:
 - id: install
   doc: 'Download format databases. Default: all [merops,uniprot,dbCAN,pfam,repeats,go,

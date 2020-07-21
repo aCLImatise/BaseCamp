@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Rename_SequenceFiles.sh.cwl
+id: ../../../Rename_SequenceFiles.sh.cwl
 inputs:
 - id: rename_for_d_docent_dots_h
   doc: ''

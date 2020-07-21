@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varda2_client_monitor.cwl
+id: ../../../varda2_client_monitor.cwl
 inputs:
 - id: task_file
   doc: Filename of tasks to monitor

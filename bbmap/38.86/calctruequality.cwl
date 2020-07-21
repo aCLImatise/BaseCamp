@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/calctruequality.sh.cwl
+id: ../../../calctruequality.sh.cwl
 inputs:
 - id: variants_dot
   doc: The format can be produced by CallVariants.

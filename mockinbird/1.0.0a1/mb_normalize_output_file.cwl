@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_normalize_output_file.cwl
+id: ../../../mb_normalize_output_file.cwl
 inputs:
 - id: mut_snp_ratio
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_singularity.cwl
+id: ../../../run_singularity.cwl
 inputs:
 - id: app
   doc: Run an app's runscript instead of the default one

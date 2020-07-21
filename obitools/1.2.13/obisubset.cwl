@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obisubset.cwl
+id: ../../../obisubset.cwl
 inputs:
 - id: skip
   doc: skip the N first sequences

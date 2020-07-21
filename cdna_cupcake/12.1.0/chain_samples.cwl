@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chain_samples.py.cwl
+id: ../../../chain_samples.py.cwl
 inputs:
 - id: fuzzy_junction
   doc: 'Max allowed distance in junction to be considered identical (default: 0 bp)'

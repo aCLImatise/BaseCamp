@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/primer3_masker.cwl
+id: ../../../primer3_masker.cwl
 inputs:
 - id: probability_cut_off
   doc: '- masking cutoff [0, 1] (default: >=0.1)'

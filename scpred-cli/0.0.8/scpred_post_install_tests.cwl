@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scpred_post_install_tests.sh.cwl
+id: ../../../scpred_post_install_tests.sh.cwl
 inputs:
 - id: action
   doc: ''

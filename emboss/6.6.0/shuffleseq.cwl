@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shuffleseq.cwl
+id: ../../../shuffleseq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

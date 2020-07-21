@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wgs2ncbi.cwl
+id: ../../../wgs2ncbi.cwl
 inputs:
 - id: conf
   doc: ''

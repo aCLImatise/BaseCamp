@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ctseq_call_molecules.cwl
+id: ../../../ctseq_call_molecules.cwl
 inputs:
 - id: ref_dir
   doc: Full path to directory where you have already built your methylation reference

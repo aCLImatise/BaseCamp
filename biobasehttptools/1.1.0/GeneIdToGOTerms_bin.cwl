@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GeneIdToGOTerms_bin.cwl
+id: ../../../GeneIdToGOTerms_bin.cwl
 inputs:
 - id: verbose
   doc: Loud verbosity

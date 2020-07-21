@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mpi_iprscan.cwl
+id: ../../../mpi_iprscan.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

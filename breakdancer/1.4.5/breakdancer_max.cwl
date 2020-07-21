@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/breakdancer_max.cwl
+id: ../../../breakdancer_max.cwl
 inputs:
 - id: operate_single_chromosome
   doc: operate on a single chromosome [all chromosome]

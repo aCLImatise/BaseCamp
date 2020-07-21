@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/db_deadlock.cwl
+id: ../../../db_deadlock.cwl
 inputs:
 - id: vv
   doc: ''

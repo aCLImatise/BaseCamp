@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/similarity_pyseer.cwl
+id: ../../../similarity_pyseer.cwl
 inputs:
 - id: km_ers
   doc: Kmers file

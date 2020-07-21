@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/disty.cwl
+id: ../../../disty.cwl
 inputs:
 - id: float_skip_columns
   doc: FLOAT  skip columns having frequency of N > FLOAT [1.00]

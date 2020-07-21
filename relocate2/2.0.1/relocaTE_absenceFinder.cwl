@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/relocaTE_absenceFinder.py_usr_target_genome_path.cwl
+id: ../../../relocaTE_absenceFinder.py_usr_target_genome_path.cwl
 inputs:
 - id: te
   doc: '= sys.argv[4] ## repeat to analyze: ALL or mPing/other te name '

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/galru_shrink_database.cwl
+id: ../../../galru_shrink_database.cwl
 inputs:
 - id: percentage_similarity
   doc: 'Base directory for species databases, defaults to bundled (default: 0.99)'

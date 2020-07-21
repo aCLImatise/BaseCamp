@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genform.cwl
+id: ../../../genform.cwl
 inputs:
 - id: loss
   doc: ': for analyzing MS/MS peaks write losses instead of fragments'

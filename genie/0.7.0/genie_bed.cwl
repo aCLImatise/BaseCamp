@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genie_bed.cwl
+id: ../../../genie_bed.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/idxdepth.cwl
+id: ../../../idxdepth.cwl
 inputs:
 - id: arg_bam_cram
   doc: '[ --bam ] arg                      BAM / CRAM input file'

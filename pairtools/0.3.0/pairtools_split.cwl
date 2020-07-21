@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pairtools_split.cwl
+id: ../../../pairtools_split.cwl
 inputs:
 - id: output_pairs
   doc: output pairs file. If the path ends with .gz or .lz4, the output is pbgzip-/lz4c-compressed.

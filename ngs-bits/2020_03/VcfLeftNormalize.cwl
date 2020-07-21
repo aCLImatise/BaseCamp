@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/VcfLeftNormalize.cwl
+id: ../../../VcfLeftNormalize.cwl
 inputs:
 - id: in
   doc: "Input VCF file. If unset, reads from STDIN. Default value: ''"

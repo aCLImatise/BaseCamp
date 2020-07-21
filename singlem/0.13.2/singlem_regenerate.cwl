@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/singlem_regenerate.cwl
+id: ../../../singlem_regenerate.cwl
 inputs:
 - id: debug
   doc: ''

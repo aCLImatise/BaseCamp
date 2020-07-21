@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blat2gtf.pl.cwl
+id: ../../../blat2gtf.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

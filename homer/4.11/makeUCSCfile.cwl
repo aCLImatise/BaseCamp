@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeUCSCfile.cwl
+id: ../../../makeUCSCfile.cwl
 inputs:
 - id: circo_s
   doc: <chrN:XXX-YYY|genome> (output only a specific region for circos[no header])

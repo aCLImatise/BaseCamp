@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/je_debarcode.cwl
+id: ../../../je_debarcode.cwl
 inputs:
 - id: required_dot
   doc: Cannot be used in conjuction with option(s) USE_EMBASE (EM)

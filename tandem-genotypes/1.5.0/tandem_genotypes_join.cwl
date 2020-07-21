@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tandem_genotypes_join.cwl
+id: ../../../tandem_genotypes_join.cwl
 inputs:
 - id: shrink
   doc: shrink the output

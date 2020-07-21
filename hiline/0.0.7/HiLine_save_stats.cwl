@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HiLine_save_stats.cwl
+id: ../../../HiLine_save_stats.cwl
 inputs:
 - id: path
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cluster2bed.pl.cwl
+id: ../../../cluster2bed.pl.cwl
 inputs:
 - id: res
   doc: '<#> (resolution used to create the file, default: auto detect)'

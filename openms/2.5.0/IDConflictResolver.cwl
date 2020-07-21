@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/IDConflictResolver.cwl
+id: ../../../IDConflictResolver.cwl
 inputs:
 - id: in
   doc: "*                                           Input file (data annotated with\

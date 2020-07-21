@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_transitive.cwl
+id: ../../../filter_transitive.cwl
 inputs:
 - id: depot
   doc: ''

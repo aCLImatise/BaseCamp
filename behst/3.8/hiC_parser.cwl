@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hiC_parser.py.cwl
+id: ../../../hiC_parser.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

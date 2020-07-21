@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metalign.py.cwl
+id: ../../../metalign.py.cwl
 inputs:
 - id: cut_off
   doc: CMash cutoff value. Default is 0.01.

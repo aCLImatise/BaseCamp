@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iva.cwl
+id: ../../../iva.cwl
 inputs:
 - id: name_forward_reads
   doc: '[.gz], --reads_fwd filename[.gz] Name of forward reads fasta/q file. Must

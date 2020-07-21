@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prot2codon.cwl
+id: ../../../prot2codon.cwl
 inputs:
 - id: multi_fast_a_or_stockholm_alignment
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sigcleave.cwl
+id: ../../../sigcleave.cwl
 inputs:
 - id: min_weight
   doc: float      [3.5] Minimum scoring weight value for the predicted cleavage site

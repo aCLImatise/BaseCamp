@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfannotate.cwl
+id: ../../../vcfannotate.cwl
 inputs:
 - id: bed
   doc: use annotations provided by this BED file

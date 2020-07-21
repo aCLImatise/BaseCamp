@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_contigs.sh.cwl
+id: ../../../merge_contigs.sh.cwl
 inputs:
 - id: r
   doc: ''

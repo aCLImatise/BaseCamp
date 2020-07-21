@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fpa_rename.cwl
+id: ../../../fpa_rename.cwl
 inputs:
 - id: input
   doc: Rename reads with value in path passed as parameter

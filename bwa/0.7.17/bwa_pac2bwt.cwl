@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bwa_pac2bwt.cwl
+id: ../../../bwa_pac2bwt.cwl
 inputs:
 - id: d
   doc: ''

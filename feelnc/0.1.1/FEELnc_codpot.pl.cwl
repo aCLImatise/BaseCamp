@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FEELnc_codpot.pl.bak.cwl
+id: ../../../FEELnc_codpot.pl.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

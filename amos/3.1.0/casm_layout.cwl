@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/casm_layout.cwl
+id: ../../../casm_layout.cwl
 inputs:
 - id: b
   doc: ''

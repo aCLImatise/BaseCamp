@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cs_OUTBASE_gene_REGION.bed.cwl
+id: ../../../cs_OUTBASE_gene_REGION.bed.cwl
 inputs:
 - id: cs
   doc: ''

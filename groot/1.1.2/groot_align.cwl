@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/groot_align.cwl
+id: ../../../groot_align.cwl
 inputs:
 - id: cont_thresh
   doc: containment threshold for the LSH ensemble (default 0.99)

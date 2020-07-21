@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/confindr.py.cwl
+id: ../../../confindr.py.cwl
 inputs:
 - id: input_directory
   doc: Folder that contains fastq files you want to check for contamination. Will

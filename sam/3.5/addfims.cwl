@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/addfims.cwl
+id: ../../../addfims.cwl
 inputs:
 - id: option
   doc: ''

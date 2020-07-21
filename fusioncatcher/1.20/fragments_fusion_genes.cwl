@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fragments_fusion_genes.py.cwl
+id: ../../../fragments_fusion_genes.py.cwl
 inputs:
 - id: fusion_reads
   doc: Input file containing preliminary fusion genes and the supporting paired-reads.

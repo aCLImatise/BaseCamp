@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfroc.cwl
+id: ../../../vcfroc.cwl
 inputs:
 - id: truth_vcf
   doc: use this VCF as ground truth for ROC generation

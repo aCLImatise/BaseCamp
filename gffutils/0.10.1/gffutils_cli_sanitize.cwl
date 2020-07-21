@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gffutils_cli_sanitize.cwl
+id: ../../../gffutils_cli_sanitize.cwl
 inputs:
 - id: in_memory
   doc: 'Load GFF into memory for processing. (default: True)'

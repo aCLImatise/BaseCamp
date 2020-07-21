@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_sleep.cwl
+id: ../../../arb_sleep.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

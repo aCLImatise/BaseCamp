@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getDifferentialPeaksReplicates.pl.cwl
+id: ../../../getDifferentialPeaksReplicates.pl.cwl
 inputs:
 - id: b
   doc: '[background tagdir2] ...'

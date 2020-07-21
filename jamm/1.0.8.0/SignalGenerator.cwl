@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SignalGenerator.sh.cwl
+id: ../../../SignalGenerator.sh.cwl
 inputs:
 - id: directory_containing_sample_files
   doc: Directory containing sample files (required)

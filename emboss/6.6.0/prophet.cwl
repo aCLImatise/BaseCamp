@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prophet.cwl
+id: ../../../prophet.cwl
 inputs:
 - id: gap_open
   doc: float      [1.0] Gap opening coefficient (Number from 0.000 to 100.000)

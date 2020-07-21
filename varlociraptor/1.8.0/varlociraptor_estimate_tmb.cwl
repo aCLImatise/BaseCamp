@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varlociraptor_estimate_tmb.cwl
+id: ../../../varlociraptor_estimate_tmb.cwl
 inputs:
 - id: tumor_sample
   doc: 'Name of the tumor sample in the given VCF/BCF. [default: tumor]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ribosum2cc.cwl
+id: ../../../ribosum2cc.cwl
 inputs:
 - id: ribo_sum_name
   doc: ''

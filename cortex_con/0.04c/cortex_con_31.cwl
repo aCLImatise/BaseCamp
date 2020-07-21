@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cortex_con_31.cwl
+id: ../../../cortex_con_31.cwl
 inputs:
 - id: input
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bactopia_cite.py.cwl
+id: ../../../bactopia_cite.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

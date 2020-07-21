@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sratools.2.10.7.cwl
+id: ../../../sratools.2.10.7.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

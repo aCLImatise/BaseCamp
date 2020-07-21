@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqtk_sample.cwl
+id: ../../../seqtk_sample.cwl
 inputs:
 - id: rng_seed
   doc: RNG seed [11]

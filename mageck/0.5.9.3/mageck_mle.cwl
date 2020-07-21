@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mageck_mle.cwl
+id: ../../../mageck_mle.cwl
 inputs:
 - id: count_table
   doc: Provide a tab-separated count table. Each line in the table should include

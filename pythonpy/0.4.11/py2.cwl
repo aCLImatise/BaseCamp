@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/py2.7.cwl
+id: ../../../py2.7.cwl
 inputs:
 - id: treat_row_stdin
   doc: treat each row of stdin as x

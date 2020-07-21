@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/beast.cwl
+id: ../../../beast.cwl
 inputs:
 - id: verbose
   doc: verbose XML parsing messages

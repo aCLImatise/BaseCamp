@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/denoise_wrapper.py.cwl
+id: ../../../denoise_wrapper.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

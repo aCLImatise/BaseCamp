@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alc.cwl
+id: ../../../alc.cwl
 inputs:
 - id: o
   doc: ''

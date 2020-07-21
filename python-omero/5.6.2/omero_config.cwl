@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_config.cwl
+id: ../../../omero_config.cwl
 inputs:
 - id: source
   doc: 'Configuration file to be used. Default: etc/grid/config.xml'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dimspy_process_scans.cwl
+id: ../../../dimspy_process_scans.cwl
 inputs:
 - id: input
   doc: Directory (*.raw, *.mzml or tab-delimited peaklist files), single *.mzml/*.raw

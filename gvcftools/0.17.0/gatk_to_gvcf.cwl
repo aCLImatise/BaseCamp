@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gatk_to_gvcf.cwl
+id: ../../../gatk_to_gvcf.cwl
 inputs:
 - id: chrom_depth_file
   doc: 'Read mean depth for each chromosome from file,  and use these values for maximum

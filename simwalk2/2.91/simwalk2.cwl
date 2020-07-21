@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simwalk2.cwl
+id: ../../../simwalk2.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

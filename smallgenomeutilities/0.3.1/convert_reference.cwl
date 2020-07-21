@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convert_reference.cwl
+id: ../../../convert_reference.cwl
 inputs:
 - id: name_target_contig
   doc: Name of target contig

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cygdb.cwl
+id: ../../../cygdb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

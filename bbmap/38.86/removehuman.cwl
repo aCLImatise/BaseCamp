@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/removehuman.sh.cwl
+id: ../../../removehuman.sh.cwl
 inputs:
 - id: in
   doc: ''

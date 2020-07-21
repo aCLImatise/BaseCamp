@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scpred_preprocess_data.R.cwl
+id: ../../../scpred_preprocess_data.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

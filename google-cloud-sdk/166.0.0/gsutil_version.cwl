@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_version.cwl
+id: ../../../gsutil_version.cwl
 inputs:
 - id: prints_additional_information
   doc: Prints additional information, such as the version of Python being used, the

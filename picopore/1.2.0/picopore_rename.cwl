@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/picopore_rename.cwl
+id: ../../../picopore_rename.cwl
 inputs:
 - id: pattern
   doc: String or regex to replace

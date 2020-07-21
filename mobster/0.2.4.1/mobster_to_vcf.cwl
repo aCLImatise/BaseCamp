@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mobster_to_vcf.cwl
+id: ../../../mobster_to_vcf.cwl
 inputs:
 - id: mobster_to_vcf
   doc: ''

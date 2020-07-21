@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smartCount.cwl
+id: ../../../smartCount.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

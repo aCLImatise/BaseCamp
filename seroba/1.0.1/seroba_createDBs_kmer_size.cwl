@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seroba_createDBs_kmer_size.cwl
+id: ../../../seroba_createDBs_kmer_size.cwl
 inputs:
 - id: se_rob_a
   doc: ''

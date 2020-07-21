@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/haphpipe_multiple_align.cwl
+id: ../../../haphpipe_multiple_align.cwl
 inputs:
 - id: seqs
   doc: FASTA file with sequences to be aligned

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_fdrawgram.cwl
+id: ../../../_fdrawgram.cwl
 inputs:
 - id: style
   doc: 'menu       [c] Tree style output (Values: c (cladogram (v-shaped)); p (phenogram

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/closest_features_megarow.cwl
+id: ../../../closest_features_megarow.cwl
 inputs:
 - id: chrom
   doc: Jump to and process data for given <chromosome> only.

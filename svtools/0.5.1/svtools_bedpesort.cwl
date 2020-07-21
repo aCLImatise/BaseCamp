@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtools_bedpesort.cwl
+id: ../../../svtools_bedpesort.cwl
 inputs:
 - id: support
   doc: ''

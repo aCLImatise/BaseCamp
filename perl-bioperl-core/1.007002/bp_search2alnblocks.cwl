@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_search2alnblocks.pl.cwl
+id: ../../../bp_search2alnblocks.pl.cwl
 inputs:
 - id: v_slash_verbose
   doc: Turn on debugging

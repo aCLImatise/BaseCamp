@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_help_useredit.sh.cwl
+id: ../../../arb_help_useredit.sh.cwl
 inputs:
 - id: help_file
   doc: ''

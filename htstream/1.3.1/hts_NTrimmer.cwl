@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hts_NTrimmer.cwl
+id: ../../../hts_NTrimmer.cwl
 inputs:
 - id: _version_print
   doc: '[ --version ]                      Version print'

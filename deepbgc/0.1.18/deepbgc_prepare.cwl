@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deepbgc_prepare.cwl
+id: ../../../deepbgc_prepare.cwl
 inputs:
 - id: limit_to_record
   doc: Process only specific record ID. Can be provided multiple times

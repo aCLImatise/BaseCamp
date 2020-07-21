@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extendSuperReadsForUniqueKmerNeighbors.cwl
+id: ../../../extendSuperReadsForUniqueKmerNeighbors.cwl
 inputs:
 - id: dir
   doc: '*Directory where the super-reads work is done'

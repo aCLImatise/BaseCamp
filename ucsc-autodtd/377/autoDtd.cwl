@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/autoDtd.cwl
+id: ../../../autoDtd.cwl
 inputs:
 - id: tree
   doc: '- Output tag tree.'

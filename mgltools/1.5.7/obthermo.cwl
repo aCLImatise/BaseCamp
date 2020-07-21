@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obthermo.cwl
+id: ../../../obthermo.cwl
 inputs:
 - id: symm
   doc: override symmetry number used in input file

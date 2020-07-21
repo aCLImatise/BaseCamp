@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cdna_classifier.py.cwl
+id: ../../../cdna_classifier.py.cwl
 inputs:
 - id: primers_fasta
   doc: Primers fasta.

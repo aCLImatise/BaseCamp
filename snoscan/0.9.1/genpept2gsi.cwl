@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genpept2gsi.pl.cwl
+id: ../../../genpept2gsi.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

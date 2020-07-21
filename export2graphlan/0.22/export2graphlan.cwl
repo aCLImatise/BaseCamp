@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/export2graphlan.py.cwl
+id: ../../../export2graphlan.py.cwl
 inputs:
 - id: annotations
   doc: List which levels should be annotated in the tree. Use a comma separate values

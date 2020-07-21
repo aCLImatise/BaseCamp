@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shovill.cwl
+id: ../../../shovill.cwl
 inputs:
 - id: check
   doc: Check dependencies are installed

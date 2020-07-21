@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gff3_from_fasta.cwl
+id: ../../../gff3_from_fasta.cwl
 inputs:
 - id: options
   doc: ''

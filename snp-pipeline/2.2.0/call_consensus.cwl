@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/call_consensus.py.cwl
+id: ../../../call_consensus.py.cwl
 inputs:
 - id: force
   doc: 'Force processing even when result file already exists and is newer than inputs.

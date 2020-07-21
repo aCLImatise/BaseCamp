@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/update_config.py.cwl
+id: ../../../update_config.py.cwl
 inputs:
 - id: write_changes
   doc: If specified than the updates/changes will be written to '/tmp/tmpr7lyfvkf/etc/configuration.cfg'.

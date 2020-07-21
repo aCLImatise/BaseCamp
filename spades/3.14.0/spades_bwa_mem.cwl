@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spades_bwa_mem.cwl
+id: ../../../spades_bwa_mem.cwl
 inputs:
 - id: number_of_threads
   doc: number of threads [1]

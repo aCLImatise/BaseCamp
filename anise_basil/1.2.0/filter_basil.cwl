@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_basil.py.cwl
+id: ../../../filter_basil.py.cwl
 inputs:
 - id: input_file_name
   doc: Input file name.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nw_display.cwl
+id: ../../../nw_display.cwl
 inputs:
 - id: aabchilsuuvw
   doc: ''

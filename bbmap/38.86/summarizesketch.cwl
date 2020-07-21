@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summarizesketch.sh.cwl
+id: ../../../summarizesketch.sh.cwl
 inputs:
 - id: in
   doc: ''

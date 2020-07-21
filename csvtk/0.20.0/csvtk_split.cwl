@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk_split.cwl
+id: ../../../csvtk_split.cwl
 inputs:
 - id: buf_groups
   doc: buffering N groups before writing to file (default 100)

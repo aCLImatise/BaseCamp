@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/query_config.cwl
+id: ../../../query_config.cwl
 inputs:
 - id: debug
   doc: Print debug information (very verbose) to file /tmp/tmpeksbd5_3/query_config.log

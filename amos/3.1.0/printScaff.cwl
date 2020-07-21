@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/printScaff.cwl
+id: ../../../printScaff.cwl
 inputs:
 - id: l
   doc: '[-dot -page -plot -unused -phys -oo -sum] [-detail]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_k_unitigs_large_k.cwl
+id: ../../../create_k_unitigs_large_k.cwl
 inputs:
 - id: mer
   doc: '*k-mer size'

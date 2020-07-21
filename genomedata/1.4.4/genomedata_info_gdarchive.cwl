@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genomedata_info_gdarchive.cwl
+id: ../../../genomedata_info_gdarchive.cwl
 inputs:
 - id: genome_data_info
   doc: ''

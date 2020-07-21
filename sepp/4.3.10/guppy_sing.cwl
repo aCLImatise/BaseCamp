@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/guppy_sing.cwl
+id: ../../../guppy_sing.cwl
 inputs:
 - id: point_mass
   doc: Treat every pquery as a point mass concentrated on the highest-weight placement.

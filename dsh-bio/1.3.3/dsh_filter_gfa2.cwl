@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dsh_filter_gfa2.cwl
+id: ../../../dsh_filter_gfa2.cwl
 inputs:
 - id: about
   doc: display about message [optional]

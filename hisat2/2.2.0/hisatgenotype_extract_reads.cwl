@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hisatgenotype_extract_reads.py.cwl
+id: ../../../hisatgenotype_extract_reads.py.cwl
 inputs:
 - id: base_fname
   doc: base filename for genotype genome

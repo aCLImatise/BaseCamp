@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ppanini_cluster2genes.cwl
+id: ../../../ppanini_cluster2genes.cwl
 inputs:
 - id: i
   doc: ''

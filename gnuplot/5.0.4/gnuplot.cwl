@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gnuplot.cwl
+id: ../../../gnuplot.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

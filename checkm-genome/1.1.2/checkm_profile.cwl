@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkm_profile.cwl
+id: ../../../checkm_profile.cwl
 inputs:
 - id: file
   doc: 'print results to file (default: stdout)'

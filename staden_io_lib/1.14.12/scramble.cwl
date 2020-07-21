@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scramble.cwl
+id: ../../../scramble.cwl
 inputs:
 - id: convert_using_filegzi
   doc: Convert to Bam using index (file.gzi)

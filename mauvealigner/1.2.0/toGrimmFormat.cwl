@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/toGrimmFormat.cwl
+id: ../../../toGrimmFormat.cwl
 inputs:
 - id: genome_n_chr_lengths
   doc: ''

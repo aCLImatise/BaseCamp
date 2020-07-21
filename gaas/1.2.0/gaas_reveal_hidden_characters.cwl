@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_reveal_hidden_characters.pl.cwl
+id: ../../../gaas_reveal_hidden_characters.pl.cwl
 inputs:
 - id: in_file
   doc: Input file containing DNA.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paraview_config.cwl
+id: ../../../paraview_config.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

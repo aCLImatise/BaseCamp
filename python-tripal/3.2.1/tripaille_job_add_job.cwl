@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tripaille_job_add_job.cwl
+id: ../../../tripaille_job_add_job.cwl
 inputs:
 - id: priority
   doc: 'An integer score to prioritize the job  [default: 10]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cage.cwl
+id: ../../../cage.cwl
 inputs:
 - id: cage
   doc: '{-o <VCF_output_file>|-s <SNP_input_db>} [-v] [--] [--version] [-h] <contig>

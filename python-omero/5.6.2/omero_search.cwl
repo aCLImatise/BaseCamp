@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_search.cwl
+id: ../../../omero_search.cwl
 inputs:
 - id: index
   doc: Index an object as a administrator

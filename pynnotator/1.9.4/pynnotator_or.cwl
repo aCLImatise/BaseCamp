@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pynnotator_or.cwl
+id: ../../../pynnotator_or.cwl
 inputs:
 - id: vcf_file_annotated
   doc: a VCF file to be annotated

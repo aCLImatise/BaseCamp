@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vdb_encrypt.2.10.7.cwl
+id: ../../../vdb_encrypt.2.10.7.cwl
 inputs:
 - id: force
   doc: 'Force overwrite of existing files '

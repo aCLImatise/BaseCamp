@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TideHunter.cwl
+id: ../../../TideHunter.cwl
 inputs:
 - id: km_er_length
   doc: k-mer length (no larger than 16). [8]

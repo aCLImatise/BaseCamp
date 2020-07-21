@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hisat2_build_l.cwl
+id: ../../../hisat2_build_l.cwl
 inputs:
 - id: reference_sequences_given
   doc: reference sequences given on cmd line (as <reference_in>)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/callpeaks.sh.cwl
+id: ../../../callpeaks.sh.cwl
 inputs:
 - id: increases_dot
   doc: Useful for kmer-frequency histograms.

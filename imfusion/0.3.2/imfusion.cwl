@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/imfusion.cwl
+id: ../../../imfusion.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

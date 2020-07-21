@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_seqfeature_delete.pl.cwl
+id: ../../../bp_seqfeature_delete.pl.cwl
 inputs:
 - id: dsn
   doc: The database name (dbi:mysql:test)

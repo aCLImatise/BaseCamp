@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xpath.cwl
+id: ../../../xpath.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

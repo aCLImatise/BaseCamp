@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scaffoldRange2Ungapped.cwl
+id: ../../../scaffoldRange2Ungapped.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

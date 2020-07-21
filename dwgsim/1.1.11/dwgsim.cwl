@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dwgsim.cwl
+id: ../../../dwgsim.cwl
 inputs:
 - id: basecolorflow_error_first
   doc: per base/color/flow error rate of the first read [from 0.020 to 0.020 by 0.000]

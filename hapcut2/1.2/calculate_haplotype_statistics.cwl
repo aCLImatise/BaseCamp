@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/calculate_haplotype_statistics.py.cwl
+id: ../../../calculate_haplotype_statistics.py.cwl
 inputs:
 - id: vcf_one
   doc: A phased, single sample VCF file to compute haplotype statistics on.

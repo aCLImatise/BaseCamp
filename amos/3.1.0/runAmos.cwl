@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runAmos.cwl
+id: ../../../runAmos.cwl
 inputs:
 - id: c
   doc: ''

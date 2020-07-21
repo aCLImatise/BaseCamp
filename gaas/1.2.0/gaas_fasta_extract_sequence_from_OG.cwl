@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_fasta_extract_sequence_from_OG.pl.cwl
+id: ../../../gaas_fasta_extract_sequence_from_OG.pl.cwl
 inputs:
 - id: fast_a
   doc: Input fasta file.

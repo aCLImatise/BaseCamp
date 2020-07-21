@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/picrust2_pipeline.py.cwl
+id: ../../../picrust2_pipeline.py.cwl
 inputs:
 - id: study_fast_a
   doc: FASTA of unaligned study sequences (i.e. OTUs or ASVs).

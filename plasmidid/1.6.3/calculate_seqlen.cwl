@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/calculate_seqlen.sh.cwl
+id: ../../../calculate_seqlen.sh.cwl
 inputs:
 - id: usage_message
   doc: usage message

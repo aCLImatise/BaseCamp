@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NGmerge.cwl
+id: ../../../NGmerge.cwl
 inputs:
 - id: file_input_forward
   doc: <file>       Input FASTQ file with reads from forward direction

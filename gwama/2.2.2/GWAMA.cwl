@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GWAMA.cwl
+id: ../../../GWAMA.cwl
 inputs:
 - id: sex
   doc: Run gender-differentiated and gender- heterogeneity analysis. Gender info   must

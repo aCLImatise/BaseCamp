@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/conus_fold_IVO.cwl
+id: ../../../conus_fold_IVO.cwl
 inputs:
 - id: options
   doc: ''

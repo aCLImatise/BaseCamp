@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/conservationPerLocus.pl.cwl
+id: ../../../conservationPerLocus.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

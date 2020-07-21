@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chado.cwl
+id: ../../../chado.cwl
 inputs:
 - id: v
   doc: ''

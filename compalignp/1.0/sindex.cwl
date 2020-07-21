@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sindex.cwl
+id: ../../../sindex.cwl
 inputs:
 - id: output_ssi_index
   doc: ': output the SSI index to file named <f>'

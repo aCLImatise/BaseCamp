@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parasol.cwl
+id: ../../../parasol.cwl
 inputs:
 - id: host
   doc: '- connect to a paraHub process on a remote host instead localhost.'

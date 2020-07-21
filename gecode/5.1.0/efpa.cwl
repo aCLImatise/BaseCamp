@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/efpa.cwl
+id: ../../../efpa.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

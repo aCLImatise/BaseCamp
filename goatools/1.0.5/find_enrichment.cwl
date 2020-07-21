@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/find_enrichment.py.cwl
+id: ../../../find_enrichment.py.cwl
 inputs:
 - id: ann_of_mt
   doc: 'Annotation file format. Not needed if type can be determined using filename

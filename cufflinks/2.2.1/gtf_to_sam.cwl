@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gtf_to_sam.cwl
+id: ../../../gtf_to_sam.cwl
 inputs:
 - id: cufflinks
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/oligotag.cwl
+id: ../../../oligotag.cwl
 inputs:
 - id: debug
   doc: Set logging in debug mode

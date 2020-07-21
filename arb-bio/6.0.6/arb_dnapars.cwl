@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_dnapars.cwl
+id: ../../../arb_dnapars.cwl
 inputs:
 - id: bootstrap
   doc: ''

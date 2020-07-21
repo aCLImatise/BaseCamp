@@ -1,0 +1,218 @@
+&id001 !Command
+positional: []
+named:
+- !Flag
+  description: Unless there is an error, do not print logging information
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print extra debug logging information
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- galah
+parent:
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Average nucleotide identity threshold for clustering [default: 99]'
+    synonyms:
+    - --ani
+    args: !SimpleFlagArg
+      name: ani
+    optional: true
+  - !Flag
+    description: Output of CheckM lineage_wf/taxonomy_wf/qa with --tab_table specified
+    synonyms:
+    - --checkm-tab-table
+    args: !SimpleFlagArg
+      name: checkm-tab-table
+    optional: true
+  - !Flag
+    description: Directory containing fasta files for processing
+    synonyms:
+    - --genome-fasta-directory
+    args: !SimpleFlagArg
+      name: genome-fasta-directory
+    optional: true
+  - !Flag
+    description: 'File extension of FASTA files in --genome-fasta-directory [default:
+      fna]'
+    synonyms:
+    - -x
+    - --genome-fasta-extension
+    args: !SimpleFlagArg
+      name: genome-fasta-extension
+    optional: true
+  - !Flag
+    description: '...         List of fasta files for processing'
+    synonyms:
+    - -f
+    - --genome-fasta-files
+    args: !SimpleFlagArg
+      name: genome-fasta-files
+    optional: true
+  - !Flag
+    description: List of fasta file paths, one per line, for processing
+    synonyms:
+    - --genome-fasta-list
+    args: !SimpleFlagArg
+      name: genome-fasta-list
+    optional: true
+  - !Flag
+    description: Genomes with greater than this percentage of contamination are exluded
+    synonyms:
+    - --max-contamination
+    args: !SimpleFlagArg
+      name: max-contamination
+    optional: true
+  - !Flag
+    description: 'Genomes with less than this percentage of completeness are exluded
+      [default: 0]'
+    synonyms:
+    - --min-completeness
+    args: !SimpleFlagArg
+      name: min-completeness
+    optional: true
+  - !Flag
+    description: 'Require at least this dashing-derived ANI for preclustering and
+      to avoid FastANI on distant lineages within preclusters [default: 95]'
+    synonyms:
+    - --prethreshold-ani
+    args: !SimpleFlagArg
+      name: prethreshold-ani
+    optional: true
+  - !Flag
+    description: 'Number of CPU threads to use [default: 1]'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: threads
+    optional: true
+  command:
+  - galah
+  - cluster
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: Prints help information
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Prints version information
+    synonyms:
+    - -V
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+  help_text: "galah-cluster \nCluster FASTA files by average nucleotide identity\n\
+    \nUSAGE:\n    galah cluster [OPTIONS]\n\nFLAGS:\n    -h, --help       Prints help\
+    \ information\n    -V, --version    Prints version information\n\nOPTIONS:\n \
+    \       --ani <ani>\n            Average nucleotide identity threshold for clustering\
+    \ [default: 99]\n\n        --checkm-tab-table <checkm-tab-table>\n           \
+    \ Output of CheckM lineage_wf/taxonomy_wf/qa with --tab_table specified\n\n  \
+    \      --genome-fasta-directory <genome-fasta-directory>    Directory containing\
+    \ fasta files for processing\n    -x, --genome-fasta-extension <genome-fasta-extension>\n\
+    \            File extension of FASTA files in --genome-fasta-directory [default:\
+    \ fna]\n\n    -f, --genome-fasta-files <genome-fasta-files>...         List of\
+    \ fasta files for processing\n        --genome-fasta-list <genome-fasta-list>\
+    \              List of fasta file paths, one per line, for processing\n      \
+    \  --max-contamination <max-contamination>\n            Genomes with greater than\
+    \ this percentage of contamination are exluded\n\n        --min-completeness <min-completeness>\n\
+    \            Genomes with less than this percentage of completeness are exluded\
+    \ [default: 0]\n\n        --prethreshold-ani <prethreshold-ani>\n            Require\
+    \ at least this dashing-derived ANI for preclustering and to avoid FastANI on\
+    \ distant lineages within\n            preclusters [default: 95]\n    -t, --threads\
+    \ <threads>                                  Number of CPU threads to use [default:\
+    \ 1]\n"
+  generated_using: &id002
+  - --help
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'ANI to validate against [default: 99]'
+    synonyms:
+    - --ani
+    args: !SimpleFlagArg
+      name: ani
+    optional: true
+  - !Flag
+    description: Output of 'cluster' subcommand
+    synonyms:
+    - --cluster-file
+    args: !SimpleFlagArg
+      name: cluster-file
+    optional: true
+  - !Flag
+    description: '[default: 1]'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: threads
+    optional: true
+  command:
+  - galah
+  - cluster-validate
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: Prints help information
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Prints version information
+    synonyms:
+    - -V
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+  help_text: "galah-cluster-validate \nVerify clustering results\n\nUSAGE:\n    galah\
+    \ cluster-validate [OPTIONS] --cluster-file <cluster-file>\n\nFLAGS:\n    -h,\
+    \ --help       Prints help information\n    -V, --version    Prints version information\n\
+    \nOPTIONS:\n        --ani <ani>                      ANI to validate against [default:\
+    \ 99]\n        --cluster-file <cluster-file>    Output of 'cluster' subcommand\n\
+    \    -t, --threads <threads>               [default: 1]\n"
+  generated_using: *id002
+help_flag: !Flag
+  description: Prints help information
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints version information
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "galah 0.1.0\nBen J. Woodcroft <benjwoodcroft near gmail.com>\nMetagenome\
+  \ assembled genome (MAG) dereplicator / clusterer\n\nUSAGE:\n    galah [FLAGS] [SUBCOMMAND]\n\
+  \nFLAGS:\n    -h, --help       Prints help information\n    -q, --quiet      Unless\
+  \ there is an error, do not print logging information\n    -V, --version    Prints\
+  \ version information\n    -v, --verbose    Print extra debug logging information\n\
+  \nSUBCOMMANDS:\n    cluster             Cluster FASTA files by average nucleotide\
+  \ identity\n    cluster-validate    Verify clustering results\n    help        \
+  \        Prints this message or the help of the given subcommand(s)\n"
+generated_using: *id002

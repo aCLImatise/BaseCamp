@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summarize_stats.cwl
+id: ../../../summarize_stats.cwl
 inputs:
 - id: verbose
   doc: print additional information to STDERR

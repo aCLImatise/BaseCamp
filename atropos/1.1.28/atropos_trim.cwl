@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/atropos_trim.cwl
+id: ../../../atropos_trim.cwl
 inputs:
 - id: debug
   doc: Print debugging information. (no)

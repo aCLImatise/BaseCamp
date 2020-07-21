@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkm_lineage_set.cwl
+id: ../../../checkm_lineage_set.cwl
 inputs:
 - id: unique
   doc: 'minimum number of unique phylogenetic markers required to use lineage-specific

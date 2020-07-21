@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_format_concatenated_phylip_for_paml.cwl
+id: ../../../phyluce_align_format_concatenated_phylip_for_paml.cwl
 inputs:
 - id: phylip_alignment
   doc: The PATH to a PHYLIP-formatted alignment

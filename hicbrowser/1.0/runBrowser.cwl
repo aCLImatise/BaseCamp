@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runBrowser.cwl
+id: ../../../runBrowser.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Commet.py.cwl
+id: ../../../Commet.py.cwl
 inputs:
 - id: sge
   doc: indicates the usage of SGE cluster commands

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fuma.cwl
+id: ../../../fuma.cwl
 inputs:
 - id: formats
   doc: show accepted dataset formats

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof_sniff.cwl
+id: ../../../smof_sniff.cwl
 inputs:
 - id: input
   doc: input fasta sequence (default = stdin)

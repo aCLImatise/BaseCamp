@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbf_ev.cwl
+id: ../../../pbf_ev.cwl
 inputs:
 - id: input
   doc: Input file, if not defined the STDIN is used

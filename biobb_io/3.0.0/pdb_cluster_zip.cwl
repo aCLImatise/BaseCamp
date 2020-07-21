@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pdb_cluster_zip.cwl
+id: ../../../pdb_cluster_zip.cwl
 inputs:
 - id: config
   doc: This file can be a YAML file, JSON file or JSON string

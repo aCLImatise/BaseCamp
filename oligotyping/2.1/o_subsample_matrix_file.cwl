@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o_subsample_matrix_file.cwl
+id: ../../../o_subsample_matrix_file.cwl
 inputs:
 - id: cols_to_remove
   doc: Columns to be removed from the matrix (one column id in each line)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dsh_bio.cwl
+id: ../../../dsh_bio.cwl
 inputs:
 - id: about
   doc: display about message [optional]

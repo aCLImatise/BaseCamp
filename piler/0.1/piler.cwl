@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/piler.cwl
+id: ../../../piler.cwl
 inputs:
 - id: trs
   doc: ''

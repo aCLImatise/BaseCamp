@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/logcombiner.cwl
+id: ../../../logcombiner.cwl
 inputs:
 - id: log
   doc: ''

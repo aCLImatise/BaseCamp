@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pathprobs.cwl
+id: ../../../pathprobs.cwl
 inputs:
 - id: option
   doc: ''

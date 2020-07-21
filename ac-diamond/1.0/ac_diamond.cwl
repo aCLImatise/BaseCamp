@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ac_diamond.cwl
+id: ../../../ac_diamond.cwl
 inputs:
 - id: arg_number_cpu
   doc: '[ --threads ] arg (=0) number of cpu threads'

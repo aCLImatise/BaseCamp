@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_auth.cwl
+id: ../../../hca_auth.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

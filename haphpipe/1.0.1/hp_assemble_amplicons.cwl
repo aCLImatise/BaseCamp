@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hp_assemble_amplicons.cwl
+id: ../../../hp_assemble_amplicons.cwl
 inputs:
 - id: contigs_fa
   doc: Fasta file with assembled contigs

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafft_nwnsi.cwl
+id: ../../../mafft_nwnsi.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

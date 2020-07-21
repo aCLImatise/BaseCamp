@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snp_dists.cwl
+id: ../../../snp_dists.cwl
 inputs:
 - id: print_version_exit
   doc: Print version and exit

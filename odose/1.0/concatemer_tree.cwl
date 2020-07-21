@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/concatemer_tree.py.cwl
+id: ../../../concatemer_tree.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

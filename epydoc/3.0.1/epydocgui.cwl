@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/epydocgui.cwl
+id: ../../../epydocgui.cwl
 inputs:
 - id: debug
   doc: Do not suppress error messages

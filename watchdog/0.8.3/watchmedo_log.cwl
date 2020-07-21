@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/watchmedo_log.cwl
+id: ../../../watchmedo_log.cwl
 inputs:
 - id: patterns
   doc: "matches event paths with these patterns (separated by ;). (default: '*')"

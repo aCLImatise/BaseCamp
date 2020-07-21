@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf2paragraph.py.cwl
+id: ../../../vcf2paragraph.py.cwl
 inputs:
 - id: reference_sequence
   doc: Reference FASTA for checking REF and resolving <DEL>

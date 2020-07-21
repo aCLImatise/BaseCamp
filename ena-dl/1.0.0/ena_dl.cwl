@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ena_dl.cwl
+id: ../../../ena_dl.cwl
 inputs:
 - id: aspera
   doc: 'Path to the Aspera Connect tool "ascp" (Default: "which ascp")'

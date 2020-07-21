@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk_grep.cwl
+id: ../../../csvtk_grep.cwl
 inputs:
 - id: delete_matched
   doc: delete a pattern right after being matched, this keeps the firstly matched

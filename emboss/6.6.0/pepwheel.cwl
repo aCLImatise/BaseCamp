@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pepwheel.cwl
+id: ../../../pepwheel.cwl
 inputs:
 - id: steps
   doc: integer    [18] The number of residues plotted per turn is this value divided

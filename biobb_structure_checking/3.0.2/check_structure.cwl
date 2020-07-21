@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/check_structure.cwl
+id: ../../../check_structure.cwl
 inputs:
 - id: input
   doc: Input structure. Formats PDB|mmCIF. Remote pdb:{pdbid}

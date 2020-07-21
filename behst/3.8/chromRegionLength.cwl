@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chromRegionLength.r.cwl
+id: ../../../chromRegionLength.r.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

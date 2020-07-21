@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/binning.cwl
+id: ../../../binning.cwl
 inputs:
 - id: dm
   doc: MAD processs (default enabled)

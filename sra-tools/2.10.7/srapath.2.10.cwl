@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/srapath.2.10.7.cwl
+id: ../../../srapath.2.10.7.cwl
 inputs:
 - id: function
   doc: function to perform (resolve, names, search) default=resolve or names if protocol

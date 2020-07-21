@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslPartition.cwl
+id: ../../../pslPartition.cwl
 inputs:
 - id: psl_file
   doc: ''

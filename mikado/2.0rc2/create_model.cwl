@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_model.py.cwl
+id: ../../../create_model.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

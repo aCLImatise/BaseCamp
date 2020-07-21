@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stream_run_test.cwl
+id: ../../../stream_run_test.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

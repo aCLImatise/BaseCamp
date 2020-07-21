@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rfmix2tagore.py.cwl
+id: ../../../rfmix2tagore.py.cwl
 inputs:
 - id: chr_one
   doc: Chromosome 1 RFMix painting

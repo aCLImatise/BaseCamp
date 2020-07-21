@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dicey_blacklist.cwl
+id: ../../../dicey_blacklist.cwl
 inputs:
 - id: arg_blacklist_bed
   doc: '[ --blacklist ] arg (="blacklist.bed") blacklist in BED format'

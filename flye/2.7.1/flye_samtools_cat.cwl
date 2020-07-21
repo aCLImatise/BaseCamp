@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flye_samtools_cat.cwl
+id: ../../../flye_samtools_cat.cwl
 inputs:
 - id: list_file_names
   doc: list of input BAM/CRAM file names, one per line

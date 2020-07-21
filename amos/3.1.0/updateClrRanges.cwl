@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/updateClrRanges.cwl
+id: ../../../updateClrRanges.cwl
 inputs:
 - id: i
   doc: ''

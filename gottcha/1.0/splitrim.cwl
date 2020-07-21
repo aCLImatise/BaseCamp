@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splitrim.cwl
+id: ../../../splitrim.cwl
 inputs:
 - id: in_file
   doc: =        string   Name of the FASTQ file containing all the single-end reads

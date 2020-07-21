@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/funnel_worker.cwl
+id: ../../../funnel_worker.cwl
 inputs:
 - id: amazons_three_dot_disabled
   doc: Disable storage backend

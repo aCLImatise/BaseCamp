@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_xml2_config.cwl
+id: ../../../_xml2_config.cwl
 inputs:
 - id: prefix
   doc: change libxml prefix [default /tmp/tmpa5dnn8jt]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msHOT2glf.cwl
+id: ../../../msHOT2glf.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

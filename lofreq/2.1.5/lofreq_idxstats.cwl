@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lofreq_idxstats.cwl
+id: ../../../lofreq_idxstats.cwl
 inputs:
 - id: sam_tools
   doc: ''

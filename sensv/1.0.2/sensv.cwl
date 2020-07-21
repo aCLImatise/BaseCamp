@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sensv.cwl
+id: ../../../sensv.cwl
 inputs:
 - id: sample_name
   doc: sample name

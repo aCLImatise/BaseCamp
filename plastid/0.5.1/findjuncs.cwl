@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findjuncs.cwl
+id: ../../../findjuncs.cwl
 inputs:
 - id: annotation_files
   doc: newly_discovered.bed

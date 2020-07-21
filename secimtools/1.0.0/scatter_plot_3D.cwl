@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scatter_plot_3D.py.cwl
+id: ../../../scatter_plot_3D.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

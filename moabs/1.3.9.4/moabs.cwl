@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/moabs.cwl
+id: ../../../moabs.cwl
 inputs:
 - id: str_input_files
   doc: <str>   input files.

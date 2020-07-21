@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sambamba_validate.cwl
+id: ../../../sambamba_validate.cwl
 inputs:
 - id: input_dot_bam
   doc: ''

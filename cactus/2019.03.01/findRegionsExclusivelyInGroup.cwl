@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findRegionsExclusivelyInGroup.cwl
+id: ../../../findRegionsExclusivelyInGroup.cwl
 inputs:
 - id: hal_file
   doc: ''

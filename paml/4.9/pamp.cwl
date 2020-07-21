@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pamp.cwl
+id: ../../../pamp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

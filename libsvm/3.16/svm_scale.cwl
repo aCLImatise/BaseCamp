@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svm_scale.cwl
+id: ../../../svm_scale.cwl
 inputs:
 - id: data_filename
   doc: ''

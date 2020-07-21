@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ProbScan.cwl
+id: ../../../ProbScan.cwl
 inputs:
 - id: input_file
   doc: ''

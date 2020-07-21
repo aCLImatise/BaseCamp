@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/byobu_ctrl_a.cwl
+id: ../../../byobu_ctrl_a.cwl
 inputs:
 - id: mode
   doc: ''

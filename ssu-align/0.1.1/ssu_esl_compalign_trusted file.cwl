@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_compalign_trusted file.cwl
+id: ../../../ssu_esl_compalign_trusted file.cwl
 inputs:
 - id: options
   doc: ''

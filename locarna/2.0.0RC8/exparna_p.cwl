@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/exparna_p.cwl
+id: ../../../exparna_p.cwl
 inputs:
 - id: verbose
   doc: Verbose

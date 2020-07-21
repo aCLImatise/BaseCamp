@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splitLongKUnitigs.pl.cwl
+id: ../../../splitLongKUnitigs.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

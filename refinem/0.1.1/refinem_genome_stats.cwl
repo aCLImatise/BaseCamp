@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/refinem_genome_stats.cwl
+id: ../../../refinem_genome_stats.cwl
 inputs:
 - id: cpus
   doc: 'number of CPUs to use (default: 1)'

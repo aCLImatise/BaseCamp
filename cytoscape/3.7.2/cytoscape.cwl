@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cytoscape.sh.cwl
+id: ../../../cytoscape.sh.cwl
 inputs:
 - id: session
   doc: Load a cytoscape session (.cys) file.

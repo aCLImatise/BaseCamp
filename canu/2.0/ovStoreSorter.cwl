@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ovStoreSorter.cwl
+id: ../../../ovStoreSorter.cwl
 inputs:
 - id: path_overlap_store
   doc: path to overlap store to create

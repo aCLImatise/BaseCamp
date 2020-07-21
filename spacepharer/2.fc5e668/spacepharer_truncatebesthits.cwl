@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spacepharer_truncatebesthits.cwl
+id: ../../../spacepharer_truncatebesthits.cwl
 inputs:
 - id: threads
   doc: Number of CPU-cores used (all by default) [8]

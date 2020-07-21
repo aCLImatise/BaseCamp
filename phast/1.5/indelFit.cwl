@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/indelFit.cwl
+id: ../../../indelFit.cwl
 inputs:
 - id: alpha
   doc: Starting value of alpha, the insertion rate.  Default is 0.02.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/muscle.cwl
+id: ../../../muscle.cwl
 inputs:
 - id: in
   doc: Input file in FASTA format (default stdin)

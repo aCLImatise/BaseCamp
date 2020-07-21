@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/OligoWalk.cwl
+id: ../../../OligoWalk.cwl
 inputs:
 - id: _micromolar
   doc: (1.5 micromolar).

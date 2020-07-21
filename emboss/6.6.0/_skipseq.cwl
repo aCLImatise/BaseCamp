@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_skipseq.cwl
+id: ../../../_skipseq.cwl
 inputs:
 - id: skip
   doc: integer    [0] Number of sequences to skip at start (Any integer value)

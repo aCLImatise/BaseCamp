@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ffindex_modify.cwl
+id: ../../../ffindex_modify.cwl
 inputs:
 - id: file_line_containing
   doc: file each line containing a filename -f can be specified up to 4096 times

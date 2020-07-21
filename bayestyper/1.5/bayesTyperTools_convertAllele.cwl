@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bayesTyperTools_convertAllele.cwl
+id: ../../../bayesTyperTools_convertAllele.cwl
 inputs:
 - id: arg_variant_format
   doc: '[ --variant-file ] arg             variant file (vcf format).'

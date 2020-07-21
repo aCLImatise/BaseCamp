@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/read_linker.cwl
+id: ../../../read_linker.cwl
 inputs:
 - id: input_file_first
   doc: Input file, first end;

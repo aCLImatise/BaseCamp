@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fetchChromSizes.cwl
+id: ../../../fetchChromSizes.cwl
 inputs:
 - id: db
   doc: ''

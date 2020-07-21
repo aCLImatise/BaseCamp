@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makepolymers.sh.cwl
+id: ../../../makepolymers.sh.cwl
 inputs:
 - id: out
   doc: ''

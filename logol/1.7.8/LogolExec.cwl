@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LogolExec.sh.cwl
+id: ../../../LogolExec.sh.cwl
 inputs:
 - id: m
   doc: ''

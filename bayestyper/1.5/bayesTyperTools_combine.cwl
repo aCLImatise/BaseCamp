@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bayesTyperTools_combine.cwl
+id: ../../../bayesTyperTools_combine.cwl
 inputs:
 - id: arg_commaseparated_list
   doc: '[ --variant-files ] arg            comma-separated list of name and variant

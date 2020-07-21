@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fingerPRINTScan.cwl
+id: ../../../fingerPRINTScan.cwl
 inputs:
 - id: calculate_consensus_sequences
   doc: 'Calculate consensus sequences for the Alignment view (Table 4) [EXPERIMENTAL] '

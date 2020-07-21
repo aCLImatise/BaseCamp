@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/map_fastq.pl.cwl
+id: ../../../map_fastq.pl.cwl
 inputs:
 - id: number_cpus_default
   doc: '<#> (Number of cpus per instance, default: 1)'

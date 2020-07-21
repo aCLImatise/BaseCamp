@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_seqcut.pl.cwl
+id: ../../../bp_seqcut.pl.cwl
 inputs:
 - id: help_message
   doc: help message

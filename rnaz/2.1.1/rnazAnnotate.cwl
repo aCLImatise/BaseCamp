@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnazAnnotate.pl.cwl
+id: ../../../rnazAnnotate.pl.cwl
 inputs:
 - id: bed
   doc: Set the annotation BED file with this option.

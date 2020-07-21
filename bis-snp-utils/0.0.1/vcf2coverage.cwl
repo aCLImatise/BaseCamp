@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf2coverage.pl.cwl
+id: ../../../vcf2coverage.pl.cwl
 inputs:
 - id: perl
   doc: ''

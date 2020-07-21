@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcftools_gtcheck.cwl
+id: ../../../bcftools_gtcheck.cwl
 inputs:
 - id: all_sites
   doc: output comparison for all sites

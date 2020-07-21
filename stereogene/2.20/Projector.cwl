@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Projector.cwl
+id: ../../../Projector.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

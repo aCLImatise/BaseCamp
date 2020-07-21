@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SiriusAdapter.cwl
+id: ../../../SiriusAdapter.cwl
 inputs:
 - id: executable
   doc: Sirius executable e.g. sirius

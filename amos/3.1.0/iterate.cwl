@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iterate.cwl
+id: ../../../iterate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

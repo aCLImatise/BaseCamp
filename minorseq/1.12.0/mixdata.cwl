@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mixdata.cwl
+id: ../../../mixdata.cwl
 inputs:
 - id: reference
   doc: Reference sequence FASTA FILE [null]

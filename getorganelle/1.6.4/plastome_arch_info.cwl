@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plastome_arch_info.py.cwl
+id: ../../../plastome_arch_info.py.cwl
 inputs:
 - id: output_file
   doc: output file.

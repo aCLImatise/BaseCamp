@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedparse_promoter.cwl
+id: ../../../bedparse_promoter.cwl
 inputs:
 - id: up
   doc: Get this many nt upstream of each feature.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bgt_fmf.cwl
+id: ../../../bgt_fmf.cwl
 inputs:
 - id: load_entire_fmf
   doc: load the entire FMF into RAM

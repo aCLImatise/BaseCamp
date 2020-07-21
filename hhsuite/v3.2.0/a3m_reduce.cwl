@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/a3m_reduce.cwl
+id: ../../../a3m_reduce.cwl
 inputs:
 - id: i
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spades_gbuilder.cwl
+id: ../../../spades_gbuilder.cwl
 inputs:
 - id: kmer_length_use
   doc: k-mer length to use

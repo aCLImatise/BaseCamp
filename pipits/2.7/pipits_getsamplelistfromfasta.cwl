@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pipits_getsamplelistfromfasta.cwl
+id: ../../../pipits_getsamplelistfromfasta.cwl
 inputs:
 - id: i
   doc: '[REQUIRED]'

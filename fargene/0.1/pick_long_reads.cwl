@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pick_long_reads.cwl
+id: ../../../pick_long_reads.cwl
 inputs:
 - id: i
   doc: ''

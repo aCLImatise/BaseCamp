@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/launch_pyro_mip_servers.cwl
+id: ../../../launch_pyro_mip_servers.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bolt_fastq.cwl
+id: ../../../bolt_fastq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

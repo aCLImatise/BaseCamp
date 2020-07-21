@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iu_interleave_fastq.cwl
+id: ../../../iu_interleave_fastq.cwl
 inputs:
 - id: one
   doc: FASTQ, --input-r1 R1 FASTQ Read 1

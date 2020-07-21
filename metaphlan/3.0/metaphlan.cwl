@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metaphlan.cwl
+id: ../../../metaphlan.cwl
 inputs:
 - id: input_type_dot
   doc: 'steps: first apply BowTie2 and then feed MetaPhlAn with the obtained sam:'

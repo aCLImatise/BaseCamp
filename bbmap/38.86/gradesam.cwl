@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gradesam.sh.cwl
+id: ../../../gradesam.sh.cwl
 inputs:
 - id: in
   doc: ''

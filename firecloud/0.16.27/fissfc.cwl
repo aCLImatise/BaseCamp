@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fissfc.cwl
+id: ../../../fissfc.cwl
 inputs:
 - id: url
   doc: 'Firecloud API root URL [default: https://api.firecloud.org/api/]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_codonalign.cwl
+id: ../../../goalign_codonalign.cwl
 inputs:
 - id: fast_a
   doc: Input nucleotide Fasta file to be codon aligned (default "stdin")

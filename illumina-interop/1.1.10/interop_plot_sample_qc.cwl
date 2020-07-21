@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/interop_plot_sample_qc.cwl
+id: ../../../interop_plot_sample_qc.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

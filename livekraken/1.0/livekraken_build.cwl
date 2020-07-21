@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/livekraken_build.cwl
+id: ../../../livekraken_build.cwl
 inputs:
 - id: download_taxonomy
   doc: Download NCBI taxonomic information

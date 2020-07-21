@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deblur_dereplicate.cwl
+id: ../../../deblur_dereplicate.cwl
 inputs:
 - id: min_size
   doc: 'Discard sequences with an abundance value smaller than min-size  [default:

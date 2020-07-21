@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_readlink.cwl
+id: ../../../arb_readlink.cwl
 inputs:
 - id: silent
   doc: suppress most error messages (on by default)

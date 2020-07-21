@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/laser.cwl
+id: ../../../laser.cwl
 inputs:
 - id: extra_sensitive
   doc: Be more sensitive (at the expense of runtime).

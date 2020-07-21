@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ca2singletons.cwl
+id: ../../../ca2singletons.cwl
 inputs:
 - id: asm_file
   doc: .asm file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools_pileup.cwl
+id: ../../../samtools_pileup.cwl
 inputs:
 - id: simple_incomplete_pileup
   doc: simple (yet incomplete) pileup format

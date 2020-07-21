@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jpredapi.cwl
+id: ../../../jpredapi.cwl
 inputs:
 - id: silent
   doc: Do not print messages.

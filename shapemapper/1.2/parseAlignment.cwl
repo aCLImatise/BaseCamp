@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parseAlignment.cwl
+id: ../../../parseAlignment.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

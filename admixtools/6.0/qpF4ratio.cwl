@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qpF4ratio.cwl
+id: ../../../qpF4ratio.cwl
 inputs:
 - id: use_parameters_file
   doc: '... use parameters from <file> .'

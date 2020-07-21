@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abricate_get_db.cwl
+id: ../../../abricate_get_db.cwl
 inputs:
 - id: debug
   doc: "!        Verbose debug output (default '0')."

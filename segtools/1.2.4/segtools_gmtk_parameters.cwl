@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segtools_gmtk_parameters.cwl
+id: ../../../segtools_gmtk_parameters.cwl
 inputs:
 - id: clobber
   doc: Overwrite any existing output files.

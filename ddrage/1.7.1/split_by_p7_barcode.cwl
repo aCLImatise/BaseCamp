@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/split_by_p7_barcode.cwl
+id: ../../../split_by_p7_barcode.cwl
 inputs:
 - id: force
   doc: Overwrite existing files when creating the output.

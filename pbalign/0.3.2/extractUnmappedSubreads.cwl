@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extractUnmappedSubreads.py.cwl
+id: ../../../extractUnmappedSubreads.py.cwl
 inputs:
 - id: verbose
   doc: 'Set the verbosity level (default: None)'

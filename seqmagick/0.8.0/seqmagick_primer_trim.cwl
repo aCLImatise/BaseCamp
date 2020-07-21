@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqmagick_primer_trim.cwl
+id: ../../../seqmagick_primer_trim.cwl
 inputs:
 - id: reverse_is_rev_comp
   doc: 'Reverse primer is written as the reverse complement of the top strand (default:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hamming.cwl
+id: ../../../hamming.cwl
 inputs:
 - id: size
   doc: '(unsigned int) default: 32 number of symbols'

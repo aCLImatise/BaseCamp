@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/emirge_makedb.py.cwl
+id: ../../../emirge_makedb.py.cwl
 inputs:
 - id: build_database_rrna
   doc: '[SSU|LSU], --gene=[SSU|LSU] build database from this gene (SSU=Small Subunit

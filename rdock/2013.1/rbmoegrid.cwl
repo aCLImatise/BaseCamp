@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbmoegrid.cwl
+id: ../../../rbmoegrid.cwl
 inputs:
 - id: grd_is_suffixed
   doc: (.grd is suffixed)

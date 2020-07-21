@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_config_parse.cwl
+id: ../../../omero_config_parse.cwl
 inputs:
 - id: file
   doc: Alternative location for a Java properties file

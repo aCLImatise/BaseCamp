@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fa2fq.py.cwl
+id: ../../../fa2fq.py.cwl
 inputs:
 - id: convert
   doc: ''

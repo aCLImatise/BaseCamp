@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/modify_design_file.py.cwl
+id: ../../../modify_design_file.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ecoPCR.cwl
+id: ../../../ecoPCR.cwl
 inputs:
 - id: d
   doc: ''

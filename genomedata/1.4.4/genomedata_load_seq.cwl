@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genomedata_load_seq.cwl
+id: ../../../genomedata_load_seq.cwl
 inputs:
 - id: assembly
   doc: SEQFILE contains assembly (AGP) files instead of sequence

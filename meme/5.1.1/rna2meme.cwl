@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rna2meme.cwl
+id: ../../../rna2meme.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

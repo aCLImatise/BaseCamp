@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/advntr_addmodel.cwl
+id: ../../../advntr_addmodel.cwl
 inputs:
 - id: r_slash_reference
   doc: Reference genome

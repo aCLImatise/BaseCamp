@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tutorial_eqtlbma.R.cwl
+id: ../../../tutorial_eqtlbma.R.cwl
 inputs:
 - id: verbose
   doc: verbosity level (0/default=1/2)

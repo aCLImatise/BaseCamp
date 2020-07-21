@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/centrifuge_download.cwl
+id: ../../../centrifuge_download.cwl
 inputs:
 - id: folder_files_downloaded
   doc: "Folder to which the files are downloaded. Default: '.'."

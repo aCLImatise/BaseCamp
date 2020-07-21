@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterBam.cwl
+id: ../../../filterBam.cwl
 inputs:
 - id: best
   doc: output all best matches that satisfy minId and minCover (default 0)

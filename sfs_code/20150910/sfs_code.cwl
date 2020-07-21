@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sfs_code.cwl
+id: ../../../sfs_code.cwl
 inputs:
 - id: n_pop
   doc: ''

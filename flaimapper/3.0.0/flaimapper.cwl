@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flaimapper.cwl
+id: ../../../flaimapper.cwl
 inputs:
 - id: parameters
   doc: File containing the filtering parameters, using default if none is provided

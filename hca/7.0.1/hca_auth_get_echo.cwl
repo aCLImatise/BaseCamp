@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_auth_get_echo.cwl
+id: ../../../hca_auth_get_echo.cwl
 inputs:
 - id: log_level
   doc: ''

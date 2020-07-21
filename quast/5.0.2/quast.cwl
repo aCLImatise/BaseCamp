@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quast.py.cwl
+id: ../../../quast.py.cwl
 inputs:
 - id: fungus
   doc: Genome is fungal (primarily affects gene prediction)

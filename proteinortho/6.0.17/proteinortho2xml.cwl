@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteinortho2xml.pl.cwl
+id: ../../../proteinortho2xml.pl.cwl
 inputs:
 - id: no
   doc: ''

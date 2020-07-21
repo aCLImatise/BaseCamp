@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jali.cwl
+id: ../../../jali.cwl
 inputs:
 - id: amino_acid_similarity
   doc: //amino acid similarity matrix

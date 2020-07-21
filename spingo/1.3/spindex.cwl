@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spindex.cwl
+id: ../../../spindex.cwl
 inputs:
 - id: display_version_information
   doc: '[ --version ]             display version information'

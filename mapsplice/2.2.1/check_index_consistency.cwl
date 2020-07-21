@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/check_index_consistency.cwl
+id: ../../../check_index_consistency.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

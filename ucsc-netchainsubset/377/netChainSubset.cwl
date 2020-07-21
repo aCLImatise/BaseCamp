@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/netChainSubset.cwl
+id: ../../../netChainSubset.cwl
 inputs:
 - id: in_dotnet
   doc: ''

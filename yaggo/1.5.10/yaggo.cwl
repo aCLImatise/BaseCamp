@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/yaggo.cwl
+id: ../../../yaggo.cwl
 inputs:
 - id: output
   doc: Output file

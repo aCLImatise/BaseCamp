@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkv_quality_summary.cwl
+id: ../../../checkv_quality_summary.cwl
 inputs:
 - id: quiet
   doc: Suppress logging messages

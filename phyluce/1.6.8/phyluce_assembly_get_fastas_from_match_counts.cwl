@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_assembly_get_fastas_from_match_counts.cwl
+id: ../../../phyluce_assembly_get_fastas_from_match_counts.cwl
 inputs:
 - id: contigs
   doc: 'The directory containing the assembled contigs in which you searched for UCE

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PretextGraph.sse42.cwl
+id: ../../../PretextGraph.sse42.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

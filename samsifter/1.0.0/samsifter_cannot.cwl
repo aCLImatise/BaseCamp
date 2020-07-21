@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samsifter_cannot.cwl
+id: ../../../samsifter_cannot.cwl
 inputs:
 - id: verbose
   doc: print additional information to stderr

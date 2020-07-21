@@ -1,0 +1,69 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Do not print sequence tags.
+  synonyms:
+  - -n
+  - --no-tags
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not print the index of each GC window.  Ignored if --tabular is
+    given.
+  synonyms:
+  - -N
+  - --no-indices
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- gc-content-plot
+parent:
+subcommands: []
+help_flag: !Flag
+  description: Print this usage message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: gc-content-plot [OPTIONS] [(FASTA_FILE | FASTQ_FILE)]...\n\nPrints\
+  \ the GC content within a sliding window of configurable size in each\nDNA sequence\
+  \ in each input FASTA_FILE or FASTQ_FILE.  If no FASTA_FILE's or\nFASTQ_FILE's are\
+  \ specified, a FASTA or FASTQ file is read from standard input.\n\nWithout the `--include-n'\
+  \ option, windows containing unknown base pairs are\nmarked as having a GC content\
+  \ of -1.\n\nIn the default output format (`--tabular' not given), the first column\
+  \ is the\nindex of the start of the window, where the bases in each sequence are\n\
+  numbered beginning at 1.  The number in the second column is the GC content\nof\
+  \ that window, either as an absolute number (default) or as a percent\n(with `--percent').\n\
+  \nOptions:\n  -w, --window-size=SIZE\n                       Use a sliding window\
+  \ of size SIZE to calculate GC\n                         content.  Default: 180\n\
+  \  -p, --percent        Print GC contents as percentages rather than base counts.\n\
+  \  -i, --include-n      Include windows that contain unknown sequence (usually\n\
+  \                         marked as the letter 'N')\n  -g, --n-gc-content=VALUE\n\
+  \                       Assume that unknown bases (usually marked as the\n     \
+  \                    letter 'N') have a GC-to-AT ratio of VALUE.  This\n       \
+  \                  option implies `--include-n'.  Default: 0.5\n  -t, --tabular\
+  \        Use a tabular output format.\n  -r, --ranges=RANGE[,RANGE]...\n       \
+  \                Only print the GC content at the windows beginning at\n       \
+  \                the positions specified by the comma-separated list of\n      \
+  \                 ranges.  Each range is two numbers separated by a colon.\n   \
+  \                    Positive integral numbers are taken to be base\n          \
+  \             positions numbered starting at 1.  Negative integral\n           \
+  \            numbers are taken to be base positions from the\n                 \
+  \      end of the sequence (e.g. -1 is the last base in\n                      \
+  \ the sequence).  Floating-point numbers are handled\n                       similarly,\
+  \ but are first multiplied by the number of\n                       GC windows in\
+  \ the sequence.  Examples:\n                       --ranges=1:10,-10:-1 to print\
+  \ the GC content of\n                       the first and last 10 windows of each\
+  \ sequence;\n                       --ranges=0.45:0.55 to print GC content of the\n\
+  \                       the middle 10% of each sequence's windows.  The output\n\
+  \                       is in ascending order of base position and no position\n\
+  \                       is printed multiple times.\n\n  -n, --no-tags        Do\
+  \ not print sequence tags.\n  -N, --no-indices     Do not print the index of each\
+  \ GC window.  Ignored if\n                         --tabular is given.\n  -h, --help\
+  \           Print this usage message.\n"
+generated_using:
+- --help

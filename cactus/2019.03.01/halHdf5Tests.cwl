@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halHdf5Tests.cwl
+id: ../../../halHdf5Tests.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

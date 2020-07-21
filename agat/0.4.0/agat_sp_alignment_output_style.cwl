@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_alignment_output_style.pl.cwl
+id: ../../../agat_sp_alignment_output_style.pl.cwl
 inputs:
 - id: gff
   doc: Input GTF/GFF file.

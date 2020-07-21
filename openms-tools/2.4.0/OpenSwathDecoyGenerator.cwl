@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/OpenSwathDecoyGenerator.cwl
+id: ../../../OpenSwathDecoyGenerator.cwl
 inputs:
 - id: in
   doc: "*             Input file (valid formats: 'tsv', 'mrm', 'pqp', 'TraML')"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/VariantAnnotateFrequency.cwl
+id: ../../../VariantAnnotateFrequency.cwl
 inputs:
 - id: in
   doc: Input variant list to annotate in VCF or GSvar format.

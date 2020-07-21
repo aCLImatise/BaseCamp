@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdal_rasterize.cwl
+id: ../../../gdal_rasterize.cwl
 inputs:
 - id: b
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qscores_from_summary.cwl
+id: ../../../qscores_from_summary.cwl
 inputs:
 - id: median
   doc: 'Use median. If false, use mean. (default: False)'

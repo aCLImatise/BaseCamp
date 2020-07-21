@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmx.cwl
+id: ../../../gmx.cwl
 inputs:
 - id: commands
   doc: List of available commands

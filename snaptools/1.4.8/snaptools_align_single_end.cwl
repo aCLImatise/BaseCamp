@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snaptools_align_single_end.cwl
+id: ../../../snaptools_align_single_end.cwl
 inputs:
 - id: input_reference
   doc: 'reference genome file contains the reference genome that reads are mapped

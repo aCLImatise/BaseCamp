@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkCoverageGaps.cwl
+id: ../../../checkCoverageGaps.cwl
 inputs:
 - id: all_parts
   doc: If set then include _hap and _random and other wierd chroms

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kinSimRibo_mergeRateMats.cwl
+id: ../../../kinSimRibo_mergeRateMats.cwl
 inputs:
 - id: allow_disconnected_matrix
   doc: ':     Allow disconnected matrix / do not check whether A and B are connected.'

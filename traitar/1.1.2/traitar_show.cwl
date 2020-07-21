@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/traitar_show.cwl
+id: ../../../traitar_show.cwl
 inputs:
 - id: models_f
   doc: phenotype models archive; if set, look for the target in the phenotype in the

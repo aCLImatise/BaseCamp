@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plasmidspades.py.cwl
+id: ../../../plasmidspades.py.cwl
 inputs:
 - id: directory_store_files
   doc: directory to store all the resulting files (required)

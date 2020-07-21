@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mutate.sh.cwl
+id: ../../../mutate.sh.cwl
 inputs:
 - id: in
   doc: ''

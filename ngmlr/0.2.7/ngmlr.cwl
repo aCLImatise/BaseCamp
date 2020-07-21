@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ngmlr.cwl
+id: ../../../ngmlr.cwl
 inputs:
 - id: skip_write
   doc: Don't write reference index to disk [false]

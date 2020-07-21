@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CIRCexplorer2_align.cwl
+id: ../../../CIRCexplorer2_align.cwl
 inputs:
 - id: gtf
   doc: Annotation GTF file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lumpy.cwl
+id: ../../../lumpy.cwl
 inputs:
 - id: genome_file_defines
   doc: Genome file (defines chromosome order)

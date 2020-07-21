@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phylorank.cwl
+id: ../../../phylorank.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

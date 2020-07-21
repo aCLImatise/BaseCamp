@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/find_differential_primers.py.cwl
+id: ../../../find_differential_primers.py.cwl
 inputs:
 - id: in_file
   doc: location of configuration file

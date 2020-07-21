@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DecoyDatabase.cwl
+id: ../../../DecoyDatabase.cwl
 inputs:
 - id: enzyme
   doc: "Enzyme used for the digestion of the sample (default: 'Trypsin' valid: 'TrypChymo',\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_adapter_clipper.cwl
+id: ../../../mb_adapter_clipper.cwl
 inputs:
 - id: clip_len
   doc: partial adapter size required for clipping (in bp)

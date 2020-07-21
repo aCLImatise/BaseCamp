@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msgf_plus.cwl
+id: ../../../msgf_plus.cwl
 inputs:
 - id: x_mx_three_five_zero_zero_m
   doc: ''

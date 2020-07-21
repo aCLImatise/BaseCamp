@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PathOverlap.cwl
+id: ../../../PathOverlap.cwl
 inputs:
 - id: km_er
   doc: k-mer size

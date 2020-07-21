@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/import_html_template.cwl
+id: ../../../import_html_template.cwl
 inputs:
 - id: variable_name
   doc: ''

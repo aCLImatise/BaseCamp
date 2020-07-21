@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergeassembly.cwl
+id: ../../../mergeassembly.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

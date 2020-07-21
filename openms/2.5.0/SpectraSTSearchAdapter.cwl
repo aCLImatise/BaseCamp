@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SpectraSTSearchAdapter.cwl
+id: ../../../SpectraSTSearchAdapter.cwl
 inputs:
 - id: executable
   doc: '*                                                            Path to the SpectraST

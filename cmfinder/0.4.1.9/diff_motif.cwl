@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/diff_motif.cwl
+id: ../../../diff_motif.cwl
 inputs:
 - id: show_overlapped_sequences
   doc: ': Show overlapped sequences '

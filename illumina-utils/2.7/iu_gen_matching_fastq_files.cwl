@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iu_gen_matching_fastq_files.cwl
+id: ../../../iu_gen_matching_fastq_files.cwl
 inputs:
 - id: identifier_tested
   doc: Use this flag to indicate that you tested your identifier.

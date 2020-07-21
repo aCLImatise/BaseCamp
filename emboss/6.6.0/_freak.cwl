@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_freak.cwl
+id: ../../../_freak.cwl
 inputs:
 - id: letters
   doc: string     [gc] Residue letters (Any string)

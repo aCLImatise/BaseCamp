@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/connect_graph.cwl
+id: ../../../connect_graph.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

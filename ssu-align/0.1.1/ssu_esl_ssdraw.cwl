@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_ssdraw.cwl
+id: ../../../ssu_esl_ssdraw.cwl
 inputs:
 - id: draw_default_set
   doc: ': draw default set of alignment summary diagrams'

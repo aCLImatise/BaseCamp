@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/locarnap_revcomp.pl.cwl
+id: ../../../locarnap_revcomp.pl.cwl
 inputs:
 - id: fast_a_files
   doc: ''

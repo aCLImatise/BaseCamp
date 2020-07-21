@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/add_gff_info_counts.cwl
+id: ../../../add_gff_info_counts.cwl
 inputs:
 - id: samples
   doc: Sample names, in the same order as the count files [required]

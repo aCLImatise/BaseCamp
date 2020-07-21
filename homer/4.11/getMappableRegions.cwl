@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getMappableRegions.cwl
+id: ../../../getMappableRegions.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

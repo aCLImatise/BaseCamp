@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fileMerger.py.cwl
+id: ../../../fileMerger.py.cwl
 inputs:
 - id: i
   doc: ''

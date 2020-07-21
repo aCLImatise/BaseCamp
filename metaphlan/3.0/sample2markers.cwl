@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sample2markers.py.cwl
+id: ../../../sample2markers.py.cwl
 inputs:
 - id: input
   doc: The input samples as SAM or BAM files

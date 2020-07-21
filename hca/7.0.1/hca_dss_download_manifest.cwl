@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_download_manifest.cwl
+id: ../../../hca_dss_download_manifest.cwl
 inputs:
 - id: manifest
   doc: The path to a TSV (tab-separated values) file listing files to download. If

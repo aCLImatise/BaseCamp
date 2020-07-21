@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcftools_cnv.cwl
+id: ../../../bcftools_cnv.cwl
 inputs:
 - id: plot_threshold
   doc: plot aberrant chromosomes with quality at least 'float'

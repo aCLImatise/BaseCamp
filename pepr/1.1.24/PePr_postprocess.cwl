@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PePr_postprocess.cwl
+id: ../../../PePr_postprocess.cwl
 inputs:
 - id: peak
   doc: peak file

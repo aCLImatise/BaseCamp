@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dd.cwl
+id: ../../../dd.cwl
 inputs:
 - id: ascii
   doc: from EBCDIC to ASCII

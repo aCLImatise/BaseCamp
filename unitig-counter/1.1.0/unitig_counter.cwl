@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unitig_counter.cwl
+id: ../../../unitig_counter.cwl
 inputs:
 - id: gzip
   doc: '(0 arg) :    Compress unitig output using gzip.'

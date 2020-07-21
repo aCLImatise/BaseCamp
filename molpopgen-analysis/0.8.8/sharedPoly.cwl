@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sharedPoly.cwl
+id: ../../../sharedPoly.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

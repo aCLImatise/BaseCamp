@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/watchdog_gui.cwl
+id: ../../../watchdog_gui.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

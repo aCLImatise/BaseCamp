@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stringMLST.py.cwl
+id: ../../../stringMLST.py.cwl
 inputs:
 - id: profile
   doc: profileFile

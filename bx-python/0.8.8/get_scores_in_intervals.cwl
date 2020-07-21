@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_scores_in_intervals.py.cwl
+id: ../../../get_scores_in_intervals.py.cwl
 inputs:
 - id: score_file
   doc: ''

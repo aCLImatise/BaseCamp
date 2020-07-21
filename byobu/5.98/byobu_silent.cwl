@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/byobu_silent.cwl
+id: ../../../byobu_silent.cwl
 inputs:
 - id: two_clu_vv
   doc: ''

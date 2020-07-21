@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qual_offset.py.cwl
+id: ../../../qual_offset.py.cwl
 inputs:
 - id: fast_q
   doc: including stdin or compressed file {zip,gz,tar,bz}

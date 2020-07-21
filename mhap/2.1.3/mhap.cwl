@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mhap.cwl
+id: ../../../mhap.cwl
 inputs:
 - id: default_kmer_filter
   doc: ', default = "" k-mer filter file used for filtering out highly repetative

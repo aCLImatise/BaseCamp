@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sina.cwl
+id: ../../../sina.cwl
 inputs:
 - id: show_help_long
   doc: '[ --help-all ]        show full help (long)'

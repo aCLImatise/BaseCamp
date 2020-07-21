@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LAsplit.cwl
+id: ../../../LAsplit.cwl
 inputs:
 - id: v
   doc: ''

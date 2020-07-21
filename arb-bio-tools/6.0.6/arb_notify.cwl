@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_notify.cwl
+id: ../../../arb_notify.cwl
 inputs:
 - id: id
   doc: ''

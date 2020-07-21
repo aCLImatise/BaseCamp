@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gxwf_lint.cwl
+id: ../../../gxwf_lint.cwl
 inputs:
 - id: training_topic
   doc: If this is a training workflow, specify a training topic.

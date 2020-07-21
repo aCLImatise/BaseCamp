@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/db_log_verify.cwl
+id: ../../../db_log_verify.cwl
 inputs:
 - id: nc_vv
   doc: ''

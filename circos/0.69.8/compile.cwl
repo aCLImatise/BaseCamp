@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compile.make.cwl
+id: ../../../compile.make.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

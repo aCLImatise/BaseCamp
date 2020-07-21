@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seurat_normalise_data.R.cwl
+id: ../../../seurat_normalise_data.R.cwl
 inputs:
 - id: input_object_file
   doc: File name in which a serialized R matrix object may be found.

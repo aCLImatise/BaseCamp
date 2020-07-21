@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_datauri.cwl
+id: ../../../create_datauri.cwl
 inputs:
 - id: file_type
   doc: type of file to be converted to data uri

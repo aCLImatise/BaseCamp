@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/collect_mgf.cwl
+id: ../../../collect_mgf.cwl
 inputs:
 - id: exp_no_directory
   doc: ''

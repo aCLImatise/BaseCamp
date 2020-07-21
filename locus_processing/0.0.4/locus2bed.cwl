@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/locus2bed.cwl
+id: ../../../locus2bed.cwl
 inputs:
 - id: input
   doc: Path to input locus file

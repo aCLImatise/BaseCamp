@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/megahit_core_popcnt.cwl
+id: ../../../megahit_core_popcnt.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

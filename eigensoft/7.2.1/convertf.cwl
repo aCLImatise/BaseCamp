@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convertf.cwl
+id: ../../../convertf.cwl
 inputs:
 - id: bad
   doc: ''

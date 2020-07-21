@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ppanini_press.cwl
+id: ../../../ppanini_press.cwl
 inputs:
 - id: gene_path
   doc: a directory path to ppanini_gene_caller outputs which includes txt, gff, and

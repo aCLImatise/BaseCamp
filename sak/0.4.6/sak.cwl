@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sak.cwl
+id: ../../../sak.cwl
 inputs:
 - id: version_check
   doc: 'Turn this option off to disable version update notifications of the application.

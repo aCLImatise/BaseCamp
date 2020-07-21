@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/start_parallel_picrust_jobs_torque.py.cwl
+id: ../../../start_parallel_picrust_jobs_torque.py.cwl
 inputs:
 - id: verbose
   doc: 'Print information during execution -- useful for debugging [default: False]'

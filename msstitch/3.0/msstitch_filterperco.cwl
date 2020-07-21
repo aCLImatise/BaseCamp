@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msstitch_filterperco.cwl
+id: ../../../msstitch_filterperco.cwl
 inputs:
 - id: input_file_format
   doc: Input file of {} format

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_hardklor.cwl
+id: ../../../crux_hardklor.cwl
 inputs:
 - id: spectra
   doc: ''

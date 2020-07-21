@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/remove_adapter.py.cwl
+id: ../../../remove_adapter.py.cwl
 inputs:
 - id: input_one
   doc: The input FASTQ file containing the reads from 5' fragment end (i.e. 5'-3'

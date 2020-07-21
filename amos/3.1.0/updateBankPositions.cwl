@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/updateBankPositions.cwl
+id: ../../../updateBankPositions.cwl
 inputs:
 - id: bank_name
   doc: ''

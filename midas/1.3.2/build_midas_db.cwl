@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/build_midas_db.py.cwl
+id: ../../../build_midas_db.py.cwl
 inputs:
 - id: threads
   doc: Number of threads to use (1)

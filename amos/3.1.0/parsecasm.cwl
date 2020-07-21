@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parsecasm.cwl
+id: ../../../parsecasm.cwl
 inputs:
 - id: no_fast_a
   doc: Do not create .fasta output

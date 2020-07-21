@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/callvariants2.sh.cwl
+id: ../../../callvariants2.sh.cwl
 inputs:
 - id: call_variants_dots_h
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ushuffle.cwl
+id: ../../../ushuffle.cwl
 inputs:
 - id: specifies_the_sequence
   doc: specifies the sequence

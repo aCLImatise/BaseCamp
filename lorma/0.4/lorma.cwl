@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lorma.sh.cwl
+id: ../../../lorma.sh.cwl
 inputs:
 - id: sequence_data_intermediate
   doc: the sequence data of intermediate LoRDEC steps

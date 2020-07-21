@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_bad_reads.cwl
+id: ../../../extract_bad_reads.cwl
 inputs:
 - id: extract_reads_instead
   doc: '[ --all ]                        Extract all reads instead of only "bad"  ones.'

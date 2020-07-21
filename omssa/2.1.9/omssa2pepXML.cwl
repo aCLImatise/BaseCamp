@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omssa2pepXML.cwl
+id: ../../../omssa2pepXML.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/isoseq3_summarize.cwl
+id: ../../../isoseq3_summarize.cwl
 inputs:
 - id: log_level
   doc: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]'

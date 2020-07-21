@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/grabix.cwl
+id: ../../../grabix.cwl
 inputs:
 - id: index
   doc: ''

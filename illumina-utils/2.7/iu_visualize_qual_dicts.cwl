@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iu_visualize_qual_dicts.cwl
+id: ../../../iu_visualize_qual_dicts.cwl
 inputs:
 - id: prefix__prefix
   doc: PREFIX, --prefix FILE PREFIX Prefix for the output file(s)

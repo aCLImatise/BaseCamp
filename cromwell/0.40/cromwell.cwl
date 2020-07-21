@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cromwell.cwl
+id: ../../../cromwell.cwl
 inputs:
 - id: workflow_root
   doc: Workflow root.

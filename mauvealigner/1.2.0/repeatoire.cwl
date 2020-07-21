@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/repeatoire.cwl
+id: ../../../repeatoire.cwl
 inputs:
 - id: allow_redundant
   doc: (=1)        allow redundant alignments?

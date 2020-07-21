@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_upload_list.cwl
+id: ../../../hca_upload_list.cwl
 inputs:
 - id: log_level
   doc: ''

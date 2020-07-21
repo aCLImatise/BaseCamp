@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/translatorx.cwl
+id: ../../../translatorx.cwl
 inputs:
 - id: file_containing_sequences
   doc: ': the file containing the nucleotide sequences in FASTA format (Required) '

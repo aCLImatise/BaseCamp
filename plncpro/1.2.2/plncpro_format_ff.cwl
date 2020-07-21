@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plncpro_format_ff.sh.cwl
+id: ../../../plncpro_format_ff.sh.cwl
 inputs:
 - id: backup
   doc: '[=CONTROL]       make a backup of each existing destination file'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_bam2wig.cwl
+id: ../../../rsem_bam2wig.cwl
 inputs:
 - id: no_fractional_weight
   doc: ''

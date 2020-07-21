@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genefuse.cwl
+id: ../../../genefuse.cwl
 inputs:
 - id: read_one
   doc: ''

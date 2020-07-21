@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tin.py.cwl
+id: ../../../tin.py.cwl
 inputs:
 - id: input
   doc: 'Input BAM file(s). "-i" takes these input: 1) a single BAM file. 2) "," separated

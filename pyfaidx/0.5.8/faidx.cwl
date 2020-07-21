@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faidx.cwl
+id: ../../../faidx.cwl
 inputs:
 - id: no_rebuild
   doc: 'do not rebuild the .fai index even if it is out of date. default: False'

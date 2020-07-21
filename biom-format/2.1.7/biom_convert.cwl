@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biom_convert.cwl
+id: ../../../biom_convert.cwl
 inputs:
 - id: input_fp
   doc: The input BIOM table  [required]

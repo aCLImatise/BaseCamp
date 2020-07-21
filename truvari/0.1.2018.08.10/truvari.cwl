@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/truvari.cwl
+id: ../../../truvari.cwl
 inputs:
 - id: base
   doc: Baseline truth-set calls

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chown.cwl
+id: ../../../chown.cwl
 inputs:
 - id: no_preserve_root
   doc: do not treat '/' specially (the default)

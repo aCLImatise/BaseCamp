@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gvcf2bed.cwl
+id: ../../../gvcf2bed.cwl
 inputs:
 - id: input
   doc: Input gVCF

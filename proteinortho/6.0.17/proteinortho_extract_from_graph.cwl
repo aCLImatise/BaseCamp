@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteinortho_extract_from_graph.pl.cwl
+id: ../../../proteinortho_extract_from_graph.pl.cwl
 inputs:
 - id: protein_ortho_table
   doc: ''

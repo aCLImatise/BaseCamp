@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/6ft.cwl
+id: ../../../6ft.cwl
 inputs:
 - id: translate_only_reverse
   doc: ': translate only reverse (antisense) strand.'

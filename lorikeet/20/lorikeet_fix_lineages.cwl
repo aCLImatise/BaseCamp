@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lorikeet_fix_lineages.cwl
+id: ../../../lorikeet_fix_lineages.cwl
 inputs:
 - id: distance
   doc: Maximum distance to consider closest neighbors. [Default=500]

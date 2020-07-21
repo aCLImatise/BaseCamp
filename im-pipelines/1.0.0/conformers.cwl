@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/conformers.cwl
+id: ../../../conformers.cwl
 inputs:
 - id: num
   doc: number of conformers to generate

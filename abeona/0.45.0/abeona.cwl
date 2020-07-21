@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abeona.cwl
+id: ../../../abeona.cwl
 inputs:
 - id: v
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msbenchmark.cwl
+id: ../../../msbenchmark.cwl
 inputs:
 - id: var_0
   doc: ''

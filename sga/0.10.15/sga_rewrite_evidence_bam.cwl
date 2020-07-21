@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sga_rewrite_evidence_bam.cwl
+id: ../../../sga_rewrite_evidence_bam.cwl
 inputs:
 - id: verbose
   doc: display verbose output

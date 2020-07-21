@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/KmerFreq_HA.cwl
+id: ../../../KmerFreq_HA.cwl
 inputs:
 - id: set_size_default
   doc: Set kmer size(13~27), default=17.

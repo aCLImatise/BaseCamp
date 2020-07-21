@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bpipe_slurm.sh.cwl
+id: ../../../bpipe_slurm.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

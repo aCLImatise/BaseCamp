@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shred.sh.cwl
+id: ../../../shred.sh.cwl
 inputs:
 - id: in
   doc: ''

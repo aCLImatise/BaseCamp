@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fold.cwl
+id: ../../../fold.cwl
 inputs:
 - id: bytes
   doc: bytes rather than columns

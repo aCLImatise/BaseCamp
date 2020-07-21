@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/significanceCalculator.py.cwl
+id: ../../../significanceCalculator.py.cwl
 inputs:
 - id: m
   doc: ''

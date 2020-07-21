@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wigchoose.pl.cwl
+id: ../../../wigchoose.pl.cwl
 inputs:
 - id: min_cov
   doc: 'minimal coverage for each position of the interval (default: 1)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tripaille_expression_add_expression.cwl
+id: ../../../tripaille_expression_add_expression.cwl
 inputs:
 - id: match_type
   doc: 'Match to features using either name or uniquename. Default to uniquename  [default:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bootstrap.py.cwl
+id: ../../../bootstrap.py.cwl
 inputs:
 - id: installation_path
   doc: The directory where FusionCatcher will be installed. Default is '/tmp/tmpr7lyfvkf/fusioncatcher'.

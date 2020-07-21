@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o_generate_oligo_base_networks.cwl
+id: ../../../o_generate_oligo_base_networks.cwl
 inputs:
 - id: output_dir
   doc: Directory path in which "[sample].png" files will be stored for each sample.

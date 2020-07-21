@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mz_to_sqlite.cwl
+id: ../../../mz_to_sqlite.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

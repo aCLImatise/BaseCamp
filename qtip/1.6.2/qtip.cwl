@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qtip.cwl
+id: ../../../qtip.cwl
 inputs:
 - id: ref
   doc: 'FASTA file, or many FASTAs separated by spaces, containing reference genome

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/WhatsGNU_main.py.cwl
+id: ../../../WhatsGNU_main.py.cwl
 inputs:
 - id: mk_database
   doc: you have to provide path to faa file or a folder of multiple faa files for

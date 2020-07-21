@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gene_order.pl.cwl
+id: ../../../gene_order.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

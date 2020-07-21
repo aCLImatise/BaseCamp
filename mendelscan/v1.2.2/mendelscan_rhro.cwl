@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mendelscan_rhro.cwl
+id: ../../../mendelscan_rhro.cwl
 inputs:
 - id: ped_file
   doc: Pedigree file in 6-column tab-delimited format

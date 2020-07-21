@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ntJoin.cwl
+id: ../../../ntJoin.cwl
 inputs:
 - id: ignored_for_compatibility
   doc: Ignored for compatibility.

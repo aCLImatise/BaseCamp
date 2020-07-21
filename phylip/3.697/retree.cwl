@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/retree.cwl
+id: ../../../retree.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

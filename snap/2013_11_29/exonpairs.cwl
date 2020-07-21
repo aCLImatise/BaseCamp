@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/exonpairs.cwl
+id: ../../../exonpairs.cwl
 inputs:
 - id: min_intron
   doc: minimum Intron length [30]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cramtools_index.cwl
+id: ../../../cramtools_index.cwl
 inputs:
 - id: index_file
   doc: Write index to this file.

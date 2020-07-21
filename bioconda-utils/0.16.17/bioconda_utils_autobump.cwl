@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioconda_utils_autobump.cwl
+id: ../../../bioconda_utils_autobump.cwl
 inputs:
 - id: packages
   doc: "Glob(s) for package[s] to scan. Can be specified more than once (default:\

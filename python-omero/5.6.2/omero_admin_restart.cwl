@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_admin_restart.cwl
+id: ../../../omero_admin_restart.cwl
 inputs:
 - id: wait
   doc: Seconds to wait for operation

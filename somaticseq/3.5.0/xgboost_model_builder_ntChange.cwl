@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xgboost_model_builder_ntChange.R.cwl
+id: ../../../xgboost_model_builder_ntChange.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

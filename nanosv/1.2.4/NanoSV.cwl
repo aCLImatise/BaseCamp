@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NanoSV.cwl
+id: ../../../NanoSV.cwl
 inputs:
 - id: threads
   doc: 'Number of threads [default: 4]'

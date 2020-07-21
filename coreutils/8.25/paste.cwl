@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paste.cwl
+id: ../../../paste.cwl
 inputs:
 - id: delimiters
   doc: reuse characters from LIST instead of TABs

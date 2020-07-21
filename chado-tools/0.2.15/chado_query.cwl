@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chado_query.cwl
+id: ../../../chado_query.cwl
 inputs:
 - id: verbose
   doc: verbose mode

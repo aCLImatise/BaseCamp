@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_otu_results.py.cwl
+id: ../../../merge_otu_results.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

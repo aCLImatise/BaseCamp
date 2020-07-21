@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RADpainter_hapsFromVCF.cwl
+id: ../../../RADpainter_hapsFromVCF.cwl
 inputs:
 - id: _hettreatment_rp
   doc: ',   --het-treatment <r|p>             r: assign het bases randomly (default);

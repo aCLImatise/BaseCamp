@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/velocyto.cwl
+id: ../../../velocyto.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

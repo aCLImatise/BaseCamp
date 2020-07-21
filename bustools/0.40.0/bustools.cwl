@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bustools.cwl
+id: ../../../bustools.cwl
 inputs:
 - id: cmd
   doc: ''

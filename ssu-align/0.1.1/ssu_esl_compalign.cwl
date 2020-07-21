@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_compalign.cwl
+id: ../../../ssu_esl_compalign.cwl
 inputs:
 - id: print_column_statistics
   doc: ': print per column statistics instead of per sequence stats'

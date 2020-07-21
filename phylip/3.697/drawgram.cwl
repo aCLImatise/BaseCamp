@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/drawgram.cwl
+id: ../../../drawgram.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

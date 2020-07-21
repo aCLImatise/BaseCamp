@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_upgrade_table.cwl
+id: ../../../mb_upgrade_table.cwl
 inputs:
 - id: table_file
   doc: ''

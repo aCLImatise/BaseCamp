@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/R_scape.cwl
+id: ../../../R_scape.cwl
 inputs:
 - id: non_param
   doc: ': non parameteric correlate  [TRUE]'

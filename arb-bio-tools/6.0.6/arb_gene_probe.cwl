@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_gene_probe.cwl
+id: ../../../arb_gene_probe.cwl
 inputs:
 - id: input_database
   doc: ''

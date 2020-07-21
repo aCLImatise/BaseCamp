@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_metaphlan_tables.py.cwl
+id: ../../../merge_metaphlan_tables.py.cwl
 inputs:
 - id: name_tables_saved
   doc: Name of output file in which joined tables are saved

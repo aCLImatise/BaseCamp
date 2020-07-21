@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_postprocess.cwl
+id: ../../../mb_postprocess.cwl
 inputs:
 - id: prefix
   doc: preprocessing filename prefix - only required if there are multiple table files

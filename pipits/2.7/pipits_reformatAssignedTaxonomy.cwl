@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pipits_reformatAssignedTaxonomy.cwl
+id: ../../../pipits_reformatAssignedTaxonomy.cwl
 inputs:
 - id: in
   doc: '[REQUIRED] taxonomy assignment output from RDP-CLASSIFIER'

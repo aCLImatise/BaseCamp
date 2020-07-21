@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vkmz.cwl
+id: ../../../vkmz.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

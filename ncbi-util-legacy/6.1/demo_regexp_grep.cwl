@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/demo_regexp_grep.cwl
+id: ../../../demo_regexp_grep.cwl
 inputs:
 - id: count
   doc: print only a count of matching lines per FILE

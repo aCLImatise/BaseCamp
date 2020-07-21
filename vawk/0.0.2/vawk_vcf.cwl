@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vawk_vcf.cwl
+id: ../../../vawk_vcf.cwl
 inputs:
 - id: v
   doc: ''

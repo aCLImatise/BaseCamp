@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/createBackboneMFA.cwl
+id: ../../../createBackboneMFA.cwl
 inputs:
 - id: input_interval_file
   doc: ''

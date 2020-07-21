@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hash_exp.cwl
+id: ../../../hash_exp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

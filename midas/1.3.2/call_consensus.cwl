@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/call_consensus.py.cwl
+id: ../../../call_consensus.py.cwl
 inputs:
 - id: out
   doc: path to output file

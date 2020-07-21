@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/EMBLmyGFF3.cwl
+id: ../../../EMBLmyGFF3.cwl
 inputs:
 - id: accession
   doc: 'Bolean. Accession number(s) for the entry. Default value: XXX. The proper

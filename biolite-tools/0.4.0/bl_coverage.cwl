@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bl_coverage.cwl
+id: ../../../bl_coverage.cwl
 inputs:
 - id: specify_sam_file
   doc: specify SAM input file

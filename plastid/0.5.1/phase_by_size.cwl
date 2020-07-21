@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phase_by_size.cwl
+id: ../../../phase_by_size.cwl
 inputs:
 - id: codon_buffer
   doc: 'Codons before and after start codon to ignore (Default: 5)'

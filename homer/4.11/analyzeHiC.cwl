@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/analyzeHiC.cwl
+id: ../../../analyzeHiC.cwl
 inputs:
 - id: res
   doc: '<#> (Resolution of matrix in bp or use "-res site" [see below], default: 10000000)'

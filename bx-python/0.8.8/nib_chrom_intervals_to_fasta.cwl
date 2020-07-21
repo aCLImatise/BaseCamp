@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nib_chrom_intervals_to_fasta.py.cwl
+id: ../../../nib_chrom_intervals_to_fasta.py.cwl
 inputs:
 - id: nib_dir
   doc: ''

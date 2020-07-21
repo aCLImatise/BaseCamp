@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bowtie.cwl
+id: ../../../bowtie.cwl
 inputs:
 - id: query_input_files_fastq
   doc: query input files are FASTQ .fq/.fastq (default)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BlibSearch.cwl
+id: ../../../BlibSearch.cwl
 inputs:
 - id: arg_remove_peaks
   doc: '[ --clear-precursor ] arg (=1)  Remove the peaks in a X m/z window around  the

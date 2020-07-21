@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/updateLibSizes.cwl
+id: ../../../updateLibSizes.cwl
 inputs:
 - id: bank_name
   doc: ''

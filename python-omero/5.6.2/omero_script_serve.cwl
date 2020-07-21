@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_script_serve.cwl
+id: ../../../omero_script_serve.cwl
 inputs:
 - id: verbose
   doc: Enable debug logging on processor

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msa_diff.cwl
+id: ../../../msa_diff.cwl
 inputs:
 - id: alphabet
   doc: "Use given string for alphabet.  Can be used to accommodate nonstandard characters\

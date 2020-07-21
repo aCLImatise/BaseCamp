@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbwt.cwl
+id: ../../../pbwt.cwl
 inputs:
 - id: log
   doc: log file; '-' for stderr

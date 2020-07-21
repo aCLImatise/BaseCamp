@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nasp_output_folder.cwl
+id: ../../../nasp_output_folder.cwl
 inputs:
 - id: config
   doc: ''

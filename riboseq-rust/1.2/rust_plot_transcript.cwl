@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rust_plot_transcript.bak_RUST_codon_file.cwl
+id: ../../../rust_plot_transcript.bak_RUST_codon_file.cwl
 inputs:
 - id: o
   doc: ''

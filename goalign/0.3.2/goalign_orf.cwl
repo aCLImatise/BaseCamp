@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_orf.cwl
+id: ../../../goalign_orf.cwl
 inputs:
 - id: output
   doc: ORF Output Fasta File (default "stdout")

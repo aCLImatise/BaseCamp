@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reconcile_consensus.pl.cwl
+id: ../../../reconcile_consensus.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

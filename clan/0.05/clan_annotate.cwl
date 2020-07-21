@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clan_annotate.cwl
+id: ../../../clan_annotate.cwl
 inputs:
 - id: i
   doc: ''

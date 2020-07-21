@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sat.cwl
+id: ../../../sat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

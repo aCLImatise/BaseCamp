@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/oligoMatch.cwl
+id: ../../../oligoMatch.cwl
 inputs:
 - id: oligos
   doc: ''

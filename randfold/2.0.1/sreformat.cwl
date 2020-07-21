@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sreformat.cwl
+id: ../../../sreformat.cwl
 inputs:
 - id: force_dna_alphabet
   doc: ': force DNA alphabet for nucleic acid sequence'

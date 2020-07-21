@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/remove_pdb_water.cwl
+id: ../../../remove_pdb_water.cwl
 inputs:
 - id: config
   doc: This file can be a YAML file, JSON file or JSON string

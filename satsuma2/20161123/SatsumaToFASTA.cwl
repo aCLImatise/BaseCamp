@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SatsumaToFASTA.cwl
+id: ../../../SatsumaToFASTA.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

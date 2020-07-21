@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/undexta.cwl
+id: ../../../undexta.cwl
 inputs:
 - id: v_ku
   doc: ''

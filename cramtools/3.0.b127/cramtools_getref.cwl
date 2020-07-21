@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cramtools_getref.cwl
+id: ../../../cramtools_getref.cwl
 inputs:
 - id: destination_file
   doc: Destination file.

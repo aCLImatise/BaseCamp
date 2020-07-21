@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/influx_s.cwl
+id: ../../../influx_s.cwl
 inputs:
 - id: no_opt
   doc: no optimization, just use free parameters as is (after a projection on feasibility

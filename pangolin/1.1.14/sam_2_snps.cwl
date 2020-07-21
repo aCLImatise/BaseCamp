@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sam_2_snps.py.cwl
+id: ../../../sam_2_snps.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

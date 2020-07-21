@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FALCON_headerConverter.pl.cwl
+id: ../../../FALCON_headerConverter.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

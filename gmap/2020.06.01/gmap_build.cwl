@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmap_build.cwl
+id: ../../../gmap_build.cwl
 inputs:
 - id: km_er
   doc: 'k-mer value for genomic index (allowed: 15 or less, default is 15)'

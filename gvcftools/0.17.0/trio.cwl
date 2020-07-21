@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trio.cwl
+id: ../../../trio.cwl
 inputs:
 - id: ref
   doc: samtools reference sequence (required)

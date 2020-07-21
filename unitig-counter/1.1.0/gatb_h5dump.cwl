@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gatb_h5dump.cwl
+id: ../../../gatb_h5dump.cwl
 inputs:
 - id: _contents_print
   doc: ',   --contents     Print a list of the file contents and exit Optional value

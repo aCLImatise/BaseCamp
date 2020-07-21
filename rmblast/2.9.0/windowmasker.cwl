@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/windowmasker.cwl
+id: ../../../windowmasker.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

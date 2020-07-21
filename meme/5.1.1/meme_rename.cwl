@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/meme_rename.cwl
+id: ../../../meme_rename.cwl
 inputs:
 - id: options
   doc: '<dir>+          full path of MEME Suite program output directory [-d <dest>]     destination

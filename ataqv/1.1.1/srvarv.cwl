@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/srvarv.cwl
+id: ../../../srvarv.cwl
 inputs:
 - id: port
   doc: 'The TCP port on which to serve the viewer (default: 8000).'

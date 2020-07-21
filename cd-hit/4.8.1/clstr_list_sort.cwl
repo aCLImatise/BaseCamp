@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clstr_list_sort.pl.cwl
+id: ../../../clstr_list_sort.pl.cwl
 inputs:
 - id: no
   doc: ''

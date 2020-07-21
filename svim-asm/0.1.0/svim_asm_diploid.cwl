@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svim_asm_diploid.cwl
+id: ../../../svim_asm_diploid.cwl
 inputs:
 - id: min_mapq
   doc: 'Minimum mapping quality of alignments to consider (default: 20). Alignments

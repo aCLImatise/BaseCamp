@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/starchstrip_float128.cwl
+id: ../../../starchstrip_float128.cwl
 inputs:
 - id: include
   doc: Include specified chromosomes from <starch-file>.

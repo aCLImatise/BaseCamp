@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ghost_tree_silva_COMMAND.cwl
+id: ../../../ghost_tree_silva_COMMAND.cwl
 inputs:
 - id: args
   doc: ''

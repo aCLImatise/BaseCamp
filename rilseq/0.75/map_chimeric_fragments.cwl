@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/map_chimeric_fragments.py.cwl
+id: ../../../map_chimeric_fragments.py.cwl
 inputs:
 - id: reverse_complement
   doc: "Treat the reads as reverse complement. This means that the first read is actually\

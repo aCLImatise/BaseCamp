@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bolt_help.cwl
+id: ../../../bolt_help.cwl
 inputs:
 - id: genie
   doc: ''

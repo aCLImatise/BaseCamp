@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lav2maf.cwl
+id: ../../../lav2maf.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

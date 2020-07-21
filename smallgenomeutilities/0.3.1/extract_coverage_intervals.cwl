@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_coverage_intervals.cwl
+id: ../../../extract_coverage_intervals.cwl
 inputs:
 - id: region_interested_bed
   doc: 'Region of interested in BED format, e.g. HXB2:2253-3869. Loci are interpreted

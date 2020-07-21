@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/purge_haplotigs_clip.cwl
+id: ../../../purge_haplotigs_clip.cwl
 inputs:
 - id: p
   doc: ''

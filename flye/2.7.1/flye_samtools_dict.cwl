@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flye_samtools_dict.cwl
+id: ../../../flye_samtools_dict.cwl
 inputs:
 - id: assembly
   doc: assembly

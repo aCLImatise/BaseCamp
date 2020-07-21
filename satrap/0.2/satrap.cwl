@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/satrap.cwl
+id: ../../../satrap.cwl
 inputs:
 - id: max_reads
   doc: (float)         Max number of reads per analyzed file or files [10]

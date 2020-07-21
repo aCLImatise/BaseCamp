@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jass_preprocessing.cwl
+id: ../../../jass_preprocessing.cwl
 inputs:
 - id: g_was_info
   doc: Path to the file describing the format of the individual GWASs files with correct

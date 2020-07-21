@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/find_compounds.pl.cwl
+id: ../../../find_compounds.pl.cwl
 inputs:
 - id: new_line
   doc: Find compound words in one line.

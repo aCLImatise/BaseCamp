@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metilene_input.pl.cwl
+id: ../../../metilene_input.pl.cwl
 inputs:
 - id: in_two
   doc: comma-seperated list of sorted (!) bedgraph input files of group 2

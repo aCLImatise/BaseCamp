@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/expMatrixToBarchartBed.cwl
+id: ../../../expMatrixToBarchartBed.cwl
 inputs:
 - id: auto_sql
   doc: Optional autoSql description of extra fields in the input bed.

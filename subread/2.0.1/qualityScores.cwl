@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qualityScores.cwl
+id: ../../../qualityScores.cwl
 inputs:
 - id: name_input_including
   doc: Name of input file including read data. The default format is Fastq.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmsim.cwl
+id: ../../../hmmsim.cwl
 inputs:
 - id: obtain_length_statistics
   doc: ': obtain alignment length statistics too'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rgt_TDF_integrate.cwl
+id: ../../../rgt_TDF_integrate.cwl
 inputs:
 - id: path
   doc: Define the path of the project.

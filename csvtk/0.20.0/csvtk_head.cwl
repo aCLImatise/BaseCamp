@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk_head.cwl
+id: ../../../csvtk_head.cwl
 inputs:
 - id: number
   doc: print first N records (default 10)

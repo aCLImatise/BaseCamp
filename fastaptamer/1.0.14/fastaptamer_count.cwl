@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastaptamer_count.cwl
+id: ../../../fastaptamer_count.cwl
 inputs:
 - id: q
   doc: ''

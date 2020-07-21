@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flye_samtools_calmd.cwl
+id: ../../../flye_samtools_calmd.cwl
 inputs:
 - id: reference
   doc: Reference sequence FASTA FILE [null]

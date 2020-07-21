@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/liftover.py.cwl
+id: ../../../liftover.py.cwl
 inputs:
 - id: input
   doc: The input list of fusion genes and their genome coordinates.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nanopolish.cwl
+id: ../../../nanopolish.cwl
 inputs:
 - id: command
   doc: ''

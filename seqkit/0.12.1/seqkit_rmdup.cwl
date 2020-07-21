@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_rmdup.cwl
+id: ../../../seqkit_rmdup.cwl
 inputs:
 - id: by_name
   doc: by full name instead of just id

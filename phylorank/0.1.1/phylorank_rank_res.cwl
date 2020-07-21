@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phylorank_rank_res.cwl
+id: ../../../phylorank_rank_res.cwl
 inputs:
 - id: tax_a_file
   doc: output file indicating taxa within each resolution category

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kttimedmgr.cwl
+id: ../../../kttimedmgr.cwl
 inputs:
 - id: otr
   doc: ''

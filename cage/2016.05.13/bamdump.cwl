@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamdump.cwl
+id: ../../../bamdump.cwl
 inputs:
 - id: bam_dump
   doc: '[--] [--version] [-h] <bamfile> <contig> <start> <end>'

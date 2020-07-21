@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/manage_db.rb.cwl
+id: ../../../manage_db.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

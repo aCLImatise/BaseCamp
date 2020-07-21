@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/multinomial.cwl
+id: ../../../multinomial.cwl
 inputs:
 - id: arg_output_precision
   doc: '[ --precision ] arg (=5) Output precision of real numbers.'

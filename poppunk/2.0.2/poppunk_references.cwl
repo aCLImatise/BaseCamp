@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/poppunk_references.cwl
+id: ../../../poppunk_references.cwl
 inputs:
 - id: network
   doc: gpickle file of network (required)

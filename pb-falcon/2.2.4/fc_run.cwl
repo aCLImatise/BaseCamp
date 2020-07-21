@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_run.py_logger.cwl
+id: ../../../fc_run.py_logger.cwl
 inputs:
 - id: fc_run_do_tpy
   doc: ''

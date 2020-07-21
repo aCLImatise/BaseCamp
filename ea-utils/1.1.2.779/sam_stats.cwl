@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sam_stats.cwl
+id: ../../../sam_stats.cwl
 inputs:
 - id: file_one
   doc: ''

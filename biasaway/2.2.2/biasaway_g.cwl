@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biasaway_g.cwl
+id: ../../../biasaway_g.cwl
 inputs:
 - id: bg_directory
   doc: Background directory

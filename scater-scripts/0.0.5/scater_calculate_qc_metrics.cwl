@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scater_calculate_qc_metrics.R.cwl
+id: ../../../scater_calculate_qc_metrics.R.cwl
 inputs:
 - id: input_object_file
   doc: singleCellExperiment object containing expression values and experimental information.

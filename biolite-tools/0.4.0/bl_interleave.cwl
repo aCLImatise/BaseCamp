@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bl_interleave.cwl
+id: ../../../bl_interleave.cwl
 inputs:
 - id: specify_multiple_files
   doc: specify multiple INPUT files

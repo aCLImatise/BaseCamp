@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qfilt.cwl
+id: ../../../qfilt.cwl
 inputs:
 - id: qual_fasta_files
   doc: QUAL            FASTA and QUAL files

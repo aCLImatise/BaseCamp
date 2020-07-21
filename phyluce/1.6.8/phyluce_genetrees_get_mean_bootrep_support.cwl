@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_genetrees_get_mean_bootrep_support.cwl
+id: ../../../phyluce_genetrees_get_mean_bootrep_support.cwl
 inputs:
 - id: trees
   doc: Tree file

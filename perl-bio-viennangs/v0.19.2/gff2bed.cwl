@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gff2bed.pl.cwl
+id: ../../../gff2bed.pl.cwl
 inputs:
 - id: gff
   doc: Input GFF file.

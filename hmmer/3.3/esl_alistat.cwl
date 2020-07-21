@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_alistat.cwl
+id: ../../../esl_alistat.cwl
 inputs:
 - id: use_tabular_output
   doc: ': use tabular output, one line per alignment'

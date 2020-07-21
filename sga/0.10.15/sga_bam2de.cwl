@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sga_bam2de.pl.cwl
+id: ../../../sga_bam2de.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

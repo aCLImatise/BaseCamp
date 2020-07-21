@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/multi_length_hist.py.cwl
+id: ../../../multi_length_hist.py.cwl
 inputs:
 - id: report_pdf
   doc: Report PDF.

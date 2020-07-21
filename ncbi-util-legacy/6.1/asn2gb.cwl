@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/asn2gb.cwl
+id: ../../../asn2gb.cwl
 inputs:
 - id: asn_type_single
   doc: 'ASN.1 Type Single Record: a Any, e Seq-entry, b Bioseq, s Bioseq-set, m Seq-submit,

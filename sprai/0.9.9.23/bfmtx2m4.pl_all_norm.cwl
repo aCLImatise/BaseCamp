@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bfmtx2m4.pl_all_norm.fa.cwl
+id: ../../../bfmtx2m4.pl_all_norm.fa.cwl
 inputs:
 - id: no
   doc: ''

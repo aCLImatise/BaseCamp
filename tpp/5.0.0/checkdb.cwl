@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkdb.cwl
+id: ../../../checkdb.cwl
 inputs:
 - id: verbose_reporting
   doc: verbose reporting

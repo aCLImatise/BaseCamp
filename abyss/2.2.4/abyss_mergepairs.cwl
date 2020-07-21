@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_mergepairs.cwl
+id: ../../../abyss_mergepairs.cwl
 inputs:
 - id: prefix
   doc: the prefix of all output files [out]

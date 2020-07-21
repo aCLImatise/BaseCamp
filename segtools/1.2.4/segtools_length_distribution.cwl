@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segtools_length_distribution.cwl
+id: ../../../segtools_length_distribution.cwl
 inputs:
 - id: clobber
   doc: Overwrite any existing output files.

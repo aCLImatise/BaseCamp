@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genePredToProt.cwl
+id: ../../../genePredToProt.cwl
 inputs:
 - id: gene_pred_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snp_parser.cwl
+id: ../../../snp_parser.cwl
 inputs:
 - id: output_file
   doc: 'Ouput file (default: snp_data.pickle)'

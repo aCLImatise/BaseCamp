@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rake.cwl
+id: ../../../rake.cwl
 inputs:
 - id: silent
   doc: Like --quiet, but also suppresses the 'in directory' announcement.

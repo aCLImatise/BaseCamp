@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/glam2format.cwl
+id: ../../../glam2format.cwl
 inputs:
 - id: my_format
   doc: ''

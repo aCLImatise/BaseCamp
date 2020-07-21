@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scallop.cwl
+id: ../../../scallop.cwl
 inputs:
 - id: i
   doc: ''

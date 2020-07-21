@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DBstats.cwl
+id: ../../../DBstats.cwl
 inputs:
 - id: give_stats_untrimmed
   doc: ': Give stats for the untrimmed database.'

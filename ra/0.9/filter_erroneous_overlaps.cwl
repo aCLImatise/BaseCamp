@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_erroneous_overlaps.cwl
+id: ../../../filter_erroneous_overlaps.cwl
 inputs:
 - id: depot
   doc: ''

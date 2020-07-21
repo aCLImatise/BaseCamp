@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof_translate.cwl
+id: ../../../smof_translate.cwl
 inputs:
 - id: from_start
   doc: Require each product begin with a start codon

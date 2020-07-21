@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CAT_prepare.cwl
+id: ../../../CAT_prepare.cwl
 inputs:
 - id: fresh
   doc: Start with a fresh database.

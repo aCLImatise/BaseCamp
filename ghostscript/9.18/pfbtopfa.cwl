@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pfbtopfa.cwl
+id: ../../../pfbtopfa.cwl
 inputs:
 - id: dict
   doc: :1189/1684(ro)(G)--   --dict:0/20(G)--   --dict:83/200(L)--

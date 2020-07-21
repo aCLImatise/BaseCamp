@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_fake_genome.py.cwl
+id: ../../../create_fake_genome.py.cwl
 inputs:
 - id: locus
   doc: locus in format <chr>:<start>-<end>

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/removesmartbell.sh.cwl
+id: ../../../removesmartbell.sh.cwl
 inputs:
 - id: in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dr_disco_logo_sequence.cwl
+id: ../../../dr_disco_logo_sequence.cwl
 inputs:
 - id: region
   doc: ''

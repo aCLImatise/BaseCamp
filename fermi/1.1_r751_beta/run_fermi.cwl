@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_fermi.pl.cwl
+id: ../../../run_fermi.pl.cwl
 inputs:
 - id: input_files_paired
   doc: the input files are paired (ends in separate files)

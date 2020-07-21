@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/screen.cwl
+id: ../../../screen.cwl
 inputs:
 - id: q_smiles
   doc: query structure as smiles (incompatible with -qmolfile arg)

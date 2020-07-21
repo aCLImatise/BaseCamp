@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CMVJson.cwl
+id: ../../../CMVJson.cwl
 inputs:
 - id: verbose
   doc: Loud verbosity

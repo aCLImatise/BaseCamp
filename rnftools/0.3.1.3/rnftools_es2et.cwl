@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnftools_es2et.cwl
+id: ../../../rnftools_es2et.cwl
 inputs:
 - id: es
   doc: Input ES file (evaluated segments, - for standard input).

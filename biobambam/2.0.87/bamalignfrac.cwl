@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamalignfrac.cwl
+id: ../../../bamalignfrac.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

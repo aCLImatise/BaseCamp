@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/standardize.cwl
+id: ../../../standardize.cwl
 inputs:
 - id: fragment_method
   doc: Approach to find biggest fragment if more than one (hac = biggest by heavy

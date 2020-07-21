@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdc_client_settings_download.cwl
+id: ../../../gdc_client_settings_download.cwl
 inputs:
 - id: download
   doc: download data from the GDC

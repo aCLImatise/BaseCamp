@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/contigtax.cwl
+id: ../../../contigtax.cwl
 inputs:
 - id: v
   doc: ''

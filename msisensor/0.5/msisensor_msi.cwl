@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msisensor_msi.cwl
+id: ../../../msisensor_msi.cwl
 inputs:
 - id: string_homopolymer_microsates
   doc: <string>   homopolymer and microsates file

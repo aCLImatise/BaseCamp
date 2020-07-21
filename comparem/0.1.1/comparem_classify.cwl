@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/comparem_classify.cwl
+id: ../../../comparem_classify.cwl
 inputs:
 - id: num_top_targets
   doc: 'number of top scoring target genomes to report per query genome (default:

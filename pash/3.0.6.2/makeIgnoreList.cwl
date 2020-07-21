@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeIgnoreList.cwl
+id: ../../../makeIgnoreList.cwl
 inputs:
 - id: i
   doc: ''

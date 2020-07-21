@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqdiff.cwl
+id: ../../../seqdiff.cwl
 inputs:
 - id: first
   doc: ',      First sequence file (required)'

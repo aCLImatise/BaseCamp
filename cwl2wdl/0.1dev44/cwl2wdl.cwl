@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cwl2wdl.cwl
+id: ../../../cwl2wdl.cwl
 inputs:
 - id: format
   doc: 'specify the output format (default: wdl)'

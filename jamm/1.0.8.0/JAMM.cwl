@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/JAMM.sh.cwl
+id: ../../../JAMM.sh.cwl
 inputs:
 - id: directory_containing_sample_files
   doc: directory containing Sample files (required)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastx_quality_stats.cwl
+id: ../../../fastx_quality_stats.cwl
 inputs:
 - id: n
   doc: ''

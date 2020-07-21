@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Gap2Seq.cwl
+id: ../../../Gap2Seq.cwl
 inputs:
 - id: f
   doc: ''

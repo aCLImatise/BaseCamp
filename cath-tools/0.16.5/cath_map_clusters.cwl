@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cath_map_clusters.cwl
+id: ../../../cath_map_clusters.cwl
 inputs:
 - id: output_version_information
   doc: '[ --version ]                      Output version information'

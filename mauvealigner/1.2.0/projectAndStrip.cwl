@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/projectAndStrip.cwl
+id: ../../../projectAndStrip.cwl
 inputs:
 - id: seq_n
   doc: ''

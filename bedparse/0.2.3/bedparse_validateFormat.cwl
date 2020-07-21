@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedparse_validateFormat.cwl
+id: ../../../bedparse_validateFormat.cwl
 inputs:
 - id: fix_separators
   doc: If the fields are separated by multiple spaces (e.g. when copy-pasting BED

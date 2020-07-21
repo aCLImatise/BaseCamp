@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/imputation.py.cwl
+id: ../../../imputation.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BedGeneOverlap.cwl
+id: ../../../BedGeneOverlap.cwl
 inputs:
 - id: source
   doc: "Transcript source database. Valid: 'ccds,ensembl'"

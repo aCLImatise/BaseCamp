@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/counts_in_region.cwl
+id: ../../../counts_in_region.cwl
 inputs:
 - id: quiet
   doc: Suppress all warning messages. Cannot use with '-v'.

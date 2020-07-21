@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtools_vcfpaste.cwl
+id: ../../../svtools_vcfpaste.cwl
 inputs:
 - id: vcf_list
   doc: file containing a line-delimited list of VCF files to paste (required)

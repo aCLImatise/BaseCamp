@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/partitionBank.cwl
+id: ../../../partitionBank.cwl
 inputs:
 - id: b
   doc: ''

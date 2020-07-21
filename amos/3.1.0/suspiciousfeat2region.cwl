@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/suspiciousfeat2region.cwl
+id: ../../../suspiciousfeat2region.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

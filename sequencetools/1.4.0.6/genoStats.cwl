@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genoStats.cwl
+id: ../../../genoStats.cwl
 inputs:
 - id: freq_sum
   doc: 'a freqsum file to read as input. Use - to read from stdin (the default) (default:

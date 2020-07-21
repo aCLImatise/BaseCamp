@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ldhelmet_args.cwl
+id: ../../../ldhelmet_args.cwl
 inputs:
 - id: ld_helmet
   doc: ''

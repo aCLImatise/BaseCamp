@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_edit4.cwl
+id: ../../../arb_edit4.cwl
 inputs:
 - id: loads_configuration
   doc: "loads configuration 'config' (default: 'default_configuration')"

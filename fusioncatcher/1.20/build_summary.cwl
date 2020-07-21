@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/build_summary.py.cwl
+id: ../../../build_summary.py.cwl
 inputs:
 - id: input
   doc: The input report containg detailed information about fusion genes found.

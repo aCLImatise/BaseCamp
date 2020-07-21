@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simkaMinCore_sketch.cwl
+id: ../../../simkaMinCore_sketch.cwl
 inputs:
 - id: in
   doc: '(1 arg) :    input filename | TODO SPECIF'

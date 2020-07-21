@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SNPsplit_genome_preparation.cwl
+id: ../../../SNPsplit_genome_preparation.cwl
 inputs:
 - id: vcf_file
   doc: ''

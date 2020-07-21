@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_filter_feature_by_attribute_presence.pl.cwl
+id: ../../../agat_sp_filter_feature_by_attribute_presence.pl.cwl
 inputs:
 - id: ref_file
   doc: Input GFF3 file that will be read

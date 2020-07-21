@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/eledef.cwl
+id: ../../../eledef.cwl
 inputs:
 - id: ele_def
   doc: ''

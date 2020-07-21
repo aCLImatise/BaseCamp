@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_cut_matrix.cwl
+id: ../../../make_cut_matrix.cwl
 inputs:
 - id: aggregate_output
   doc: Requests a matrix in which each row represents a position in the extended region

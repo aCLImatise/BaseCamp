@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lordec_stat.cwl
+id: ../../../lordec_stat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

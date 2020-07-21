@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DUDes.py.cwl
+id: ../../../DUDes.py.cwl
 inputs:
 - id: alignmentmapping_file_dudes
   doc: Alignment/mapping file in SAM format. DUDes does not depend on any specific

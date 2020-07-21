@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/annotatePeaks.pl.cwl
+id: ../../../annotatePeaks.pl.cwl
 inputs:
 - id: gtf
   doc: (Use -gff and -gff3 if appropriate, but GTF is better)

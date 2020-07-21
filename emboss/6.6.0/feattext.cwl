@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/feattext.cwl
+id: ../../../feattext.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

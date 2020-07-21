@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dollop.cwl
+id: ../../../dollop.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

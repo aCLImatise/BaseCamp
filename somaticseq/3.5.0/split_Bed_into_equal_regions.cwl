@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/split_Bed_into_equal_regions.py.cwl
+id: ../../../split_Bed_into_equal_regions.py.cwl
 inputs:
 - id: input_file
   doc: 'Input merged BED file (default: None)'

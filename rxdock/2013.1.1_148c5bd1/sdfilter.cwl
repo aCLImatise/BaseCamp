@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sdfilter.cwl
+id: ../../../sdfilter.cwl
 inputs:
 - id: no
   doc: ''

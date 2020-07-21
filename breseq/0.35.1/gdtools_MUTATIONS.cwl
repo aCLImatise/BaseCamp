@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdtools_MUTATIONS.cwl
+id: ../../../gdtools_MUTATIONS.cwl
 inputs:
 - id: output
   doc: Path to output GD file with mutations predicted from evidence. (DEFAULT=output.gd)

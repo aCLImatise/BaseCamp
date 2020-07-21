@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NGSDInit.cwl
+id: ../../../NGSDInit.cwl
 inputs:
 - id: add
   doc: "Additional SQL script to execute after database initialization. Default value:\

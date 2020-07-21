@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_reformat_format.cwl
+id: ../../../esl_reformat_format.cwl
 inputs:
 - id: options
   doc: ''

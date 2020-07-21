@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/methylpy_add_methylation_level.cwl
+id: ../../../methylpy_add_methylation_level.cwl
 inputs:
 - id: input_tsv_file
   doc: 'A tab-separate file that specifies genomic intervals. The file contains a

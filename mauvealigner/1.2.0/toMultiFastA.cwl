@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/toMultiFastA.cwl
+id: ../../../toMultiFastA.cwl
 inputs:
 - id: input_interval_file
   doc: ''

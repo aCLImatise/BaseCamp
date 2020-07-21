@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tiptoft_database_downloader.cwl
+id: ../../../tiptoft_database_downloader.cwl
 inputs:
 - id: verbose
   doc: 'Turn on debugging (default: False)'

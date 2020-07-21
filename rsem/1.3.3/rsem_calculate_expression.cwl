@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_calculate_expression.cwl
+id: ../../../rsem_calculate_expression.cwl
 inputs:
 - id: paired_end
   doc: 'Input reads are paired-end reads. (Default: off)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/enlarge_genes.py.cwl
+id: ../../../enlarge_genes.py.cwl
 inputs:
 - id: enlargement_size
   doc: The size of the region, which will be used for enlarging the genes at 5'end

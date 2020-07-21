@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/queen_armies.cwl
+id: ../../../queen_armies.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

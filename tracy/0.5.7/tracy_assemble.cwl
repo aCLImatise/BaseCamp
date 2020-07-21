@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tracy_assemble.cwl
+id: ../../../tracy_assemble.cwl
 inputs:
 - id: arg_referenceguided_assembly
   doc: '[ --reference ] arg              reference-guided assembly (optional)'

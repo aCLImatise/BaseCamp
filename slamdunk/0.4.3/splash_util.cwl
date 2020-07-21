@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splash_util.conversionrate.cwl
+id: ../../../splash_util.conversionrate.cwl
 inputs:
 - id: r
   doc: ''

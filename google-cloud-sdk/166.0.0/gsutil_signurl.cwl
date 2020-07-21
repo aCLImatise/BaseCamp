@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_signurl.cwl
+id: ../../../gsutil_signurl.cwl
 inputs:
 - id: specifies_method_authorized
   doc: Specifies the HTTP method to be authorized for use with the signed url, default

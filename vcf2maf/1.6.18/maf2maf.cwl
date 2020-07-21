@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf2maf.pl.cwl
+id: ../../../maf2maf.pl.cwl
 inputs:
 - id: input_maf
   doc: Path to input file in MAF format

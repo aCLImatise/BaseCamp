@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gretel_snpper.cwl
+id: ../../../gretel_snpper.cwl
 inputs:
 - id: bam
   doc: bam of reads aligned to (psuedo)-reference

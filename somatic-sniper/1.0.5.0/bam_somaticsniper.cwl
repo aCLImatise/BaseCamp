@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam_somaticsniper.cwl
+id: ../../../bam_somaticsniper.cwl
 inputs:
 - id: required_reference_sequence
   doc: REQUIRED reference sequence in the FASTA format

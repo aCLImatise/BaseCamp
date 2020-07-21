@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SVmerge.cwl
+id: ../../../SVmerge.cwl
 inputs:
 - id: prefix
   doc: 'Specify a prefix to be used to create output file names: files of distance

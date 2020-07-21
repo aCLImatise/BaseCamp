@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summarizemerge.sh.cwl
+id: ../../../summarizemerge.sh.cwl
 inputs:
 - id: in
   doc: ''

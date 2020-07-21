@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ditasic_matrix.py.cwl
+id: ../../../ditasic_matrix.py.cwl
 inputs:
 - id: start_prob
   doc: Mismatch probability at the first base.

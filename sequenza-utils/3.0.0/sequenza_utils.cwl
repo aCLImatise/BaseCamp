@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequenza_utils.cwl
+id: ../../../sequenza_utils.cwl
 inputs:
 - id: verbose
   doc: Show all logging information

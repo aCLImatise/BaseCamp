@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_oligotype_linkmers.cwl
+id: ../../../anvi_oligotype_linkmers.cwl
 inputs:
 - id: input_file
   doc: Output file of `anvi-report-linkmers`.

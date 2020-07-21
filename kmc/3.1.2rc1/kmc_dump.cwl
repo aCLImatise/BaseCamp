@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kmc_dump.cwl
+id: ../../../kmc_dump.cwl
 inputs:
 - id: kmc_database
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sleep.cwl
+id: ../../../sleep.cwl
 inputs:
 - id: number
   doc: ''

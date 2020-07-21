@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterfa.cwl
+id: ../../../filterfa.cwl
 inputs:
 - id: paired
   doc: if the reads are paired-end

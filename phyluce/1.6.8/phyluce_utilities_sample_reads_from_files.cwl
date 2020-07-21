@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_utilities_sample_reads_from_files.cwl
+id: ../../../phyluce_utilities_sample_reads_from_files.cwl
 inputs:
 - id: conf
   doc: The path to the config file giving reads to sample

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_per_library_sff.py.cwl
+id: ../../../make_per_library_sff.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

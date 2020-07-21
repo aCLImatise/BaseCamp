@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summary_from_stats.cwl
+id: ../../../summary_from_stats.cwl
 inputs:
 - id: output
   doc: "Output summary to file instead of stderr. (default: <_io.TextIOWrapper name='<stderr>'\

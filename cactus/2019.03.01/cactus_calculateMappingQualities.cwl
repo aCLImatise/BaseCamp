@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cactus_calculateMappingQualities.cwl
+id: ../../../cactus_calculateMappingQualities.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_create_empty_volume_by_example.py.cwl
+id: ../../../medpy_create_empty_volume_by_example.py.cwl
 inputs:
 - id: display_more_information
   doc: Display more information.

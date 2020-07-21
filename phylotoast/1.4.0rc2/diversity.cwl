@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/diversity.py.cwl
+id: ../../../diversity.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

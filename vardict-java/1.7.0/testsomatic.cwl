@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/testsomatic.R.cwl
+id: ../../../testsomatic.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

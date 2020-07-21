@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tango_assign.cwl
+id: ../../../tango_assign.cwl
 inputs:
 - id: format
   doc: Type of file format for diamond results. blast=blast tabular output, 'tango'=blast

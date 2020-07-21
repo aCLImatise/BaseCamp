@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnazBlast.pl.cwl
+id: ../../../rnazBlast.pl.cwl
 inputs:
 - id: blast_dir
   doc: The directory with your BLAST database. If not set, the value from the "BLASTDB"

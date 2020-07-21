@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chromosomer.cwl
+id: ../../../chromosomer.cwl
 inputs:
 - id: debug
   doc: show debugging messages

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ontoisobsolete.cwl
+id: ../../../ontoisobsolete.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

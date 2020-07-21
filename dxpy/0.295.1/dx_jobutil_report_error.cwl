@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dx_jobutil_report_error.cwl
+id: ../../../dx_jobutil_report_error.cwl
 inputs:
 - id: message
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_load_function_from_protein_align.pl.cwl
+id: ../../../agat_sp_load_function_from_protein_align.pl.cwl
 inputs:
 - id: method
   doc: Rule to apply to lift function when a protein map properly. 1) replace => replace

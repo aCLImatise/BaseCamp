@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/read_duplication.py.cwl
+id: ../../../read_duplication.py.cwl
 inputs:
 - id: input_file
   doc: Alignment file in BAM or SAM format.

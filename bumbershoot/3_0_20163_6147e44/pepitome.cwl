@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pepitome.cwl
+id: ../../../pepitome.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

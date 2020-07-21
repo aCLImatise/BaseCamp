@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_transeq.cwl
+id: ../../../_transeq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

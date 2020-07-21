@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FeatureFinderMetaboIdent.cwl
+id: ../../../FeatureFinderMetaboIdent.cwl
 inputs:
 - id: in
   doc: "*                   Input file: LC-MS raw data (valid formats: 'mzML')"

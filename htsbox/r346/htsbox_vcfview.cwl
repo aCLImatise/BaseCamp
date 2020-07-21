@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htsbox_vcfview.cwl
+id: ../../../htsbox_vcfview.cwl
 inputs:
 - id: output_in_bcf
   doc: output in BCF

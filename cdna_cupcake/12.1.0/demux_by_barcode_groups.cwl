@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/demux_by_barcode_groups.py.cwl
+id: ../../../demux_by_barcode_groups.py.cwl
 inputs:
 - id: pooled_fast_x
   doc: Pooled FASTA/FASTQ (optional, if given, will also output demux fa/fq)

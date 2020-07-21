@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RTCalc.cwl
+id: ../../../RTCalc.cwl
 inputs:
 - id: cv
   doc: ''

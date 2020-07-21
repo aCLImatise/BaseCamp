@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sonicparanoid_set_mmseqs2.cwl
+id: ../../../sonicparanoid_set_mmseqs2.cwl
 inputs:
 - id: mm_seqs_path
   doc: The path to the MMseqs2 binary file.

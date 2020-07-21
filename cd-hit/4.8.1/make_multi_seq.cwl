@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_multi_seq.pl.cwl
+id: ../../../make_multi_seq.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

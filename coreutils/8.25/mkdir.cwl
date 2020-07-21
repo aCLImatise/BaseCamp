@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mkdir.cwl
+id: ../../../mkdir.cwl
 inputs:
 - id: mode
   doc: set file mode (as in chmod), not a=rwx - umask

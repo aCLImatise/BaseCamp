@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/multi_bin_packing.cwl
+id: ../../../multi_bin_packing.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

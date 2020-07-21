@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/converttops.cwl
+id: ../../../converttops.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ExpansionHunterDenovo_merge.cwl
+id: ../../../ExpansionHunterDenovo_merge.cwl
 inputs:
 - id: reference
   doc: FASTA file with reference assembly

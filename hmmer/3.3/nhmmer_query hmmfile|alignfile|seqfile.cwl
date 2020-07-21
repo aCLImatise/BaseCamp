@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nhmmer_query hmmfile|alignfile|seqfile.cwl
+id: ../../../nhmmer_query hmmfile|alignfile|seqfile.cwl
 inputs:
 - id: target_seq_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uncovered.cwl
+id: ../../../uncovered.cwl
 inputs:
 - id: nowrap
   doc: Use the actual input coordinates without any wraparound that would be needed

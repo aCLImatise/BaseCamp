@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getLinesMatching.pl.cwl
+id: ../../../getLinesMatching.pl.cwl
 inputs:
 - id: whitespace
   doc: Split columns at whitespace rather than tab.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nw_stats.cwl
+id: ../../../nw_stats.cwl
 inputs:
 - id: fhh
   doc: ''

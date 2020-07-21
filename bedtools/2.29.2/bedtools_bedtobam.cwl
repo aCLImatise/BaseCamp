@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools_bedtobam.cwl
+id: ../../../bedtools_bedtobam.cwl
 inputs:
 - id: mapq
   doc: 'Set the mappinq quality for the BAM records. (INT) Default: 255'

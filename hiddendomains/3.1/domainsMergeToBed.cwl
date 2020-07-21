@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/domainsMergeToBed.pl.cwl
+id: ../../../domainsMergeToBed.pl.cwl
 inputs:
 - id: options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/loadCorrectedReads.cwl
+id: ../../../loadCorrectedReads.cwl
 inputs:
 - id: path_sequence_store
   doc: Path to a sequence store

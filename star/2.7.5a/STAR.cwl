@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/STAR.cwl
+id: ../../../STAR.cwl
 inputs:
 - id: _map_reads
   doc: ': map all reads'

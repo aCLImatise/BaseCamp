@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ice.cwl
+id: ../../../ice.cwl
 inputs:
 - id: results_filename
   doc: ''

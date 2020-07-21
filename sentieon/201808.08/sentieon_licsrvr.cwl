@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sentieon_licsrvr.cwl
+id: ../../../sentieon_licsrvr.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

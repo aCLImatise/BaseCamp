@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/orthomclDumpPairsFiles.cwl
+id: ../../../orthomclDumpPairsFiles.cwl
 inputs:
 - id: mcl_input
   doc: '- file required by the mcl program'

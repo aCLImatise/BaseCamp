@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/load_remote_mapping_file.py.cwl
+id: ../../../load_remote_mapping_file.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

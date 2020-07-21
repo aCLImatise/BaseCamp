@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flash.cwl
+id: ../../../flash.cwl
 inputs:
 - id: fragment_len_stddev
   doc: Average read length, fragment length, and fragment standard deviation.  These

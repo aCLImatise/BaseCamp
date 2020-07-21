@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsort.cwl
+id: ../../../gsort.cwl
 inputs:
 - id: chromosome_mappings
   doc: a file used to re-map chromosome names for example from hg19 to GRCh37

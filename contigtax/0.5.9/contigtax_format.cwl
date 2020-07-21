@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/contigtax_format.cwl
+id: ../../../contigtax_format.cwl
 inputs:
 - id: force
   doc: Force overwrite of existing reformatted fastafile

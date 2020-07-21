@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nucamino.cwl
+id: ../../../nucamino.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

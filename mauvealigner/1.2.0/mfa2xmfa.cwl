@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mfa2xmfa.cwl
+id: ../../../mfa2xmfa.cwl
 inputs:
 - id: mfa_alignment_input
   doc: ''

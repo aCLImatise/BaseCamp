@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/synthmda.sh.cwl
+id: ../../../synthmda.sh.cwl
 inputs:
 - id: in
   doc: ''

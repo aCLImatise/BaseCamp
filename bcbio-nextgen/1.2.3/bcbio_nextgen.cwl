@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcbio_nextgen.py.cwl
+id: ../../../bcbio_nextgen.py.cwl
 inputs:
 - id: num_cores
   doc: Total cores to use for processing

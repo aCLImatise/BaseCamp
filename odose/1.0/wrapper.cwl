@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wrapper.py.cwl
+id: ../../../wrapper.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

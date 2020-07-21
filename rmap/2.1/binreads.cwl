@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/binreads.cwl
+id: ../../../binreads.cwl
 inputs:
 - id: output
   doc: 'Name of output file (default: stdout) '

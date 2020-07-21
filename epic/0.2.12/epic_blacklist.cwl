@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/epic_blacklist.cwl
+id: ../../../epic_blacklist.cwl
 inputs:
 - id: in_files
   doc: ChIP files to count reads in (bed/bedpe format).

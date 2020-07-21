@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqyclean.cwl
+id: ../../../seqyclean.cwl
 inputs:
 - id: turns_trimming_filename
   doc: '- Turns on vector trimming, default=off. <filename> - is a path to a FASTA-file

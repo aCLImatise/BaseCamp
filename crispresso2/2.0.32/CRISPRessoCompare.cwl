@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CRISPRessoCompare.cwl
+id: ../../../CRISPRessoCompare.cwl
 inputs:
 - id: comparison
   doc: 'two CRISPResso analyses-                     '

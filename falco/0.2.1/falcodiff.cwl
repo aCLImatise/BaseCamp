@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/falcodiff.cwl
+id: ../../../falcodiff.cwl
 inputs:
 - id: outdir
   doc: 'Create all output files in the specified  output directory. If notprovided,

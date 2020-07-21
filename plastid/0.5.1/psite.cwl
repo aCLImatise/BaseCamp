@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/psite.cwl
+id: ../../../psite.cwl
 inputs:
 - id: min_counts
   doc: 'Minimum counts required in normalization region to be included in metagene

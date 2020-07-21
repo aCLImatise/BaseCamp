@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plasmidfinder.py.cwl
+id: ../../../plasmidfinder.py.cwl
 inputs:
 - id: i
   doc: ''

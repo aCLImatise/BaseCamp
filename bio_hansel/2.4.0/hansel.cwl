@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hansel.cwl
+id: ../../../hansel.cwl
 inputs:
 - id: scheme
   doc: 'Scheme to use for subtyping (built-in: "heidelberg", "enteritidis", "typhi",

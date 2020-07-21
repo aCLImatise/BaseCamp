@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/batchFindMotifsGenome.pl.cwl
+id: ../../../batchFindMotifsGenome.pl.cwl
 inputs:
 - id: dist
   doc: <#> (Will only analyze promoter-distal regions ># away from TSS)

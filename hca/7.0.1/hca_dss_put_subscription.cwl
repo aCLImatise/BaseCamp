@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_put_subscription.cwl
+id: ../../../hca_dss_put_subscription.cwl
 inputs:
 - id: attachments
   doc: 'The set of bundle metadata items to be included in the payload of a notification

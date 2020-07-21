@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/report.pl.cwl
+id: ../../../report.pl.cwl
 inputs:
 - id: merge
   doc: ''

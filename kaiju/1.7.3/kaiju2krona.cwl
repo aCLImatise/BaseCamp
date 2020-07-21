@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kaiju2krona.cwl
+id: ../../../kaiju2krona.cwl
 inputs:
 - id: name_input_file
   doc: Name of input file

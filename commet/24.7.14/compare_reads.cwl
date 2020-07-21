@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compare_reads.cwl
+id: ../../../compare_reads.cwl
 inputs:
 - id: file_containing_files
   doc: ': A file containing the list of files to index (comma separated) - MANDATORY

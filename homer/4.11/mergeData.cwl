@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergeData.pl.cwl
+id: ../../../mergeData.pl.cwl
 inputs:
 - id: file_one
   doc: ''

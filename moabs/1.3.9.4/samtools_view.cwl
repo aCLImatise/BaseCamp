@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools_view.cwl
+id: ../../../samtools_view.cwl
 inputs:
 - id: in_dot_bam
   doc: ''

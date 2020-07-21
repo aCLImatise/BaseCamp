@@ -1,0 +1,1149 @@
+&id001 !Command
+positional: []
+named:
+- !Flag
+  description: Print debugging information
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only print errors
+  synonyms:
+  - -s
+  - --silent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Suppress all normal output
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Increase verbosity +1
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: shell wrapper debugging information
+  synonyms:
+  - -x
+  - --sh-debug
+  args: !SimpleFlagArg
+    name: Print
+  optional: true
+command:
+- singularity
+parent:
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: singularity
+    optional: false
+  named:
+  - !Flag
+    description: Exec a command relevant to an application directory
+    synonyms:
+    - -a
+    - --app
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: A user-bind path specification.  spec has the format src[:dest[:opts]],
+      where src and dest are outside and inside paths.  If dest is not given, it is
+      set equal to src.  Mount options ('opts') may be specified as 'ro' (read-only)
+      or 'rw' (read/write, which is the  default). This option can be called multiple
+      times.
+    synonyms:
+    - -B
+    - --bind
+    args: !SimpleFlagArg
+      name: spec
+    optional: true
+  - !Flag
+    description: Use minimal /dev and empty other directories (e.g. /tmp and /home/ubuntu)
+      instead of sharing filesystems on your host
+    synonyms:
+    - -c
+    - --contain
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Contain not only file systems, but also PID and IPC '
+    synonyms:
+    - -C
+    - --containall
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Clean environment before running container
+    synonyms:
+    - -e
+    - --cleanenv
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: A home directory specification.  spec can either be a src path or
+      src:dest pair.  src is the source path of the home directory outside the container
+      and dest overrides the home directory within the container
+    synonyms:
+    - -H
+    - --home
+    args: !SimpleFlagArg
+      name: spec
+    optional: true
+  - !Flag
+    description: Run container in a new IPC namespace
+    synonyms:
+    - -i
+    - --ipc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Run container in a new network namespace (loopback is only network
+      device active)
+    synonyms:
+    - -n
+    - --net
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Enable experimental Nvidia support
+    synonyms:
+    - --nv
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Use a persistent overlayFS via a writable image
+    synonyms:
+    - -o
+    - --overlay
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Run container in a new PID namespace
+    synonyms:
+    - -p
+    - --pid
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Initial working directory for payload process inside  the container
+    synonyms:
+    - --pwd
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Include a scratch directory within the container that  is linked
+      to a temporary dir (use -W to force location)
+    synonyms:
+    - -S
+    - --scratch
+    args: !SimpleFlagArg
+      name: path
+    optional: true
+  - !Flag
+    description: Run container in a new user namespace (this allows Singularity to
+      run completely unprivileged on recent kernels and doesn't support all features)
+    synonyms:
+    - -u
+    - --userns
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Working directory to be used for /tmp, /var/tmp and /home/ubuntu
+      (if -c/--contain was also used)
+    synonyms:
+    - -W
+    - --workdir
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: By default all Singularity containers are available as read only.
+      This option makes the file system accessible as read/write.
+    synonyms:
+    - -w
+    - --writable
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - singularity
+  - exec
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "USAGE: singularity [...] exec [exec options...] <container path> <command>\n\
+    \nThis command will allow you to execute any program within the given\ncontainer\
+    \ image.\n\nEXEC OPTIONS:\n    -a|--app            Exec a command relevant to\
+    \ an application directory\n    -B|--bind <spec>    A user-bind path specification.\
+    \  spec has the format\n                        src[:dest[:opts]], where src and\
+    \ dest are outside and\n                        inside paths.  If dest is not\
+    \ given, it is set equal\n                        to src.  Mount options ('opts')\
+    \ may be specified as\n                        'ro' (read-only) or 'rw' (read/write,\
+    \ which is the \n                        default). This option can be called multiple\
+    \ times.\n    -c|--contain        Use minimal /dev and empty other directories\
+    \ (e.g. /tmp\n                        and /home/ubuntu) instead of sharing filesystems\
+    \ on your host\n    -C|--containall     Contain not only file systems, but also\
+    \ PID and IPC \n    -e|--cleanenv       Clean environment before running container\n\
+    \    -H|--home <spec>    A home directory specification.  spec can either be a\n\
+    \                        src path or src:dest pair.  src is the source path\n\
+    \                        of the home directory outside the container and dest\n\
+    \                        overrides the home directory within the container\n \
+    \   -i|--ipc            Run container in a new IPC namespace\n    -n|--net   \
+    \         Run container in a new network namespace (loopback is\n            \
+    \            only network device active)\n    --nv                Enable experimental\
+    \ Nvidia support\n    -o|--overlay        Use a persistent overlayFS via a writable\
+    \ image\n    -p|--pid            Run container in a new PID namespace\n    --pwd\
+    \               Initial working directory for payload process inside \n      \
+    \                  the container\n    -S|--scratch <path> Include a scratch directory\
+    \ within the container that \n                        is linked to a temporary\
+    \ dir (use -W to force location)\n    -u|--userns         Run container in a new\
+    \ user namespace (this allows\n                        Singularity to run completely\
+    \ unprivileged on recent\n                        kernels and doesn't support\
+    \ all features)\n    -W|--workdir        Working directory to be used for /tmp,\
+    \ /var/tmp and\n                        /home/ubuntu (if -c/--contain was also\
+    \ used)\n    -w|--writable       By default all Singularity containers are available\
+    \ as\n                        read only. This option makes the file system accessible\n\
+    \                        as read/write.\n\n\nCONTAINER FORMATS SUPPORTED:\n  \
+    \  *.sqsh              SquashFS format.  Native to Singularity 2.4+\n    *.img\
+    \               This is the native Singularity image format for all\n        \
+    \                Singularity versions < 2.4.\n    *.tar*              Tar archives\
+    \ are exploded to a temporary directory and\n                        run within\
+    \ that directory (and cleaned up after). The\n                        contents\
+    \ of the archive is a root file system with root\n                        being\
+    \ in the current directory. Compression suffixes as\n                        '.gz'\
+    \ and '.bz2' are supported.\n    directory/          Container directories that\
+    \ contain a valid root file\n                        system.\n    instance://*\
+    \        A local running instance of a container. (See the \n                \
+    \        instance command group.)\n    shub://*            A container hosted\
+    \ on Singularity Hub\n    docker://*          A container hosted on Docker Hub\n\
+    \n\nEXAMPLES:\n    \n    $ singularity exec /tmp/Debian.img cat /etc/debian_version\n\
+    \    $ singularity exec /tmp/Debian.img python ./hello_world.py\n    $ cat hello_world.py\
+    \ | singularity exec /tmp/Debian.img python\n    $ sudo singularity exec --writable\
+    \ /tmp/Debian.img apt-get update\n    $ singularity exec instance://my_instance\
+    \ ps -ef \n\nFor additional help, please visit our public documentation pages\
+    \ which are\nfound at:\n\n    http://singularity.lbl.gov/\n\n"
+  generated_using: &id002
+  - --help
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: singularity
+    optional: false
+  named:
+  - !Flag
+    description: Run an app's runscript instead of the default one
+    synonyms:
+    - -a
+    - --app
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: A user-bind path specification.  spec has the format src[:dest[:opts]],
+      where src and dest are outside and inside paths.  If dest is not given, it is
+      set equal to src.  Mount options ('opts') may be specified as 'ro' (read-only)
+      or 'rw' (read/write, which is the  default). This option can be called multiple
+      times.
+    synonyms:
+    - -B
+    - --bind
+    args: !SimpleFlagArg
+      name: spec
+    optional: true
+  - !Flag
+    description: Use minimal /dev and empty other directories (e.g. /tmp and /home/ubuntu)
+      instead of sharing filesystems on your host
+    synonyms:
+    - -c
+    - --contain
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Contain not only file systems, but also PID and IPC
+    synonyms:
+    - -C
+    - --containall
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Clean environment before running container
+    synonyms:
+    - -e
+    - --cleanenv
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: A home directory specification.  spec can either be a src path or
+      src:dest pair.  src is the source path of the home directory outside the container
+      and dest overrides the home directory within the container
+    synonyms:
+    - -H
+    - --home
+    args: !SimpleFlagArg
+      name: spec
+    optional: true
+  - !Flag
+    description: Run container in a new IPC namespace
+    synonyms:
+    - -i
+    - --ipc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Run container in a new network namespace (loopback is only network
+      device active)
+    synonyms:
+    - -n
+    - --net
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Enable experimental Nvidia support
+    synonyms:
+    - --nv
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Use a persistent overlayFS via a writable image
+    synonyms:
+    - -o
+    - --overlay
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Run container in a new PID namespace
+    synonyms:
+    - -p
+    - --pid
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Initial working directory for payload process inside the container
+    synonyms:
+    - --pwd
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Include a scratch directory within the container that  is linked
+      to a temporary dir (use -W to force location)
+    synonyms:
+    - -S
+    - --scratch
+    args: !SimpleFlagArg
+      name: path
+    optional: true
+  - !Flag
+    description: Run container in a new user namespace (this allows Singularity to
+      run completely unprivileged on recent kernels and doesn't support all features)
+    synonyms:
+    - -u
+    - --userns
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Working directory to be used for /tmp, /var/tmp and /home/ubuntu
+      (if -c/--contain was also used)
+    synonyms:
+    - -W
+    - --workdir
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: By default all Singularity containers are available as read only.
+      This option makes the file system accessible as read/write.
+    synonyms:
+    - -w
+    - --writable
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - singularity
+  - run
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "USAGE: singularity [...] run [run options...] <container path> [...]\n\
+    \nThis command will launch a Singularity container and execute a runscript\nif\
+    \ one is defined for that container. The runscript is a file at\n'/singularity'.\
+    \ If this file is present (and executable) then this\ncommand will execute that\
+    \ file within the container automatically. All\narguments following the container\
+    \ name will be passed directly to the\nrunscript.\n\n\nRUN OPTIONS:\n    -a|--app\
+    \            Run an app's runscript instead of the default one\n    -B|--bind\
+    \ <spec>    A user-bind path specification.  spec has the format\n           \
+    \             src[:dest[:opts]], where src and dest are outside and\n        \
+    \                inside paths.  If dest is not given, it is set equal\n      \
+    \                  to src.  Mount options ('opts') may be specified as\n     \
+    \                   'ro' (read-only) or 'rw' (read/write, which is the \n    \
+    \                    default). This option can be called multiple times.\n   \
+    \ -c|--contain        Use minimal /dev and empty other directories (e.g. /tmp\n\
+    \                        and /home/ubuntu) instead of sharing filesystems on your\
+    \ host\n    -C|--containall     Contain not only file systems, but also PID and\
+    \ IPC\n    -e|--cleanenv       Clean environment before running container\n  \
+    \  -H|--home <spec>    A home directory specification.  spec can either be a\n\
+    \                        src path or src:dest pair.  src is the source path\n\
+    \                        of the home directory outside the container and dest\n\
+    \                        overrides the home directory within the container\n \
+    \   -i|--ipc            Run container in a new IPC namespace\n    -n|--net   \
+    \         Run container in a new network namespace (loopback is\n            \
+    \            only network device active)\n    --nv                Enable experimental\
+    \ Nvidia support\n    -o|--overlay        Use a persistent overlayFS via a writable\
+    \ image\n    -p|--pid            Run container in a new PID namespace\n    --pwd\
+    \               Initial working directory for payload process inside\n       \
+    \                 the container\n    -S|--scratch <path> Include a scratch directory\
+    \ within the container that \n                        is linked to a temporary\
+    \ dir (use -W to force location)\n    -u|--userns         Run container in a new\
+    \ user namespace (this allows\n                        Singularity to run completely\
+    \ unprivileged on recent\n                        kernels and doesn't support\
+    \ all features)\n    -W|--workdir        Working directory to be used for /tmp,\
+    \ /var/tmp and\n                        /home/ubuntu (if -c/--contain was also\
+    \ used)\n    -w|--writable       By default all Singularity containers are available\
+    \ as\n                        read only. This option makes the file system accessible\n\
+    \                        as read/write.\n\nCONTAINER FORMATS SUPPORTED:\n    *.sqsh\
+    \              SquashFS format.  Native to Singularity 2.4+\n    *.img       \
+    \        This is the native Singularity image format for all\n               \
+    \         Singularity versions < 2.4.\n    *.tar*              Tar archives are\
+    \ exploded to a temporary directory and\n                        run within that\
+    \ directory (and cleaned up after). The\n                        contents of the\
+    \ archive is a root file system with root\n                        being in the\
+    \ current directory. Compression suffixes as\n                        '.gz' and\
+    \ '.bz2' are supported.\n    directory/          Container directories that contain\
+    \ a valid root file\n                        system.\n    instance://*       \
+    \ A local running instance of a container. (See the\n                        instance\
+    \ command group.)\n    shub://*            A container hosted on Singularity Hub\n\
+    \    docker://*          A container hosted on Docker Hub\n\n\nEXAMPLES:\n\n \
+    \   # Here we see that the runscript prints \"Hello world: \"\n    $ singularity\
+    \ exec /tmp/Debian.img cat /singularity\n    #!/bin/sh\n    echo \"Hello world:\
+    \ \"\n\n    # It runs with our inputs when we run the image\n    $ singularity\
+    \ run /tmp/Debian.img one two three\n    Hello world: one two three\n\n    # Note\
+    \ that this does the same thing\n    $ ./tmp/Debian.img one two three\n\nFor additional\
+    \ help, please visit our public documentation pages which are\nfound at:\n\n \
+    \   http://singularity.lbl.gov/\n\n"
+  generated_using: *id002
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: singularity
+    optional: false
+  named:
+  - !Flag
+    description: Include an installed container app in the environment
+    synonyms:
+    - -a
+    - --app
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: A user-bind path specification.  spec has the format src[:dest[:opts]],
+      where src and dest are outside and inside paths.  If dest is not given, it is
+      set equal to src.  Mount options ('opts') may be specified as 'ro' (read-only)
+      or 'rw' (read/write, which is the default). This option can be called multiple
+      times.
+    synonyms:
+    - -B
+    - --bind
+    args: !SimpleFlagArg
+      name: spec
+    optional: true
+  - !Flag
+    description: Use minimal /dev and empty other directories (e.g. /tmp and /home/ubuntu)
+      instead of sharing filesystems on your host
+    synonyms:
+    - -c
+    - --contain
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Contain not only file systems, but also PID and IPC
+    synonyms:
+    - -C
+    - --containall
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Clean environment before running container
+    synonyms:
+    - -e
+    - --cleanenv
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: A home directory specification.  spec can either be a src path or
+      src:dest pair.  src is the source path of the home directory outside the container
+      and dest overrides the home directory within the container
+    synonyms:
+    - -H
+    - --home
+    args: !SimpleFlagArg
+      name: spec
+    optional: true
+  - !Flag
+    description: Run container in a new IPC namespace
+    synonyms:
+    - -i
+    - --ipc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Join a running named instance of the given container  image
+    synonyms:
+    - -j
+    - --join
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Run container in a new network namespace (loopback is only network
+      device active)
+    synonyms:
+    - -n
+    - --net
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Enable experimental Nvidia support
+    synonyms:
+    - --nv
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Use a persistent overlayFS via a writable image
+    synonyms:
+    - -o
+    - --overlay
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Run container in a new PID namespace (creates child)
+    synonyms:
+    - -p
+    - --pid
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Initial working directory for payload process inside the container
+    synonyms:
+    - --pwd
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Include a scratch directory within the container that is linked to
+      a temporary dir (use -W to force location)
+    synonyms:
+    - -S
+    - --scratch
+    args: !SimpleFlagArg
+      name: path
+    optional: true
+  - !Flag
+    description: Path to program to use for interactive shell
+    synonyms:
+    - -s
+    - --shell
+    args: !SimpleFlagArg
+      name: shell
+    optional: true
+  - !Flag
+    description: Run container in a new user namespace (this allows Singularity to
+      run completely unprivileged on recent kernels and doesn't support all features)
+    synonyms:
+    - -u
+    - --userns
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Working directory to be used for /tmp, /var/tmp and /home/ubuntu
+      (if -c/--contain was also used)
+    synonyms:
+    - -W
+    - --workdir
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: By default all Singularity containers are available as read only.
+      This option makes the file system accessible as read/write.
+    synonyms:
+    - -w
+    - --writable
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - singularity
+  - shell
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "USAGE: singularity [...] shell [shell options...] <container path>\n\
+    Obtain an interactive shell (/bin/bash) within the container image.\n\n\nSHELL\
+    \ OPTIONS:\n    -a|--app            Include an installed container app in the\
+    \ environment\n    -B|--bind <spec>    A user-bind path specification.  spec has\
+    \ the format\n                        src[:dest[:opts]], where src and dest are\
+    \ outside and\n                        inside paths.  If dest is not given, it\
+    \ is set equal\n                        to src.  Mount options ('opts') may be\
+    \ specified as\n                        'ro' (read-only) or 'rw' (read/write,\
+    \ which is the\n                        default). This option can be called multiple\
+    \ times.\n    -c|--contain        Use minimal /dev and empty other directories\
+    \ (e.g. /tmp\n                        and /home/ubuntu) instead of sharing filesystems\
+    \ on your host\n    -C|--containall     Contain not only file systems, but also\
+    \ PID and IPC\n    -e|--cleanenv       Clean environment before running container\n\
+    \    -H|--home <spec>    A home directory specification.  spec can either be a\n\
+    \                        src path or src:dest pair.  src is the source path\n\
+    \                        of the home directory outside the container and dest\n\
+    \                        overrides the home directory within the container\n \
+    \   -i|--ipc            Run container in a new IPC namespace\n    -j|--join  \
+    \         Join a running named instance of the given container \n            \
+    \            image\n    -n|--net            Run container in a new network namespace\
+    \ (loopback is\n                        only network device active)\n    --nv\
+    \                Enable experimental Nvidia support\n    -o|--overlay        Use\
+    \ a persistent overlayFS via a writable image\n    -p|--pid            Run container\
+    \ in a new PID namespace (creates child)\n    --pwd               Initial working\
+    \ directory for payload process inside\n                        the container\n\
+    \    -S|--scratch <path> Include a scratch directory within the container that\n\
+    \                        is linked to a temporary dir (use -W to force location)\n\
+    \    -s|--shell <shell>  Path to program to use for interactive shell\n    -u|--userns\
+    \         Run container in a new user namespace (this allows\n               \
+    \         Singularity to run completely unprivileged on recent\n             \
+    \           kernels and doesn't support all features)\n    -W|--workdir      \
+    \  Working directory to be used for /tmp, /var/tmp and\n                     \
+    \   /home/ubuntu (if -c/--contain was also used)\n    -w|--writable       By default\
+    \ all Singularity containers are available as\n                        read only.\
+    \ This option makes the file system accessible\n                        as read/write.\n\
+    \n\nCONTAINER FORMATS SUPPORTED:\n    *.sqsh              SquashFS format.  Native\
+    \ to Singularity 2.4+\n    *.img               This is the native Singularity\
+    \ image format for all\n                        Singularity versions < 2.4.\n\
+    \    *.tar*              Tar archives are exploded to a temporary directory and\n\
+    \                        run within that directory (and cleaned up after). The\n\
+    \                        contents of the archive is a root file system with root\n\
+    \                        being in the current directory. Compression suffixes\
+    \ as\n                        '.gz' and '.bz2' are supported.\n    directory/\
+    \          Container directories that contain a valid root file\n            \
+    \            system.\n    instance://*        A local running instance of a container.\
+    \ (See the\n                        instance command group.)\n    shub://*   \
+    \         A container hosted on Singularity Hub\n    docker://*          A container\
+    \ hosted on Docker Hub\n\n\nEXAMPLES:\n\n$ singularity shell /tmp/Debian.img\n\
+    Singularity/Debian.img> pwd\n/home/gmk/test\nSingularity/Debian.img> exit\n\n\
+    $ singularity shell -C /tmp/Debian.img\nSingularity/Debian.img> pwd\n/home/gmk\n\
+    Singularity/Debian.img> ls -l\ntotal 0\nSingularity/Debian.img> exit\n\n$ sudo\
+    \ singularity shell -w /tmp/Debian.img\n$ sudo singularity shell --writable /tmp/Debian.img\n\
+    \n$ singularity shell instance://my_instance \n\n$ singularity shell instance://my_instance\n\
+    Singularity: Invoking an interactive shell within container...\nSingularity container:~>\
+    \ ps -ef\nUID        PID  PPID  C STIME TTY          TIME CMD\nubuntu       1\
+    \     0  0 20:00 ?        00:00:00 /usr/local/bin/singularity/bin/sinit\nubuntu\
+    \       2     0  0 20:01 pts/8    00:00:00 /bin/bash --norc\nubuntu       3  \
+    \   2  0 20:02 pts/8    00:00:00 ps -ef\n\nFor additional help, please visit our\
+    \ public documentation pages which are\nfound at:\n\nhttp://singularity.lbl.gov/\n\
+    \n"
+  generated_using: *id002
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: singularity
+    optional: false
+  named: []
+  command:
+  - singularity
+  - test
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "USAGE: singularity [...] test [exec options...] <container path>\n\n\
+    Run defined tests for this particular container. Tests will be run\ncontained\
+    \ (e.g. no persistent writable directories will be available \ninside of container)\
+    \ and will be executed as the calling user.    \n\nNOTE:\n    If there is a daemon\
+    \ process running inside the container, then \n    subsequent container commands\
+    \ will all run within the same namespaces.\n    This means that the --writable\
+    \ and --contain options will not be\n    honored as the namespaces have already\
+    \ been configured by the\n    'singularity start' command.\n\n\nEXAMPLES:\n  \
+    \  \n    $ singularity test /tmp/Debian.img\n\nFor additional help, please visit\
+    \ our public documentation pages which are\nfound at:\n\n    http://singularity.lbl.gov/\n\
+    \n"
+  generated_using: *id002
+- !Command
+  positional:
+  - !Positional
+    description: the name of the application
+    position: 0
+    name: SINGULARITY_APPNAME
+    optional: false
+  - !Positional
+    description: the application base (/scif/apps/<app>)
+    position: 1
+    name: SINGULARITY_APPROOT
+    optional: false
+  - !Positional
+    description: the application metadata folder
+    position: 2
+    name: SINGULARITY_APPMETA
+    optional: false
+  - !Positional
+    description: the data base folder for active app
+    position: 3
+    name: SINGULARITY_APPDATA
+    optional: false
+  - !Positional
+    description: expected input folder within data base folder
+    position: 4
+    name: SINGULARITY_APPINPUT
+    optional: false
+  - !Positional
+    description: the output data folder within data base folder
+    position: 5
+    name: SINGULARITY_APPOUTPUT
+    optional: false
+  named: []
+  command:
+  - singularity
+  - apps
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "USAGE: singularity [...] apps <container path>\nList applications (apps)\
+    \ installed in a container, located at\n    /scif/apps. See http://containers-ftw.org/SCI-F/\n\
+    \nEXAMPLES:\n    \n    $ singularity apps ubuntu.img\n     bar\n     foo\n\nTo\
+    \ access apps, use shell, exec, run, inspect with --app <appname>\n\nWith all\
+    \ of the above, the following environment variables are available\nto you when\
+    \ called from the shell inside the container. The top variables\nare relevant\
+    \ to the active app (--app <app>) and the bottom available\nfor all apps regardless\
+    \ of the active:\n\n\nACTIVE APP ENVIRONMENT:\n\n    SINGULARITY_APPNAME     the\
+    \ name of the application\n    SINGULARITY_APPROOT     the application base (/scif/apps/<app>)\n\
+    \    SINGULARITY_APPMETA     the application metadata folder\n    SINGULARITY_APPDATA\
+    \     the data base folder for active app\n        SINGULARITY_APPINPUT    expected\
+    \ input folder within data base folder\n        SINGULARITY_APPOUTPUT   the output\
+    \ data folder within data base folder\n\n\nGLOBAL APP ENVIRONMENT:\n    \n   \
+    \ SINGULARITY_DATA        scif defined data base for all apps (/scif/data)\n \
+    \   SINGULARITY_APPS        scif defined install bases for all apps (/scif/apps)\n\
+    \    APPROOT_<app>           root for application <app>\n    APPDATA_<app>   \
+    \        data root for application <app>\n\n\nFor additional help, please visit\
+    \ our public documentation pages which are\nfound at:\n\n    http://singularity.lbl.gov/\n\
+    \n"
+  generated_using: *id002
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: singularity
+    optional: false
+  named: []
+  command:
+  - singularity
+  - bootstrap
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "USAGE: singularity [...] bootstrap <container path> <definition file>\n\
+    ******************************************************************************\n\
+    NOTICE: The bootstrap command is deprecated and will be removed in a later \n\
+    \        release. bootstrap now uses the build command to create a writable \n\
+    \        container via the following syntax:\n\n$ singularity build -w container.img\
+    \ recipe.def\n\n        You should update your usage accordingly. \n******************************************************************************\n\
+    \n"
+  generated_using: *id002
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: singularity
+    optional: false
+  named:
+  - !Flag
+    description: 'Specify low threshold (all checks, default) '
+    synonyms:
+    - -l
+    - --low
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Perform medium and high checks
+    synonyms:
+    - -m
+    - --med
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Perform only checks at level high
+    synonyms:
+    - --high
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'tag to filter checks. default is "default"                       Available:
+      default, security, docker, clean'
+    synonyms:
+    - -t
+    - --tag
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - singularity
+  - check
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "USAGE: singularity [...] check [exec options...] <container path>\n\
+    This command will run lint and security checks for an image.\nNote that some checks\
+    \ require sudo.\n\nCHECK OPTIONS:\n    -l|--low       Specify low threshold (all\
+    \ checks, default) \n    -m|--med       Perform medium and high checks\n     \
+    \  --high      Perform only checks at level high\n    -t|--tag       tag to filter\
+    \ checks. default is \"default\"                      \n                     \
+    \ Available: default, security, docker, clean\n\nEXAMPLES:\n\n    # Perform all\
+    \ default checks, these are the same\n    $ singularity check ubuntu.img\n   \
+    \ $ singularity check --tag default ubuntu.img\n\n    # Perform checks with tag\
+    \ \"clean\"\n    $ singularity check --tag clean ubuntu.img\n\nFor additional\
+    \ help, please visit our public documentation pages which are\nfound at:\n\n \
+    \   https://singularityware.github.io\n\n"
+  generated_using: *id002
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: singularity
+    optional: false
+  named:
+  - !Flag
+    description: Inspect an application specified in the container
+    synonyms:
+    - -a
+    - --app
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Show the labels associated with the image (default)
+    synonyms:
+    - -l
+    - --labels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Show the Singularity recipe file that was used to generate the image
+    synonyms:
+    - -d
+    - --deffile
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Show the runscript for the image
+    synonyms:
+    - -r
+    - --runscript
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Show the test script for the image
+    synonyms:
+    - -t
+    - --test
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: the environment settings for the image
+    synonyms:
+    - -e
+    - --environment
+    args: !SimpleFlagArg
+      name: Show
+    optional: true
+  - !Flag
+    description: Print structured json instead of sections
+    synonyms:
+    - -j
+    - --json
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Inspect the runscript helpfile, if exists
+    synonyms:
+    - -hf
+    - --helpfile
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - singularity
+  - inspect
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "USAGE: singularity [...] inspect [exec options...] <container path>\n\
+    \nThis command will show you labels, environment variables, and scripts associated\
+    \ with the image.\n\nINSPECT OPTIONS:\n    -a|--app         Inspect an application\
+    \ specified in the container\n    -l|--labels      Show the labels associated\
+    \ with the image (default)\n    -d|--deffile     Show the Singularity recipe file\
+    \ that was used\n                     to generate the image\n    -r|--runscript\
+    \   Show the runscript for the image\n    -t|--test        Show the test script\
+    \ for the image\n    -e|--environment Show the environment settings for the image\n\
+    \    -j|--json        Print structured json instead of sections\n    -hf|--helpfile\
+    \   Inspect the runscript helpfile, if exists\n\n\nEXAMPLES:\n    \n    $ singularity\
+    \ inspect ubuntu.img\n    #!/bin/sh\n\n    exec /bin/bash \"\"\n\n    $ singuarity\
+    \ inspect --labels ubuntu.img\n    {\n        \"SINGULARITY_DEFFILE_BOOTSTRAP\"\
+    : \"docker\",\n        \"SINGULARITY_DEFFILE\": \"Singularity\",\n        \"SINGULARITY_DEFFILE_FROM\"\
+    : \"ubuntu:latest\",\n        \"SINGULARITY_BOOTSTRAP_VERSION\": \"2.2.99\"\n\
+    \    }\n\n\nFor additional help, please visit our public documentation pages which\
+    \ are\nfound at:\n\n    http://singularity.lbl.gov/\n\n"
+  generated_using: *id002
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: singularity
+    optional: false
+  named:
+  - !Flag
+    description: By default all Singularity containers are available as read only.
+      This option makes the file system accessible as read/write.
+    synonyms:
+    - -w
+    - --writable
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Use a persistent overlayFS via a writable image
+    synonyms:
+    - -o
+    - --overlay
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - singularity
+  - mount
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "USAGE: singularity [...] mount [mount options...] <container path>\n\
+    \nStart a shell with a standard loop mount on the container image.  The\nmount\
+    \ is in the container namespace, i.e. not visible outside that\nshell.\n\nMOUNT\
+    \ OPTIONS:\n    -w|--writable       By default all Singularity containers are\
+    \ available as\n                        read only. This option makes the file\
+    \ system accessible\n                        as read/write.\n    -o|--overlay\
+    \        Use a persistent overlayFS via a writable image\n\nEXAMPLES:\n\n    $\
+    \ singularity create /tmp/new.img\n    $ singularity mount /tmp/new.img\n\nFor\
+    \ additional help, please visit our public documentation pages which are\nfound\
+    \ at:\n\n    http://singularity.lbl.gov/\n\n"
+  generated_using: *id002
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: singularity
+    optional: false
+  named:
+  - !Flag
+    description: Specify a custom container name (first priority)
+    synonyms:
+    - -n
+    - --name
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: container based on Github commit (second priority)
+    synonyms:
+    - -C
+    - --commit
+    args: !SimpleFlagArg
+      name: Name
+    optional: true
+  - !Flag
+    description: Name container based on file hash (second priority)
+    synonyms:
+    - -H
+    - --hash
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: overwrite an image file if it exists
+    synonyms:
+    - -F
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specify a size for an operation in MiB, i.e. 1024*1024B (default
+      768MiB)
+    synonyms:
+    - -s
+    - --size
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - singularity
+  - pull
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "USAGE: singularity [...] pull shub://[unique id]\n\npull takes a Singularity\
+    \ Hub (shub) URI and will pull a container\nto PWD. If you want the image to go\
+    \ to SINGULARITY_CACHEDIR, you\nshould use one of run, exec, or shell.\n\nSUPPORTED\
+    \ URIs:\n\n    shub: Pull an image using python from Singularity Hub to /tmp/tmp5_bctxmp\n\
+    \    docker: Pull a docker image using python to /tmp/tmp5_bctxmp (deprecated,\
+    \ use build)\n\nPULL OPTIONS:\n    -n|--name   Specify a custom container name\
+    \ (first priority)\n    -C|--commit Name container based on Github commit (second\
+    \ priority)\n    -H|--hash   Name container based on file hash (second priority)\n\
+    \n    -F|--force  overwrite an image file if it exists\n    -s|--size   Specify\
+    \ a size for an operation in MiB, i.e. 1024*1024B\n                (default 768MiB)\n\
+    \n\n******************************************************************************\n\
+    NOTICE: The pull command for Docker Hub containers assembles layers at the\n \
+    \       time of the pull and is not guaranteed to, on repeated pull, produce\n\
+    \        the equivalent image. To pull exactly equivlent images, pull\n      \
+    \  from a Singularity Registry.\n\n        The pull --size option will be deprecated\
+    \ for Singularity 2.4+ images \n        that are in squashfs format (and do not\
+    \ need a size estimation). The \n        option is maintained for pulling previously\
+    \ generated (2.3 and below) \n        images.\n******************************************************************************\n\
+    \n\nEXAMPLES:\n\n    $ singularity pull docker://ubuntu:latest\n\n    $ singularity\
+    \ pull shub://vsoch/singularity-images\n      Found image vsoch/singularity-images:mongo\n\
+    \      Downloading image... vsoch-singularity-images-mongo.img\n\n    $ singularity\
+    \ pull --name \"meatballs.img\" shub://vsoch/singularity-images\n    $ singularity\
+    \ pull --commit shub://vsoch/singularity-images\n    $ singularity pull --hash\
+    \ shub://vsoch/singularity-images\n    \nFor additional help, please visit our\
+    \ public documentation pages which are\nfound at:\n\n    http://singularity.lbl.gov/\n\
+    \    https://www.singularity-hub.org/faq\n\n"
+  generated_using: *id002
+- !Command
+  positional:
+  - !Positional
+    description: Create an image
+    position: 0
+    name: image.create
+    optional: false
+  - !Positional
+    description: Import data into an image
+    position: 1
+    name: image.import
+    optional: false
+  - !Positional
+    description: Expand an image
+    position: 2
+    name: image.expand
+    optional: false
+  - !Positional
+    description: Export the contents of an image
+    position: 3
+    name: image.export
+    optional: false
+  named: []
+  command:
+  - singularity
+  - image
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "USAGE: singularity [...] image.<command> [...] <image path>\n\nThis\
+    \ is a command group that supports the management of various container\nimage\
+    \ functions.\n\nIMAGE GROUP COMMANDS:\n\n    image.create    Create an image\n\
+    \    image.import    Import data into an image\n    image.expand    Expand an\
+    \ image\n    image.export    Export the contents of an image\n\nAll group commands\
+    \ have their own help output:\n\n    $ singularity help image.create\n    $ singularity\
+    \ image.create --help\n\nFor additional help, please visit our public documentation\
+    \ pages which are\nfound at:\n\n    http://singularity.lbl.gov/\n\n"
+  generated_using: *id002
+- !Command
+  positional:
+  - !Positional
+    description: Print all running container instances
+    position: 0
+    name: instance.list
+    optional: false
+  - !Positional
+    description: Start a persistent container instance
+    position: 1
+    name: instance.start
+    optional: false
+  - !Positional
+    description: Stop and kill all processes within a running instance
+    position: 2
+    name: instance.stop
+    optional: false
+  named: []
+  command:
+  - singularity
+  - instance
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "USAGE: singularity [...] instance.<command> [...]\n\nThis is a command\
+    \ group that supports the management of various instance\nfunctions.\n\nIMAGE\
+    \ GROUP COMMANDS:\n\n    instance.list     Print all running container instances\n\
+    \    instance.start    Start a persistent container instance\n    instance.stop\
+    \     Stop and kill all processes within a running instance\n\nAll group commands\
+    \ have their own help output:\n\n    $ singularity help instance.start\n    $\
+    \ singularity instance.start --help\n\nFor additional help, please visit our public\
+    \ documentation pages which are\nfound at:\n\n    http://singularity.lbl.gov/\n\
+    \n"
+  generated_using: *id002
+help_flag: !Flag
+  description: Display usage summary
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show application version
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "USAGE: singularity [global options...] <command> [command options...]\
+  \ ...\n\nGLOBAL OPTIONS:\n    -d|--debug    Print debugging information\n    -h|--help\
+  \     Display usage summary\n    -s|--silent   Only print errors\n    -q|--quiet\
+  \    Suppress all normal output\n       --version  Show application version\n  \
+  \  -v|--verbose  Increase verbosity +1\n    -x|--sh-debug Print shell wrapper debugging\
+  \ information\n\nGENERAL COMMANDS:\n    help       Show additional help for a command\
+  \ or container                  \n    selftest   Run some self tests for singularity\
+  \ install                      \n\nCONTAINER USAGE COMMANDS:\n    exec       Execute\
+  \ a command within container                               \n    run        Launch\
+  \ a runscript within container                              \n    shell      Run\
+  \ a Bourne shell within container                              \n    test      \
+  \ Launch a testscript within container                             \n\nCONTAINER\
+  \ MANAGEMENT COMMANDS:\n    apps       List available apps within a container  \
+  \                         \n    bootstrap  *Deprecated* use build instead      \
+  \                             \n    build      Build a new Singularity container\
+  \                                \n    check      Perform container lint checks\
+  \                                    \n    inspect    Display container's metadata\
+  \                                     \n    mount      Mount a Singularity container\
+  \ image                              \n    pull       Pull a Singularity/Docker\
+  \ container to $PWD                      \n\nCOMMAND GROUPS:\n    image      Container\
+  \ image command group                                    \n    instance   Persistent\
+  \ instance command group                                \n\n\nCONTAINER USAGE OPTIONS:\n\
+  \    see singularity help <command>\n\nFor any additional help or support visit\
+  \ the Singularity\nwebsite: http://singularity.lbl.gov/\n\n"
+generated_using: *id002

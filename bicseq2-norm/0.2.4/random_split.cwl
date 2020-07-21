@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/random_split.cwl
+id: ../../../random_split.cwl
 inputs:
 - id: probability_that_line_goes_to_output_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dx_docker_add_to_applet_applet.cwl
+id: ../../../dx_docker_add_to_applet_applet.cwl
 inputs:
 - id: alternative_export
   doc: ''

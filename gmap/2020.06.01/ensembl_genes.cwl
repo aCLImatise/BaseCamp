@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ensembl_genes.cwl
+id: ../../../ensembl_genes.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

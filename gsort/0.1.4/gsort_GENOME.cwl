@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsort_GENOME.cwl
+id: ../../../gsort_GENOME.cwl
 inputs:
 - id: chromosome_mappings
   doc: ''

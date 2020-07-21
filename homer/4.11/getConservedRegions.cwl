@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getConservedRegions.pl.cwl
+id: ../../../getConservedRegions.pl.cwl
 inputs:
 - id: peak_regions_exclude
   doc: '[peakfile2]... (peak regions to exclude)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ct_energy.cwl
+id: ../../../ct_energy.cwl
 inputs:
 - id: option
   doc: ''

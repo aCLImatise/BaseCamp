@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seroba_getPneumocat_database_dir.cwl
+id: ../../../seroba_getPneumocat_database_dir.cwl
 inputs:
 - id: se_rob_a
   doc: ''

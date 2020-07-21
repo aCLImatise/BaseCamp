@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/selectreads_FASTA.cwl
+id: ../../../selectreads_FASTA.cwl
 inputs:
 - id: o
   doc: ''

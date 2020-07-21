@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sff2fastq.cwl
+id: ../../../sff2fastq.cwl
 inputs:
 - id: program_version_information
   doc: Program and version information

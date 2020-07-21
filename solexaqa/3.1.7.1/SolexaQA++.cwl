@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SolexaQA++.cwl
+id: ../../../SolexaQA++.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

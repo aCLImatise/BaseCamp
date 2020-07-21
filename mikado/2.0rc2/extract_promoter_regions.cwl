@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_promoter_regions.py.cwl
+id: ../../../extract_promoter_regions.py.cwl
 inputs:
 - id: gzip
   doc: Output will be compressed in GZip format.

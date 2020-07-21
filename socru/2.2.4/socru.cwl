@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/socru.cwl
+id: ../../../socru.cwl
 inputs:
 - id: db_dir
   doc: 'Base directory for species databases, defaults to bundled (default: None)'

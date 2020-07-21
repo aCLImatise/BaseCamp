@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmer_counter.cwl
+id: ../../../gmer_counter.cwl
 inputs:
 - id: db
   doc: '- SNP/KMER database file'

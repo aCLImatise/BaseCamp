@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/olapsFromContig.cwl
+id: ../../../olapsFromContig.cwl
 inputs:
 - id: option
   doc: ''

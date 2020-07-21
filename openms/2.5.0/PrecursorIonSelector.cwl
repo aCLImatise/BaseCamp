@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PrecursorIonSelector.cwl
+id: ../../../PrecursorIonSelector.cwl
 inputs:
 - id: in
   doc: "*            Input feature map file (featureXML) (valid formats: 'featureXML')"

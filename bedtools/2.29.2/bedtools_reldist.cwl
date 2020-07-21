@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools_reldist.cwl
+id: ../../../bedtools_reldist.cwl
 inputs:
 - id: detail
   doc: the relativedistance for each interval in A

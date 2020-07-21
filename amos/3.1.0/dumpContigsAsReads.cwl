@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dumpContigsAsReads.cwl
+id: ../../../dumpContigsAsReads.cwl
 inputs:
 - id: bank
   doc: bank where assembly is stored

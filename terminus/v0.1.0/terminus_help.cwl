@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/terminus_help.cwl
+id: ../../../terminus_help.cwl
 inputs:
 - id: for
   doc: ''

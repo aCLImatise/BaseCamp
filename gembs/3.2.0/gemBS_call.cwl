@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gemBS_call.cwl
+id: ../../../gemBS_call.cwl
 inputs:
 - id: contig_list
   doc: List of contigs on which to perform the methylation calling.

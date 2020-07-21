@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AssayGeneratorMetabo.cwl
+id: ../../../AssayGeneratorMetabo.cwl
 inputs:
 - id: in
   doc: "*                            MzML Input file (valid formats: 'mzml')"

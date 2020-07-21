@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phmmer_seqdb.cwl
+id: ../../../phmmer_seqdb.cwl
 inputs:
 - id: options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/XPressProteinRatioParser.cwl
+id: ../../../XPressProteinRatioParser.cwl
 inputs:
 - id: prot_xml_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/label_rtcircrna.py.cwl
+id: ../../../label_rtcircrna.py.cwl
 inputs:
 - id: input
   doc: The input file containing the fusion (chromosomal) coordinates for each fusion

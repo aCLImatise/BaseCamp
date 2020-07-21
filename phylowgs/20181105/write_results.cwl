@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/write_results.py.cwl
+id: ../../../write_results.py.cwl
 inputs:
 - id: include_ssm_names
   doc: 'Include SSM names in output (which may be sensitive data) (default: False)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vsnp_fastq_quality.py.cwl
+id: ../../../vsnp_fastq_quality.py.cwl
 inputs:
 - id: read_one
   doc: 'Required: single read, R1 if Illumina read'

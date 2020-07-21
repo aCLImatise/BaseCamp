@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snp_based_classifier.py.cwl
+id: ../../../snp_based_classifier.py.cwl
 inputs:
 - id: snps
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biom_validate_table.cwl
+id: ../../../biom_validate_table.cwl
 inputs:
 - id: input_fp
   doc: The input filpath to validate against the BIOM format specification  [required]

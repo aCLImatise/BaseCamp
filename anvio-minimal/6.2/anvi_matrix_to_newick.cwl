@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_matrix_to_newick.cwl
+id: ../../../anvi_matrix_to_newick.cwl
 inputs:
 - id: transpose
   doc: Transpose the input matrix file before clustering.

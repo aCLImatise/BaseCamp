@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Epifany.cwl
+id: ../../../Epifany.cwl
 inputs:
 - id: in
   doc: "*                            Input: identification results (valid formats:\

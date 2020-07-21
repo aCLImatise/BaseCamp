@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/collectSampleMetrics.sh.cwl
+id: ../../../collectSampleMetrics.sh.cwl
 inputs:
 - id: force
   doc: 'Force processing even when result files already exist and are newer than inputs

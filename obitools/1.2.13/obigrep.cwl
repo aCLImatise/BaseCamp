@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obigrep.cwl
+id: ../../../obigrep.cwl
 inputs:
 - id: sequence
   doc: regular expression pattern used to select the sequence. The pattern is case

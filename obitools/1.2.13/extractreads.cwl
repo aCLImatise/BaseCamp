@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extractreads.cwl
+id: ../../../extractreads.cwl
 inputs:
 - id: skip
   doc: skip the N first sequences

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/validate_component.cwl
+id: ../../../validate_component.cwl
 inputs:
 - id: min_contig
   doc: (=0)              minimum contigs

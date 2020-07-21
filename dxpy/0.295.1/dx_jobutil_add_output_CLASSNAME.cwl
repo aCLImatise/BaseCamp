@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dx_jobutil_add_output_CLASSNAME.cwl
+id: ../../../dx_jobutil_add_output_CLASSNAME.cwl
 inputs:
 - id: class
   doc: '[CLASSNAME]  Class of output for formatting purposes, e.g. "int"; default

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/classify_reads.pl.cwl
+id: ../../../classify_reads.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

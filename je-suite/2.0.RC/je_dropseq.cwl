@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/je_dropseq.cwl
+id: ../../../je_dropseq.cwl
 inputs:
 - id: path_dot
   doc: 'Required. '

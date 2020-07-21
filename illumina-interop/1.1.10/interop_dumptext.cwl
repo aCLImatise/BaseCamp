@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/interop_dumptext.cwl
+id: ../../../interop_dumptext.cwl
 inputs:
 - id: subset
   doc: '[0]: Number of metrics to subsample'

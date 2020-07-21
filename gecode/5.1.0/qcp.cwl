@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qcp.cwl
+id: ../../../qcp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

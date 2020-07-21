@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/explore_thresholds.cwl
+id: ../../../explore_thresholds.cwl
 inputs:
 - id: data_frame
   doc: Full path to csv output of pandas dataframe from BAM_ANALYSIS module

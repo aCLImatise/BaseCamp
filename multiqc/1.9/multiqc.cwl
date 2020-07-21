@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/multiqc.cwl
+id: ../../../multiqc.cwl
 inputs:
 - id: force
   doc: Overwrite any existing reports

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/adptSim.cwl
+id: ../../../adptSim.cwl
 inputs:
 - id: adapter_observed_forward
   doc: '[seq]                   Adapter that is observed after the forward read (Default:  AGATCGGAAG...)'

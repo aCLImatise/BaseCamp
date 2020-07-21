@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sixgill_filter_metapeptidefile.cwl
+id: ../../../sixgill_filter_metapeptidefile.cwl
 inputs:
 - id: out
   doc: ''

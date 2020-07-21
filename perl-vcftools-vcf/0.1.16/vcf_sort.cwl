@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_sort.cwl
+id: ../../../vcf_sort.cwl
 inputs:
 - id: chromosomal_order
   doc: Use natural ordering (1,2,10,MT,X) rather then the default (1,10,2,MT,X). This

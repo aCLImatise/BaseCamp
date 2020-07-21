@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findDMin2.pl.cwl
+id: ../../../findDMin2.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

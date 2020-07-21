@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/realignPolishes.cwl
+id: ../../../realignPolishes.cwl
 inputs:
 - id: actually_work_just
   doc: ": Don't actually do the work, just count the statistics"

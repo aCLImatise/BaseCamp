@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FastqList.cwl
+id: ../../../FastqList.cwl
 inputs:
 - id: in
   doc: Input FASTQ file (gzipped or plain).

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/square_mash.cwl
+id: ../../../square_mash.cwl
 inputs:
 - id: classic
   doc: Output table in a format suitable for R_mds.pl

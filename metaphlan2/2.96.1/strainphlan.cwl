@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/strainphlan.py.cwl
+id: ../../../strainphlan.py.cwl
 inputs:
 - id: ifn_samples
   doc: The list of sample files (space separated).The wildcard can also be used.

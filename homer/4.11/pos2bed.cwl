@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pos2bed.pl.cwl
+id: ../../../pos2bed.pl.cwl
 inputs:
 - id: output_to_file
   doc: (Output to file)

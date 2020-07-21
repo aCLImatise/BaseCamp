@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/f2py.cwl
+id: ../../../f2py.cwl
 inputs:
 - id: help_link
   doc: "[..] List system resources found by system_info.py. See also --link-<resource>\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/graphtyper.cwl
+id: ../../../graphtyper.cwl
 inputs:
 - id: verbose
   doc: Set to output verbose logging.

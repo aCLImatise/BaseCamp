@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtk_pe_test.cwl
+id: ../../../svtk_pe_test.cwl
 inputs:
 - id: window_out
   doc: Window outside breakpoint to query for discordant pairs. [500]

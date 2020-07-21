@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/disentangle_organelle_assembly.py.cwl
+id: ../../../disentangle_organelle_assembly.py.cwl
 inputs:
 - id: input_fastg_format
   doc: input fastg format file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_cluster.cwl
+id: ../../../ssu_esl_cluster.cwl
 inputs:
 - id: field_read_query
   doc: ': field to read as query name, 1..n  [8]  (n>0)'

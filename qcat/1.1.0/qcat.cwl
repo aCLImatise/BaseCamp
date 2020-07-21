@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qcat.cwl
+id: ../../../qcat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

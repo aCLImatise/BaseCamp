@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HomologyByXCorr.cwl
+id: ../../../HomologyByXCorr.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

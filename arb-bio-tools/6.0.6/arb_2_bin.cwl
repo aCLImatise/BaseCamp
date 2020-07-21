@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_2_bin.cwl
+id: ../../../arb_2_bin.cwl
 inputs:
 - id: create_map_file
   doc: create map file too

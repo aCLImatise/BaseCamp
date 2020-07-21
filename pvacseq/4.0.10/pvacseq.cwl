@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pvacseq.cwl
+id: ../../../pvacseq.cwl
 inputs:
 - id: v
   doc: ''

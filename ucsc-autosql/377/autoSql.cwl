@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/autoSql.cwl
+id: ../../../autoSql.cwl
 inputs:
 - id: dblink
   doc: '- optionally generates code to execute queries and updates of the table.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/linksBed.cwl
+id: ../../../linksBed.cwl
 inputs:
 - id: base
   doc: 'The browser basename.  Default: http://genome.ucsc.edu '

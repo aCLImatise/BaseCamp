@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msconvert.cwl
+id: ../../../msconvert.cwl
 inputs:
 - id: arg_specify_text
   doc: '[ --filelist ] arg           : specify text file containing filenames'

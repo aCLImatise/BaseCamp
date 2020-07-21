@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mcxdeblast.cwl
+id: ../../../mcxdeblast.cwl
 inputs:
 - id: m_nine
   doc: Expect column (-m 9) input.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ca2scaff.cwl
+id: ../../../ca2scaff.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

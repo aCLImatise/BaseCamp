@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nucmer_backbone.pl.cwl
+id: ../../../nucmer_backbone.pl.cwl
 inputs:
 - id: number_genomes_section
   doc: number of genomes from which a section can be [A]bsent and still be included

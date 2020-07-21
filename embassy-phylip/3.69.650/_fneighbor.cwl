@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_fneighbor.cwl
+id: ../../../_fneighbor.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

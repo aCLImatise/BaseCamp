@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runant.py.cwl
+id: ../../../runant.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

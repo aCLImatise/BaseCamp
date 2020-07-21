@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_utilities_unmix_fasta_reads.cwl
+id: ../../../phyluce_utilities_unmix_fasta_reads.cwl
 inputs:
 - id: mixed_reads
   doc: ''

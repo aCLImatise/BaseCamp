@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/map_single_fragments.py.cwl
+id: ../../../map_single_fragments.py.cwl
 inputs:
 - id: fast_q_one
   doc: 'A list of the first read of the sequencing. (default: None)'

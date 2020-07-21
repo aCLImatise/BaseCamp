@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bis_snp.cwl
+id: ../../../bis_snp.cwl
 inputs:
 - id: analysis_type
   doc: Type of analysis to run

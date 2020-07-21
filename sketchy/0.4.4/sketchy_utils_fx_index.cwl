@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sketchy_utils_fx_index.cwl
+id: ../../../sketchy_utils_fx_index.cwl
 inputs:
 - id: fast_x
   doc: Path to Fast{a,q} input file to index reads from headers [required]

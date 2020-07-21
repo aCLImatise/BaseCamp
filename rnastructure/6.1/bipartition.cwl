@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bipartition.cwl
+id: ../../../bipartition.cwl
 inputs:
 - id: seq_file_one
   doc: ''

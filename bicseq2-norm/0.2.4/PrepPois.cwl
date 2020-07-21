@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PrepPois.cwl
+id: ../../../PrepPois.cwl
 inputs:
 - id: two_column_read
   doc: ': a two column read count file(position and count); If unspecified, use <stdin>

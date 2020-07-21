@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getChrLengths.pl.cwl
+id: ../../../getChrLengths.pl.cwl
 inputs:
 - id: fast_a_file
   doc: ''

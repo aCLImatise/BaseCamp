@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PretextSnapshot.sse42.cwl
+id: ../../../PretextSnapshot.sse42.cwl
 inputs:
 - id: m_slash_map
   doc: ':           Path to a pretext map. This option is required, except when using:

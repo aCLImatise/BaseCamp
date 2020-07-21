@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trim_galore.cwl
+id: ../../../trim_galore.cwl
 inputs:
 - id: hard_trim_five
   doc: ': CCTAAGGAAACAAGTACACT'

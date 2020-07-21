@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scg_run_doublet_model.cwl
+id: ../../../scg_run_doublet_model.cwl
 inputs:
 - id: config_file
   doc: ''

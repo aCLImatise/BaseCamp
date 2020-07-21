@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ame.cwl
+id: ../../../ame.cwl
 inputs:
 - id: output_dir_output
   doc: <output dir> output directory; default=ame_out

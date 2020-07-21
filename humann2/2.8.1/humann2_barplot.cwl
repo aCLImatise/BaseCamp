@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/humann2_barplot.cwl
+id: ../../../humann2_barplot.cwl
 inputs:
 - id: input
   doc: HUMAnN2 table with optional metadata

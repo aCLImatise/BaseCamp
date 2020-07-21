@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HiLine_qc_fail.cwl
+id: ../../../HiLine_qc_fail.cwl
 inputs:
 - id: sort
   doc: / --no-sort  Sort and index output. Default=sort

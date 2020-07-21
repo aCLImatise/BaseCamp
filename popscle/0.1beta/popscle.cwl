@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/popscle.cwl
+id: ../../../popscle.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

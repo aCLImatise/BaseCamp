@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segtools_overlap.cwl
+id: ../../../segtools_overlap.cwl
 inputs:
 - id: clobber
   doc: Overwrite any existing output files.

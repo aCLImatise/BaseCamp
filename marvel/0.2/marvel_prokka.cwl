@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/marvel_prokka.cwl
+id: ../../../marvel_prokka.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

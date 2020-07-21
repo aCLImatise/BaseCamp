@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tr.cwl
+id: ../../../tr.cwl
 inputs:
 - id: complement
   doc: use the complement of SET1

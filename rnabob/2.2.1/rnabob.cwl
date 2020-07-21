@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnabob.cwl
+id: ../../../rnabob.cwl
 inputs:
 - id: search_strands_database
   doc: ':    search both strands of database'

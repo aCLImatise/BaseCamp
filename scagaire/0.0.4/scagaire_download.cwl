@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scagaire_download.cwl
+id: ../../../scagaire_download.cwl
 inputs:
 - id: assembly_level
   doc: 'Assembly level (default: all)'

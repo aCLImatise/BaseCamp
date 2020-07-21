@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dimspy_replicate_filter.cwl
+id: ../../../dimspy_replicate_filter.cwl
 inputs:
 - id: input
   doc: HDF5 file (Peaklist objects) from step 'process-scans' or directory path that

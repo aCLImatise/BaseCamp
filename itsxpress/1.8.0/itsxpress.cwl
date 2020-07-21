@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/itsxpress.cwl
+id: ../../../itsxpress.cwl
 inputs:
 - id: tax_a
   doc: The taxonomic group sequenced.

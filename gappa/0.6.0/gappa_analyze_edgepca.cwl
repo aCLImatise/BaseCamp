@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gappa_analyze_edgepca.cwl
+id: ../../../gappa_analyze_edgepca.cwl
 inputs:
 - id: j_place_path
   doc: :PATH(existing)=[] ... REQUIRED List of jplace files or directories to process.

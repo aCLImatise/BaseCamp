@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sketchy_rs_help.cwl
+id: ../../../sketchy_rs_help.cwl
 inputs:
 - id: for
   doc: ''

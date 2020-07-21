@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tgStoreLoad.cwl
+id: ../../../tgStoreLoad.cwl
 inputs:
 - id: s
   doc: ''

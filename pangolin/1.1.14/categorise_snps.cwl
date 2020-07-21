@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/categorise_snps.py.cwl
+id: ../../../categorise_snps.py.cwl
 inputs:
 - id: a
   doc: ''

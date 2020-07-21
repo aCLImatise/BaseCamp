@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfmultiwayscripts.cwl
+id: ../../../vcfmultiwayscripts.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

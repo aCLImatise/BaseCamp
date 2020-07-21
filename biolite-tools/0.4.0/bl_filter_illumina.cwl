@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bl_filter_illumina.cwl
+id: ../../../bl_filter_illumina.cwl
 inputs:
 - id: specify_multiple_input_files
   doc: specify multiple INPUT files

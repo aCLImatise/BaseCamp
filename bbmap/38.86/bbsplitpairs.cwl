@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bbsplitpairs.sh.cwl
+id: ../../../bbsplitpairs.sh.cwl
 inputs:
 - id: in
   doc: ''

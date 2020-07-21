@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mkfake.cwl
+id: ../../../mkfake.cwl
 inputs:
 - id: plates
   doc: ': number of plates (default: 1)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gtop.cwl
+id: ../../../gtop.cwl
 inputs:
 - id: apply_asymmetric_gap
   doc: ': apply asymmetric gap weighting mode.'

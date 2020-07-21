@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prepMat.cwl
+id: ../../../prepMat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

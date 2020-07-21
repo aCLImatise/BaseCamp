@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/megahit_core_contig2fastg.cwl
+id: ../../../megahit_core_contig2fastg.cwl
 inputs:
 - id: contig_two_fast_g
   doc: ''

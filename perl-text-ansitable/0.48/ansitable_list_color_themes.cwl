@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ansitable_list_color_themes.cwl
+id: ../../../ansitable_list_color_themes.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

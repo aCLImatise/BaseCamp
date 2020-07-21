@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compare_HLA_Omixon.py.bak_omixon_fname.cwl
+id: ../../../compare_HLA_Omixon.py.bak_omixon_fname.cwl
 inputs:
 - id: compare_hla_omixondotpydotbak
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/efn2.cwl
+id: ../../../efn2.cwl
 inputs:
 - id: ct_file
   doc: ''

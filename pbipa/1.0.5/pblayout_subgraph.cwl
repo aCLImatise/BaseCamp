@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pblayout_subgraph.cwl
+id: ../../../pblayout_subgraph.cwl
 inputs:
 - id: directed
   doc: Apply the directed ego-graph algorithm to extract the subgraph.

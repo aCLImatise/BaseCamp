@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/showinf.cwl
+id: ../../../showinf.cwl
 inputs:
 - id: no_pix
   doc: ': read metadata only, not pixels'

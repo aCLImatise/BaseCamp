@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/knock_knock_install_example_data.cwl
+id: ../../../knock_knock_install_example_data.cwl
 inputs:
 - id: project_directory
   doc: directory to install example data

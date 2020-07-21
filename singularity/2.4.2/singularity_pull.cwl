@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/singularity_pull.cwl
+id: ../../../singularity_pull.cwl
 inputs:
 - id: name
   doc: Specify a custom container name (first priority)

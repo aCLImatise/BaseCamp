@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/EncyclopeDIA.cwl
+id: ../../../EncyclopeDIA.cwl
 inputs:
 - id: input_dia_file
   doc: input .DIA or .MZML file

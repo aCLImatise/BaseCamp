@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/epost.cwl
+id: ../../../epost.cwl
 inputs:
 - id: db
   doc: Database name

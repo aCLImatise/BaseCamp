@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/design_edit_metric_tags.py.cwl
+id: ../../../design_edit_metric_tags.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

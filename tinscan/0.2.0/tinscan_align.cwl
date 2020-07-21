@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tinscan_align.cwl
+id: ../../../tinscan_align.cwl
 inputs:
 - id: a_dir
   doc: Name of directory containing sequences from A genome.

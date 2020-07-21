@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_profile2cs.cwl
+id: ../../../mmseqs_profile2cs.cwl
 inputs:
 - id: pc_a
   doc: '1.000           pseudo count admixture strength                             '

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metaphylerClassify.cwl
+id: ../../../metaphylerClassify.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

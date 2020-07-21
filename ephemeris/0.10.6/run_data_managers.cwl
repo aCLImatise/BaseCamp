@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_data_managers.cwl
+id: ../../../run_data_managers.cwl
 inputs:
 - id: config
   doc: Path to the YAML config file with the list of data managers and data to install.

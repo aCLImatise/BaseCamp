@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/addInternalData.pl.cwl
+id: ../../../addInternalData.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

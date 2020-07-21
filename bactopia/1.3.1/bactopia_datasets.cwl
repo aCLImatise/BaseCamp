@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bactopia_datasets.py.cwl
+id: ../../../bactopia_datasets.py.cwl
 inputs:
 - id: ariba
   doc: 'Setup Ariba datasets for a given reference or a list of references in a text

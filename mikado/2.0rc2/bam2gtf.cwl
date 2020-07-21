@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam2gtf.py.cwl
+id: ../../../bam2gtf.py.cwl
 inputs:
 - id: script
   doc: ''

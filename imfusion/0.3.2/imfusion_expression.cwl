@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/imfusion_expression.cwl
+id: ../../../imfusion_expression.cwl
 inputs:
 - id: paired
   doc: Generate counts by counting fragments instead of reads (for paired-end data).

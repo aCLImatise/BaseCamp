@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/log4cpp_config.cwl
+id: ../../../log4cpp_config.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

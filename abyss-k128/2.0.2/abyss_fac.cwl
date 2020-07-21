@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_fac.cwl
+id: ../../../abyss_fac.cwl
 inputs:
 - id: genome_size
   doc: expected genome size. Used to calculate NG50 and associated stats [disabled]

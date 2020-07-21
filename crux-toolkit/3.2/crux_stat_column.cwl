@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_stat_column.cwl
+id: ../../../crux_stat_column.cwl
 inputs:
 - id: tsv_file
   doc: ''

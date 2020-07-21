@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cpanm.cwl
+id: ../../../cpanm.cwl
 inputs:
 - id: verbose
   doc: Turns on chatty output

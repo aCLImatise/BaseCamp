@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioformats_bedautosql.cwl
+id: ../../../bioformats_bedautosql.cwl
 inputs:
 - id: name
   doc: 'a table name (default: Table)'

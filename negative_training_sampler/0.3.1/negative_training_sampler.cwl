@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/negative_training_sampler.cwl
+id: ../../../negative_training_sampler.cwl
 inputs:
 - id: label_file
   doc: Input bed file with labeled regions  [required]

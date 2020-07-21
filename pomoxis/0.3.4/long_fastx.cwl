@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/long_fastx.cwl
+id: ../../../long_fastx.cwl
 inputs:
 - id: longest
   doc: Percentage of longest reads to partition.

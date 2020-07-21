@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getRnaPred.cwl
+id: ../../../getRnaPred.cwl
 inputs:
 - id: database
   doc: ''

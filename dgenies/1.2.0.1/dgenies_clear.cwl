@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dgenies_clear.cwl
+id: ../../../dgenies_clear.cwl
 inputs:
 - id: _clear_crons
   doc: '[CRONS], --crons [CRONS] Clear crons'

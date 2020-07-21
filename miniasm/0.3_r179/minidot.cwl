@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/minidot.cwl
+id: ../../../minidot.cwl
 inputs:
 - id: min_match_length
   doc: min match length [100]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treebest_estlen.cwl
+id: ../../../treebest_estlen.cwl
 inputs:
 - id: tree
   doc: ''

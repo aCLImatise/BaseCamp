@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/barrnap.cwl
+id: ../../../barrnap.cwl
 inputs:
 - id: citation
   doc: Print citation for referencing barrnap

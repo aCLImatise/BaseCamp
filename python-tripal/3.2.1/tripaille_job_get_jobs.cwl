@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tripaille_job_get_jobs.cwl
+id: ../../../tripaille_job_get_jobs.cwl
 inputs:
 - id: job_id
   doc: job id

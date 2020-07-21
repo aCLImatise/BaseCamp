@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/afetch_alignment database.cwl
+id: ../../../afetch_alignment database.cwl
 inputs:
 - id: options
   doc: ''

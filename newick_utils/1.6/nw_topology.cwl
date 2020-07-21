@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nw_topology.cwl
+id: ../../../nw_topology.cwl
 inputs:
 - id: keep_branch_lengths
   doc: ': keep branch lengths'

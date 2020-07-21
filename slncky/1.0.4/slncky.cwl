@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/slncky.cwl
+id: ../../../slncky.cwl
 inputs:
 - id: web
   doc: flag for if you want slncky to create a website visualizing results

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/multivcfanalyzer.cwl
+id: ../../../multivcfanalyzer.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

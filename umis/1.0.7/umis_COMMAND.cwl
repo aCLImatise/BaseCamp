@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/umis_COMMAND.cwl
+id: ../../../umis_COMMAND.cwl
 inputs:
 - id: args
   doc: ''

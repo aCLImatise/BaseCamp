@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crTreeSearchBed.cwl
+id: ../../../crTreeSearchBed.cwl
 inputs:
 - id: file_dot_bed
   doc: ''

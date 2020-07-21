@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk_sort.cwl
+id: ../../../csvtk_sort.cwl
 inputs:
 - id: ignore_case
   doc: ignore-case

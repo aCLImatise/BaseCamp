@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kaiju_addTaxonNames.cwl
+id: ../../../kaiju_addTaxonNames.cwl
 inputs:
 - id: name_input_file
   doc: Name of input file

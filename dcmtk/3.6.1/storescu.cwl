@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/storescu.cwl
+id: ../../../storescu.cwl
 inputs:
 - id: _read_data
   doc: --read-dataset       read data set without file meta information

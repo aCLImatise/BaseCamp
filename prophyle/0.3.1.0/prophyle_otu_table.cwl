@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prophyle_otu_table.py.cwl
+id: ../../../prophyle_otu_table.py.cwl
 inputs:
 - id: comma_separated_list
   doc: comma separated list of ranks to build the OTU table for [species,genus,family,phylum,class,order,kingdom]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findMotif.cwl
+id: ../../../findMotif.cwl
 inputs:
 - id: verbose
   doc: '- will display gaps as bed file data lines to stderr'

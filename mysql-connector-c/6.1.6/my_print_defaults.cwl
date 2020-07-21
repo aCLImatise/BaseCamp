@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/my_print_defaults.cwl
+id: ../../../my_print_defaults.cwl
 inputs:
 - id: verbose
   doc: Increase the output level

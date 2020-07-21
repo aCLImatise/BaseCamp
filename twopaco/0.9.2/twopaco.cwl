@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/twopaco.cwl
+id: ../../../twopaco.cwl
 inputs:
 - id: o
   doc: ''

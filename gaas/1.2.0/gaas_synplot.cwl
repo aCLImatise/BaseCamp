@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_synplot.pl.cwl
+id: ../../../gaas_synplot.pl.cwl
 inputs:
 - id: plot_only
   doc: 'Flag: Draw plot only. Requires precomputed intermediate files with same file

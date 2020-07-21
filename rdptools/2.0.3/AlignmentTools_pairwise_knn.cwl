@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AlignmentTools_pairwise_knn.cwl
+id: ../../../AlignmentTools_pairwise_knn.cwl
 inputs:
 - id: knearest_neighbors_return
   doc: K-nearest neighbors to return. (default = 1)

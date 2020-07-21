@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/defuse_clusters_to_CG.cwl
+id: ../../../defuse_clusters_to_CG.cwl
 inputs:
 - id: gene_annotation
   doc: GTF-file used by defuse

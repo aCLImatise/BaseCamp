@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coinfinder.cwl
+id: ../../../coinfinder.cwl
 inputs:
 - id: input
   doc: The path to the gene_presence_absence.csv output from Roary -or- The path of

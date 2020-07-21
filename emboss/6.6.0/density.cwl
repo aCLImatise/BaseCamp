@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/density.cwl
+id: ../../../density.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rank.pl.cwl
+id: ../../../rank.pl.cwl
 inputs:
 - id: precision
   doc: Rounds coefficient to N places (default = 4)

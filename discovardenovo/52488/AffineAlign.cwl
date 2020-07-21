@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AffineAlign.cwl
+id: ../../../AffineAlign.cwl
 inputs:
 - id: arg_one
   doc: ''

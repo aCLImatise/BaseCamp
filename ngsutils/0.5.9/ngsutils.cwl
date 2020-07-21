@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ngsutils.cwl
+id: ../../../ngsutils.cwl
 inputs:
 - id: command
   doc: ''

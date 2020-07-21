@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_select_reads_from_bam.py.cwl
+id: ../../../fc_select_reads_from_bam.py.cwl
 inputs:
 - id: raw_read_to_contigs
   doc: 'rawread_to_contigs file (from where?) (default: ./2-asm- falcon/read_maps/dump_rawread_ids/rawread_to_contigs)'

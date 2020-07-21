@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/expand_fastq.cwl
+id: ../../../expand_fastq.cwl
 inputs:
 - id: bccdehikllnnprsvzzzero
   doc: ''

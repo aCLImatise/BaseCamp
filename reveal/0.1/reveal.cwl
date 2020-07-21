@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reveal.cwl
+id: ../../../reveal.cwl
 inputs:
 - id: h
   doc: ''

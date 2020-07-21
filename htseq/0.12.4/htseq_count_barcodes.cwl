@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htseq_count_barcodes.cwl
+id: ../../../htseq_count_barcodes.cwl
 inputs:
 - id: format
   doc: 'Type of <alignment_file> data. DEPRECATED: file format is detected automatically.

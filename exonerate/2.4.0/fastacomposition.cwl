@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastacomposition.cwl
+id: ../../../fastacomposition.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

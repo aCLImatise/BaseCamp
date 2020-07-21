@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_script_transpose_matrix.cwl
+id: ../../../anvi_script_transpose_matrix.cwl
 inputs:
 - id: output_file
   doc: File path to store results.

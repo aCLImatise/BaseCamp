@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslFilter.cwl
+id: ../../../pslFilter.cwl
 inputs:
 - id: dir
   doc: Input files are directories rather than single files

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extend.py.cwl
+id: ../../../extend.py.cwl
 inputs:
 - id: input_tpr
   doc: Input tpr

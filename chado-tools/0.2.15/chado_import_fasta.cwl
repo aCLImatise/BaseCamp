@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chado_import_fasta.cwl
+id: ../../../chado_import_fasta.cwl
 inputs:
 - id: verbose
   doc: verbose mode

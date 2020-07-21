@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gemBS_db_sync.cwl
+id: ../../../gemBS_db_sync.cwl
 inputs:
 - id: loglevel
   doc: ''

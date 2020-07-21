@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_fasta_checkProteins.pl.cwl
+id: ../../../gaas_fasta_checkProteins.pl.cwl
 inputs:
 - id: ref_file
   doc: Input fasta file that will be read. In general come from gffread output.

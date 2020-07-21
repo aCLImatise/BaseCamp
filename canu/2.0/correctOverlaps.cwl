@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/correctOverlaps.cwl
+id: ../../../correctOverlaps.cwl
 inputs:
 - id: path_sequence_store
   doc: seqStore           path to a sequence store

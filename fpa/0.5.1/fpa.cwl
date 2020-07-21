@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fpa.cwl
+id: ../../../fpa.cwl
 inputs:
 - id: compression_out
   doc: 'Output compression format, the input compression format is chosen by default

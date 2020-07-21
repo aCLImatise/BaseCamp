@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deSALT_index_index_route.cwl
+id: ../../../deSALT_index_index_route.cwl
 inputs:
 - id: de_bga
   doc: ''

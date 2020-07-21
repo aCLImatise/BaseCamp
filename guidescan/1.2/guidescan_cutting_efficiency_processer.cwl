@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/guidescan_cutting_efficiency_processer.cwl
+id: ../../../guidescan_cutting_efficiency_processer.cwl
 inputs:
 - id: database_directory
   doc: absolute filepath to directory hosting sgRNA database with no cutting efficiency

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SanitizeMePaired_CLI.py.cwl
+id: ../../../SanitizeMePaired_CLI.py.cwl
 inputs:
 - id: input_folder
   doc: Folder containing paired fq, fq.gz, fastq, and fastq.gz files. Program will

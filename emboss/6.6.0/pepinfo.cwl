@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pepinfo.cwl
+id: ../../../pepinfo.cwl
 inputs:
 - id: graph
   doc: xygraph    [$EMBOSS_GRAPHICS value, or png] Graph type (ps, hpgl, hp7470, hp7580,

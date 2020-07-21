@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdc2.cwl
+id: ../../../gdc2.cwl
 inputs:
 - id: i_two
   doc: '- additionally look for insertions/deletions (indels) of length 2 (default

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tsort.cwl
+id: ../../../tsort.cwl
 inputs:
 - id: option
   doc: ''

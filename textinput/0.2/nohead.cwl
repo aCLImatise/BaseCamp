@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nohead.cwl
+id: ../../../nohead.cwl
 inputs:
 - id: lines
   doc: suppress NUM lines (default 1)

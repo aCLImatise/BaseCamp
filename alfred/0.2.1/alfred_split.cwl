@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alfred_split.cwl
+id: ../../../alfred_split.cwl
 inputs:
 - id: arg_min_quality
   doc: '[ --map-qual ] arg (=10)     min. mapping quality'

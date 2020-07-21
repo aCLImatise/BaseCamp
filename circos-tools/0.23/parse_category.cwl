@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parse_category.cwl
+id: ../../../parse_category.cwl
 inputs:
 - id: cat
   doc: ''

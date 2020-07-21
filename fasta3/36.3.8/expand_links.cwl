@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/expand_links.pl.cwl
+id: ../../../expand_links.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

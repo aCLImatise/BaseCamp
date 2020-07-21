@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/easel_filter_msafile.cwl
+id: ../../../easel_filter_msafile.cwl
 inputs:
 - id: options
   doc: ''

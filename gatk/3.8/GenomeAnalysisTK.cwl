@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GenomeAnalysisTK.cwl
+id: ../../../GenomeAnalysisTK.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

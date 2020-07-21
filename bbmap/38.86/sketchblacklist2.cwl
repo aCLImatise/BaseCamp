@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sketchblacklist2.sh.cwl
+id: ../../../sketchblacklist2.sh.cwl
 inputs:
 - id: sketch_blacklist_dots_h
   doc: ''

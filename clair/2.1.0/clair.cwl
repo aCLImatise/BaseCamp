@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clair.py.cwl
+id: ../../../clair.py.cwl
 inputs:
 - id: var_0
   doc: ''

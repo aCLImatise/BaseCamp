@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obabel_prepare_pdb.cwl
+id: ../../../obabel_prepare_pdb.cwl
 inputs:
 - id: no_gzip
   doc: Do not compress the output

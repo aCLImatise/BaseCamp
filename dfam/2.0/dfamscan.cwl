@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dfamscan.pl.cwl
+id: ../../../dfamscan.pl.cwl
 inputs:
 - id: df_am_in_file
   doc: "Use this is you've already run nhmmscan, and just want to perfom dfamscan\

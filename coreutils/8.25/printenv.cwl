@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/printenv.cwl
+id: ../../../printenv.cwl
 inputs:
 - id: 'null'
   doc: end each output line with NUL, not newline

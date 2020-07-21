@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_helixturnhelix.cwl
+id: ../../../_helixturnhelix.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BedpeGeneAnnotation.cwl
+id: ../../../BedpeGeneAnnotation.cwl
 inputs:
 - id: in
   doc: Input BEDPE file containing the SVs.

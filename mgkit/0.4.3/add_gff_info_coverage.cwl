@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/add_gff_info_coverage.cwl
+id: ../../../add_gff_info_coverage.cwl
 inputs:
 - id: sample_alignment
   doc: sample name and correspondent alignment file separated by comma  [required]

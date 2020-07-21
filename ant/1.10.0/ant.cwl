@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ant.cwl
+id: ../../../ant.cwl
 inputs:
 - id: no_config
   doc: suppress sourcing of /etc/ant.conf, $HOME/.ant/ant.conf, and $HOME/.antrc configuration

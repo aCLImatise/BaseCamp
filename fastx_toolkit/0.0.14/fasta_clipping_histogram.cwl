@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_clipping_histogram.pl.cwl
+id: ../../../fasta_clipping_histogram.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

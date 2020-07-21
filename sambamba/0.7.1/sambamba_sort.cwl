@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sambamba_sort.cwl
+id: ../../../sambamba_sort.cwl
 inputs:
 - id: memory_limit
   doc: approximate total memory limit for all threads (by default 2GB)

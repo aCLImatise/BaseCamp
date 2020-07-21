@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tsvToVcf.pl.cwl
+id: ../../../tsvToVcf.pl.cwl
 inputs:
 - id: directory_containing_files
   doc: directory containing vcf files from freebayes

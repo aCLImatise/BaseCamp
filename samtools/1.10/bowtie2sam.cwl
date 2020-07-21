@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bowtie2sam.pl.cwl
+id: ../../../bowtie2sam.pl.cwl
 inputs:
 - id: no
   doc: ''

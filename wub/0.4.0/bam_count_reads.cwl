@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam_count_reads.py_bam.cwl
+id: ../../../bam_count_reads.py_bam.cwl
 inputs:
 - id: a
   doc: ''

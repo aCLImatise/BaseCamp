@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi_unitig.cwl
+id: ../../../fermi_unitig.cwl
 inputs:
 - id: min_match
   doc: min match [0]

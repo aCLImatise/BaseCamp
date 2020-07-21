@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/statswrapper.sh.cwl
+id: ../../../statswrapper.sh.cwl
 inputs:
 - id: in
   doc: ''

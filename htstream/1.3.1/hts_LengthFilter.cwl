@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hts_LengthFilter.cwl
+id: ../../../hts_LengthFilter.cwl
 inputs:
 - id: _version_print
   doc: '[ --version ]                      Version print'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools_merge.cwl
+id: ../../../samtools_merge.cwl
 inputs:
 - id: sort_by_read
   doc: sort by read names

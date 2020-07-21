@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdtools_INTERSECT.cwl
+id: ../../../gdtools_INTERSECT.cwl
 inputs:
 - id: output
   doc: Output Genome Diff file name (DEFAULT=output.gd)

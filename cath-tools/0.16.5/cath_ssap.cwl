@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cath_ssap.cwl
+id: ../../../cath_ssap.cwl
 inputs:
 - id: output_version_information
   doc: '[ --version ]                         Output version information'

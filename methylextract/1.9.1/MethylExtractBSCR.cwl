@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MethylExtractBSCR.pl.cwl
+id: ../../../MethylExtractBSCR.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dumbbench.cwl
+id: ../../../dumbbench.cwl
 inputs:
 - id: abs_precision
   doc: 'Set the target absolute precision (default: 0) Set to 0 to disable.'

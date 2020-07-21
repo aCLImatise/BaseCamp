@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MetaboliteSpectralMatcher.cwl
+id: ../../../MetaboliteSpectralMatcher.cwl
 inputs:
 - id: in
   doc: "*        Input spectra. (valid formats: 'mzML')"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fu_count.cwl
+id: ../../../fu_count.cwl
 inputs:
 - id: f_qc
   doc: ''

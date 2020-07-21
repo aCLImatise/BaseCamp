@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_tide_index.cwl
+id: ../../../crux_tide_index.cwl
 inputs:
 - id: protein_fast_a_file
   doc: ''

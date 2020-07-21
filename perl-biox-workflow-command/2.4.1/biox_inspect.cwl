@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biox_inspect.cwl
+id: ../../../biox_inspect.cwl
 inputs:
 - id: json
   doc: '[Flag]'

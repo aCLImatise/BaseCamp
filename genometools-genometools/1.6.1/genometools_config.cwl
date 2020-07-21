@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genometools_config.cwl
+id: ../../../genometools_config.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

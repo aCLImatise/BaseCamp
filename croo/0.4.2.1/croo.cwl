@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/croo.cwl
+id: ../../../croo.cwl
 inputs:
 - id: out_def_json
   doc: Output definition JSON file for a WDL file corresponding to the specified metadata.json

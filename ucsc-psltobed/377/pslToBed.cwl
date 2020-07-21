@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslToBed.cwl
+id: ../../../pslToBed.cwl
 inputs:
 - id: psl
   doc: ''

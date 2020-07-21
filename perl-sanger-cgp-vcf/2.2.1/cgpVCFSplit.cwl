@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cgpVCFSplit.pl.cwl
+id: ../../../cgpVCFSplit.pl.cwl
 inputs:
 - id: l
   doc: ''

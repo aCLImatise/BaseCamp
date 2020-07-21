@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqretsplit.cwl
+id: ../../../seqretsplit.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

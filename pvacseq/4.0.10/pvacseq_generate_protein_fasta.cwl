@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pvacseq_generate_protein_fasta.cwl
+id: ../../../pvacseq_generate_protein_fasta.cwl
 inputs:
 - id: downstream_sequence_length
   doc: "Cap to limit the downstream sequence length for frameshifts when creating\

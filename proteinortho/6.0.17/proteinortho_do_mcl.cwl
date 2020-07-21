@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteinortho_do_mcl.pl.cwl
+id: ../../../proteinortho_do_mcl.pl.cwl
 inputs:
 - id: cores
   doc: ''

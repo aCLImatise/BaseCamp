@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/refgenieserver.cwl
+id: ../../../refgenieserver.cwl
 inputs:
 - id: v
   doc: ''

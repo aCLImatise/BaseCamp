@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/partition_gtf2gb.pl.cwl
+id: ../../../partition_gtf2gb.pl.cwl
 inputs:
 - id: min_cluster_size
   doc: minimal number of genes in a one cluster,  default n=20

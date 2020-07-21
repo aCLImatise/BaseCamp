@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xmfa2maf.cwl
+id: ../../../xmfa2maf.cwl
 inputs:
 - id: x_mfa_input
   doc: ''

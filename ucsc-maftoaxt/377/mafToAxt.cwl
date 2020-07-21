@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafToAxt.cwl
+id: ../../../mafToAxt.cwl
 inputs:
 - id: strip_db
   doc: '- Strip names from start to first period.'

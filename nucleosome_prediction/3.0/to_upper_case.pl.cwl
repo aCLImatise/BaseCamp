@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/to_upper_case.pl.bak.cwl
+id: ../../../to_upper_case.pl.bak.cwl
 inputs:
 - id: convert_lower_case
   doc: ':       Convert to lower case'

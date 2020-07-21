@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biosails_biox_render.py.cwl
+id: ../../../biosails_biox_render.py.cwl
 inputs:
 - id: template
   doc: Path to template file

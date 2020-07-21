@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pycoQC.cwl
+id: ../../../pycoQC.cwl
 inputs:
 - id: verbose
   doc: Increase verbosity

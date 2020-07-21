@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnazIndex.pl.cwl
+id: ../../../rnazIndex.pl.cwl
 inputs:
 - id: gff
   doc: Generate GFF formatted output.

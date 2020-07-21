@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o_visualize_distance_matrix.R.cwl
+id: ../../../o_visualize_distance_matrix.R.cwl
 inputs:
 - id: metadata
   doc: Metadata file

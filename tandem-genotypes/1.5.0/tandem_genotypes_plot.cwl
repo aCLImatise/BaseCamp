@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tandem_genotypes_plot.cwl
+id: ../../../tandem_genotypes_plot.cwl
 inputs:
 - id: rows
   doc: arrange the graphs in this many rows (default=4)

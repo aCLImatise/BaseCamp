@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clearcut.cwl
+id: ../../../clearcut.cwl
 inputs:
 - id: verbose
   doc: 'More output. (Default: OFF)'

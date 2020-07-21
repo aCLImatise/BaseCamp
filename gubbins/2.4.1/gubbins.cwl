@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gubbins.cwl
+id: ../../../gubbins.cwl
 inputs:
 - id: detect_recombinations_mode
   doc: detect recombinations mode

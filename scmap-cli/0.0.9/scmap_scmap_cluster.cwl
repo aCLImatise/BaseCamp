@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scmap_scmap_cluster.R.cwl
+id: ../../../scmap_scmap_cluster.R.cwl
 inputs:
 - id: index_object_file
   doc: "'SingleCellExperiment' object previously prepared with the scmap-index-cluster.R\

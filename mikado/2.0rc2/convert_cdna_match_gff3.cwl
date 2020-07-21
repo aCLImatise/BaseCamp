@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convert_cdna_match_gff3.py.cwl
+id: ../../../convert_cdna_match_gff3.py.cwl
 inputs:
 - id: script
   doc: ''

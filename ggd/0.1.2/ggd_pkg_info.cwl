@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ggd_pkg_info.cwl
+id: ../../../ggd_pkg_info.cwl
 inputs:
 - id: channel
   doc: The ggd channel of the recipe to list info about (Default = genomics)

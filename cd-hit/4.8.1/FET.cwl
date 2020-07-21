@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FET.pl.cwl
+id: ../../../FET.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

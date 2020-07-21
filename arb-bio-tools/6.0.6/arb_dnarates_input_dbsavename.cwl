@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_dnarates_input_dbsavename.cwl
+id: ../../../arb_dnarates_input_dbsavename.cwl
 inputs:
 - id: arb_dna_rates
   doc: ''

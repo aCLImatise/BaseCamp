@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/miRge2.0_predict.cwl
+id: ../../../miRge2.0_predict.cwl
 inputs:
 - id: two_options_file
   doc: '[sample <required> [sample <required> ...]] two options: 1. A file where each

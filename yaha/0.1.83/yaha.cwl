@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/yaha.cwl
+id: ../../../yaha.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

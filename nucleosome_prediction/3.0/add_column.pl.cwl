@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/add_column.pl.bak.cwl
+id: ../../../add_column.pl.bak.cwl
 inputs:
 - id: add_column_add
   doc: ':                 add the column as the first in the file (default: add at

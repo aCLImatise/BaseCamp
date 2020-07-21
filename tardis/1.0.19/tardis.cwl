@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tardis.cwl
+id: ../../../tardis.cwl
 inputs:
 - id: in_workflow
   doc: Run the command as part of a workflow. After launching all of the jobs, tardis

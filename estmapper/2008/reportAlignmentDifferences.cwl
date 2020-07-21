@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reportAlignmentDifferences.cwl
+id: ../../../reportAlignmentDifferences.cwl
 inputs:
 - id: i
   doc: ''

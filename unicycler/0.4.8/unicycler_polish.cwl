@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unicycler_polish.cwl
+id: ../../../unicycler_polish.cwl
 inputs:
 - id: assembly
   doc: Input assembly to be polished

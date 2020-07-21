@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BaitFilter.cwl
+id: ../../../BaitFilter.cwl
 inputs:
 - id: i
   doc: ''

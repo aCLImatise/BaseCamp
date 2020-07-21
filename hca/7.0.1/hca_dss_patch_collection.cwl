@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_patch_collection.cwl
+id: ../../../hca_dss_patch_collection.cwl
 inputs:
 - id: add_contents
   doc: List of new items to add to the collection. Items are de-duplicated (if an

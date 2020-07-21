@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prepare_ligand4.py.cwl
+id: ../../../prepare_ligand4.py.cwl
 inputs:
 - id: ligandfilename_pdb_pdbq
   doc: ligand_filename (.pdb or .mol2 or .pdbq format)

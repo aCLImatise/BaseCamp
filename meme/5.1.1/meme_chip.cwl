@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/meme_chip.cwl
+id: ../../../meme_chip.cwl
 inputs:
 - id: b_file
   doc: '<path>  : background file'

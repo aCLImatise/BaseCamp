@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sim4db.cwl
+id: ../../../sim4db.cwl
 inputs:
 - id: no_def_lines
   doc: don't include the defline in the output

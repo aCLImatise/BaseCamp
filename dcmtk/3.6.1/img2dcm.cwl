@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/img2dcm.cwl
+id: ../../../img2dcm.cwl
 inputs:
 - id: _quiet_quiet
   doc: --quiet                quiet mode, print no warnings and errors

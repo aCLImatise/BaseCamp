@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi_fltuniq.cwl
+id: ../../../fermi_fltuniq.cwl
 inputs:
 - id: in_dot_fa
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xmlindent.cwl
+id: ../../../xmlindent.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

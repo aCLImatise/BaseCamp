@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pileupCaller.cwl
+id: ../../../pileupCaller.cwl
 inputs:
 - id: random_diploid
   doc: ') [--keepIncongruentReads] '

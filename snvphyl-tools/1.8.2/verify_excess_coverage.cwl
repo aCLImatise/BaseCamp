@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/verify_excess_coverage.pl.cwl
+id: ../../../verify_excess_coverage.pl.cwl
 inputs:
 - id: c
   doc: ''

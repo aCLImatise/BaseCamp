@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/advntr_delmodel_viewmodel.cwl
+id: ../../../advntr_delmodel_viewmodel.cwl
 inputs:
 - id: vid_slash_vntr_id
   doc: VNTR ID

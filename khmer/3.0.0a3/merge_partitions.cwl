@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_partitions.py.cwl
+id: ../../../merge_partitions.py.cwl
 inputs:
 - id: info
   doc: print citation information

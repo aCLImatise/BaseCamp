@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makelogo.cwl
+id: ../../../makelogo.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

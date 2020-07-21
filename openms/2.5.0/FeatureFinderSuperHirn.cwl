@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FeatureFinderSuperHirn.cwl
+id: ../../../FeatureFinderSuperHirn.cwl
 inputs:
 - id: in
   doc: "*        Input profile data file  (valid formats: 'mzML')"

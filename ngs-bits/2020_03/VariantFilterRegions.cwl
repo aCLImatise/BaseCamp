@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/VariantFilterRegions.cwl
+id: ../../../VariantFilterRegions.cwl
 inputs:
 - id: in
   doc: Input variant list.

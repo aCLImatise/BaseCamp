@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convertCoordinates.pl.cwl
+id: ../../../convertCoordinates.pl.cwl
 inputs:
 - id: type
   doc: (input is a tag directory, peak file, tags file, or BED file, or GTF file)

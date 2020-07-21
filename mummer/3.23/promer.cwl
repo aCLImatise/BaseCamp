@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/promer.cwl
+id: ../../../promer.cwl
 inputs:
 - id: matrix_set_number
   doc: '|matrix       Set the alignment matrix number to 1 [BLOSUM 45], 2 [BLOSUM

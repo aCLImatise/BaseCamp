@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sciphi.cwl
+id: ../../../sciphi.cwl
 inputs:
 - id: in
   doc: Name of the BAM files used to create the mpileup.

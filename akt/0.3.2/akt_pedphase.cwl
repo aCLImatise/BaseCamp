@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/akt_pedphase.cwl
+id: ../../../akt_pedphase.cwl
 inputs:
 - id: pedigree
   doc: pedigree information in plink .fam format

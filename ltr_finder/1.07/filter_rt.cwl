@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_rt.pl.cwl
+id: ../../../filter_rt.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

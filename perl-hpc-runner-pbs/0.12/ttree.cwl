@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ttree.cwl
+id: ../../../ttree.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

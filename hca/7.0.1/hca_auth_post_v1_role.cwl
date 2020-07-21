@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_auth_post_v1_role.cwl
+id: ../../../hca_auth_post_v1_role.cwl
 inputs:
 - id: role_id
   doc: ''

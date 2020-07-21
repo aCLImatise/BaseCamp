@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/go_dag_summary.pl.cwl
+id: ../../../go_dag_summary.pl.cwl
 inputs:
 - id: writes_parse_errors
   doc: writes parse errors in XML - defaults to STDERR (there should be no parse errors

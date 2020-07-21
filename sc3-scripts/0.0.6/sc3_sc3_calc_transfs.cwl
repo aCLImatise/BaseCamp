@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sc3_sc3_calc_transfs.R.cwl
+id: ../../../sc3_sc3_calc_transfs.R.cwl
 inputs:
 - id: input_object_file
   doc: File name in which a processed SC3 'SingleCellExperiment' object has been stored

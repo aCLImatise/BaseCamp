@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sumaclust.cwl
+id: ../../../sumaclust.cwl
 inputs:
 - id: reference_sequence_shortest
   doc: ': Reference sequence length is the shortest. '

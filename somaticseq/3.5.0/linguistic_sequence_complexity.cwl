@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/linguistic_sequence_complexity.py.cwl
+id: ../../../linguistic_sequence_complexity.py.cwl
 inputs:
 - id: sequence
   doc: 'input vcf file (default: None)'

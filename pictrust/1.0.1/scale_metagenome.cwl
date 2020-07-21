@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scale_metagenome.py.cwl
+id: ../../../scale_metagenome.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

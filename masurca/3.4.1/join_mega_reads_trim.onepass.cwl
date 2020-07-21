@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/join_mega_reads_trim.onepass.pl.cwl
+id: ../../../join_mega_reads_trim.onepass.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

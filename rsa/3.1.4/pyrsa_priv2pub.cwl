@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyrsa_priv2pub.cwl
+id: ../../../pyrsa_priv2pub.cwl
 inputs:
 - id: input
   doc: Input filename. Reads from stdin if not specified

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbt_fastq_filter.cwl
+id: ../../../rbt_fastq_filter.cwl
 inputs:
 - id: ids
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reference2targets.py.cwl
+id: ../../../reference2targets.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_assembly_get_fasta_lengths.cwl
+id: ../../../phyluce_assembly_get_fasta_lengths.cwl
 inputs:
 - id: input
   doc: The fasta file to summarize

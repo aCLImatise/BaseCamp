@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/testepsg.cwl
+id: ../../../testepsg.cwl
 inputs:
 - id: transform_coordinate_target
   doc: ': transform a coordinate from source GCS/PCS to target GCS/PCS'

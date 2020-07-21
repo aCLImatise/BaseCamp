@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_swap_dimensions.py.cwl
+id: ../../../medpy_swap_dimensions.py.cwl
 inputs:
 - id: display_more_information
   doc: Display more information.

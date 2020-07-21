@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi_bitand.cwl
+id: ../../../fermi_bitand.cwl
 inputs:
 - id: in_one_dot_bit
   doc: ''

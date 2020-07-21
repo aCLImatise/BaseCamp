@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamtools_merge.cwl
+id: ../../../bamtools_merge.cwl
 inputs:
 - id: in
   doc: the input BAM file(s)

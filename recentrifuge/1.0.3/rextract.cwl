@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rextract.cwl
+id: ../../../rextract.cwl
 inputs:
 - id: debug
   doc: increase output verbosity and perform additional checks

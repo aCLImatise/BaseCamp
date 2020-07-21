@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cachedbfetch.cwl
+id: ../../../cachedbfetch.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

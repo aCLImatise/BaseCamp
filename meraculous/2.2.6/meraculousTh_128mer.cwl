@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/meraculousTh_128mer.cwl
+id: ../../../meraculousTh_128mer.cwl
 inputs:
 - id: u_fx_file_wildcard
   doc: ''

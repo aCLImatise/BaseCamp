@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ogr2ogr.cwl
+id: ../../../ogr2ogr.cwl
 inputs:
 - id: help_general
   doc: ''

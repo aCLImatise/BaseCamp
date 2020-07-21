@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cmasker.cwl
+id: ../../../cmasker.cwl
 inputs:
 - id: fasta_input
   doc: FASTA Input

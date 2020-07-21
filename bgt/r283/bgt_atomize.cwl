@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bgt_atomize.cwl
+id: ../../../bgt_atomize.cwl
 inputs:
 - id: bcf_output
   doc: BCF output

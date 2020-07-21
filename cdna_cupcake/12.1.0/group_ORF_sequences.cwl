@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/group_ORF_sequences.py.cwl
+id: ../../../group_ORF_sequences.py.cwl
 inputs:
 - id: is_p_bid
   doc: ''

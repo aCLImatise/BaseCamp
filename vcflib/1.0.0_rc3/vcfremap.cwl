@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfremap.cwl
+id: ../../../vcfremap.cwl
 inputs:
 - id: ref_window_size
   doc: align using this many bases flanking each side of the reference allele

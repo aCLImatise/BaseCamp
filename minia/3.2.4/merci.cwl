@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merci.cwl
+id: ../../../merci.cwl
 inputs:
 - id: verbose
   doc: "(1 arg) :    verbosity level  [default '1']"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hgFindSpec.cwl
+id: ../../../hgFindSpec.cwl
 inputs:
 - id: release
   doc: '|beta|public - Include trackDb entries with this release tag only.'

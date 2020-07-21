@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/positionalTblCheck.cwl
+id: ../../../positionalTblCheck.cwl
 inputs:
 - id: verbose
   doc: n>=2, print tables as checked

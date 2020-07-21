@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cath_resolve_hits.cwl
+id: ../../../cath_resolve_hits.cwl
 inputs:
 - id: output_version_information
   doc: '[ --version ]                               Output version information'

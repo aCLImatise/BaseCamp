@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/project_tree_builder.cwl
+id: ../../../project_tree_builder.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

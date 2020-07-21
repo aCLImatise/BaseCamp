@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/.motus_pre_unlink.sh.cwl
+id: ../../../.motus_pre_unlink.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

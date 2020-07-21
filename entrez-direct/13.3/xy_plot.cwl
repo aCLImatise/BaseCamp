@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xy_plot.cwl
+id: ../../../xy_plot.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/liftUp.cwl
+id: ../../../liftUp.cwl
 inputs:
 - id: no_sort
   doc: "'t sort bed, gff, or gdup files, to save memory"

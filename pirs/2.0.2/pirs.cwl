@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pirs.cwl
+id: ../../../pirs.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

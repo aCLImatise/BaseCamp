@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halAlignmentDepth.cwl
+id: ../../../halAlignmentDepth.cwl
 inputs:
 - id: hal_path
   doc: ''

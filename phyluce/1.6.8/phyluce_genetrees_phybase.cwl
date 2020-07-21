@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_genetrees_phybase.cwl
+id: ../../../phyluce_genetrees_phybase.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

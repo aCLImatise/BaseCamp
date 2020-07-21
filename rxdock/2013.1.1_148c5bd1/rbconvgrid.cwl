@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbconvgrid.cwl
+id: ../../../rbconvgrid.cwl
 inputs:
 - id: inputfile_input_filename
   doc: <InputFile> - input RbtVdwGridSF binary grid filename

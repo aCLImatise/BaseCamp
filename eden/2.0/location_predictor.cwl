@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/location_predictor.cwl
+id: ../../../location_predictor.cwl
 inputs:
 - id: verbosity
   doc: 'Increase output verbosity (default: None)'

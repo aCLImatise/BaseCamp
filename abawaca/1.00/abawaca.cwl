@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abawaca.cwl
+id: ../../../abawaca.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

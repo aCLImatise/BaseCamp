@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_script_gen_scg_domain_classifier.cwl
+id: ../../../anvi_script_gen_scg_domain_classifier.cwl
 inputs:
 - id: genomes_dir
   doc: This should be a directory that contains a directory per domain for single-copy

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/figtree.cwl
+id: ../../../figtree.cwl
 inputs:
 - id: graphic
   doc: a graphic with the given format

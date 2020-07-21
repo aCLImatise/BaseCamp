@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_gffs_from_list.py.cwl
+id: ../../../get_gffs_from_list.py.cwl
 inputs:
 - id: partial
   doc: ''

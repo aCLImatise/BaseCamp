@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterGenes.pl.cwl
+id: ../../../filterGenes.pl.cwl
 inputs:
 - id: name_file
   doc: ''

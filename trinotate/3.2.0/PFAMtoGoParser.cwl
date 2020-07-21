@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PFAMtoGoParser.pl.cwl
+id: ../../../PFAMtoGoParser.pl.cwl
 inputs:
 - id: pfam_to_go
   doc: ''

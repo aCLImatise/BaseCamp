@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nucmerAnnotate.cwl
+id: ../../../nucmerAnnotate.cwl
 inputs:
 - id: ignore
   doc: '- Maximum length of the end sequence unaligned (Default: 20 bp)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/akt_pca.cwl
+id: ../../../akt_pca.cwl
 inputs:
 - id: output
   doc: ':                   output vcf'

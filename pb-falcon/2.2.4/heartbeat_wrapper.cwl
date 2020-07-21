@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/heartbeat_wrapper.cwl
+id: ../../../heartbeat_wrapper.cwl
 inputs:
 - id: rate
   doc: 'Heartbeat rate, in seconds (default: 1.0)'

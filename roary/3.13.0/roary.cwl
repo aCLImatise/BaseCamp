@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/roary.cwl
+id: ../../../roary.cwl
 inputs:
 - id: number_of_threads
   doc: number of threads [1]

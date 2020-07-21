@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/np_likeness.cwl
+id: ../../../np_likeness.cwl
 inputs:
 - id: var_0
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/check_tradis_tags.cwl
+id: ../../../check_tradis_tags.cwl
 inputs:
 - id: b
   doc: ''

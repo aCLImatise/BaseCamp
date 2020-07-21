@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compute_coverage.pl.cwl
+id: ../../../compute_coverage.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/velvetg.cwl
+id: ../../../velvetg.cwl
 inputs:
 - id: scaffolding
   doc: ': scaffolding of contigs used paired end information (default: on)'

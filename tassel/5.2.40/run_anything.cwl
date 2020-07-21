@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_anything.pl.cwl
+id: ../../../run_anything.pl.cwl
 inputs:
 - id: disable_at_files
   doc: prevent further argument file expansion

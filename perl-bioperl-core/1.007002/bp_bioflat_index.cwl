@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_bioflat_index.pl.cwl
+id: ../../../bp_bioflat_index.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

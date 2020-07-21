@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deblur_multiple_seq_alignment.cwl
+id: ../../../deblur_multiple_seq_alignment.cwl
 inputs:
 - id: threads_per_sample
   doc: 'Number of threads to use per sample (0 to use all)  [default: 1]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simsam.py.cwl
+id: ../../../simsam.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

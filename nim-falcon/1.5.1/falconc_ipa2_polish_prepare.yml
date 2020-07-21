@@ -1,0 +1,419 @@
+&id003 !Command
+positional: []
+named:
+- !Flag
+  description: 'advanced: prepend,plurals,..'
+  synonyms:
+  - --help-syntax
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =, --max-nshards=   int     REQUIRED    Maximum number of distributed
+    jobs
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =, --shard-prefix=  string  "shard_id"  The output. Shard files are
+    (prefix).(shard_id).block_ids
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =, --block-prefix=  string  "block_id"  Block files are (prefix).(block_id).reads
+    (prepared previously)
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =, --out-ids-fn=    string  ""          If given, this lists the shard_ids,
+    0 thru N-1, corresponding to the shard-prefix.block_id files.
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- falconc
+- ipa2-polish-prepare
+parent: &id001 !Command
+  positional: []
+  named: []
+  command:
+  - falconc
+  parent:
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: 'advanced: prepend,plurals,..'
+      synonyms:
+      - --help-syntax
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: =, --in-bam=  string  REQUIRED  input bam name
+      synonyms:
+      - -i
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: =, --region=  string  REQUIRED  htslib formatted region seqid:start-end
+      synonyms:
+      - -r
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: =, --flag=    int     3844      filter reads with flag
+      synonyms:
+      - -f
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: bool    false     reverse complement (RC) the sequence if alignment
+        is in RC
+      synonyms:
+      - --flip-rc
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - falconc
+    - bam2clippedFasta
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: print this cligen-erated help
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "bam2clippedFasta [required&optional-params] \nVery similar to `samtools\
+      \ fasta`, but the reads are subSequenced.  Output is printed to STDOUT\nOptions:\n\
+      \  -h, --help                        print this cligen-erated help\n  --help-syntax\
+      \                     advanced: prepend,plurals,..\n  -i=, --in-bam=  string\
+      \  REQUIRED  input bam name\n  -r=, --region=  string  REQUIRED  htslib formatted\
+      \ region seqid:start-end\n  -f=, --flag=    int     3844      filter reads with\
+      \ flag\n  --flip-rc       bool    false     reverse complement (RC) the sequence\
+      \ if alignment is in RC\n"
+    generated_using: &id002
+    - --help
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: 'advanced: prepend,plurals,..'
+      synonyms:
+      - --help-syntax
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: =, --max-nshards=   int     REQUIRED  Maximum number of distributed
+        jobs
+      synonyms:
+      - -m
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: =, --shard-prefix=  string  "shard"   The output. Shard files are
+        (prefix).(shard_id).block_ids (though they really are block_id ranges).
+      synonyms:
+      - -s
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: =, --n=             int     REQUIRED  Generate comparisons for
+        upper-triangle of nxn matrix
+      synonyms:
+      - -n
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: =, --out-ids-fn=    string  ""        If given, this lists the
+        shard_ids, 0 thru N-1, corresponding to the shard-prefix.block_id files. Useful
+        for Cromwell.
+      synonyms:
+      - -o
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - falconc
+    - ipa-shard-ovl-asym
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: print this cligen-erated help
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "ipa-shard-ovl-asym [required&optional-params] \n(Used to shard the\
+      \ asymmetric overlap jobs.)\nOptions:\n  -h, --help                        \
+      \      print this cligen-erated help\n  --help-syntax                      \
+      \     advanced: prepend,plurals,..\n  -m=, --max-nshards=   int     REQUIRED\
+      \  Maximum number of distributed jobs\n  -s=, --shard-prefix=  string  \"shard\"\
+      \   The output. Shard files are (prefix).(shard_id).block_ids (though they really\
+      \ are block_id ranges).\n  -n=, --n=             int     REQUIRED  Generate\
+      \ comparisons for upper-triangle of nxn matrix\n  -o=, --out-ids-fn=    string\
+      \  \"\"        If given, this lists the shard_ids, 0 thru N-1, corresponding\
+      \ to the shard-prefix.block_id files. Useful for Cromwell.\n"
+    generated_using: *id002
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: 'advanced: prepend,plurals,..'
+      synonyms:
+      - --help-syntax
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: =, --max-nshards=           int     REQUIRED                     Maximum
+        number of distributed jobs
+      synonyms:
+      - -m
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: =, --shard-prefix=          string  "shard"                      The
+        output. Shard files are (prefix).(shard_id).block_ids
+      synonyms:
+      - -s
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: =, --block-prefix=          string  "block"                      Block
+        files are (prefix).(block_id).reads (prepared previously)
+      synonyms:
+      - -b
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '=, --in-read-to-contig-fn=  string  "sorted.read_to_contig.csv"  2-columns:
+        read# ctg-name'
+      synonyms:
+      - -i
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: =, --out-ids-fn=            string  "all_shard_ids"              If
+        given, this lists the shard_ids, 0 thru N-1, corresponding to the shard-prefix.block_id
+        files.
+      synonyms:
+      - -o
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: =               int     REQUIRED                     Try to target
+        megabases total in all contigs in any block
+      synonyms:
+      - --mb-per-block
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: =               string  ""                           Specifies
+        a file with a list of contigs to skip for polishing.
+      synonyms:
+      - --blacklist-fn
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - falconc
+    - ipa-polish-split
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: print this cligen-erated help
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "ipa-polish-split [required&optional-params] Indexed fasta filenames\
+      \ to polish\nThe trailing list of fasta.fai filenames are FASTA index files.\
+      \ They will be used to split the shards somewhat evenly. (Used to shard the\
+      \ polishing jobs.)\nOptions:\n  -h, --help                                 \
+      \                        print this cligen-erated help\n  --help-syntax    \
+      \                                                  advanced: prepend,plurals,..\n\
+      \  -m=, --max-nshards=           int     REQUIRED                     Maximum\
+      \ number of distributed jobs\n  -s=, --shard-prefix=          string  \"shard\"\
+      \                      The output. Shard files are (prefix).(shard_id).block_ids\n\
+      \  -b=, --block-prefix=          string  \"block\"                      Block\
+      \ files are (prefix).(block_id).reads (prepared previously)\n  -i=, --in-read-to-contig-fn=\
+      \  string  \"sorted.read_to_contig.csv\"  2-columns: read# ctg-name\n  -o=,\
+      \ --out-ids-fn=            string  \"all_shard_ids\"              If given,\
+      \ this lists the shard_ids, 0 thru N-1, corresponding to the shard-prefix.block_id\
+      \ files.\n  --mb-per-block=               int     REQUIRED                 \
+      \    Try to target megabases total in all contigs in any block\n  --blacklist-fn=\
+      \               string  \"\"                           Specifies a file with\
+      \ a list of contigs to skip for polishing.\n"
+    generated_using: *id002
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: 'advanced: prepend,plurals,..'
+      synonyms:
+      - --help-syntax
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: =, --max-nshards=   int     REQUIRED         Maximum number of
+        distributed jobs
+      synonyms:
+      - -m
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: =, --shard-prefix=  string  "shard"          The output. Shard
+        files are (prefix).(shard_id).block_ids
+      synonyms:
+      - -s
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: =, --block-prefix=  string  "block"          Block files are (prefix).(block_id).m4
+        (prepared previously)
+      synonyms:
+      - -b
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: =, --out-ids-fn=    string  "all_shard_ids"  If given, this lists
+        the shard_ids, 0 thru N-1, corresponding to the shard-prefix.block_id files.
+      synonyms:
+      - -o
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - falconc
+    - ipa-shard-blocks-m4
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: print this cligen-erated help
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "ipa-shard-blocks-m4 [required&optional-params] \nGiven several {block_prefix}.(block_id).m4\
+      \ files, create up to {max_nshards} files that each contain a list of block_ids\
+      \ (one per line). For now, they are balanced by the number of reads in each\
+      \ .m4 file.\n(Later, the contents of each shard will be processed linearly,\
+      \ one block at a time, on a given compute node.) (Used to shard the phasing\
+      \ jobs.)\nOptions:\n  -h, --help                                     print this\
+      \ cligen-erated help\n  --help-syntax                                  advanced:\
+      \ prepend,plurals,..\n  -m=, --max-nshards=   int     REQUIRED         Maximum\
+      \ number of distributed jobs\n  -s=, --shard-prefix=  string  \"shard\"    \
+      \      The output. Shard files are (prefix).(shard_id).block_ids\n  -b=, --block-prefix=\
+      \  string  \"block\"          Block files are (prefix).(block_id).m4 (prepared\
+      \ previously)\n  -o=, --out-ids-fn=    string  \"all_shard_ids\"  If given,\
+      \ this lists the shard_ids, 0 thru N-1, corresponding to the shard-prefix.block_id\
+      \ files.\n"
+    generated_using: *id002
+  - *id003
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage:\n  falconc {SUBCMD}  [sub-command options & parameters]\nwhere\
+    \ {SUBCMD} is one of:\n  help                          print comprehensive or\
+    \ per-cmd help\n  version                       \n  dataset                  \
+    \     \n  kmers                         \n  utils                         \n \
+    \ bam-filter-ipa                Print subreads which have decent alignments in\
+    \ any of the bam inputs.\n  align-filter                  alias for bam-filter-ipa\n\
+    \  bam-tags-enrich               Add XB/XE/XP/XR/XQ: beg/end/%idt/aln-ref-len/qry-len\n\
+    \  bam-filter-clipped            Filter alignments with significant clipping.\
+    \ To skip an alignment, both max_clipping and end_margin must be exceeded on at\
+    \ least 1 end.\n  falcon-read2ctg-augment       Assigns the unphased reads to\
+    \ haplotigs or primary contigs based on pbmm2 mapping.\n  raptor-db-filter   \
+    \           Read/write raptor-db to/from stdin/stdout. Exclude zmws in blacklist.\n\
+    \  raptor-db-calc-length-cutoff  Perform a linear pass on an overlap file, and\
+    \ determine rough clipping coordinates to 'correct' reads. Write integer to stdout.\n\
+    \  raptor-db-subsample           \n  circ-orient                   reorients circular\
+    \ sequences based on gc-skew distribution and writes to output.\n  circ-randomize\
+    \                randomly rotates left rotates the sequence and writes to the\
+    \ output file.\n  phasr                         Phase PacBio CCS/HIFI reads.\n\
+    \  m4filt-merge-blacklist        \n  m4filt-stage1                 \n  m4filt-stage2\
+    \                 \n  m4filt-dump-blacklist         \n  m4filt               \
+    \         Run the multi-stage m4 overlap filter (for HiFi Asm). Take only one\
+    \ m4 file, inFn. If in+'.idx' exists, that is the index. In stage one, reads that\
+    \ trigger a filter are marked\n                                including containment,\
+    \ gaps in coverage along the A-read, and repeat reads. In stage two the filters\
+    \ are applied and the N-best overlaps are kept for the 5prime and 3prime of each\n\
+    \                                read.\n  m4filt-falconRunner           Runs the\
+    \ multi-stage m4 overlap filter for falcon. In stage one, reads that trigger a\
+    \ filter are marked including containment, gaps in coverage along the A-read,\
+    \ and repeat reads.\n                                In stage two the filters\
+    \ are applied and the N-best overlaps are kept for the 5prime and 3prime of each\
+    \ read.\n  m4filt-ipaRunner              Runs the multi-stage m4 overlap filter\
+    \ for IPA. In stage one, reads that trigger a filter are marked including containment,\
+    \ gaps in coverage along the A-read, and repeat reads. In\n                  \
+    \              stage two the filters are applied and the N-best overlaps are kept\
+    \ for the 5prime and 3prime of each read.\n  m4filt-contained              Parse\
+    \ .m4 file. Write only the overlaps which pass the filters. (no overlaps involving\
+    \ contained reads;  no overlaps involving short reads;  no overlaps with low identity)\n\
+    \  m4filt-idx                    Given foo.m4, create index file foo.m4.idx (Or\
+    \ just use it if it exists.) Format is \"0000 count start len\", where count is\
+    \ the number of overlaps in the pile. (First field is\n                      \
+    \          dummy, instead of Aread name, for efficiency.) Return the sum of all\
+    \ pileups, which should exactly match filesize.\n  ovl-cov-stats             \
+    \    \n  pbcromwell-rm-las             Remove all .las files except final stage\
+    \ of merge. (Unzip is still possible.) Filepaths come from the provided command\
+    \ as a subprocess, or from stdin if command==\"-\", (Someday, we\n           \
+    \                     will add a flag to delete the final stage too, optionally.)\n\
+    \  pbreports-circ                Given FASTA of all ctgs and text-list of circular\
+    \ ctgs, print a report (pbreports format).\n  pbreports-ctg-table           \n\
+    \  stats-assembly                \n  stats-preassembly             \n  stats-gff\
+    \                     \n  rr-hctg-track1                \n  rr-hctg-track2   \
+    \             Stage 2 of rr_hctg_track\n  bam2clippedFasta              Very similar\
+    \ to `samtools fasta`, but the reads are subSequenced.  Output is printed to STDOUT\n\
+    \  ipa2-construct-config         Takes an advanced options string, and reformats\
+    \ it into JSON format. Input/output is on stdin/stdout. Options which aren't set\
+    \ explicitly in the input will be set to default\n                           \
+    \     (configurable via args).\n  ipa-shard-ovl-asym            (Used to shard\
+    \ the asymmetric overlap jobs.)\n  ipa-polish-split              The trailing\
+    \ list of fasta.fai filenames are FASTA index files. They will be used to split\
+    \ the shards somewhat evenly. (Used to shard the polishing jobs.)\n  ipa-shard-blocks-m4\
+    \           Given several {block_prefix}.(block_id).m4 files, create up to {max_nshards}\
+    \ files that each contain a list of block_ids (one per line). For now, they are\
+    \ balanced by the number\n                                of reads in each .m4\
+    \ file. (Later, the contents of each shard will be processed linearly, one block\
+    \ at a time, on a given compute node.) (Used to shard the phasing jobs.)\n  ipa2-polish-prepare\
+    \           DEPRECATED\n\nfalconc {-h|--help} or with no args at all prints this\
+    \ message.\nfalconc --help-syntax gives general cligen syntax help.\nRun \"falconc\
+    \ {help SUBCMD|SUBCMD --help}\" to see help for just SUBCMD.\nRun \"falconc help\"\
+    \ to get *comprehensive* help.\n"
+  generated_using: *id002
+subcommands: []
+help_flag: !Flag
+  description: print this cligen-erated help
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "ipa2-polish-prepare [required&optional-params] \nDEPRECATED\nOptions:\n\
+  \  -h, --help                                print this cligen-erated help\n  --help-syntax\
+  \                             advanced: prepend,plurals,..\n  -m=, --max-nshards=\
+  \   int     REQUIRED    Maximum number of distributed jobs\n  -s=, --shard-prefix=\
+  \  string  \"shard_id\"  The output. Shard files are (prefix).(shard_id).block_ids\n\
+  \  -b=, --block-prefix=  string  \"block_id\"  Block files are (prefix).(block_id).reads\
+  \ (prepared previously)\n  -o=, --out-ids-fn=    string  \"\"          If given,\
+  \ this lists the shard_ids, 0 thru N-1, corresponding to the shard-prefix.block_id\
+  \ files.\n"
+generated_using: *id002

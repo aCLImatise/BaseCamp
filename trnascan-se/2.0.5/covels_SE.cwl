@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/covels_SE.cwl
+id: ../../../covels_SE.cwl
 inputs:
 - id: complementary_strand_too
   doc: ': do complementary strand too'

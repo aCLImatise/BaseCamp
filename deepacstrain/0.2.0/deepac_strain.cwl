@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deepac_strain.cwl
+id: ../../../deepac_strain.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

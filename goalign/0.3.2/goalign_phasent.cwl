@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_phasent.cwl
+id: ../../../goalign_phasent.cwl
 inputs:
 - id: aa_output
   doc: Output translated sequences FASTA file (default "none")

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmscore.cwl
+id: ../../../hmmscore.cwl
 inputs:
 - id: option
   doc: ''

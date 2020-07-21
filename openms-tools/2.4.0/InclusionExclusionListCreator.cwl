@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/InclusionExclusionListCreator.cwl
+id: ../../../InclusionExclusionListCreator.cwl
 inputs:
 - id: include
   doc: "Inclusion list input file in FASTA or featureXML format. (valid formats: 'featureXML',\

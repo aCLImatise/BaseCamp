@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metaquant.cwl
+id: ../../../metaquant.cwl
 inputs:
 - id: mode
   doc: Analysis mode. If taxfun is chosen, both function and taxonomy files must be

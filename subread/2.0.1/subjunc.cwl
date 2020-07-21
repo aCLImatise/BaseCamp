@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/subjunc.cwl
+id: ../../../subjunc.cwl
 inputs:
 - id: base_name_index
   doc: Base name of the index.

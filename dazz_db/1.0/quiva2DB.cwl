@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quiva2DB.cwl
+id: ../../../quiva2DB.cwl
 inputs:
 - id: vl
   doc: ''

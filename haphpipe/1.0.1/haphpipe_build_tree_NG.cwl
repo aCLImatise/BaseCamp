@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/haphpipe_build_tree_NG.cwl
+id: ../../../haphpipe_build_tree_NG.cwl
 inputs:
 - id: seqs
   doc: Input alignment in FASTA or PHYLIP format

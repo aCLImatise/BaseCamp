@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ngsfilter.cwl
+id: ../../../ngsfilter.cwl
 inputs:
 - id: tag_list
   doc: File containing the samples definition (with tags, primers, sample names,...)

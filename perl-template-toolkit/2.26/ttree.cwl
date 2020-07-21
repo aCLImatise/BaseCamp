@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ttree.cwl
+id: ../../../ttree.cwl
 inputs:
 - id: _process_files
   doc: (--all)          Process all files, regardless of modification

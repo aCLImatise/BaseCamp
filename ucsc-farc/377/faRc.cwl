@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faRc.cwl
+id: ../../../faRc.cwl
 inputs:
 - id: keep_name
   doc: "- keep name identical (don't prepend RC)"

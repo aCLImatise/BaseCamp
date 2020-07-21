@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk_watch.cwl
+id: ../../../csvtk_watch.cwl
 inputs:
 - id: bins
   doc: number of histogram bins (default -1)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iu_visualize_plot_dicts.cwl
+id: ../../../iu_visualize_plot_dicts.cwl
 inputs:
 - id: dest
   doc: Figure destination

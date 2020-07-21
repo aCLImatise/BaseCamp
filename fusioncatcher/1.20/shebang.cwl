@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shebang.py.cwl
+id: ../../../shebang.py.cwl
 inputs:
 - id: path
   doc: The path where are FusionCatcher's Python scripts.

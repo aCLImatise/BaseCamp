@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/toUpper.cwl
+id: ../../../toUpper.cwl
 inputs:
 - id: in_file
   doc: ''

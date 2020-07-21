@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tpp.cwl
+id: ../../../tpp.cwl
 inputs:
 - id: replicon_ids
   doc: "# if multiple replicons/genomes/contigs/sequences were provided in -ref, give\

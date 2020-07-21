@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/laser_recalibrate.cwl
+id: ../../../laser_recalibrate.cwl
 inputs:
 - id: arg_file_name_empiric_insertion
   doc: '[ --insertion_length_dist ] arg    File name of empiric insertion size  distribution.'

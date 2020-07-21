@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qcSTR.cwl
+id: ../../../qcSTR.cwl
 inputs:
 - id: vcf
   doc: VCF file to analyze.

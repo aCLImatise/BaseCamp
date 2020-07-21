@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnasamba_train.cwl
+id: ../../../rnasamba_train.cwl
 inputs:
 - id: early_stopping
   doc: 'number of epochs after lowest validation loss before stopping training (a

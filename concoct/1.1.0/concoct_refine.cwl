@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/concoct_refine.cwl
+id: ../../../concoct_refine.cwl
 inputs:
 - id: expansion_factor
   doc: number of clusters to expand by

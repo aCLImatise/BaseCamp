@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scHicAdjustMatrix.cwl
+id: ../../../scHicAdjustMatrix.cwl
 inputs:
 - id: matrix
   doc: 'The matrix to adjust in the scool format. (default: None)'

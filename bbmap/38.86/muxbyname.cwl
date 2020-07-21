@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/muxbyname.sh.cwl
+id: ../../../muxbyname.sh.cwl
 inputs:
 - id: in
   doc: ''

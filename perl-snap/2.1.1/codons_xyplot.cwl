@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/codons_xyplot.pl.cwl
+id: ../../../codons_xyplot.pl.cwl
 inputs:
 - id: no
   doc: ''

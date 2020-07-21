@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ripser_coeff.cwl
+id: ../../../ripser_coeff.cwl
 inputs:
 - id: format
   doc: 'use the specified file format for the input. Options are: lower-distance (lower

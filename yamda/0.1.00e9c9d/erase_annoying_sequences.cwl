@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/erase_annoying_sequences.py.cwl
+id: ../../../erase_annoying_sequences.py.cwl
 inputs:
 - id: input
   doc: Input FASTA file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/missing_regions.cwl
+id: ../../../missing_regions.cwl
 inputs:
 - id: maf_file
   doc: ''

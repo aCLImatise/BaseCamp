@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/refgenieserver_archive.cwl
+id: ../../../refgenieserver_archive.cwl
 inputs:
 - id: config
   doc: "A path to the refgenie config file (YAML). If not provided, the first available\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findTADsAndLoopsFromRelMatrix.cwl
+id: ../../../findTADsAndLoopsFromRelMatrix.cwl
 inputs:
 - id: mint_ad_score
   doc: '<#> (minimum inclusion ratio i.e. intra-TAD interactions vs. inter-TAD interaction,

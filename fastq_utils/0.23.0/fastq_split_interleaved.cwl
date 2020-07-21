@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_split_interleaved.cwl
+id: ../../../fastq_split_interleaved.cwl
 inputs:
 - id: interleaved_fast_q
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dbiproxy.cwl
+id: ../../../dbiproxy.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

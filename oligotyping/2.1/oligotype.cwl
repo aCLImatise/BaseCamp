@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/oligotype.cwl
+id: ../../../oligotype.cwl
 inputs:
 - id: min_base_quality
   doc: Minimum quality score for each base in locations of interest of a read to be

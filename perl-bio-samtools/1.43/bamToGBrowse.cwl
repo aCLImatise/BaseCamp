@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamToGBrowse.pl.cwl
+id: ../../../bamToGBrowse.pl.cwl
 inputs:
 - id: bed_graph_to_bigwig
   doc: -- download from http://hgdownload.cse.ucsc.edu/admin/exe or build from source

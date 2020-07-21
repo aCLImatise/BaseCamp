@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk_splitxlsx.cwl
+id: ../../../csvtk_splitxlsx.cwl
 inputs:
 - id: fields
   doc: comma separated key fields, column name or index. e.g. -f 1-3 or -f id,id2

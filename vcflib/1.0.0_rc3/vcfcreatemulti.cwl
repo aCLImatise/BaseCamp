@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfcreatemulti.cwl
+id: ../../../vcfcreatemulti.cwl
 inputs:
 - id: file
   doc: ''

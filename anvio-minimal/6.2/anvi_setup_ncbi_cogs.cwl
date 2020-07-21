@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_setup_ncbi_cogs.cwl
+id: ../../../anvi_setup_ncbi_cogs.cwl
 inputs:
 - id: cog_data_dir
   doc: The directory for COG data to be stored. If you leave it as is without specifying

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TOBIAS_BINDetect.cwl
+id: ../../../TOBIAS_BINDetect.cwl
 inputs:
 - id: signals
   doc: '[<bigwig> [<bigwig> ...]] Signal per condition (.bigwig format)'

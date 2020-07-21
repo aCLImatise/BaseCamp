@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/perfect_square.cwl
+id: ../../../perfect_square.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

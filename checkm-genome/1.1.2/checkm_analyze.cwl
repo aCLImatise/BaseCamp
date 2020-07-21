@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkm_analyze.cwl
+id: ../../../checkm_analyze.cwl
 inputs:
 - id: ali
   doc: generate HMMER alignment file for each bin

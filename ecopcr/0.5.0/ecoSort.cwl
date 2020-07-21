@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ecoSort.py.cwl
+id: ../../../ecoSort.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seatac.cwl
+id: ../../../seatac.cwl
 inputs:
 - id: num_threads
   doc: Use n search threads

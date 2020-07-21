@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmx_image.cwl
+id: ../../../gmx_image.cwl
 inputs:
 - id: config
   doc: Configuration file

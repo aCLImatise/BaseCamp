@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/humann2.cwl
+id: ../../../humann2.cwl
 inputs:
 - id: verbose
   doc: additional output is printed

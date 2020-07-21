@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_re_match.cwl
+id: ../../../fasta_re_match.cwl
 inputs:
 - id: norc
   doc: Only find matches to motifs in the given strand

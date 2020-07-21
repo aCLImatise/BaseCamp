@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslCheck.cwl
+id: ../../../pslCheck.cwl
 inputs:
 - id: quiet
   doc: '- no write error message, just filter'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ReadQC.cwl
+id: ../../../ReadQC.cwl
 inputs:
 - id: in_one
   doc: Forward input gzipped FASTQ file(s).

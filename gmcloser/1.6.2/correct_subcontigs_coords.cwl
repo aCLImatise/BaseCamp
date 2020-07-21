@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/correct_subcontigs_coords.pl.cwl
+id: ../../../correct_subcontigs_coords.pl.cwl
 inputs:
 - id: query
   doc: input contig fasta file (e.g., contig1.fa)

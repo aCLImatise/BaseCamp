@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_convert.py_output.cwl
+id: ../../../medpy_convert.py_output.cwl
 inputs:
 - id: e
   doc: ''

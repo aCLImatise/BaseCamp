@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parallel_pick_otus_trie.py.cwl
+id: ../../../parallel_pick_otus_trie.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

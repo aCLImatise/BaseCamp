@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arrow_ARGS.cwl
+id: ../../../arrow_ARGS.cwl
 inputs:
 - id: arrow
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools_sort.cwl
+id: ../../../samtools_sort.cwl
 inputs:
 - id: on
   doc: ''

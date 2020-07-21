@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proBAM.py.cwl
+id: ../../../proBAM.py.cwl
 inputs:
 - id: name
   doc: name of the project (will be determine how the output file is called

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gca.cwl
+id: ../../../gca.cwl
 inputs:
 - id: bed
   doc: BED file of ChIP regions.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/albatradis_artemis_project.cwl
+id: ../../../albatradis_artemis_project.cwl
 inputs:
 - id: control
   doc: 'control files (can use multiple times) (default: None)'

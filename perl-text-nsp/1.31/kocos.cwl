@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kocos.pl.cwl
+id: ../../../kocos.pl.cwl
 inputs:
 - id: bigram
   doc: ''

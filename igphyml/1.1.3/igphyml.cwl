@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/igphyml.cwl
+id: ../../../igphyml.cwl
 inputs:
 - id: musertreefilem_only_used
   doc: "\e[00;04muser_tree_file\e[00;00m (only if -i used) \e[00;04muser_tree_file\e\

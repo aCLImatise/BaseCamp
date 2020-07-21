@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/marge_regions.cwl
+id: ../../../marge_regions.cwl
 inputs:
 - id: marge
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transIndel_build_RNA.py.cwl
+id: ../../../transIndel_build_RNA.py.cwl
 inputs:
 - id: reference_genome_used
   doc: :reference genome used for analyzing RNAseq data (required)

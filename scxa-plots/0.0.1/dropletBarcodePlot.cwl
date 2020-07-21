@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dropletBarcodePlot.R.cwl
+id: ../../../dropletBarcodePlot.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

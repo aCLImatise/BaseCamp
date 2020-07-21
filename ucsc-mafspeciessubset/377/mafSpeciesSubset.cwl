@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafSpeciesSubset.cwl
+id: ../../../mafSpeciesSubset.cwl
 inputs:
 - id: keep_first
   doc: "- If set, keep the first 'a' line in a maf no matter what Useful for mafFrag\

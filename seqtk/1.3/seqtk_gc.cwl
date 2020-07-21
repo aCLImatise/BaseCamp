@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqtk_gc.cwl
+id: ../../../seqtk_gc.cwl
 inputs:
 - id: identify_highat_regions
   doc: identify high-AT regions

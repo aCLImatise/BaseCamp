@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lastdb8.cwl
+id: ../../../lastdb8.cwl
 inputs:
 - id: output_name
   doc: ''

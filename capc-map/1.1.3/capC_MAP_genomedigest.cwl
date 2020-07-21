@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/capC_MAP_genomedigest.cwl
+id: ../../../capC_MAP_genomedigest.cwl
 inputs:
 - id: input_fasta_file
   doc: input fasta file of geneome

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anova_fixed.py.cwl
+id: ../../../anova_fixed.py.cwl
 inputs:
 - id: out
   doc: Output file name.

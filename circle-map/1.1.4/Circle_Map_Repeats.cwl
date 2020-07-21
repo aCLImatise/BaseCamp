@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Circle_Map_Repeats.cwl
+id: ../../../Circle_Map_Repeats.cwl
 inputs:
 - id: input_coordinate_sorted
   doc: 'Input: coordinate name sorted bam file'

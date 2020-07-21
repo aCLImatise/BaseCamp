@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/split_and_run_sparc.sh.cwl
+id: ../../../split_and_run_sparc.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pipits_rereplicate.cwl
+id: ../../../pipits_rereplicate.cwl
 inputs:
 - id: i
   doc: '[REQUIRED]'

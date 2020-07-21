@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/skmer.cwl
+id: ../../../skmer.cwl
 inputs:
 - id: debug
   doc: Print the traceback when an exception is raised

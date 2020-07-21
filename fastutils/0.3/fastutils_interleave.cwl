@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastutils_interleave.cwl
+id: ../../../fastutils_interleave.cwl
 inputs:
 - id: in_one
   doc: fasta/q file containing forward (left) reads [required]

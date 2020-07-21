@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rearrangeSeqs.cwl
+id: ../../../rearrangeSeqs.cwl
 inputs:
 - id: good_dot
   doc: ''

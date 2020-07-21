@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bbmask.sh.cwl
+id: ../../../bbmask.sh.cwl
 inputs:
 - id: in
   doc: ''

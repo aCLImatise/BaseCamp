@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxknife.cwl
+id: ../../../taxknife.cwl
 inputs:
 - id: arg_annotate_choose
   doc: '[ --mode ] arg (=annotate)       choose mode: "traverse": follow nodes upwards

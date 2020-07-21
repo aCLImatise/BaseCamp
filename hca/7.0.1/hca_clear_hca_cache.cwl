@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_clear_hca_cache.cwl
+id: ../../../hca_clear_hca_cache.cwl
 inputs:
 - id: log_level
   doc: ''

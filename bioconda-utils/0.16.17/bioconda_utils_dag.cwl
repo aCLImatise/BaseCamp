@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioconda_utils_dag.cwl
+id: ../../../bioconda_utils_dag.cwl
 inputs:
 - id: packages
   doc: "Glob for package[s] to show in DAG. Default is to show all packages. Can be\

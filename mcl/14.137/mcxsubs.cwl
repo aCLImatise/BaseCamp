@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mcxsubs.cwl
+id: ../../../mcxsubs.cwl
 inputs:
 - id: sub_spec
   doc: ''

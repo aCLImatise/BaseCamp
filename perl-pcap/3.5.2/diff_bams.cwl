@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/diff_bams.pl.cwl
+id: ../../../diff_bams.pl.cwl
 inputs:
 - id: bam_a
   doc: -a    The first BAM|CRAM file.

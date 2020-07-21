@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tepid_map.cwl
+id: ../../../tepid_map.cwl
 inputs:
 - id: path_bowtie_index
   doc: path to bowtie2 index

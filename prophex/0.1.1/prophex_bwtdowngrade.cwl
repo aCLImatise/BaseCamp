@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prophex_bwtdowngrade.cwl
+id: ../../../prophex_bwtdowngrade.cwl
 inputs:
 - id: input_dot_bwt
   doc: ''

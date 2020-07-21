@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqtk_mergefa.cwl
+id: ../../../seqtk_mergefa.cwl
 inputs:
 - id: quality_threshold
   doc: quality threshold [0]

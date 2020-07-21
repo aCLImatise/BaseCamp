@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/srf_dump_all.cwl
+id: ../../../srf_dump_all.cwl
 inputs:
 - id: chunk_types_output
   doc: 'Chunk types to output given as a comma delimited list of types. The following

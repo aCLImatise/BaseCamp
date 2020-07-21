@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/batchFindMotifs.pl.cwl
+id: ../../../batchFindMotifs.pl.cwl
 inputs:
 - id: cpu
   doc: (# of concurrent jobs, -p controls CPUs used by each findMotifsGenome.pl instance)

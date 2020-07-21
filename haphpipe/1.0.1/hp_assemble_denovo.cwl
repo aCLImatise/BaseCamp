@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hp_assemble_denovo.cwl
+id: ../../../hp_assemble_denovo.cwl
 inputs:
 - id: fq_one
   doc: Fastq file with read 1

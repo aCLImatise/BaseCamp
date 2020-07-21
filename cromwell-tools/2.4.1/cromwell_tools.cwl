@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cromwell_tools.cwl
+id: ../../../cromwell_tools.cwl
 inputs:
 - id: v
   doc: ''

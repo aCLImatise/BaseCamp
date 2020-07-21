@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spades_bwa_bwtupdate.cwl
+id: ../../../spades_bwa_bwtupdate.cwl
 inputs:
 - id: bwa
   doc: ''

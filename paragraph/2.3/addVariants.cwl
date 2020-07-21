@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/addVariants.py_output.cwl
+id: ../../../addVariants.py_output.cwl
 inputs:
 - id: variants
   doc: ''

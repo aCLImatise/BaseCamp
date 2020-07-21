@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PgSAgen.cwl
+id: ../../../PgSAgen.cwl
 inputs:
 - id: r
   doc: ''

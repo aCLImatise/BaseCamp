@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goa2rdf.pl.cwl
+id: ../../../goa2rdf.pl.cwl
 inputs:
 - id: goa_input_file
   doc: GOA input file

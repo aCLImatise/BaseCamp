@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqret.cwl
+id: ../../../seqret.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prosic_estimate_mutation_rate.cwl
+id: ../../../prosic_estimate_mutation_rate.cwl
 inputs:
 - id: fit
   doc: Path to file that will observations and the parameters of the fitted model

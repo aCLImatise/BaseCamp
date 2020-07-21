@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/analyzeaccession.sh.cwl
+id: ../../../analyzeaccession.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

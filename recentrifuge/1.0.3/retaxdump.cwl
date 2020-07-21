@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/retaxdump.cwl
+id: ../../../retaxdump.cwl
 inputs:
 - id: nodes_path
   doc: path for the nodes information files (nodes.dmp and names.dmp from NCBI

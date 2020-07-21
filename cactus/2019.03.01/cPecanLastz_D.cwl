@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cPecanLastz_D.cwl
+id: ../../../cPecanLastz_D.cwl
 inputs:
 - id: table_only
   doc: "[=count]    just produce the target position table, don't search for seeds"

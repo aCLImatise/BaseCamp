@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Binsanity_profile.cwl
+id: ../../../Binsanity_profile.cwl
 inputs:
 - id: specify_fasta_file
   doc: Specify fasta file being profiled

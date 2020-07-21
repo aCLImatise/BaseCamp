@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_fastam9_to_table.pl.cwl
+id: ../../../bp_fastam9_to_table.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

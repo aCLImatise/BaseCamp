@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_junctions2hints.pl.cwl
+id: ../../../gaas_junctions2hints.pl.cwl
 inputs:
 - id: in_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rgt_hint_estimation.cwl
+id: ../../../rgt_hint_estimation.cwl
 inputs:
 - id: k_nb
   doc: 'Size of k-mer for bias estimation. DEFAULT: 8'

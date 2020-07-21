@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GeneFamilyClassifier.cwl
+id: ../../../GeneFamilyClassifier.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

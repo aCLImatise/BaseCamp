@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_seq.cwl
+id: ../../../seqkit_seq.cwl
 inputs:
 - id: color
   doc: colorize sequences - to be piped into "less -R"

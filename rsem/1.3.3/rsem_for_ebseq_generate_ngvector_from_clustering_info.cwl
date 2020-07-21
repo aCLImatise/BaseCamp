@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_for_ebseq_generate_ngvector_from_clustering_info.cwl
+id: ../../../rsem_for_ebseq_generate_ngvector_from_clustering_info.cwl
 inputs:
 - id: input_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abundance_dist.py.cwl
+id: ../../../abundance_dist.py.cwl
 inputs:
 - id: info
   doc: ''

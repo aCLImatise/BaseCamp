@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Ray.cwl
+id: ../../../Ray.cwl
 inputs:
 - id: version
   doc: Displays Ray version and compilation options.

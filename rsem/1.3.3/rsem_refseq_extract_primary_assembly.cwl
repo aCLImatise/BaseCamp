@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_refseq_extract_primary_assembly.cwl
+id: ../../../rsem_refseq_extract_primary_assembly.cwl
 inputs:
 - id: input_top_level_assembly_dot_fna
   doc: ''

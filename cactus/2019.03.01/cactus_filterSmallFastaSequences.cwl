@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cactus_filterSmallFastaSequences.py.cwl
+id: ../../../cactus_filterSmallFastaSequences.py.cwl
 inputs:
 - id: prefix
   doc: only filter sequences with prefix in name

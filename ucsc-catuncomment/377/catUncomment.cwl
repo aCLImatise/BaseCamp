@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/catUncomment.cwl
+id: ../../../catUncomment.cwl
 inputs:
 - id: file
   doc: ''

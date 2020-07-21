@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LibraPeptideParser.cwl
+id: ../../../LibraPeptideParser.cwl
 inputs:
 - id: c
   doc: ''

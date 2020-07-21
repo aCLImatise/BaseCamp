@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Kmasker.cwl
+id: ../../../Kmasker.cwl
 inputs:
 - id: show_repository
   doc: show complete list of private and external k-mer indices

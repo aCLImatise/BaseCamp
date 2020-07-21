@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wiggletools.cwl
+id: ../../../wiggletools.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

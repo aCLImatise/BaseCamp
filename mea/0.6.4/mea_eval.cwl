@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mea_eval.cwl
+id: ../../../mea_eval.cwl
 inputs:
 - id: alpha
   doc: slope of base pair distance penalty (default=`0.012')

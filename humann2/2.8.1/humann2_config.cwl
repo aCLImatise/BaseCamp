@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/humann2_config.cwl
+id: ../../../humann2_config.cwl
 inputs:
 - id: print
   doc: print the configuration

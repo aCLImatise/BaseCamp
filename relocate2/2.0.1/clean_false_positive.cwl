@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clean_false_positive.py.cwl
+id: ../../../clean_false_positive.py.cwl
 inputs:
 - id: i
   doc: ''

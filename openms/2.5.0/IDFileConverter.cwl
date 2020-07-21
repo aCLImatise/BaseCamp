@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/IDFileConverter.cwl
+id: ../../../IDFileConverter.cwl
 inputs:
 - id: in
   doc: "*           Input file or directory containing the data to convert. This may\

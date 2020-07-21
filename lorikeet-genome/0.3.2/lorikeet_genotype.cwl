@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lorikeet_genotype.cwl
+id: ../../../lorikeet_genotype.cwl
 inputs:
 - id: bam_files
   doc: ''

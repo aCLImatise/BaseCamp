@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mahalanobis_distance.py.cwl
+id: ../../../mahalanobis_distance.py.cwl
 inputs:
 - id: per
   doc: The thresholdfor standard distributions. The default is 0.95.

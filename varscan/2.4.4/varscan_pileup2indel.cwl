@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varscan_pileup2indel.cwl
+id: ../../../varscan_pileup2indel.cwl
 inputs:
 - id: min_coverage
   doc: Minimum read depth at a position to make a call [8]

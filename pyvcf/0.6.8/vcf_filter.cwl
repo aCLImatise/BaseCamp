@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_filter.py_input.cwl
+id: ../../../vcf_filter.py_input.cwl
 inputs:
 - id: no_short_circuit
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mauveAligner.cwl
+id: ../../../mauveAligner.cwl
 inputs:
 - id: output
   doc: Output file name.  Prints to screen by default

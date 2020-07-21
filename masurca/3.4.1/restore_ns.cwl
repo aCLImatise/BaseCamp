@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/restore_ns.pl.cwl
+id: ../../../restore_ns.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

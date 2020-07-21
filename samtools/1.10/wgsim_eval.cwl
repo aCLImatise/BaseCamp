@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wgsim_eval.pl_uniqcmp.cwl
+id: ../../../wgsim_eval.pl_uniqcmp.cwl
 inputs:
 - id: confident_mapping_mapping
   doc: confident mapping if mapping quality above INT [20]

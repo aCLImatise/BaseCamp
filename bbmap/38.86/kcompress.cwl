@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kcompress.sh.cwl
+id: ../../../kcompress.sh.cwl
 inputs:
 - id: in
   doc: ''

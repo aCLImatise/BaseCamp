@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/map_to_slim.py.cwl
+id: ../../../map_to_slim.py.cwl
 inputs:
 - id: term
   doc: a term (association id) to map to slim IDs. This can not be used together with

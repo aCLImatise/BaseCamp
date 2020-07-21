@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DBshow.cwl
+id: ../../../DBshow.cwl
 inputs:
 - id: show_untrimmed_database
   doc: ': Show the untrimmed database.'

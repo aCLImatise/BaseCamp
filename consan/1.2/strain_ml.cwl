@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/strain_ml.cwl
+id: ../../../strain_ml.cwl
 inputs:
 - id: options
   doc: ''

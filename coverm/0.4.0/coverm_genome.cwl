@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coverm_genome.cwl
+id: ../../../coverm_genome.cwl
 inputs:
 - id: contig_end_exclusion
   doc: ''

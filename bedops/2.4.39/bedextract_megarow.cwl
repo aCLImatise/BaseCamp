@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedextract_megarow.cwl
+id: ../../../bedextract_megarow.cwl
 inputs:
 - id: zero
   doc: ''

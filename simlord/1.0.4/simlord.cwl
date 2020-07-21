@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simlord.cwl
+id: ../../../simlord.cwl
 inputs:
 - id: save_reference
   doc: Save the random reference as fasta-file at given PATH. By default, save at

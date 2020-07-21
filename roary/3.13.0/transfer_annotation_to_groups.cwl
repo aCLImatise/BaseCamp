@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transfer_annotation_to_groups.cwl
+id: ../../../transfer_annotation_to_groups.cwl
 inputs:
 - id: output_filename
   doc: output filename [reannotated_groups]

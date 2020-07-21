@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treebest_mfa2aln.cwl
+id: ../../../treebest_mfa2aln.cwl
 inputs:
 - id: n
   doc: ''

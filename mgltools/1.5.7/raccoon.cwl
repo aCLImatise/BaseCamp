@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/raccoon.cwl
+id: ../../../raccoon.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

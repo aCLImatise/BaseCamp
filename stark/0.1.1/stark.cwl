@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stark.cwl
+id: ../../../stark.cwl
 inputs:
 - id: _use_file
   doc: ',      --input=FILE           use FILE for input'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ktImportGalaxy.cwl
+id: ../../../ktImportGalaxy.cwl
 inputs:
 - id: tax_rep
   doc: Results from the "Fetch taxonomic representation" or "Find lowest diagnostic

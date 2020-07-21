@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/afplot_regions_scatter.cwl
+id: ../../../afplot_regions_scatter.cwl
 inputs:
 - id: margin
   doc: Margin around regions to plot

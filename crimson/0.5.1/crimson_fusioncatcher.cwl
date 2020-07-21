@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crimson_fusioncatcher.cwl
+id: ../../../crimson_fusioncatcher.cwl
 inputs:
 - id: input
   doc: ''

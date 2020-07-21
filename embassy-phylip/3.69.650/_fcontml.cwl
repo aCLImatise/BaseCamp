@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_fcontml.cwl
+id: ../../../_fcontml.cwl
 inputs:
 - id: datatype
   doc: 'menu       [g] Input type in infile (Values: g (Gene frequencies); i (Continuous

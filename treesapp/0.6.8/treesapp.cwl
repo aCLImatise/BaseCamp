@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treesapp.cwl
+id: ../../../treesapp.cwl
 inputs:
 - id: command
   doc: ''

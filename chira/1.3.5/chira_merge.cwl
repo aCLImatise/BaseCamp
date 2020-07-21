@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chira_merge.py.cwl
+id: ../../../chira_merge.py.cwl
 inputs:
 - id: _bed_input
   doc: ', --bed            Input BED file with alignments (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BuildSuperTranscript.py.cwl
+id: ../../../BuildSuperTranscript.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

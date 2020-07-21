@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/livekraken_translate.cwl
+id: ../../../livekraken_translate.cwl
 inputs:
 - id: db
   doc: ''

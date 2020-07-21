@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/EDTA_processI.pl.cwl
+id: ../../../EDTA_processI.pl.cwl
 inputs:
 - id: genome
   doc: '[File]  The genome FASTA'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_captured_reads.cwl
+id: ../../../get_captured_reads.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

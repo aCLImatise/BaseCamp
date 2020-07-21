@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/magic_square.cwl
+id: ../../../magic_square.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

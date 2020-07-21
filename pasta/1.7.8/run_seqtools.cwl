@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_seqtools.py.cwl
+id: ../../../run_seqtools.py.cwl
 inputs:
 - id: name_input_file
   doc: '[INFILE]      name of the input file (default: standard input)'

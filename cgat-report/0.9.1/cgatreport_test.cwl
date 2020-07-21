@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cgatreport_test.cwl
+id: ../../../cgatreport_test.cwl
 inputs:
 - id: tracker
   doc: tracker to use [default=none]

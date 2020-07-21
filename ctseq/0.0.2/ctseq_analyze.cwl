@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ctseq_analyze.cwl
+id: ../../../ctseq_analyze.cwl
 inputs:
 - id: umi_type
   doc: "Choose 'separate' if the UMIs for the reads are contained in a separate fastq\

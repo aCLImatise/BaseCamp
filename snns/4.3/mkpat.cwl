@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mkpat.cwl
+id: ../../../mkpat.cwl
 inputs:
 - id: xsize
   doc: ''

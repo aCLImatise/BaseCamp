@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DUDesDB.py.cwl
+id: ../../../DUDesDB.py.cwl
 inputs:
 - id: m
   doc: "'gi' uses the GI as the identifier (For headers like: >gi|158333233|ref|NC_009925.1|)\

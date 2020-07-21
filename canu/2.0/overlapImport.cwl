@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/overlapImport.cwl
+id: ../../../overlapImport.cwl
 inputs:
 - id: path_valid_sequence
   doc: path to valid sequence store

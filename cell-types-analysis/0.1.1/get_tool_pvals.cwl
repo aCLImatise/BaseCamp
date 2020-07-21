@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_tool_pvals.R.cwl
+id: ../../../get_tool_pvals.R.cwl
 inputs:
 - id: input_table
   doc: Path to the table of tool statistics from get_tool_performance_table.R

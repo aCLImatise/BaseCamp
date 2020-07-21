@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicPlotTADs.cwl
+id: ../../../hicPlotTADs.cwl
 inputs:
 - id: tracks
   doc: File containing the instructions to plot the tracks. The tracks.ini file can

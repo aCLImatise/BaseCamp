@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plotHaps.cwl
+id: ../../../plotHaps.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

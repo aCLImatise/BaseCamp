@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chakin_expression_get_biomaterials.cwl
+id: ../../../chakin_expression_get_biomaterials.cwl
 inputs:
 - id: provider_id
   doc: Limit query to the selected provider

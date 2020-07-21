@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tadtool_tads.cwl
+id: ../../../tadtool_tads.cwl
 inputs:
 - id: algorithm
   doc: 'TAD-calling algorithm. Options: insulation, ninsulation, directionality. Default:

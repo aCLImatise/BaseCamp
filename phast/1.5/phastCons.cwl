@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phastCons.cwl
+id: ../../../phastCons.cwl
 inputs:
 - id: score
   doc: (Optionally use with --viterbi) Assign a log-odds score to each prediction.

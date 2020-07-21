@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spanner.pl.cwl
+id: ../../../spanner.pl.cwl
 inputs:
 - id: options
   doc: ''

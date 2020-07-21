@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spectrast2spectrast_irt.py.cwl
+id: ../../../spectrast2spectrast_irt.py.cwl
 inputs:
 - id: i
   doc: ''

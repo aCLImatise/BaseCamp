@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnazFilter.pl.cwl
+id: ../../../rnazFilter.pl.cwl
 inputs:
 - id: count
   doc: Count the windows/loci instead of printing them.

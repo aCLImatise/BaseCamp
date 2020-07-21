@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ribo.cwl
+id: ../../../ribo.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/peddy.cwl
+id: ../../../peddy.cwl
 inputs:
 - id: procs
   doc: number of processors to use

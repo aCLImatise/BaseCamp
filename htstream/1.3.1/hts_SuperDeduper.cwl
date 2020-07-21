@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hts_SuperDeduper.cwl
+id: ../../../hts_SuperDeduper.cwl
 inputs:
 - id: _version_print
   doc: '[ --version ]                      Version print'

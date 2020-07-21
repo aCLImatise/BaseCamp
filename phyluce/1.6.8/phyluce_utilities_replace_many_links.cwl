@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_utilities_replace_many_links.cwl
+id: ../../../phyluce_utilities_replace_many_links.cwl
 inputs:
 - id: in_dir
   doc: The directory containing the links to rename

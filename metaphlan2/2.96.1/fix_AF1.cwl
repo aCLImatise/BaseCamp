@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fix_AF1.py.cwl
+id: ../../../fix_AF1.py.cwl
 inputs:
 - id: input_file
   doc: ''

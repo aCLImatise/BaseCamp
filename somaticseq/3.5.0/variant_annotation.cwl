@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/variant_annotation.py.cwl
+id: ../../../variant_annotation.py.cwl
 inputs:
 - id: in_file
   doc: 'input vcf file (default: None)'

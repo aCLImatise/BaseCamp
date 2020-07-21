@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/centrifuge_simulate_reads.py.cwl
+id: ../../../centrifuge_simulate_reads.py.cwl
 inputs:
 - id: rna
   doc: 'RNA-seq reads (default: DNA-seq reads)'

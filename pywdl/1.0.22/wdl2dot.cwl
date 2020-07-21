@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wdl2dot.cwl
+id: ../../../wdl2dot.cwl
 inputs:
 - id: input_file
   doc: Input wdl file

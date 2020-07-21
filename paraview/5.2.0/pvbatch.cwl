@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pvbatch.cwl
+id: ../../../pvbatch.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

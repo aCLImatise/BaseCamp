@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_seqfeature_gff3.pl.cwl
+id: ../../../bp_seqfeature_gff3.pl.cwl
 inputs:
 - id: dsn
   doc: The database name ()

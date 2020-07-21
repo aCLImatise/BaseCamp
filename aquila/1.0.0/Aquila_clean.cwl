@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Aquila_clean.cwl
+id: ../../../Aquila_clean.cwl
 inputs:
 - id: assembly_dir
   doc: assembly folder

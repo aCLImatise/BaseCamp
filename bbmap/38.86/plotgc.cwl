@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plotgc.sh.cwl
+id: ../../../plotgc.sh.cwl
 inputs:
 - id: in
   doc: ''

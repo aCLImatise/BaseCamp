@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_shell.cwl
+id: ../../../omero_shell.cwl
 inputs:
 - id: login
   doc: Logins in and sets the 'client' variable

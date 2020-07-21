@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/randomLines.cwl
+id: ../../../randomLines.cwl
 inputs:
 - id: seed
   doc: '- Set seed used for randomizing, useful for debugging.'

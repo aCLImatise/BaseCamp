@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sparse_report.cwl
+id: ../../../sparse_report.cwl
 inputs:
 - id: path
   doc: All sparse workspaces under the assigned folder will be added in automatically.

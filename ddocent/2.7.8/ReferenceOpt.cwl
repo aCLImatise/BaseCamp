@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ReferenceOpt.sh.cwl
+id: ../../../ReferenceOpt.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

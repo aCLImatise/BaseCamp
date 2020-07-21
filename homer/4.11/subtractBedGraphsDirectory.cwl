@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/subtractBedGraphsDirectory.pl.cwl
+id: ../../../subtractBedGraphsDirectory.pl.cwl
 inputs:
 - id: prefix
   doc: (will separate bedGraphs based on this name)

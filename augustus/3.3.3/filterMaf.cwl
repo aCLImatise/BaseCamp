@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterMaf.pl.cwl
+id: ../../../filterMaf.pl.cwl
 inputs:
 - id: species
   doc: ',species2,...     a comma separated list of the species which shall be kept

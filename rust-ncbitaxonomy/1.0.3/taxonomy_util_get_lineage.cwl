@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxonomy_util_get_lineage.cwl
+id: ../../../taxonomy_util_get_lineage.cwl
 inputs:
 - id: delimiter
   doc: Delimiter for lineage string

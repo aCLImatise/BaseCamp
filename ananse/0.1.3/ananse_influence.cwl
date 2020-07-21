@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ananse_influence.cwl
+id: ../../../ananse_influence.cwl
 inputs:
 - id: target
   doc: network in second cell

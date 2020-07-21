@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/OrientContigs.cwl
+id: ../../../OrientContigs.cwl
 inputs:
 - id: b
   doc: ''

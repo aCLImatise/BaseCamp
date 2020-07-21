@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genie_fastq.cwl
+id: ../../../genie_fastq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

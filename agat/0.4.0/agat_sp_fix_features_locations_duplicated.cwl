@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_fix_features_locations_duplicated.pl.cwl
+id: ../../../agat_sp_fix_features_locations_duplicated.pl.cwl
 inputs:
 - id: file
   doc: Input GTF/GFF file.

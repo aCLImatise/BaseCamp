@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ifdata.cwl
+id: ../../../ifdata.cwl
 inputs:
 - id: reports_interface_existence
   doc: Reports interface existence via return code

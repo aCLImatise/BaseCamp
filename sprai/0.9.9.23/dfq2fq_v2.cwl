@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dfq2fq_v2.pl.cwl
+id: ../../../dfq2fq_v2.pl.cwl
 inputs:
 - id: finish
   doc: (chops low depth (<valid_depth) regions)

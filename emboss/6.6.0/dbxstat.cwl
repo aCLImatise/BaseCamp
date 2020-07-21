@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dbxstat.cwl
+id: ../../../dbxstat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

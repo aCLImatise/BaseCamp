@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_summarizetabs.cwl
+id: ../../../mmseqs_summarizetabs.cwl
 inputs:
 - id: list_matches_evalue
   doc: '0.001           list matches below this E-value [0.0, inf]                  '

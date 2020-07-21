@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequana_substractor.cwl
+id: ../../../sequana_substractor.cwl
 inputs:
 - id: reads
   doc: ''

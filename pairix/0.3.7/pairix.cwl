@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pairix.cwl
+id: ../../../pairix.cwl
 inputs:
 - id: preset_pairs_mergednodups
   doc: 'preset: pairs, merged_nodups, old_merged_nodups, gff, bed, sam, vcf, psltbl

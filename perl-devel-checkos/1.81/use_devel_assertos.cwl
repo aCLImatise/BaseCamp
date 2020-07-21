@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/use_devel_assertos.cwl
+id: ../../../use_devel_assertos.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

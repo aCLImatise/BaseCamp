@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam_alignment_length.py.cwl
+id: ../../../bam_alignment_length.py.cwl
 inputs:
 - id: tab_separated_file
   doc: Tab separated file to save alignment lengths (bam_alignment_length.tsv).

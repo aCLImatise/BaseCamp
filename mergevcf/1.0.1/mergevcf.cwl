@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergevcf.cwl
+id: ../../../mergevcf.cwl
 inputs:
 - id: output
   doc: Specify output file (default:stdout)

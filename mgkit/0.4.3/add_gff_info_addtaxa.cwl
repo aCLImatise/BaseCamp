@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/add_gff_info_addtaxa.cwl
+id: ../../../add_gff_info_addtaxa.cwl
 inputs:
 - id: gene_tax_on_table
   doc: GIDs taxonomy table (e.g. gi_taxid_nucl.dmp.gz) or a similar file where GENE/TAXON

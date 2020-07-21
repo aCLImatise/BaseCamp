@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pathwaymatcher.py_match_modified_peptides.cwl
+id: ../../../pathwaymatcher.py_match_modified_peptides.cwl
 inputs:
 - id: mapping
   doc: Path to directory with the static mapping files. By default uses the mapping

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/backbone_global_to_local.cwl
+id: ../../../backbone_global_to_local.cwl
 inputs:
 - id: x_mfa_file
   doc: ''

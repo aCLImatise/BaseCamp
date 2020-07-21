@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_meta_pan_genome.cwl
+id: ../../../anvi_meta_pan_genome.cwl
 inputs:
 - id: pan_db
   doc: Anvi'o pan database

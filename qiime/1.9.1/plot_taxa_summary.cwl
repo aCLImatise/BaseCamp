@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plot_taxa_summary.py.cwl
+id: ../../../plot_taxa_summary.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

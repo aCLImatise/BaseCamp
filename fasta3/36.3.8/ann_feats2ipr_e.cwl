@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ann_feats2ipr_e.pl.cwl
+id: ../../../ann_feats2ipr_e.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

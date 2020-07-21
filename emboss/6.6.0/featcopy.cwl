@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/featcopy.cwl
+id: ../../../featcopy.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smina.cwl
+id: ../../../smina.cwl
 inputs:
 - id: flex_res
   doc: flexible side chains specified by comma  separated list of chain:resid

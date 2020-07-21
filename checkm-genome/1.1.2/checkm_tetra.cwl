@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkm_tetra.cwl
+id: ../../../checkm_tetra.cwl
 inputs:
 - id: threads
   doc: 'number of threads (default: 1)'

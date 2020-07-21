@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metacherchant.sh.cwl
+id: ../../../metacherchant.sh.cwl
 inputs:
 - id: kmer_size_mandatory
   doc: k-mer size (MANDATORY)

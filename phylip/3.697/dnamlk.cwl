@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dnamlk.cwl
+id: ../../../dnamlk.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/evaluate_sv_predictions.cwl
+id: ../../../evaluate_sv_predictions.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

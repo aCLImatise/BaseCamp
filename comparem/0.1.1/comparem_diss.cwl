@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/comparem_diss.cwl
+id: ../../../comparem_diss.cwl
 inputs:
 - id: metric
   doc: 'distance metric to use (default: euclidean)'

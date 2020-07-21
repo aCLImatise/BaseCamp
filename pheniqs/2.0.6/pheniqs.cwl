@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pheniqs.cwl
+id: ../../../pheniqs.cwl
 inputs:
 - id: mux
   doc: Multiplex and Demultiplex annotated DNA sequence reads

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/homerTools.cwl
+id: ../../../homerTools.cwl
 inputs:
 - id: command
   doc: ''

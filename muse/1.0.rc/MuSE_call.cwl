@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MuSE_call.cwl
+id: ../../../MuSE_call.cwl
 inputs:
 - id: faidx_indexed_file
   doc: faidx indexed reference sequence file

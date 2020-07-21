@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gimme_match_match.cwl
+id: ../../../gimme_match_match.cwl
 inputs:
 - id: file_pfms_match
   doc: 'File with pfms to match against (default: gimme.vertebrate.v5.0.pfm)'

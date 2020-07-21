@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msstitch_psmtable.cwl
+id: ../../../msstitch_psmtable.cwl
 inputs:
 - id: input_file_format
   doc: Input file of {} format

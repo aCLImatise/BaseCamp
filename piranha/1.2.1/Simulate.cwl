@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Simulate.cwl
+id: ../../../Simulate.cwl
 inputs:
 - id: distribution
   doc: 'what kind of distribution to use for generating read  counts? Currently supports

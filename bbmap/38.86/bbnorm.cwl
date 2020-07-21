@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bbnorm.sh.cwl
+id: ../../../bbnorm.sh.cwl
 inputs:
 - id: in
   doc: ''

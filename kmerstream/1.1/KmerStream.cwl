@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/KmerStream.cwl
+id: ../../../KmerStream.cwl
 inputs:
 - id: binary
   doc: Output is written in binary format (default false)

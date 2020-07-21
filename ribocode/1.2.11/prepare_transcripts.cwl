@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prepare_transcripts.cwl
+id: ../../../prepare_transcripts.cwl
 inputs:
 - id: gtf
   doc: 'Default, suitable for GENCODE and ENSEMBL GTF file, please refer: https://en.wikipedia.org/wiki/GENCODE,

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/headRest.cwl
+id: ../../../headRest.cwl
 inputs:
 - id: count
   doc: ''

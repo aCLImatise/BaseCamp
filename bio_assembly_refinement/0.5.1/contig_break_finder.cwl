@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/contig_break_finder.cwl
+id: ../../../contig_break_finder.cwl
 inputs:
 - id: skip
   doc: File of contig ids to skip

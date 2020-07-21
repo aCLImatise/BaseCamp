@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_einfo.cwl
+id: ../../../bp_einfo.cwl
 inputs:
 - id: e_slash_email
   doc: Valid email (required by NCBI policy)

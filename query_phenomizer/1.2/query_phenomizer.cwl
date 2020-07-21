@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/query_phenomizer.cwl
+id: ../../../query_phenomizer.cwl
 inputs:
 - id: hpo_term
   doc: ''

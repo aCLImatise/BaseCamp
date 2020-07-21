@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hisat2_read_statistics.py.cwl
+id: ../../../hisat2_read_statistics.py.cwl
 inputs:
 - id: reads_count_default
   doc: 'reads count (default: 10000)'

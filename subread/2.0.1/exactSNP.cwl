@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/exactSNP.cwl
+id: ../../../exactSNP.cwl
 inputs:
 - id: specify_name_input
   doc: Specify name of an input file including read mapping results. The

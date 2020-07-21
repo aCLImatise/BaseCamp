@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nseg.cwl
+id: ../../../nseg.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

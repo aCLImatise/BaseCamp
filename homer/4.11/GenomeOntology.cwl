@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GenomeOntology.pl.cwl
+id: ../../../GenomeOntology.pl.cwl
 inputs:
 - id: peak_file_slash_tag_directory
   doc: ''

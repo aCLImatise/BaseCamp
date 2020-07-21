@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pass.cwl
+id: ../../../pass.cwl
 inputs:
 - id: range
   doc: '600 600 -unique_pair 1 -unique_single 1 -stdout -pe_type 0 \ '

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cpinsim_simulate.cwl
+id: ../../../cpinsim_simulate.cwl
 inputs:
 - id: output_graph
   doc: Pickle the complete graph at the end of simulation (after last dissociation

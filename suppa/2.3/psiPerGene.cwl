@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/psiPerGene.py.cwl
+id: ../../../psiPerGene.py.cwl
 inputs:
 - id: g
   doc: ''

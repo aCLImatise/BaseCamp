@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/changeNewLine.pl.cwl
+id: ../../../changeNewLine.pl.cwl
 inputs:
 - id: text_file
   doc: ''

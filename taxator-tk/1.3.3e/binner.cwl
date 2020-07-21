@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/binner.cwl
+id: ../../../binner.cwl
 inputs:
 - id: citation
   doc: show citation info

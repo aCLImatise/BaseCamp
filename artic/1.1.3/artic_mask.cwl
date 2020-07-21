@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/artic_mask.cwl
+id: ../../../artic_mask.cwl
 inputs:
 - id: reference
   doc: ''

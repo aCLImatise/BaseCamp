@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biomaj_cli.py.cwl
+id: ../../../biomaj_cli.py.cwl
 inputs:
 - id: c
   doc: ''

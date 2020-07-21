@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/computeconf.cwl
+id: ../../../computeconf.cwl
 inputs:
 - id: model_directory
   doc: The directory in which all model (reference and scenario) definitions are stored.

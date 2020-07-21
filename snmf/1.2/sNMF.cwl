@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sNMF.cwl
+id: ../../../sNMF.cwl
 inputs:
 - id: _genotype_file
   doc: -- genotype file (in .geno format)

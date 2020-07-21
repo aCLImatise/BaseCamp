@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfgeno2haplo.cwl
+id: ../../../vcfgeno2haplo.cwl
 inputs:
 - id: reference
   doc: FASTA reference file, required with -i and -u

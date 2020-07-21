@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/meme2meme.cwl
+id: ../../../meme2meme.cwl
 inputs:
 - id: consensus
   doc: 'numeric names are swapped for an IUPAC consensus; default: use existing names'

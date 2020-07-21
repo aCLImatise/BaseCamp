@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/analyse_metrics.py_refmap.cwl
+id: ../../../analyse_metrics.py_refmap.cwl
 inputs:
 - id: analyse_metrics_do_tpy
   doc: ''

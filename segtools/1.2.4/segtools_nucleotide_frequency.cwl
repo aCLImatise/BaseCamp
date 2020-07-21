@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segtools_nucleotide_frequency.cwl
+id: ../../../segtools_nucleotide_frequency.cwl
 inputs:
 - id: clobber
   doc: Overwrite any existing output files.

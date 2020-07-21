@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_modify_header.py_vcf.cwl
+id: ../../../vcf_modify_header.py_vcf.cwl
 inputs:
 - id: i
   doc: ''

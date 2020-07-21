@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/OpenSwathConfidenceScoring.cwl
+id: ../../../OpenSwathConfidenceScoring.cwl
 inputs:
 - id: in
   doc: "*            Input file (OpenSwath results) (valid formats: 'featureXML')"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_prefixid.cwl
+id: ../../../mmseqs_prefixid.cwl
 inputs:
 - id: prefix
   doc: 'Use this prefix for all entries                             '

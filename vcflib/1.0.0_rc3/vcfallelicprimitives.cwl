@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfallelicprimitives.cwl
+id: ../../../vcfallelicprimitives.cwl
 inputs:
 - id: use_mnps
   doc: 'Retain MNPs as separate events (default: false).'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_prep.cwl
+id: ../../../ssu_prep.cwl
 inputs:
 - id: force_dir_named
   doc: ': force; if dir named <output dir> already exists, empty it first'

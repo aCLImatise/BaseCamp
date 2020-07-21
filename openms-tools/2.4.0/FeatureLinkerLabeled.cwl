@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FeatureLinkerLabeled.cwl
+id: ../../../FeatureLinkerLabeled.cwl
 inputs:
 - id: in
   doc: "*        Input file (valid formats: 'featureXML')"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deblur_build_db_index.cwl
+id: ../../../deblur_build_db_index.cwl
 inputs:
 - id: log_level
   doc: 'RANGE  Level of messages for log file(range 1-debug to 5-critical  [default:

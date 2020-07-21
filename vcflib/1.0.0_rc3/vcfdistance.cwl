@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfdistance.cwl
+id: ../../../vcfdistance.cwl
 inputs:
 - id: custom_tag_name
   doc: ''

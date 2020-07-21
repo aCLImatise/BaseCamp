@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SequenceCoverageCalculator.cwl
+id: ../../../SequenceCoverageCalculator.cwl
 inputs:
 - id: in_database
   doc: "*  Input file containing the database in FASTA format (valid formats: 'fasta')"

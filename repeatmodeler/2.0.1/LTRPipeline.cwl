@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LTRPipeline.cwl
+id: ../../../LTRPipeline.cwl
 inputs:
 - id: version
   doc: Displays the version of the program

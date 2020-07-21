@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genomedata_query_trackname.cwl
+id: ../../../genomedata_query_trackname.cwl
 inputs:
 - id: genome_data_query
   doc: ''

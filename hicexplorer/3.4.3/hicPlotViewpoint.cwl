@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicPlotViewpoint.cwl
+id: ../../../hicPlotViewpoint.cwl
 inputs:
 - id: matrix
   doc: Hi-C matrix to plot.

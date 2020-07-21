@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plot_dia_windows.py.cwl
+id: ../../../plot_dia_windows.py.cwl
 inputs:
 - id: window_file
   doc: ''

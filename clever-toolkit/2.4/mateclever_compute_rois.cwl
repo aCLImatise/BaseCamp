@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mateclever_compute_rois.cwl
+id: ../../../mateclever_compute_rois.cwl
 inputs:
 - id: distance_deletion_breakpoints
   doc: 'Distance from deletion breakpoints to be included (default: 750).'

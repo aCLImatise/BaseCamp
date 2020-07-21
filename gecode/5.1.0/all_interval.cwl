@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/all_interval.cwl
+id: ../../../all_interval.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

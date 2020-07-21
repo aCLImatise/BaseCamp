@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterESTsimple.cwl
+id: ../../../filterESTsimple.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

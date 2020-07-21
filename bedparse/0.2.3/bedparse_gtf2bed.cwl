@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedparse_gtf2bed.cwl
+id: ../../../bedparse_gtf2bed.cwl
 inputs:
 - id: extrafields
   doc: Comma separated list of extra GTF fields to be added after col 12 (e.g. gene_id,gene_name).

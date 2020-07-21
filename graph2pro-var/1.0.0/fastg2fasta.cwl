@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastg2fasta.py.cwl
+id: ../../../fastg2fasta.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

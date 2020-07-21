@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pick_otus.py.cwl
+id: ../../../pick_otus.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

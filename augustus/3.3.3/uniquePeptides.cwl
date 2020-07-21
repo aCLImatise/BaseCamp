@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uniquePeptides.pl.cwl
+id: ../../../uniquePeptides.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

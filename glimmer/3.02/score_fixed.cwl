@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/score_fixed.cwl
+id: ../../../score_fixed.cwl
 inputs:
 - id: negative_model_regular
   doc: Negative model is regular ICM, not fixed-length ICM

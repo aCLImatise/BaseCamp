@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tbprofiler_generate_sequences.py.cwl
+id: ../../../tbprofiler_generate_sequences.py.cwl
 inputs:
 - id: samples
   doc: 'NGS Platform (default: None)'

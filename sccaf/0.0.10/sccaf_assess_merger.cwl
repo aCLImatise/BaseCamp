@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sccaf_assess_merger.cwl
+id: ../../../sccaf_assess_merger.cwl
 inputs:
 - id: input_directory
   doc: Path to input directory where asses results are

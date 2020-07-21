@@ -1,0 +1,41 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -r
+  args: !ChoiceFlagArg
+    choices: !!set
+      ? nearest
+      ? gauss
+      ? average_magphase
+      ? average_mp
+      ? mode
+      ? cubic
+      ? average
+  optional: true
+command:
+- gdaladdo
+parent:
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: gdaladdo [-r {nearest,average,gauss,cubic,average_mp,average_magphase,mode}]\n\
+  \                [-ro] [-clean] [-q] [--help-general] filename levels\n\n  -r :\
+  \ choice of resampling method (default: nearest)\n  -ro : open the dataset in read-only\
+  \ mode, in order to generate\n        external overview (for GeoTIFF datasets especially)\n\
+  \  -clean : remove all overviews\n  -q : turn off progress display\n  filename:\
+  \ The file to build overviews for (or whose overviews must be removed).\n  levels:\
+  \ A list of integral overview levels to build. Ignored with -clean option.\n\nUsefull\
+  \ configuration variables :\n  --config USE_RRD YES : Use Erdas Imagine format (.aux)\
+  \ as overview format.\nBelow, only for external overviews in GeoTIFF format:\n \
+  \ --config COMPRESS_OVERVIEW {JPEG,LZW,PACKBITS,DEFLATE} : TIFF compression\n  --config\
+  \ PHOTOMETRIC_OVERVIEW {RGB,YCBCR,...} : TIFF photometric interp.\n  --config INTERLEAVE_OVERVIEW\
+  \ {PIXEL|BAND} : TIFF interleaving method\n  --config BIGTIFF_OVERVIEW {IF_NEEDED|IF_SAFER|YES|NO}\
+  \ : is BigTIFF used\n\nExamples:\n % gdaladdo -r average abc.tif 2 4 8 16\n % gdaladdo\
+  \ --config COMPRESS_OVERVIEW JPEG\n             --config PHOTOMETRIC_OVERVIEW YCBCR\n\
+  \             --config INTERLEAVE_OVERVIEW PIXEL -ro abc.tif 2 4 8 16\n"
+generated_using:
+- --help

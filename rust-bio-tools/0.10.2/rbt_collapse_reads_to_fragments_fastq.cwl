@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbt_collapse_reads_to_fragments_fastq.cwl
+id: ../../../rbt_collapse_reads_to_fragments_fastq.cwl
 inputs:
 - id: _length_umi
   doc: '\                    # length of UMI'

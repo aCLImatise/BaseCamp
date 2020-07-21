@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/keyFreq.cwl
+id: ../../../keyFreq.cwl
 inputs:
 - id: o
   doc: ''

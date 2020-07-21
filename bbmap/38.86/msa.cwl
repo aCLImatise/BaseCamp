@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msa.sh.cwl
+id: ../../../msa.sh.cwl
 inputs:
 - id: in
   doc: ''

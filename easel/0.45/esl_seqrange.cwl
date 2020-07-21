@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_seqrange.cwl
+id: ../../../esl_seqrange.cwl
 inputs:
 - id: in_format
   doc: ': specify that input file is in format <s>'

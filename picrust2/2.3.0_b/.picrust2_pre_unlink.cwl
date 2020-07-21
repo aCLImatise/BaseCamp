@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/.picrust2_pre_unlink.sh.cwl
+id: ../../../.picrust2_pre_unlink.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ibdne.cwl
+id: ../../../ibdne.cwl
 inputs:
 - id: cat
   doc: ''

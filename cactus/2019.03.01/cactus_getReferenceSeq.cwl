@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cactus_getReferenceSeq.cwl
+id: ../../../cactus_getReferenceSeq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

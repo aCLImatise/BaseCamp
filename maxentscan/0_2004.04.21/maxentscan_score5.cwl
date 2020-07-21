@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maxentscan_score5.pl.cwl
+id: ../../../maxentscan_score5.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

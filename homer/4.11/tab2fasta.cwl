@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tab2fasta.pl.cwl
+id: ../../../tab2fasta.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

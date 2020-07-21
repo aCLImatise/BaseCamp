@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_clipN_seqExtremities_and_fixCoordinates.pl.cwl
+id: ../../../agat_sp_clipN_seqExtremities_and_fixCoordinates.pl.cwl
 inputs:
 - id: gff
   doc: Input GTF/GFF file.

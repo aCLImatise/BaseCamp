@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_hamming_enrich.cwl
+id: ../../../fasta_hamming_enrich.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

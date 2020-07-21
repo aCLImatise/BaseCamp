@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/refinem_ssu_erroneous.cwl
+id: ../../../refinem_ssu_erroneous.cwl
 inputs:
 - id: genome_ext
   doc: 'extension of genomes (other files in directory are ignored) (default: fna)'

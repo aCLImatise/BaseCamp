@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ppanini_rename_contigs.cwl
+id: ../../../ppanini_rename_contigs.cwl
 inputs:
 - id: input
   doc: fasta file

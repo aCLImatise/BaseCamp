@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scala.cwl
+id: ../../../scala.cwl
 inputs:
 - id: or
   doc: scala -help

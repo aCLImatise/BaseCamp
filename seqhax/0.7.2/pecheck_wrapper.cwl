@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pecheck_wrapper.py.cwl
+id: ../../../pecheck_wrapper.py.cwl
 inputs:
 - id: gzip
   doc: Which command should be used to gzip? (try pigz!)

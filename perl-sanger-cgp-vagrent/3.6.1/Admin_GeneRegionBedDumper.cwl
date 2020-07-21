@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Admin_GeneRegionBedDumper.pl.cwl
+id: ../../../Admin_GeneRegionBedDumper.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

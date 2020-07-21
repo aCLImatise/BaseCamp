@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/haploToPlink.cwl
+id: ../../../haploToPlink.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

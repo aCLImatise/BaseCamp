@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/watchdog_createNewModule.cwl
+id: ../../../watchdog_createNewModule.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

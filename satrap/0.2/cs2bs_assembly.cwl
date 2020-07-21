@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cs2bs_assembly.cwl
+id: ../../../cs2bs_assembly.cwl
 inputs:
 - id: fast_a
   doc: ''

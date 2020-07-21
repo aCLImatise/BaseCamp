@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sga_merge.cwl
+id: ../../../sga_merge.cwl
 inputs:
 - id: verbose
   doc: display verbose output

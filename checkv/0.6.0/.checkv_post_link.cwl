@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/.checkv_post_link.sh.cwl
+id: ../../../.checkv_post_link.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

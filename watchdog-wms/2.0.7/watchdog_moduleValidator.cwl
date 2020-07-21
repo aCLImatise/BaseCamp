@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/watchdog_moduleValidator.cwl
+id: ../../../watchdog_moduleValidator.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

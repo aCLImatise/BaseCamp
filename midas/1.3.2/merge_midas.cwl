@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_midas.py_snps.cwl
+id: ../../../merge_midas.py_snps.cwl
 inputs:
 - id: threads
   doc: Number of CPUs to use (1)

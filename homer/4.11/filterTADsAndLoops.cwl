@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterTADsAndLoops.pl.cwl
+id: ../../../filterTADsAndLoops.pl.cwl
 inputs:
 - id: def_out
   doc: '(def: out)'

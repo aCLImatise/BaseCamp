@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pr.cwl
+id: ../../../pr.cwl
 inputs:
 - id: show_control_chars
   doc: use hat notation (^G) and octal backslash notation

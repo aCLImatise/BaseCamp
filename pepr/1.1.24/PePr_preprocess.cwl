@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PePr_preprocess.cwl
+id: ../../../PePr_preprocess.cwl
 inputs:
 - id: parameter_file
   doc: provide a file that contain the parameters

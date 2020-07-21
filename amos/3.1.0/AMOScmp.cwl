@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AMOScmp.cwl
+id: ../../../AMOScmp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

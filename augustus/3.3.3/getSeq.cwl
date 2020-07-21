@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getSeq.cwl
+id: ../../../getSeq.cwl
 inputs:
 - id: mysql
   doc: ''

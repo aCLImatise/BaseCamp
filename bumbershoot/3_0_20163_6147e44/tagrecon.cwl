@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tagrecon.cwl
+id: ../../../tagrecon.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

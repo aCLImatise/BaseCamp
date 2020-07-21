@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/huge_sort.pl.cwl
+id: ../../../huge_sort.pl.cwl
 inputs:
 - id: keep
   doc: 'keep the unsorted file The default is to delete the unsorted file. '

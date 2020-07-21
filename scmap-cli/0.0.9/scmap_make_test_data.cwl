@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scmap_make_test_data.R.cwl
+id: ../../../scmap_make_test_data.R.cwl
 inputs:
 - id: output_object_file
   doc: file name in which to store serialized R object of type 'SingleCellExperiment'.

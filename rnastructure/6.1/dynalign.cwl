@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dynalign.cwl
+id: ../../../dynalign.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

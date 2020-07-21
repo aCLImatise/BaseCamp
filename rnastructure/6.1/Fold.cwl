@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Fold.cwl
+id: ../../../Fold.cwl
 inputs:
 - id: sequence_file
   doc: ''

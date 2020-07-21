@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lambda2.cwl
+id: ../../../lambda2.cwl
 inputs:
 - id: version_check
   doc: 'Turn this option off to disable version update notifications of the application.

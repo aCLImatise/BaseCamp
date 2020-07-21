@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/download_fasta_database.cwl
+id: ../../../download_fasta_database.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

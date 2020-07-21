@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/innerjoin.cwl
+id: ../../../innerjoin.cwl
 inputs:
 - id: empty
   doc: replace missing input fields with EMPTY

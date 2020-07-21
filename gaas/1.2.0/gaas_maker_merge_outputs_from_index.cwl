@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_maker_merge_outputs_from_index.pl.cwl
+id: ../../../gaas_maker_merge_outputs_from_index.pl.cwl
 inputs:
 - id: must
   doc: ''

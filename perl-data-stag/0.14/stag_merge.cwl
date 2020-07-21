@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stag_merge.pl.cwl
+id: ../../../stag_merge.pl.cwl
 inputs:
 - id: stag_merge_do_tpl
   doc: -xml file1.xml file2.xml

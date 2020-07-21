@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterGottcha.pl.cwl
+id: ../../../filterGottcha.pl.cwl
 inputs:
 - id: strain_lookup
   doc: STRAIN lookup filename  (E.g. /lscratch/db/custom/variantStrainLookup.dmp)

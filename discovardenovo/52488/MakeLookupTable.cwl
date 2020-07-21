@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MakeLookupTable.cwl
+id: ../../../MakeLookupTable.cwl
 inputs:
 - id: arg_one
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snntest.cwl
+id: ../../../snntest.cwl
 inputs:
 - id: data_format_used
   doc: ": data are in the format used for Hudson's (2001) programs"

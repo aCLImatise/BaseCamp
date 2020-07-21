@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/megalodon.cwl
+id: ../../../megalodon.cwl
 inputs:
 - id: guppy_config
   doc: 'Guppy config. Default: dna_r9.4.1_450bps_modbases_dam- dcm-cpg_hac.cfg'

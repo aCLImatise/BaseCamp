@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iCLIPro.cwl
+id: ../../../iCLIPro.cwl
 inputs:
 - id: output_folder_default
   doc: output folder (default is cwd - current working directory)

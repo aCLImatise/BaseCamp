@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rapidnj.cwl
+id: ../../../rapidnj.cwl
 inputs:
 - id: verbose
   doc: turn on verbose output.

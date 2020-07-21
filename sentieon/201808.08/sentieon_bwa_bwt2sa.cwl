@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sentieon_bwa_bwt2sa.cwl
+id: ../../../sentieon_bwa_bwt2sa.cwl
 inputs:
 - id: i
   doc: ''

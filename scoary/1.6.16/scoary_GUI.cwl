@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scoary_GUI.cwl
+id: ../../../scoary_GUI.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convertMetaMapsToMash.pl.cwl
+id: ../../../convertMetaMapsToMash.pl.cwl
 inputs:
 - id: perl
   doc: ''

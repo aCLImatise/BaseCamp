@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gseapy_enrichr.cwl
+id: ../../../gseapy_enrichr.cwl
 inputs:
 - id: input_list
   doc: Enrichr uses a list of gene names as input.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/collate_FLNC_gene_info.py.cwl
+id: ../../../collate_FLNC_gene_info.py.cwl
 inputs:
 - id: on_target_filename
   doc: (Optional) on target information text

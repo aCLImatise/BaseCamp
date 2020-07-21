@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools.pl_varFilter_samtools.pl.cwl
+id: ../../../samtools.pl_varFilter_samtools.pl.cwl
 inputs:
 - id: no
   doc: ''

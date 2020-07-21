@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splinter.pl.cwl
+id: ../../../splinter.pl.cwl
 inputs:
 - id: options
   doc: ''

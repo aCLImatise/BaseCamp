@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_gapfill.cwl
+id: ../../../abyss_gapfill.cwl
 inputs:
 - id: min_align
   doc: the minimal alignment size [1]

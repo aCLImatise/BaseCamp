@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DB2Falcon.cwl
+id: ../../../DB2Falcon.cwl
 inputs:
 - id: u
   doc: ''

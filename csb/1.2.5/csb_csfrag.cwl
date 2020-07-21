@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csb_csfrag.cwl
+id: ../../../csb_csfrag.cwl
 inputs:
 - id: database
   doc: PDBS25 database directory (containing PDBS25cs.scs)

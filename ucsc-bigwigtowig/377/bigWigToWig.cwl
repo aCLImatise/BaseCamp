@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bigWigToWig.cwl
+id: ../../../bigWigToWig.cwl
 inputs:
 - id: chrom
   doc: '- if set restrict output to given chromosome'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_sort.cwl
+id: ../../../fastq_sort.cwl
 inputs:
 - id: reverse
   doc: sort in reverse (i.e., descending) order

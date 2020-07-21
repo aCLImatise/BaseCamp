@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BlastAlign.cwl
+id: ../../../BlastAlign.cwl
 inputs:
 - id: maximum_percentage_allowed
   doc: <maximum percentage of gaps allowed in any one sequence in the final alignment>

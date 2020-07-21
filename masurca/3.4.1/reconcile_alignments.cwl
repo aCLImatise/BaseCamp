@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reconcile_alignments.sh.cwl
+id: ../../../reconcile_alignments.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

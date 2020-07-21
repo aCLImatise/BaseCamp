@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tadbit_normalize.cwl
+id: ../../../tadbit_normalize.cwl
 inputs:
 - id: workdir
   doc: path to working directory (generated with the tool tadbit mapper)

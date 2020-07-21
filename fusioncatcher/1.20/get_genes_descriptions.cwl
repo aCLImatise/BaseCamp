@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_genes_descriptions.py.cwl
+id: ../../../get_genes_descriptions.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the genes positions are downloaded, e.g.

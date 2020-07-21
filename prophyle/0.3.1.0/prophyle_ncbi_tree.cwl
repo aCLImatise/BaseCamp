@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prophyle_ncbi_tree.py.cwl
+id: ../../../prophyle_ncbi_tree.py.cwl
 inputs:
 - id: log_file
   doc: log file [stderr]

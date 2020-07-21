@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alnsel.pl.cwl
+id: ../../../alnsel.pl.cwl
 inputs:
 - id: input_dot_aln
   doc: ''

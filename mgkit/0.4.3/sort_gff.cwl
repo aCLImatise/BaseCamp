@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sort_gff.sh.cwl
+id: ../../../sort_gff.sh.cwl
 inputs:
 - id: ignore_leading_blanks
   doc: leading blanks

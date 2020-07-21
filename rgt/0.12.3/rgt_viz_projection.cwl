@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rgt_viz_projection.cwl
+id: ../../../rgt_viz_projection.cwl
 inputs:
 - id: file_name_reference
   doc: 'The file name of the reference Experimental Matrix. Multiple references are

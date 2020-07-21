@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pm_prepare.cwl
+id: ../../../pm_prepare.cwl
 inputs:
 - id: mode
   doc: set file mode (as in chmod), not a=rwx - umask

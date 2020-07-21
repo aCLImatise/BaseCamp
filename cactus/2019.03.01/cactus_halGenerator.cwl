@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cactus_halGenerator.cwl
+id: ../../../cactus_halGenerator.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

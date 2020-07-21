@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_masking.pl.cwl
+id: ../../../merge_masking.pl.cwl
 inputs:
 - id: file_one_dot_fa
   doc: softmasked fasta file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scran_get_clustered_pcs.R.cwl
+id: ../../../scran_get_clustered_pcs.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

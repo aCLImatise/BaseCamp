@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ftbl2xgmml.cwl
+id: ../../../ftbl2xgmml.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varscan_filter.cwl
+id: ../../../varscan_filter.cwl
 inputs:
 - id: min_coverage
   doc: Minimum read depth at a position to make a call [10]

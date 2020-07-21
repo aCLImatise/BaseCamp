@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/babel_minimize.cwl
+id: ../../../babel_minimize.cwl
 inputs:
 - id: config
   doc: Configuration file

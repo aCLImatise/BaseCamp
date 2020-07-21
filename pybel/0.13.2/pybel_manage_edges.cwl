@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pybel_manage_edges.cwl
+id: ../../../pybel_manage_edges.cwl
 inputs:
 - id: command
   doc: ''

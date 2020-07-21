@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/starfish_COMMAND.cwl
+id: ../../../starfish_COMMAND.cwl
 inputs:
 - id: args
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/referenceseeker_db_import.cwl
+id: ../../../referenceseeker_db_import.cwl
 inputs:
 - id: db
   doc: ReferenceSeeker database path

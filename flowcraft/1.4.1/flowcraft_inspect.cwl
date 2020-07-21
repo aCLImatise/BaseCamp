@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flowcraft_inspect.cwl
+id: ../../../flowcraft_inspect.cwl
 inputs:
 - id: specify_nextflow_file
   doc: Specify the nextflow trace file.

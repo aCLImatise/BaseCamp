@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtk_resolve.cwl
+id: ../../../svtk_resolve.cwl
 inputs:
 - id: disc_file
   doc: Scraped discordant pairs. Required to attempt to resolve single-ender inversions.

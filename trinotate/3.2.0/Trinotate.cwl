@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Trinotate.cwl
+id: ../../../Trinotate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

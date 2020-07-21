@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dumpSTR.cwl
+id: ../../../dumpSTR.cwl
 inputs:
 - id: vcf
   doc: Input STR VCF file

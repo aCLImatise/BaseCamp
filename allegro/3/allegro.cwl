@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/allegro.cwl
+id: ../../../allegro.cwl
 inputs:
 - id: l
   doc: ''

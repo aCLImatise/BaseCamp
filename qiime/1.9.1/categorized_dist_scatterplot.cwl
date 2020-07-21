@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/categorized_dist_scatterplot.py.cwl
+id: ../../../categorized_dist_scatterplot.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

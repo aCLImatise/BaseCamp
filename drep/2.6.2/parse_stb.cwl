@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parse_stb.py.cwl
+id: ../../../parse_stb.py.cwl
 inputs:
 - id: stb
   doc: 'scaffold to bin file (default: None)'

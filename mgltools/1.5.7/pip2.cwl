@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pip2.7.cwl
+id: ../../../pip2.7.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

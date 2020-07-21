@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ppanini_gene_caller.cwl
+id: ../../../ppanini_gene_caller.cwl
 inputs:
 - id: contig
   doc: contigs file (fna)

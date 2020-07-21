@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_newcase.cwl
+id: ../../../create_newcase.cwl
 inputs:
 - id: debug
   doc: Print debug information (very verbose) to file /tmp/tmpeksbd5_3/create_newcase.log

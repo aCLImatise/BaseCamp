@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scatterplot.py.cwl
+id: ../../../scatterplot.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/find_all_snps.py.cwl
+id: ../../../find_all_snps.py.cwl
 inputs:
 - id: a
   doc: ''

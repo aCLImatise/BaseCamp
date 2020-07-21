@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tripaille_analysis_load_blast.cwl
+id: ../../../tripaille_analysis_load_blast.cwl
 inputs:
 - id: blast_ext
   doc: If looking for files in a directory, extension of the blast result files

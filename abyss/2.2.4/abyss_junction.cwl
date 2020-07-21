@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_junction.cwl
+id: ../../../abyss_junction.cwl
 inputs:
 - id: ignore
   doc: ignore junctions seen in FILE

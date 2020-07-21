@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/suppa.py_joinFiles.cwl
+id: ../../../suppa.py_joinFiles.cwl
 inputs:
 - id: input_files
   doc: Space separated list of the files to be joined. If the absolute path is not

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nucdiff.cwl
+id: ../../../nucdiff.cwl
 inputs:
 - id: reloc_dist
   doc: '[int]    - Minimum distance between two relocated blocks [10000]'

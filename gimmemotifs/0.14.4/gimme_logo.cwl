@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gimme_logo.cwl
+id: ../../../gimme_logo.cwl
 inputs:
 - id: pfm_file
   doc: PFM file with motifs

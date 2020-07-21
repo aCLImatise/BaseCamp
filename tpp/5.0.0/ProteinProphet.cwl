@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ProteinProphet.cwl
+id: ../../../ProteinProphet.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

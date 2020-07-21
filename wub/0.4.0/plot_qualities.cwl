@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plot_qualities.py_input_fastx.cwl
+id: ../../../plot_qualities.py_input_fastx.cwl
 inputs:
 - id: w
   doc: ''

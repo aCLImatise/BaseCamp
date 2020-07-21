@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/krocus_input_fastq.cwl
+id: ../../../krocus_input_fastq.cwl
 inputs:
 - id: kroc_us
   doc: ''

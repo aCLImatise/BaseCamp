@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stag_mogrify.pl.cwl
+id: ../../../stag_mogrify.pl.cwl
 inputs:
 - id: stag_mogrify
   doc: -w itext file1.xml file2.xml

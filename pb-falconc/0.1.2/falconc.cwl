@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/falconc.cwl
+id: ../../../falconc.cwl
 inputs:
 - id: rr_h_ctg_track_two
   doc: Stage 2 of rr_hctg_track

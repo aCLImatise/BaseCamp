@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof_sort.cwl
+id: ../../../smof_sort.cwl
 inputs:
 - id: regex
   doc: sort by single regex capture

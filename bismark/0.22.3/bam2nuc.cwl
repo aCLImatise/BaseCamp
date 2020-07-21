@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam2nuc.cwl
+id: ../../../bam2nuc.cwl
 inputs:
 - id: genome_folder
   doc: ''

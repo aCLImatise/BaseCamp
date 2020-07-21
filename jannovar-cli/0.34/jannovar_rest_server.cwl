@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jannovar_rest_server.cwl
+id: ../../../jannovar_rest_server.cwl
 inputs:
 - id: host
   doc: Host specification to listen on

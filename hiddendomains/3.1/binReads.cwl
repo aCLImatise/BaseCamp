@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/binReads.pl.cwl
+id: ../../../binReads.pl.cwl
 inputs:
 - id: reference
   doc: Reference sequence FASTA FILE [null]

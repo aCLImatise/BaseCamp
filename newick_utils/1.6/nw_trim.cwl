@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nw_trim.cwl
+id: ../../../nw_trim.cwl
 inputs:
 - id: ah
   doc: ''

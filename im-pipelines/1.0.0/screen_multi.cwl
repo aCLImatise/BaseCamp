@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/screen_multi.cwl
+id: ../../../screen_multi.cwl
 inputs:
 - id: q_smiles
   doc: filename of query structures as smiles (incompatible with --sdf and --qjson

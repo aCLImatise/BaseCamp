@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sentieon_bwa_bwasw.cwl
+id: ../../../sentieon_bwa_bwasw.cwl
 inputs:
 - id: score_for_match
   doc: score for a match [1]

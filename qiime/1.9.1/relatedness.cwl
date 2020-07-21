@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/relatedness.py.cwl
+id: ../../../relatedness.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

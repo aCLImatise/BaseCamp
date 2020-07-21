@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samFLAGinfo.pl.cwl
+id: ../../../samFLAGinfo.pl.cwl
 inputs:
 - id: int
   doc: ''

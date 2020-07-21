@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metfrag.cwl
+id: ../../../metfrag.cwl
 inputs:
 - id: jar
   doc: ''

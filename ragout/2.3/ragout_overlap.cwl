@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ragout_overlap.cwl
+id: ../../../ragout_overlap.cwl
 inputs:
 - id: detect_km_er
   doc: ''

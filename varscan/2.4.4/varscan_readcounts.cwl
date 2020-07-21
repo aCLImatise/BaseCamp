@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varscan_readcounts.cwl
+id: ../../../varscan_readcounts.cwl
 inputs:
 - id: variants_file
   doc: list of variants at which to report readcounts

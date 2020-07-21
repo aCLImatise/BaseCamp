@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tango_build.cwl
+id: ../../../tango_build.cwl
 inputs:
 - id: dbfile
   doc: Name of diamond database file. Defaults to diamond.dmnd in same directory as

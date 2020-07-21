@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gfapy_renumber.cwl
+id: ../../../gfapy_renumber.cwl
 inputs:
 - id: out
   doc: output GFA file [/dev/stdout]

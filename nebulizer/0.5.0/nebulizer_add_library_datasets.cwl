@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nebulizer_add_library_datasets.cwl
+id: ../../../nebulizer_add_library_datasets.cwl
 inputs:
 - id: file_type
   doc: Galaxy data type to assign the files to (default is 'auto'). Must be a valid

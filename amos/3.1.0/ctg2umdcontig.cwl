@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ctg2umdcontig.cwl
+id: ../../../ctg2umdcontig.cwl
 inputs:
 - id: file_dot_ctg
   doc: ''

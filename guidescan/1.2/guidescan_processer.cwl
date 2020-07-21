@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/guidescan_processer.cwl
+id: ../../../guidescan_processer.cwl
 inputs:
 - id: path_fasta_file
   doc: 'path to fasta file or folder with fasta files (will use all .fa, .fasta, .fa.gz,

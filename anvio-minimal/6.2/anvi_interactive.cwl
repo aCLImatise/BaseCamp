@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_interactive.cwl
+id: ../../../anvi_interactive.cwl
 inputs:
 - id: profile_db
   doc: Anvi'o profile database

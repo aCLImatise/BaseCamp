@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mulled_build.cwl
+id: ../../../mulled_build.cwl
 inputs:
 - id: name_override
   doc: Override mulled image name - this is not recommended since metadata will not

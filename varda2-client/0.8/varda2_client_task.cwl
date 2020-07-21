@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varda2_client_task.cwl
+id: ../../../varda2_client_task.cwl
 inputs:
 - id: uuid
   doc: Task UUID

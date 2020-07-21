@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/orthomclSortGroupMembersByScore.cwl
+id: ../../../orthomclSortGroupMembersByScore.cwl
 inputs:
 - id: groups_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arv_get.cwl
+id: ../../../arv_get.cwl
 inputs:
 - id: retries
   doc: Maximum number of times to retry server requests that encounter temporary failures

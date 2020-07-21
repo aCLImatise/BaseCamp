@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_tep.py.cwl
+id: ../../../make_tep.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quasitools_dnds.cwl
+id: ../../../quasitools_dnds.cwl
 inputs:
 - id: csv
   doc: ''

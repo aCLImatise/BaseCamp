@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/exec_annotation.cwl
+id: ../../../exec_annotation.cwl
 inputs:
 - id: create_alignment
   doc: Create domain annotation files for each sequence They will be located in the

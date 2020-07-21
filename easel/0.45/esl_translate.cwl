@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_translate.cwl
+id: ../../../esl_translate.cwl
 inputs:
 - id: use_alt_code
   doc: ': use alt genetic code of NCBI transl table <n>  [1]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/OptiTypePipeline.py.cwl
+id: ../../../OptiTypePipeline.py.cwl
 inputs:
 - id: input
   doc: '.fastq file(s) (fished or raw) or .bam files stored for re-use, generated

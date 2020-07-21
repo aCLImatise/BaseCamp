@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_samtoafg.cwl
+id: ../../../abyss_samtoafg.cwl
 inputs:
 - id: eid
   doc: the EID of the library

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/multiIntersectBed.cwl
+id: ../../../multiIntersectBed.cwl
 inputs:
 - id: cluster
   doc: Invoke Ryan Layers's clustering algorithm.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pygmes.cwl
+id: ../../../pygmes.cwl
 inputs:
 - id: input
   doc: path to the fasta file, or in metagenome mode path to bin folder

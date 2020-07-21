@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_ntree.cwl
+id: ../../../arb_ntree.cwl
 inputs:
 - id: execute
   doc: => execute macro 'macroname' after startup

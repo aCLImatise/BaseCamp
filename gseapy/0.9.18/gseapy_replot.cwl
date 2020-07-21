@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gseapy_replot.cwl
+id: ../../../gseapy_replot.cwl
 inputs:
 - id: in_dir
   doc: The GSEA desktop results directroy that you want to reproduce the figure

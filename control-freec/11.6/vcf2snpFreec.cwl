@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf2snpFreec.pl.cwl
+id: ../../../vcf2snpFreec.pl.cwl
 inputs:
 - id: file_dbsnp_vcf
   doc: file                   dbSNP vcf file

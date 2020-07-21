@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/twins.cwl
+id: ../../../twins.cwl
 inputs:
 - id: ref
   doc: samtools reference sequence (required)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sdf2fps.cwl
+id: ../../../sdf2fps.cwl
 inputs:
 - id: id_tag
   doc: get the record id from TAG instead of the first line of the record

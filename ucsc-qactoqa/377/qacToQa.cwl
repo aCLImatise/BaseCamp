@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qacToQa.cwl
+id: ../../../qacToQa.cwl
 inputs:
 - id: name
   doc: restrict output to just this sequence name

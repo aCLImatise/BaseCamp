@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/OutputMotifs.cwl
+id: ../../../OutputMotifs.cwl
 inputs:
 - id: b
   doc: ''

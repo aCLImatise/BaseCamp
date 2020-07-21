@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stretcher.cwl
+id: ../../../stretcher.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

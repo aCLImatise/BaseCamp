@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ScanIndel.py.cwl
+id: ../../../ScanIndel.py.cwl
 inputs:
 - id: setting_directory_default
   doc: :setting the output directory (default current working directory)

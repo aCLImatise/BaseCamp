@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ansible.cwl
+id: ../../../ansible.cwl
 inputs:
 - id: args
   doc: module arguments

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chromopainter2chromopainterv2.pl.cwl
+id: ../../../chromopainter2chromopainterv2.pl.cwl
 inputs:
 - id: phase_file
   doc: ''

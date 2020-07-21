@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seq2cov.pl.cwl
+id: ../../../seq2cov.pl.cwl
 inputs:
 - id: regular_expression_extract
   doc: The regular expression to extract sample name from bam filename

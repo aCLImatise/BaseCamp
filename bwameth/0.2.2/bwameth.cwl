@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bwameth.py.cwl
+id: ../../../bwameth.py.cwl
 inputs:
 - id: map
   doc: ''

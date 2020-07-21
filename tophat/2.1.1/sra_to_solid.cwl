@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sra_to_solid.cwl
+id: ../../../sra_to_solid.cwl
 inputs:
 - id: input_dot_fast_q
   doc: ''

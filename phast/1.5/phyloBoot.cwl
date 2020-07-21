@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyloBoot.cwl
+id: ../../../phyloBoot.cwl
 inputs:
 - id: read_mods
   doc: Read estimated models from list of filenames instead of generating alignments

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AlignRecords.py_align_fail.cwl
+id: ../../../AlignRecords.py_align_fail.cwl
 inputs:
 - id: align_records_do_tpy
   doc: ''

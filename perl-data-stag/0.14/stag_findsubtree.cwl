@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stag_findsubtree.pl.cwl
+id: ../../../stag_findsubtree.pl.cwl
 inputs:
 - id: parser_format_format
   doc: '|parser FORMAT FORMAT is one of xml, sxpr or itext, or the name of a perl

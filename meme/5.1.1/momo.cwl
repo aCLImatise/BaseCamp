@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/momo.cwl
+id: ../../../momo.cwl
 inputs:
 - id: algorithm
   doc: ''

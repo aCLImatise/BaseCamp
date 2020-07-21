@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metaWRAP.cwl
+id: ../../../metaWRAP.cwl
 inputs:
 - id: show_config
   doc: show where the metawrap configuration files are stored

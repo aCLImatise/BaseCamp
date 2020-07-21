@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varlociraptor_filter_calls_posterior_odds.cwl
+id: ../../../varlociraptor_filter_calls_posterior_odds.cwl
 inputs:
 - id: events
   doc: '...    Events to consider.'

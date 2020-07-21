@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iu_trim_V6_primers.cwl
+id: ../../../iu_trim_V6_primers.cwl
 inputs:
 - id: archaea
   doc: When set, primers for arhacea is used instead of bacteria.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rmsk2bed.cwl
+id: ../../../rmsk2bed.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

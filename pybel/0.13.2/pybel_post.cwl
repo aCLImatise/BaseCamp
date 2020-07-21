@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pybel_post.cwl
+id: ../../../pybel_post.cwl
 inputs:
 - id: host
   doc: URL of BEL Commons. Defaults to https://bel- commons.scai.fraunhofer.de

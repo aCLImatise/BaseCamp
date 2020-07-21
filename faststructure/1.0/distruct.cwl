@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/distruct.py.cwl
+id: ../../../distruct.py.cwl
 inputs:
 - id: number_of_populations
   doc: (number of populations)

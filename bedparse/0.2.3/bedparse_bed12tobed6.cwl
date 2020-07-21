@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedparse_bed12tobed6.cwl
+id: ../../../bedparse_bed12tobed6.cwl
 inputs:
 - id: append_exn
   doc: Appends the exon number to the transcript name.

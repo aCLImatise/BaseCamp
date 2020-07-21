@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequence_filter.py_output_fastx.cwl
+id: ../../../sequence_filter.py_output_fastx.cwl
 inputs:
 - id: i
   doc: ''

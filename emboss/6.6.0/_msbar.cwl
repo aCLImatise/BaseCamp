@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_msbar.cwl
+id: ../../../_msbar.cwl
 inputs:
 - id: count
   doc: integer    [1] Number of times to perform the mutation operations (Integer

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runReadsToGenome.pl.cwl
+id: ../../../runReadsToGenome.pl.cwl
 inputs:
 - id: min_in_del_candidate_depth
   doc: number gapped reads for indel candidates [3]

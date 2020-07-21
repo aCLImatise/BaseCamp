@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prepare_signature.pl.cwl
+id: ../../../prepare_signature.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

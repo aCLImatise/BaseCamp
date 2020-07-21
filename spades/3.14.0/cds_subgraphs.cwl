@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cds_subgraphs.cwl
+id: ../../../cds_subgraphs.cwl
 inputs:
 - id: output_folder
   doc: output folder to use for GFA files

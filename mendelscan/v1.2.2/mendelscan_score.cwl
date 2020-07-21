@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mendelscan_score.cwl
+id: ../../../mendelscan_score.cwl
 inputs:
 - id: seg_score_case_ref
   doc: A case sample was called reference/wild-type (0.50/0.10)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CnvHunter.cwl
+id: ../../../CnvHunter.cwl
 inputs:
 - id: in
   doc: Input TSV files (one per sample) containing coverage data (chr, start, end,

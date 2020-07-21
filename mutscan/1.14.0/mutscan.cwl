@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mutscan.cwl
+id: ../../../mutscan.cwl
 inputs:
 - id: simplified
   doc: simplified mode uses less RAM but reports less information. This option can

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treebest_sortleaf.cwl
+id: ../../../treebest_sortleaf.cwl
 inputs:
 - id: tree_one
   doc: ''

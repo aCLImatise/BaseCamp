@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dcmp2pgm.cwl
+id: ../../../dcmp2pgm.cwl
 inputs:
 - id: _quiet_quiet
   doc: --quiet        quiet mode, print no warnings and errors

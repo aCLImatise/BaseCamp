@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/efn2_smp.cwl
+id: ../../../efn2_smp.cwl
 inputs:
 - id: efn_two
   doc: ''

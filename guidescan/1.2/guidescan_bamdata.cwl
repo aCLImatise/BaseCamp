@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/guidescan_bamdata.cwl
+id: ../../../guidescan_bamdata.cwl
 inputs:
 - id: project_name_load
   doc: 'project name, load previously saved arguments and save additional output (default:

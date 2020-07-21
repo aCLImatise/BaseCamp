@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_to_mock_fastq.py_output_fastq.cwl
+id: ../../../fasta_to_mock_fastq.py_output_fastq.cwl
 inputs:
 - id: q
   doc: ''

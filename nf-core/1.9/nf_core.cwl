@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nf_core.cwl
+id: ../../../nf_core.cwl
 inputs:
 - id: verbose
   doc: Verbose output (print debug statements)

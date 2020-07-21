@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reaper.cwl
+id: ../../../reaper.cwl
 inputs:
 - id: int_minimum_length
   doc: <int> minimum length required to count sub-alignment as match

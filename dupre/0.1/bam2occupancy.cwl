@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam2occupancy.cwl
+id: ../../../bam2occupancy.cwl
 inputs:
 - id: name
   doc: name for this occupancy vector (prepended to occupancy vector)

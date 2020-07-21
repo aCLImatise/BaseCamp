@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paraNodeStart.cwl
+id: ../../../paraNodeStart.cwl
 inputs:
 - id: log
   doc: Log to file instead of syslog.

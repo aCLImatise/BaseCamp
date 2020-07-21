@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_versioning_set.cwl
+id: ../../../gsutil_versioning_set.cwl
 inputs:
 - id: on_vertical_line_off
   doc: ''

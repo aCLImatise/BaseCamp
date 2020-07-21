@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getPos.pl.cwl
+id: ../../../getPos.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

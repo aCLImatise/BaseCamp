@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/easel_downsample.cwl
+id: ../../../easel_downsample.cwl
 inputs:
 - id: sequence_sampling_infile
   doc: ': sequence sampling: <infile> is file or stream of seqs'

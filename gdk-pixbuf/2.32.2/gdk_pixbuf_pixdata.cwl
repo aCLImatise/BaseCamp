@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdk_pixbuf_pixdata.cwl
+id: ../../../gdk_pixbuf_pixdata.cwl
 inputs:
 - id: g_fatal_warnings
   doc: make warnings fatal (abort)

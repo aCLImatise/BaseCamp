@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tagBam.cwl
+id: ../../../tagBam.cwl
 inputs:
 - id: intervals
   doc: Use the full interval (including name, score, and strand) to populate tags.

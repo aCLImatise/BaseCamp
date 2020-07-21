@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fix_map_ordering.cwl
+id: ../../../fix_map_ordering.cwl
 inputs:
 - id: sam_header
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/idcat.cwl
+id: ../../../idcat.cwl
 inputs:
 - id: fields
   doc: ': comma separated list of fields to display'

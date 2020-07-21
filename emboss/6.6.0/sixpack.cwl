@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sixpack.cwl
+id: ../../../sixpack.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

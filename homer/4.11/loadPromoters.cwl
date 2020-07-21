@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/loadPromoters.pl.cwl
+id: ../../../loadPromoters.pl.cwl
 inputs:
 - id: as
   doc: '(Redundant/CpG analysis start, default: -300)'

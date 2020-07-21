@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CompactParser.cwl
+id: ../../../CompactParser.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

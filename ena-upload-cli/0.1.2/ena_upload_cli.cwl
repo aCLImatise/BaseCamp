@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ena_upload_cli.cwl
+id: ../../../ena_upload_cli.cwl
 inputs:
 - id: action
   doc: 'add: add an object to the archive modify: modify an object in the archive

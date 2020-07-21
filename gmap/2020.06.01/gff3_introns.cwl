@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gff3_introns.cwl
+id: ../../../gff3_introns.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

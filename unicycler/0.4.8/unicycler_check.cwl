@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unicycler_check.cwl
+id: ../../../unicycler_check.cwl
 inputs:
 - id: sam
   doc: Input SAM file of alignments (if this file doesn't exist, the alignment will

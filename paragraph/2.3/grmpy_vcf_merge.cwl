@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/grmpy_vcf_merge.py.cwl
+id: ../../../grmpy_vcf_merge.py.cwl
 inputs:
 - id: input
   doc: Input VCF file of variants.

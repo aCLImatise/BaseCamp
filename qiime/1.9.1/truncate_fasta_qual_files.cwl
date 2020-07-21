@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/truncate_fasta_qual_files.py.cwl
+id: ../../../truncate_fasta_qual_files.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

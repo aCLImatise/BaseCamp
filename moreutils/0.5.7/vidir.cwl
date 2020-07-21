@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vidir.cwl
+id: ../../../vidir.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

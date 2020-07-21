@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Donatello.cwl
+id: ../../../Donatello.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

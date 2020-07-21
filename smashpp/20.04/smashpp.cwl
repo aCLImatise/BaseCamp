@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smashpp.cwl
+id: ../../../smashpp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

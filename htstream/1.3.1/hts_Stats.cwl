@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hts_Stats.cwl
+id: ../../../hts_Stats.cwl
 inputs:
 - id: _version_print
   doc: '[ --version ]                      Version print'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_createtsv.cwl
+id: ../../../mmseqs_createtsv.cwl
 inputs:
 - id: first_seq_as_repr
   doc: false           Use the first sequence of the clustering result as representative

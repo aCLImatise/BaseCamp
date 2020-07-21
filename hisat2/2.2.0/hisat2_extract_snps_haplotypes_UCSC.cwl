@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hisat2_extract_snps_haplotypes_UCSC.py_base_fname.cwl
+id: ../../../hisat2_extract_snps_haplotypes_UCSC.py_base_fname.cwl
 inputs:
 - id: inter_gap
   doc: ''

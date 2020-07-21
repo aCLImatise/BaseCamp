@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bigPslToPsl.cwl
+id: ../../../bigPslToPsl.cwl
 inputs:
 - id: collapse_strand
   doc: if target strand is '+', don't output it

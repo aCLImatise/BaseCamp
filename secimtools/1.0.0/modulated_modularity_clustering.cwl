@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/modulated_modularity_clustering.py.cwl
+id: ../../../modulated_modularity_clustering.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

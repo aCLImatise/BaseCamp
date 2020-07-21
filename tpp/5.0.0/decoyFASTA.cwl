@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/decoyFASTA.cwl
+id: ../../../decoyFASTA.cwl
 inputs:
 - id: input_file
   doc: ''

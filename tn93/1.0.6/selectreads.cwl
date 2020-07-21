@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/selectreads.cwl
+id: ../../../selectreads.cwl
 inputs:
 - id: direct_fasta_file
   doc: direct the FASTA file with matching (and trimmed reads) to a file named OUTPUT

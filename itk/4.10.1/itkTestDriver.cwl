@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/itkTestDriver.cwl
+id: ../../../itkTestDriver.cwl
 inputs:
 - id: prg
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/minia.cwl
+id: ../../../minia.cwl
 inputs:
 - id: in
   doc: "(1 arg) :    input reads (fasta/fastq/compressed) or hdf5 file  [default '']"

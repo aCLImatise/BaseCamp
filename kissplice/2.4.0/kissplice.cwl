@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kissplice.cwl
+id: ../../../kissplice.cwl
 inputs:
 - id: input_fastaq_read
   doc: input fasta/q read files or compressed (.gz) fasta/q files (mutiple, such as

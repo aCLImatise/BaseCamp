@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Circle_Map_ReadExtractor.cwl
+id: ../../../Circle_Map_ReadExtractor.cwl
 inputs:
 - id: input_query_name
   doc: 'Input: query name sorted bam file'

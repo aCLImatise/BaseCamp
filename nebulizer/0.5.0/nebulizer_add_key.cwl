@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nebulizer_add_key.cwl
+id: ../../../nebulizer_add_key.cwl
 inputs:
 - id: alias
   doc: ''

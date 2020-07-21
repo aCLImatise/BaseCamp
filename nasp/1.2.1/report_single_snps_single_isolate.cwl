@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/report_single_snps_single_isolate.py.cwl
+id: ../../../report_single_snps_single_isolate.py.cwl
 inputs:
 - id: input_matrix
   doc: /path/to/NASP_matrix [REQUIRED]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/octopus.cwl
+id: ../../../octopus.cwl
 inputs:
 - id: config
   doc: A config file, used to populate command line options

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vsnp_best_reference.py.cwl
+id: ../../../vsnp_best_reference.py.cwl
 inputs:
 - id: read_one
   doc: 'Required: single read'

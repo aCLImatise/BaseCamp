@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sentieon_bwa_fa2pac.cwl
+id: ../../../sentieon_bwa_fa2pac.cwl
 inputs:
 - id: f
   doc: ''

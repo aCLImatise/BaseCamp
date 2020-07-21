@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gvcf2coverage.cwl
+id: ../../../gvcf2coverage.cwl
 inputs:
 - id: t
   doc: ''

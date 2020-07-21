@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/batch_seqstructhmm.cwl
+id: ../../../batch_seqstructhmm.cwl
 inputs:
 - id: cores
   doc: number of cores to use (if not given, all cores are used)

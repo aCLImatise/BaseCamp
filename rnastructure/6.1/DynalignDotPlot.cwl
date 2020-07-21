@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DynalignDotPlot.cwl
+id: ../../../DynalignDotPlot.cwl
 inputs:
 - id: dyn_align_save_file
   doc: ''

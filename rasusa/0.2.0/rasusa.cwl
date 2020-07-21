@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rasusa.cwl
+id: ../../../rasusa.cwl
 inputs:
 - id: switch_on_verbosity
   doc: Switch on verbosity.

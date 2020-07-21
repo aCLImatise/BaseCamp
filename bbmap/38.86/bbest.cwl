@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bbest.sh.cwl
+id: ../../../bbest.sh.cwl
 inputs:
 - id: in
   doc: ''

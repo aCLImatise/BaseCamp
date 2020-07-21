@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyatac_ins.cwl
+id: ../../../pyatac_ins.cwl
 inputs:
 - id: bam
   doc: Accepts sorted BAM file

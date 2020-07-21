@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TEpeaks_narrow.cwl
+id: ../../../TEpeaks_narrow.cwl
 inputs:
 - id: keep_dup
   doc: "How to deal with duplicate reads. The valid values are 'auto', 'all', or 1\

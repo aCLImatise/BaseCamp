@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clan_search.cwl
+id: ../../../clan_search.cwl
 inputs:
 - id: r
   doc: ''

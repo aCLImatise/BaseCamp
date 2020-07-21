@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msaboot.cwl
+id: ../../../msaboot.cwl
 inputs:
 - id: input
   doc: The file name of the FASTA file to be used as input.

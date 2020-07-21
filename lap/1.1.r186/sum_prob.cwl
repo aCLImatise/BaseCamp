@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sum_prob.py.cwl
+id: ../../../sum_prob.py.cwl
 inputs:
 - id: threshold
   doc: any probabilities below this threshold are set to the threshold value. (default

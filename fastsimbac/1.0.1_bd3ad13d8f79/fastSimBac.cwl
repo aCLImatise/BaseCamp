@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastSimBac.cwl
+id: ../../../fastSimBac.cwl
 inputs:
 - id: sample_size
   doc: ''

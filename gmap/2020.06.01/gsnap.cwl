@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsnap.sse42.cwl
+id: ../../../gsnap.sse42.cwl
 inputs:
 - id: dir
   doc: Genome directory.  Default (as specified by --with-gmapdb to the configure

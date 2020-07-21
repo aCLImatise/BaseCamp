@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convert_alphabet.py_output_fastx.cwl
+id: ../../../convert_alphabet.py_output_fastx.cwl
 inputs:
 - id: i
   doc: ''

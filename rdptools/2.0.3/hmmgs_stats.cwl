@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmgs_stats.cwl
+id: ../../../hmmgs_stats.cwl
 inputs:
 - id: bloom_filter_stats
   doc: ''

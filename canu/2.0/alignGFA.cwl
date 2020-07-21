@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alignGFA.cwl
+id: ../../../alignGFA.cwl
 inputs:
 - id: load_tigs_tgstore
   doc: v         Load tigs from tgStore 't', version 'v'.

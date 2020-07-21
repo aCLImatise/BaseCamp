@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plot_3Dpie.R.cwl
+id: ../../../plot_3Dpie.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

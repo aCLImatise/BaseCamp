@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qsignature.cwl
+id: ../../../qsignature.cwl
 inputs:
 - id: disable_at_files
   doc: prevent further argument file expansion

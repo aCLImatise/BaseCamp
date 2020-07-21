@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cpus.pl.cwl
+id: ../../../cpus.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

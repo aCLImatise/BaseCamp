@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dnase_average_profile.py.cwl
+id: ../../../dnase_average_profile.py.cwl
 inputs:
 - id: window_size
   doc: 'Size of flanking area around centre of the regions to plot (default: 100)'

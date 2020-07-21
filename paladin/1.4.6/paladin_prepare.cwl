@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paladin_prepare.cwl
+id: ../../../paladin_prepare.cwl
 inputs:
 - id: reference_database_uniprotkb
   doc: '<#>         Reference Database: 1: UniProtKB Reviewed (Swiss-Prot) 2: UniProtKB

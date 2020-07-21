@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vawk.cwl
+id: ../../../vawk.cwl
 inputs:
 - id: var
   doc: 'declare an external variable (e.g.: SIZE=10000)'

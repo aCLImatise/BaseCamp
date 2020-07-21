@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/XPressPeptideParser.cwl
+id: ../../../XPressPeptideParser.cwl
 inputs:
 - id: num_change_default
   doc: <num>    change XPRESS mass tolerance (default=0.5000)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unitas.pl.cwl
+id: ../../../unitas.pl.cwl
 inputs:
 - id: refseq
   doc: '[-refseq sequence_2.fas ...]'

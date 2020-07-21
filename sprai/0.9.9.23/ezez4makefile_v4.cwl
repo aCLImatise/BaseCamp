@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ezez4makefile_v4.pl.cwl
+id: ../../../ezez4makefile_v4.pl.cwl
 inputs:
 - id: var_0
   doc: ''

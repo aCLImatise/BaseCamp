@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gxw2consensus.pl.cwl
+id: ../../../gxw2consensus.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

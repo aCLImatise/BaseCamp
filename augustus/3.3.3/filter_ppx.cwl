@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_ppx.pl.cwl
+id: ../../../filter_ppx.pl.cwl
 inputs:
 - id: no
   doc: ''

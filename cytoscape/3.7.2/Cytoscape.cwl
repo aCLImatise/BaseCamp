@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Cytoscape.cwl
+id: ../../../Cytoscape.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

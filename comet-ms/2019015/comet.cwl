@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/comet.exe.cwl
+id: ../../../comet.exe.cwl
 inputs:
 - id: print_cometparams_file
   doc: to print out a comet.params file (named comet.params.new)

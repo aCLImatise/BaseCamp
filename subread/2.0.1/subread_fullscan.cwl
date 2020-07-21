@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/subread_fullscan.cwl
+id: ../../../subread_fullscan.cwl
 inputs:
 - id: base_name_index
   doc: Base name of the index.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ecotaxspecificity.cwl
+id: ../../../ecotaxspecificity.cwl
 inputs:
 - id: skip
   doc: skip the N first sequences

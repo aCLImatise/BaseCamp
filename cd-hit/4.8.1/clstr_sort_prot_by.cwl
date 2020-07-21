@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clstr_sort_prot_by.pl.cwl
+id: ../../../clstr_sort_prot_by.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

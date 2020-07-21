@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svist4get.cwl
+id: ../../../svist4get.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

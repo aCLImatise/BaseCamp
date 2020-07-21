@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtk_vcfcluster_fout.cwl
+id: ../../../svtk_vcfcluster_fout.cwl
 inputs:
 - id: r
   doc: ''

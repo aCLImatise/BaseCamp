@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequana_gtf_fixer.cwl
+id: ../../../sequana_gtf_fixer.cwl
 inputs:
 - id: input_gtf_file
   doc: input GTF file

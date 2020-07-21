@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/megahit_core.cwl
+id: ../../../megahit_core.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pair2tb.cwl
+id: ../../../pair2tb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

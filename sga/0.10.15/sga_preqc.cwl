@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sga_preqc.cwl
+id: ../../../sga_preqc.cwl
 inputs:
 - id: verbose
   doc: display verbose output

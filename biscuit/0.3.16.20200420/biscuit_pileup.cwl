@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biscuit_pileup.cwl
+id: ../../../biscuit_pileup.cwl
 inputs:
 - id: region_optional_specified
   doc: region (optional, if not specified the whole bam will be processed).

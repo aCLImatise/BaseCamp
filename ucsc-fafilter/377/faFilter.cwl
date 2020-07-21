@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faFilter.cwl
+id: ../../../faFilter.cwl
 inputs:
 - id: name
   doc: '- Only pass records where name matches wildcard * matches any string or no

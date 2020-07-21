@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/callgenes.sh.cwl
+id: ../../../callgenes.sh.cwl
 inputs:
 - id: in
   doc: ''

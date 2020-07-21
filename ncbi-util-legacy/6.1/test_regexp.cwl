@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/test_regexp.cwl
+id: ../../../test_regexp.cwl
 inputs:
 - id: debug_show_compiled
   doc: 'debug: show compiled code; implies -i'

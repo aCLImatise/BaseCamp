@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/artic_vcf_filter.cwl
+id: ../../../artic_vcf_filter.cwl
 inputs:
 - id: nano_polish
   doc: ''

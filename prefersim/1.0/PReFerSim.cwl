@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PReFerSim.cwl
+id: ../../../PReFerSim.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

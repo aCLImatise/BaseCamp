@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tn93_cluster_FASTA.cwl
+id: ../../../tn93_cluster_FASTA.cwl
 inputs:
 - id: o
   doc: ''

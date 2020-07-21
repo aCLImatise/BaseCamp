@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_overlap.cwl
+id: ../../../abyss_overlap.cwl
 inputs:
 - id: min
   doc: find matches at least N bp [50]

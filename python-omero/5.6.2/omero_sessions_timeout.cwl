@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_sessions_timeout.cwl
+id: ../../../omero_sessions_timeout.cwl
 inputs:
 - id: session
   doc: Session other than the current to update

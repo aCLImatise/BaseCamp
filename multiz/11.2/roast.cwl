@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/roast.cwl
+id: ../../../roast.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

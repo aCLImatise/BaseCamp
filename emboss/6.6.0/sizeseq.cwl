@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sizeseq.cwl
+id: ../../../sizeseq.cwl
 inputs:
 - id: descending
   doc: boolean    [N] By default the shortest sequence is given first.

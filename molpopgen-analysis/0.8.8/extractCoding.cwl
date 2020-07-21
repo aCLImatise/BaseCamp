@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extractCoding.cwl
+id: ../../../extractCoding.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

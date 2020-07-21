@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smartpca.cwl
+id: ../../../smartpca.cwl
 inputs:
 - id: bad
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/initializeTranscriptDatasource.cwl
+id: ../../../initializeTranscriptDatasource.cwl
 inputs:
 - id: name
   doc: ''

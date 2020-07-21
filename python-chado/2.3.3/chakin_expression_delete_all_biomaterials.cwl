@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chakin_expression_delete_all_biomaterials.cwl
+id: ../../../chakin_expression_delete_all_biomaterials.cwl
 inputs:
 - id: confirm
   doc: Confirm that you really do want to delete ALL of the biomaterials.

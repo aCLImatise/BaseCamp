@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kmercoverage.sh.cwl
+id: ../../../kmercoverage.sh.cwl
 inputs:
 - id: in
   doc: ''

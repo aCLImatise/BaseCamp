@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segmentation_fold_utils_filter_by_energy.cwl
+id: ../../../segmentation_fold_utils_filter_by_energy.cwl
 inputs:
 - id: energy
   doc: Entries with transitions with energy smaller than energy (< e) or without transitions

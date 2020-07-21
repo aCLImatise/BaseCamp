@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/savage.cwl
+id: ../../../savage.cwl
 inputs:
 - id: path_input_fastq_containing_singleend
   doc: path to input fastq containing single-end reads

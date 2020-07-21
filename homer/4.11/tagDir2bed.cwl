@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tagDir2bed.pl.cwl
+id: ../../../tagDir2bed.pl.cwl
 inputs:
 - id: len
   doc: '<#> (read length to report, default: given sizes in tags.tsv file)'

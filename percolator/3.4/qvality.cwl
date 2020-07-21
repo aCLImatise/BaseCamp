@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qvality.cwl
+id: ../../../qvality.cwl
 inputs:
 - id: include_negative
   doc: Include negative hits (decoy) probabilities  in the results

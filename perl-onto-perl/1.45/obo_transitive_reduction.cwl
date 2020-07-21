@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obo_transitive_reduction.pl.cwl
+id: ../../../obo_transitive_reduction.pl.cwl
 inputs:
 - id: obo_input_file
   doc: OBO input file

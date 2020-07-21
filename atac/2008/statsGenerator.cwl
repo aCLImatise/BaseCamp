@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/statsGenerator.cwl
+id: ../../../statsGenerator.cwl
 inputs:
 - id: read_input_from
   doc: read input from 'file.atac'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rgt_viz_combinatorial.cwl
+id: ../../../rgt_viz_combinatorial.cwl
 inputs:
 - id: directory_name_output
   doc: 'The directory name for the output files. For example, project name. (default:

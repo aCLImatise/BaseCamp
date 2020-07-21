@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_subsample.cwl
+id: ../../../fasta_subsample.cwl
 inputs:
 - id: seed
   doc: ''

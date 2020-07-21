@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/XFDR.cwl
+id: ../../../XFDR.cwl
 inputs:
 - id: in
   doc: "Crosslink Identifications in either xquest.xml, idXML, or mzIdentML format\

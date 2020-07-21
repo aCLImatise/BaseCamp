@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dsh_gfa1_to_gfa2.cwl
+id: ../../../dsh_gfa1_to_gfa2.cwl
 inputs:
 - id: about
   doc: display about message [optional]

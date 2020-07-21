@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbsEncode.cwl
+id: ../../../pbsEncode.cwl
 inputs:
 - id: discard_gaps
   doc: Discard gaps in the PBS.  Gaps in the input data are assumed to be represented

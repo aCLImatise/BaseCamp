@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_get_ms2_spectrum.cwl
+id: ../../../crux_get_ms2_spectrum.cwl
 inputs:
 - id: ms_two_file
   doc: ''

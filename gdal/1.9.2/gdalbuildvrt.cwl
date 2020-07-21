@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdalbuildvrt.cwl
+id: ../../../gdalbuildvrt.cwl
 inputs:
 - id: tile_index
   doc: ''

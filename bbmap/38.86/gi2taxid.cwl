@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gi2taxid.sh.cwl
+id: ../../../gi2taxid.sh.cwl
 inputs:
 - id: in
   doc: ''

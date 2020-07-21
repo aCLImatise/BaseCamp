@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genemark_gtf2gff3.cwl
+id: ../../../genemark_gtf2gff3.cwl
 inputs:
 - id: filename
   doc: ''

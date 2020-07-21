@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plotprot.R.cwl
+id: ../../../plotprot.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/load_prokaryotes.py.cwl
+id: ../../../load_prokaryotes.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

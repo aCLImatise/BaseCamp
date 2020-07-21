@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/div_snp_table_chr.py.cwl
+id: ../../../div_snp_table_chr.py.cwl
 inputs:
 - id: mask
   doc: Mask AR and features with this file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_script_jobs.cwl
+id: ../../../omero_script_jobs.cwl
 inputs:
 - id: all
   doc: Show all jobs, not just running ones

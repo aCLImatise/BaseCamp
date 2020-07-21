@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fqtools_o.cwl
+id: ../../../fqtools_o.cwl
 inputs:
 - id: hv_dram_uli
   doc: ''

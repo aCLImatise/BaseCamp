@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sitepro.cwl
+id: ../../../sitepro.cwl
 inputs:
 - id: wig
   doc: 'input WIG file. WARNING: both fixedStep and variableStep WIG formats are accepted.

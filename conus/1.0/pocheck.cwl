@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pocheck.cwl
+id: ../../../pocheck.cwl
 inputs:
 - id: options
   doc: ''

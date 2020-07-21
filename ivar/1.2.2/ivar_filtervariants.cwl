@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ivar_filtervariants.cwl
+id: ../../../ivar_filtervariants.cwl
 inputs:
 - id: minimum_fration_required
   doc: 'Minimum fration of files required to contain the same variant. Specify value

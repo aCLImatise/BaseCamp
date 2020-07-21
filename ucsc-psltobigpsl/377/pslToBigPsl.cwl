@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslToBigPsl.cwl
+id: ../../../pslToBigPsl.cwl
 inputs:
 - id: file_dot_psl
   doc: ''

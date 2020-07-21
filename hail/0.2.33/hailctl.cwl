@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hailctl.cwl
+id: ../../../hailctl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dEploid_dbg.cwl
+id: ../../../dEploid_dbg.cwl
 inputs:
 - id: version
   doc: --  DEploid version.

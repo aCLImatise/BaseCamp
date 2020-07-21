@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kcpolytest.cwl
+id: ../../../kcpolytest.cwl
 inputs:
 - id: th
   doc: ''

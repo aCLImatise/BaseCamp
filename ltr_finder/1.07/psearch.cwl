@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/psearch.cwl
+id: ../../../psearch.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

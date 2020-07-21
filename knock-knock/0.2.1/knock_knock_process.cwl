@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/knock_knock_process.cwl
+id: ../../../knock_knock_process.cwl
 inputs:
 - id: progress
   doc: ''

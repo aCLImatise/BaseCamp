@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/leaff.cwl
+id: ../../../leaff.cwl
 inputs:
 - id: use_sequence_f
   doc: ":     use sequence in 'file' (-F is also allowed for historical reasons)"

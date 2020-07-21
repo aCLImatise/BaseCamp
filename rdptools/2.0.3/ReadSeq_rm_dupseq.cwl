@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ReadSeq_rm_dupseq.cwl
+id: ../../../ReadSeq_rm_dupseq.cwl
 inputs:
 - id: duplicates
   doc: remove identical sequence, or sequence contained by another sequence

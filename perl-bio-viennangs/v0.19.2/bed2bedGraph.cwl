@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bed2bedGraph.pl.cwl
+id: ../../../bed2bedGraph.pl.cwl
 inputs:
 - id: bed_file_conversion
   doc: BED file for conversion.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/watchdog_cmd.cwl
+id: ../../../watchdog_cmd.cwl
 inputs:
 - id: attach_info
   doc: path to a file that is used to restore the info on previously running  tasks

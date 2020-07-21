@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bmtagger.sh.cwl
+id: ../../../bmtagger.sh.cwl
 inputs:
 - id: hv
   doc: ''

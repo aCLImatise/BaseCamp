@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GNPSExport.cwl
+id: ../../../GNPSExport.cwl
 inputs:
 - id: in_cm
   doc: "*                        Input file containing consensus elements with 'peptide'\

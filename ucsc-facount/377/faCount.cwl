@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faCount.cwl
+id: ../../../faCount.cwl
 inputs:
 - id: summary
   doc: show only summary statistics

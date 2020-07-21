@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chainToPsl.cwl
+id: ../../../chainToPsl.cwl
 inputs:
 - id: in_dot_chain
   doc: ''

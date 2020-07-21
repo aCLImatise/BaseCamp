@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splicecomp.cwl
+id: ../../../splicecomp.cwl
 inputs:
 - id: table_a
   doc: table A

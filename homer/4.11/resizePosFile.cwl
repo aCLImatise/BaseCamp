@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/resizePosFile.pl.cwl
+id: ../../../resizePosFile.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

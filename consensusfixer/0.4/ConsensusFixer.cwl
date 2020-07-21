@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ConsensusFixer.cwl
+id: ../../../ConsensusFixer.cwl
 inputs:
 - id: alignment_file_bam
   doc: ': Alignment file in BAM format (required).'

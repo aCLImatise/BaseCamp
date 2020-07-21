@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/swiftlink.cwl
+id: ../../../swiftlink.cwl
 inputs:
 - id: output
   doc: (default = 'swiftlink.out')

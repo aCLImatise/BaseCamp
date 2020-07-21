@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools_bamshuf.cwl
+id: ../../../samtools_bamshuf.cwl
 inputs:
 - id: output_to_stdout
   doc: output to stdout

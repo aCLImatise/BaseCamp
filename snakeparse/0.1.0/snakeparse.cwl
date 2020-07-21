@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snakeparse.cwl
+id: ../../../snakeparse.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

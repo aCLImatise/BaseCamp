@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ProbKnot_smp.cwl
+id: ../../../ProbKnot_smp.cwl
 inputs:
 - id: prob_knot
   doc: ''

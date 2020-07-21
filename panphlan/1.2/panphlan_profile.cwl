@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/panphlan_profile.py.cwl
+id: ../../../panphlan_profile.py.cwl
 inputs:
 - id: i_dna
   doc: Input directory of panphlan_map.py results, containing SAMPLE.csv.bz2 files

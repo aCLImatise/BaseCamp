@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_emit_haplotigs.py.cwl
+id: ../../../fc_emit_haplotigs.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

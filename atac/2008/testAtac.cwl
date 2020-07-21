@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/testAtac.cwl
+id: ../../../testAtac.cwl
 inputs:
 - id: print_warning_match
   doc: print a warning if a match is below this percent identity

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stats_from_bam.cwl
+id: ../../../stats_from_bam.cwl
 inputs:
 - id: all_alignments
   doc: 'Include secondary and supplementary alignments. (default: False)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pairtools_dedup.cwl
+id: ../../../pairtools_dedup.cwl
 inputs:
 - id: output
   doc: output file for pairs after duplicate removal. If the path ends with .gz or

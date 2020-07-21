@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flowcraft_report.cwl
+id: ../../../flowcraft_report.cwl
 inputs:
 - id: specify_path_pipeline
   doc: Specify the path to the pipeline report JSON file.

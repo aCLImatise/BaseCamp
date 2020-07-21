@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_naive_bsfinder.cwl
+id: ../../../mb_naive_bsfinder.cwl
 inputs:
 - id: min_transitions
   doc: minimum number of transitions required

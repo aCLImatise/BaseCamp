@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ncbisort.cwl
+id: ../../../ncbisort.cwl
 inputs:
 - id: cmu
   doc: ''

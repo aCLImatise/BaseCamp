@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/analyse.py.cwl
+id: ../../../analyse.py.cwl
 inputs:
 - id: a_type
   doc: get all features of type TYPE

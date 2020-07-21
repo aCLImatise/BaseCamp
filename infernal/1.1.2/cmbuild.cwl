@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cmbuild.cwl
+id: ../../../cmbuild.cwl
 inputs:
 - id: name_cms_s
   doc: ': name the CM(s) <s>, (only if single aln in file)'

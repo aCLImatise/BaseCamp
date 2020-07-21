@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/add_tags_to_adapters.py.cwl
+id: ../../../add_tags_to_adapters.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

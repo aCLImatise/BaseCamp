@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PopBubbles.cwl
+id: ../../../PopBubbles.cwl
 inputs:
 - id: km_er
   doc: k-mer size

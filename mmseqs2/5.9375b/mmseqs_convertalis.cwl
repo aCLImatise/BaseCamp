@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_convertalis.cwl
+id: ../../../mmseqs_convertalis.cwl
 inputs:
 - id: format_mode
   doc: 'output format 0: BLAST-TAB, 1: PAIRWISE, 2: BLAST-TAB + query/db length'

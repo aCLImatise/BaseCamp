@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prefixEditDistance_matchLimitGenerate.cwl
+id: ../../../prefixEditDistance_matchLimitGenerate.cwl
 inputs:
 - id: mine_value
   doc: ''

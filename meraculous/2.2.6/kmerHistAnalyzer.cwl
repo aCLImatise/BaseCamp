@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kmerHistAnalyzer.pl.cwl
+id: ../../../kmerHistAnalyzer.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

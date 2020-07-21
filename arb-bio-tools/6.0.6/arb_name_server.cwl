@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_name_server.cwl
+id: ../../../arb_name_server.cwl
 inputs:
 - id: name_sets_name
   doc: <name>        sets species name to '<name>'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maskambigprot.cwl
+id: ../../../maskambigprot.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_2_ascii.cwl
+id: ../../../arb_2_ascii.cwl
 inputs:
 - id: r
   doc: ''

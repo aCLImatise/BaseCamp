@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phylophlan_write_config_file.cwl
+id: ../../../phylophlan_write_config_file.cwl
 inputs:
 - id: output
   doc: 'Specify the output file where to write the configurations (default: None)'

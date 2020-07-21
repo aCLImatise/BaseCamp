@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scmp.cwl
+id: ../../../scmp.cwl
 inputs:
 - id: input_file
   doc: 'Input VCF file. Must have exactly two  samples, the first sample will be used  as

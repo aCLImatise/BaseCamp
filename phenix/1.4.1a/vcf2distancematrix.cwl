@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf2distancematrix.py.cwl
+id: ../../../vcf2distancematrix.py.cwl
 inputs:
 - id: out
   doc: Path to the maxtrix output file in given format. [REQUIRED. default format

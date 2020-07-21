@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/megahit_toolkit_filterbylen.cwl
+id: ../../../megahit_toolkit_filterbylen.cwl
 inputs:
 - id: cat
   doc: ''

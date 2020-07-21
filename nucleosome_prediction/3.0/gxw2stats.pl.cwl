@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gxw2stats.pl.bak.cwl
+id: ../../../gxw2stats.pl.bak.cwl
 inputs:
 - id: ns
   doc: ':        Num samples'

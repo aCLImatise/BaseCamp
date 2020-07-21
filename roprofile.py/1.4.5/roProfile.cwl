@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/roProfile.py.cwl
+id: ../../../roProfile.py.cwl
 inputs:
 - id: roar_y
   doc: Path to directory containing all output files from Roary.

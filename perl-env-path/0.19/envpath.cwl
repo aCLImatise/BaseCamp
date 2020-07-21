@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/envpath.cwl
+id: ../../../envpath.cwl
 inputs:
 - id: prepend_token_path
   doc: Prepend TOKEN to the path variable named 'VAR'

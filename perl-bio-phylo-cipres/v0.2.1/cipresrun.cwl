@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cipresrun.cwl
+id: ../../../cipresrun.cwl
 inputs:
 - id: ci_pres_run
   doc: -t <tool> \ -p <paramname=paramvalue> [-p <paramname=paramvalue>] \      -i

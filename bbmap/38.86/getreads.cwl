@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getreads.sh.cwl
+id: ../../../getreads.sh.cwl
 inputs:
 - id: in
   doc: ''

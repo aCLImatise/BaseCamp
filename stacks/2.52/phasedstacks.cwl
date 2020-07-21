@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phasedstacks.cwl
+id: ../../../phasedstacks.cwl
 inputs:
 - id: skip_zeros
   doc: ": do not include D' values of zero in the D' output."

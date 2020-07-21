@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tb_profiler_vcf_profile.cwl
+id: ../../../tb_profiler_vcf_profile.cwl
 inputs:
 - id: db
   doc: 'Mutation panel name (default: tbdb)'

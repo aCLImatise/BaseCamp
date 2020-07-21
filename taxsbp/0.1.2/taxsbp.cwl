@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxsbp.cwl
+id: ../../../taxsbp.cwl
 inputs:
 - id: tabseparated_fields_sequence
   doc: 'Tab-separated with the fields: sequence id <tab> sequence length <tab> taxonomic

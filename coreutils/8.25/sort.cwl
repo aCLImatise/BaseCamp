@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sort.cwl
+id: ../../../sort.cwl
 inputs:
 - id: ignore_leading_blanks
   doc: leading blanks

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MetaProSIP.cwl
+id: ../../../MetaProSIP.cwl
 inputs:
 - id: in_mzm_l
   doc: "*                  Centroided MS1 data (valid formats: 'mzML')"

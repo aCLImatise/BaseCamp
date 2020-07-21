@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicap.cwl
+id: ../../../hicap.cwl
 inputs:
 - id: query_fp
   doc: Input FASTA query

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sonLib_daemonize.py.cwl
+id: ../../../sonLib_daemonize.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

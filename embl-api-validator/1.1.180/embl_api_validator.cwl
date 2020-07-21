@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/embl_api_validator.cwl
+id: ../../../embl_api_validator.cwl
 inputs:
 - id: assembly
   doc: 'genome assembly entries (default: false)'

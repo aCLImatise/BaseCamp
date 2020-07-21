@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/art.cwl
+id: ../../../art.cwl
 inputs:
 - id: options
   doc: Read a text file of options from FILE

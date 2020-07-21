@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seq_gen.cwl
+id: ../../../seq_gen.cwl
 inputs:
 - id: _sequence_length
   doc: ': # = sequence length [default = 1000].'

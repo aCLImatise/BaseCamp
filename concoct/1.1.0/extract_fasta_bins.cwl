@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_fasta_bins.py.cwl
+id: ../../../extract_fasta_bins.py.cwl
 inputs:
 - id: output_path
   doc: Directory where files will be printed

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioformats_gff2bed.cwl
+id: ../../../bioformats_gff2bed.cwl
 inputs:
 - id: attributes_include_output
   doc: '[ATTRIBUTES [ATTRIBUTES ...]], --attributes [ATTRIBUTES [ATTRIBUTES ...]]

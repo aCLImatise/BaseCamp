@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_eval_estimate_transcript_length_distribution.cwl
+id: ../../../rsem_eval_estimate_transcript_length_distribution.cwl
 inputs:
 - id: input_dot_fast_a
   doc: ''

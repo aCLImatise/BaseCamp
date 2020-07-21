@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scanpy_scale_data.cwl
+id: ../../../scanpy_scale_data.cwl
 inputs:
 - id: input_format
   doc: '[anndata|loom] Input object format.  [default: anndata]'

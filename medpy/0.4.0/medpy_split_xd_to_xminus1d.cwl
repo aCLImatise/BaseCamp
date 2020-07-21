@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_split_xd_to_xminus1d.py.cwl
+id: ../../../medpy_split_xd_to_xminus1d.py.cwl
 inputs:
 - id: display_more_information
   doc: Display more information.

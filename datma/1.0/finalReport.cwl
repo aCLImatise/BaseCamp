@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/finalReport.py.cwl
+id: ../../../finalReport.py.cwl
 inputs:
 - id: file
   doc: configuration file

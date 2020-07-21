@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prophasm.cwl
+id: ../../../prophasm.cwl
 inputs:
 - id: kmer_size
   doc: K-mer size.

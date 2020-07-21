@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mcx.cwl
+id: ../../../mcx.cwl
 inputs:
 - id: mode
   doc: ''

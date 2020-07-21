@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lyner.cwl
+id: ../../../lyner.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

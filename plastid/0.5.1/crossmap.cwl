@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crossmap.cwl
+id: ../../../crossmap.cwl
 inputs:
 - id: kmer_length_generate
   doc: 'K-mer length to generate from input file. (Default: 29)'

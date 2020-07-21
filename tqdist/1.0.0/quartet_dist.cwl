@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quartet_dist.cwl
+id: ../../../quartet_dist.cwl
 inputs:
 - id: v
   doc: ''

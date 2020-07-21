@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tgene.cwl
+id: ../../../tgene.cwl
 inputs:
 - id: o
   doc: 'output to the specified directory; default: tgene_out'

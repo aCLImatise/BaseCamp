@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/leon.cwl
+id: ../../../leon.cwl
 inputs:
 - id: file
   doc: '(1 arg) :    input file (e.g. FASTA/FASTQ for compress or .leon file for decompress)'

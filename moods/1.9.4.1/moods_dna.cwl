@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/moods_dna.py.cwl
+id: ../../../moods_dna.py.cwl
 inputs:
 - id: verbosity
   doc: verbose (-vv, -vvv for more)

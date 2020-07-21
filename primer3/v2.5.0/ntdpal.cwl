@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ntdpal.cwl
+id: ../../../ntdpal.cwl
 inputs:
 - id: g
   doc: ''

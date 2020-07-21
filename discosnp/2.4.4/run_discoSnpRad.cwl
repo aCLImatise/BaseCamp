@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_discoSnpRad.sh.cwl
+id: ../../../run_discoSnpRad.sh.cwl
 inputs:
 - id: _graph_file
   doc: '| --graph <file name> reuse a previously created graph (.h5 file) with same

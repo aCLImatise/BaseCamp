@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lofreq_indelqual.cwl
+id: ../../../lofreq_indelqual.cwl
 inputs:
 - id: _uniform_int
   doc: "| --uniform INT[,INT]  Add this indel quality uniformly to all bases. Use\

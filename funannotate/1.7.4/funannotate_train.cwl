@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/funannotate_train.cwl
+id: ../../../funannotate_train.cwl
 inputs:
 - id: input
   doc: Genome multi-fasta file

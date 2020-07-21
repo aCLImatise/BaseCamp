@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcftools_stats.cwl
+id: ../../../bcftools_stats.cwl
 inputs:
 - id: af_bins
   doc: allele frequency bins, a list (0.1,0.5,1) or a file (0.1\n0.5\n1)

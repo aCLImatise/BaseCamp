@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kallisto_h5dump.cwl
+id: ../../../kallisto_h5dump.cwl
 inputs:
 - id: arguments
   doc: ''

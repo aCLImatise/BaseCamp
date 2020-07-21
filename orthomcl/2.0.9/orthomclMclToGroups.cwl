@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/orthomclMclToGroups.cwl
+id: ../../../orthomclMclToGroups.cwl
 inputs:
 - id: prefix
   doc: a prefix to use when generating group ids.  For example OG2_

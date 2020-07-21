@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/map_and_profile.py.cwl
+id: ../../../map_and_profile.py.cwl
 inputs:
 - id: db
   doc: Path to database from select_db.py. Required if read files given

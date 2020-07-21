@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/motus_map_snv.cwl
+id: ../../../motus_map_snv.cwl
 inputs:
 - id: input_files_reads_forward
   doc: input file(s) for reads in forward orientation, fastq formatted

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LAmerge.cwl
+id: ../../../LAmerge.cwl
 inputs:
 - id: verbose_mode_output
   doc: ': Verbose mode, output statistics as proceed.'

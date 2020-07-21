@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/matchfusion2normal.cwl
+id: ../../../matchfusion2normal.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

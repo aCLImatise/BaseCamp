@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslRc.cwl
+id: ../../../pslRc.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

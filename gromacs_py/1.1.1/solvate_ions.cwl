@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/solvate_ions.py.cwl
+id: ../../../solvate_ions.py.cwl
 inputs:
 - id: input_pdb_file
   doc: Input PDB file

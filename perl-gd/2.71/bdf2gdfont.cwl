@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bdf2gdfont.pl.cwl
+id: ../../../bdf2gdfont.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

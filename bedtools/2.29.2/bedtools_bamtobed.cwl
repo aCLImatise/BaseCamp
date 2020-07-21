@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools_bamtobed.cwl
+id: ../../../bedtools_bamtobed.cwl
 inputs:
 - id: ed
   doc: Use BAM edit distance (NM tag) for BED score. - Default for BED is to use mapping

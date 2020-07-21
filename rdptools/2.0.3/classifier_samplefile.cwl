@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/classifier_samplefile.cwl
+id: ../../../classifier_samplefile.cwl
 inputs:
 - id: tax_a_sim
   doc: '- calculate and plot the similarities within taxa'

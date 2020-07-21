@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NhoodInfo.cwl
+id: ../../../NhoodInfo.cwl
 inputs:
 - id: arg_one
   doc: ''

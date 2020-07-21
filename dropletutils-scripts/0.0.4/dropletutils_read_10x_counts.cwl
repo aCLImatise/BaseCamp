@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dropletutils_read_10x_counts.R.cwl
+id: ../../../dropletutils_read_10x_counts.R.cwl
 inputs:
 - id: output_object_file
   doc: File name in which to store serialized SingleCellExperiment object.

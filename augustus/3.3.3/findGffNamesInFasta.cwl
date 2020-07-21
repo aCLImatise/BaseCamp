@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findGffNamesInFasta.pl.cwl
+id: ../../../findGffNamesInFasta.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

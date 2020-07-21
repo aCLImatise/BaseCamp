@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gvf2starch.cwl
+id: ../../../gvf2starch.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

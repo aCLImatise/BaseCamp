@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ca2mates.cwl
+id: ../../../ca2mates.cwl
 inputs:
 - id: asm_file
   doc: .asm file

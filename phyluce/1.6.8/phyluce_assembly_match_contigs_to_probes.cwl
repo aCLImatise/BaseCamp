@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_assembly_match_contigs_to_probes.cwl
+id: ../../../phyluce_assembly_match_contigs_to_probes.cwl
 inputs:
 - id: contigs
   doc: The directory containing the assembled contigs in which you are searching for

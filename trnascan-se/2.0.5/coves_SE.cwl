@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coves_SE.cwl
+id: ../../../coves_SE.cwl
 inputs:
 - id: show_pairs_watsoncrick
   doc: ': show all pairs, not just Watson-Crick'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_sort_by_column.cwl
+id: ../../../crux_sort_by_column.cwl
 inputs:
 - id: tsv_file
   doc: ''

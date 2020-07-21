@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rapidNorm.sh.cwl
+id: ../../../rapidNorm.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Epsilon_NB.py.cwl
+id: ../../../Epsilon_NB.py.cwl
 inputs:
 - id: nb_results
   doc: ''

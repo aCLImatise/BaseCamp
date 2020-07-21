@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hgLoadMaf.cwl
+id: ../../../hgLoadMaf.cwl
 inputs:
 - id: warn_instead_error_emptyincomplete
   doc: warn instead of error upon empty/incomplete alignments

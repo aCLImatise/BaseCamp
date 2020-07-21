@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_chown.cwl
+id: ../../../omero_chown.cwl
 inputs:
 - id: wait
   doc: Number of seconds to wait for the processing to complete (Indefinite < 0; No

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterCorrectionLayouts.cwl
+id: ../../../filterCorrectionLayouts.cwl
 inputs:
 - id: input_reads
   doc: input reads

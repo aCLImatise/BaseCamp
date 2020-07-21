@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snv_matrix.pl.cwl
+id: ../../../snv_matrix.pl.cwl
 inputs:
 - id: print_more_information
   doc: ':  Print more information (to stderr)'

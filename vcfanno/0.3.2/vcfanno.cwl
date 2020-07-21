@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfanno.cwl
+id: ../../../vcfanno.cwl
 inputs:
 - id: base_path
   doc: optional base-path to prepend to annotation files in the config

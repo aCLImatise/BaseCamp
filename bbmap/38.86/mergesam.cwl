@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergesam.sh.cwl
+id: ../../../mergesam.sh.cwl
 inputs:
 - id: files
   doc: ''

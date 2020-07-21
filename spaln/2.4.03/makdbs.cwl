@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makdbs.cwl
+id: ../../../makdbs.cwl
 inputs:
 - id: dna_protein_sequence
   doc: '[D|P] : DNA or Protein sequence'

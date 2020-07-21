@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/subseq.cwl
+id: ../../../subseq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_aaindexextract.cwl
+id: ../../../_aaindexextract.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

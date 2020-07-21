@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_scan_for_paired_end_reads.cwl
+id: ../../../rsem_scan_for_paired_end_reads.cwl
 inputs:
 - id: number_of_threads
   doc: ''

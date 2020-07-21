@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convertPolishes.cwl
+id: ../../../convertPolishes.cwl
 inputs:
 - id: input_file
   doc: ''

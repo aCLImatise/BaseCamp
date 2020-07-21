@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cai.cwl
+id: ../../../cai.cwl
 inputs:
 - id: c_file
   doc: codon      [Eyeast_cai.cut] Codon usage table name

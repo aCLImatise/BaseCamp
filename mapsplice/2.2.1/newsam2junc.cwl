@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/newsam2junc.cwl
+id: ../../../newsam2junc.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

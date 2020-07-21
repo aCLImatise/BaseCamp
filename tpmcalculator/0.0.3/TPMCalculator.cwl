@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TPMCalculator.cwl
+id: ../../../TPMCalculator.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/funannotate_annotate.cwl
+id: ../../../funannotate_annotate.cwl
 inputs:
 - id: gff
   doc: Genome GFF3 annotation file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mkdna6idx.cwl
+id: ../../../mkdna6idx.cwl
 inputs:
 - id: index_name
   doc: ''

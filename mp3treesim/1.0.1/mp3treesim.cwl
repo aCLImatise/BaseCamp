@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mp3treesim.cwl
+id: ../../../mp3treesim.cwl
 inputs:
 - id: run_mptreesim_intersection
   doc: Run MP3-treesim in Intersection mode.

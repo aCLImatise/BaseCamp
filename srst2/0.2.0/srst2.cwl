@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/srst2.cwl
+id: ../../../srst2.cwl
 inputs:
 - id: input_se
   doc: Single end read file(s) for analysing (may be gzipped)

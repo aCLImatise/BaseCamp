@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lordfast.cwl
+id: ../../../lordfast.cwl
 inputs:
 - id: index
   doc: ''

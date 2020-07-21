@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hops.cwl
+id: ../../../hops.cwl
 inputs:
 - id: config_file
   doc: Path to Config File

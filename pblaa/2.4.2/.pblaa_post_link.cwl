@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/.pblaa_post_link.sh.cwl
+id: ../../../.pblaa_post_link.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

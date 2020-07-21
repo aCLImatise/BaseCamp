@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_assign_confidence.cwl
+id: ../../../crux_assign_confidence.cwl
 inputs:
 - id: target_input
   doc: ''

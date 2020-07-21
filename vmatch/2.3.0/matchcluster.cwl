@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/matchcluster.cwl
+id: ../../../matchcluster.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bogart.cwl
+id: ../../../bogart.cwl
 inputs:
 - id: mandatory_path_existing_seqstore
   doc: Mandatory path to an existing seqStore.

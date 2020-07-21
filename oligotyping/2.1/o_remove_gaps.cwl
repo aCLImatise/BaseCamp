@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o_remove_gaps.cwl
+id: ../../../o_remove_gaps.cwl
 inputs:
 - id: output
   doc: Path for output.

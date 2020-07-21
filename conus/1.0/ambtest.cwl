@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ambtest.cwl
+id: ../../../ambtest.cwl
 inputs:
 - id: m
   doc: ''

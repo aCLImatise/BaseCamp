@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_seqstat.cwl
+id: ../../../esl_seqstat.cwl
 inputs:
 - id: report_persequence_info
   doc: ': report per-sequence info line, not just a summary'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rearr2bedpe.cwl
+id: ../../../rearr2bedpe.cwl
 inputs:
 - id: no
   doc: ''

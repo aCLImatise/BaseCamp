@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quickjunc.cwl
+id: ../../../quickjunc.cwl
 inputs:
 - id: bam_file_name
   doc: 'BAM file name (default: None)'

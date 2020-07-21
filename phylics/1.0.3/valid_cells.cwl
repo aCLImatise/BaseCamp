@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/valid_cells.cwl
+id: ../../../valid_cells.cwl
 inputs:
 - id: verbose
   doc: Verbose execution.

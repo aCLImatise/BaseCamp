@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_clean.cwl
+id: ../../../goalign_clean.cwl
 inputs:
 - id: cut_off
   doc: 'Cutoff for gap deletion : 0 remove sites/sequences with > 0 gap, 1 remove

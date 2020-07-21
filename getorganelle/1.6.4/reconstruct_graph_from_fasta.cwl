@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reconstruct_graph_from_fasta.py.cwl
+id: ../../../reconstruct_graph_from_fasta.py.cwl
 inputs:
 - id: input_fasta_file
   doc: Input fasta file.

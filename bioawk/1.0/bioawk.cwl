@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioawk.cwl
+id: ../../../bioawk.cwl
 inputs:
 - id: f
   doc: ''

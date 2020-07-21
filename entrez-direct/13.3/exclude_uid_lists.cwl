@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/exclude_uid_lists.cwl
+id: ../../../exclude_uid_lists.cwl
 inputs:
 - id: batch_size
   doc: merge at most NMERGE inputs at once;

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/funannotate_outgroups.cwl
+id: ../../../funannotate_outgroups.cwl
 inputs:
 - id: input
   doc: 'Proteome multi-fasta file. Required. '

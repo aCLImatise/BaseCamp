@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kat_plot_profile.cwl
+id: ../../../kat_plot_profile.cwl
 inputs:
 - id: output
   doc: The path to the output file.

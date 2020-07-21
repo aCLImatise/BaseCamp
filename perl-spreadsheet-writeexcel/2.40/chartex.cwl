@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chartex.cwl
+id: ../../../chartex.cwl
 inputs:
 - id: man
   doc: Prints the manual page and exits.

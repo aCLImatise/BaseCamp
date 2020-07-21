@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafToBigMaf.cwl
+id: ../../../mafToBigMaf.cwl
 inputs:
 - id: referenced_b
   doc: ''

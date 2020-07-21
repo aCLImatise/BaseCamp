@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msstitch_storespectra.cwl
+id: ../../../msstitch_storespectra.cwl
 inputs:
 - id: dbfile
   doc: Database lookup file

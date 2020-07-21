@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rdoc.cwl
+id: ../../../rdoc.cwl
 inputs:
 - id: access_or
   doc: support discontinued

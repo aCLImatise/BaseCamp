@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compare_genomes_lastal.py.cwl
+id: ../../../compare_genomes_lastal.py.cwl
 inputs:
 - id: save_pickled_results
   doc: Save pickled results in this file (None).

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rgi_kmer_query.cwl
+id: ../../../rgi_kmer_query.cwl
 inputs:
 - id: o
   doc: '[--local] [--debug]'

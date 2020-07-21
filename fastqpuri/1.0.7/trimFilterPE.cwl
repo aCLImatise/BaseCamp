@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trimFilterPE.cwl
+id: ../../../trimFilterPE.cwl
 inputs:
 - id: if_a
   doc: '[<INPUT.fa>:<score>:[lmer_len]])'

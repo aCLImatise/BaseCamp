@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/match_rg_patterns_to_library.pl.cwl
+id: ../../../match_rg_patterns_to_library.pl.cwl
 inputs:
 - id: acf
   doc: Aberrant cell fraction [1.0]

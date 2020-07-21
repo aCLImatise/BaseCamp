@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dextract.cwl
+id: ../../../dextract.cwl
 inputs:
 - id: v_faq
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TQS.py.cwl
+id: ../../../TQS.py.cwl
 inputs:
 - id: length
   doc: Length of sequence reads (i.e. Number of sequencing cycles, default=36)

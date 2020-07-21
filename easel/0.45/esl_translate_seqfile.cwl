@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_translate_seqfile.cwl
+id: ../../../esl_translate_seqfile.cwl
 inputs:
 - id: options
   doc: ''

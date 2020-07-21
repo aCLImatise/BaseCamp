@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extractContig.cwl
+id: ../../../extractContig.cwl
 inputs:
 - id: bank_name
   doc: ''

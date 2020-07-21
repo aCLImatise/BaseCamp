@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cut_up_fasta.py.cwl
+id: ../../../cut_up_fasta.py.cwl
 inputs:
 - id: chunk_size
   doc: Chunk size

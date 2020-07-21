@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spades.py.cwl
+id: ../../../spades.py.cwl
 inputs:
 - id: directory_store_files
   doc: directory to store all the resulting files (required)

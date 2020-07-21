@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/haphpipe_vcf_to_consensus.cwl
+id: ../../../haphpipe_vcf_to_consensus.cwl
 inputs:
 - id: vcf
   doc: VCF file (created with all sites).

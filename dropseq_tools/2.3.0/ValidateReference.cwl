@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ValidateReference.cwl
+id: ../../../ValidateReference.cwl
 inputs:
 - id: default_g
   doc: (default 4g)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gtf_to_bed.pl.cwl
+id: ../../../gtf_to_bed.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

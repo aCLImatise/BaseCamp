@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/train_network.py.cwl
+id: ../../../train_network.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

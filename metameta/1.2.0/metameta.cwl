@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metameta.cwl
+id: ../../../metameta.cwl
 inputs:
 - id: profile
   doc: "Name of profile to use for configuring Snakemake. Snakemake will search for\

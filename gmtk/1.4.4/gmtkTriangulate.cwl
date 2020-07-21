@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmtkTriangulate.cwl
+id: ../../../gmtkTriangulate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

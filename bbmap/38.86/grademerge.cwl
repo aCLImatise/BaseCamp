@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/grademerge.sh.cwl
+id: ../../../grademerge.sh.cwl
 inputs:
 - id: in
   doc: ''

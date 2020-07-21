@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hivtrace_strip_drams.cwl
+id: ../../../hivtrace_strip_drams.cwl
 inputs:
 - id: input
   doc: The input FASTA file

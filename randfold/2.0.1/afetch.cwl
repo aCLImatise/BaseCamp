@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/afetch.cwl
+id: ../../../afetch.cwl
 inputs:
 - id: index
   doc: ': construct indices for the database'

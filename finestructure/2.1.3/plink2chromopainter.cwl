@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plink2chromopainter.pl.cwl
+id: ../../../plink2chromopainter.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/starfish.cwl
+id: ../../../starfish.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

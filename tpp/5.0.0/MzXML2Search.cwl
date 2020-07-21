@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MzXML2Search.cwl
+id: ../../../MzXML2Search.cwl
 inputs:
 - id: num_the_first
   doc: <num>      where num is an int specifying the first scan

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_weight.cwl
+id: ../../../ssu_esl_weight.cwl
 inputs:
 - id: gersteinsonnhammerchothia_tree_weights
   doc: ': Gerstein/Sonnhammer/Chothia tree weights  [default]'

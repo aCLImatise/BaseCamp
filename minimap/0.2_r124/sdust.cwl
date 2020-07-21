@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sdust.cwl
+id: ../../../sdust.cwl
 inputs:
 - id: w
   doc: ''

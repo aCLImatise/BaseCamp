@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CAT_bins.cwl
+id: ../../../CAT_bins.cwl
 inputs:
 - id: _binfolder_path
   doc: ', --bin_folder     Path to directory containing bins.'

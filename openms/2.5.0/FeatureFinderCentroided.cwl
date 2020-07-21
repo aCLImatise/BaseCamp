@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FeatureFinderCentroided.cwl
+id: ../../../FeatureFinderCentroided.cwl
 inputs:
 - id: in
   doc: "*        Input file (valid formats: 'mzML')"

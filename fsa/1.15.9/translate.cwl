@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/translate.cwl
+id: ../../../translate.cwl
 inputs:
 - id: fast_a_file
   doc: ''

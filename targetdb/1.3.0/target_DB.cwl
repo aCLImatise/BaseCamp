@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/target_DB.cwl
+id: ../../../target_DB.cwl
 inputs:
 - id: _gene_enter
   doc: ', --gene           enter a single gene name'

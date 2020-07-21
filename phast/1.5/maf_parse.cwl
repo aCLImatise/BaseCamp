@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf_parse.cwl
+id: ../../../maf_parse.cwl
 inputs:
 - id: pretty
   doc: Pretty-print alignment (use '.' when character matches corresponding character

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mspicture.cwl
+id: ../../../mspicture.cwl
 inputs:
 - id: arg_output_directory
   doc: '[ --outdir ] arg (=.) : output directory'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/partition.cwl
+id: ../../../partition.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

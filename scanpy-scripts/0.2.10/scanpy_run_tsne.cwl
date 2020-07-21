@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scanpy_run_tsne.cwl
+id: ../../../scanpy_run_tsne.cwl
 inputs:
 - id: input_format
   doc: '[anndata|loom] Input object format.  [default: anndata]'

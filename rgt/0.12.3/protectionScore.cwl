@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/protectionScore.py.cwl
+id: ../../../protectionScore.py.cwl
 inputs:
 - id: footprint_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dedupe2.sh.cwl
+id: ../../../dedupe2.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

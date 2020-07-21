@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/verify_network.py.cwl
+id: ../../../verify_network.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

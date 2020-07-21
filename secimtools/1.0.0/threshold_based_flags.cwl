@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/threshold_based_flags.py.cwl
+id: ../../../threshold_based_flags.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

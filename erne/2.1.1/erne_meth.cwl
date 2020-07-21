@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/erne_meth.cwl
+id: ../../../erne_meth.cwl
 inputs:
 - id: fast_a
   doc: reference fasta file (can be repeated several  time). [REQUIRED]

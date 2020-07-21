@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/erne_bs5.cwl
+id: ../../../erne_bs5.cwl
 inputs:
 - id: reference
   doc: reference file to use (in our format and with  .ebm extension). [REQUIRED]

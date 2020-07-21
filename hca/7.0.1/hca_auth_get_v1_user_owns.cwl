@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_auth_get_v1_user_owns.cwl
+id: ../../../hca_auth_get_v1_user_owns.cwl
 inputs:
 - id: no_paginate
   doc: Do not automatically page the responses

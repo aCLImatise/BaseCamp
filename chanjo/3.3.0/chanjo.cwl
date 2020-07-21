@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chanjo.cwl
+id: ../../../chanjo.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

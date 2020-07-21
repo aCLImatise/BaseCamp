@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scrm.cwl
+id: ../../../scrm.cwl
 inputs:
 - id: l_set_recombination
   doc: <L>       Set recombination rate to R and locus length to L.

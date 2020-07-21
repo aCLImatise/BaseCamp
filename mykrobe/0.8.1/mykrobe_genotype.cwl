@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mykrobe_genotype.cwl
+id: ../../../mykrobe_genotype.cwl
 inputs:
 - id: km_er
   doc: kmer length (default:21)

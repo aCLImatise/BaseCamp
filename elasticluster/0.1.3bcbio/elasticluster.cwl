@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/elasticluster.cwl
+id: ../../../elasticluster.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

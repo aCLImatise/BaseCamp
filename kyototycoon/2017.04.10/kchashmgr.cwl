@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kchashmgr.cwl
+id: ../../../kchashmgr.cwl
 inputs:
 - id: otr
   doc: ''

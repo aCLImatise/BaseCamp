@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metaSNV.py.cwl
+id: ../../../metaSNV.py.cwl
 inputs:
 - id: db_ann
   doc: Database gene annotation.

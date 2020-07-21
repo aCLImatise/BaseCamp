@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/starch_float128.cwl
+id: ../../../starch_float128.cwl
 inputs:
 - id: starch
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_degapseq.cwl
+id: ../../../_degapseq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

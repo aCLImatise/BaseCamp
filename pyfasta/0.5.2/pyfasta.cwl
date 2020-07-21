@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyfasta.cwl
+id: ../../../pyfasta.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

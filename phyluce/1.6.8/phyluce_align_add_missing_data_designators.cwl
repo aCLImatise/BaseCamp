@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_add_missing_data_designators.cwl
+id: ../../../phyluce_align_add_missing_data_designators.cwl
 inputs:
 - id: alignments
   doc: 'Alignment files to process (default: None)'

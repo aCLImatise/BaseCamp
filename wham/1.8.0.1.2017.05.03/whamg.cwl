@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/whamg.cwl
+id: ../../../whamg.cwl
 inputs:
 - id: string_list_include
   doc: '<STRING>  A list of seqids to include or exclude while           sampling

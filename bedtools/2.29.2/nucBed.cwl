@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nucBed.cwl
+id: ../../../nucBed.cwl
 inputs:
 - id: fi
   doc: ''

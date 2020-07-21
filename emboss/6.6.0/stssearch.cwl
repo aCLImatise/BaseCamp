@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stssearch.cwl
+id: ../../../stssearch.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

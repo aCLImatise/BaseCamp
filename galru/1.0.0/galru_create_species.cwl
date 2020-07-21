@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/galru_create_species.cwl
+id: ../../../galru_create_species.cwl
 inputs:
 - id: output_directory
   doc: 'Output directory, defaults to species name in current directory (default:

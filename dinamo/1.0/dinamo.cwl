@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dinamo.cwl
+id: ../../../dinamo.cwl
 inputs:
 - id: no_log
   doc: ': Prevents the log ouput from being displayed'

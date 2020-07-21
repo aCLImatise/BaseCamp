@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/comparem_stop_usage.cwl
+id: ../../../comparem_stop_usage.cwl
 inputs:
 - id: counts
   doc: output raw counts instead of frequencies

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pancake_status.cwl
+id: ../../../pancake_status.cwl
 inputs:
 - id: pan_file
   doc: Name of PanCake Data Object File

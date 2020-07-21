@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_mutate.pl.cwl
+id: ../../../bp_mutate.pl.cwl
 inputs:
 - id: percent
   doc: mutagenized

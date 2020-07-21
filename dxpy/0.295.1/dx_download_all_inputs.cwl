@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dx_download_all_inputs.cwl
+id: ../../../dx_download_all_inputs.cwl
 inputs:
 - id: except
   doc: Do not download the input with this name. (May be used multiple times.)

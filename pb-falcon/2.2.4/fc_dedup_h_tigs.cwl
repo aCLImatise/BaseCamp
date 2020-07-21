@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_dedup_h_tigs.py.cwl
+id: ../../../fc_dedup_h_tigs.py.cwl
 inputs:
 - id: ctg_id
   doc: ''

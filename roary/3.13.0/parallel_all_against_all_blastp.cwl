@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parallel_all_against_all_blastp.cwl
+id: ../../../parallel_all_against_all_blastp.cwl
 inputs:
 - id: number_of_threads
   doc: number of threads [1]

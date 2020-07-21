@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TOBIAS_PlotTracks.cwl
+id: ../../../TOBIAS_PlotTracks.cwl
 inputs:
 - id: bigwigs
   doc: '[ [ ...]]  One or more bigwigs to show. Note: All bigwigs within one "-- bigwigs"

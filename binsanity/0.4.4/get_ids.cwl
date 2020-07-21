@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_ids.cwl
+id: ../../../get_ids.cwl
 inputs:
 - id: specify_directory_containing
   doc: Specify the directory containing fasta file

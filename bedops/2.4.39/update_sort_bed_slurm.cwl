@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/update_sort_bed_slurm.cwl
+id: ../../../update_sort_bed_slurm.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioconda_utils_dependent.cwl
+id: ../../../bioconda_utils_dependent.cwl
 inputs:
 - id: restrict
   doc: 'Restrict --dependencies to packages in `recipe_folder`. Has no effect if --reverse-

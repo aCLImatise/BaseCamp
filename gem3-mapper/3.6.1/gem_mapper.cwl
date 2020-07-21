@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gem_mapper.cwl
+id: ../../../gem_mapper.cwl
 inputs:
 - id: input
   doc: (FASTA/FASTQ, default=stdin)

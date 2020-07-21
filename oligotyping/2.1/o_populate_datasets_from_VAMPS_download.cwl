@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o_populate_datasets_from_VAMPS_download.cwl
+id: ../../../o_populate_datasets_from_VAMPS_download.cwl
 inputs:
 - id: tax_on
   doc: Isolate a particular taxon

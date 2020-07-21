@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbmerge.cwl
+id: ../../../pbmerge.cwl
 inputs:
 - id: str_output_bam
   doc: STR   Output BAM filename. Writes to stdout if not provided.

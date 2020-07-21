@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_probe_strip_masked_loci_from_set.cwl
+id: ../../../phyluce_probe_strip_masked_loci_from_set.cwl
 inputs:
 - id: bed
   doc: The input BED file

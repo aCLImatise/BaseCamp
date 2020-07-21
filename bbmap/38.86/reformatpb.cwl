@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reformatpb.sh.cwl
+id: ../../../reformatpb.sh.cwl
 inputs:
 - id: in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lofreq_checkref.cwl
+id: ../../../lofreq_checkref.cwl
 inputs:
 - id: ref_dot_fa
   doc: ''

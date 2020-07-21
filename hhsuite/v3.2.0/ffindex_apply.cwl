@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ffindex_apply.cwl
+id: ../../../ffindex_apply.cwl
 inputs:
 - id: q
   doc: ''

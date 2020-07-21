@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_mirdeep2_precursors.pl.cwl
+id: ../../../get_mirdeep2_precursors.pl.cwl
 inputs:
 - id: s
   doc: '[int]        output only precursors with min-score >= [int]'

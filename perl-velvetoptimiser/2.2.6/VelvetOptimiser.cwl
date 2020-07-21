@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/VelvetOptimiser.pl.cwl
+id: ../../../VelvetOptimiser.pl.cwl
 inputs:
 - id: verbose_verbose_logging
   doc: "|verbose+    Verbose logging, includes all velvet output in the logfile. (default\

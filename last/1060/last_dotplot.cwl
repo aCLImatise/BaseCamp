@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/last_dotplot.cwl
+id: ../../../last_dotplot.cwl
 inputs:
 - id: font_file
   doc: TrueType or OpenType font file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_pngtogd.cwl
+id: ../../../_pngtogd.cwl
 inputs:
 - id: png_to_gd
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mash_screener.sh.cwl
+id: ../../../mash_screener.sh.cwl
 inputs:
 - id: usage_message
   doc: usage message

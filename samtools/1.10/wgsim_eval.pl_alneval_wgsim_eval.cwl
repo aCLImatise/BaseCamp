@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wgsim_eval.pl_alneval_wgsim_eval.pl.cwl
+id: ../../../wgsim_eval.pl_alneval_wgsim_eval.pl.cwl
 inputs:
 - id: no
   doc: ''

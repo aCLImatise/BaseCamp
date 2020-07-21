@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkv_update_database.cwl
+id: ../../../checkv_update_database.cwl
 inputs:
 - id: quiet
   doc: Suppress logging messages

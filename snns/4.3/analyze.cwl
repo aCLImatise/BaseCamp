@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/analyze.cwl
+id: ../../../analyze.cwl
 inputs:
 - id: report_wrong_default
   doc: ': report wrong classified patterns (default)'

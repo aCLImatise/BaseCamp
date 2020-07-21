@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslMapPostChain.cwl
+id: ../../../pslMapPostChain.cwl
 inputs:
 - id: post_transmap_chain
   doc: ''

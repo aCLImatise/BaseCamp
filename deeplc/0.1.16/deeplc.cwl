@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deeplc.cwl
+id: ../../../deeplc.cwl
 inputs:
 - id: batch_num
   doc: Batch size (in peptides) for predicting the retention time. Set lower to decrease

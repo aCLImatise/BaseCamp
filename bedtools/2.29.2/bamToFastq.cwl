@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamToFastq.cwl
+id: ../../../bamToFastq.cwl
 inputs:
 - id: fq_two
   doc: FASTQ for second end.  Used if BAM contains paired-end data. BAM should be

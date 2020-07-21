@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastadiff.cwl
+id: ../../../fastadiff.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

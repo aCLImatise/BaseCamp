@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam_soft_clips_tab.py.cwl
+id: ../../../bam_soft_clips_tab.py.cwl
 inputs:
 - id: output_tab_separated
   doc: Output tab separated file.

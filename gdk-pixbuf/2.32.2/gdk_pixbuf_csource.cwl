@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdk_pixbuf_csource.cwl
+id: ../../../gdk_pixbuf_csource.cwl
 inputs:
 - id: stream
   doc: generate pixbuf data stream

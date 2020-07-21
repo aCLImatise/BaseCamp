@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rgi_kmer_build.cwl
+id: ../../../rgi_kmer_build.cwl
 inputs:
 - id: input_directory
   doc: input directory of prevalence data

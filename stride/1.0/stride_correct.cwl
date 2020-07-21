@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stride_correct.cwl
+id: ../../../stride_correct.cwl
 inputs:
 - id: verbose
   doc: display verbose output

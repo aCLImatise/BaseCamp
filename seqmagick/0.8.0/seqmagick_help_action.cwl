@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqmagick_help_action.cwl
+id: ../../../seqmagick_help_action.cwl
 inputs:
 - id: var_0
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/entropy_analysis.cwl
+id: ../../../entropy_analysis.cwl
 inputs:
 - id: unique_d
   doc: 'When set, entropy computation will assume that the reads in FASTA file are

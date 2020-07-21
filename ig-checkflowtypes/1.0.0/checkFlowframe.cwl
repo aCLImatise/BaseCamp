@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkFlowframe.R.cwl
+id: ../../../checkFlowframe.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

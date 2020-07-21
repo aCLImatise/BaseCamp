@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sam_to_bam.sh.cwl
+id: ../../../sam_to_bam.sh.cwl
 inputs:
 - id: usage_message
   doc: usage message

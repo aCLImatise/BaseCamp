@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/IDMerger.cwl
+id: ../../../IDMerger.cwl
 inputs:
 - id: in
   doc: "*            Input files separated by blanks (valid formats: 'idXML')"

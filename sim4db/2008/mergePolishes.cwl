@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergePolishes.cwl
+id: ../../../mergePolishes.cwl
 inputs:
 - id: o
   doc: ''

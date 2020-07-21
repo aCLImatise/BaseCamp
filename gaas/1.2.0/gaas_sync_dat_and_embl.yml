@@ -1,0 +1,67 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Input dat file provided by ENA
+  synonyms:
+  - --dat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input embl file
+  synonyms:
+  - --embl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Bolean. Believe in AC line. Instead of looking at the sequence size,
+    look at the AC line (the second one of each record) as common information for
+    the two files.
+  synonyms:
+  - --bac
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The output will be the EMBL file with the record "headers" modified
+  synonyms:
+  - --out
+  - --output
+  - -o
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+command:
+- gaas_sync_dat_and_embl.pl
+parent:
+subcommands: []
+help_flag: !Flag
+  description: Display this helpful text.
+  synonyms:
+  - --help
+  - -h
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Genome Assembly Annotation Service (AGAT) - Version: v1.1.0              |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \  \n\nName:\n    sync_dat_and_embl.pl - This script allow to update the record\
+  \ \"headers\"\n    of an EMBL file by those from a dat file provided by ENA. It\
+  \ is useful\n    when an assembly/annotation has been submitted using AGP file while\
+  \ the\n    annotation has been done directly on the chromosomes. (Passing by an\
+  \ AGP\n    file happens only if the chromosome and unplaced (not related at all\
+  \ to\n    any chromosome) contigs are part of the same assembly).\n\nUsage:\n  \
+  \      ./sync_dat_and_embl.pl --dat=infile --embl=infile2 -o=outFile\n        ./sync_dat_and_embl.pl\
+  \ --help\n\nOptions:\n    --dat   Input dat file provided by ENA\n\n    --embl \
+  \ Input embl file\n\n    --bac   Bolean. Believe in AC line. Instead of looking\
+  \ at the sequence\n            size, look at the AC line (the second one of each\
+  \ record) as\n            common information for the two files.\n\n    --out, --output\
+  \ or -o\n            The output will be the EMBL file with the record \"headers\"\
+  \n            modified\n\n    --help or -h\n            Display this helpful text.\n\
+  \n"
+generated_using:
+- --help

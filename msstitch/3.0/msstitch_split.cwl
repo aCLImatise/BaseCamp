@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msstitch_split.cwl
+id: ../../../msstitch_split.cwl
 inputs:
 - id: input_file_format
   doc: Input file of {} format

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ghostz.cwl
+id: ../../../ghostz.cwl
 inputs:
 - id: protein_sequences_fasta
   doc: Protein sequences in FASTA format for a database

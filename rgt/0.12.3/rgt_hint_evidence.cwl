@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rgt_hint_evidence.cwl
+id: ../../../rgt_hint_evidence.cwl
 inputs:
 - id: m_pbs_file
   doc: 'motif predicted binding sites file. DEFAULT: None'

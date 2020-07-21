@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obrotamer.cwl
+id: ../../../obrotamer.cwl
 inputs:
 - id: file
   doc: ''

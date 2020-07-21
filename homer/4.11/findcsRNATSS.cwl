@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findcsRNATSS.pl_tag directory.cwl
+id: ../../../findcsRNATSS.pl_tag directory.cwl
 inputs:
 - id: stable_threshold
   doc: '<#> (minimum RNAseq read density for stable transcript, def: 2)'

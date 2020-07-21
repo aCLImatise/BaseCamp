@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_components.py.cwl
+id: ../../../filter_components.py.cwl
 inputs:
 - id: in_file
   doc: ''

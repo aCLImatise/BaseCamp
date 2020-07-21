@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kallisto_index.cwl
+id: ../../../kallisto_index.cwl
 inputs:
 - id: make_unique
   doc: Replace repeated target names with unique names

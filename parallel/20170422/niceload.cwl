@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/niceload.cwl
+id: ../../../niceload.cwl
 inputs:
 - id: v
   doc: ''

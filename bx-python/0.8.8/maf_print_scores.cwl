@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf_print_scores.py.cwl
+id: ../../../maf_print_scores.py.cwl
 inputs:
 - id: recalculate
   doc: don't use the score from the maf, recalculate (using hox70 matrix)

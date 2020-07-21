@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_primer.cwl
+id: ../../../arb_primer.cwl
 inputs:
 - id: dbname
   doc: ''

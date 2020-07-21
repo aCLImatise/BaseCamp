@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/centrifuge_kreport.cwl
+id: ../../../centrifuge_kreport.cwl
 inputs:
 - id: required_centrifuge_index
   doc: (REQUIRED) Centrifuge index

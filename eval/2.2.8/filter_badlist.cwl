@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_badlist.pl.cwl
+id: ../../../filter_badlist.pl.cwl
 inputs:
 - id: flag_fix_file
   doc: Flag to fix the file.

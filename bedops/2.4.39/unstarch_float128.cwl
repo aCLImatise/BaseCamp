@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unstarch_float128.cwl
+id: ../../../unstarch_float128.cwl
 inputs:
 - id: list_chromosomes
   doc: List all or specified chromosome in starch archive (like "bedextract --list-

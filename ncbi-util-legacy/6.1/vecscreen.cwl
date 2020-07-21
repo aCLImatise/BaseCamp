@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vecscreen.cwl
+id: ../../../vecscreen.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/test_sra.2.cwl
+id: ../../../test_sra.2.cwl
 inputs:
 - id: log_level
   doc: 'Logging level as number or enum string. One  of (fatal|sys|int|err|warn|info|debug)

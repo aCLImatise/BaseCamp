@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rainbow.cwl
+id: ../../../rainbow.cwl
 inputs:
 - id: input_fastafastq_file_supports_multiple
   doc: Input fasta/fastq file, supports multiple '-1'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mockinbird_preprocess.cwl
+id: ../../../mockinbird_preprocess.cwl
 inputs:
 - id: log_level
   doc: 'verbosity level of the logger (default: info)'

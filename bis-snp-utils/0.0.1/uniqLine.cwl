@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uniqLine.pl.cwl
+id: ../../../uniqLine.pl.cwl
 inputs:
 - id: give_column_number
   doc: ': give the column number that are used to check duplication. could be multiple.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mvp.cwl
+id: ../../../mvp.cwl
 inputs:
 - id: outfile
   doc: 'results table (default: stdout)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkm_qa.cwl
+id: ../../../checkm_qa.cwl
 inputs:
 - id: out_format
   doc: 'desired output: (default: 1) 1. summary of bin completeness and contamination

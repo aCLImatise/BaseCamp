@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bifold_smp.cwl
+id: ../../../bifold_smp.cwl
 inputs:
 - id: bifold
   doc: ''

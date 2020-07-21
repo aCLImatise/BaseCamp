@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smalt.cwl
+id: ../../../smalt.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

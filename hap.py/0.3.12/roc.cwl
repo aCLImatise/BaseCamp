@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/roc.cwl
+id: ../../../roc.cwl
 inputs:
 - id: verbose
   doc: show verbose information (to stderr)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/remove_utrs.py.cwl
+id: ../../../remove_utrs.py.cwl
 inputs:
 - id: f
   doc: ''

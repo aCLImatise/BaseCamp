@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bl_exclude.cwl
+id: ../../../bl_exclude.cwl
 inputs:
 - id: line_excludefile_truncated
   doc: each line in EXCLUDE_FILE is truncated by a space or tab and stored as an id

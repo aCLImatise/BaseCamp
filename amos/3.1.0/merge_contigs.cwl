@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_contigs.cwl
+id: ../../../merge_contigs.cwl
 inputs:
 - id: output_outprefixmali_file
   doc: Output the <out-prefix>.mali file

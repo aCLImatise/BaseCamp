@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/regtools_cis_splice_effects.cwl
+id: ../../../regtools_cis_splice_effects.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

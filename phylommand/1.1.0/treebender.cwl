@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treebender.cwl
+id: ../../../treebender.cwl
 inputs:
 - id: _switch_r
   doc: "'\\n' (default is ','). If the switch r is"

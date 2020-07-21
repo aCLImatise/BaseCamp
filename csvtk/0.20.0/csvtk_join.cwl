@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk_join.cwl
+id: ../../../csvtk_join.cwl
 inputs:
 - id: fields
   doc: Semicolon separated key fields of all files, if given one, we think all the

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AnnotateInexactHomology.cwl
+id: ../../../AnnotateInexactHomology.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

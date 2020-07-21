@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/remove_reads_exon_exon_map.py.cwl
+id: ../../../remove_reads_exon_exon_map.py.cwl
 inputs:
 - id: input_exon_exon
   doc: The input MAP file containing the reads mapping on exon-exon junctions.

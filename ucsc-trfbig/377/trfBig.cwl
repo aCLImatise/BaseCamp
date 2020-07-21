@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trfBig.cwl
+id: ../../../trfBig.cwl
 inputs:
 - id: bed
   doc: a bed file in current dir

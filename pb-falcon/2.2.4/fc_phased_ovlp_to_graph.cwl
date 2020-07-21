@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_phased_ovlp_to_graph.py.cwl
+id: ../../../fc_phased_ovlp_to_graph.py.cwl
 inputs:
 - id: min_len
   doc: 'minimum length of the reads to be considered for assembling (default: 4000)'

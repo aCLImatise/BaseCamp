@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/grmpy.cwl
+id: ../../../grmpy.cwl
 inputs:
 - id: arg_output_folder_alignments
   doc: '[ --alignment-output-folder ] arg      Output folder for alignments. Note  these

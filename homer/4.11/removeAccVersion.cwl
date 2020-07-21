@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/removeAccVersion.pl.cwl
+id: ../../../removeAccVersion.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

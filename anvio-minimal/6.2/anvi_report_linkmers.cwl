@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_report_linkmers.cwl
+id: ../../../anvi_report_linkmers.cwl
 inputs:
 - id: s_sorted_indexed
   doc: (S) [INPUT_BAM(S) ...], --input-files INPUT_BAM(S) [INPUT_BAM(S) ...] Sorted

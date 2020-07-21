@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/delly_call.cwl
+id: ../../../delly_call.cwl
 inputs:
 - id: t
   doc: '[ --svtype ] arg (=ALL)        SV type to compute [DEL, INS, DUP, INV,  BND,

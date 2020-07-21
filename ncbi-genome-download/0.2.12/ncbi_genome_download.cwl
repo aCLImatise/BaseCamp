@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ncbi_genome_download.cwl
+id: ../../../ncbi_genome_download.cwl
 inputs:
 - id: section
   doc: 'NCBI section to download (default: refseq)'

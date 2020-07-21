@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ftbl2kvh.cwl
+id: ../../../ftbl2kvh.cwl
 inputs:
 - id: network
   doc: ''

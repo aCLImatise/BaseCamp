@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/undexqv.cwl
+id: ../../../undexqv.cwl
 inputs:
 - id: v_ku
   doc: ''

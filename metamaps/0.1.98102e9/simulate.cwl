@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simulate.pl.cwl
+id: ../../../simulate.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

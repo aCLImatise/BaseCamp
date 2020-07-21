@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/idpQonvert.cwl
+id: ../../../idpQonvert.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

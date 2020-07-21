@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/label_found_fusions.py.cwl
+id: ../../../label_found_fusions.py.cwl
 inputs:
 - id: input
   doc: The input file in text tab delimited format containing list of final candidates

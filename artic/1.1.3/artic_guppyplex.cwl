@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/artic_guppyplex.cwl
+id: ../../../artic_guppyplex.cwl
 inputs:
 - id: quiet
   doc: Do not output warnings to stderr

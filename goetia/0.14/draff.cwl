@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/draff.cwl
+id: ../../../draff.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

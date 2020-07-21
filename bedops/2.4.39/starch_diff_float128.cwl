@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/starch_diff_float128.cwl
+id: ../../../starch_diff_float128.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

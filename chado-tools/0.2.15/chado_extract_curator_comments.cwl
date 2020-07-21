@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chado_extract_curator_comments.cwl
+id: ../../../chado_extract_curator_comments.cwl
 inputs:
 - id: verbose
   doc: verbose mode

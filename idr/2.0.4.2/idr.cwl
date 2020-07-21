@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/idr.cwl
+id: ../../../idr.cwl
 inputs:
 - id: samples_samples_samples
   doc: SAMPLES, -s SAMPLES SAMPLES Files containing peaks and scores.

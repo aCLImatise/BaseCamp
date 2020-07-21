@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_bed_create_random_feature.pl.cwl
+id: ../../../gaas_bed_create_random_feature.pl.cwl
 inputs:
 - id: genome
   doc: 'STRING: Name to use for writing in first column of the bed file. default chr_unknown.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyprophet_gene.cwl
+id: ../../../pyprophet_gene.cwl
 inputs:
 - id: in
   doc: PyProphet input file.  [required]

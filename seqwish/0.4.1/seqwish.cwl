@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqwish.cwl
+id: ../../../seqwish.cwl
 inputs:
 - id: allows_filtering_inputs
   doc: '[FILE], --paf-alns=[FILE]       Induce the graph from these PAF formatted

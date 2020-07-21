@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ancestrymap2geno.cwl
+id: ../../../ancestrymap2geno.cwl
 inputs:
 - id: input
   doc: --help

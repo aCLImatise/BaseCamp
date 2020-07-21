@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools_jaccard.cwl
+id: ../../../bedtools_jaccard.cwl
 inputs:
 - id: require_same_strandedness
   doc: Require same strandedness.  That is, only report hits in B that overlap A on

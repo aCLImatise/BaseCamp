@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tb_profiler_update_tbdb.cwl
+id: ../../../tb_profiler_update_tbdb.cwl
 inputs:
 - id: seqname
   doc: 'Mutation panel name (default: Chromosome)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gvcf_regions.py.cwl
+id: ../../../gvcf_regions.py.cwl
 inputs:
 - id: unreported_is_called
   doc: use this flag to treat unreported sites as called

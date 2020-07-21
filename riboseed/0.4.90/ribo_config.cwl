@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ribo_config.cwl
+id: ../../../ribo_config.cwl
 inputs:
 - id: outdir
   doc: 'output directory; default: /tmp/tmpdvlbjbbn'

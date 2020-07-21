@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi_splitfa.cwl
+id: ../../../fermi_splitfa.cwl
 inputs:
 - id: in_dot_fq
   doc: ''

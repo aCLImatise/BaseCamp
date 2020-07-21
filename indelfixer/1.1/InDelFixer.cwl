@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/InDelFixer.cwl
+id: ../../../InDelFixer.cwl
 inputs:
 - id: path_current_directory
   doc: ': Path to the output directory (default: current directory).'

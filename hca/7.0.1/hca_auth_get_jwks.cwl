@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_auth_get_jwks.json.cwl
+id: ../../../hca_auth_get_jwks.json.cwl
 inputs:
 - id: log_level
   doc: ''

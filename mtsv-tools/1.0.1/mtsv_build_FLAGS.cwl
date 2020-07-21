@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mtsv_build_FLAGS.cwl
+id: ../../../mtsv_build_FLAGS.cwl
 inputs:
 - id: fast_a
   doc: ''

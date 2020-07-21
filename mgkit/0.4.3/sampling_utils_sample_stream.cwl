@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sampling_utils_sample_stream.cwl
+id: ../../../sampling_utils_sample_stream.cwl
 inputs:
 - id: prob
   doc: Probability of picking a sequence

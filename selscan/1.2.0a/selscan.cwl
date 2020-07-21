@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/selscan.cwl
+id: ../../../selscan.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

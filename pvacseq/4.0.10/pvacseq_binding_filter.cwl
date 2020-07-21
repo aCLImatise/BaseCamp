@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pvacseq_binding_filter.cwl
+id: ../../../pvacseq_binding_filter.cwl
 inputs:
 - id: binding_threshold
   doc: 'Report only epitopes where the mutant allele has ic50 binding scores below

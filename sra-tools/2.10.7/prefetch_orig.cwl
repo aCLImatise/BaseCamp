@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prefetch_orig.cwl
+id: ../../../prefetch_orig.cwl
 inputs:
 - id: ascp_options
   doc: 'Arbitrary options to pass to ascp command  line. '

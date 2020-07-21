@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools_fixmate.cwl
+id: ../../../samtools_fixmate.cwl
 inputs:
 - id: remove_unmapped_reads
   doc: remove unmapped reads and secondary alignments

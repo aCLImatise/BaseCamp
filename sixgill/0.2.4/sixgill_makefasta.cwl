@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sixgill_makefasta.cwl
+id: ../../../sixgill_makefasta.cwl
 inputs:
 - id: out
   doc: output file

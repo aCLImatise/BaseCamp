@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jobTreeStatus.cwl
+id: ../../../jobTreeStatus.cwl
 inputs:
 - id: logoff
   doc: Turn off logging. (default is CRITICAL)

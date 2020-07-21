@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/famsa.cwl
+id: ../../../famsa.cwl
 inputs:
 - id: go
   doc: '- gap open cost (default: 14.85)'

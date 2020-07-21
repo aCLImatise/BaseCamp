@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ebisearch.cwl
+id: ../../../ebisearch.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

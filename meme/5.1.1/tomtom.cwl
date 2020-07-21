@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tomtom.cwl
+id: ../../../tomtom.cwl
 inputs:
 - id: name_directory_not
   doc: Name of directory for output files; will not replace existing directory

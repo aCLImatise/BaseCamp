@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mason_methylation.cwl
+id: ../../../mason_methylation.cwl
 inputs:
 - id: version_check
   doc: 'Turn this option off to disable version update notifications of the application.

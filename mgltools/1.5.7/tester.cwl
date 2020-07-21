@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tester.cwl
+id: ../../../tester.cwl
 inputs:
 - id: quiet
   doc: quiet

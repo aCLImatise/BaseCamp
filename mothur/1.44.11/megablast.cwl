@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/megablast.cwl
+id: ../../../megablast.cwl
 inputs:
 - id: alignment_view_options
   doc: 'alignment view options:'

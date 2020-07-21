@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pilprint.py.cwl
+id: ../../../pilprint.py.cwl
 inputs:
 - id: colour_printer_default
   doc: colour printer (default is monochrome)

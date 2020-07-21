@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gomo_highlight.cwl
+id: ../../../gomo_highlight.cwl
 inputs:
 - id: go_dag
   doc: ''

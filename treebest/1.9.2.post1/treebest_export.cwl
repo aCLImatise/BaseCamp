@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treebest_export.cwl
+id: ../../../treebest_export.cwl
 inputs:
 - id: width
   doc: width [640]

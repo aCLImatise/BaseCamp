@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pan_genome_post_analysis.cwl
+id: ../../../pan_genome_post_analysis.cwl
 inputs:
 - id: delete_intermediate_files
   doc: dont delete intermediate files

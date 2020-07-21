@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HiLine_read_sam.cwl
+id: ../../../HiLine_read_sam.cwl
 inputs:
 - id: rmd_ups
   doc: / --no-rmdups  Run samtools mark_dup pipeline on alignment. Default=rmdups

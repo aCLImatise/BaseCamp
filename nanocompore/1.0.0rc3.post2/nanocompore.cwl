@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nanocompore.bak_plot.cwl
+id: ../../../nanocompore.bak_plot.cwl
 inputs:
 - id: nano_compo_re_dot_bak
   doc: ''

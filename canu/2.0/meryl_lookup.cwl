@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/meryl_lookup.cwl
+id: ../../../meryl_lookup.cwl
 inputs:
 - id: sequence
   doc: '[<input2.fasta>] \'

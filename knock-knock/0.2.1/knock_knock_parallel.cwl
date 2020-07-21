@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/knock_knock_parallel.cwl
+id: ../../../knock_knock_parallel.cwl
 inputs:
 - id: group
   doc: ''

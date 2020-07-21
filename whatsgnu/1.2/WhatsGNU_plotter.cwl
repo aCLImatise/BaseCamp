@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/WhatsGNU_plotter.py.cwl
+id: ../../../WhatsGNU_plotter.py.cwl
 inputs:
 - id: heat_map
   doc: heatmap of GNU scores for orthologous genes in multiple isolates

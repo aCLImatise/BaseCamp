@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htsbox_mapchk.cwl
+id: ../../../htsbox_mapchk.cwl
 inputs:
 - id: region
   doc: region [null]

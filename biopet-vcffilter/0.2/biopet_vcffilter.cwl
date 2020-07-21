@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biopet_vcffilter.cwl
+id: ../../../biopet_vcffilter.cwl
 inputs:
 - id: log_level
   doc: "Level of log information printed. Possible levels: 'debug', 'info', 'warn',\

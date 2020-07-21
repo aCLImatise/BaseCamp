@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_plot_metagene_nobs.cwl
+id: ../../../mb_plot_metagene_nobs.cwl
 inputs:
 - id: downstream
   doc: set downstream range

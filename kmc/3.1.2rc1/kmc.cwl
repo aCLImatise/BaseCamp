@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kmc.cwl
+id: ../../../kmc.cwl
 inputs:
 - id: verbose_mode_shows
   doc: '- verbose mode (shows all parameter settings); default: false'

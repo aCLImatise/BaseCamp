@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/funannotate_predict.cwl
+id: ../../../funannotate_predict.cwl
 inputs:
 - id: input
   doc: Genome multi-FASTA file (softmasked repeats)

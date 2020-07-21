@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_script_reformat_fasta.cwl
+id: ../../../anvi_script_reformat_fasta.cwl
 inputs:
 - id: min_len
   doc: Minimum length of contigs to keep (contigs shorter than this value will not

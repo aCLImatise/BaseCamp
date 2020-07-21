@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tty.cwl
+id: ../../../tty.cwl
 inputs:
 - id: silent
   doc: nothing, only return an exit status

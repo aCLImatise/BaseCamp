@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_print_processed_spectra.cwl
+id: ../../../crux_print_processed_spectra.cwl
 inputs:
 - id: ms_two_file
   doc: ''

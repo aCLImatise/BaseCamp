@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/glim_diff.awk.cwl
+id: ../../../glim_diff.awk.cwl
 inputs:
 - id: a_pred
   doc: ''

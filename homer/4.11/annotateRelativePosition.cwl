@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/annotateRelativePosition.pl.cwl
+id: ../../../annotateRelativePosition.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

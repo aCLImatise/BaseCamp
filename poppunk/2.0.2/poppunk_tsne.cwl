@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/poppunk_tsne.cwl
+id: ../../../poppunk_tsne.cwl
 inputs:
 - id: distances
   doc: Prefix of input pickle and numpy file of pre- calculated distances

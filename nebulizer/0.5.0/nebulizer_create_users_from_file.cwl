@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nebulizer_create_users_from_file.cwl
+id: ../../../nebulizer_create_users_from_file.cwl
 inputs:
 - id: check
   doc: check user details but don't try to create the new account.

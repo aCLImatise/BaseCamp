@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_info_BioPerlVersion.sh.cwl
+id: ../../../gaas_info_BioPerlVersion.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/meme2alph.cwl
+id: ../../../meme2alph.cwl
 inputs:
 - id: motifs_file
   doc: ''

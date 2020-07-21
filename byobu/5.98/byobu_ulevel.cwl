@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/byobu_ulevel.cwl
+id: ../../../byobu_ulevel.cwl
 inputs:
 - id: accessibility_mode_only
   doc: ": Accessibility mode: only output ASCII. (Also enabled if variable 'BYOBU_A11Y'\

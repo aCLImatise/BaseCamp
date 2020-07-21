@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_swapresults.cwl
+id: ../../../mmseqs_swapresults.cwl
 inputs:
 - id: split_memory_limit
   doc: 0               Maximum system memory in megabyte that one split may use. Defaults

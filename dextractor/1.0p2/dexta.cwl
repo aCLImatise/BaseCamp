@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dexta.cwl
+id: ../../../dexta.cwl
 inputs:
 - id: vk
   doc: ''

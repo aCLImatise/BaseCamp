@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RNADigestor.cwl
+id: ../../../RNADigestor.cwl
 inputs:
 - id: in
   doc: "*                 Input file containing RNA sequences (valid formats: 'fasta')"

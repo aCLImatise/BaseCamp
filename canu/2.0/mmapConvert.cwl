@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmapConvert.cwl
+id: ../../../mmapConvert.cwl
 inputs:
 - id: output_file
   doc: output file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter.cwl
+id: ../../../filter.cwl
 inputs:
 - id: no_header
   doc: input does not contain a header line

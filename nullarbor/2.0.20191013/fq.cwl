@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fq.cwl
+id: ../../../fq.cwl
 inputs:
 - id: quiet
   doc: "!        Quiet mode: no progress output (default '0')."

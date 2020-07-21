@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cap3.cwl
+id: ../../../cap3.cwl
 inputs:
 - id: n_specify_size
   doc: N  specify band expansion size N > 10 (20)

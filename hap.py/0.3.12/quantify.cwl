@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quantify.cwl
+id: ../../../quantify.cwl
 inputs:
 - id: input_file
   doc: The input file

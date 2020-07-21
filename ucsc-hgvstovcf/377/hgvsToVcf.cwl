@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hgvsToVcf.cwl
+id: ../../../hgvsToVcf.cwl
 inputs:
 - id: no_left_shift
   doc: Don't do the VCF-conventional left shifting of ambiguous placements

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RepeatClassifier.cwl
+id: ../../../RepeatClassifier.cwl
 inputs:
 - id: repeatmasker_dir
   doc: The path to the installation of RepeatMasker.

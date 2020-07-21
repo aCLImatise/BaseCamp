@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeMetaGeneProfile.pl.cwl
+id: ../../../makeMetaGeneProfile.pl.cwl
 inputs:
 - id: min
   doc: '<#> (minimum size of genes/regions to use, default: 3000) (This prevents extremely

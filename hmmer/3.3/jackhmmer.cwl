@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jackhmmer.cwl
+id: ../../../jackhmmer.cwl
 inputs:
 - id: set_maximum_number
   doc: ': set maximum number of iterations to <n>  [5]  (n>0)'

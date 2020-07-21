@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/interpolate_sam.pl.cwl
+id: ../../../interpolate_sam.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

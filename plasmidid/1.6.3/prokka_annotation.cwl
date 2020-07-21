@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prokka_annotation.sh.cwl
+id: ../../../prokka_annotation.sh.cwl
 inputs:
 - id: usage_message
   doc: usage message

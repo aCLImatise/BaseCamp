@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scran_correlate_genes.R.cwl
+id: ../../../scran_correlate_genes.R.cwl
 inputs:
 - id: input_corr_pairs
   doc: Path to the  DataFrame of pairwise correlation statistics, returned by correlatePairs.

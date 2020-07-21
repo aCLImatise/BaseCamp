@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treeannotator.cwl
+id: ../../../treeannotator.cwl
 inputs:
 - id: heights
   doc: option of 'keep' (default), 'median', 'mean' or 'ca'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alleleCounter.cwl
+id: ../../../alleleCounter.cwl
 inputs:
 - id: loci_file
   doc: '[file]           Path to loci file.'

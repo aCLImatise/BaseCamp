@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_parent_terms.pl.cwl
+id: ../../../get_parent_terms.pl.cwl
 inputs:
 - id: obo_input_file
   doc: OBO input file

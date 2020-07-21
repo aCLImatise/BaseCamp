@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cwltest.cwl
+id: ../../../cwltest.cwl
 inputs:
 - id: test
   doc: YAML file describing test cases

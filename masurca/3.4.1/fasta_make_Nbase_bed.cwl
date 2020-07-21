@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_make_Nbase_bed.pl.cwl
+id: ../../../fasta_make_Nbase_bed.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

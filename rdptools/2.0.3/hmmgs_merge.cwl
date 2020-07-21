@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmgs_merge.cwl
+id: ../../../hmmgs_merge.cwl
 inputs:
 - id: all
   doc: Generate all combinations for multiple paths, instead of just the best

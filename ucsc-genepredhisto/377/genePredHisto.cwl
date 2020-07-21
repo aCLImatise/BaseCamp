@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genePredHisto.cwl
+id: ../../../genePredHisto.cwl
 inputs:
 - id: ids
   doc: '- a second column with the gene name, useful for finding outliers.'

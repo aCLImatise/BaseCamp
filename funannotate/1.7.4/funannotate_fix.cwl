@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/funannotate_fix.cwl
+id: ../../../funannotate_fix.cwl
 inputs:
 - id: input
   doc: Annotated genome in GenBank format.

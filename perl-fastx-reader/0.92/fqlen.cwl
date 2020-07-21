@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fqlen.pl.cwl
+id: ../../../fqlen.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

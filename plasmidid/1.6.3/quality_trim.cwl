@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quality_trim.sh.cwl
+id: ../../../quality_trim.sh.cwl
 inputs:
 - id: usage_message
   doc: usage message

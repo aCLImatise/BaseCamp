@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxator.cwl
+id: ../../../taxator.cwl
 inputs:
 - id: citation
   doc: show citation info

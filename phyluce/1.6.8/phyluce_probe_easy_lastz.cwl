@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_probe_easy_lastz.cwl
+id: ../../../phyluce_probe_easy_lastz.cwl
 inputs:
 - id: target
   doc: The path to the target file (2bit/fasta)

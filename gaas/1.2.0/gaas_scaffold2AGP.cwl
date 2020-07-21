@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_scaffold2AGP.pl.cwl
+id: ../../../gaas_scaffold2AGP.pl.cwl
 inputs:
 - id: ref_file
   doc: Input fasta file.

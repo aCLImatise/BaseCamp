@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quasitools_complexity_bam.cwl
+id: ../../../quasitools_complexity_bam.cwl
 inputs:
 - id: haplotype_filter
   doc: User defined A filter between 0 and 100, inclusive. Abundancesbelow the filter

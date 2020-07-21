@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnabloom.cwl
+id: ../../../rnabloom.cwl
 inputs:
 - id: left
   doc: left reads file(s)

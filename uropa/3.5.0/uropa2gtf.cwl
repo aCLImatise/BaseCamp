@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uropa2gtf.R.cwl
+id: ../../../uropa2gtf.R.cwl
 inputs:
 - id: input
   doc: file or folder with input table(s) which should be reformatted to gtf file

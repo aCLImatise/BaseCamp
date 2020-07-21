@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sambamba_flagstat.cwl
+id: ../../../sambamba_flagstat.cwl
 inputs:
 - id: n_threads
   doc: use NTHREADS for decompression

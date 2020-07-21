@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cnv_updater.py.cwl
+id: ../../../cnv_updater.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

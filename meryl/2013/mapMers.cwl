@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mapMers.cwl
+id: ../../../mapMers.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

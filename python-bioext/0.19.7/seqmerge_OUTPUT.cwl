@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqmerge_OUTPUT.cwl
+id: ../../../seqmerge_OUTPUT.cwl
 inputs:
 - id: s
   doc: ''

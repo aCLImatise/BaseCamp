@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/featureBits.cwl
+id: ../../../featureBits.cwl
 inputs:
 - id: database
   doc: ''

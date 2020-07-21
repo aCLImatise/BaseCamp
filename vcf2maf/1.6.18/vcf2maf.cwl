@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf2maf.pl.cwl
+id: ../../../vcf2maf.pl.cwl
 inputs:
 - id: input_vcf
   doc: Path to input file in VCF format

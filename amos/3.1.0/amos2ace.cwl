@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/amos2ace.cwl
+id: ../../../amos2ace.cwl
 inputs:
 - id: see_below
   doc: (see below).

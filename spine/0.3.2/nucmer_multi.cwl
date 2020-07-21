@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nucmer_multi.pl.cwl
+id: ../../../nucmer_multi.pl.cwl
 inputs:
 - id: input_fasta_file
   doc: input fasta file

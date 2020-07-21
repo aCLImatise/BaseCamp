@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rust_dipeptide.bak.cwl
+id: ../../../rust_dipeptide.bak.cwl
 inputs:
 - id: directory_path_outputfile
   doc: directory  path to outputfile, default is "dipeptide"

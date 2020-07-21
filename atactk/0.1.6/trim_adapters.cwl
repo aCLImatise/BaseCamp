@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trim_adapters.cwl
+id: ../../../trim_adapters.cwl
 inputs:
 - id: max_edit_distance
   doc: 'The maximum edit distance permitted when aligning the paired reads (default:

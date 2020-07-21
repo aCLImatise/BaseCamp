@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/amr_report.cwl
+id: ../../../amr_report.cwl
 inputs:
 - id: qc
   doc: ''

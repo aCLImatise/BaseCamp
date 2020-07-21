@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_search_for_xlinks.cwl
+id: ../../../crux_search_for_xlinks.cwl
 inputs:
 - id: ms_two_file
   doc: ''

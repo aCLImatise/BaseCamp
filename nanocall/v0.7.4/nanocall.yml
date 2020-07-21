@@ -1,0 +1,103 @@
+!Command
+positional:
+- !Positional
+  description: '[-t <int>] [-o <file>] [--write-fast5] [--pore <r73|r9>] [-m <strand:file>]
+    ...  [--model-fofn <file>] [-s <file>] [--pr-stay <float>] [--pr-skip <float>]
+    [--no-basecall] [--basecall] [--no-train] [--train] [--no-train-scaling] [--no-train-transitions]
+    [--double-strand-scaling] [--single-strand-scaling] [--1d] [--scaling-num-events
+    <int>] [--scaling-max-rounds <int>] [--scaling-min-progress <float>] [--scaling-select-threshold
+    <float>] [--fasta-line-width <int>] [--min-ed-events <int>] [--max-ed-events <int>]
+    [--trim-ed-sq-start <int>] [--trim-ed-sq-end <int>] [--trim-ed-hp-start <int>]
+    [--trim-ed-hp-end <int>] [--train-drift <0|1>] [--stats <file>] [--log <string>]
+    ...  [--chunk-size <int>] [--ed-group <000|001|...>] [--] [--version] [-h] <path>
+    ...'
+  position: 0
+  name: nanocall
+  optional: false
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --write-fast5
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --pore
+  args: !SimpleFlagArg
+    name: r73|r9
+  optional: true
+command:
+- nanocall
+parent:
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUSAGE: \n\n   nanocall  [-t <int>] [-o <file>] [--write-fast5] [--pore\
+  \ <r73|r9>] [-m\n             <strand:file>] ...  [--model-fofn <file>] [-s <file>]\n\
+  \             [--pr-stay <float>] [--pr-skip <float>] [--no-basecall]\n        \
+  \     [--basecall] [--no-train] [--train] [--no-train-scaling]\n             [--no-train-transitions]\
+  \ [--double-strand-scaling]\n             [--single-strand-scaling] [--1d] [--scaling-num-events\
+  \ <int>]\n             [--scaling-max-rounds <int>] [--scaling-min-progress <float>]\n\
+  \             [--scaling-select-threshold <float>] [--fasta-line-width\n       \
+  \      <int>] [--min-ed-events <int>] [--max-ed-events <int>]\n             [--trim-ed-sq-start\
+  \ <int>] [--trim-ed-sq-end <int>]\n             [--trim-ed-hp-start <int>] [--trim-ed-hp-end\
+  \ <int>]\n             [--train-drift <0|1>] [--stats <file>] [--log <string>] ...\
+  \ \n             [--chunk-size <int>] [--ed-group <000|001|...>] [--]\n        \
+  \     [--version] [-h] <path> ...\n\n\nWhere: \n\n   -t <int>,  --threads <int>\n\
+  \     Number of parallel threads. (default: 1)\n\n   -o <file>,  --output <file>\n\
+  \     Output.\n\n   --write-fast5\n     Write basecalls to fast5 files.\n\n   --pore\
+  \ <r73|r9>\n     Pore name, used to select builtin pore model. (default: r9)\n\n\
+  \   -m <strand:file>,  --model <strand:file>  (accepted multiple times)\n     Custom\
+  \ pore model for strand (0=template, 1=complement, 2=both).\n\n   --model-fofn <file>\n\
+  \     File of pore models.\n\n   -s <file>,  --trans <file>\n     Custom initial\
+  \ state transitions.\n\n   --pr-stay <float>\n     Transition probability of staying\
+  \ in the same state. (default: 0.1)\n\n   --pr-skip <float>\n     Transition probability\
+  \ of skipping at least 1 state. (default: 0.3)\n\n   --no-basecall\n     Disable\
+  \ basecalling.\n\n   --basecall\n     Enable basecalling (default).\n\n   --no-train\n\
+  \     Disable all training.\n\n   --train\n     Enable training. (default)\n\n \
+  \  --no-train-scaling\n     Do not train pore model scaling.\n\n   --no-train-transitions\n\
+  \     Do not train state transitions.\n\n   --double-strand-scaling\n     Train\
+  \ scaling parameters per read. (default)\n\n   --single-strand-scaling\n     Train\
+  \ scaling parameters per strand.\n\n   --1d\n     Interpret entire read as 1D template\
+  \ only.\n\n   --scaling-num-events <int>\n     Number of events used for model scaling.\
+  \ (default: 200)\n\n   --scaling-max-rounds <int>\n     Maximum scaling rounds.\
+  \ (default: 10)\n\n   --scaling-min-progress <float>\n     Minimum scaling fit progress.\
+  \ (default: 1)\n\n   --scaling-select-threshold <float>\n     Select best model\
+  \ per strand during scaling if log score better by\n     threshold. (default: 20)\n\
+  \n   --fasta-line-width <int>\n     Maximum fasta line width. (default: 80)\n\n\
+  \   --min-ed-events <int>\n     Minimum EventDetection events. (default: 10)\n\n\
+  \   --max-ed-events <int>\n     Maximum EventDetection events. (default: 100000)\n\
+  \n   --trim-ed-sq-start <int>\n     Number of events to trim after sequence start.\
+  \ (default: 50)\n\n   --trim-ed-sq-end <int>\n     Number of events to trim before\
+  \ sequence end. (default: 50)\n\n   --trim-ed-hp-start <int>\n     Number of events\
+  \ to trim before hairpin start. (default: 50)\n\n   --trim-ed-hp-end <int>\n   \
+  \  Number of events to trim after hairpin end. (default: 50)\n\n   --train-drift\
+  \ <0|1>\n     Train drift parameter. (default: yes for R73, no for R9)\n\n   --stats\
+  \ <file>\n     Stats.\n\n   --log <string>  (accepted multiple times)\n     Log\
+  \ level. (default: info)\n\n   --chunk-size <int>\n     Thread chunk size. (default:\
+  \ 1)\n\n   --ed-group <000|001|...>\n     EventDetection group to use. (default:\
+  \ smallest available)\n\n   --,  --ignore_rest\n     Ignores the rest of the labeled\
+  \ arguments following this flag.\n\n   --version\n     Displays version information\
+  \ and exits.\n\n   -h,  --help\n     Displays usage information and exits.\n\n \
+  \  <path>  (accepted multiple times)\n     (required)  Inputs: directories, fast5\
+  \ files, or files of fast5 file\n     names (use \"-\" to read fofn from stdin).\n\
+  \n\n   Call bases in Oxford Nanopore reads.\n\n"
+generated_using:
+- --help

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/brass_foldback_reads.pl.cwl
+id: ../../../brass_foldback_reads.pl.cwl
 inputs:
 - id: no
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runMetaphyler.pl.cwl
+id: ../../../runMetaphyler.pl.cwl
 inputs:
 - id: query
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/knock_knock_build_indices.cwl
+id: ../../../knock_knock_build_indices.cwl
 inputs:
 - id: num_threads
   doc: number of threads to use for index building

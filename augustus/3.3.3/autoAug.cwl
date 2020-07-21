@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/autoAug.pl.cwl
+id: ../../../autoAug.pl.cwl
 inputs:
 - id: species
   doc: ''

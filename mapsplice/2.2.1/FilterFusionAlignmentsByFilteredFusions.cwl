@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FilterFusionAlignmentsByFilteredFusions.cwl
+id: ../../../FilterFusionAlignmentsByFilteredFusions.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

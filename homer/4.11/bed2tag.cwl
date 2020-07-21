@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bed2tag.pl.cwl
+id: ../../../bed2tag.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_group_copyusers.cwl
+id: ../../../omero_group_copyusers.cwl
 inputs:
 - id: as_owner
   doc: Copy the group owners only

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alignments_filter.cwl
+id: ../../../alignments_filter.cwl
 inputs:
 - id: arg_set_minscore_value
   doc: '[ --min-score ] arg (=0)           set min-score filter value'

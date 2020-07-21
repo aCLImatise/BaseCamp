@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Convert2FusionAlignment.cwl
+id: ../../../Convert2FusionAlignment.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

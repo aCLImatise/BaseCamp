@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/minimap.cwl
+id: ../../../minimap.cwl
 inputs:
 - id: kmer_size
   doc: k-mer size [15]

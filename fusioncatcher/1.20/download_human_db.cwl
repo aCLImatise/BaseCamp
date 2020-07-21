@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/download_human_db.sh.cwl
+id: ../../../download_human_db.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

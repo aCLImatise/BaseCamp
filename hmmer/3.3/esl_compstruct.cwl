@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_compstruct.cwl
+id: ../../../esl_compstruct.cwl
 inputs:
 - id: use_mathewsrelaxed_criterion
   doc: ": use Mathews'relaxed criterion for correctness; allow +/-1 slip"

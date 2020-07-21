@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MACARON.cwl
+id: ../../../MACARON.cwl
 inputs:
 - id: in_file
   doc: Full path of the input VCF file.

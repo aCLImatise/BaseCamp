@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfuniq.cwl
+id: ../../../vcfuniq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

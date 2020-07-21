@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runByDirectory.cwl
+id: ../../../runByDirectory.cwl
 inputs:
 - id: num_threads
   doc: Number of threads (1)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hts_CutTrim.cwl
+id: ../../../hts_CutTrim.cwl
 inputs:
 - id: _version_print
   doc: '[ --version ]                      Version print'

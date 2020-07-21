@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deamSim.cwl
+id: ../../../deamSim.cwl
 inputs:
 - id: read_bam_write
   doc: '[BAM out]                       Read BAM and write output as a BAM (default:

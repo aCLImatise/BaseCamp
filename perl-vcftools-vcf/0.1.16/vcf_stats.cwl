@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_stats.cwl
+id: ../../../vcf_stats.cwl
 inputs:
 - id: dump
   doc: Take an existing dump file and recreate the files (works with -p)

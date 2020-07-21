@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lfmm2geno.cwl
+id: ../../../lfmm2geno.cwl
 inputs:
 - id: input
   doc: --help

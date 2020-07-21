@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastx_reverse_complement.cwl
+id: ../../../fastx_reverse_complement.cwl
 inputs:
 - id: r
   doc: ''

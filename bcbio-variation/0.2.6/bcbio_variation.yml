@@ -1,0 +1,626 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: java
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: phone_home
+  optional: true
+- !Positional
+  description: ''
+  position: 2
+  name: interval_set_rule
+  optional: true
+- !Positional
+  description: ''
+  position: 3
+  name: maxRuntime
+  optional: true
+- !Positional
+  description: ''
+  position: 4
+  name: downsample_to_coverage
+  optional: true
+named:
+- !Flag
+  description: Name of the tool to run
+  synonyms:
+  - -T
+  - --analysis_type
+  args: !SimpleFlagArg
+    name: analysis_type
+  optional: true
+- !Flag
+  description: Input file containing sequence  data (SAM or BAM)
+  synonyms:
+  - -I
+  - --input_file
+  args: !SimpleFlagArg
+    name: input_file
+  optional: true
+- !Flag
+  description: Number of reads per SAM file to  buffer in memory
+  synonyms:
+  - -rbs
+  - --read_buffer_size
+  args: !SimpleFlagArg
+    name: read_buffer_size
+  optional: true
+- !Flag
+  description: Run reporting mode (NO_ET|AWS| STDOUT)
+  synonyms:
+  - -et
+  - --phone_home
+  args: !SimpleFlagArg
+    name: phone_home
+  optional: true
+- !Flag
+  description: GATK key file required to run  with -et NO_ET
+  synonyms:
+  - -K
+  - --gatk_key
+  args: !SimpleFlagArg
+    name: gatk_key
+  optional: true
+- !Flag
+  description: Tag to identify this GATK run  as part of a group of runs
+  synonyms:
+  - -tag
+  - --tag
+  args: !SimpleFlagArg
+    name: tag
+  optional: true
+- !Flag
+  description: Filters to apply to reads  before analysis
+  synonyms:
+  - -rf
+  - --read_filter
+  args: !SimpleFlagArg
+    name: read_filter
+  optional: true
+- !Flag
+  description: One or more genomic intervals  over which to operate
+  synonyms:
+  - -L
+  - --intervals
+  args: !SimpleFlagArg
+    name: intervals
+  optional: true
+- !Flag
+  description: One or more genomic intervals  to exclude from processing
+  synonyms:
+  - -XL
+  - --excludeIntervals
+  args: !SimpleFlagArg
+    name: excludeIntervals
+  optional: true
+- !Flag
+  description: Set merging approach to use for  combining interval inputs  (UNION|INTERSECTION)
+  synonyms:
+  - -isr
+  - --interval_set_rule
+  args: !SimpleFlagArg
+    name: interval_set_rule
+  optional: true
+- !Flag
+  description: Interval merging rule for  abutting intervals (ALL| OVERLAPPING_ONLY)
+  synonyms:
+  - -im
+  - --interval_merging
+  args: !SimpleFlagArg
+    name: interval_merging
+  optional: true
+- !Flag
+  description: Amount of padding (in bp) to  add to each interval
+  synonyms:
+  - -ip
+  - --interval_padding
+  args: !SimpleFlagArg
+    name: interval_padding
+  optional: true
+- !Flag
+  description: Reference sequence file
+  synonyms:
+  - -R
+  - --reference_sequence
+  args: !SimpleFlagArg
+    name: reference_sequence
+  optional: true
+- !Flag
+  description: Use a non-deterministic random  seed
+  synonyms:
+  - -ndrs
+  - --nonDeterministicRandomSeed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Stop execution cleanly as soon  as maxRuntime has been reached
+  synonyms:
+  - -maxRuntime
+  - --maxRuntime
+  args: !SimpleFlagArg
+    name: maxRuntime
+  optional: true
+- !Flag
+  description: Unit of time used by maxRuntime  (NANOSECONDS|MICROSECONDS| MILLISECONDS|SECONDS|MINUTES|
+    HOURS|DAYS)
+  synonyms:
+  - -maxRuntimeUnits
+  - --maxRuntimeUnits
+  args: !SimpleFlagArg
+    name: maxRuntimeUnits
+  optional: true
+- !Flag
+  description: Type of read downsampling to  employ at a given locus (NONE| ALL_READS|BY_SAMPLE)
+  synonyms:
+  - -dt
+  - --downsampling_type
+  args: !SimpleFlagArg
+    name: downsampling_type
+  optional: true
+- !Flag
+  description: Fraction of reads to downsample  to
+  synonyms:
+  - -dfrac
+  - --downsample_to_fraction
+  args: !SimpleFlagArg
+    name: downsample_to_fraction
+  optional: true
+- !Flag
+  description: Target coverage threshold for  downsampling to coverage
+  synonyms:
+  - -dcov
+  - --downsample_to_coverage
+  args: !SimpleFlagArg
+    name: downsample_to_coverage
+  optional: true
+- !Flag
+  description: Type of BAQ calculation to  apply in the engine (OFF| CALCULATE_AS_NECESSARY|
+    RECALCULATE)
+  synonyms:
+  - -baq
+  - --baq
+  args: !SimpleFlagArg
+    name: baq
+  optional: true
+- !Flag
+  description: BAQ gap open penalty
+  synonyms:
+  - -baqGOP
+  - --baqGapOpenPenalty
+  args: !SimpleFlagArg
+    name: baqGapOpenPenalty
+  optional: true
+- !Flag
+  description: refactor cigar string with NDN  elements to one element
+  synonyms:
+  - -fixNDN
+  - --refactor_NDN_cigar_string
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Fix mis-encoded base quality  scores
+  synonyms:
+  - -fixMisencodedQuals
+  - --fix_misencoded_quality_scores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore warnings about base  quality score encoding
+  synonyms:
+  - -allowPotentiallyMisencodedQuals
+  - --allow_potentially_misencoded_quality_scores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the base quality scores  from the OQ tag
+  synonyms:
+  - -OQ
+  - --useOriginalQualities
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assign a default base quality
+  synonyms:
+  - -DBQ
+  - --defaultBaseQualities
+  args: !SimpleFlagArg
+    name: defaultBaseQualities
+  optional: true
+- !Flag
+  description: Write GATK runtime performance  log to this file
+  synonyms:
+  - -PF
+  - --performanceLog
+  args: !SimpleFlagArg
+    name: performanceLog
+  optional: true
+- !Flag
+  description: Input covariates table file for  on-the-fly base quality score  recalibration
+  synonyms:
+  - -BQSR
+  - --BQSR
+  args: !SimpleFlagArg
+    name: BQSR
+  optional: true
+- !Flag
+  description: Disable printing of base  insertion and deletion tags  (with -BQSR)
+  synonyms:
+  - -DIQ
+  - --disable_indel_quals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Emit the OQ tag with the  original base qualities (with  -BQSR)
+  synonyms:
+  - -EOQ
+  - --emit_original_quals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't recalibrate bases with  quality scores less than this  threshold
+    (with -BQSR)
+  synonyms:
+  - -preserveQ
+  - --preserve_qscores_less_than
+  args: !SimpleFlagArg
+    name: preserve_qscores_less_than
+  optional: true
+- !Flag
+  description: Global Qscore Bayesian prior to  use for BQSR
+  synonyms:
+  - -globalQScorePrior
+  - --globalQScorePrior
+  args: !SimpleFlagArg
+    name: globalQScorePrior
+  optional: true
+- !Flag
+  description: How strict should we be with  validation (STRICT|LENIENT| SILENT)
+  synonyms:
+  - -S
+  - --validation_strictness
+  args: !SimpleFlagArg
+    name: validation_strictness
+  optional: true
+- !Flag
+  description: Remove program records from the  SAM header
+  synonyms:
+  - -rpr
+  - --remove_program_records
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Keep program records in the SAM  header
+  synonyms:
+  - -kpr
+  - --keep_program_records
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Rename sample IDs on-the-fly at  runtime using the provided  mapping
+    file
+  synonyms:
+  - -sample_rename_mapping_file
+  - --sample_rename_mapping_file
+  args: !SimpleFlagArg
+    name: sample_rename_mapping_file
+  optional: true
+- !Flag
+  description: 'Enable unsafe operations:  nothing will be checked at  runtime (ALLOW_N_CIGAR_READS|
+    ALLOW_UNINDEXED_BAM| ALLOW_UNSET_BAM_SORT_ORDER| NO_READ_ORDER_VERIFICATION| ALLOW_SEQ_DICT_INCOMPATIBILITY|
+    LENIENT_VCF_PROCESSING|ALL)'
+  synonyms:
+  - -U
+  - --unsafe
+  args: !SimpleFlagArg
+    name: unsafe
+  optional: true
+- !Flag
+  description: Number of data threads to  allocate to this analysis
+  synonyms:
+  - -nt
+  - --num_threads
+  args: !SimpleFlagArg
+    name: num_threads
+  optional: true
+- !Flag
+  description: Number of CPU threads to  allocate per data thread
+  synonyms:
+  - -nct
+  - --num_cpu_threads_per_data_thread
+  args: !SimpleFlagArg
+    name: num_cpu_threads_per_data_thread
+  optional: true
+- !Flag
+  description: Enable threading efficiency  monitoring
+  synonyms:
+  - -mte
+  - --monitorThreadEfficiency
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Total number of BAM file  handles to keep open  simultaneously
+  synonyms:
+  - -bfh
+  - --num_bam_file_handles
+  args: !SimpleFlagArg
+    name: num_bam_file_handles
+  optional: true
+- !Flag
+  description: Exclude read groups based on  tags
+  synonyms:
+  - -rgbl
+  - --read_group_black_list
+  args: !SimpleFlagArg
+    name: read_group_black_list
+  optional: true
+- !Flag
+  description: Pedigree files for samples
+  synonyms:
+  - -ped
+  - --pedigree
+  args: !SimpleFlagArg
+    name: pedigree
+  optional: true
+- !Flag
+  description: Pedigree string for samples
+  synonyms:
+  - -pedString
+  - --pedigreeString
+  args: !SimpleFlagArg
+    name: pedigreeString
+  optional: true
+- !Flag
+  description: Validation strictness for  pedigree information (STRICT| SILENT)
+  synonyms:
+  - -pedValidationType
+  - --pedigreeValidationType
+  args: !SimpleFlagArg
+    name: pedigreeValidationType
+  optional: true
+- !Flag
+  description: Type of IndexCreator to use for  VCF/BCF indices (DYNAMIC_SEEK| DYNAMIC_SIZE|LINEAR|INTERVAL)
+  synonyms:
+  - -variant_index_type
+  - --variant_index_type
+  args: !SimpleFlagArg
+    name: variant_index_type
+  optional: true
+- !Flag
+  description: Parameter to pass to the  VCF/BCF IndexCreator
+  synonyms:
+  - -variant_index_parameter
+  - --variant_index_parameter
+  args: !SimpleFlagArg
+    name: variant_index_parameter
+  optional: true
+- !Flag
+  description: Set the minimum level of  logging
+  synonyms:
+  - -l
+  - --logging_level
+  args: !SimpleFlagArg
+    name: logging_level
+  optional: true
+- !Flag
+  description: Set the logging location
+  synonyms:
+  - -log
+  - --log_to_file
+  args: !SimpleFlagArg
+    name: log_to_file
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -jar
+  args: !SimpleFlagArg
+    name: bcbio-variation-standalone.jar
+  optional: true
+command:
+- bcbio-variation
+parent:
+subcommands: []
+help_flag: !Flag
+  description: Generate the help message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Output version information
+  synonyms:
+  - -version
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "---------------------------------------------------------------------------------\n\
+  The Genome Analysis Toolkit (GATK) v3.2-12-g034abb9, Compiled 2014/07/16 15:53:02\n\
+  Copyright (c) 2010 The Broad Institute\nFor support and documentation go to http://www.broadinstitute.org/gatk\n\
+  ---------------------------------------------------------------------------------\n\
+  ---------------------------------------------------------------------------------\n\
+  usage: java -jar bcbio-variation-standalone.jar -T <analysis_type> [-I <input_file>]\
+  \ [-rbs <read_buffer_size>] [-et \n       <phone_home>] [-K <gatk_key>] [-tag <tag>]\
+  \ [-rf <read_filter>] [-L <intervals>] [-XL <excludeIntervals>] [-isr \n       <interval_set_rule>]\
+  \ [-im <interval_merging>] [-ip <interval_padding>] [-R <reference_sequence>] [-ndrs]\
+  \ [-maxRuntime \n       <maxRuntime>] [-maxRuntimeUnits <maxRuntimeUnits>] [-dt\
+  \ <downsampling_type>] [-dfrac <downsample_to_fraction>] [-dcov \n       <downsample_to_coverage>]\
+  \ [-baq <baq>] [-baqGOP <baqGapOpenPenalty>] [-fixNDN] [-fixMisencodedQuals] \n\
+  \       [-allowPotentiallyMisencodedQuals] [-OQ] [-DBQ <defaultBaseQualities>] [-PF\
+  \ <performanceLog>] [-BQSR <BQSR>] [-DIQ] \n       [-EOQ] [-preserveQ <preserve_qscores_less_than>]\
+  \ [-globalQScorePrior <globalQScorePrior>] [-S <validation_strictness>] \n     \
+  \  [-rpr] [-kpr] [-sample_rename_mapping_file <sample_rename_mapping_file>] [-U\
+  \ <unsafe>] [-nt <num_threads>] [-nct \n       <num_cpu_threads_per_data_thread>]\
+  \ [-mte] [-bfh <num_bam_file_handles>] [-rgbl <read_group_black_list>] [-ped \n\
+  \       <pedigree>] [-pedString <pedigreeString>] [-pedValidationType <pedigreeValidationType>]\
+  \ [-variant_index_type \n       <variant_index_type>] [-variant_index_parameter\
+  \ <variant_index_parameter>] [-l <logging_level>] [-log <log_to_file>] \n      \
+  \ [-h] [-version]\n\n -T,--analysis_type <analysis_type>                       \
+  \                               Name of the tool to run\n -I,--input_file <input_file>\
+  \                                                            Input file containing\
+  \ sequence \n                                                                  \
+  \                       data (SAM or BAM)\n -rbs,--read_buffer_size <read_buffer_size>\
+  \                                              Number of reads per SAM file to \n\
+  \                                                                              \
+  \           buffer in memory\n -et,--phone_home <phone_home>                   \
+  \                                        Run reporting mode (NO_ET|AWS|\n      \
+  \                                                                              \
+  \     STDOUT)\n -K,--gatk_key <gatk_key>                                       \
+  \                         GATK key file required to run \n                     \
+  \                                                                    with -et NO_ET\n\
+  \ -tag,--tag <tag>                                                             \
+  \           Tag to identify this GATK run \n                                   \
+  \                                                      as part of a group of runs\n\
+  \ -rf,--read_filter <read_filter>                                              \
+  \           Filters to apply to reads \n                                       \
+  \                                                  before analysis\n -L,--intervals\
+  \ <intervals>                                                              One or\
+  \ more genomic intervals \n                                                    \
+  \                                     over which to operate\n -XL,--excludeIntervals\
+  \ <excludeIntervals>                                               One or more genomic\
+  \ intervals \n                                                                 \
+  \                        to exclude from processing\n -isr,--interval_set_rule <interval_set_rule>\
+  \                                            Set merging approach to use for \n\
+  \                                                                              \
+  \           combining interval inputs \n                                       \
+  \                                                  (UNION|INTERSECTION)\n -im,--interval_merging\
+  \ <interval_merging>                                               Interval merging\
+  \ rule for \n                                                                  \
+  \                       abutting intervals (ALL|\n                             \
+  \                                                            OVERLAPPING_ONLY)\n\
+  \ -ip,--interval_padding <interval_padding>                                    \
+  \           Amount of padding (in bp) to \n                                    \
+  \                                                     add to each interval\n -R,--reference_sequence\
+  \ <reference_sequence>                                            Reference sequence\
+  \ file\n -ndrs,--nonDeterministicRandomSeed                                    \
+  \                  Use a non-deterministic random \n                           \
+  \                                                              seed\n -maxRuntime,--maxRuntime\
+  \ <maxRuntime>                                                   Stop execution\
+  \ cleanly as soon \n                                                           \
+  \                              as maxRuntime has been reached\n -maxRuntimeUnits,--maxRuntimeUnits\
+  \ <maxRuntimeUnits>                                    Unit of time used by maxRuntime\
+  \ \n                                                                           \
+  \              (NANOSECONDS|MICROSECONDS|\n                                    \
+  \                                                     MILLISECONDS|SECONDS|MINUTES|\n\
+  \                                                                              \
+  \           HOURS|DAYS)\n -dt,--downsampling_type <downsampling_type>          \
+  \                                   Type of read downsampling to \n            \
+  \                                                                             employ\
+  \ at a given locus (NONE|\n                                                    \
+  \                                     ALL_READS|BY_SAMPLE)\n -dfrac,--downsample_to_fraction\
+  \ <downsample_to_fraction>                                Fraction of reads to downsample\
+  \ \n                                                                           \
+  \              to\n -dcov,--downsample_to_coverage <downsample_to_coverage>    \
+  \                             Target coverage threshold for \n                 \
+  \                                                                        downsampling\
+  \ to coverage\n -baq,--baq <baq>                                               \
+  \                         Type of BAQ calculation to \n                        \
+  \                                                                 apply in the engine\
+  \ (OFF|\n                                                                      \
+  \                   CALCULATE_AS_NECESSARY|\n                                  \
+  \                                                       RECALCULATE)\n -baqGOP,--baqGapOpenPenalty\
+  \ <baqGapOpenPenalty>                                         BAQ gap open penalty\n\
+  \ -fixNDN,--refactor_NDN_cigar_string                                          \
+  \           refactor cigar string with NDN \n                                  \
+  \                                                       elements to one element\n\
+  \ -fixMisencodedQuals,--fix_misencoded_quality_scores                          \
+  \           Fix mis-encoded base quality \n                                    \
+  \                                                     scores\n -allowPotentiallyMisencodedQuals,--allow_potentially_misencoded_quality_scores\
+  \          Ignore warnings about base \n                                       \
+  \                                                  quality score encoding\n -OQ,--useOriginalQualities\
+  \                                                              Use the base quality\
+  \ scores \n                                                                    \
+  \                     from the OQ tag\n -DBQ,--defaultBaseQualities <defaultBaseQualities>\
+  \                                      Assign a default base quality\n -PF,--performanceLog\
+  \ <performanceLog>                                                   Write GATK\
+  \ runtime performance \n                                                       \
+  \                                  log to this file\n -BQSR,--BQSR <BQSR>      \
+  \                                                               Input covariates\
+  \ table file for \n                                                            \
+  \                             on-the-fly base quality score \n                 \
+  \                                                                        recalibration\n\
+  \ -DIQ,--disable_indel_quals                                                   \
+  \           Disable printing of base \n                                        \
+  \                                                 insertion and deletion tags \n\
+  \                                                                              \
+  \           (with -BQSR)\n -EOQ,--emit_original_quals                          \
+  \                                    Emit the OQ tag with the \n               \
+  \                                                                          original\
+  \ base qualities (with \n                                                      \
+  \                                   -BQSR)\n -preserveQ,--preserve_qscores_less_than\
+  \ <preserve_qscores_less_than>                    Don't recalibrate bases with \n\
+  \                                                                              \
+  \           quality scores less than this \n                                   \
+  \                                                      threshold (with -BQSR)\n\
+  \ -globalQScorePrior,--globalQScorePrior <globalQScorePrior>                   \
+  \           Global Qscore Bayesian prior to \n                                 \
+  \                                                        use for BQSR\n -S,--validation_strictness\
+  \ <validation_strictness>                                      How strict should\
+  \ we be with \n                                                                \
+  \                         validation (STRICT|LENIENT|\n                        \
+  \                                                                 SILENT)\n -rpr,--remove_program_records\
+  \                                                           Remove program records\
+  \ from the \n                                                                  \
+  \                       SAM header\n -kpr,--keep_program_records               \
+  \                                              Keep program records in the SAM \n\
+  \                                                                              \
+  \           header\n -sample_rename_mapping_file,--sample_rename_mapping_file <sample_rename_mapping_file>\
+  \   Rename sample IDs on-the-fly at \n                                         \
+  \                                                runtime using the provided \n \
+  \                                                                              \
+  \          mapping file\n -U,--unsafe <unsafe>                                 \
+  \                                   Enable unsafe operations: \n               \
+  \                                                                          nothing\
+  \ will be checked at \n                                                        \
+  \                                 runtime (ALLOW_N_CIGAR_READS|\n              \
+  \                                                                           ALLOW_UNINDEXED_BAM|\n\
+  \                                                                              \
+  \           ALLOW_UNSET_BAM_SORT_ORDER|\n                                      \
+  \                                                   NO_READ_ORDER_VERIFICATION|\n\
+  \                                                                              \
+  \           ALLOW_SEQ_DICT_INCOMPATIBILITY|\n                                  \
+  \                                                       LENIENT_VCF_PROCESSING|ALL)\n\
+  \ -nt,--num_threads <num_threads>                                              \
+  \           Number of data threads to \n                                       \
+  \                                                  allocate to this analysis\n -nct,--num_cpu_threads_per_data_thread\
+  \ <num_cpu_threads_per_data_thread>                Number of CPU threads to \n \
+  \                                                                              \
+  \          allocate per data thread\n -mte,--monitorThreadEfficiency           \
+  \                                               Enable threading efficiency \n \
+  \                                                                              \
+  \          monitoring\n -bfh,--num_bam_file_handles <num_bam_file_handles>     \
+  \                                 Total number of BAM file \n                  \
+  \                                                                       handles\
+  \ to keep open \n                                                              \
+  \                           simultaneously\n -rgbl,--read_group_black_list <read_group_black_list>\
+  \                                   Exclude read groups based on \n            \
+  \                                                                             tags\n\
+  \ -ped,--pedigree <pedigree>                                                   \
+  \           Pedigree files for samples\n -pedString,--pedigreeString <pedigreeString>\
+  \                                            Pedigree string for samples\n -pedValidationType,--pedigreeValidationType\
+  \ <pedigreeValidationType>                    Validation strictness for \n     \
+  \                                                                              \
+  \      pedigree information (STRICT|\n                                         \
+  \                                                SILENT)\n -variant_index_type,--variant_index_type\
+  \ <variant_index_type>                           Type of IndexCreator to use for\
+  \ \n                                                                           \
+  \              VCF/BCF indices (DYNAMIC_SEEK|\n                                \
+  \                                                         DYNAMIC_SIZE|LINEAR|INTERVAL)\n\
+  \ -variant_index_parameter,--variant_index_parameter <variant_index_parameter> \
+  \           Parameter to pass to the \n                                        \
+  \                                                 VCF/BCF IndexCreator\n -l,--logging_level\
+  \ <logging_level>                                                      Set the minimum\
+  \ level of \n                                                                  \
+  \                       logging\n -log,--log_to_file <log_to_file>             \
+  \                                           Set the logging location\n -h,--help\
+  \                                                                              \
+  \ Generate the help message\n -version,--version                               \
+  \                                       Output version information\n\n\n"
+generated_using:
+- --help

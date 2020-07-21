@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rrbsreference.cwl
+id: ../../../rrbsreference.cwl
 inputs:
 - id: ref_dot_nix
   doc: is an unmasked indexed reference genome from novoindex

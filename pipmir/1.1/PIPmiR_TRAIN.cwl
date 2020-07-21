@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PIPmiR_TRAIN.cwl
+id: ../../../PIPmiR_TRAIN.cwl
 inputs:
 - id: minimum_read_count
   doc: 'Minimum read count for a mature to be considered expressed (Default: 10)'

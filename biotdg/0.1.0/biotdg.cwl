@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biotdg.cwl
+id: ../../../biotdg.cwl
 inputs:
 - id: r
   doc: ''

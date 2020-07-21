@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/load_graph.py.cwl
+id: ../../../load_graph.py.cwl
 inputs:
 - id: info
   doc: print citation information

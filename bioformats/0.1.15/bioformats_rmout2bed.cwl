@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioformats_rmout2bed.cwl
+id: ../../../bioformats_rmout2bed.cwl
 inputs:
 - id: color
   doc: 'how to choose colors of BED repeat records (default: class)'

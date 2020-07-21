@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi_clean.cwl
+id: ../../../fermi_clean.cwl
 inputs:
 - id: read_maximum_neighbors
   doc: read maximum INT neighbors per node [512]

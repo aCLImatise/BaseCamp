@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pathoscope_MAP.cwl
+id: ../../../pathoscope_MAP.cwl
 inputs:
 - id: input_read_fastq_file_unpairedsingleend
   doc: Input Read Fastq File (Unpaired/Single-end)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/randomSplit.pl.cwl
+id: ../../../randomSplit.pl.cwl
 inputs:
 - id: dbfile
   doc: ''

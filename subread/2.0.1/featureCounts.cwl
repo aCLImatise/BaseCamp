@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/featureCounts.cwl
+id: ../../../featureCounts.cwl
 inputs:
 - id: specify_format_provided
   doc: Specify format of the provided annotation file. Acceptable formats include

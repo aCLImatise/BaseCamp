@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyqi_make_command.cwl
+id: ../../../pyqi_make_command.cwl
 inputs:
 - id: name
   doc: the name of the Command [REQUIRED]

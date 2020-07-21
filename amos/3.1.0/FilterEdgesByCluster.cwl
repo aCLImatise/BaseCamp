@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FilterEdgesByCluster.cwl
+id: ../../../FilterEdgesByCluster.cwl
 inputs:
 - id: b
   doc: ''

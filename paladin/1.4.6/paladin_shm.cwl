@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paladin_shm.cwl
+id: ../../../paladin_shm.cwl
 inputs:
 - id: destroy_indices_shared
   doc: destroy all indices in shared memory

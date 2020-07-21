@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ftx.py.cwl
+id: ../../../ftx.py.cwl
 inputs:
 - id: output
   doc: Output file name. Output will be in CSV format

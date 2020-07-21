@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/enaGroupGet.cwl
+id: ../../../enaGroupGet.cwl
 inputs:
 - id: group
   doc: Data group to be downloaded for this study/sample/taxon (default is read)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shapeshift.cwl
+id: ../../../shapeshift.cwl
 inputs:
 - id: input_file_type
   doc: 'Type of file to be imported. If not specified, file type will be determined

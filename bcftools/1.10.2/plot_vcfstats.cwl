@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plot_vcfstats.cwl
+id: ../../../plot_vcfstats.cwl
 inputs:
 - id: merge
   doc: Merge vcfstats files to STDOUT, skip plotting.

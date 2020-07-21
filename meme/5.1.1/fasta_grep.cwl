@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_grep.cwl
+id: ../../../fasta_grep.cwl
 inputs:
 - id: re
   doc: ''

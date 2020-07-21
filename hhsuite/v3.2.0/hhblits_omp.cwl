@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hhblits_omp.cwl
+id: ../../../hhblits_omp.cwl
 inputs:
 - id: inputquery_single_sequence
   doc: 'input/query: single sequence or multiple sequence alignment (MSA) in a3m,

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/conterminator_dna.cwl
+id: ../../../conterminator_dna.cwl
 inputs:
 - id: comp_bias_corr
   doc: correct for locally biased amino acid composition (range 0-1) [0]

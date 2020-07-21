@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtoroc.sh.cwl
+id: ../../../samtoroc.sh.cwl
 inputs:
 - id: in
   doc: ''

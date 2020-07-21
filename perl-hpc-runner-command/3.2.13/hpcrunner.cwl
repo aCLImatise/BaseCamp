@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hpcrunner.pl_submit_jobs.cwl
+id: ../../../hpcrunner.pl_submit_jobs.cwl
 inputs:
 - id: account
   doc: '--account switch in slurm. '

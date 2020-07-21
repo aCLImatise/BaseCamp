@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeroc.cwl
+id: ../../../makeroc.cwl
 inputs:
 - id: distfile
   doc: .dist    Score file to read (required).

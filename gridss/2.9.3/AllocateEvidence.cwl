@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AllocateEvidence.cwl
+id: ../../../AllocateEvidence.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

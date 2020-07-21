@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqtk_cutN.cwl
+id: ../../../seqtk_cutN.cwl
 inputs:
 - id: min_size_n
   doc: min size of N tract [1000]

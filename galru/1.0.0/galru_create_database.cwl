@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/galru_create_database.cwl
+id: ../../../galru_create_database.cwl
 inputs:
 - id: threads
   doc: 'No. of threads to use (default: 1)'

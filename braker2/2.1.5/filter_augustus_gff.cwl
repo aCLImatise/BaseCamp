@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_augustus_gff.pl.cwl
+id: ../../../filter_augustus_gff.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gstacks.cwl
+id: ../../../gstacks.cwl
 inputs:
 - id: input_directory_containg
   doc: ": input directory containg '*.matches.bam' files created by the de novo Stacks\

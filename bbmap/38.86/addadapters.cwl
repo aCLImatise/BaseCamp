@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/addadapters.sh.cwl
+id: ../../../addadapters.sh.cwl
 inputs:
 - id: in
   doc: ''

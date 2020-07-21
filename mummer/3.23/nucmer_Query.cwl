@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nucmer_Query.cwl
+id: ../../../nucmer_Query.cwl
 inputs:
 - id: nuc_mer
   doc: ''

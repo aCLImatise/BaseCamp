@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jasmine.cwl
+id: ../../../jasmine.cwl
 inputs:
 - id: command
   doc: ''

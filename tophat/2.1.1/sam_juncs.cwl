@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sam_juncs.cwl
+id: ../../../sam_juncs.cwl
 inputs:
 - id: hits_dots_am
   doc: ''

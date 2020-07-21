@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/centreseq_core.cwl
+id: ../../../centreseq_core.cwl
 inputs:
 - id: fast_a_dir
   doc: Path to directory containing *.fasta files for input to the core pipeline  [required]

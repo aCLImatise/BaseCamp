@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_gene_seq.cwl
+id: ../../../extract_gene_seq.cwl
 inputs:
 - id: log_level
   doc: Write a log file (--log-level=DEBUG for debug mode, --log-level=INFO for info

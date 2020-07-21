@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/display_rate_matrix.cwl
+id: ../../../display_rate_matrix.cwl
 inputs:
 - id: output_pt_expqt
   doc: ': Output P(t) = exp(Qt) instead of Q.  Requires t >= 0.   Use "-t A" to output

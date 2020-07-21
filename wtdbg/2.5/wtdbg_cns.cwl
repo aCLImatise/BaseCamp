@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wtdbg_cns.cwl
+id: ../../../wtdbg_cns.cwl
 inputs:
 - id: number_of_threads
   doc: Number of threads, [1]

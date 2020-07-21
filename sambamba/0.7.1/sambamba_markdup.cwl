@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sambamba_markdup.cwl
+id: ../../../sambamba_markdup.cwl
 inputs:
 - id: remove_duplicates
   doc: remove duplicates instead of just marking them

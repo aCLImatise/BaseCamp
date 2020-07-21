@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca.cwl
+id: ../../../hca.cwl
 inputs:
 - id: log_level
   doc: "['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL']"

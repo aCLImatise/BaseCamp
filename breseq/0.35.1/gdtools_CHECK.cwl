@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdtools_CHECK.cwl
+id: ../../../gdtools_CHECK.cwl
 inputs:
 - id: output
   doc: output GD file (DEFAULT=comp.gd)

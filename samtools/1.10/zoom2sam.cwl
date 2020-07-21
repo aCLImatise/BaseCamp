@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/zoom2sam.pl_readLen.cwl
+id: ../../../zoom2sam.pl_readLen.cwl
 inputs:
 - id: no
   doc: ''

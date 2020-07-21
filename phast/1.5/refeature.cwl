@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/refeature.cwl
+id: ../../../refeature.cwl
 inputs:
 - id: simple_bed
   doc: (for use with --output bed) Create a separate line for each feature in bed

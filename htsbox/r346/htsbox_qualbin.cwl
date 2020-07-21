@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htsbox_qualbin.cwl
+id: ../../../htsbox_qualbin.cwl
 inputs:
 - id: number_of_threads
   doc: number of threads [1]

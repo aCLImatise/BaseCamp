@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/capC_MAP_run.cwl
+id: ../../../capC_MAP_run.cwl
 inputs:
 - id: configuration_file
   doc: configuration file

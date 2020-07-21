@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/purityEM.cwl
+id: ../../../purityEM.cwl
 inputs:
 - id: output_name_default
   doc: ': the output name; default <stdout>'

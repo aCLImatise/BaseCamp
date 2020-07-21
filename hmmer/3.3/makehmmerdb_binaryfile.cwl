@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makehmmerdb_binaryfile.cwl
+id: ../../../makehmmerdb_binaryfile.cwl
 inputs:
 - id: make_hmmer_db
   doc: ''

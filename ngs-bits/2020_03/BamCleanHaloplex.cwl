@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BamCleanHaloplex.cwl
+id: ../../../BamCleanHaloplex.cwl
 inputs:
 - id: in
   doc: Input bam file.

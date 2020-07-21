@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SelectSequencesFromMSA.cwl
+id: ../../../SelectSequencesFromMSA.cwl
 inputs:
 - id: verbose
   doc: Loud verbosity

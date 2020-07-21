@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamrecalculatecigar.cwl
+id: ../../../bamrecalculatecigar.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

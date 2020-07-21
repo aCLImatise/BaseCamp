@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_splice_sites.py_gtf_file.cwl
+id: ../../../extract_splice_sites.py_gtf_file.cwl
 inputs:
 - id: v
   doc: ''

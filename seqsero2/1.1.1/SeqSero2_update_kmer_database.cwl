@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SeqSero2_update_kmer_database.py.cwl
+id: ../../../SeqSero2_update_kmer_database.py.cwl
 inputs:
 - id: just
   doc: ''

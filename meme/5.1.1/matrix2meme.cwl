@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/matrix2meme.cwl
+id: ../../../matrix2meme.cwl
 inputs:
 - id: dna
   doc: use DNA IUPAC alphabet

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/randomList2.pl.cwl
+id: ../../../randomList2.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

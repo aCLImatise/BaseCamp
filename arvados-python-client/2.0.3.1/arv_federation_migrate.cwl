@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arv_federation_migrate.cwl
+id: ../../../arv_federation_migrate.cwl
 inputs:
 - id: report
   doc: Generate report .csv file listing users by email address and their associated

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_classify_hits_kingdom.pl.cwl
+id: ../../../bp_classify_hits_kingdom.pl.cwl
 inputs:
 - id: t_slash_taxonomy
   doc: where the taxonomy .dmp files are (from NCBI)

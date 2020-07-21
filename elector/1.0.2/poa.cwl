@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/poa.cwl
+id: ../../../poa.cwl
 inputs:
 - id: read_fast_a
   doc: Read in FASTA sequence file.

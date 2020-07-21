@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/subtractBed.cwl
+id: ../../../subtractBed.cwl
 inputs:
 - id: remove_entire_feature
   doc: Remove entire feature if any overlap.  That is, by default, only subtract the

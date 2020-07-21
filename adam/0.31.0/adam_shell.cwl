@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/adam_shell.cwl
+id: ../../../adam_shell.cwl
 inputs:
 - id: preload_file_enforcing
   doc: preload <file>, enforcing line-by-line interpretation

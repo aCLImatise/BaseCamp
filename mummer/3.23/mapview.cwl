@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mapview.cwl
+id: ../../../mapview.cwl
 inputs:
 - id: x_one
   doc: Set the lower coordinate bound of the display

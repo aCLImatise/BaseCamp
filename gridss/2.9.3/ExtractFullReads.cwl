@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ExtractFullReads.cwl
+id: ../../../ExtractFullReads.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

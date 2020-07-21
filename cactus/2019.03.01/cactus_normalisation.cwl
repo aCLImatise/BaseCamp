@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cactus_normalisation.cwl
+id: ../../../cactus_normalisation.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

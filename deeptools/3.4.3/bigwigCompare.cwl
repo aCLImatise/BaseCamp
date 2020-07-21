@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bigwigCompare.cwl
+id: ../../../bigwigCompare.cwl
 inputs:
 - id: bigwig_one
   doc: 'file, -b1 Bigwig file Bigwig file 1. Usually the file for the treatment. (default:

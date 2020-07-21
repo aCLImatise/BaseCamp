@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wigCorrelate.cwl
+id: ../../../wigCorrelate.cwl
 inputs:
 - id: clamp_max
   doc: '- values larger than this are clipped to this value'

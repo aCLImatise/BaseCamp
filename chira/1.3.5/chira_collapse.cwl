@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chira_collapse.py.cwl
+id: ../../../chira_collapse.py.cwl
 inputs:
 - id: _fastq_input
   doc: ', --fastq          Input fastq file (default: None)'

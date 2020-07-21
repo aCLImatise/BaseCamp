@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bbsketch.sh.cwl
+id: ../../../bbsketch.sh.cwl
 inputs:
 - id: nucleotides_dot
   doc: Designed for prokaryotes.

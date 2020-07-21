@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterPolishes.cwl
+id: ../../../filterPolishes.cwl
 inputs:
 - id: verbose
   doc: Report progress

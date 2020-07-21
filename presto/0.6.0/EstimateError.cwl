@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/EstimateError.py_DISTANCE.cwl
+id: ../../../EstimateError.py_DISTANCE.cwl
 inputs:
 - id: estimate_error_do_tpy
   doc: ''

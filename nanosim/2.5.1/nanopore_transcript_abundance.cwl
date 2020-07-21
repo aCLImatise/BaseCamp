@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nanopore_transcript_abundance.py.cwl
+id: ../../../nanopore_transcript_abundance.py.cwl
 inputs:
 - id: i
   doc: ''

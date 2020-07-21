@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faAlign.cwl
+id: ../../../faAlign.cwl
 inputs:
 - id: dna
   doc: '- use DNA scoring scheme'

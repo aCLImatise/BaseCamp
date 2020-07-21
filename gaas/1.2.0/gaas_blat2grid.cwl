@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_blat2grid.pl.cwl
+id: ../../../gaas_blat2grid.pl.cwl
 inputs:
 - id: fast_a
   doc: The name of the nucleotide/protein fasta file to use as query.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_markers.py.cwl
+id: ../../../extract_markers.py.cwl
 inputs:
 - id: database
   doc: The input MetaPhlAn dtabase

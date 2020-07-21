@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sq_split.pl.cwl
+id: ../../../agat_sq_split.pl.cwl
 inputs:
 - id: output
   doc: 'STRING: Output file. If no output file is specified, the output will be written

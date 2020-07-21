@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/KmerFreq_AR.cwl
+id: ../../../KmerFreq_AR.cwl
 inputs:
 - id: set_size_note
   doc: 'Set the kmer size, default=17. Note: when k=17, kmer theoretic number is 4^17

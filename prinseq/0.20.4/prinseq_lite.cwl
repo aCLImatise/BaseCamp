@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prinseq_lite.pl.cwl
+id: ../../../prinseq_lite.pl.cwl
 inputs:
 - id: help
   doc: ''

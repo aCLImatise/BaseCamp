@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/optimir_libprep.cwl
+id: ../../../optimir_libprep.cwl
 inputs:
 - id: vcf
   doc: Full path of the input VCF file.

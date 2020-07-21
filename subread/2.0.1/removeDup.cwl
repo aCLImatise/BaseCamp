@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/removeDup.cwl
+id: ../../../removeDup.cwl
 inputs:
 - id: name_input_file
   doc: Name of input file in SAM/BAM format.

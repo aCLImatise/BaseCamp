@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/map_gff_coords.cwl
+id: ../../../map_gff_coords.cwl
 inputs:
 - id: type
   doc: only look at features of particular type

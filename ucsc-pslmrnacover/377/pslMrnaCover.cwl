@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslMrnaCover.cwl
+id: ../../../pslMrnaCover.cwl
 inputs:
 - id: minsize
   doc: '- default 100.  Minimum size of mRNA considered'

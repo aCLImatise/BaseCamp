@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergeOTUs.sh.cwl
+id: ../../../mergeOTUs.sh.cwl
 inputs:
 - id: in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_microbe_census.py.cwl
+id: ../../../run_microbe_census.py.cwl
 inputs:
 - id: print_programs_progress
   doc: print program's progress to stdout (default = False)

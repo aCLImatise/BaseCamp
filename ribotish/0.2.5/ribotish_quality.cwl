@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ribotish_quality.cwl
+id: ../../../ribotish_quality.cwl
 inputs:
 - id: riboseq_bam_file
   doc: Riboseq bam file

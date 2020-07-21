@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bufet.py.cwl
+id: ../../../bufet.py.cwl
 inputs:
 - id: mirna
   doc: ': path to the miRNA group file'

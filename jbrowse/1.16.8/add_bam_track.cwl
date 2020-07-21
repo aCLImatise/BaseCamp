@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/add_bam_track.pl.cwl
+id: ../../../add_bam_track.pl.cwl
 inputs:
 - id: add_bam_track_do_tpl
   doc: '[ --in <input_trackList.json>  ]       \ [ --out <output_trackList.json>        \

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obtautomer.cwl
+id: ../../../obtautomer.cwl
 inputs:
 - id: c
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ffindex_get.cwl
+id: ../../../ffindex_get.cwl
 inputs:
 - id: data_filename
   doc: ''

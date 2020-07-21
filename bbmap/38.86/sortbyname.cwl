@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sortbyname.sh.cwl
+id: ../../../sortbyname.sh.cwl
 inputs:
 - id: in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lav_to_maf.py.cwl
+id: ../../../lav_to_maf.py.cwl
 inputs:
 - id: silent
   doc: ''

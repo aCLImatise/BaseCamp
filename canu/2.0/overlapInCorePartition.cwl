@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/overlapInCorePartition.cwl
+id: ../../../overlapInCorePartition.cwl
 inputs:
 - id: opts
   doc: ''

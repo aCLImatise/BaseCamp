@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RTPredict.cwl
+id: ../../../RTPredict.cwl
 inputs:
 - id: in_id
   doc: "Peptides with precursor information (valid formats: 'idXML')"

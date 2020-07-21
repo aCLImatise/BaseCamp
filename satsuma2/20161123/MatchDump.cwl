@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MatchDump.cwl
+id: ../../../MatchDump.cwl
 inputs:
 - id: k_match_output_file
   doc: ''

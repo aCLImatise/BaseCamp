@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ghost_tree_compare_trees.cwl
+id: ../../../ghost_tree_compare_trees.cwl
 inputs:
 - id: method
   doc: '[pearson|spearman] correlation method to use in Mantel test'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta2gsi.cwl
+id: ../../../fasta2gsi.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

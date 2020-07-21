@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcool.cwl
+id: ../../../bcool.cwl
 inputs:
 - id: mandatory_input_fasta
   doc: (MANDATORY) input fasta read files. Several read files must be concatenated

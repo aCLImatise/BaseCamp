@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssm.cwl
+id: ../../../ssm.cwl
 inputs:
 - id: input_files
   doc: List of files that will be merged together. Files must have appropriate extensions

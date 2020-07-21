@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runAdt.cwl
+id: ../../../runAdt.cwl
 inputs:
 - id: pm_v
   doc: ''

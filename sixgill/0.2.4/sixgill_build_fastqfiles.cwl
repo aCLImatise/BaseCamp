@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sixgill_build_fastqfiles.cwl
+id: ../../../sixgill_build_fastqfiles.cwl
 inputs:
 - id: minlength
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ribo_spec.cwl
+id: ../../../ribo_spec.cwl
 inputs:
 - id: output
   doc: 'output directory; default: None'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/analyzegenes.sh.cwl
+id: ../../../analyzegenes.sh.cwl
 inputs:
 - id: in
   doc: ''

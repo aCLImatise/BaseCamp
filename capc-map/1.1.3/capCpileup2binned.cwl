@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/capCpileup2binned.cwl
+id: ../../../capCpileup2binned.cwl
 inputs:
 - id: pileupfile_input_pileup
   doc: pileupfile  is the input pile-up file name

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hp2ps.cwl
+id: ../../../hp2ps.cwl
 inputs:
 - id: sort_standard_deviation
   doc: sort by standard deviation

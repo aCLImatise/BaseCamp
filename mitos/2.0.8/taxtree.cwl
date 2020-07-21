@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxtree.py.cwl
+id: ../../../taxtree.py.cwl
 inputs:
 - id: gb_dir
   doc: genbank directory

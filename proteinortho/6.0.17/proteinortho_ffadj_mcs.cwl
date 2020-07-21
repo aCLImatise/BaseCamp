@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteinortho_ffadj_mcs.py.cwl
+id: ../../../proteinortho_ffadj_mcs.py.cwl
 inputs:
 - id: r
   doc: ''

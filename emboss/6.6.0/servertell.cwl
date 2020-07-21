@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/servertell.cwl
+id: ../../../servertell.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hs_blastn.cwl
+id: ../../../hs_blastn.cwl
 inputs:
 - id: one
   doc: ''

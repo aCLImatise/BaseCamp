@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deletion_profile.py.cwl
+id: ../../../deletion_profile.py.cwl
 inputs:
 - id: input
   doc: Input BAM file. [required]

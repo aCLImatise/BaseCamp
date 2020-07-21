@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/asm_collect.py.cwl
+id: ../../../asm_collect.py.cwl
 inputs:
 - id: script
   doc: ''

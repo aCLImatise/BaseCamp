@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samcount.cwl
+id: ../../../samcount.cwl
 inputs:
 - id: display_statistics_library
   doc: Display statistics for each library

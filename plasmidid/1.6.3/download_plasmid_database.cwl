@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/download_plasmid_database.py.cwl
+id: ../../../download_plasmid_database.py.cwl
 inputs:
 - id: output
   doc: REQUIRED. Output directory to extract plasmid database

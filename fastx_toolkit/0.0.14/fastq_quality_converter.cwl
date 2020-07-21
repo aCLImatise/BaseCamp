@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_quality_converter.cwl
+id: ../../../fastq_quality_converter.cwl
 inputs:
 - id: a
   doc: ''

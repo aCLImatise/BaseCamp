@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/exiftool.cwl
+id: ../../../exiftool.cwl
 inputs:
 - id: tag
   doc: Extract or exclude specified tag

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/QueryLookupTable.cwl
+id: ../../../QueryLookupTable.cwl
 inputs:
 - id: arg_one
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_supertranscript_from_reference.py.cwl
+id: ../../../extract_supertranscript_from_reference.py.cwl
 inputs:
 - id: gtf
   doc: Path to gtf annotation file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/combine_eval_reports.pl.cwl
+id: ../../../combine_eval_reports.pl.cwl
 inputs:
 - id: eval_report_mode
   doc: ': Eval report mode [default]'

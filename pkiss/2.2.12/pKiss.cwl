@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pKiss.cwl
+id: ../../../pKiss.cwl
 inputs:
 - id: mode
   doc: ': Select the computation mode. Available modes are "mfe", "subopt", "enforce",

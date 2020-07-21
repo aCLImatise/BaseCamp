@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cuteSV.cwl
+id: ../../../cuteSV.cwl
 inputs:
 - id: threads
   doc: Number of threads to use.[16]

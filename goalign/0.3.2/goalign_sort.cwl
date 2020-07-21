@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_sort.cwl
+id: ../../../goalign_sort.cwl
 inputs:
 - id: output
   doc: Sorted alignment output file (default "stdout")

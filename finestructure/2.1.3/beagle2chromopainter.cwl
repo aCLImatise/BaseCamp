@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/beagle2chromopainter.pl.cwl
+id: ../../../beagle2chromopainter.pl.cwl
 inputs:
 - id: beagle_phased_output_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/REALPHY_v112.cwl
+id: ../../../REALPHY_v112.cwl
 inputs:
 - id: x_mx
   doc: ''

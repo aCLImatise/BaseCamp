@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Mobius.py.cwl
+id: ../../../Mobius.py.cwl
 inputs:
 - id: force_trans
   doc: Force blocks where annotated transcripts start and end

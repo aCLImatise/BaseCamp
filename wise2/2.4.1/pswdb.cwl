@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pswdb.cwl
+id: ../../../pswdb.cwl
 inputs:
 - id: penalty_default
   doc: penalty (default 12)

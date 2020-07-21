@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sonLibTests.cwl
+id: ../../../sonLibTests.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

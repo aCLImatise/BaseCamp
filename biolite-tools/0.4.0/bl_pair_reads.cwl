@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bl_pair_reads.cwl
+id: ../../../bl_pair_reads.cwl
 inputs:
 - id: specify_fastq_files
   doc: specify multiple input FASTQ files

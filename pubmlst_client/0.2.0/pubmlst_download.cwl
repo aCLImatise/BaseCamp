@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pubmlst_download.cwl
+id: ../../../pubmlst_download.cwl
 inputs:
 - id: scheme_name
   doc: scheme name

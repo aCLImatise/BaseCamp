@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getSuperReadPlacements.perl.cwl
+id: ../../../getSuperReadPlacements.perl.cwl
 inputs:
 - id: dir
   doc: input directory

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmpair_sto file_max non_canonical pair freq.cwl
+id: ../../../hmmpair_sto file_max non_canonical pair freq.cwl
 inputs:
 - id: fragmentary_policy
   doc: ''

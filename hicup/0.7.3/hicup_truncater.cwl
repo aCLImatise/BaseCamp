@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicup_truncater.cwl
+id: ../../../hicup_truncater.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

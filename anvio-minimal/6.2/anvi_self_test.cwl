@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_self_test.cwl
+id: ../../../anvi_self_test.cwl
 inputs:
 - id: suite
   doc: ''

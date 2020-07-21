@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dumpLA.cwl
+id: ../../../dumpLA.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

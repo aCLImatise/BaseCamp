@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_fastq_check_sync_pair1_pair2.pl.cwl
+id: ../../../gaas_fastq_check_sync_pair1_pair2.pl.cwl
 inputs:
 - id: input
   doc: 'STRING: Input fastq file that will be read.'

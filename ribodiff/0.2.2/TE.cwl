@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TE.py.cwl
+id: ../../../TE.py.cwl
 inputs:
 - id: text_file_describing
   doc: Text file describing experiment Outline. Must follow required format, please

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deblur_remove_artifacts.cwl
+id: ../../../deblur_remove_artifacts.cwl
 inputs:
 - id: ref_fp
   doc: 'Keep all sequences aligning to this FASTA database (for multiple databases,

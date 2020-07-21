@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sagapython_version.cwl
+id: ../../../sagapython_version.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

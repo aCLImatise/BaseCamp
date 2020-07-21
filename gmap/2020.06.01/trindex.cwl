@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trindex.cwl
+id: ../../../trindex.cwl
 inputs:
 - id: var_0
   doc: ''

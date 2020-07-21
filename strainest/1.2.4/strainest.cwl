@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/strainest.cwl
+id: ../../../strainest.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

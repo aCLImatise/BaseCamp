@@ -1,0 +1,576 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: description
+  synonyms:
+  - --help
+  args: !SimpleFlagArg
+    name: include
+  optional: true
+- !Flag
+  description: -- annotation script returning site/domain locations for subject sequences
+    -- same as --script
+  synonyms:
+  - --ann_script
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -- annotation script for query sequences -- same as --q_script
+  synonyms:
+  - --q_ann_script
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -- fasta query sequence -- same as --query, --query_lib (can contain
+    multiple sequences for multi-sequence search)
+  synonyms:
+  - --query_file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -- blast tabular fields shown before domain information
+  synonyms:
+  - --out_fields
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -- add the raw_score used to normalized domain scores to tabular output
+    (raw_scores are only calculated for domains)
+  synonyms:
+  - --raw_score
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- annot_blast_btop2.pl
+parent:
+subcommands: []
+help_flag: !Flag
+  description: short help
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "#!/usr/bin/perl -w\n\n################################################################\n\
+  # copyright (c) 2014,2015 by William R. Pearson and The Rector &\n# Visitors of\
+  \ the University of Virginia */\n################################################################\n\
+  # Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not\
+  \ use this file except in compliance with the License.\n# You may obtain a copy\
+  \ of the License at\n#\n# http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless\
+  \ required by applicable law or agreed to in writing,\n# software distributed under\
+  \ this License is distributed on an \"AS\n# IS\" BASIS, WITHOUT WRRANTIES OR CONDITIONS\
+  \ OF ANY KIND, either\n# express or implied.  See the License for the specific language\n\
+  # governing permissions and limitations under the License. \n################################################################\n\
+  \n################################################################\n# annot_blast_btop2.pl\
+  \ --query query.file --ann_script ann_pfam_www.pl blast_tab_btop_file\n################################################################\n\
+  # annot_blast_btop2.pl associates domain annotation information and\n# subalignment\
+  \ scores with a blast tabular (-outfmt 6 or -outfmt 7)\n# file that contains the\
+  \ raw score and the BTOP alignment encoding\n# This file can be generated from \"\
+  blastp/n\" or \"blast_formatter\"\n# using the command:\n#   blast_formatter -archive\
+  \ blast_output.asn -outfmt '7 qseqid sseqid pident length mismatch gapopen qstart\
+  \ qend sstart send evalue bitscore score btop'  > blast_output.tab_annot\n#\n# If\
+  \ the BTOP field or query_file is not available, the script\n# produces domain content\
+  \ without sub-alignment scores.\n################################################################\n\
+  ## 13-Jan-2017\n# modified to provide query/subject coordinates and identities if\
+  \ no\n# query sequence -- does not decrement for reverse-complement fastx/blastx\
+  \ DNA\n################################################################\n## 16-Nov-2015\n\
+  # modify to allow multi-query blast searches\n################################################################\n\
+  ## 19-Dec-2015\n# add -q_annot_script to annotate query sequence\n#\n\nuse strict;\n\
+  use IPC::Open2;\nuse Pod::Usage;\nuse Getopt::Long;\n# use Data::Dumper;\n\n# read\
+  \ lines of the form:\n# gi|121694|sp|P20432.1|GSTT1_DROME\tgi|121694|sp|P20432|GSTT1_DROME\t\
+  100.00\t209\t0\t0\t1\t209\t1\t209\t6e-156\t433\t1113\t209\n# gi|121694|sp|P20432.1|GSTT1_DROME\t\
+  gi|1170090|sp|P04907|GSTF3_MAIZE\t26.77\t198\t123\t7\t4\t185\t6\t197\t2e-08\t51.2\t\
+  121\tFL1YG ... 1NKRA1YW1\n# gi|121694|sp|P20432.1|GSTT1_DROME\tgi|81174731|sp|P0ACA5|SSPA_ECO57\t\
+  39.66\t58\t32\t2\t43\t100\t49\t103\t8e-06\t43.9\t102\tEDFLLI ... V-I-NEQS3FM\n#\
+  \ gi|121694|sp|P20432.1|GSTT1_DROME\tgi|121695|sp|P12653|GSTF1_MAIZE\t27.62\t181\t\
+  107\t7\t32\t203\t34\t199\t9e-05\t40.8\t94\tLI1LF ... N-1AS1CLLM1\n\n# and report\
+  \ the domain content ala -m 8CC\n\nmy ($matrix, $ann_script, $q_ann_script, $show_raw,\
+  \ $shelp, $help) = (\"BLOSUM62\", \"\", \"\", 0, 0, 0);\nmy ($query_lib_name) =\
+  \ (\"\");  # if $query_lib_name, do not use $query_file_name\nmy ($out_field_str)\
+  \ = (\"\");\nmy $query_lib_r = 0;\n\nmy @blosum62 = ();\nmy @blosum62_diag = ();\n\
+  my %aa_map = ();\nmy ($g_open, $g_ext) = (-11, -1);\ninit_blosum62();\n\nGetOptions(\n\
+  \    \"matrix:s\" => \\$matrix,\n    \"ann_script:s\" => \\$ann_script,\n    \"\
+  q_ann_script:s\" => \\$q_ann_script,\n    \"query:s\" => \\$query_lib_name,\n  \
+  \  \"query_file:s\" => \\$query_lib_name,\n    \"query_lib:s\" => \\$query_lib_name,\n\
+  \    \"out_fields:s\" => \\$out_field_str,\n    \"script:s\" => \\$ann_script,\n\
+  \    \"q_script:s\" => \\$q_ann_script,\n    \"raw_score\" => \\$show_raw,\n   \
+  \ \"h|?\" => \\$shelp,\n    \"help\" => \\$help,\n    );\n\npod2usage(1) if $shelp;\n\
+  pod2usage(exitstatus => 0, verbose => 2) if $help;\nunless (-f STDIN || -p STDIN\
+  \ || @ARGV) {\n pod2usage(1);\n}\n\nif ($query_lib_name) {\n  $query_lib_r = parse_query_lib($query_lib_name);\n\
+  }\n\nmy @tab_fields = qw(q_seqid s_seqid percid alen mismatch gopen q_start q_end\
+  \ s_start s_end evalue bits score BTOP);\n\n# the fields that are displayed are\
+  \ listed here.  By default, all fields except score and BTOP are displayed.\nmy\
+  \ @out_tab_fields = @tab_fields[0 .. $#tab_fields-1];\nif ($show_raw) {\n  push\
+  \ @out_tab_fields, \"raw_score\";\n\n}\nif ($out_field_str) {\n  @out_tab_fields\
+  \ = split(/\\s+/,$out_field_str);\n}\n\nmy @header_lines = ();\n\n# need outer loop\
+  \ to enable multiple queries\nwhile (1) {\n\n  my $next_line = \"\";\n  my $have_data\
+  \ = 0;\n\n  my @hit_list = ();\n  my @q_hit_list = ();\n\n  while (my $line = <>)\
+  \ {\n    if ($line =~ /^#/) {\n      if ($have_data) {\n\t$next_line = $line;\n\t\
+  $have_data = 0;\n\tlast;\n      } else {\n\tpush @header_lines, $line;\n      }\n\
+  \      next;\n    }\n\n    $have_data = 1;\n    my %hit_data = ();\n    chomp $line;\n\
+  \    next unless $line;\n    @hit_data{@tab_fields} = split(/\\t/,$line);\n\n  \
+  \  push @hit_list, \\%hit_data;\n  }\n\n  # get the current query sequence\n  if\
+  \ ($q_ann_script && -x (split(/\\s+/,$q_ann_script))[0]) {\n    # get the domains\
+  \ for the q_seqid using --q_ann_script\n    #\n    my ($Reader, $Writer);\n    my\
+  \ $pid = open2($Reader, $Writer, $q_ann_script);\n    my $hit = $hit_list[0];\n\n\
+  \    print $Writer $hit->{q_seqid},\"\\n\";\n    close($Writer);\n\n    @q_hit_list\
+  \ = ({ s_seq_id=> $hit->{q_seqid} });\n\n    read_annots($Reader, \\@q_hit_list,\
+  \ 0);\n\n    waitpid($pid, 0);\n  }\n\n  # get the current query sequence\n  if\
+  \ ($ann_script && -x (split(/\\s+/,$ann_script))[0]) {\n    # get the domains for\
+  \ each s_seqid using --ann_script\n    #\n    my ($Reader, $Writer);\n    my $pid\
+  \ = open2($Reader, $Writer, $ann_script);\n    for my $hit (@hit_list) {\n     \
+  \ print $Writer $hit->{s_seqid},\"\\n\";\n    }\n    close($Writer);\n\n    read_annots($Reader,\
+  \ \\@hit_list, 1);\n\n    waitpid($pid, 0);\n  }\n\n  for my $line (@header_lines)\
+  \ {\n    print $line;\n  }\n  @header_lines = ($next_line);\n\n  # now get query\
+  \ sequence if available\n\n  my $q_hit = $q_hit_list[0];\n\n  for my $hit (@hit_list)\
+  \ {\n    my @list_covered = ();\n\n    # If I have an encoded aligment {BTOP} and\
+  \ a query sequence $query_lib_r && $query_lib_r->{$hit->{q_seqid}}\n    # then I\
+  \ can calculate sub-alignment scores\n    if (defined($hit->{BTOP}) && $query_lib_r\
+  \ && $query_lib_r->{$hit->{q_seqid}}) {\n\n      $hit->{raw_score} = 0;  # initialize\
+  \ in case no domains and raw_score requested\n      # calculate sub-alignment scores\
+  \ in subject/library coordinates\n      if (defined($hit->{domains}) && scalar(@{$hit->{domains}}))\
+  \ {\n\t($hit->{raw_score}, $hit->{aligned_domains_r}) = \n\t  sub_alignment_score($query_lib_r->{$hit->{q_seqid}},\n\
+  \t\t\t      $hit, \\@blosum62, \\@blosum62_diag, $hit->{domains}, 1);\n      }\n\
+  \n      if (defined($hit->{sites}) && scalar(@{$hit->{sites}})) {\n\t$hit->{aligned_sites_r}\
+  \ = site_align($query_lib_r->{$hit->{q_seqid}},\n\t\t\t\t\t     $hit, \\@blosum62,\
+  \ $hit->{sites}, 1);\n      }\n\n      # calculate sub-alignment scores in query\
+  \ coordinates\n      if (defined($q_hit->{domains}) && scalar(@{$q_hit->{domains}}))\
+  \ {\n\t($hit->{raw_score}, $hit->{q_aligned_domains_r}) = \n\t  sub_alignment_score($query_lib_r->{$hit->{q_seqid}},\n\
+  \t\t\t      $hit, \\@blosum62, \\@blosum62_diag, $q_hit->{domains}, 0);\n      }\n\
+  \n      if (defined($q_hit->{sites}) && scalar(@{$q_hit->{sites}})) {\n\t$hit->{q_aligned_sites_r}\
+  \ =  site_align($query_lib_r->{$hit->{q_seqid}},\n\t\t\t\t\t\t$hit, \\@blosum62,\
+  \ $q_hit->{sites}, 0);\n      }\n    }\n    elsif (defined($hit->{BTOP})) {\n  \
+  \    if (defined($hit->{domains}) && scalar(@{$hit->{domains}})) {\n\t$hit->{aligned_domains_r}\
+  \ = \n\t  sub_alignment_pos($hit, $hit->{domains}, 1);\n      }\n    }\n    else\
+  \ {\t\t   # no alignment info, can provide domain overlap, and subject coordinates\n\
+  \      $hit->{raw_score} = 0;\n      for my $dom_r (@{$hit->{domains}}) {\n\tnext\
+  \ if $dom_r->{d_end} < $hit->{s_start}; # before start\n\tlast if $dom_r->{d_pos}\
+  \ > $hit->{s_end}; # after end\n\n\tif ($dom_r->{d_pos} <= $hit->{s_end} && $dom_r->{d_end}\
+  \ >= $hit->{s_start}) {\n\t  push @list_covered, $dom_r->{descr};\n\t}\n      }\n\
+  \    }\n\n\n    ################\n    ## final output display\n\n    print join(\"\
+  \\t\",@{$hit}{@out_tab_fields}); # show fields from original blast tabular file\n\
+  \n    my $merged_annots_r = merge_annots($hit);\t# merge the four possible annotation\
+  \ lists into one.\n\n    if (scalar(@$merged_annots_r)) { # show subalignment scores\
+  \ if available\n      print \"\\t\";\n\n      print format_annot_info($hit, $merged_annots_r);\n\
+  \    }\n    elsif (@list_covered) {\t# otherwise show domain content\n      print\
+  \ \"\\t\",join(\";\",@list_covered);\n    }\n    print \"\\n\";\n  }\n\n  # for\
+  \ my $line (@footer_lines) {\n  #   print $line;\n  # }\n  # @footer_lines = ();\n\
+  \n  last if eof(ARGV);\n}\n\nfor my $line (@header_lines) {\n  print $line;\n}\n\
+  \n################\n# read_annots (\\@hit_list)\n# input: $hit_entry->{s_seq_id,\
+  \ etc}, $target\n# output: modified $hit_entry->{domains}\n#         modified $hit_entry->{sites}\n\
+  \nsub read_annots {\n  my ($Reader, $hit_list_r, $target) = @_;\n\n  my $current_domain\
+  \ = \"\";\n  my $hit_ix = 0;\n  my @hit_domains = ();\n  my @hit_sites = ();\n\n\
+  \  while (my $line = <$Reader>) {\n    next if $line=~ m/^=/;\n    chomp $line;\n\
+  \n    # check for header\n    if ($line =~ m/^>/) {\n      if ($current_domain)\
+  \ {  # previous domains/sites have already been found and parsed\n\tif ($hit_list_r->[$hit_ix]{s_seqid}\
+  \ eq $current_domain) {\n\t    $hit_list_r->[$hit_ix]{domains} = [ @hit_domains\
+  \ ];  # previous domains\n\t    $hit_list_r->[$hit_ix]{sites} = [ @hit_sites ];\
+  \      # previous sites\n\t    $hit_ix++;\n\t  } else {\n\t    warn \"phase error:\
+  \ $current_domain != $hit_list_r->[$hit_ix]{s_seqid}\";\n\t  }\n      }\n      @hit_domains\
+  \ = ();   # current domains\n      @hit_sites = ();     # current sites\n      $current_domain\
+  \ = $line;\n      $current_domain =~ s/^>//;\n    } else {\t\t\t# check for data\n\
+  \      my %annot_info = (target=>$target);\n      my @a_fields = split(/\\t/,$line);\n\
+  \      if ($a_fields[1] eq '-') {\n\t@annot_info{qw(d_pos type d_end descr)} = @a_fields;\n\
+  \t$annot_info{descr} =~ s/ :(\\d+)$/~$1/;\n\tpush @hit_domains, \\%annot_info; \
+  \  # current\n      }\n      else {\n\t@annot_info{qw(d_pos type d_val descr)} =\
+  \ @a_fields;\n\t$annot_info{'d_end'} = $annot_info{'d_pos'};\n\tpush @hit_sites,\
+  \ \\%annot_info;   # current\n      }\n    }\n  }\n  close($Reader);\n\n  # all\
+  \ done, save the last one\n  $hit_list_r->[$hit_ix]{domains} = \\@hit_domains;\n\
+  \  $hit_list_r->[$hit_ix]{sites} = \\@hit_sites;\n}\n\n# input: a blast BTOP string\
+  \ of the form: \"1VA160TS7KG10RK27\"\n# returns a list_ref of tokens: (1, \"VA\"\
+  , 60, \"TS\", 7, \"KG, 10, \"RK\", 27)\n#\nsub decode_btop {\n  my ($btop_str) =\
+  \ @_;\n\n  my @tokens = split(/(\\d+)/,$btop_str);\n\n  shift @tokens unless $tokens[0];\n\
+  \n  my @out_tokens = ();\n\n  for my $token (@tokens) {\n    if ($token =~ m/^\\\
+  d+$/) {\n      push @out_tokens, $token\n    }\n    else {\n      my @mis_tokens\
+  \ = split(/(..)/,$token);\n      for my $mis (@mis_tokens) {\n\tif ($mis) {push\
+  \ @out_tokens, $mis};\n      }\t\n    }\n  }\n\n  return \\@out_tokens;\n}\n\nsub\
+  \ parse_query_lib {\n  my ($query_file) = @_;\n\n  my %query_seqs = ();\n\n  open(my\
+  \ $qfd, $query_file);\n  {\t\t\t\t# local scope for $/\n    local $/ = \"\\n>\"\
+  ;\n\n    while (my $entry = <$qfd>) {  # returns an entire fasta entry\n      chomp\
+  \ $entry;\n      my ($header, $sequence) = ($entry =~ m/^>?           # ^> only\
+  \ in first entry\n                                             ( [^\\n]* ) \\n #\
+  \ header line\n                                             ( .*     )    # the\
+  \ sequence\n                                            /osx);    # optimize, multiline,\
+  \ commented\n      $sequence =~ s/[^A-Za-z\\*]//g;    # remove everything but letters\n\
+  \      $sequence = uc($sequence);\n      $header =~ s/\\s.*$//;\n      my @seq =\
+  \ split(//,$sequence);\n      unshift @seq,\"\";\t# @seq is now 1-based\n      $query_seqs{$header}\
+  \ =  \\@seq;\n    }\n  }\n  return \\%query_seqs;\n}\n\nsub parse_query_file {\n\
+  \  my ($query_file) = @_;\n\n  my $seq_data = \"\";\n\n  open(my $qfd, $query_file);\n\
+  \  while (my $line = <$qfd>) {\n    next if $line =~ m/^>/;\n    next if $line =~\
+  \ m/^;/;\n    chomp $line;\n    $line =~ s/[^A-Za-z\\*]//g;\n    $seq_data .= $line\n\
+  \  }\n\n  $seq_data = uc($seq_data);\n\n  my @seq = split(//,$seq_data); \n\n  return\
+  \ \\@seq;\n}\n\nsub init_blosum62 {\n\n  my @ncbi_blaa = qw(    A  R  N  D  C  Q\
+  \  E  G  H  I  L  K  M  F  P  S  T  W  Y  V  B  Z  X  * );\n\n  $blosum62[ 0] =\
+  \ [ qw(  4 -1 -2 -2  0 -1 -1  0 -2 -1 -1 -1 -1 -2 -1  1  0 -3 -2  0 -2 -1  0 -4)\
+  \ ]; # A\n  $blosum62[ 1] = [ qw( -1  5  0 -2 -3  1  0 -2  0 -3 -2  2 -1 -3 -2 -1\
+  \ -1 -3 -2 -3 -1  0 -1 -4) ]; # R\n  $blosum62[ 2] = [ qw( -2  0  6  1 -3  0  0\
+  \  0  1 -3 -3  0 -2 -3 -2  1  0 -4 -2 -3  3  0 -1 -4) ];\n  $blosum62[ 3] = [ qw(\
+  \ -2 -2  1  6 -3  0  2 -1 -1 -3 -4 -1 -3 -3 -1  0 -1 -4 -3 -3  4  1 -1 -4) ];\n\
+  \  $blosum62[ 4] = [ qw(  0 -3 -3 -3  9 -3 -4 -3 -3 -1 -1 -3 -1 -2 -3 -1 -1 -2 -2\
+  \ -1 -3 -3 -2 -4) ];\n  $blosum62[ 5] = [ qw( -1  1  0  0 -3  5  2 -2  0 -3 -2 \
+  \ 1  0 -3 -1  0 -1 -2 -1 -2  0  3 -1 -4) ];\n  $blosum62[ 6] = [ qw( -1  0  0  2\
+  \ -4  2  5 -2  0 -3 -3  1 -2 -3 -1  0 -1 -3 -2 -2  1  4 -1 -4) ];\n  $blosum62[\
+  \ 7] = [ qw(  0 -2  0 -1 -3 -2 -2  6 -2 -4 -4 -2 -3 -3 -2  0 -2 -2 -3 -3 -1 -2 -1\
+  \ -4) ];\n  $blosum62[ 8] = [ qw( -2  0  1 -1 -3  0  0 -2  8 -3 -3 -1 -2 -1 -2 -1\
+  \ -2 -2  2 -3  0  0 -1 -4) ];\n  $blosum62[ 9] = [ qw( -1 -3 -3 -3 -1 -3 -3 -4 -3\
+  \  4  2 -3  1  0 -3 -2 -1 -3 -1  3 -3 -3 -1 -4) ];\n  $blosum62[10] = [ qw( -1 -2\
+  \ -3 -4 -1 -2 -3 -4 -3  2  4 -2  2  0 -3 -2 -1 -2 -1  1 -4 -3 -1 -4) ];\n  $blosum62[11]\
+  \ = [ qw( -1  2  0 -1 -3  1  1 -2 -1 -3 -2  5 -1 -3 -1  0 -1 -3 -2 -2  0  1 -1 -4)\
+  \ ];\n  $blosum62[12] = [ qw( -1 -1 -2 -3 -1  0 -2 -3 -2  1  2 -1  5  0 -2 -1 -1\
+  \ -1 -1  1 -3 -1 -1 -4) ];\n  $blosum62[13] = [ qw( -2 -3 -3 -3 -2 -3 -3 -3 -1 \
+  \ 0  0 -3  0  6 -4 -2 -2  1  3 -1 -3 -3 -1 -4) ];\n  $blosum62[14] = [ qw( -1 -2\
+  \ -2 -1 -3 -1 -1 -2 -2 -3 -3 -1 -2 -4  7 -1 -1 -4 -3 -2 -2 -1 -2 -4) ];\n  $blosum62[15]\
+  \ = [ qw(  1 -1  1  0 -1  0  0  0 -1 -2 -2  0 -1 -2 -1  4  1 -3 -2 -2  0  0  0 -4)\
+  \ ];\n  $blosum62[16] = [ qw(  0 -1  0 -1 -1 -1 -1 -2 -2 -1 -1 -1 -1 -2 -1  1  5\
+  \ -2 -2  0 -1 -1  0 -4) ];\n  $blosum62[17] = [ qw( -3 -3 -4 -4 -2 -2 -3 -2 -2 -3\
+  \ -2 -3 -1  1 -4 -3 -2 11  2 -3 -4 -3 -2 -4) ];\n  $blosum62[18] = [ qw( -2 -2 -2\
+  \ -3 -2 -1 -2 -3  2 -1 -1 -2 -1  3 -3 -2 -2  2  7 -1 -3 -2 -1 -4) ];\n  $blosum62[19]\
+  \ = [ qw(  0 -3 -3 -3 -1 -2 -2 -3 -3  3  1 -2  1 -1 -2 -2  0 -3 -1  4 -3 -2 -1 -4)\
+  \ ];\n  $blosum62[20] = [ qw( -2 -1  3  4 -3  0  1 -1  0 -3 -4  0 -3 -3 -2  0 -1\
+  \ -4 -3 -3  4  1 -1 -4) ];\n  $blosum62[21] = [ qw( -1  0  0  1 -3  3  4 -2  0 -3\
+  \ -3  1 -1 -3 -1  0 -1 -3 -2 -2  1  4 -1 -4) ];\n  $blosum62[22] = [ qw(  0 -1 -1\
+  \ -1 -2 -1 -1 -1 -1 -1 -1 -1 -1 -1 -2  0  0 -2 -1 -1 -1 -1 -1 -4) ];\n  $blosum62[23]\
+  \ = [ qw( -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 \
+  \ 1) ];\n\n\n  die \"blosum62 length mismatch $#blosum62 != $#ncbi_blaa\" if (scalar(@blosum62)\
+  \ != scalar(@ncbi_blaa));\n\n  for (my $i=0; $i < scalar(@ncbi_blaa); $i++) {\n\
+  \    $aa_map{$ncbi_blaa[$i]} = $i;\n    $blosum62_diag[$i] = $blosum62[$i][$i];\n\
+  \  }\n\n  ($g_open, $g_ext) = (-11, -1);\n}\n\n# given: (1) a query sequence; (2)\
+  \ an encoded alignment; (3) a scoring matrix\n# calculate a score\n\nsub alignment_score\
+  \ {\n  my ($query_r, $query_start, $btop_align_r, $matrix_2d) = @_;\n\n  my ($gap0,\
+  \ $gap1) = (0,0);\n\n  my $qix = $query_start-1; # start from zero\n\n  my ($score,\
+  \ $m_score) = 0;\n  my ($seq0, $seq1) = (\"\",\"\");\n  for my $btop (@{$btop_align_r})\
+  \ {\n    if ($btop =~ m/^\\d+$/) {  # matching query sequence, add it up\n     \
+  \ for (my $i=0; $i < $btop; $i++) {\n\t$score += $matrix_2d->{$query_r->[$qix]}{$query_r->[$qix]};\n\
+  \t$qix++;\n      }\n    }\n    else {\n      ($seq0, $seq1) = split(//,$btop);\n\
+  \      if ($btop=~ m/\\-/) {\n\tif ($seq0 eq '-') {\n\t  if ($gap0) { $score +=\
+  \ $g_ext;}\n\t  else { $score += $g_open+$g_ext;}\n\t  $gap0 = 1;\n\t}\n\telse {\n\
+  \t  if ($gap1) { $score += $g_ext;}\n\t  else { $score += $g_open+$g_ext;}\n\t \
+  \ $gap1 = 1;\n\t  $qix++;\n\t}\n      }\n      else {\n\t$score += $matrix_2d->{$seq0}{$seq1};\n\
+  \t$gap1=$gap0 = 0;\n\t$qix++;\n      }\n    }\n  }\n  return $score;\n}\n\n################################################################\n\
+  # sub_alignment_score()\n# input: $query_r : a query sequence;\n#        $hit_r->{BTOP}\
+  \ : an encoded alignment;\n#        $matrix_2d, $matrix_diag : a scoring matrix\n\
+  #        $domain_r : domain boundaries in query (target=0) or subject (target=1)\n\
+  #        $target : 0=query, 1=target\n#\n# calculate a score\n# updates $domain_r\
+  \ in place with new values:\n# domain_r->[]->{ident} (as fraction identical),\n\
+  #             ->{score} --matrix raw similarity score\n#             ->{qa_start,qa_end}\
+  \  domain boundaries in query\n#             ->{sa_start, sa_end} domain boundaries\
+  \ in subject\n#\nsub sub_alignment_score {\n  my ($query_r, $hit_r, $matrix_2d,\
+  \ $matrix_diag, $domain_r, $target) = @_;\n\n  return (0, $domain_r) unless ($domain_r\
+  \ && scalar(@$domain_r));\n\n  my $btop_enc_r = decode_btop($hit_r->{BTOP});\n\n\
+  \  my ($gap0, $gap1) = (0,0);\n\n  my @active_dom_list = ();\n  my @aligned_domains\
+  \ = ();\n\n  my $left_active_end = $domain_r->[-1]->{d_end}+1;\t# as far right as\
+  \ possible\n  my ($q_start, $s_start, $h_start, $h_end) = @{$hit_r}{qw(q_start s_start\
+  \ s_start s_end)};\n  my ($qix, $six)  = ($q_start, $s_start); # $qix now starts\
+  \ from 1, like $ssix;\n\n  my $ds_ix = \\$six;\t# use to track the subject position\n\
+  \  # reverse coordinate names if $target==0\n  unless ($target) {\n    $ds_ix =\
+  \ \\$qix;\t# track query position\n    $h_start = $hit_r->{q_start};\n    $h_end\
+  \ = $hit_r->{q_end};\n  }\n\n  my ($score, $m_score) = 0;\n  my ($seq0, $seq1) =\
+  \ (\"\",\"\");\n\n  # find the first overlapping domain\n  my ($dom_ix, $dom_nx)\
+  \ = (0,scalar(@$domain_r));\n  my $dom_r = $domain_r->[0];\n\n  # skip over domains\
+  \ that do not overlap alignment\n  # capture first domain that alignment overlaps\n\
+  \  for ($dom_ix=0; $dom_ix < $dom_nx; $dom_ix++) {\n    if ($domain_r->[$dom_ix]->{d_end}\
+  \ >= $h_start) {  # if {d_end} < $_start, cannot overlap\n      $dom_r = $domain_r->[$dom_ix];\n\
+  \      if ($dom_r->{d_pos} <= $h_start) {  # {d_pos} is less, {d_end} is greater,\
+  \ overlap\n\tpush @aligned_domains, $dom_r;\n\t$left_active_end = push_annot_match(\\\
+  @active_dom_list, $dom_r, $q_start, $s_start, 0, 0);\n      }\n      else { last;\
+  \ }\n    }\n  }\n\n  my ($dom_score, $id_cnt) = (0,0);\n\n  for my $btop (@{$btop_enc_r})\
+  \ {\n\n    if ($btop =~ m/^\\d+$/) {  # matching query sequence, add it up\n   \
+  \   for (my $i=0; $i < $btop; $i++) {  # $i is used to count through BTOP, not to\
+  \ index anything.\n\n\tmy $seq0_map = $aa_map{'X'};\n\tunless ($query_r->[$qix])\
+  \ {\n\t  warn \"qix: $qix out of range\";\n\t}\n\telse {\n\t  $seq0_map = $aa_map{$query_r->[$qix]}\
+  \ if exists($aa_map{$query_r->[$qix]});\n#\t  print \"$qix:$six : \",$query_r->[$qix],\"\
+  \\n\";\n\t}\n\n\t$m_score = $matrix_diag->[$seq0_map];\n\t$score += $m_score;\n\n\
+  \tif ($dom_ix < $dom_nx && $$ds_ix == $dom_r->{d_pos}) {\n\t  push @aligned_domains,\
+  \ $dom_r;\n\t  $left_active_end = push_annot_match(\\@active_dom_list, $dom_r, $qix,\
+  \ $six, $id_cnt, $dom_score);\n\t  $dom_ix++;\n\t  $dom_r = $domain_r->[$dom_ix];\n\
+  \t  ($dom_score, $id_cnt) = (0,0);\n\t}\n\n\tif (@active_dom_list) {\n\t  $dom_score\
+  \ += $m_score;\n\t  $id_cnt++;\n\t  if ($$ds_ix == $left_active_end) {\n\t    $left_active_end\
+  \ = pop_annot_match(\\@active_dom_list, $qix, $six, $$ds_ix, $id_cnt, $dom_score);\n\
+  \t    $dom_score = $id_cnt = 0;\n\t  }\n\t}\n\n\t$qix++;\n\t$six++;\n\t$gap0 = $gap1\
+  \ = 0;\n      }\n    }\n    else {\n      ($seq0, $seq1) = split(//,$btop);\n\n\
+  #      print \"$qix:$six : $btop\\n\";\n\n      if ($btop=~ m/\\-/) {\n\tif ($seq0\
+  \ eq '-') {  # gap in seq0\n\t  if ($gap0) {\n\t    $m_score = $g_ext;\n\t  }\n\t\
+  \  else {\n\t    $m_score = $g_open+$g_ext;\n\t    $gap0 = 1;\n\t  }\n\n\t  $score\
+  \ += $m_score;\n\n\t  if ($target) {\t# subject domains\n\t    if ($dom_ix < $dom_nx\
+  \ && $$ds_ix == $dom_r->{d_pos}) {\n\t      push @aligned_domains, $dom_r;\n\t \
+  \     $left_active_end = push_annot_match(\\@active_dom_list, $dom_r, $qix, $six,\
+  \ $id_cnt, $dom_score);\n\t      $dom_ix++;\n\t      $dom_r = $domain_r->[$dom_ix];\n\
+  \t      ($dom_score, $id_cnt) = (0,0);\n\t    }\n\t    if (@active_dom_list) {\n\
+  \t      $dom_score += $m_score;\n\t      if ($$ds_ix == $left_active_end) {\n\t\t\
+  $left_active_end = pop_annot_match(\\@active_dom_list, $qix, $six, $$ds_ix, $id_cnt,\
+  \ $dom_score);\n\t\t$dom_score = $id_cnt = 0;\n\t      }\n\t    }\n\t  }\n\t  $six++;\n\
+  \t}\n\telse {  # gap in seq1\n\t  if ($gap1) {\n\t    $m_score = $g_ext;\n\t  }\n\
+  \t  else {\n\t    $m_score = $g_open+$g_ext;\n\t    $gap1 = 1;\n\t  }\n\t  $score\
+  \ += $m_score;\n\n\t  unless ($target) {\t# query domains\n\t    if ($dom_ix < $dom_nx\
+  \ && $$ds_ix == $dom_r->{d_pos}) {\n\t      push @aligned_domains, $dom_r;\n\t \
+  \     $left_active_end = push_annot_match(\\@active_dom_list, $dom_r, $qix, $six,\
+  \ $id_cnt, $dom_score);\n\t      $dom_ix++;\n\t      $dom_r = $domain_r->[$dom_ix];\n\
+  \t      ($dom_score, $id_cnt) = (0,0);\n\t    }\n\n\t    if (@active_dom_list) {\n\
+  \t      $dom_score += $m_score;\n\t      if ($$ds_ix == $left_active_end) {\n\t\t\
+  $left_active_end = pop_annot_match(\\@active_dom_list, $qix, $six, $$ds_ix, $id_cnt,\
+  \ $dom_score);\n\t\t$dom_score = $id_cnt = 0;\n\t      }\n\t    }\n\t  }\n\t  $qix++;\n\
+  \t}\n      }\n      else {\t# mismatch\n\tmy ($seq0_map, $seq1_map) = ($aa_map{$seq0},$aa_map{$seq1});\n\
+  \t$seq0_map = $aa_map{'X'} unless defined($seq0_map);\n\t$seq1_map = $aa_map{'X'}\
+  \ unless defined($seq1_map);\n\n\t$m_score = $matrix_2d->[$seq0_map][$seq1_map];\n\
+  \t$score += $m_score;\n\tif ($dom_ix < $dom_nx && $$ds_ix == $dom_r->{d_pos}) {\n\
+  \t  push @aligned_domains, $dom_r;\n\t  $left_active_end = push_annot_match(\\@active_dom_list,\
+  \ $dom_r, $qix, $six, $id_cnt, $dom_score);\n\t  $dom_ix++;\n\t  $dom_r = $domain_r->[$dom_ix];\n\
+  \t  ($dom_score, $id_cnt) = (0,0);\n\t}\n\n\tif (@active_dom_list) {\n\t  $dom_score\
+  \ += $m_score;\n\t  if ($$ds_ix == $left_active_end) {\n\t    $left_active_end =\
+  \ pop_annot_match(\\@active_dom_list, $qix, $six, $$ds_ix, $id_cnt, $dom_score);\n\
+  \t    $dom_score = $id_cnt = 0;\n\t  }\n\t}\n\t$qix++;\n\t$six++;\n\t$gap0 = $gap1\
+  \ = 0;\n      }\n    }\n#    print join(\":\",($qix, $six, $score)),\"\\n\";\n \
+  \ }\n\n  # all done, finish any domain stuff\n  if (@active_dom_list) {\n    last_annot_match(\\\
+  @active_dom_list, $hit_r->{q_end}, $hit_r->{s_end}, $id_cnt, $dom_score);\n  }\n\
+  \n  return ($score, \\@aligned_domains);\n}\n\n################################################################\n\
+  # sub_alignment_pos\n# input: $hit_r->{BTOP} : an encoded alignment;\n#        $domain_r\
+  \ : domain boundaries in query (target=0) or subject (target=1)\n#        $target\
+  \ : 0=query, 1=target\n#\n# updates $domain_r in place with new values:\n# domain_r->[]->{ident}\
+  \ (as fraction identical),\n#             ->{sa_start, sa_end} domain boundaries\
+  \ in subject\n#\nsub sub_alignment_pos {\n  my ($hit_r, $domain_r, $target) = @_;\n\
+  \n  return (0, $domain_r) unless ($domain_r && scalar(@$domain_r));\n\n  my $btop_enc_r\
+  \ = decode_btop($hit_r->{BTOP});\n\n  my ($gap0, $gap1) = (0,0);\n\n  my @active_dom_list\
+  \ = ();\n  my @aligned_domains = ();\n\n  my $left_active_end = $domain_r->[-1]->{d_end}+1;\t\
+  # as far right as possible\n  my ($q_start, $s_start, $h_start) = @{$hit_r}{qw(q_start\
+  \ s_start s_start)};\n  my ($qix, $six)  = ($q_start, $s_start); # $qix now starts\
+  \ from 1, like $ssix;\n\n  my $ds_ix = \\$six;\t# use to track the subject position\n\
+  \  # reverse coordinate names if $target==0\n  unless ($target) {\n    $ds_ix =\
+  \ \\$qix;\t# track query position\n    $h_start = $hit_r->{q_start};\n  }\n\n  my\
+  \ ($score, $m_score) = 0;\n  my ($seq0, $seq1) = (\"\",\"\");\n\n  # find the first\
+  \ overlapping domain\n  my ($dom_ix, $dom_nx) = (0,scalar(@$domain_r));\n  my $dom_r\
+  \ = $domain_r->[0];\n\n  # skip over domains that do not overlap alignment\n  #\
+  \ capture first domain that alignment overlaps\n  for ($dom_ix=0; $dom_ix < $dom_nx;\
+  \ $dom_ix++) {\n    if ($domain_r->[$dom_ix]->{d_end} >= $h_start) {  # if {d_end}\
+  \ < $_start, cannot overlap\n      $dom_r = $domain_r->[$dom_ix];\n      if ($dom_r->{d_pos}\
+  \ <= $h_start) {  # {d_pos} is less, {d_end} is greater, overlap\n\tpush @aligned_domains,\
+  \ $dom_r;\n\t$left_active_end = push_annot_match(\\@active_dom_list, $dom_r, $q_start,\
+  \ $s_start, 0, 0);\n      }\n      else { last; }\n    }\n  }\n\n  my ($dom_score,\
+  \ $id_cnt) = (0,0);\n\n  for my $btop (@{$btop_enc_r}) {\n\n    if ($btop =~ m/^\\\
+  d+$/) {  # matching query sequence, add it up\n      for (my $i=0; $i < $btop; $i++)\
+  \ {  # $i is used to count through BTOP, not to index anything.\n\n\tif ($dom_ix\
+  \ < $dom_nx && $$ds_ix == $dom_r->{d_pos}) {\n\t  push @aligned_domains, $dom_r;\n\
+  \t  $left_active_end = push_annot_match(\\@active_dom_list, $dom_r, $qix, $$ds_ix,\
+  \ $id_cnt, $dom_score);\n\t  $dom_ix++;\n\t  $dom_r = $domain_r->[$dom_ix];\n\t\
+  \  ($dom_score, $id_cnt) = (0,0);\n\t}\n\tif (@active_dom_list) {\n\t  $id_cnt++;\n\
+  \t  if ($$ds_ix == $left_active_end) {\n\t    $left_active_end = pop_annot_match(\\\
+  @active_dom_list, $qix, $six, $$ds_ix, $id_cnt, $dom_score);\n\t    $dom_score =\
+  \ $id_cnt = 0;\n\t  }\n\t}\n\n\t$qix++;\n\t$six++;\n\t$gap0 = $gap1 = 0;\n     \
+  \ }\n    }\n    else {\n      ($seq0, $seq1) = split(//,$btop);\n\n#      print\
+  \ \"$qix:$six : $btop\\n\";\n\n      if ($btop=~ m/\\-/) {\n\tif ($seq0 eq '-')\
+  \ {  # gap in seq0\n\n\t  if ($target) {\t# subject domains\n\t    if ($dom_ix <\
+  \ $dom_nx && $$ds_ix == $dom_r->{d_pos}) {\n\t      push @aligned_domains, $dom_r;\n\
+  \t      $left_active_end = push_annot_match(\\@active_dom_list, $dom_r, $qix, $$ds_ix,\
+  \ $id_cnt, $dom_score);\n\t      $dom_ix++;\n\t      $dom_r = $domain_r->[$dom_ix];\n\
+  \t      ($dom_score, $id_cnt) = (0,0);\n\t    }\n\t    if (@active_dom_list) {\n\
+  \t      if ($dom_ix < $dom_nx && $$ds_ix == $left_active_end) {\n\t\t$left_active_end\
+  \ = pop_annot_match(\\@active_dom_list, $qix, $six, $$ds_ix, $id_cnt, $dom_score);\n\
+  \t\t$dom_score = $id_cnt = 0;\n\t      }\n\t    }\n\t  }\n\t  $six++;\n\t}\n\telse\
+  \ {  # gap in seq1\n\n\t  unless ($target) {\t# query domains\n\t    if ($dom_ix\
+  \ < $dom_nx && $$ds_ix == $dom_r->{d_pos}) {\n\t      push @aligned_domains, $dom_r;\n\
+  \t      $left_active_end = push_annot_match(\\@active_dom_list, $dom_r, $qix, $$ds_ix,\
+  \ $id_cnt, $dom_score);\n\t      $dom_ix++;\n\t      $dom_r = $domain_r->[$dom_ix];\n\
+  \t      ($dom_score, $id_cnt) = (0,0);\n\t    }\n\t    if (@active_dom_list) {\n\
+  \t      $dom_score += $m_score;\n\t      if ($dom_ix < $dom_nx && $$ds_ix == $left_active_end)\
+  \ {\n\t\t$left_active_end = pop_annot_match(\\@active_dom_list, $qix, $six, $$ds_ix,\
+  \ $id_cnt, $dom_score);\n\t\t$dom_score = $id_cnt = 0;\n\t      }\n\t    }\n\t \
+  \ }\n\t  $qix++;\n\t}\n      }\n      else {\t# mismatch\n\tmy ($seq0_map, $seq1_map)\
+  \ = ($aa_map{$seq0},$aa_map{$seq1});\n\tif ($dom_ix < $dom_nx && $$ds_ix == $dom_r->{d_pos})\
+  \ {\n\t  push @aligned_domains, $dom_r;\n\t  $left_active_end = push_annot_match(\\\
+  @active_dom_list, $dom_r, $qix, $$ds_ix, $id_cnt, $dom_score);\n\t  $dom_ix++;\n\
+  \t  $dom_r = $domain_r->[$dom_ix];\n\t  ($dom_score, $id_cnt) = (0,0);\n\t}\n\t\
+  if (@active_dom_list) {\n\t  if ($$ds_ix == $left_active_end) {\n\t    $left_active_end\
+  \ = pop_annot_match(\\@active_dom_list, $qix, $six, $$ds_ix, $id_cnt, $dom_score);\n\
+  \t    $dom_score = $id_cnt = 0;\n\t  }\n\t}\n\t$qix++;\n\t$six++;\n\t$gap0 = $gap1\
+  \ = 0;\n      }\n    }\n#    print join(\":\",($qix, $six, $score)),\"\\n\";\n \
+  \ }\n\n  # all done, finish any domain stuff\n  if (@active_dom_list) {\n    last_annot_match(\\\
+  @active_dom_list, $hit_r->{q_end}, $hit_r->{s_end}, $id_cnt, $dom_score);\n  }\n\
+  \n  return ($score, \\@aligned_domains);\n}\n\n################\n# push_annot_match\
+  \ - adds domain to set of @$active_doms_r,\n#\t\t     update ->{score}, ->{ident}\
+  \ for existing @$active_doms_r\n#\t\t     initialize ->{score}, ->{ident} to zero\
+  \ for new domain\n#\t\t     insert (splice) new domain in list ordered left-to-right\
+  \ by ->{d_end}\n#                    returns current left-most {d_end} boundary\n\
+  #\nsub push_annot_match {\n  my ($active_doms_r, $dom_r, $q_pos, $s_pos, $c_ident,\
+  \ $c_score) = @_;\n\n  $dom_r->{ident} = 0;\n  $dom_r->{score} = 0;\n  $dom_r->{qa_start}\
+  \ = $dom_r->{qa_pos} = $q_pos;\n  $dom_r->{sa_start} = $dom_r->{sa_pos} = $s_pos;\n\
+  \n  # no previous domains, just initialize\n  unless (scalar(@$active_doms_r)) {\n\
+  \    push @$active_doms_r, $dom_r;\n    return $dom_r->{d_end};\n  }\n\n  # some\
+  \ previous domains, update score, identity for domains in list\n  # also find insertion\
+  \ point\n  my $nx = scalar(@$active_doms_r);\n  my $min_ix = $nx;\n  for (my $ix=0;\
+  \ $ix < $nx; $ix++) {\n    $active_doms_r->[$ix]->{ident} += $c_ident;\n    $active_doms_r->[$ix]->{score}\
+  \ += $c_score;\n    if ($dom_r->{d_end} < $active_doms_r->[$ix]->{d_end}) {\n  \
+  \    $min_ix = $ix;\n    }\n  }\n\n  # now have location for insert\n  splice(@$active_doms_r,\
+  \ $min_ix, 0, $dom_r);\n  return $active_doms_r->[0]->{d_end};\n}\n\n################\n\
+  # pop_annot_match - update domains in @$active_doms_r \n#\t\t    update: ->{ident},\
+  \ ->{score}\n#\t\t    add: ->{qa_end},->{sa_end}\n#                   remove all\
+  \ domains that end at $s_ix and convert {ident} count to fraction\n#           \
+  \        return left-most right boundary\n\nsub pop_annot_match {\n  my ($active_doms_r,\
+  \ $q_pos, $s_pos, $d_pos, $c_ident, $c_score) = @_;\n\n  my $nx = scalar(@$active_doms_r);\n\
+  \n  # we know the left most (first) domain matches,\n  my $pop_count = 0;\n  for\
+  \ my $cur_r (@$active_doms_r) {\n    $cur_r->{ident} += $c_ident;\n    $cur_r->{score}\
+  \ += $c_score;\n    $pop_count++ if ($cur_r->{d_end} == $d_pos);\n  }\n\n  while\
+  \ ($pop_count-- > 0) {\n    my $cur_r = shift @$active_doms_r;\n    # convert identity\
+  \ count to identity fraction\n    $cur_r->{percid} = $cur_r->{ident}/($cur_r->{d_end}\
+  \ - $cur_r->{d_pos}+1);\n    $cur_r->{qa_end} = $cur_r->{qa_pos} = $q_pos;\n   \
+  \ $cur_r->{sa_end} = $cur_r->{sa_pos} = $s_pos;\n  }\n\n  if (scalar(@$active_doms_r))\
+  \ {\n    my $leftmost_end = $active_doms_r->[0]->{d_end};\n    for (my $lix = 1;\
+  \ $lix < scalar(@$active_doms_r); $lix++) {\n      if ($active_doms_r->[$lix]->{d_end}\
+  \ < $leftmost_end) {\n\t$leftmost_end = $active_doms_r->[$lix]->{d_end};\n     \
+  \ }\n    }\n    return $leftmost_end;\n  }\n  else {\n    return -1;\n  }\n}\n\n\
+  sub last_annot_match {\n  my ($active_doms_r, $q_pos, $s_pos, $c_ident, $c_score)\
+  \ = @_;\n\n  my $nx = scalar(@$active_doms_r);\n\n  # we know the left most (first)\
+  \ domain matches,\n  my $pop_count = 0;\n  for my $cur_r (@$active_doms_r) {\n \
+  \   $cur_r->{ident} += $c_ident;\n    $cur_r->{score} += $c_score;\n    $cur_r->{percid}\
+  \ = $cur_r->{ident}/($cur_r->{d_end} - $cur_r->{d_pos}+1);\n    $cur_r->{qa_end}\
+  \ = $cur_r->{qa_pos} = $q_pos;\n    $cur_r->{sa_end} = $cur_r->{sa_pos} = $s_pos;\n\
+  \  }\n\n  $active_doms_r = [];\n}\n\n# given: (1) a query sequence; (2) an encoded\
+  \ alignment; (3) a scoring matrix\n# report matches/mismatches on annotated sites\n\
+  # updates $site_r->[]->{q_coord, s_coord}\n#                    ->{q_res, s_res}\n\
+  \nsub site_align {\n  my ($query_r, $hit_r, $matrix_2d, $site_r, $target) = @_;\n\
+  \n  return [] unless ($site_r && scalar(@$site_r));\n\n  my @aligned_sites = ();\n\
+  \n  my $btop_enc_r = decode_btop($hit_r->{BTOP});\n\n  my ($q_start, $q_end, $s_start,\
+  \ $s_end) = @{$hit_r}{qw(q_start q_end s_start s_end)};\n  my ($qix, $six)  = ($q_start,\
+  \ $s_start); # $qix, $six 1-based\n  my $ds_ix = \\$six;\t# use to track the subject\
+  \ position\n\n  unless ($target) {\n    ($q_start, $q_end, $s_start, $s_end) = @{$hit_r}{qw(s_start\
+  \ s_end q_start q_end)};\n    $ds_ix = \\$qix;\t# track query position\n  }\n\n\
+  \  my ($seq0, $seq1) = (\"\",\"\");\n\n  # find the first overlapping domain\n\n\
+  \  my ($site_ix, $site_nx) = (0,scalar(@$site_r));\n  my $s_r = $site_r->[0];\n\n\
+  \  # skip over sites that do not overlap alignment\n  for ($site_ix=0; $site_ix\
+  \ < $site_nx; $site_ix++) {\n    if ($site_r->[$site_ix]->{d_pos} >= $s_start) {\
+  \  # find the first site inside alignment\n      $s_r = $site_r->[$site_ix];\n \
+  \     last;\n    }\n  }\n\n  return [] unless $site_ix < $site_nx;\n\n  for my $btop\
+  \ (@{$btop_enc_r}) {\n    last if ($site_ix >= $site_nx);\n    if ($btop =~ m/^\\\
+  d+$/) {  # matching query sequence, check for sites within current region\n    \
+  \  my $bt_end = $$ds_ix + $btop - 1;\n      if ($bt_end < $s_r->{d_pos}) {  # no\
+  \ site in identical region\n\t$qix += $btop;\n\t$six += $btop;\n      }\n      else\
+  \ {      # yes site in region, jump to it\n\tmy $c_pos;\n\twhile ($site_ix < $site_nx\
+  \ && $s_r->{d_pos} <= $bt_end) {\n\t  $c_pos = $$ds_ix;\t# must be inside loop because\
+  \ $ds_ix points to $qix or $six\n\t  $qix += $s_r->{d_pos} - $c_pos;\t# jump forward\
+  \ to site\n\t  $six += $s_r->{d_pos} - $c_pos;\t# jump forward to site\n\t  $seq0\
+  \ = $query_r->[$qix];\n\n\t  @{$s_r}{qw(annot_ix qa_pos sa_pos q_res s_res m_symb\
+  \ d_end)} = ($site_ix, $qix, $six, $seq0, $seq0, match_symb($seq0, $seq0, $matrix_2d));\n\
+  \t  push @aligned_sites, $s_r;\n\t  $site_ix++;\n\t  $s_r=$site_r->[$site_ix];\n\
+  \t}\n\t# past the last site annotation, but not done with $btop;\n\t$c_pos = ($bt_end\
+  \ - $$ds_ix + 1);\n\t$qix += $c_pos;\n\t$six += $c_pos;\n      }\n    }\n    else\
+  \ {\t# sequence does not match -- must check each position\n      ($seq0, $seq1)\
+  \ = split(//,$btop);\n      if ($btop =~ m/\\-/) {\n\tif ($seq0 eq '-') {\n\t  if\
+  \ ($target) {\n\t    while ($site_ix < $site_nx && $s_r->{d_pos} == $six) {\n\t\
+  \      @{$s_r}{qw(annot_ix qa_pos sa_pos q_res s_res m_symb)} = ($site_ix, $qix,\
+  \ $six, $seq0, $seq1, match_symb($seq0, $seq1, $matrix_2d));\n\t      push @aligned_sites,\
+  \ $s_r;\n\t      $site_ix++;\n\t      $s_r=$site_r->[$site_ix];\n\t    }\n\t  }\n\
+  \t  $six++;\n\t}\n\telse {  # gap in seq1, cannot match domain\n\t  unless ($target)\
+  \ {\n\t    while ($site_ix < $site_nx && $s_r->{d_pos} == $qix) {\n\t      @{$s_r}{qw(annot_ix\
+  \ qa_pos sa_pos q_res s_res m_symb)} = ($site_ix, $qix, $six, $seq0, $seq1, match_symb($seq0,\
+  \ $seq1, $matrix_2d));\n\t      push @aligned_sites, $s_r;\n\t      $site_ix++;\n\
+  \t      $s_r=$site_r->[$site_ix];\n\t    }\n\t  }\n\t  $qix++;\n\t}\n      }\n \
+  \     else {\t# mismatch; $btop string is twice length of covered region\n\twhile\
+  \ ($s_r->{d_pos} == $$ds_ix && $site_ix < $site_nx ) {\n\t  @{$s_r}{qw(annot_ix\
+  \ qa_pos sa_pos q_res s_res m_symb)} = ($site_ix, $qix, $six, $seq0, $seq1, match_symb($seq0,\
+  \ $seq1, $matrix_2d));\n\t  push @aligned_sites, $s_r;\n\t  $site_ix++;  $s_r=$site_r->[$site_ix];\n\
+  \t}\n\t$qix++;\n\t$six++;\n      }\n    }\n  }\n\n  return (\\@aligned_sites);\n\
+  }\n\nsub match_symb {\n  my ($seq0, $seq1, $matrix_2d) = @_;\n\n  if (uc($seq0)\
+  \ eq uc($seq1)) {\n    return \"=\";\n  }\n  else {\n    my $seq0_map = $aa_map{$seq0};\n\
+  \    $seq0_map = $aa_map{'X'} unless defined($seq0_map);\n\n    my $seq1_map = $aa_map{$seq1};\n\
+  \    $seq1_map = $aa_map{'X'} unless defined($seq1_map);\n\n    my $m_score = $matrix_2d->[$seq0_map][$seq1_map];\n\
+  \n    if ($m_score < 0) {return \"<\";}\n    elsif ($m_score > 0) {return \">\"\
+  ;}\n    else {return \"z\";}\n  }\n}\n\n\n\n# merge up to four lists of annotations\
+  \ into a single list, and return\n# a reference to the list\n# input: $hit references,\
+  \ possibly with {aligned_domains_r}, {aligned_sites_r}\n#                      \
+  \                 {q_aligned_domains_r}, {q_aligned_sites_r}\n#\nsub merge_annots\
+  \ {\n  my ($hit_r) = @_;\n\n  my @merged_array = ();\n\n  # merge the sites arrays\
+  \ first, so that conserved annotated sites are juxtaposed\n\n  my ($qs_ix, $ss_ix,\
+  \ $qs_nx, $ss_nx) = (0,0,0,0);\n\n  $ss_nx = scalar(@{$hit_r->{aligned_sites_r}})\
+  \ if (exists($hit_r->{aligned_sites_r}));\n  $qs_nx = scalar(@{$hit_r->{q_aligned_sites_r}})\
+  \ if (exists($hit_r->{q_aligned_sites_r}));\n\n  if ($ss_nx && $qs_nx) {  # have\
+  \ sites on both sequences\n    # find out how many positions match between {q_aligned_sites_r}\
+  \ and {aligned_sites_r}\n\n    my @uniq_sites = ();\n\n    for my $qs_ref (@{$hit_r->{q_aligned_sites_r}})\
+  \ {\n      $qs_ref->{merged} = 0;\n      for my $ss_ref ( @{$hit_r->{aligned_sites_r}}\
+  \ ) {\n\tnext if ($ss_ref->{qa_pos} < $qs_ref->{qa_pos});\n\tlast if ($ss_ref->{qa_pos}\
+  \ > $qs_ref->{qa_pos});\n\tif ($qs_ref->{qa_pos} == $ss_ref->{qa_pos} && $qs_ref->{type}\
+  \ eq $ss_ref->{type}) {\n\t  $qs_ref->{merged} = $ss_ref->{merged} = 1;\n\t  $qs_ref->{target}\
+  \ = $ss_ref->{target} = 2;\n\t  # save match\n\t  push @uniq_sites, $qs_ref;\n\t\
+  }\n      }\n    }\n\n    # save merged sites\n    push @merged_array, @uniq_sites;\n\
+  \n    # save unmerged subject\n    @uniq_sites = ();\n    for my $ss_ref ( @{$hit_r->{aligned_sites_r}}\
+  \ ) {\n      push @uniq_sites, $ss_ref if (!defined($ss_ref->{merged}) || $ss_ref->{merged}\
+  \ == 0);\n    }\n    push @merged_array, @uniq_sites;\n\n    # save unmerged query\n\
+  \    @uniq_sites = ();\n    for my $qs_ref ( @{$hit_r->{aligned_sites_r}} ) {\n\
+  \      push @uniq_sites, $qs_ref if (!defined($qs_ref->{merged}) || $qs_ref->{merged}\
+  \ == 0);\n    }\n    push @merged_array, @uniq_sites;\n  }\n  elsif ($ss_nx) {\n\
+  \    push @merged_array, @{$hit_r->{aligned_sites_r}};\n  }\n  elsif ($qs_nx) {\n\
+  \    push @merged_array, @{$hit_r->{q_aligned_sites_r}};\n  }\n\n#  for my $ann_r\
+  \ ( @merged_array) {\n#    unless ($ann_r->{qa_pos}) {\n#      print STDERR \"missing\
+  \ qa_pos:\",join(\":\",@{$ann_r}{qw(q_seqid s_seqid)}),\"\\n\";\n#    }\n#  }\n\n\
+  \  @merged_array = sort { $a->{qa_pos} <=> $b->{qa_pos} } @merged_array;\n\n\n \
+  \ push @merged_array, @{$hit_r->{aligned_domains_r}} if (exists($hit_r->{aligned_domains_r}));\n\
+  \  push @merged_array, @{$hit_r->{q_aligned_domains_r}} if (exists($hit_r->{q_aligned_domains_r}));\n\
+  \n  @merged_array = sort { $a->{qa_pos} <=> $b->{qa_pos} } @merged_array;\n\n  return\
+  \ \\@merged_array;\n}\n\n# domain output formatter\nsub format_dom_info {\n  my\
+  \ ($hit_r, $raw_score, $dom_r) = @_;\n\n  unless ($raw_score) {\n    warn \"no raw_score\
+  \ at: \".$hit_r->{s_seqid}.\"\\n\";\n    $raw_score = $hit_r->{score};\n  }\n\n\
+  \  my ($score_scale, $fsub_score) = ($hit_r->{score}/$raw_score, $dom_r->{score}/$raw_score);\n\
+  \n  my $qval = 0.0;\n  if ($hit_r->{evalue} == 0.0) {\n    $qval = 3000.0\n  }\n\
+  \  else {\n    $qval = -10.0*log($hit_r->{evalue})*$fsub_score/(log(10.0))\n  }\n\
+  \n  my ($ns_score, $s_bit) = (int($dom_r->{score} * $score_scale+0.5),\n\t\t\t \
+  \   int($hit_r->{bits} * $fsub_score +0.5),\n\t\t\t   );\n  $qval = 0 if $qval <\
+  \ 0;\n\n  #\tprint join(\":\",($dom_r->{ad_pos},$dom_r->{ad_end},$ns_score, $s_bit,\
+  \ sprintf(\"%.1f\",$qval))),\"\\n\";\n  return join(\";\",(sprintf(\"|XR:%d-%d:%d-%d:s=%d\"\
+  ,\n\t\t\t   $dom_r->{qa_start},$dom_r->{qa_end},\n\t\t\t   $dom_r->{sa_start},$dom_r->{sa_end},$ns_score),\n\
+  \t\t   sprintf(\"b=%.1f\",$s_bit),\n\t\t   sprintf(\"I=%.3f\",$dom_r->{percid}),\n\
+  \t\t   sprintf(\"Q=%.1f\",$qval),$dom_r->{descr}));\n}\n\n# merged annot output\
+  \ formatter\nsub format_annot_info {\n  my ($hit_r, $annot_list_r) = @_;\n\n  my\
+  \ $raw_score = 0;\n\n  if  ($hit_r->{raw_score} ) {\n    $raw_score = $hit_r->{raw_score};\n\
+  \  }\n  else {\n#    warn \"no raw_score at: \".$hit_r->{s_seqid}.\"\\n\";\n   \
+  \ $raw_score = $hit_r->{score};\n  }\n\n  my $score_scale = $hit_r->{score}/$raw_score;\n\
+  \n  my $annot_str = \"\";\n\n  # two types of annotations, domains and sites.\n\n\
+  \  for my $annot_r ( @$annot_list_r ) {\n\n    if ($annot_r->{type} eq '-') { #\
+  \ domain with scores\n      my $fsub_score = $annot_r->{score}/$raw_score;\n\n \
+  \     my $qval = 0.0;\n      if ($hit_r->{evalue} == 0.0) {\n\t$qval = 3000.0\n\
+  \      } else {\n\t$qval = -10.0*log($hit_r->{evalue})*$fsub_score/(log(10.0))\n\
+  \      }\n\n      my ($ns_score, $s_bit) = (int($annot_r->{score} * $score_scale+0.5),\n\
+  \t\t\t\tint($hit_r->{bits} * $fsub_score +0.5),\n\t\t\t       );\n      $qval =\
+  \ 0 if $qval < 0;\n\n      $annot_str .= join(\";\",(sprintf(\"|%s:%d-%d:%d-%d:s=%d\"\
+  ,\n\t\t\t\t      $annot_r->{target} ? \"XR\" : \"RX\",\n\t\t\t\t      $annot_r->{qa_start},$annot_r->{qa_end},\n\
+  \t\t\t\t      $annot_r->{sa_start},$annot_r->{sa_end},$ns_score),\n\t\t\t      sprintf(\"\
+  b=%.1f\",$s_bit),\n\t\t\t      sprintf(\"I=%.3f\",$annot_r->{percid}),\n\t\t\t \
+  \     sprintf(\"Q=%.1f\",$qval),$annot_r->{descr}));\n    }\n    else {\t# site\
+  \ annotation\n      my $ann_type = $annot_r->{type};\n      my $site_str = \"|\"\
+  .$ann_type . \"X\";\n      if ($annot_r->{target} == 1) {\n\t$site_str = \"|X\"\
+  .$ann_type;\n      }\n      elsif ($annot_r->{target} == 2) {\n\t$site_str = \"\
+  |$ann_type$ann_type\";\n      }\n\n      $annot_str .= \"$site_str:\" . sprintf(\"\
+  %d%s%s%d%s\",\n\t\t\t\t\t   $annot_r->{qa_pos}, $annot_r->{q_res}, $annot_r->{m_symb},\
+  \ $annot_r->{sa_pos}, $annot_r->{s_res});\n\n    }\n  }\n  return $annot_str;\n\
+  }\n\n__END__\n\n=pod\n\n=head1 NAME\n\nannot_blast_btop2.pl\n\n=head1 SYNOPSIS\n\
+  \n annot_blast_btop2 --ann_script ann_pfam_www_e.pl [--query_file query.fasta] --out_fields\
+  \ \"q_seqid s_seqid percid evalue\" blast_tabular_file\n\n=head1 OPTIONS\n\n -h\t\
+  short help\n --help include description\n\n --ann_script -- annotation script returning\
+  \ site/domain locations for subject sequences\n              -- same as --script\n\
+  \n --q_ann_script -- annotation script for query sequences\n                -- same\
+  \ as --q_script\n\n --query_file -- fasta query sequence\n              -- same\
+  \ as --query, --query_lib\n                 (can contain multiple sequences for\
+  \ multi-sequence search)\n\n --out_fields -- blast tabular fields shown before domain\
+  \ information\n\n --raw_score -- add the raw_score used to normalized domain scores\
+  \ to\n                tabular output (raw_scores are only calculated for domains)\n\
+  \n=head1 DESCRIPTION\n\nC<annot_blast_btop2.pl> runs the script specified by\nC<--ann_script/--q_ann_script>\
+  \ to annotate functional sites domain\ncontent of the sequences specified by the\
+  \ subject/query seqid field of\nblast tabular format (-outfmt 6 or 7) or FASTA blast\
+  \ tabular format\n(-m 8).  The C<--ann_script/--q_ann_script> script produces domain\n\
+  boundary coordinates, which are mapped to the alignment.  For searches\nagainst\
+  \ SwissProt sequences, C<--ann_script ann_feats_up_www2.pl> will\nacquire features\
+  \ and domains from Uniprot.  C<--ann_script\nann_pfam_www.pl --neg> will get domain\
+  \ information from Pfam, and\nscore non-domain (NODOM) regions.\n\nThe tab file\
+  \ is read and parsed, and then the subject/query seqid is used to\ncapture domain\
+  \ locations in the subject/query sequence.  If the domains\noverlap the aligned\
+  \ region, the domain names are appended to the\nintput.\n\nIf a C<--query_file>\
+  \ is specified and two additional fields, C<score>\nand C<btop> are present, C<annot_blast_btop2.pl>\
+  \ calculates\nsub-alignment scores, including fraction identity, bit score, and\n\
+  Q-value (-log10(E-value)), partitioning the alignment score, identity,\nand bit\
+  \ score across the overlapping domains.\n\nThe C<--out_fields> specifies the blast\
+  \ tabular fields that can be\nreturned.  By default, C<q_seqid s_seqid percid alen\
+  \ mismatch gopen\nq_start q_end s_start s_end evalue bits> (but not C<score> and\n\
+  C<BTOP>) are shown.\n\nCurrently, this program is fully functional only for blastp\
+  \ (or\nblastn) searches.  For translated searches (blastx) domain content,\nlocation\
+  \ and identity is provided, but not bit-scores or Q-values.\n\n=head1 AUTHOR\n\n\
+  William R. Pearson, wrp@virginia.edu\n\n=cut\n"
+generated_using:
+- --help

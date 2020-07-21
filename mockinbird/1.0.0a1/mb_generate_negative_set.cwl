@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_generate_negative_set.cwl
+id: ../../../mb_generate_negative_set.cwl
 inputs:
 - id: number
   doc: set number or random drawings

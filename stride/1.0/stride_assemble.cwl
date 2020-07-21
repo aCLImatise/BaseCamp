@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stride_assemble.cwl
+id: ../../../stride_assemble.cwl
 inputs:
 - id: read_length
   doc: original read length

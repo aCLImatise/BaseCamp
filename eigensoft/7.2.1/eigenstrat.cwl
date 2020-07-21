@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/eigenstrat.cwl
+id: ../../../eigenstrat.cwl
 inputs:
 - id: i
   doc: ''

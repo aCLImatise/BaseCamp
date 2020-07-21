@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rvtest.cwl
+id: ../../../rvtest.cwl
 inputs:
 - id: in_vcf
   doc: ': Input VCF File'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmconvert.cwl
+id: ../../../hmmconvert.cwl
 inputs:
 - id: model_file
   doc: model file

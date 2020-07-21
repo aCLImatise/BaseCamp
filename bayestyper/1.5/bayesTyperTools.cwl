@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bayesTyperTools.cwl
+id: ../../../bayesTyperTools.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

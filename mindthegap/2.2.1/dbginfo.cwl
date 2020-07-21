@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dbginfo.cwl
+id: ../../../dbginfo.cwl
 inputs:
 - id: in
   doc: '(1 arg) :    graph file'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_setup_pdb_database.cwl
+id: ../../../anvi_setup_pdb_database.cwl
 inputs:
 - id: pdb_database_path
   doc: The path for the PDB database to be stored. If you leave it as is without specifying

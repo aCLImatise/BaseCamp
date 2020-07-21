@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LAcat.cwl
+id: ../../../LAcat.cwl
 inputs:
 - id: v
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_keep_longest_isoform.pl.cwl
+id: ../../../agat_sp_keep_longest_isoform.pl.cwl
 inputs:
 - id: gff
   doc: GTF/GFF file.

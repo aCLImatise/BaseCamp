@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pool.py.cwl
+id: ../../../pool.py.cwl
 inputs:
 - id: use_nd
   doc: Use the higher dimensional (n > 2) interpolation and search functions for optimizing

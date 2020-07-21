@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bbAnalyze.cwl
+id: ../../../bbAnalyze.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

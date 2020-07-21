@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_shuffle_letters.cwl
+id: ../../../fasta_shuffle_letters.cwl
 inputs:
 - id: sequence_file
   doc: ''

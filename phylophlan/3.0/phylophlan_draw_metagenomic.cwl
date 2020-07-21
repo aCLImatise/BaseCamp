@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phylophlan_draw_metagenomic.cwl
+id: ../../../phylophlan_draw_metagenomic.cwl
 inputs:
 - id: input
   doc: 'The input file generated from phylophlan_metagenomic.py (default: None)'

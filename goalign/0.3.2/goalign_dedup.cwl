@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_dedup.cwl
+id: ../../../goalign_dedup.cwl
 inputs:
 - id: log
   doc: Deduplicated output log file (default "none")

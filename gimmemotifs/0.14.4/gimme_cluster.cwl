@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gimme_cluster.cwl
+id: ../../../gimme_cluster.cwl
 inputs:
 - id: compare_reverse_complements
   doc: Don't compare reverse complements of motifs

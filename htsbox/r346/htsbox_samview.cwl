@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htsbox_samview.cwl
+id: ../../../htsbox_samview.cwl
 inputs:
 - id: bs_ipo
   doc: ''

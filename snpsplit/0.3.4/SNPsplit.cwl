@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SNPsplit.cwl
+id: ../../../SNPsplit.cwl
 inputs:
 - id: conflicting_slash_weird
   doc: "Reads or read pairs that were classified as 'Conflicting' (XX:Z:CF) will be\

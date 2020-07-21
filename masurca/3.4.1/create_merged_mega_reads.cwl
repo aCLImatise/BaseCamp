@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_merged_mega_reads.pl.cwl
+id: ../../../create_merged_mega_reads.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

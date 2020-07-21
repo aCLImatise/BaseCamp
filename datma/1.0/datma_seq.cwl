@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/datma_seq.py.cwl
+id: ../../../datma_seq.py.cwl
 inputs:
 - id: file
   doc: configuration file

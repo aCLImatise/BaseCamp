@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_plot_kmer_logodds_negset.cwl
+id: ../../../mb_plot_kmer_logodds_negset.cwl
 inputs:
 - id: km_er
   doc: ''

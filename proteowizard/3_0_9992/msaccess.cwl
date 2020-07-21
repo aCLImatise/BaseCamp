@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msaccess.cwl
+id: ../../../msaccess.cwl
 inputs:
 - id: arg_text_file
   doc: '[ --filelist ] arg    : text file containing filenames to process'

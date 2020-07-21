@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pepstats.cwl
+id: ../../../pepstats.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

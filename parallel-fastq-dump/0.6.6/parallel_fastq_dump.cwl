@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parallel_fastq_dump.cwl
+id: ../../../parallel_fastq_dump.cwl
 inputs:
 - id: sra_id
   doc: SRA id

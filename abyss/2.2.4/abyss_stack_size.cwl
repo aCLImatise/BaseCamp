@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_stack_size.cwl
+id: ../../../abyss_stack_size.cwl
 inputs:
 - id: stack_size
   doc: ''

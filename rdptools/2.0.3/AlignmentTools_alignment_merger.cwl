@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AlignmentTools_alignment_merger.cwl
+id: ../../../AlignmentTools_alignment_merger.cwl
 inputs:
 - id: java
   doc: ''

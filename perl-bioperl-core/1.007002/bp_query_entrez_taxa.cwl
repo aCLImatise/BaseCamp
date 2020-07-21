@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_query_entrez_taxa.pl.cwl
+id: ../../../bp_query_entrez_taxa.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

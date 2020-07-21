@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtk_annotate.cwl
+id: ../../../svtk_annotate.cwl
 inputs:
 - id: gen_code
   doc: ''

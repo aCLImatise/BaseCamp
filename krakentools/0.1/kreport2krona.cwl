@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kreport2krona.py.cwl
+id: ../../../kreport2krona.py.cwl
 inputs:
 - id: report_file
   doc: Input kraken report file for converting

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/webSync.cwl
+id: ../../../webSync.cwl
 inputs:
 - id: debug
   doc: show debug messages

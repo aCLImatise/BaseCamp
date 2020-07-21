@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compare_masking.pl.cwl
+id: ../../../compare_masking.pl.cwl
 inputs:
 - id: file_one_dot_fa
   doc: softmasked fasta file

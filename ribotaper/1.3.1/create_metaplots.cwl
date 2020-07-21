@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_metaplots.bash.cwl
+id: ../../../create_metaplots.bash.cwl
 inputs:
 - id: ribo_dot_bam
   doc: ''

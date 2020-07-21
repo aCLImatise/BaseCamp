@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clinod.cwl
+id: ../../../clinod.cwl
 inputs:
 - id: in
   doc: '- required, absolute path to the input file.  The input file expected to contain

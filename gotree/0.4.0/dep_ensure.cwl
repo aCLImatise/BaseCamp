@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dep_ensure.cwl
+id: ../../../dep_ensure.cwl
 inputs:
 - id: add
   doc: 'add new dependencies, or populate Gopkg.toml with constraints for existing

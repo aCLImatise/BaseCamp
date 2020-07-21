@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agg_ingest1.cwl
+id: ../../../agg_ingest1.cwl
 inputs:
 - id: output
   doc: agg will output output_prefix.bcf and output_prefix.tmp

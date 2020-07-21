@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sketchy_survey_link.cwl
+id: ../../../sketchy_survey_link.cwl
 inputs:
 - id: iid
   doc: Path to isolate ID file from Pathfinder Survey

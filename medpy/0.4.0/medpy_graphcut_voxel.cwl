@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_graphcut_voxel.py_output.cwl
+id: ../../../medpy_graphcut_voxel.py_output.cwl
 inputs:
 - id: me_dpy_graph_cut_voxel_do_tpy
   doc: ''

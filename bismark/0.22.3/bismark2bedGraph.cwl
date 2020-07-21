@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bismark2bedGraph.cwl
+id: ../../../bismark2bedGraph.cwl
 inputs:
 - id: o
   doc: ''

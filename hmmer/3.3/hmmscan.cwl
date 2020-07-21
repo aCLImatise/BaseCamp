@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmscan.cwl
+id: ../../../hmmscan.cwl
 inputs:
 - id: direct_output_file
   doc: ': direct output to file <f>, not stdout'

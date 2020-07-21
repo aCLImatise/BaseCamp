@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Q3ProteinRatioParser.cwl
+id: ../../../Q3ProteinRatioParser.cwl
 inputs:
 - id: prot_xml_file
   doc: ''

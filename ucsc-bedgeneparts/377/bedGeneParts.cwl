@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedGeneParts.cwl
+id: ../../../bedGeneParts.cwl
 inputs:
 - id: pro_start
   doc: '- start of promoter relative to txStart, default -100'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_alimap.cwl
+id: ../../../esl_alimap.cwl
 inputs:
 - id: quiet_print_mapping
   doc: ": be quiet, don't print mapping of each column"

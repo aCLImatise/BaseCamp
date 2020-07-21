@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmpair_sto file_uniformDistributionOfProfileHmmStartsAndEnds.cwl
+id: ../../../hmmpair_sto file_uniformDistributionOfProfileHmmStartsAndEnds.cwl
 inputs:
 - id: hmm_pair
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Aquila_stLFR_step2.cwl
+id: ../../../Aquila_stLFR_step2.cwl
 inputs:
 - id: chr_start
   doc: chromosome start from, default = 1

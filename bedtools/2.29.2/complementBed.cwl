@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/complementBed.cwl
+id: ../../../complementBed.cwl
 inputs:
 - id: limit_output_solely
   doc: Limit output to solely the chromosomes with records in the input file.

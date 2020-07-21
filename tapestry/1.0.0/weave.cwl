@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/weave.cwl
+id: ../../../weave.cwl
 inputs:
 - id: assembly
   doc: filename of assembly in FASTA format (required)

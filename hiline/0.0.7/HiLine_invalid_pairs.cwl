@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HiLine_invalid_pairs.cwl
+id: ../../../HiLine_invalid_pairs.cwl
 inputs:
 - id: sort
   doc: / --no-sort  Sort and index output. Default=sort

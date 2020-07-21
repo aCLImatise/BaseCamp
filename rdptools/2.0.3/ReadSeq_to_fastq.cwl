@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ReadSeq_to_fastq.cwl
+id: ../../../ReadSeq_to_fastq.cwl
 inputs:
 - id: to_fast_q
   doc: ''

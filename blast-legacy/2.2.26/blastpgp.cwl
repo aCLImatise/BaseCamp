@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blastpgp.cwl
+id: ../../../blastpgp.cwl
 inputs:
 - id: alignment_view_options
   doc: 'alignment view options:'

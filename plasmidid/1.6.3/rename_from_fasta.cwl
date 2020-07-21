@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rename_from_fasta.sh.cwl
+id: ../../../rename_from_fasta.sh.cwl
 inputs:
 - id: usage_message
   doc: usage message

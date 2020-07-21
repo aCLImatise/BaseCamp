@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prokka_abricate_to_fasta_db.cwl
+id: ../../../prokka_abricate_to_fasta_db.cwl
 inputs:
 - id: no
   doc: ''

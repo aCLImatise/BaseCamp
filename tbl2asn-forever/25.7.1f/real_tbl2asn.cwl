@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/real_tbl2asn.cwl
+id: ../../../real_tbl2asn.cwl
 inputs:
 - id: template_file_optional
   doc: Template File [File In]  Optional

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htsbox_faidx.cwl
+id: ../../../htsbox_faidx.cwl
 inputs:
 - id: fa_idx
   doc: ''

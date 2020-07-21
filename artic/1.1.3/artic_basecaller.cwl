@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/artic_basecaller.cwl
+id: ../../../artic_basecaller.cwl
 inputs:
 - id: quiet
   doc: Do not output warnings to stderr

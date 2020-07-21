@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msstitch_makedecoy.cwl
+id: ../../../msstitch_makedecoy.cwl
 inputs:
 - id: input_file_format
   doc: Input file of {} format

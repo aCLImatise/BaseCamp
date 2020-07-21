@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lib_test.pl.cwl
+id: ../../../lib_test.pl.cwl
 inputs:
 - id: genome
   doc: '[file]  FASTA format genome sequence'

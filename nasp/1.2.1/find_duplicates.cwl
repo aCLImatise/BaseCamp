@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/find_duplicates.cwl
+id: ../../../find_duplicates.cwl
 inputs:
 - id: nuc_me_rpath
   doc: Path to the 'nucmer' executable.

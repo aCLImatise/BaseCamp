@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/skewer.cwl
+id: ../../../skewer.cwl
 inputs:
 - id: adapter_sequencefile_agatcggaagagcacacgtctgaactccagtcac
   doc: Adapter sequence/file (AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC)

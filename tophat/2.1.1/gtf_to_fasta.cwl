@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gtf_to_fasta.cwl
+id: ../../../gtf_to_fasta.cwl
 inputs:
 - id: transcripts_dot_gtf
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_bloom_dist.mk.Makefile.cwl
+id: ../../../abyss_bloom_dist.mk.Makefile.cwl
 inputs:
 - id: ignored_for_compatibility
   doc: Ignored for compatibility.

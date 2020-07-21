@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/novolrcleaver.cwl
+id: ../../../novolrcleaver.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

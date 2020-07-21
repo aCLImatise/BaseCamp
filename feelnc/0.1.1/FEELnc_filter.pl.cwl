@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FEELnc_filter.pl.bak.cwl
+id: ../../../FEELnc_filter.pl.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phast.cwl
+id: ../../../phast.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

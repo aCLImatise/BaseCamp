@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk_summary.cwl
+id: ../../../csvtk_summary.cwl
 inputs:
 - id: decimal_width
   doc: limit floats to N decimal points (default 2)

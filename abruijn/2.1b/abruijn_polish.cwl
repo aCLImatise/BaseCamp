@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abruijn_polish.cwl
+id: ../../../abruijn_polish.cwl
 inputs:
 - id: path_file_verbose
   doc: path to the file with verbose log [default = not set]

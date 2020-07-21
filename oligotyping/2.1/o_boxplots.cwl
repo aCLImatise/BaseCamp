@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o_boxplots.R.cwl
+id: ../../../o_boxplots.R.cwl
 inputs:
 - id: mapping_var
   doc: Mapping variable to use from the sample mapping file. If none specified, the

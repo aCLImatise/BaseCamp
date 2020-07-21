@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/btrim.cwl
+id: ../../../btrim.cwl
 inputs:
 - id: u
   doc: ''

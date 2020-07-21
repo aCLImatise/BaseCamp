@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qpBound.cwl
+id: ../../../qpBound.cwl
 inputs:
 - id: use_nam_details
   doc: '... use <nam> as snp details name.'

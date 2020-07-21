@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ggd_make_recipe.cwl
+id: ../../../ggd_make_recipe.cwl
 inputs:
 - id: channel
   doc: the ggd channel to use. (Default = genomics)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/InteractParser.cwl
+id: ../../../InteractParser.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

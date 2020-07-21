@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_showseq.cwl
+id: ../../../_showseq.cwl
 inputs:
 - id: format
   doc: 'menu       [2] Display format (Values: 0 (Enter your own list of things to

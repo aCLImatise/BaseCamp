@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam_fill_unaligned.py_output_file.cwl
+id: ../../../bam_fill_unaligned.py_output_file.cwl
 inputs:
 - id: f
   doc: ''

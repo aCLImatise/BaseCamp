@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_tsvs.py.cwl
+id: ../../../merge_tsvs.py.cwl
 inputs:
 - id: join_type_outer
   doc: Join type (outer).

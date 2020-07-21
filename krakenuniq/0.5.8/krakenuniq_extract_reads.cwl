@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/krakenuniq_extract_reads.cwl
+id: ../../../krakenuniq_extract_reads.cwl
 inputs:
 - id: input_fasta_file
   doc: 'input is FASTA file (default: FASTQ)'

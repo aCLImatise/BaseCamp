@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hp_refine_assembly.cwl
+id: ../../../hp_refine_assembly.cwl
 inputs:
 - id: fq_one
   doc: Fastq file with read 1

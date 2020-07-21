@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/EMBLmyGFF3_maker_example.cwl
+id: ../../../EMBLmyGFF3_maker_example.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

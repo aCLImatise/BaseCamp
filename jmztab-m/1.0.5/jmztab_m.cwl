@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jmztab_m.cwl
+id: ../../../jmztab_m.cwl
 inputs:
 - id: check
   doc: 'Example: -c /path/to/file.mztab. Check and validate the provided a mzTab file.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bfmtx2m4.pl_this.cwl
+id: ../../../bfmtx2m4.pl_this.cwl
 inputs:
 - id: no
   doc: ''

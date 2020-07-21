@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genePredSingleCover.cwl
+id: ../../../genePredSingleCover.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

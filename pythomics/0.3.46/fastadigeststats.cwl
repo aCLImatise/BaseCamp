@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastadigeststats.py.cwl
+id: ../../../fastadigeststats.py.cwl
 inputs:
 - id: enzyme_pattern
   doc: A regex cleavage pattern such as [KR]|{P} to cleave proteins with.

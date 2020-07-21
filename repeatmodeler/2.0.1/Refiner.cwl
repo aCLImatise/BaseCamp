@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Refiner.cwl
+id: ../../../Refiner.cwl
 inputs:
 - id: foo
   doc: bar

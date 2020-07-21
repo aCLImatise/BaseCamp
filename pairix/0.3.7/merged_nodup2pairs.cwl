@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merged_nodup2pairs.pl.cwl
+id: ../../../merged_nodup2pairs.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

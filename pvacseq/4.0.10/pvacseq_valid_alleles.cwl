@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pvacseq_valid_alleles.cwl
+id: ../../../pvacseq_valid_alleles.cwl
 inputs:
 - id: prediction_algorithm
   doc: The epitope prediction algorithms to use

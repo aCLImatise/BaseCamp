@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mendelscan_trio.cwl
+id: ../../../mendelscan_trio.cwl
 inputs:
 - id: vep_file
   doc: Variant annotation in VEP format

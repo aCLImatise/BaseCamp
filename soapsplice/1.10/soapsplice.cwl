@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/soapsplice.cwl
+id: ../../../soapsplice.cwl
 inputs:
 - id: prefix_reference_index
   doc: '* Prefix of reference index files'

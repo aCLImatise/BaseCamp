@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varlociraptor.cwl
+id: ../../../varlociraptor.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

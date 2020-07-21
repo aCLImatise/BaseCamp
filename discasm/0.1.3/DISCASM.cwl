@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DISCASM.cwl
+id: ../../../DISCASM.cwl
 inputs:
 - id: chimeric_junctions
   doc: STAR Chimeric.out.junction file

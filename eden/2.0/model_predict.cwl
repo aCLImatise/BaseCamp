@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/model_predict.cwl
+id: ../../../model_predict.cwl
 inputs:
 - id: input_file
   doc: 'Path to file containing input. (default: None)'

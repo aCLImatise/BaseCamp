@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam2bed.cwl
+id: ../../../bam2bed.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

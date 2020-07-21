@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_validator.sh.cwl
+id: ../../../fastq_validator.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

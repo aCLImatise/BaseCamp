@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_compute_ani.cwl
+id: ../../../anvi_compute_ani.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

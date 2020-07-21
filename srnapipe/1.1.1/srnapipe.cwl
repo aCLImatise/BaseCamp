@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/srnapipe.cwl
+id: ../../../srnapipe.cwl
 inputs:
 - id: fast_q
   doc: ''

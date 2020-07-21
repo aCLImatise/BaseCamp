@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chado_admin_setup.cwl
+id: ../../../chado_admin_setup.cwl
 inputs:
 - id: verbose
   doc: verbose mode

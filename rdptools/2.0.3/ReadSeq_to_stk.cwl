@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ReadSeq_to_stk.cwl
+id: ../../../ReadSeq_to_stk.cwl
 inputs:
 - id: header
   doc: 'the header of the output file in case a differenet stk version, default is

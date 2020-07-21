@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnazBEDsort.pl.cwl
+id: ../../../rnazBEDsort.pl.cwl
 inputs:
 - id: man
   doc: Prints a detailed manual page and exits.

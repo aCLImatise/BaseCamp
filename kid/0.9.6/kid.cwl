@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kid.cwl
+id: ../../../kid.cwl
 inputs:
 - id: encoding
   doc: 'Specify the output character encoding. Default: utf-8'

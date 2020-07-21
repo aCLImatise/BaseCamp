@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioformats_vcfeffect2bed.cwl
+id: ../../../bioformats_vcfeffect2bed.cwl
 inputs:
 - id: g
   doc: '[{REFHET,COMHET,ALTHOM} ...], --genotypes {REFHET,COMHET,ALTHOM} [{REFHET,COMHET,ALTHOM}

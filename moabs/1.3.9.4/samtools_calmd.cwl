@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools_calmd.cwl
+id: ../../../samtools_calmd.cwl
 inputs:
 - id: change_identical_bases
   doc: change identical bases to '='

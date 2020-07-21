@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslScore.cwl
+id: ../../../pslScore.cwl
 inputs:
 - id: file_dot_psl
   doc: ''

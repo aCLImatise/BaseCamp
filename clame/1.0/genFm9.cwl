@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genFm9.cwl
+id: ../../../genFm9.cwl
 inputs:
 - id: fast_q
   doc: 'file is in a fastq format  '

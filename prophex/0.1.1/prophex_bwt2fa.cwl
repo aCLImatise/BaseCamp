@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prophex_bwt2fa.cwl
+id: ../../../prophex_bwt2fa.cwl
 inputs:
 - id: idx_base
   doc: ''

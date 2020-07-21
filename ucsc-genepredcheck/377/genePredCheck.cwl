@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genePredCheck.cwl
+id: ../../../genePredCheck.cwl
 inputs:
 - id: if
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/addRNAoptions.pl.cwl
+id: ../../../addRNAoptions.pl.cwl
 inputs:
 - id: perl
   doc: ''

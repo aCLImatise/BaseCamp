@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vsnp_file_management.py.cwl
+id: ../../../vsnp_file_management.py.cwl
 inputs:
 - id: codes
   doc: 'Excel file containing genotype code Column 1: to match sample name minus everything

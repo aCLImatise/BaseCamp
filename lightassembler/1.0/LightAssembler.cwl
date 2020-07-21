@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LightAssembler.cwl
+id: ../../../LightAssembler.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

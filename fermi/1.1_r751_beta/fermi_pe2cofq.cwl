@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi_pe2cofq.cwl
+id: ../../../fermi_pe2cofq.cwl
 inputs:
 - id: in_one_dot_fq
   doc: ''

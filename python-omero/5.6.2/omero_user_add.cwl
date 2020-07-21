@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_user_add.cwl
+id: ../../../omero_user_add.cwl
 inputs:
 - id: admin
   doc: Whether the user should be an admin

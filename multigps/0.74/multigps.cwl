@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/multigps.cwl
+id: ../../../multigps.cwl
 inputs:
 - id: threads
   doc: <number of threads to use (default=1)>

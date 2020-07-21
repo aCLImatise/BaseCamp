@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterChrom.py.cwl
+id: ../../../filterChrom.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

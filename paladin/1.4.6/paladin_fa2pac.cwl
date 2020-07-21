@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paladin_fa2pac.cwl
+id: ../../../paladin_fa2pac.cwl
 inputs:
 - id: f
   doc: ''

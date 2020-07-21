@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdtools_NORMALIZE.cwl
+id: ../../../gdtools_NORMALIZE.cwl
 inputs:
 - id: verbose
   doc: verbose mode (flag)

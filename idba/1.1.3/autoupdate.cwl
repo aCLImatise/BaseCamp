@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/autoupdate.bak.cwl
+id: ../../../autoupdate.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

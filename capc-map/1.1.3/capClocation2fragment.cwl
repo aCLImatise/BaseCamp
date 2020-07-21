@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/capClocation2fragment.cwl
+id: ../../../capClocation2fragment.cwl
 inputs:
 - id: restfragfile_filename_bed
   doc: restfragfile    filename for bed file containing the list of restriction fragments

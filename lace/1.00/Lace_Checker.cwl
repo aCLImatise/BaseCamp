@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Lace_Checker.py.cwl
+id: ../../../Lace_Checker.py.cwl
 inputs:
 - id: cores
   doc: The number of cores you wish to run the job on (default = 1)

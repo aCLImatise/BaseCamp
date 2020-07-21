@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_script_run_functional_enrichment_stats.cwl
+id: ../../../anvi_script_run_functional_enrichment_stats.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

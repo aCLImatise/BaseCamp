@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rasusa_FLAGS.cwl
+id: ../../../rasusa_FLAGS.cwl
 inputs:
 - id: coverage
   doc: ''

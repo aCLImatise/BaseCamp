@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamfixmateinformation.cwl
+id: ../../../bamfixmateinformation.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/easel_filter.cwl
+id: ../../../easel_filter.cwl
 inputs:
 - id: send_output_msas
   doc: ': send filtered output MSAs to file <f>, not stdout'

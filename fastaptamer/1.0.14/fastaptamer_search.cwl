@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastaptamer_search.cwl
+id: ../../../fastaptamer_search.cwl
 inputs:
 - id: i
   doc: ''

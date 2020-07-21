@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pipits_phylotype_biom.cwl
+id: ../../../pipits_phylotype_biom.cwl
 inputs:
 - id: _biom_file
   doc: '[REQUIRED] BIOM file'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ixIxx.cwl
+id: ../../../ixIxx.cwl
 inputs:
 - id: prefix_size
   doc: Size of prefix to index on in ixx.  Default is 5.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ginkgo.sh.cwl
+id: ../../../ginkgo.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

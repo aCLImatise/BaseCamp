@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/magpurify_phylo_markers.cwl
+id: ../../../magpurify_phylo_markers.cwl
 inputs:
 - id: db
   doc: 'Path to reference database. By default, the MAGPURIFYDB environmental variable

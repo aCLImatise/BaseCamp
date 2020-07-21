@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/exoniphyDb2hints.pl.cwl
+id: ../../../exoniphyDb2hints.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

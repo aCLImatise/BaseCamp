@@ -1,0 +1,553 @@
+&id003 !Command
+positional:
+- !Positional
+  description: The name of the scheme.
+  position: 0
+  name: scheme
+  optional: false
+- !Positional
+  description: The name of the sample.
+  position: 1
+  name: sample
+  optional: false
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --medaka
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --minimap2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --bwa
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- artic
+- minion
+parent: &id001 !Command
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - artic
+  parent:
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: The name of the database.
+      position: 0
+      name: directory
+      optional: false
+    named:
+    - !Flag
+      description: Do not output warnings to stderr
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: The name of the basecaller
+      synonyms:
+      - --basecaller
+      args: !SimpleFlagArg
+        name: basecaller
+      optional: true
+    command:
+    - artic
+    - extract
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: artic extract [-h] [-q] [--basecaller basecaller] directory\n\
+      \npositional arguments:\n  directory             The name of the database.\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  -q, --quiet           Do not output warnings to stderr\n  --basecaller basecaller\n\
+      \                        The name of the basecaller\n"
+    generated_using: &id002
+    - --help
+  - !Command
+    positional:
+    - !Positional
+      description: Directory of FAST5 files.
+      position: 0
+      name: directory
+      optional: false
+    named:
+    - !Flag
+      description: Do not output warnings to stderr
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - artic
+    - basecaller
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: artic basecaller [-h] [-q] directory\n\npositional arguments:\n\
+      \  directory    Directory of FAST5 files.\n\noptional arguments:\n  -h, --help\
+      \   show this help message and exit\n  -q, --quiet  Do not output warnings to\
+      \ stderr\n"
+    generated_using: *id002
+  - !Command
+    positional:
+    - !Positional
+      description: Undemultiplexed FASTA file.
+      position: 0
+      name: fasta
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -q
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - --threads
+      args: !SimpleFlagArg
+        name: THREADS
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - --prefix
+      args: !SimpleFlagArg
+        name: PREFIX
+      optional: true
+    command:
+    - artic
+    - demultiplex
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: artic demultiplex [-h] [-q] [--threads THREADS] [--prefix PREFIX]\n\
+      \                         [--no-remove-directory]\n                        \
+      \ fasta\n\npositional arguments:\n  fasta                 Undemultiplexed FASTA\
+      \ file.\n\noptional arguments:\n  -h, --help            show this help message\
+      \ and exit\n  -q, --quiet           Do not output warnings to stderr\n  --threads\
+      \ THREADS     Number of threads\n  --prefix PREFIX       Prefix for demultiplexed\
+      \ files\n  --no-remove-directory\n"
+    generated_using: *id002
+  - *id003
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Do not output warnings to stderr
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Basecalled (guppy) results directory or directories.
+      synonyms:
+      - --directory
+      args: !RepeatFlagArg
+        name: directory
+      optional: true
+    - !Flag
+      description: remove reads greater than read length
+      synonyms:
+      - --max-length
+      args: !SimpleFlagArg
+        name: max_length
+      optional: true
+    - !Flag
+      description: remove reads less than read length
+      synonyms:
+      - --min-length
+      args: !SimpleFlagArg
+        name: min_length
+      optional: true
+    - !Flag
+      description: Prefix for gathered files
+      synonyms:
+      - --prefix
+      args: !SimpleFlagArg
+        name: PREFIX
+      optional: true
+    - !Flag
+      description: The run directory for interactive prompts
+      synonyms:
+      - --prompt-directory
+      args: !SimpleFlagArg
+        name: run_directory
+      optional: true
+    - !Flag
+      description: The directory with fast5 files
+      synonyms:
+      - --fast5-directory
+      args: !SimpleFlagArg
+        name: fast5_directory
+      optional: true
+    - !Flag
+      description: Do not use fast5s and nanopolish
+      synonyms:
+      - --no-fast5s
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Only gather n reads
+      synonyms:
+      - --limit
+      args: !SimpleFlagArg
+        name: LIMIT
+      optional: true
+    command:
+    - artic
+    - gather
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: artic gather [-h] [-q] [--directory directory [directory ...]]\n\
+      \                    [--max-length max_length] [--min-length min_length]\n \
+      \                   [--prefix PREFIX] [--prompt-directory run_directory]\n \
+      \                   [--fast5-directory fast5_directory] [--no-fast5s]\n    \
+      \                [--limit LIMIT]\n\noptional arguments:\n  -h, --help      \
+      \      show this help message and exit\n  -q, --quiet           Do not output\
+      \ warnings to stderr\n  --directory directory [directory ...]\n            \
+      \            Basecalled (guppy) results directory or directories.\n  --max-length\
+      \ max_length\n                        remove reads greater than read length\n\
+      \  --min-length min_length\n                        remove reads less than read\
+      \ length\n  --prefix PREFIX       Prefix for gathered files\n  --prompt-directory\
+      \ run_directory\n                        The run directory for interactive prompts\n\
+      \  --fast5-directory fast5_directory\n                        The directory\
+      \ with fast5 files\n  --no-fast5s           Do not use fast5s and nanopolish\n\
+      \  --limit LIMIT         Only gather n reads\n"
+    generated_using: *id002
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Do not output warnings to stderr
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Basecalled and demultiplexed (guppy) results directory
+      synonyms:
+      - --directory
+      args: !SimpleFlagArg
+        name: directory
+      optional: true
+    - !Flag
+      description: remove reads greater than read length
+      synonyms:
+      - --max-length
+      args: !SimpleFlagArg
+        name: max_length
+      optional: true
+    - !Flag
+      description: remove reads less than read length
+      synonyms:
+      - --min-length
+      args: !SimpleFlagArg
+        name: min_length
+      optional: true
+    - !Flag
+      description: remove reads against this quality filter
+      synonyms:
+      - --quality
+      args: !SimpleFlagArg
+        name: quality
+      optional: true
+    - !Flag
+      description: sampling frequency for random sample of sequence to reduce excess
+      synonyms:
+      - --sample
+      args: !SimpleFlagArg
+        name: sample
+      optional: true
+    - !Flag
+      description: Do not filter on quality score (speeds up)
+      synonyms:
+      - --skip-quality-check
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Prefix for guppyplex files
+      synonyms:
+      - --prefix
+      args: !SimpleFlagArg
+        name: PREFIX
+      optional: true
+    - !Flag
+      description: FASTQ file to write
+      synonyms:
+      - --output
+      args: !SimpleFlagArg
+        name: output
+      optional: true
+    command:
+    - artic
+    - guppyplex
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: artic guppyplex [-h] [-q] --directory directory\n         \
+      \              [--max-length max_length] [--min-length min_length]\n       \
+      \                [--quality quality] [--sample sample]\n                   \
+      \    [--skip-quality-check] [--prefix PREFIX]\n                       [--output\
+      \ output]\n\noptional arguments:\n  -h, --help            show this help message\
+      \ and exit\n  -q, --quiet           Do not output warnings to stderr\n  --directory\
+      \ directory\n                        Basecalled and demultiplexed (guppy) results\
+      \ directory\n  --max-length max_length\n                        remove reads\
+      \ greater than read length\n  --min-length min_length\n                    \
+      \    remove reads less than read length\n  --quality quality     remove reads\
+      \ against this quality filter\n  --sample sample       sampling frequency for\
+      \ random sample of sequence to\n                        reduce excess\n  --skip-quality-check\
+      \  Do not filter on quality score (speeds up)\n  --prefix PREFIX       Prefix\
+      \ for guppyplex files\n  --output output       FASTQ file to write\n"
+    generated_using: *id002
+  - !Command
+    positional:
+    - !Positional
+      description: FASTQ file.
+      position: 0
+      name: filename
+      optional: false
+    named:
+    - !Flag
+      description: Do not output warnings to stderr
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: remove reads greater than read length
+      synonyms:
+      - --max-length
+      args: !SimpleFlagArg
+        name: max_length
+      optional: true
+    - !Flag
+      description: remove reads less than read length
+      synonyms:
+      - --min-length
+      args: !SimpleFlagArg
+        name: min_length
+      optional: true
+    command:
+    - artic
+    - filter
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: artic filter [-h] [-q] [--max-length max_length]\n        \
+      \            [--min-length min_length]\n                    filename\n\npositional\
+      \ arguments:\n  filename              FASTQ file.\n\noptional arguments:\n \
+      \ -h, --help            show this help message and exit\n  -q, --quiet     \
+      \      Do not output warnings to stderr\n  --max-length max_length\n       \
+      \                 remove reads greater than read length\n  --min-length min_length\n\
+      \                        remove reads less than read length\n"
+    generated_using: *id002
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Do not output warnings to stderr
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: The RAMPART protocols directory.
+      synonyms:
+      - --protocol-directory
+      args: !SimpleFlagArg
+        name: protocol_directory
+      optional: true
+    - !Flag
+      description: The run directory
+      synonyms:
+      - --run-directory
+      args: !SimpleFlagArg
+        name: run_directory
+      optional: true
+    command:
+    - artic
+    - rampart
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: artic rampart [-h] [-q] [--protocol-directory protocol_directory]\n\
+      \                     [--run-directory run_directory]\n\noptional arguments:\n\
+      \  -h, --help            show this help message and exit\n  -q, --quiet    \
+      \       Do not output warnings to stderr\n  --protocol-directory protocol_directory\n\
+      \                        The RAMPART protocols directory.\n  --run-directory\
+      \ run_directory\n                        The run directory\n"
+    generated_using: *id002
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Do not output warnings to stderr
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - artic
+    - export
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: artic export [-h] [-q]\n                    prefix bamfile\
+      \ sequencing_summary fast5_directory\n                    output_directory\n\
+      \npositional arguments:\n  prefix\n  bamfile\n  sequencing_summary\n  fast5_directory\n\
+      \  output_directory\n\noptional arguments:\n  -h, --help          show this\
+      \ help message and exit\n  -q, --quiet         Do not output warnings to stderr\n"
+    generated_using: *id002
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Installed Artic version
+    synonyms:
+    - -v
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+  help_text: "usage: artic [-h] [-v]\n             {extract,basecaller,demultiplex,minion,gather,guppyplex,filter,rampart,export,run}\n\
+    \             ...\n\noptional arguments:\n  -h, --help            show this help\
+    \ message and exit\n  -v, --version         Installed Artic version\n\n[sub-commands]:\n\
+    \  {extract,basecaller,demultiplex,minion,gather,guppyplex,filter,rampart,export,run}\n\
+    \    extract             Create an empty poredb database\n    basecaller     \
+    \     Display basecallers in files\n    demultiplex         Run demultiplex\n\
+    \    minion              Run the alignment/variant-call/consensus pipeline\n \
+    \   gather              Gather up demultiplexed files\n    guppyplex         \
+    \  Aggregate pre-demultiplexed reads from MinKNOW/Guppy\n    filter          \
+    \    Filter FASTQ files by length\n    rampart             Interactive prompts\
+    \ to start RAMPART\n    export              Export reads and fAST5 into a neat\
+    \ archive\n    run                 Process an entire run folder interactively\n"
+  generated_using: *id002
+subcommands: []
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: artic minion [-h] [-q] [--medaka] [--minimap2] [--bwa]\n      \
+  \              [--normalise NORMALISE] [--threads THREADS]\n                   \
+  \ [--scheme-directory scheme_directory]\n                    [--max-haplotypes max_haplotypes]\
+  \ [--read-file read_file]\n                    [--fast5-directory FAST5_DIRECTORY]\n\
+  \                    [--sequencing-summary SEQUENCING_SUMMARY]\n               \
+  \     [--skip-nanopolish] [--no-indels] [--dry-run]\n                    scheme\
+  \ sample\n\npositional arguments:\n  scheme                The name of the scheme.\n\
+  \  sample                The name of the sample.\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -q, --quiet           Do not output\
+  \ warnings to stderr\n  --medaka              Use medaka instead of nanopolish for\
+  \ variants\n  --minimap2            Use minimap2 (default)\n  --bwa            \
+  \     Use bwa instead of minimap2\n  --normalise NORMALISE\n                   \
+  \     Normalise down to moderate coverage to save runtime.\n  --threads THREADS\
+  \     Number of threads\n  --scheme-directory scheme_directory\n               \
+  \         Default scheme directory\n  --max-haplotypes max_haplotypes\n        \
+  \                max-haplotypes value for nanopolish\n  --read-file read_file\n\
+  \                        Use alternative FASTA/FASTQ file to <sample>.fasta\n  --fast5-directory\
+  \ FAST5_DIRECTORY\n                        FAST5 Directory\n  --sequencing-summary\
+  \ SEQUENCING_SUMMARY\n                        Path to Guppy sequencing summary\n\
+  \  --skip-nanopolish\n  --no-indels\n  --dry-run\n"
+generated_using: *id002

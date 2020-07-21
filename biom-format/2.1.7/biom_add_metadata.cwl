@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biom_add_metadata.cwl
+id: ../../../biom_add_metadata.cwl
 inputs:
 - id: input_fp
   doc: The input BIOM table  [required]

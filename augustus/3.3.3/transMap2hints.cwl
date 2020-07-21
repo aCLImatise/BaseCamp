@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transMap2hints.pl.cwl
+id: ../../../transMap2hints.pl.cwl
 inputs:
 - id: keep_ids
   doc: If idfile is given, then only those genes are used.

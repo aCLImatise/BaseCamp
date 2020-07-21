@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TICCalculator.cwl
+id: ../../../TICCalculator.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

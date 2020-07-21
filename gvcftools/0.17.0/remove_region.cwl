@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/remove_region.cwl
+id: ../../../remove_region.cwl
 inputs:
 - id: region_file
   doc: A bed file specifying regions which should be excluded  from the gVCF. Any

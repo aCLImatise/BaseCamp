@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tadtool_subset.cwl
+id: ../../../tadtool_subset.cwl
 inputs:
 - id: matrix
   doc: 'Square Hi-C Matrix as tab-delimited or .npy file (created with numpy.save)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcbio_variation.cwl
+id: ../../../bcbio_variation.cwl
 inputs:
 - id: analysis_type
   doc: Name of the tool to run

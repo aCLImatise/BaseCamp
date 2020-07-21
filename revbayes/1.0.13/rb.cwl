@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rb.cwl
+id: ../../../rb.cwl
 inputs:
 - id: show_version_exit
   doc: '[ --version ]      Show version and exit.'

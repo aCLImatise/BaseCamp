@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arrow.cwl
+id: ../../../arrow.cwl
 inputs:
 - id: verbose
   doc: Enables verbose mode.

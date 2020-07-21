@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quasitools_complexity_fasta.cwl
+id: ../../../quasitools_complexity_fasta.cwl
 inputs:
 - id: output_location
   doc: Output the quasispecies complexity in CSV format to the specified file.

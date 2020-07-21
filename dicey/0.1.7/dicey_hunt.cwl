@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dicey_hunt.cwl
+id: ../../../dicey_hunt.cwl
 inputs:
 - id: arg_genome_file
   doc: '[ --genome ] arg                   genome file'

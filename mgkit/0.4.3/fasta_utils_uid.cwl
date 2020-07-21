@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_utils_uid.cwl
+id: ../../../fasta_utils_uid.cwl
 inputs:
 - id: table
   doc: Filename of a table to record the changes (by default discards it)

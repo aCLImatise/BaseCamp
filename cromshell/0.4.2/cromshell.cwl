@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cromshell.cwl
+id: ../../../cromshell.cwl
 inputs:
 - id: set_curl_connect
   doc: Set the curl connect timeout to TIMEOUT seconds. Also sets the curl max timeout

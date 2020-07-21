@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o_subsample_fasta_file_INTEGER.cwl
+id: ../../../o_subsample_fasta_file_INTEGER.cwl
 inputs:
 - id: o_subsample_fast_a_file
   doc: ''

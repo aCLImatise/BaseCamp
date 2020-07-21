@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/superfocus_downloadDB.cwl
+id: ../../../superfocus_downloadDB.cwl
 inputs:
 - id: aligner
   doc: Aligner name separed by ',' if more than one

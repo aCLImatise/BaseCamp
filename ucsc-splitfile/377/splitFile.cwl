@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splitFile.cwl
+id: ../../../splitFile.cwl
 inputs:
 - id: head
   doc: '- put head in front of each output'

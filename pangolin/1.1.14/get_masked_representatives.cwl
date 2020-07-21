@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_masked_representatives.py.cwl
+id: ../../../get_masked_representatives.py.cwl
 inputs:
 - id: representatives
   doc: ''

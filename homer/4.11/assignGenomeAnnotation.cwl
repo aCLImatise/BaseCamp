@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/assignGenomeAnnotation.cwl
+id: ../../../assignGenomeAnnotation.cwl
 inputs:
 - id: ann
   doc: (File to output annotations for each peak/tag, by default not created)

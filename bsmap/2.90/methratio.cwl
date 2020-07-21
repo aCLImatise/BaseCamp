@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/methratio.py.cwl
+id: ../../../methratio.py.cwl
 inputs:
 - id: out
   doc: 'output methylation ratio file name. [default: STDOUT]'

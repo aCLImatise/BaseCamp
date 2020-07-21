@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/enasearch_retrieve_analysis_report.cwl
+id: ../../../enasearch_retrieve_analysis_report.cwl
 inputs:
 - id: accession
   doc: Accession id (study accessions (ERP, SRP, DRP, PRJ prefixes), experiment accessions

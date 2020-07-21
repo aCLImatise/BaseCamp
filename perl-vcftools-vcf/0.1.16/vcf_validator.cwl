@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_validator.cwl
+id: ../../../vcf_validator.cwl
 inputs:
 - id: duplicates
   doc: Warn about duplicate positions.

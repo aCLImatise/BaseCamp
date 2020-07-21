@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runhaskell.cwl
+id: ../../../runhaskell.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

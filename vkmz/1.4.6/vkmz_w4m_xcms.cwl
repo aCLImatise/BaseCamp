@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vkmz_w4m_xcms.cwl
+id: ../../../vkmz_w4m_xcms.cwl
 inputs:
 - id: path_xcms_matrix_file
   doc: '[DATA_MATRIX], -xd [DATA_MATRIX] Path to XCMS data matrix file'

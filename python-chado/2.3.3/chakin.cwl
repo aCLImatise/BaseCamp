@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chakin.cwl
+id: ../../../chakin.cwl
 inputs:
 - id: verbose
   doc: Enables verbose mode.

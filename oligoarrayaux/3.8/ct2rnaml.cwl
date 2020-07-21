@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ct2rnaml.cwl
+id: ../../../ct2rnaml.cwl
 inputs:
 - id: file_dot_ct
   doc: ''

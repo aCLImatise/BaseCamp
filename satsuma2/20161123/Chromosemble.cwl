@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Chromosemble.cwl
+id: ../../../Chromosemble.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

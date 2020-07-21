@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfglxgt.cwl
+id: ../../../vcfglxgt.cwl
 inputs:
 - id: fix_null_genotypes
   doc: only apply to null and partly-null genotypes

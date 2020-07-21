@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halTreeNITurnover.py.cwl
+id: ../../../halTreeNITurnover.py.cwl
 inputs:
 - id: conserved_bed_name
   doc: 'Name function for output bed files where genome name is specifed as %s (default:

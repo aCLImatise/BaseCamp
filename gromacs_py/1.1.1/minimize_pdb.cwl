@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/minimize_pdb.py.cwl
+id: ../../../minimize_pdb.py.cwl
 inputs:
 - id: input_pdb_file
   doc: Input PDB file

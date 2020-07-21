@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mapping.cwl
+id: ../../../mapping.cwl
 inputs:
 - id: number_take_default
   doc: 'number of bases to take an alignment (default 20) '

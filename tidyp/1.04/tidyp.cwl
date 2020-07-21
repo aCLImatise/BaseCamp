@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tidyp.cwl
+id: ../../../tidyp.cwl
 inputs:
 - id: modify
   doc: 'modify the original input files                           '

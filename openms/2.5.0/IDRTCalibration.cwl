@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/IDRTCalibration.cwl
+id: ../../../IDRTCalibration.cwl
 inputs:
 - id: in
   doc: "*                  Input file  (valid formats: 'idXML')"

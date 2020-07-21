@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cd_hit_2d_para.pl.cwl
+id: ../../../cd_hit_2d_para.pl.cwl
 inputs:
 - id: input_filename_st
   doc: input filename for 1st db in fasta format, required

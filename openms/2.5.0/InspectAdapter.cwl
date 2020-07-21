@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/InspectAdapter.cwl
+id: ../../../InspectAdapter.cwl
 inputs:
 - id: in
   doc: "*                      Input file in mzXML or mzData format. Note: In mode\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qcli_make_script.cwl
+id: ../../../qcli_make_script.cwl
 inputs:
 - id: output_fp
   doc: The output filepath. [REQUIRED]

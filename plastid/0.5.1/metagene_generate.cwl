@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metagene_generate.cwl
+id: ../../../metagene_generate.cwl
 inputs:
 - id: landmark
   doc: 'Landmark around which to build metagene profile (Default: cds_start)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/start_codon_distrib.cwl
+id: ../../../start_codon_distrib.cwl
 inputs:
 - id: three_comma
   doc: output only a comma separated list (no spaces) of atg, gtg, ttg

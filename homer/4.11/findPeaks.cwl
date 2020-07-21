@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findPeaks.cwl
+id: ../../../findPeaks.cwl
 inputs:
 - id: experiment_use_igginputcontrol
   doc: (Experiment to use as IgG/Input/Control)

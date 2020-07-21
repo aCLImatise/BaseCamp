@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makecontaminatedgenomes.sh.cwl
+id: ../../../makecontaminatedgenomes.sh.cwl
 inputs:
 - id: in
   doc: ''

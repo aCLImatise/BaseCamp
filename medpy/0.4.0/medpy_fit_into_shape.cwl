@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_fit_into_shape.py_shape.cwl
+id: ../../../medpy_fit_into_shape.py_shape.cwl
 inputs:
 - id: v
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tab2ovls.cwl
+id: ../../../tab2ovls.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

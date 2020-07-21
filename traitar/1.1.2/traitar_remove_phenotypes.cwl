@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/traitar_remove_phenotypes.cwl
+id: ../../../traitar_remove_phenotypes.cwl
 inputs:
 - id: keep
   doc: ''

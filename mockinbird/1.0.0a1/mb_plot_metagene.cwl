@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_plot_metagene.cwl
+id: ../../../mb_plot_metagene.cwl
 inputs:
 - id: downstream_bp
   doc: downstream bp

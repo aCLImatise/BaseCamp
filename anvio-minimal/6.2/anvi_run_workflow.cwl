@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_run_workflow.cwl
+id: ../../../anvi_run_workflow.cwl
 inputs:
 - id: workflow
   doc: You must specify a workflow name. To see a list of available workflows run

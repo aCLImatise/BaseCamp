@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsdj.cwl
+id: ../../../gsdj.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

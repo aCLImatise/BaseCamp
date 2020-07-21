@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/duplicateCol.pl.cwl
+id: ../../../duplicateCol.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

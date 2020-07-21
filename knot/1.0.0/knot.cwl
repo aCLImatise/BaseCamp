@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/knot.cwl
+id: ../../../knot.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteinortho6.pl.cwl
+id: ../../../proteinortho6.pl.cwl
 inputs:
 - id: step
   doc: to finalize

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sports_league.cwl
+id: ../../../sports_league.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

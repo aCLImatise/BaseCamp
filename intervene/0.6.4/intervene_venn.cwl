@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/intervene_venn.cwl
+id: ../../../intervene_venn.cwl
 inputs:
 - id: input_genomic_regions
   doc: '[INPUT [INPUT ...]], --input [INPUT [INPUT ...]] Input genomic regions in

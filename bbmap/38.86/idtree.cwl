@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/idtree.sh.cwl
+id: ../../../idtree.sh.cwl
 inputs:
 - id: in
   doc: ''

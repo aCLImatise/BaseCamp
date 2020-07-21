@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/index_mzml.cwl
+id: ../../../index_mzml.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

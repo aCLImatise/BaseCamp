@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hgLoadChain.cwl
+id: ../../../hgLoadChain.cwl
 inputs:
 - id: t_index
   doc: Include tName in indexes (for non-split chain tables)

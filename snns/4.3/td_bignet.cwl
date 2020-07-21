@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/td_bignet.cwl
+id: ../../../td_bignet.cwl
 inputs:
 - id: link_definition
   doc: ''

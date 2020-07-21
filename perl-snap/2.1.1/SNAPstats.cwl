@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SNAPstats.pl.cwl
+id: ../../../SNAPstats.pl.cwl
 inputs:
 - id: codons_dot
   doc: ''

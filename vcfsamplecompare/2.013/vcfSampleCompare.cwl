@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfSampleCompare.pl.cwl
+id: ../../../vcfSampleCompare.pl.cwl
 inputs:
 - id: vcf_outfile_suffix
   doc: VCF outfile suffix (appended to -i).

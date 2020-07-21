@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lckdo_arguments_file.cwl
+id: ../../../lckdo_arguments_file.cwl
 inputs:
 - id: magic_file
   doc: use LIST as a colon-separated list of magic number files

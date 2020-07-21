@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dynalign_smp.cwl
+id: ../../../dynalign_smp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

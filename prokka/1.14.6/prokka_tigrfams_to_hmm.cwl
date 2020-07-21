@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prokka_tigrfams_to_hmm.cwl
+id: ../../../prokka_tigrfams_to_hmm.cwl
 inputs:
 - id: no
   doc: ''

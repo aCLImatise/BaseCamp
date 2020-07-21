@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_miRNAs.pl.cwl
+id: ../../../extract_miRNAs.pl.cwl
 inputs:
 - id: perl
   doc: ''

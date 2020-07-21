@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smartrel.cwl
+id: ../../../smartrel.cwl
 inputs:
 - id: bad
   doc: ''

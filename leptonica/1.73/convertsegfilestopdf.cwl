@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convertsegfilestopdf.cwl
+id: ../../../convertsegfilestopdf.cwl
 inputs:
 - id: where
   doc: "pagedir:  input directory for image files pagesubstr:  Use 'allfiles' to convert\

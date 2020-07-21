@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedJoinTabOffset.cwl
+id: ../../../bedJoinTabOffset.cwl
 inputs:
 - id: debug
   doc: show debug messages

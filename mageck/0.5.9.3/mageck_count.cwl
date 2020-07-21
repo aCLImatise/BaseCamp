@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mageck_count.cwl
+id: ../../../mageck_count.cwl
 inputs:
 - id: list_seq
   doc: 'A file containing the list of sgRNA names, their sequences and associated

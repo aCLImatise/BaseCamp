@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/motus.cwl
+id: ../../../motus.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

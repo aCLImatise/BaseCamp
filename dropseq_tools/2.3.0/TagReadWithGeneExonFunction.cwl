@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TagReadWithGeneExonFunction.cwl
+id: ../../../TagReadWithGeneExonFunction.cwl
 inputs:
 - id: default_g
   doc: (default 4g)

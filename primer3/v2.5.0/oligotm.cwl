@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/oligotm.cwl
+id: ../../../oligotm.cwl
 inputs:
 - id: breslauer_et_al
   doc: Breslauer et al., 1986 and Rychlik et al., 1990 (used by primer3 up to and

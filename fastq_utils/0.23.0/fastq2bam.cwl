@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq2bam.cwl
+id: ../../../fastq2bam.cwl
 inputs:
 - id: cell_barcode_offset
   doc: ': cell barcode offset'

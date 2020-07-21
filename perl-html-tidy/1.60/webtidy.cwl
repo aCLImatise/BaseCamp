@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/webtidy.cwl
+id: ../../../webtidy.cwl
 inputs:
 - id: context
   doc: '[=n]   Show the offending line (and n surrounding lines)'

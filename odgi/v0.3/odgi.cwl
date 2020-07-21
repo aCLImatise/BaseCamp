@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/odgi.cwl
+id: ../../../odgi.cwl
 inputs:
 - id: command
   doc: ''

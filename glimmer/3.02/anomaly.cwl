@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anomaly.cwl
+id: ../../../anomaly.cwl
 inputs:
 - id: start_sample_format
   doc: 'Use comma-separated list of codons as start codons Sample format:  -A atg,gtg

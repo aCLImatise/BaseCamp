@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslCat.cwl
+id: ../../../pslCat.cwl
 inputs:
 - id: check
   doc: input.  Detects more errors but slower

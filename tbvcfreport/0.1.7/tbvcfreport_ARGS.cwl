@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tbvcfreport_ARGS.cwl
+id: ../../../tbvcfreport_ARGS.cwl
 inputs:
 - id: tb_vcf_report
   doc: ''

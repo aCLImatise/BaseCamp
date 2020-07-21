@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/translate.cwl
+id: ../../../translate.cwl
 inputs:
 - id: translate_full_stops
   doc: ': translate in full, with stops; no individual ORFs'

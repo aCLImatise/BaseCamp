@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chromosomer_simulator_fr_num.cwl
+id: ../../../chromosomer_simulator_fr_num.cwl
 inputs:
 - id: g
   doc: ''

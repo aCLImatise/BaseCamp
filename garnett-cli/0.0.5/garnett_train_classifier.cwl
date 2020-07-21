@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/garnett_train_classifier.R.cwl
+id: ../../../garnett_train_classifier.R.cwl
 inputs:
 - id: output_path
   doc: Path to the output file

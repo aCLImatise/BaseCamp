@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfnoindels.cwl
+id: ../../../vcfnoindels.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

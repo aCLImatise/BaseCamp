@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coalescent.cwl
+id: ../../../coalescent.cwl
 inputs:
 - id: arg_parameter_file
   doc: '[ --paramfile ] arg                parameter file'

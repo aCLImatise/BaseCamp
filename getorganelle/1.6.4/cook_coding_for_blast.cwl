@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cook_coding_for_blast.py.cwl
+id: ../../../cook_coding_for_blast.py.cwl
 inputs:
 - id: fast_a_files
   doc: ''

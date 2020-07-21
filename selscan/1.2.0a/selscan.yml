@@ -1,0 +1,74 @@
+!Command
+positional: []
+named: []
+command:
+- selscan
+parent:
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "selscan v1.2.0\n\nselscan v1.2.0 -- a program to calculate EHH-based scans\
+  \ for positive selection in genomes.\nSource code and binaries can be found at <https://www.github.com/szpiech/selscan>.\n\
+  \nselscan currently implements EHH, iHS, XP-EHH, and nSL.\n\nCitations:\n\nZA Szpiech\
+  \ and RD Hernandez (2014) MBE, 31: 2824-2827.\nA Ferrer-Admetlla, et al. (2014)\
+  \ MBE, 31: 1275-1291.\nPC Sabeti, et al. (2007) Nature, 449: 913–918.\nBF Voight,\
+  \ et al. (2006) PLoS Biology, 4: e72.\nPC Sabeti, et al. (2002) Nature, 419: 832–837.\n\
+  \nTo calculate EHH:\n\n./selscan --ehh <locusID> --hap <haps> --map <mapfile> --out\
+  \ <outfile>\n\nTo calculate iHS:\n\n./selscan --ihs --hap <haps> --map <mapfile>\
+  \ --out <outfile>\n\nTo calculate nSL:\n\n./selscan --nsl --hap <haps> --map <mapfile>\
+  \ --out <outfile>\nTo calculate iHH12:\n\n./selscan --ihh12 --hap <haps> --map <mapfile>\
+  \ --out <outfile>\n\nTo calculate XP-EHH:\n\n./selscan --xpehh --hap <pop1 haps>\
+  \ --ref <pop2 haps> --map <mapfile> --out <outfile>\n\n----------Command Line Arguments----------\n\
+  \n--alt <bool>: Set this flag to calculate homozygosity based on the sum of the\n\
+  \tsquared haplotype frequencies in the observed data instead of using\n\tbinomial\
+  \ coefficients.\n\tDefault: false\n\n--cutoff <double>: The EHH decay cutoff.\n\t\
+  Default: 0.05\n\n--ehh <string>: Calculate EHH of the '1' and '0' haplotypes at\
+  \ the specified\n\tlocus. Output: <physical dist> <genetic dist> <'1' EHH> <'0'\
+  \ EHH>\n\tDefault: __NO_LOCUS__\n\n--ehh-win <int>: When calculating EHH, this is\
+  \ the length of the window in bp\n\tin each direction from the query locus.\n\t\
+  Default: 100000\n\n--gap-scale <int>: Gap scale parameter in bp. If a gap is encountered\
+  \ between\n\ttwo snps > GAP_SCALE and < MAX_GAP, then the genetic distance is\n\t\
+  scaled by GAP_SCALE/GAP.\n\tDefault: 20000\n\n--hap <string>: A hapfile with one\
+  \ row per haplotype, and one column per\n\tvariant. Variants should be coded 0/1\n\
+  \tDefault: __hapfile1\n\n--help <bool>: Prints this help dialog.\n\tDefault: false\n\
+  \n--ihh12 <bool>: Set this flag to calculate iHH12.\n\tDefault: false\n\n--ihs <bool>:\
+  \ Set this flag to calculate iHS.\n\tDefault: false\n\n--ihs-detail <bool>: Set\
+  \ this flag to write out left and right iHH scores for '1' and '0' in addition to\
+  \ iHS.\n\tDefault: false\n\n--keep-low-freq <bool>: Include low frequency variants\
+  \ in the construction of your haplotypes.\n\tDefault: false\n\n--maf <double>: If\
+  \ a site has a MAF below this value, the program will not use\n\tit as a core snp.\n\
+  \tDefault: 0.05\n\n--map <string>: A mapfile with one row per variant site.\n\t\
+  Formatted <chr#> <locusID> <genetic pos> <physical pos>.\n\tDefault: __mapfile\n\
+  \n--max-extend <int>: The maximum distance an EHH decay curve is allowed to extend\
+  \ from the core.\n\tSet <= 0 for no restriction.\n\tDefault: 1000000\n\n--max-extend-nsl\
+  \ <int>: The maximum distance an nSL haplotype is allowed to extend from the core.\n\
+  \tSet <= 0 for no restriction.\n\tDefault: 100\n\n--max-gap <int>: Maximum allowed\
+  \ gap in bp between two snps.\n\tDefault: 200000\n\n--nsl <bool>: Set this flag\
+  \ to calculate nSL.\n\tDefault: false\n\n--out <string>: The basename for all output\
+  \ files.\n\tDefault: outfile\n\n--pi <bool>: Set this flag to calculate mean pairwise\
+  \ sequence difference in a sliding window.\n\tDefault: false\n\n--pi-win <int>:\
+  \ Sliding window size in bp for calculating pi.\n\tDefault: 100\n\n--ref <string>:\
+  \ A hapfile with one row per haplotype, and one column per\n\tvariant. Variants\
+  \ should be coded 0/1. This is the 'reference'\n\tpopulation for XP-EHH calculations.\
+  \  Ignored otherwise.\n\tDefault: __hapfile2\n\n--skip-low-freq <bool>: **This flag\
+  \ is now on by default. If you want to include low frequency variants\nin the construction\
+  \ of your haplotypes please use the --keep-low-freq flag.\n\tDefault: false\n\n\
+  --threads <int>: The number of threads to spawn during the calculation.\n\tPartitions\
+  \ loci across threads.\n\tDefault: 1\n\n--tped <string>: A TPED file containing\
+  \ haplotype and map data.\n\tVariants should be coded 0/1\n\tDefault: __hapfile1\n\
+  \n--tped-ref <string>: A TPED file containing haplotype and map data.\n\tVariants\
+  \ should be coded 0/1. This is the 'reference'\n\tpopulation for XP-EHH calculations\
+  \ and should contain the same number\n\tof loci as the query population. Ignored\
+  \ otherwise.\n\tDefault: __hapfile2\n\n--trunc-ok <bool>: If an EHH decay reaches\
+  \ the end of a sequence before reaching the cutoff,\n\tintegrate the curve anyway\
+  \ (iHS and XPEHH only).\n\tNormal function is to disregard the score for that core.\n\
+  \tDefault: false\n\n--vcf <string>: A VCF file containing haplotype data.\n\tA map\
+  \ file must be specified with --map.\n\tDefault: __hapfile1\n\n--vcf-ref <string>:\
+  \ A VCF file containing haplotype and map data.\n\tVariants should be coded 0/1.\
+  \ This is the 'reference'\n\tpopulation for XP-EHH calculations and should contain\
+  \ the same number\n\tof loci as the query population. Ignored otherwise.\n\tDefault:\
+  \ __hapfile2\n\n--xpehh <bool>: Set this flag to calculate XP-EHH.\n\tDefault: false\n\
+  \n"
+generated_using:
+- --help

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DAStrim.cwl
+id: ../../../DAStrim.cwl
 inputs:
 - id: v
   doc: ''

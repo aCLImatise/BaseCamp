@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CCAT.cwl
+id: ../../../CCAT.cwl
 inputs:
 - id: library_one_tag_file_name
   doc: ''

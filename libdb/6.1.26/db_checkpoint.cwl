@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/db_checkpoint.cwl
+id: ../../../db_checkpoint.cwl
 inputs:
 - id: one_vv
   doc: ''

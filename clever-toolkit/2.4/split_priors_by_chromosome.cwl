@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/split_priors_by_chromosome.cwl
+id: ../../../split_priors_by_chromosome.cwl
 inputs:
 - id: gzip_output_files
   doc: GZIP output files

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteinortho2tree.pl.cwl
+id: ../../../proteinortho2tree.pl.cwl
 inputs:
 - id: ortho_matrix
   doc: ''

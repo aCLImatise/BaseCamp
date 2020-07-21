@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyatac_counts.cwl
+id: ../../../pyatac_counts.cwl
 inputs:
 - id: bam
   doc: Aligned reads

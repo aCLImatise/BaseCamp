@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sldout.cwl
+id: ../../../sldout.cwl
 inputs:
 - id: csv_vertical_line_txt
   doc: ''

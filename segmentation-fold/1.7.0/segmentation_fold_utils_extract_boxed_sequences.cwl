@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segmentation_fold_utils_extract_boxed_sequences.cwl
+id: ../../../segmentation_fold_utils_extract_boxed_sequences.cwl
 inputs:
 - id: max_inner_dist
   doc: Maximal distance between the boxes (default=250bp)

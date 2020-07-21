@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cleric.cwl
+id: ../../../cleric.cwl
 inputs:
 - id: aln
   doc: Pairwise alignment of reference to target

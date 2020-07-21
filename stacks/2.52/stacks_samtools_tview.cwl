@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stacks_samtools_tview.cwl
+id: ../../../stacks_samtools_tview.cwl
 inputs:
 - id: p
   doc: ''

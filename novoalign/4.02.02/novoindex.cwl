@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/novoindex.cwl
+id: ../../../novoindex.cwl
 inputs:
 - id: kmer_length_used
   doc: 99        is the k-mer length to be used for the index. Typically 14.

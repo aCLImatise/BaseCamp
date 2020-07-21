@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arv_migrate_docker19.cwl
+id: ../../../arv_migrate_docker19.cwl
 inputs:
 - id: verbose
   doc: Print stdout/stderr even on success

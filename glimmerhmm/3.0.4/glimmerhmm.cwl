@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/glimmerhmm.cwl
+id: ../../../glimmerhmm.cwl
 inputs:
 - id: genome_one_file
   doc: ''

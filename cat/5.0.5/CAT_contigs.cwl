@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CAT_contigs.cwl
+id: ../../../CAT_contigs.cwl
 inputs:
 - id: _contigsfasta_path
   doc: ', --contigs_fasta  Path to contigs fasta file.'

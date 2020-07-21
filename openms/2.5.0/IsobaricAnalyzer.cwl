@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/IsobaricAnalyzer.cwl
+id: ../../../IsobaricAnalyzer.cwl
 inputs:
 - id: type
   doc: "Isobaric Quantitation method used in the experiment. (default: 'itraq4plex'\

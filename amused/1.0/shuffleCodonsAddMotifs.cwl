@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shuffleCodonsAddMotifs.rb.cwl
+id: ../../../shuffleCodonsAddMotifs.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

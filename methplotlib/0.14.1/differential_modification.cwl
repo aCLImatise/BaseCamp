@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/differential_modification.cwl
+id: ../../../differential_modification.cwl
 inputs:
 - id: bed
   doc: Bed file to aggregate modifications on.

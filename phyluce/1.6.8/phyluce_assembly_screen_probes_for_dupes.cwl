@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_assembly_screen_probes_for_dupes.cwl
+id: ../../../phyluce_assembly_screen_probes_for_dupes.cwl
 inputs:
 - id: last_z
   doc: The lastz input

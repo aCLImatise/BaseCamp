@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/masurca_superreads.cwl
+id: ../../../masurca_superreads.cwl
 inputs:
 - id: output_dir
   doc: Create the super reads in the directory given by PATH. Create the directory

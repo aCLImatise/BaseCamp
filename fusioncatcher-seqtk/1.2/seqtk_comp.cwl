@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqtk_comp.cwl
+id: ../../../seqtk_comp.cwl
 inputs:
 - id: u
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spades_gsimplifier.cwl
+id: ../../../spades_gsimplifier.cwl
 inputs:
 - id: gfa
   doc: 'produce GFA output (default: true)'

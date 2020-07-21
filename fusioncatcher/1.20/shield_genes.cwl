@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shield_genes.py.cwl
+id: ../../../shield_genes.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism, e.g. homo_sapiens, mus_musculus, etc. Default is

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/circminer.cwl
+id: ../../../circminer.cwl
 inputs:
 - id: index
   doc: ':            Indicates the indexing stage.'

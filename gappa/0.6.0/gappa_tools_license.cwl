@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gappa_tools_license.cwl
+id: ../../../gappa_tools_license.cwl
 inputs:
 - id: full
   doc: If set, show the full license instead of the short boilerplate.

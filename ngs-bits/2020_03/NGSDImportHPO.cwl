@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NGSDImportHPO.cwl
+id: ../../../NGSDImportHPO.cwl
 inputs:
 - id: obo
   doc: HPO ontology file from 'http://purl.obolibrary.org/obo/hp.obo'.

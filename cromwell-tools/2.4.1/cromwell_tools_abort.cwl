@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cromwell_tools_abort.cwl
+id: ../../../cromwell_tools_abort.cwl
 inputs:
 - id: url
   doc: The URL to the Cromwell server. e.g. "https://cromwell.server.org/"

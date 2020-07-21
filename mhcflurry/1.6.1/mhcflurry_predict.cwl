@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mhcflurry_predict.cwl
+id: ../../../mhcflurry_predict.cwl
 inputs:
 - id: list_supported_alleles
   doc: Prints the list of supported alleles and exits

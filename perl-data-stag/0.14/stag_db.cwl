@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stag_db.pl.cwl
+id: ../../../stag_db.pl.cwl
 inputs:
 - id: file_will_used
   doc: This file will be used as the persistent index for storage/retrieval

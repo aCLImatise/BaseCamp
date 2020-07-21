@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/refine.cwl
+id: ../../../refine.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

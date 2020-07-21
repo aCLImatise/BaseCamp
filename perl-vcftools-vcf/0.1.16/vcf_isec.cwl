@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_isec.cwl
+id: ../../../vcf_isec.cwl
 inputs:
 - id: apply_filters
   doc: Ignore lines where FILTER column is anything else than PASS or '.'

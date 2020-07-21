@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RepeatMasker.cwl
+id: ../../../RepeatMasker.cwl
 inputs:
 - id: var_0
   doc: perc perc perc  query    position in query     matching repeat      position

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_delta_file_for_qrys.pl.cwl
+id: ../../../filter_delta_file_for_qrys.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

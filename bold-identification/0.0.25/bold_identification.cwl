@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bold_identification.cwl
+id: ../../../bold_identification.cwl
 inputs:
 - id: input_file_name
   doc: input file name

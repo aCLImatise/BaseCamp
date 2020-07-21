@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools_expand.cwl
+id: ../../../bedtools_expand.cwl
 inputs:
 - id: input_file_assumes
   doc: Input file. Assumes "stdin" if omitted.

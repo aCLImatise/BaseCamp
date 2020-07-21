@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/heatmap.py.cwl
+id: ../../../heatmap.py.cwl
 inputs:
 - id: secondary_model_tar
   doc: secondary model tar if combining the prediction of two different phenotype

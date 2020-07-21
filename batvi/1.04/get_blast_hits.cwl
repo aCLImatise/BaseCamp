@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_blast_hits.sh.cwl
+id: ../../../get_blast_hits.sh.cwl
 inputs:
 - id: force_symbolic_links
   doc: "force symbolic links to be followed: resolve symbolic links in DIR after processing\

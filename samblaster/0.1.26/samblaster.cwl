@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samblaster.cwl
+id: ../../../samblaster.cwl
 inputs:
 - id: add_mate_tags
   doc: Add MC and MQ tags to all output paired-end SAM lines.

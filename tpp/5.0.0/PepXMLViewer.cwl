@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PepXMLViewer.cgi.cwl
+id: ../../../PepXMLViewer.cgi.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

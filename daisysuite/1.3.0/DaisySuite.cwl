@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DaisySuite.cwl
+id: ../../../DaisySuite.cwl
 inputs:
 - id: snake_file
   doc: The workflow definition in a snakefile.

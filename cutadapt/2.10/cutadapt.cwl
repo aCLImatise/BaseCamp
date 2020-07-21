@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cutadapt.cwl
+id: ../../../cutadapt.cwl
 inputs:
 - id: debug
   doc: "[{trace}]     Print debug log. 'trace' prints also DP matrices"

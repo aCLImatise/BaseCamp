@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbindexdump.cwl
+id: ../../../pbindexdump.cwl
 inputs:
 - id: format
   doc: 'STR   Output format. Valid choices: (json, cpp). [json]'

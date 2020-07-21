@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cpptraj_rmsf.cwl
+id: ../../../cpptraj_rmsf.cwl
 inputs:
 - id: config
   doc: Configuration file

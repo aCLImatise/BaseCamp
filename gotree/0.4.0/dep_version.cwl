@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dep_version.cwl
+id: ../../../dep_version.cwl
 inputs:
 - id: platform
   doc: ': linux/amd64'

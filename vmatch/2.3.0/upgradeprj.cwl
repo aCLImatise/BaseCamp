@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/upgradeprj.pl.cwl
+id: ../../../upgradeprj.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

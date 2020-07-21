@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_qscale.cwl
+id: ../../../fastq_qscale.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

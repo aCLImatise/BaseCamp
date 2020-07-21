@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/restrict_repset.py.cwl
+id: ../../../restrict_repset.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

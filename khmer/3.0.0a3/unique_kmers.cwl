@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unique_kmers.py.cwl
+id: ../../../unique_kmers.py.cwl
 inputs:
 - id: k_size
   doc: 'k-mer size to use (default: 32)'

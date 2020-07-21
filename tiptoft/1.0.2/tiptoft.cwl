@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tiptoft.cwl
+id: ../../../tiptoft.cwl
 inputs:
 - id: plasmid_data
   doc: 'FASTA file containing plasmid data from downloader script, defaults to bundled

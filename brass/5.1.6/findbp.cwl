@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findbp.cwl
+id: ../../../findbp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

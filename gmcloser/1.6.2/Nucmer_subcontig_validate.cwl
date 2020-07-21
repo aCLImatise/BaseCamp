@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Nucmer_subcontig_validate.pl.cwl
+id: ../../../Nucmer_subcontig_validate.pl.cwl
 inputs:
 - id: query
   doc: input scaffold fasta file (e.g., scaf1.fa)

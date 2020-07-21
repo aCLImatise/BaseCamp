@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastx_artifacts_filter.cwl
+id: ../../../fastx_artifacts_filter.cwl
 inputs:
 - id: v
   doc: ''

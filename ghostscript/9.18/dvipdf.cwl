@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dvipdf.cwl
+id: ../../../dvipdf.cwl
 inputs:
 - id: options_dot_dot_dot
   doc: ''

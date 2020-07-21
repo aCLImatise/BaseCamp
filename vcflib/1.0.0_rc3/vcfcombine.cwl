@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfcombine.cwl
+id: ../../../vcfcombine.cwl
 inputs:
 - id: region
   doc: A region specifier of the form chrN:x-y to bound the merge

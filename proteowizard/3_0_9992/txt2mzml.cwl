@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/txt2mzml.cwl
+id: ../../../txt2mzml.cwl
 inputs:
 - id: file_in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scalap.cwl
+id: ../../../scalap.cwl
 inputs:
 - id: private
   doc: print private definitions

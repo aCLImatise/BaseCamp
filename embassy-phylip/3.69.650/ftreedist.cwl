@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ftreedist.cwl
+id: ../../../ftreedist.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

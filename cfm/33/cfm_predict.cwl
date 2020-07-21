@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cfm_predict.cwl
+id: ../../../cfm_predict.cwl
 inputs:
 - id: input_smiles_or_inch_i
   doc: ''

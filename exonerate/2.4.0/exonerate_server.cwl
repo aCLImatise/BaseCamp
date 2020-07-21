@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/exonerate_server.cwl
+id: ../../../exonerate_server.cwl
 inputs:
 - id: soft_mask_query
   doc: '[FALSE] '

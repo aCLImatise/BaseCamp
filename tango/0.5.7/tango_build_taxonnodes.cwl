@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tango_build_taxonnodes.cwl
+id: ../../../tango_build_taxonnodes.cwl
 inputs:
 - id: d
   doc: ''

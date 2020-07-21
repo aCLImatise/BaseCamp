@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/behst.py.cwl
+id: ../../../behst.py.cwl
 inputs:
 - id: target_extension
   doc: target extension basepair integer. Default is 9400.

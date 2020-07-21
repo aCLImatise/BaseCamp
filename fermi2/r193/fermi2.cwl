@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi2.pl_mag2fmr.cwl
+id: ../../../fermi2.pl_mag2fmr.cwl
 inputs:
 - id: options
   doc: ''

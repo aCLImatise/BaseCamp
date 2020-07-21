@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fpa_drop_FLAGS.cwl
+id: ../../../fpa_drop_FLAGS.cwl
 inputs:
 - id: input
   doc: ''

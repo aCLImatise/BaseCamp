@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makePairedOutput.pl.cwl
+id: ../../../makePairedOutput.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

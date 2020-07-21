@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genepender.cwl
+id: ../../../genepender.cwl
 inputs:
 - id: gene_map
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/brassI_prep_bam.pl.cwl
+id: ../../../brassI_prep_bam.pl.cwl
 inputs:
 - id: include
   doc: -i    Include reads where self and mate are mapped to this ref name (or unmapped).

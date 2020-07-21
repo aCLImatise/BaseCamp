@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Assemblytics_delta.cwl
+id: ../../../Assemblytics_delta.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

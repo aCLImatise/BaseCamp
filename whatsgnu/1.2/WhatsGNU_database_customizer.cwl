@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/WhatsGNU_database_customizer.py.cwl
+id: ../../../WhatsGNU_database_customizer.py.cwl
 inputs:
 - id: genbank_refseq
   doc: faa files from GenBank or RefSeq

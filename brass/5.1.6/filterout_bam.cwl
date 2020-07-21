@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterout_bam.cwl
+id: ../../../filterout_bam.cwl
 inputs:
 - id: write_output_bam_compressed
   doc: Write output BAM compressed [uncompressed]

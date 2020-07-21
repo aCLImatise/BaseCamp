@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/remove_callers_from_somaticseq_tsv.py.cwl
+id: ../../../remove_callers_from_somaticseq_tsv.py.cwl
 inputs:
 - id: in_file
   doc: ''

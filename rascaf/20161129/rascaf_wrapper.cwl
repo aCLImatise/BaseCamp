@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rascaf_wrapper.pl.cwl
+id: ../../../rascaf_wrapper.pl.cwl
 inputs:
 - id: bam_file_can
   doc: ': bam file. Can use comma-separator to specify multiple alignment files[required]'

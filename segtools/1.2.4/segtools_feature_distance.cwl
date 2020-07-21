@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segtools_feature_distance.cwl
+id: ../../../segtools_feature_distance.cwl
 inputs:
 - id: clobber
   doc: Overwrite any existing output files.

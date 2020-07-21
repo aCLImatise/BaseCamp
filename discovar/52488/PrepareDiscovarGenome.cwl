@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PrepareDiscovarGenome.cwl
+id: ../../../PrepareDiscovarGenome.cwl
 inputs:
 - id: arg_one
   doc: ''

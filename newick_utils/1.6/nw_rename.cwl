@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nw_rename.cwl
+id: ../../../nw_rename.cwl
 inputs:
 - id: hl
   doc: ''

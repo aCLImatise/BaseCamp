@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GraphProt.pl.cwl
+id: ../../../GraphProt.pl.cwl
 inputs:
 - id: mode
   doc: "'regression' or 'classification' default: classification"

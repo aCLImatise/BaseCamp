@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FilterRascafConnection.pl.cwl
+id: ../../../FilterRascafConnection.pl.cwl
 inputs:
 - id: evaluate_blast_dot_out
   doc: ''

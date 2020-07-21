@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stoch_genDimerRates.cwl
+id: ../../../stoch_genDimerRates.cwl
 inputs:
 - id: mfe_sequence_used
   doc: ':  MFE of the sequence. Used to prevent numerical problems when computing

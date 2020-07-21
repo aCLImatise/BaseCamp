@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_genetrees_rename_tree_leaves.cwl
+id: ../../../phyluce_genetrees_rename_tree_leaves.cwl
 inputs:
 - id: input
   doc: The input tree file

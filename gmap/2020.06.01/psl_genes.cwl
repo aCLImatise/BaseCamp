@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/psl_genes.cwl
+id: ../../../psl_genes.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

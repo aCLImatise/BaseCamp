@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/comparem.cwl
+id: ../../../comparem.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

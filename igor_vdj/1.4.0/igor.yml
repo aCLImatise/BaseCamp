@@ -1,0 +1,392 @@
+!Command
+positional:
+- !Positional
+  description: IGOR(1)
+  position: 0
+  name: '2020-04-11'
+  optional: false
+named: []
+command:
+- igor
+parent:
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "IGOR(1)                                                              \
+  \                                                                              \
+  \                                                   IGOR(1)\n\nNAME\n       igor\
+  \ - Inference and Generation of Repertoires\n\nSYNOPSIS\n       igor -arg --subarg\
+  \ ---subsubarg\n\nDESCRIPTION\n       IGoR is a C++ software designed to infer V(D)J\
+  \ recombination related processes from sequencing data such as:\n\n       •   Recombination\
+  \ model probability distribution\n\n       •   Hypermutation model\n\n       • \
+  \  Best candidates recombination scenarios\n\n       •   Generation probabilities\
+  \ of sequences (even hypermutated)\n\n       IGoR is a free (as in freedom) software\
+  \ released under the GNU-GPLv3 <https://www.gnu.org/licenses/quick-guide-gplv3.html>\
+  \ license.\n\n       This manpage gives a summary of available command lines. A\
+  \ more exhaustive description of the software capabilities can be found in the README\
+  \ document.\n\nAUTHOR\n       IGoR was originally written by Quentin Marcou.\n\n\
+  VERSION\n       Latest released version: 1.4.0\n\nCOMMANDS\n   General commands\
+  \ summary\n       ┌───────────────────────────────────────────┬──────────────────────────────────────────────────────────────────────┐\n\
+  \       │                                           │                          \
+  \                                            │\n       │Command line argument  \
+  \                    │ Description                                             \
+  \             │\n       ├───────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                           │                          \
+  \                                            │\n       │-h or -help            \
+  \                    │ Displays IGoR’s manual. Alternatively one could use man igor.\
+  \        │\n       ├───────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                           │                          \
+  \                                            │\n       │-v or -version         \
+  \                    │ Displays IGoR’s installed version number.               \
+  \             │\n       ├───────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                           │                          \
+  \                                            │\n       │-set_wd /path/to/dir/  \
+  \                    │ Sets the working directory to /path/to/dir/, default is /tmp.\
+  \ This   │\n       │                                           │ should be an already\
+  \ existing directory and will not be created by   │\n       │                  \
+  \                         │ IGoR                                               \
+  \                  │\n       ├───────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                           │                          \
+  \                                            │\n       │-threads N             \
+  \                    │ Sets the number of OpenMP threads to N for alignments and\
+  \            │\n       │                                           │ inference/evaluation.\
+  \ By default IGoR will use the maximum number of │\n       │                   \
+  \                        │ threads.                                            \
+  \                 │\n       ├───────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                           │                          \
+  \                                            │\n       │-stdout_f /path/to/file\
+  \                    │ Redirects the standard output to the file /path/to/file \
+  \             │\n       ├───────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                           │                          \
+  \                                            │\n       │-read_seqs /path/to/file\
+  \                   │ Reads the input sequences file /path/to/file and reformat\
+  \ it in the  │\n       │                                           │ working directory.\
+  \ This step is necessary for running any action on  │\n       │                \
+  \                           │ sequences using the command line. Can be a fasta file,\
+  \ a csv file    │\n       │                                           │ (with the\
+  \ sequence index as first column and the sequence in the     │\n       │       \
+  \                                    │ second separated by a semicolon ;) or a text\
+  \ file with one sequence  │\n       │                                          \
+  \ │ per line (format recognition is based on the file extension).        │\n   \
+  \    │                                           │ Providing this file will create\
+  \ a semicolon separated file with      │\n       │                             \
+  \              │ indexed sequences in the align folder.                        \
+  \       │\n       ├───────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                           │                          \
+  \                                            │\n       │-batch batchname       \
+  \                    │ Sets the batch name. This name will be used as a prefix to\
+  \           │\n       │                                           │ alignment/indexed\
+  \ sequences files, output, infer, evaluate and       │\n       │               \
+  \                            │ generate folders.                               \
+  \                     │\n       ├───────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                           │                          \
+  \                                            │\n       │-chain chainname       \
+  \                    │ Selects a model and a set of genomic template according to\
+  \ the       │\n       │                                           │ value. Possible\
+  \ values for chainname are: alpha, beta, light,        │\n       │             \
+  \                              │ heavy_naive, and heavy_memory. This needs to be\
+  \ set in order to use  │\n       │                                           │ provided\
+  \ genomic templates/model                                     │\n       ├───────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                           │                          \
+  \                                            │\n       │-species speciesname   \
+  \                    │ Selects a species from the set of predefined species. Possible\
+  \       │\n       │                                           │ values are: human.This\
+  \ needs to be set in order to use provided      │\n       │                    \
+  \                       │ genomic templates/model                              \
+  \                │\n       ├───────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                           │                          \
+  \                                            │\n       │-set_genomic --*gene* /path/to/file.fasta\
+  \  │ Set a set of custom genomic templates for gene gene (possible values │\n  \
+  \     │                                           │ are --V,--D and --J) with a\
+  \ list of genomic templates contained in   │\n       │                         \
+  \                  │ the file /path/to/file.fasta in fasta format. If the set of\
+  \ provided │\n       │                                           │ genomic templates\
+  \ is already fully contained (same name and same     │\n       │               \
+  \                            │ sequence) in the loaded model (default, custom, last_inferred),\
+  \ the  │\n       │                                           │ missing ones will\
+  \ be set to zero probability keeping the ratios of   │\n       │               \
+  \                            │ the others. For instance providing only one already\
+  \ known genomic    │\n       │                                           │ template\
+  \ will result in a model with the considered gene usage to be │\n       │      \
+  \                                     │ 1.0, all others set to 0.0. When using this\
+  \ option and introducing   │\n       │                                         \
+  \  │ new/modified genomic templates, the user will need to re-infer a     │\n  \
+  \     │                                           │ model since the genomic templates\
+  \ will no longer correspond to the   │\n       │                               \
+  \            │ ones contained in the reference models, the model parameters are\
+  \     │\n       │                                           │ thus automatically\
+  \ reset to a uniform distribution.                  │\n       ├───────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                           │                          \
+  \                                            │\n       │-set_CDR3_anchors --*gene*\
+  \                 │ Load a semicolon separated file containing the indices/offset\
+  \ of the │\n       │                                           │ CDR3 anchors for\
+  \ the gene(--V or --J). The index should correspond   │\n       │              \
+  \                             │ to the first letter of the cysteine (for V) or \
+  \                      │\n       │                                           │ tryptophan/phenylalanin\
+  \ (for J) for the nucleotide sequence of the   │\n       │                     \
+  \                      │ gene. Indices are 0 based.                            \
+  \               │\n       ├───────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                           │                          \
+  \                                            │\n       │-set_custom_model /path/to/model_parms.txt\
+  \ │ Use a custom model as a baseline for inference or evaluation. Note   │\n   \
+  \    │/path/to/model_marginals.txt               │ that this will override custom\
+  \ genomic templates for inference and   │\n       │                            \
+  \               │ evaluation. Alternatively, providing only the model parameters\
+  \ file  │\n       │                                           │ will lead IGoR to\
+  \ create model marginals initialized to a uniform    │\n       │               \
+  \                            │ distribution.                                   \
+  \                     │\n       ├───────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                           │                          \
+  \                                            │\n       │-load_last_inferred    \
+  \                    │ Using this command will load the last inferred model (folder\
+  \         │\n       │                                           │ inference/final_xx.txt)\
+  \ as a basis for a new inference, evaluation   │\n       │                     \
+  \                      │ or generation of synthetic sequences                  \
+  \               │\n       ├───────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                           │                          \
+  \                                            │\n       │-run_demo              \
+  \                    │ Runs the demo code on 300 sequences of 60bp TCRs (mostly\
+  \ a sanity    │\n       │                                           │ run check)\
+  \                                                           │\n       ├───────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                           │                          \
+  \                                            │\n       │-run_custom            \
+  \                    │ Runs the code inside the custom section of the main.cpp file\
+  \         │\n       ├───────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                           │                          \
+  \                                            │\n       │-subsample N           \
+  \                    │ Perform actions on a random subsample of N sequences. This\
+  \ flag will │\n       │                                           │ have different\
+  \ effects depending on the supplied commands: if the    │\n       │            \
+  \                               │ -read_seqs command is used, the resulting indexed\
+  \ sequence file will │\n       │                                           │ be\
+  \ a subsample of sequences contained in the original file. Else, if │\n       │\
+  \                                           │ the -align command is used the alignments\
+  \ will be performed on a     │\n       │                                       \
+  \    │ subsample of the indexed sequences. Else, if the -evaluate or -infer │\n\
+  \       │                                           │ command is used the inference\
+  \ will be run on a subsample of the      │\n       │                           \
+  \                │ indexed sequences. Obviously N should be < to the total number\
+  \ of    │\n       │                                           │ sequences available.\
+  \ The -subsample flag should be used in only one  │\n       │                  \
+  \                         │ command of a pipeline, see the Command example section\
+  \ for details.  │\n       └───────────────────────────────────────────┴──────────────────────────────────────────────────────────────────────┘\n\
+  \n   Alignment commands summary\n       Alignment of the sequences is performed\
+  \ upon detection of the -align switch in the command line. For each gene, alignment\
+  \ parameters can be set using --V,--D or --J. Specifying any of those three\n  \
+  \     argument will cause to align only the specified genes. In order to specify\
+  \ a set of parameters for all genes or force to align all genes the argument --all\
+  \ should be passed.\n\n       The complementarity-determining region (CDR3) of the\
+  \ aligned sequences is by default written on a file <batchname>_indexed_CDR3.csv\
+  \ in the aligns directory when --all is used. In case of separated\n       alignments\
+  \ the CDR3 file can be generated by using the --feature ---ntCDR3 option.\n\n  \
+  \     The arguments for setting the different parameters are given in the table\
+  \ below. If the considered sequences are nucleotide CDR3 sequences (delimited by\
+  \ its anchors on 3' and 5' sides) using the\n       command --ntCDR3 alignments\
+  \ will be performed using gene anchors information as offset bounds.\n\n       ┌────────────────────────────────────────────┬──────────────────────────────────────────────────────────────────────┐\n\
+  \       │                                            │                         \
+  \                                             │\n       │Command line argument \
+  \                      │ Description                                           \
+  \               │\n       ├────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                            │                         \
+  \                                             │\n       │---thresh X           \
+  \                      │ Sets the score threshold for the considered gene alignments\
+  \ to X.    │\n       │                                            │ Default is 50.0\
+  \ for V, 15.0 for D and 15.0 for J                     │\n       ├────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                            │                         \
+  \                                             │\n       │---matrix path/to/file\
+  \                      │ Sets the substitution matrix to the one given in the file.\
+  \ Must be   │\n       │                                            │ ',' delimited.\
+  \ Default is a NUC44 matrix with stronger penalty on    │\n       │            \
+  \                                │ errors (5,-14)                              \
+  \                         │\n       ├────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                            │                         \
+  \                                             │\n       │---gap_penalty X      \
+  \                      │ Sets the alignment gap penalty to X. Default is 50.0  \
+  \               │\n       ├────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                            │                         \
+  \                                             │\n       │---best_align_only    \
+  \                      │ If true only keep the best alignment for each gene/allele.\
+  \ If false  │\n       │                                            │ outputs all\
+  \ alignments above the score threshold. Default is true    │\n       │         \
+  \                                   │ for V and J, and false for D.            \
+  \                            │\n       ├────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                            │                         \
+  \                                             │\n       │---best_gene_only     \
+  \                      │ If true only keep alignments for best scoring gene candidate\
+  \ (or     │\n       │                                            │ candidates if\
+  \ several genes have the same maximum score). If false   │\n       │           \
+  \                                 │ outputs alignments for every aligned gene/allele.\
+  \ Default is false   │\n       │                                            │ for\
+  \ V, D and J.                                                      │\n       ├────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                            │                         \
+  \                                             │\n       │---offset_bounds M N  \
+  \                      │ Constrains the possible positions of the alignments. The\
+  \ offset is   │\n       │                                            │ defined as\
+  \ the position on the read to which the first nucleotide of │\n       │        \
+  \                                    │ the genomic template aligns (can be negative,\
+  \ e.g for V for which    │\n       │                                           \
+  \ │ most of the V is on the 5' of the read and cannot be seen). Default  │\n   \
+  \    │                                            │ values are -inf and +inf. If\
+  \ the --ntCDR3 command has been given     │\n       │                          \
+  \                  │ provided offset bounds values will be used for genes with missing\
+  \    │\n       │                                            │ CDR3 anchors positions.\
+  \                                              │\n       ├────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                            │                         \
+  \                                             │\n       │---template_spec_offset_bounds\
+  \ path/to/file │ Constrains the possible positions of the alignments differently\
+  \ for  │\n       │                                            │ each genomic template.\
+  \ The file should be a semi colon separated     │\n       │                    \
+  \                        │ file formated as follows: gene_name;min_offset;max_offset.\
+  \ If        │\n       │                                            │ entries are\
+  \ missing for some genes, values given with the            │\n       │         \
+  \                                   │ ---offset_bounds command will be used. If\
+  \ the --ntCDR3 command has   │\n       │                                       \
+  \     │ been given provided template specific offset bounds values will be   │\n\
+  \       │                                            │ used for genes with missing\
+  \ CDR3 anchors positions. If non template  │\n       │                         \
+  \                   │ specific entry is given for the considered gene, general offset\
+  \      │\n       │                                            │ bounds values will\
+  \ be used.                                          │\n       ├────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                                            │                         \
+  \                                             │\n       │---reversed_offsets   \
+  \                      │ If true provided offsets are accounted for reversed offsets.\
+  \         │\n       │                                            │ Reversed offsets\
+  \ are defined relative to the last nucleotide of the  │\n       │              \
+  \                              │ read instead of the first. Reversed offsets must\
+  \ be ⇐0 by            │\n       │                                            │ construction.\
+  \                                                        │\n       └────────────────────────────────────────────┴──────────────────────────────────────────────────────────────────────┘\n\
+  \n   Inference and evaluation commands\n       The inference is reached using the\
+  \ command -infer. Logs and models parameters values for each iteration will be created\
+  \ in the folder inference of the working directory (or batchname_inference if a\n\
+  \       batchname was supplied).\n\n       Sequence evaluation is reached using\
+  \ the command -evaluate. This is the same as performing an iteration of the Expectation-Maximization\
+  \ on the whole dataset and thus accepts the same arguments as\n       -infer for\
+  \ arguments related to the precision of the algorithm. The logs of the sequences\
+  \ evaluation are created in the folder evaluate (or batchname_evaluate if a batchname\
+  \ was supplied).\n\n       •   Note that -infer and -evaluate are mutually exclusive\
+  \ in the same command since it brings ambiguity reagarding which model should be\
+  \ used for each **\n\n       Optional parameters are the following:\n\n       ┌───────────────────────────────────────────┬─────────────────────────────────────────────────────┬────────────────────────┐\n\
+  \       │                                           │                          \
+  \                           │                        │\n       │Command line argument\
+  \                      │ Description                                         │ Available\
+  \ for          │\n       ├───────────────────────────────────────────┼─────────────────────────────────────────────────────┼────────────────────────┤\n\
+  \       │                                           │                          \
+  \                           │                        │\n       │--N_iter N     \
+  \                            │ Sets the number of EM iterations for the inference\
+  \  │ inference              │\n       │                                        \
+  \   │ to N                                                │                    \
+  \    │\n       ├───────────────────────────────────────────┼─────────────────────────────────────────────────────┼────────────────────────┤\n\
+  \       │                                           │                          \
+  \                           │                        │\n       │--L_thresh X   \
+  \                            │ Sets the sequence likelihood threshold to X.    \
+  \    │ inference & evaluation │\n       ├───────────────────────────────────────────┼─────────────────────────────────────────────────────┼────────────────────────┤\n\
+  \       │                                           │                          \
+  \                           │                        │\n       │--P_ratio_thresh\
+  \ X                         │ Sets the probability ratio threshold to X. This  \
+  \   │ inference & evaluation │\n       │                                       \
+  \    │ influences how much the tree of scenarios is        │                   \
+  \     │\n       │                                           │ pruned. Setting it\
+  \ 0.0 means exploring every        │                        │\n       │        \
+  \                                   │ possible scenario (exact but very slow), while\
+  \      │                        │\n       │                                    \
+  \       │ setting it to 1.0 only explores scenarios that are  │                \
+  \        │\n       │                                           │ more likely than\
+  \ the best scenario explored so far  │                        │\n       │      \
+  \                                     │ (very fast but inaccurate). This sets a\
+  \ trade off   │                        │\n       │                             \
+  \              │ between speed and accuracy, the best value is the   │         \
+  \               │\n       │                                           │ largest\
+  \ one for which the likelihood of the         │                        │\n     \
+  \  │                                           │ sequences almost doesn’t change\
+  \ when decreasing it  │                        │\n       │                     \
+  \                      │ further.                                            │ \
+  \                       │\n       ├───────────────────────────────────────────┼─────────────────────────────────────────────────────┼────────────────────────┤\n\
+  \       │                                           │                          \
+  \                           │                        │\n       │--MLSO         \
+  \                            │ Runs the algorithm in a Viterbi like fashion.   \
+  \    │ inference & evaluation │\n       │                                      \
+  \     │ Accounts for the Most Likely Scenario Only (as fast │                  \
+  \      │\n       │                                           │ as using a probability\
+  \ ratio threshold of 1.0)      │                        │\n       ├───────────────────────────────────────────┼─────────────────────────────────────────────────────┼────────────────────────┤\n\
+  \       │                                           │                          \
+  \                           │                        │\n       │--infer_only eventnickname1\
+  \ eventnickname2 │ During the inference only the parameters of the     │ inference\
+  \              │\n       │                                           │ events with\
+  \ nicknames listed will be updated. Note  │                        │\n       │ \
+  \                                          │ that not passing any event nickname\
+  \ will fix all    │                        │\n       │                         \
+  \                  │ events.                                             │     \
+  \                   │\n       ├───────────────────────────────────────────┼─────────────────────────────────────────────────────┼────────────────────────┤\n\
+  \       │                                           │                          \
+  \                           │                        │\n       │--not_infer eventnickname1\
+  \ eventnickname2  │ Opposite command to the one above, will fix the     │ inference\
+  \              │\n       │                                           │ parameters\
+  \ of the listed events                     │                        │\n       ├───────────────────────────────────────────┼─────────────────────────────────────────────────────┼────────────────────────┤\n\
+  \       │                                           │                          \
+  \                           │                        │\n       │--fix_err      \
+  \                            │ In the same vein as the two commands above, this\
+  \    │ inference              │\n       │                                      \
+  \     │ one will fix the parameters related to the error    │                  \
+  \      │\n       │                                           │ rate.           \
+  \                                    │                        │\n       └───────────────────────────────────────────┴─────────────────────────────────────────────────────┴────────────────────────┘\n\
+  \n   Outputs\n       Outputs or Counters in the C++ interface are scenario/sequence\
+  \ statistics, each individually presented below. They are all written in the output\
+  \ folder (or batchname_output if a batchname was\n       supplied).\n\n       In\
+  \ order to specify outputs use the -output argument, and detail the desired list\
+  \ of outputs. Outputs are tied to the exploration of scenarios and thus require\
+  \ to have -infer or -evaluate in the\n       same command. Note that although it\
+  \ might be interesting to track some outputs during the inference for debugging\
+  \ purposes, best practice would be to use it along with evaluation.\n\n       The\
+  \ different outputs are detailed in the next sections.\n\n       Python utility\
+  \ functions are provided to analyze these outputs in the pygor.counters submodule.\n\
+  \n   Best scenarios\n       Output the N best scenarios for each sequence\n\n  \
+  \     Use command --scenarios N\n\n       The output of this Counter is a semicolon\
+  \ separated values file with one field for each event realization, associated mismatches/errors/mutations\
+  \ indices on the read, the scenario rank, its\n       associated probability and\
+  \ the sequence index. Python functions to parse the output of the Best scenario\
+  \ counter can be found in the pygor.counters.bestscenarios submodule.\n\n   Generation\
+  \ probability\n       Estimates the probability of generation of the error free/unmutated\
+  \ ancestor sequence By default only outputs an estimator of the probability of generation\
+  \ of the ancestor sequence underlying each\n       sequencing read. See IGoR’s paper\
+  \ <https://www.nature.com/articles/s41467-018-02832-w> for details.\n\n       Use\
+  \ command --Pgen\n\n   Coverage\n       Counts for each genomic nucleotide how many\
+  \ times it has been seen and how many times it was mutated/erroneous\n\n       Use\
+  \ command --coverage\n\n   Sequence generation commands\n       Reached using the\
+  \ command -generate N where N is the number of sequences to be generated. The number\
+  \ of sequences to generate must be passed before optional arguments. Optional parameters\
+  \ are the\n       following:\n\n       ┌──────────────────────┬──────────────────────────────────────────────────────────────────────┐\n\
+  \       │                      │                                               \
+  \                       │\n       │Command line argument │ Description         \
+  \                                                 │\n       ├──────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                      │                                               \
+  \                       │\n       │--noerr               │ Generate sequences without\
+  \ sequencing error (the rate and the way    │\n       │                      │ those\
+  \ errors are generated is controlled by the model error rate)    │\n       ├──────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                      │                                               \
+  \                       │\n       │ --CDR3               │ Outputs nucleotide CDR3\
+  \ from generated sequences. The file contains  │\n       │                     \
+  \ │ three fields: CDR3 nucleotide sequence, whether the CDR3 anchors     │\n   \
+  \    │                      │ were found (if erroneous/mutated) and whether the\
+  \ sequence is        │\n       │                      │ inframe or not. Gene anchors\
+  \ are not yet defined for all the default │\n       │                      │ models\
+  \ shipped with IGoR, use -set_CDR3_anchors to set them.         │\n       ├──────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                      │                                               \
+  \                       │\n       │--name myname         │ Prefix for the generated\
+  \ sequences filenames. Note that setting the  │\n       │                      │\
+  \ batchname will change the generated sequences folder name, while     │\n     \
+  \  │                      │ setting --name will change the file names.         \
+  \                  │\n       ├──────────────────────┼──────────────────────────────────────────────────────────────────────┤\n\
+  \       │                      │                                               \
+  \                       │\n       │--seed X              │ Impose X as a seed for\
+  \ the random sequence generator. By default a   │\n       │                    \
+  \  │ random seed is obtained from the system.                             │\n  \
+  \     └──────────────────────┴──────────────────────────────────────────────────────────────────────┘\n\
+  \nCONTACT\n       For any question or issue please open an issue <https://github.com/qmarcou/IGoR/issues>\
+  \ or email us <quentin.marcou@lpt.ens.fr>.\n\nCOPYING\n       Free use of IGoR is\
+  \ granted under the terms of the GNU General Public License version 3 <https://www.gnu.org/licenses/quick-guide-gplv3.html>\
+  \ (GPLv3).\n\n                                                                 \
+  \                                 2020-04-11                                   \
+  \                                                       IGOR(1)\n"
+generated_using:
+- -h

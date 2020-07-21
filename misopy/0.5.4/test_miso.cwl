@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/test_miso.cwl
+id: ../../../test_miso.cwl
 inputs:
 - id: verbose
   doc: Verbose output

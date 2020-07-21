@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CIRCexplorer.py.cwl
+id: ../../../CIRCexplorer.py.cwl
 inputs:
 - id: fusion
   doc: TopHat-Fusion fusion BAM file. (used in TopHat-Fusion mapping)

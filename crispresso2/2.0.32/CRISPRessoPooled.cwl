@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CRISPRessoPooled.cwl
+id: ../../../CRISPRessoPooled.cwl
 inputs:
 - id: fast_q_r_one
   doc: 'First fastq file (default: Fastq filename)'

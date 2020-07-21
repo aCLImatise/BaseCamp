@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/interop_index_summary.cwl
+id: ../../../interop_index_summary.cwl
 inputs:
 - id: csv
   doc: '[0]: Format output as CSV only'

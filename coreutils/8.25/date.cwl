@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/date.cwl
+id: ../../../date.cwl
 inputs:
 - id: date
   doc: display time described by STRING, not 'now'

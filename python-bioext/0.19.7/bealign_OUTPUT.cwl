@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bealign_OUTPUT.cwl
+id: ../../../bealign_OUTPUT.cwl
 inputs:
 - id: r
   doc: ''

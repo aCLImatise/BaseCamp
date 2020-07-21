@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paraSync.cwl
+id: ../../../paraSync.cwl
 inputs:
 - id: means_accept_files
   doc: ='ext1,ext2'  means accept only files with ext1 or ext2

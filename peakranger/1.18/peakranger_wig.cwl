@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/peakranger_wig.cwl
+id: ../../../peakranger_wig.cwl
 inputs:
 - id: arg_data_file
   doc: '[ --data ] arg               data file'

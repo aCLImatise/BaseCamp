@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_mask_maskfile.cwl
+id: ../../../ssu_esl_mask_maskfile.cwl
 inputs:
 - id: ssu_esl_mask
   doc: ''

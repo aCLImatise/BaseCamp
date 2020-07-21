@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DetectBeadSubstitutionErrors.cwl
+id: ../../../DetectBeadSubstitutionErrors.cwl
 inputs:
 - id: default_g
   doc: (default 4g)

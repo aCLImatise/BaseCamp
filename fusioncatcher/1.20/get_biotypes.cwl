@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_biotypes.py.cwl
+id: ../../../get_biotypes.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the genes biotypes are downloaded, e.g.

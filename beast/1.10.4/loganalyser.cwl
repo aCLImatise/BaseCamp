@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/loganalyser.cwl
+id: ../../../loganalyser.cwl
 inputs:
 - id: burnin
   doc: number of states to be considered as 'burn-in'

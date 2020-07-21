@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fpa_rename_SUBCOMMAND.cwl
+id: ../../../fpa_rename_SUBCOMMAND.cwl
 inputs:
 - id: input
   doc: ''

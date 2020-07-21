@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/single_sample_post_analysis.cwl
+id: ../../../single_sample_post_analysis.cwl
 inputs:
 - id: seed
   doc: Seed to initialize the pseudo-random generator used to perform the permutation

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_prepare_reference.cwl
+id: ../../../rsem_prepare_reference.cwl
 inputs:
 - id: gtf
   doc: "If this option is on, RSEM assumes that 'reference_fasta_file(s)' contains\

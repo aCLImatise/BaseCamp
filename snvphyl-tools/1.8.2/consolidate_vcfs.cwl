@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/consolidate_vcfs.pl.cwl
+id: ../../../consolidate_vcfs.pl.cwl
 inputs:
 - id: snv_abundance_ratio
   doc: /opt/bcftools/bcftools

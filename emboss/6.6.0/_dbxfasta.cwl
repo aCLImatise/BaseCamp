@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_dbxfasta.cwl
+id: ../../../_dbxfasta.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

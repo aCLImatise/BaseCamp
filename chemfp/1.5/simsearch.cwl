@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simsearch.cwl
+id: ../../../simsearch.cwl
 inputs:
 - id: k_nearest
   doc: select the k nearest neighbors (use 'all' for all neighbors)

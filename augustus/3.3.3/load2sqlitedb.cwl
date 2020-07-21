@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/load2sqlitedb.cwl
+id: ../../../load2sqlitedb.cwl
 inputs:
 - id: species
   doc: ''

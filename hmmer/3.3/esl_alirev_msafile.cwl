@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_alirev_msafile.cwl
+id: ../../../esl_alirev_msafile.cwl
 inputs:
 - id: options
   doc: ''

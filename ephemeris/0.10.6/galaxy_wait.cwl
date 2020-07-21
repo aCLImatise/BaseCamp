@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/galaxy_wait.cwl
+id: ../../../galaxy_wait.cwl
 inputs:
 - id: timeout
   doc: Galaxy startup timeout in seconds. The default value of 0 waits forever

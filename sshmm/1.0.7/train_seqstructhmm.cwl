@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/train_seqstructhmm.cwl
+id: ../../../train_seqstructhmm.cwl
 inputs:
 - id: motif_length
   doc: 'length of the motif that shall be found (default: 6)'

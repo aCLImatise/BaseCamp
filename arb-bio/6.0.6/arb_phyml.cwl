@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_phyml.cwl
+id: ../../../arb_phyml.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maskFastaFromBed.cwl
+id: ../../../maskFastaFromBed.cwl
 inputs:
 - id: fi
   doc: Input FASTA file

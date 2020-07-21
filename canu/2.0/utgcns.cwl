@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/utgcns.cwl
+id: ../../../utgcns.cwl
 inputs:
 - id: write_computed_tigs_binary
   doc: Write computed tigs to binary output file 'results'

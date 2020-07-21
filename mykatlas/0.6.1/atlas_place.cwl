@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/atlas_place.cwl
+id: ../../../atlas_place.cwl
 inputs:
 - id: db_name
   doc: ''

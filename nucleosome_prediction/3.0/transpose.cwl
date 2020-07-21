@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transpose.pl.cwl
+id: ../../../transpose.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

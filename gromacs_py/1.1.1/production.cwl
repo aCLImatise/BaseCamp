@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/production.py.cwl
+id: ../../../production.py.cwl
 inputs:
 - id: input_pdb_file
   doc: Input PDB file

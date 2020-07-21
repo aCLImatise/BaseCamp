@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastacmd.cwl
+id: ../../../fastacmd.cwl
 inputs:
 - id: dump_entire_database
   doc: 'Dump the entire database as (default is not to dump anything): 1 FASTA 2 Gi

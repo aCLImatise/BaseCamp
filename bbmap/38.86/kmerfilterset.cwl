@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kmerfilterset.sh.cwl
+id: ../../../kmerfilterset.sh.cwl
 inputs:
 - id: in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bl_fasta2fastq.cwl
+id: ../../../bl_fasta2fastq.cwl
 inputs:
 - id: specify_fasta_files
   doc: specify multiple FASTA input files

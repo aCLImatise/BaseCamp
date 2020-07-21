@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_softclip_analyzer.cwl
+id: ../../../mb_softclip_analyzer.cwl
 inputs:
 - id: top_n
   doc: number of most commonly clipped sequences printed

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtools_copynumber.cwl
+id: ../../../svtools_copynumber.cwl
 inputs:
 - id: cnv_nator
   doc: '[-i <VCF>] [-o <PATH>] [-t <DIR>]'

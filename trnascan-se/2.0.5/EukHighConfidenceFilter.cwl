@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/EukHighConfidenceFilter.cwl
+id: ../../../EukHighConfidenceFilter.cwl
 inputs:
 - id: e_uk_quality_filter
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/refinem_outliers.cwl
+id: ../../../refinem_outliers.cwl
 inputs:
 - id: gc_perc
   doc: 'percentile for identify scaffolds with divergent GC content (default: 98)'

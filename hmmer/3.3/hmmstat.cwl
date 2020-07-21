@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmstat.cwl
+id: ../../../hmmstat.cwl
 inputs:
 - id: options
   doc: ''

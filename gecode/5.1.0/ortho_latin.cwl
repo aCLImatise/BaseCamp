@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ortho_latin.cwl
+id: ../../../ortho_latin.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

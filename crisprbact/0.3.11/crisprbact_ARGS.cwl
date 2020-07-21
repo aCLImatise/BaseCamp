@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crisprbact_ARGS.cwl
+id: ../../../crisprbact_ARGS.cwl
 inputs:
 - id: crisp_rb_act
   doc: ''

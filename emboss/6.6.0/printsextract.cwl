@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/printsextract.cwl
+id: ../../../printsextract.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

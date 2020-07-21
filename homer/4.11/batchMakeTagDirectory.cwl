@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/batchMakeTagDirectory.pl.cwl
+id: ../../../batchMakeTagDirectory.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

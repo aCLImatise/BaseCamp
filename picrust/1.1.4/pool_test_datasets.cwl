@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pool_test_datasets.py.cwl
+id: ../../../pool_test_datasets.py.cwl
 inputs:
 - id: trait_table_dir
   doc: the input trait table directory (files in biom format) [REQUIRED]

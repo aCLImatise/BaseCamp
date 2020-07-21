@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nucfreqsfasta.cwl
+id: ../../../nucfreqsfasta.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

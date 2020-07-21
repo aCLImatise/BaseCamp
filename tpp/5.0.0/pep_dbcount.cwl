@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pep_dbcount.cwl
+id: ../../../pep_dbcount.cwl
 inputs:
 - id: digest_db_output
   doc: ''

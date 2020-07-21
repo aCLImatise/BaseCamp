@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generate_genes_with_no_proteins.py.cwl
+id: ../../../generate_genes_with_no_proteins.py.cwl
 inputs:
 - id: input
   doc: A text file containg all the information regarding exons, genes, proteins and

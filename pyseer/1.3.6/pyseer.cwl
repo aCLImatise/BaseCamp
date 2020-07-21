@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyseer.cwl
+id: ../../../pyseer.cwl
 inputs:
 - id: phenotypes
   doc: Phenotypes file (whitespace separated)

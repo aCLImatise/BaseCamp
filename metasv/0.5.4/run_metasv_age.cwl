@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_metasv_age.py.cwl
+id: ../../../run_metasv_age.py.cwl
 inputs:
 - id: reference
   doc: 'Reference FASTA (default: None)'

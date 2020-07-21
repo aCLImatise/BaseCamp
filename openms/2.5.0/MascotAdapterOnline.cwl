@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MascotAdapterOnline.cwl
+id: ../../../MascotAdapterOnline.cwl
 inputs:
 - id: in
   doc: "*        Input file in mzML format. (valid formats: 'mzML')"

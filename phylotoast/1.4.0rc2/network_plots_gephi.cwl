@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/network_plots_gephi.py.cwl
+id: ../../../network_plots_gephi.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

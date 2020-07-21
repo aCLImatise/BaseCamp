@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/meme_xml_to_html.cwl
+id: ../../../meme_xml_to_html.cwl
 inputs:
 - id: meme_xml_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/barriers.cwl
+id: ../../../barriers.cwl
 inputs:
 - id: detailed_help
   doc: Print help, including all details and hidden options, and exit

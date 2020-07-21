@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_treegen.cwl
+id: ../../../arb_treegen.cwl
 inputs:
 - id: cfg
   doc: ''

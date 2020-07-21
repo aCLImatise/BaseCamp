@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sga_scaffold2fasta.cwl
+id: ../../../sga_scaffold2fasta.cwl
 inputs:
 - id: verbose
   doc: display verbose output

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/check_mandatory_files.sh.cwl
+id: ../../../check_mandatory_files.sh.cwl
 inputs:
 - id: multiple
   doc: support multiple arguments and treat each as a NAME

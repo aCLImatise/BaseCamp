@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/urlget.cwl
+id: ../../../urlget.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RemovePseudoknots.cwl
+id: ../../../RemovePseudoknots.cwl
 inputs:
 - id: input_ct_file
   doc: ''

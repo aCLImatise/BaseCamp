@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/watchdog_formatCondaYaml.cwl
+id: ../../../watchdog_formatCondaYaml.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

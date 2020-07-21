@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdalsrsinfo.cwl
+id: ../../../gdalsrsinfo.cwl
 inputs:
 - id: srs_def
   doc: ''

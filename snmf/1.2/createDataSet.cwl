@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/createDataSet.cwl
+id: ../../../createDataSet.cwl
 inputs:
 - id: _genotype_file
   doc: -- genotype file (in .geno format)

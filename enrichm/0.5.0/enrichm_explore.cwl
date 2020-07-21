@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/enrichm_explore.cwl
+id: ../../../enrichm_explore.cwl
 inputs:
 - id: queries
   doc: '[--depth DEPTH]'

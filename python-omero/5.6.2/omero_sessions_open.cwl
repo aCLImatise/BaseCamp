@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_sessions_open.cwl
+id: ../../../omero_sessions_open.cwl
 inputs:
 - id: user_id
   doc: ID of the user

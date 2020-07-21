@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crimson_flagstat.cwl
+id: ../../../crimson_flagstat.cwl
 inputs:
 - id: input
   doc: ''

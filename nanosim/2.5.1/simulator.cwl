@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simulator.py_transcriptome.cwl
+id: ../../../simulator.py_transcriptome.cwl
 inputs:
 - id: ref_t
   doc: Input reference transcriptome

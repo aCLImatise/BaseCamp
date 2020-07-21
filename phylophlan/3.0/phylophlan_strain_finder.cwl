@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phylophlan_strain_finder.cwl
+id: ../../../phylophlan_strain_finder.cwl
 inputs:
 - id: input
   doc: 'Specify the file of the phylogenetic tree as generated from phylophlan.py

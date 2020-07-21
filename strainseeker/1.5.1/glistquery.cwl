@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/glistquery.cwl
+id: ../../../glistquery.cwl
 inputs:
 - id: stat
   doc: '- print statistics of the list file and exit'

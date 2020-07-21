@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnazCluster.pl.cwl
+id: ../../../rnazCluster.pl.cwl
 inputs:
 - id: loci
   doc: Set these flags to print information for ``windows" and/or ``loci" in the output.

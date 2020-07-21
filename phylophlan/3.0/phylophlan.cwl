@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phylophlan.cwl
+id: ../../../phylophlan.cwl
 inputs:
 - id: input
   doc: 'Folder containing your input genomes and/or proteomes (default: None)'

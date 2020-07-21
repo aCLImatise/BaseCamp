@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/workflow_install.cwl
+id: ../../../workflow_install.cwl
 inputs:
 - id: workflow_path
   doc: Path to a workflow file or a directory with multiple workflow files ending

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treeGen.cwl
+id: ../../../treeGen.cwl
 inputs:
 - id: spec_one
   doc: ''

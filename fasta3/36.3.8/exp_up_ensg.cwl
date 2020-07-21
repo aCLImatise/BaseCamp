@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/exp_up_ensg.pl.cwl
+id: ../../../exp_up_ensg.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

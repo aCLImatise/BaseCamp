@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BlibBuild.cwl
+id: ../../../BlibBuild.cwl
 inputs:
 - id: overwrite_existing_library
   doc: Overwrite existing library. Default append.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MSSimulator.cwl
+id: ../../../MSSimulator.cwl
 inputs:
 - id: in
   doc: "*       Input protein sequences (valid formats: 'FASTA')"

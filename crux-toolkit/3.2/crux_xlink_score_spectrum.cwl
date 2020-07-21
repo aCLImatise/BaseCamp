@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_xlink_score_spectrum.cwl
+id: ../../../crux_xlink_score_spectrum.cwl
 inputs:
 - id: peptide_a
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bxtools_split.cwl
+id: ../../../bxtools_split.cwl
 inputs:
 - id: verbose
   doc: 'Select verbosity level (0-4). Default: 0 '

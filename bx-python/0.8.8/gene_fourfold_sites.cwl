@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gene_fourfold_sites.py.cwl
+id: ../../../gene_fourfold_sites.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

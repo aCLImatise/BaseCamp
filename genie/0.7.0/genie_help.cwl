@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genie_help.cwl
+id: ../../../genie_help.cwl
 inputs:
 - id: flags
   doc: ''

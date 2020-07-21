@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/canu.cwl
+id: ../../../canu.cwl
 inputs:
 - id: pac_bio_hifi
   doc: '] file1 file2 ...'

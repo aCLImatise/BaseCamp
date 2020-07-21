@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hubward.cwl
+id: ../../../hubward.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

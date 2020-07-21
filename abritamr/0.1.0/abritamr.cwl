@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abritamr.cwl
+id: ../../../abritamr.cwl
 inputs:
 - id: mdu_qc
   doc: 'Set if running on MDU QC data. If set please provide the MDU QC .csv as further

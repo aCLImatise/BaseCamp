@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/add_transcript_feature_to_gtf.py.cwl
+id: ../../../add_transcript_feature_to_gtf.py.cwl
 inputs:
 - id: script
   doc: ''

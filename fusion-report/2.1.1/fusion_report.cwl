@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fusion_report.cwl
+id: ../../../fusion_report.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

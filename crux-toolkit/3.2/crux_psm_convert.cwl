@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_psm_convert.cwl
+id: ../../../crux_psm_convert.cwl
 inputs:
 - id: input_psm_file
   doc: ''

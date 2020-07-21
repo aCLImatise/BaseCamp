@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cbGuessGencode.cwl
+id: ../../../cbGuessGencode.cwl
 inputs:
 - id: debug
   doc: show debug messages

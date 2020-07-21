@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/packagemanager.cwl
+id: ../../../packagemanager.cwl
 inputs:
 - id: list
   doc: available packages

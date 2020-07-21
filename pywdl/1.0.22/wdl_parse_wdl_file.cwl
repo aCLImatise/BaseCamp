@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wdl_parse_wdl_file.cwl
+id: ../../../wdl_parse_wdl_file.cwl
 inputs:
 - id: debug
   doc: ''

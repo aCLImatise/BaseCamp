@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sim_reads_tran.cwl
+id: ../../../sim_reads_tran.cwl
 inputs:
 - id: error_rate
   doc: (=0.01)           error rate

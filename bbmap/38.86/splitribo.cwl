@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splitribo.sh.cwl
+id: ../../../splitribo.sh.cwl
 inputs:
 - id: in
   doc: ''

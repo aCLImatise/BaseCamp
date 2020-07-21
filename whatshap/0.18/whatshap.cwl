@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/whatshap.cwl
+id: ../../../whatshap.cwl
 inputs:
 - id: debug
   doc: Print debug messages

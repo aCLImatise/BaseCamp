@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tetramerfreq.sh.cwl
+id: ../../../tetramerfreq.sh.cwl
 inputs:
 - id: in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plass_nuclassemble.cwl
+id: ../../../plass_nuclassemble.cwl
 inputs:
 - id: alph_size
   doc: alphabet size (range 2-21) [5]

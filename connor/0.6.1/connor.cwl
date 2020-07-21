@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/connor.cwl
+id: ../../../connor.cwl
 inputs:
 - id: verbose
   doc: print all log messages to console

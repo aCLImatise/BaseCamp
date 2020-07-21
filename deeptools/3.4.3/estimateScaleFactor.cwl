@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/estimateScaleFactor.cwl
+id: ../../../estimateScaleFactor.cwl
 inputs:
 - id: bam_files
   doc: 'of bam files [list of bam files ...], -b list of bam files [list of bam files

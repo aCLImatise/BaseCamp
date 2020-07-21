@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trmap.cwl
+id: ../../../trmap.cwl
 inputs:
 - id: s
   doc: ''

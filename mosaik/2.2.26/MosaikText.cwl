@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MosaikText.cwl
+id: ../../../MosaikText.cwl
 inputs:
 - id: fast_q
   doc: stores the data in a FASTQ file

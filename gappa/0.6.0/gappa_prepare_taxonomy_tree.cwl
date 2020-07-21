@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gappa_prepare_taxonomy_tree.cwl
+id: ../../../gappa_prepare_taxonomy_tree.cwl
 inputs:
 - id: tax_on_list_file
   doc: :FILE File that maps taxon names to taxonomic paths.

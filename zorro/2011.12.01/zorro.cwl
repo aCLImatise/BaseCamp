@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/zorro.cwl
+id: ../../../zorro.cwl
 inputs:
 - id: filename
   doc: ''

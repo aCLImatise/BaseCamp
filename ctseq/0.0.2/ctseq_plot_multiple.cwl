@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ctseq_plot_multiple.cwl
+id: ../../../ctseq_plot_multiple.cwl
 inputs:
 - id: dir
   doc: Path to directory where you want your plots to be created. If no path is given,

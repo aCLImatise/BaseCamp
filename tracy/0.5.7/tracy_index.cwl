@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tracy_index.cwl
+id: ../../../tracy_index.cwl
 inputs:
 - id: arg_output_file
   doc: '[ --output ] arg (="genome.fm9")  output file'

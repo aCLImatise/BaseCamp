@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pancake_create.cwl
+id: ../../../pancake_create.cwl
 inputs:
 - id: sequences
   doc: fasta or multiple fasta file providing input chromosome sequences

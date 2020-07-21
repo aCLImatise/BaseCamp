@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lz4cat.cwl
+id: ../../../lz4cat.cwl
 inputs:
 - id: fast_compression_default
   doc: ': Fast compression (default) '

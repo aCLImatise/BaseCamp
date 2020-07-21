@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_scipio2grid.pl.cwl
+id: ../../../gaas_scipio2grid.pl.cwl
 inputs:
 - id: queue
   doc: you want to define a particular queue to run the jobs

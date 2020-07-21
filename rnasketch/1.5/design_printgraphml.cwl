@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/design_printgraphml.py.cwl
+id: ../../../design_printgraphml.py.cwl
 inputs:
 - id: graph_ml
   doc: Read graphml file with the given filename.

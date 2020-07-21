@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/test_gromacs_py.py.cwl
+id: ../../../test_gromacs_py.py.cwl
 inputs:
 - id: copy
   doc: box using genconf

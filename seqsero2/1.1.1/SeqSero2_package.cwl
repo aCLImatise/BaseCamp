@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SeqSero2_package.py.cwl
+id: ../../../SeqSero2_package.py.cwl
 inputs:
 - id: string_pathtoinputdata
   doc: '<string>: path/to/input_data'

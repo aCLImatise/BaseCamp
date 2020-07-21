@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segmentFst.cwl
+id: ../../../segmentFst.cwl
 inputs:
 - id: s
   doc: ''

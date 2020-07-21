@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scalpel_discovery.cwl
+id: ../../../scalpel_discovery.cwl
 inputs:
 - id: verbose
   doc: ': verbose mode'

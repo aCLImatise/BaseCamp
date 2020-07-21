@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CrossOut.cwl
+id: ../../../CrossOut.cwl
 inputs:
 - id: arg_one
   doc: ''

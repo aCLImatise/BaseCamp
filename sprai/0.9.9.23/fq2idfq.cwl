@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fq2idfq.pl.cwl
+id: ../../../fq2idfq.pl.cwl
 inputs:
 - id: this
   doc: ''

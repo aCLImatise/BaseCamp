@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_unjoined_pairs.pl.cwl
+id: ../../../extract_unjoined_pairs.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

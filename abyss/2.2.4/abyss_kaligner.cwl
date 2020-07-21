@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_kaligner.cwl
+id: ../../../abyss_kaligner.cwl
 inputs:
 - id: multimap
   doc: allow duplicate k-mer in the target

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flattenGTF.cwl
+id: ../../../flattenGTF.cwl
 inputs:
 - id: name_annotation_file
   doc: Name of an annotation file in GTF/GFF format.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nf_core_download.cwl
+id: ../../../nf_core_download.cwl
 inputs:
 - id: release
   doc: Pipeline release

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/longshot_FLAGS.cwl
+id: ../../../longshot_FLAGS.cwl
 inputs:
 - id: bam
   doc: ''

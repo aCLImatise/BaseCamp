@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_predict_peptide_ions.cwl
+id: ../../../crux_predict_peptide_ions.cwl
 inputs:
 - id: peptide_sequence
   doc: ''

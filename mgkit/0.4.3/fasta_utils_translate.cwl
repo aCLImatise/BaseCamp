@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_utils_translate.cwl
+id: ../../../fasta_utils_translate.cwl
 inputs:
 - id: trans_table
   doc: '[bac_plt|drs_mit|inv_mit|prt_mit|universal|vt_mit|yst_alt|yst_mit] translation

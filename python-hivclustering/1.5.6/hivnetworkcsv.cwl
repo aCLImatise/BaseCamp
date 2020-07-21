@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hivnetworkcsv.cwl
+id: ../../../hivnetworkcsv.cwl
 inputs:
 - id: i
   doc: ''

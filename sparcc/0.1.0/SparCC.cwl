@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SparCC.py.cwl
+id: ../../../SparCC.py.cwl
 inputs:
 - id: cor_file
   doc: File to which correlation matrix will be written.

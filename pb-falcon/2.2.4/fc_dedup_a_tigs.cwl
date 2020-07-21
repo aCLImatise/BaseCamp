@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_dedup_a_tigs.cwl
+id: ../../../fc_dedup_a_tigs.cwl
 inputs:
 - id: max_idt
   doc: 'Keep a-tig if the identity (in %) to the primary contig is <= max_idt (default:

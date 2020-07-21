@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyadam.cwl
+id: ../../../pyadam.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

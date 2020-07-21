@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/basename.cwl
+id: ../../../basename.cwl
 inputs:
 - id: multiple
   doc: support multiple arguments and treat each as a NAME

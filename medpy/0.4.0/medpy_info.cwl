@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_info.py.cwl
+id: ../../../medpy_info.py.cwl
 inputs:
 - id: display_more_information
   doc: Display more information.

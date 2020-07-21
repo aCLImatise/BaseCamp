@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools_sample.cwl
+id: ../../../bedtools_sample.cwl
 inputs:
 - id: number_generate_default
   doc: The number of records to generate. - Default = 1,000,000. - (INTEGER)

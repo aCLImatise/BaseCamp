@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_extract_sites.cwl
+id: ../../../mb_extract_sites.cwl
 inputs:
 - id: transition_from
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/multiBigwigSummary_BED_file.cwl
+id: ../../../multiBigwigSummary_BED_file.cwl
 inputs:
 - id: bw_files
   doc: 'FILE2 [FILE1 FILE2 ...], -b FILE1 FILE2 [FILE1 FILE2 ...] List of bigWig files,

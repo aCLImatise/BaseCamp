@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RILseq_significant_regions.py.cwl
+id: ../../../RILseq_significant_regions.py.cwl
 inputs:
 - id: genome
   doc: 'genome fasta file (default: None)'

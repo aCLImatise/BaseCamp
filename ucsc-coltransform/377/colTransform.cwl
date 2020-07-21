@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/colTransform.cwl
+id: ../../../colTransform.cwl
 inputs:
 - id: column
   doc: ''

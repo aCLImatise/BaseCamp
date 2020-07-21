@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/utrrnaseq.cwl
+id: ../../../utrrnaseq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

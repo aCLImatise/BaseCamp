@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/artic_demultiplex.cwl
+id: ../../../artic_demultiplex.cwl
 inputs:
 - id: q
   doc: ''

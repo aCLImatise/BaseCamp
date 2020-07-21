@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pgcgap.cwl
+id: ../../../pgcgap.cwl
 inputs:
 - id: universal_code
   doc: Universal code

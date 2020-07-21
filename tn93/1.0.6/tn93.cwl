@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tn93.cwl
+id: ../../../tn93.cwl
 inputs:
 - id: direct_output_file
   doc: direct the output to a file named OUTPUT (default=stdout)

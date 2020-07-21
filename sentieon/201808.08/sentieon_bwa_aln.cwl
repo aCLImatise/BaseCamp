@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sentieon_bwa_aln.cwl
+id: ../../../sentieon_bwa_aln.cwl
 inputs:
 - id: max_diff_int
   doc: 'max #diff (int) or missing prob under 0.02 err rate (float) [0.04]'

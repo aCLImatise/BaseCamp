@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_softclip_analyzer_bam_file.cwl
+id: ../../../mb_softclip_analyzer_bam_file.cwl
 inputs:
 - id: top_n
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ipa2_ovlp_to_graph.cwl
+id: ../../../ipa2_ovlp_to_graph.cwl
 inputs:
 - id: overlap_file
   doc: 'a file that contains the overlap information. (default: preads.m4)'

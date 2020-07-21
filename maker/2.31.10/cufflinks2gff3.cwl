@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cufflinks2gff3.cwl
+id: ../../../cufflinks2gff3.cwl
 inputs:
 - id: this
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cpat.py.cwl
+id: ../../../cpat.py.cwl
 inputs:
 - id: gene
   doc: "RNAs either in BED or FASTA format: If this is BED format file, '-r/--ref'\

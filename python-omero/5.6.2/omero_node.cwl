@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_node.cwl
+id: ../../../omero_node.cwl
 inputs:
 - id: foreground
   doc: Start in foreground mode (no daemon/service)

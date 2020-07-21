@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_trna.py.cwl
+id: ../../../get_trna.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the tRNA sequences are downloaded, e.g.

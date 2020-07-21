@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kclangctest.cwl
+id: ../../../kclangctest.cwl
 inputs:
 - id: rnd
   doc: ''

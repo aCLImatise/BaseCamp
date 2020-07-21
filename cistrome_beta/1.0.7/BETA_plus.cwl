@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BETA_plus.cwl
+id: ../../../BETA_plus.cwl
 inputs:
 - id: peak_file
   doc: The bed format of peaks binding sites.(BETA support 3 or 5 columns bed format,

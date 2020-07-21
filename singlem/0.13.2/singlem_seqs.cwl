@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/singlem_seqs.cwl
+id: ../../../singlem_seqs.cwl
 inputs:
 - id: debug
   doc: output debug information

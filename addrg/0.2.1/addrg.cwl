@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/addrg.cwl
+id: ../../../addrg.cwl
 inputs:
 - id: file_dot_bam
   doc: ''

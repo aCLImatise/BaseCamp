@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TBLASTN_hit_chainer.pl.cwl
+id: ../../../TBLASTN_hit_chainer.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

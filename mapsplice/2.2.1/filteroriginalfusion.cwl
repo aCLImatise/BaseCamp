@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filteroriginalfusion.cwl
+id: ../../../filteroriginalfusion.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

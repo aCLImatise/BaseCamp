@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/starchcat_float128.cwl
+id: ../../../starchcat_float128.cwl
 inputs:
 - id: note
   doc: ="foo bar..."   Append note to output archive metadata (optional).

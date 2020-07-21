@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genomedata_histogram.cwl
+id: ../../../genomedata_histogram.cwl
 inputs:
 - id: include_coords
   doc: limit summary to genomic coordinates in FILE

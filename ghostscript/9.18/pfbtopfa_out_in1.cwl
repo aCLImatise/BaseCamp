@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pfbtopfa_out_in1.cwl
+id: ../../../pfbtopfa_out_in1.cwl
 inputs:
 - id: pfb_top_fa
   doc: ''

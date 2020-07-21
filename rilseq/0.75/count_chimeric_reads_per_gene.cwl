@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/count_chimeric_reads_per_gene.py.cwl
+id: ../../../count_chimeric_reads_per_gene.py.cwl
 inputs:
 - id: only_first
   doc: 'Count only the first in fragment. (default: False)'

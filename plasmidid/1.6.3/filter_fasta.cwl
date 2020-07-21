@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_fasta.sh.cwl
+id: ../../../filter_fasta.sh.cwl
 inputs:
 - id: usage_message
   doc: usage message

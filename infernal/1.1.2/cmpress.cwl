@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cmpress.cwl
+id: ../../../cmpress.cwl
 inputs:
 - id: force_overwrite_files
   doc: ': force: overwrite any previous pressed files'

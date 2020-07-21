@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/orthomclAdjustFasta.cwl
+id: ../../../orthomclAdjustFasta.cwl
 inputs:
 - id: tax_on_code
   doc: ''

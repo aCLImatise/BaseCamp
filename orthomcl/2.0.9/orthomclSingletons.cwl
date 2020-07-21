@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/orthomclSingletons.cwl
+id: ../../../orthomclSingletons.cwl
 inputs:
 - id: good_proteins
   doc: ''

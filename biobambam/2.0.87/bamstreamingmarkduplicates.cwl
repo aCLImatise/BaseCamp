@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamstreamingmarkduplicates.cwl
+id: ../../../bamstreamingmarkduplicates.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

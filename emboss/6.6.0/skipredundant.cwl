@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/skipredundant.cwl
+id: ../../../skipredundant.cwl
 inputs:
 - id: mode
   doc: 'menu       [1] This option specifies whether to remove redundancy at a single

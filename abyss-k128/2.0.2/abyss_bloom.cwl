@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_bloom.cwl
+id: ../../../abyss_bloom.cwl
 inputs:
 - id: km_er
   doc: the size of a k-mer [required]

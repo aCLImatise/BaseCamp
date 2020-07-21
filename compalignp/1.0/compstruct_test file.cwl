@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compstruct_test file.cwl
+id: ../../../compstruct_test file.cwl
 inputs:
 - id: options
   doc: ''

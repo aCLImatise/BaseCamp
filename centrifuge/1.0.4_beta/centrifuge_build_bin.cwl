@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/centrifuge_build_bin.cwl
+id: ../../../centrifuge_build_bin.cwl
 inputs:
 - id: reference_sequences_given
   doc: reference sequences given on cmd line (as <reference_in>)

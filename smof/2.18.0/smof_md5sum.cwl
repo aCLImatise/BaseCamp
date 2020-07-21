@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof_md5sum.cwl
+id: ../../../smof_md5sum.cwl
 inputs:
 - id: ignore_case
   doc: convert all to uppercase, before hashing

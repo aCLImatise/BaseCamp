@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chewBBACA.py.cwl
+id: ../../../chewBBACA.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

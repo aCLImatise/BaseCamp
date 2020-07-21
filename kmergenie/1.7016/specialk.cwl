@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/specialk.cwl
+id: ../../../specialk.cwl
 inputs:
 - id: o
   doc: ''

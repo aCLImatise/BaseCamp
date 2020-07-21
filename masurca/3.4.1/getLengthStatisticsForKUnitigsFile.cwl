@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getLengthStatisticsForKUnitigsFile.perl.cwl
+id: ../../../getLengthStatisticsForKUnitigsFile.perl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnazWindow.pl.cwl
+id: ../../../rnazWindow.pl.cwl
 inputs:
 - id: both_strands
   doc: 'Output forward, reverse complement or both of the sequences in the windows.

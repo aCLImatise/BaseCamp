@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scorer.cwl
+id: ../../../scorer.cwl
 inputs:
 - id: predicted_ct
   doc: ''

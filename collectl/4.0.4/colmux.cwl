@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/colmux.cwl
+id: ../../../colmux.cwl
 inputs:
 - id: address
   doc: comma separated list of address to connect or filename

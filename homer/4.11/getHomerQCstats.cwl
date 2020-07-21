@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getHomerQCstats.pl.cwl
+id: ../../../getHomerQCstats.pl.cwl
 inputs:
 - id: mapping_tag_directors
   doc: (mapping between tag directors and alignment files)

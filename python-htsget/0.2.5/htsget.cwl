@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htsget.cwl
+id: ../../../htsget.cwl
 inputs:
 - id: verbose
   doc: Increase verbosity.

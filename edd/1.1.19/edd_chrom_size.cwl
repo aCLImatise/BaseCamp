@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/edd_chrom_size.cwl
+id: ../../../edd_chrom_size.cwl
 inputs:
 - id: bin_size
   doc: ''

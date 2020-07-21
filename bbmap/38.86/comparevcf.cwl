@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/comparevcf.sh.cwl
+id: ../../../comparevcf.sh.cwl
 inputs:
 - id: in
   doc: ''

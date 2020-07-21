@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jannovar_db_list.cwl
+id: ../../../jannovar_db_list.cwl
 inputs:
 - id: data_source_list
   doc: INI file with data source list

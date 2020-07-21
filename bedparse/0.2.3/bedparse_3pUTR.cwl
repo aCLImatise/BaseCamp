@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedparse_3pUTR.cwl
+id: ../../../bedparse_3pUTR.cwl
 inputs:
 - id: bed_file
   doc: Path to the BED file.

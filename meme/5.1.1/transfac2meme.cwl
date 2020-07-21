@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transfac2meme.cwl
+id: ../../../transfac2meme.cwl
 inputs:
 - id: rna
   doc: output an RNA database instead of a DNA database.

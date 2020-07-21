@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/STAR.py.cwl
+id: ../../../STAR.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

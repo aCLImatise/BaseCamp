@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnaclustCleanAln.pl.cwl
+id: ../../../rnaclustCleanAln.pl.cwl
 inputs:
 - id: rna_clust_gen_report_do_tpl
   doc: ''

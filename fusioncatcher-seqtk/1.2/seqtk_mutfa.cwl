@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqtk_mutfa.cwl
+id: ../../../seqtk_mutfa.cwl
 inputs:
 - id: in_dot_fa
   doc: ''

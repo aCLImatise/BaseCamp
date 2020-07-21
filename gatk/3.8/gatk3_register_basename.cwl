@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gatk3_register_basename.cwl
+id: ../../../gatk3_register_basename.cwl
 inputs:
 - id: g_atk_three_register
   doc: ''

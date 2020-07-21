@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bolt_vcf_venn.cwl
+id: ../../../bolt_vcf_venn.cwl
 inputs:
 - id: file_path
   doc: VCF files (*require at 3 files)

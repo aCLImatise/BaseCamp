@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Aquila_stLFR_clean.cwl
+id: ../../../Aquila_stLFR_clean.cwl
 inputs:
 - id: assembly_dir
   doc: assembly folder

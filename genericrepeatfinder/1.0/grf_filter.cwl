@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/grf_filter.cwl
+id: ../../../grf_filter.cwl
 inputs:
 - id: min_tr_len
   doc: ''

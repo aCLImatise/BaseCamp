@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plotkmers.cwl
+id: ../../../plotkmers.cwl
 inputs:
 - id: plot_filename
   doc: Kmer to use, depends on read length [kmerplot.png]

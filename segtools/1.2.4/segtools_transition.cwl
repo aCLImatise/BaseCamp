@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segtools_transition.cwl
+id: ../../../segtools_transition.cwl
 inputs:
 - id: clobber
   doc: Overwrite any existing output files.

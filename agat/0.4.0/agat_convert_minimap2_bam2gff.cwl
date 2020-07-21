@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_convert_minimap2_bam2gff.pl.cwl
+id: ../../../agat_convert_minimap2_bam2gff.pl.cwl
 inputs:
 - id: input
   doc: Input file in sam (.sam extension) or bam (.bam extension) format.

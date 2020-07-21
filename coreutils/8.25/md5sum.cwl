@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/md5sum.cwl
+id: ../../../md5sum.cwl
 inputs:
 - id: binary
   doc: read in binary mode

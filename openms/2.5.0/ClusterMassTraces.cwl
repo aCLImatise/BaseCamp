@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ClusterMassTraces.cwl
+id: ../../../ClusterMassTraces.cwl
 inputs:
 - id: in
   doc: "*                        Mass traces (valid formats: 'consensusXML')"

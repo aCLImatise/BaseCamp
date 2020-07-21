@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_post_bundles_checkout.cwl
+id: ../../../hca_dss_post_bundles_checkout.cwl
 inputs:
 - id: destination
   doc: User-owned destination storage bucket.

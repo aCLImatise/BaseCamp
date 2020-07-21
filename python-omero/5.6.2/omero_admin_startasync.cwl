@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_admin_startasync.cwl
+id: ../../../omero_admin_startasync.cwl
 inputs:
 - id: force_rewrite
   doc: Force the configuration to be rewritten before checking the server status

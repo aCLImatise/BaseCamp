@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/starcode.cwl
+id: ../../../starcode.cwl
 inputs:
 - id: dist
   doc: ': maximum Levenshtein distance (default auto)'

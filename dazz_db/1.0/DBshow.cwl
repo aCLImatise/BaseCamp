@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DBshow.cwl
+id: ../../../DBshow.cwl
 inputs:
 - id: unq_uq
   doc: ''

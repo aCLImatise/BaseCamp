@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_build.cwl
+id: ../../../ssu_build.cwl
 inputs:
 - id: commandline_argument_default
   doc: ': command-line argument is a default ssu-align-0.1 seed alignment'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RNAshapes_sample_nodangle.cwl
+id: ../../../RNAshapes_sample_nodangle.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

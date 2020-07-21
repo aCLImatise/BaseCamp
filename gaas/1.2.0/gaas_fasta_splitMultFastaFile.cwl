@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_fasta_splitMultFastaFile.sh.cwl
+id: ../../../gaas_fasta_splitMultFastaFile.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

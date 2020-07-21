@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PeakPickerWavelet.cwl
+id: ../../../PeakPickerWavelet.cwl
 inputs:
 - id: in
   doc: "*        Input profile data file  (valid formats: 'mzML')"

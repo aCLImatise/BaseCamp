@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/meraculous4h.pl.cwl
+id: ../../../meraculous4h.pl.cwl
 inputs:
 - id: options
   doc: ''

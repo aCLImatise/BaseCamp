@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mech_dump.cwl
+id: ../../../mech_dump.cwl
 inputs:
 - id: headers
   doc: Dump HTTP response headers

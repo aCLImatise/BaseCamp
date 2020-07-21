@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/atropos.cwl
+id: ../../../atropos.cwl
 inputs:
 - id: a
   doc: ''

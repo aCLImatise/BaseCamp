@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prokka.cwl
+id: ../../../prokka.cwl
 inputs:
 - id: citation
   doc: Print citation for referencing Prokka

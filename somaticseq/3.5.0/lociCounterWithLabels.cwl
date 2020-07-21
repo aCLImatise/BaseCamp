@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lociCounterWithLabels.py.cwl
+id: ../../../lociCounterWithLabels.py.cwl
 inputs:
 - id: fai_file
   doc: '.fa.fai file (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pauvre.cwl
+id: ../../../pauvre.cwl
 inputs:
 - id: v
   doc: ''

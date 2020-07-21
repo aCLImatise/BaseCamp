@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TQSexport.py.cwl
+id: ../../../TQSexport.py.cwl
 inputs:
 - id: consec
   doc: Minimum number of consecutive bases passing threshold values (default=20)

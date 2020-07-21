@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_tcode.cwl
+id: ../../../_tcode.cwl
 inputs:
 - id: window
   doc: integer    [200] This is the number of nucleotide bases over which the TESTCODE

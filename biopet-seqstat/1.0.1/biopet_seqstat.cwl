@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biopet_seqstat.cwl
+id: ../../../biopet_seqstat.cwl
 inputs:
 - id: seq_stat
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shorah.cwl
+id: ../../../shorah.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

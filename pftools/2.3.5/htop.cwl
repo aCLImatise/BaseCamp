@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htop.cwl
+id: ../../../htop.cwl
 inputs:
 - id: emulate_search_hmmer
   doc: ': emulate HMM fragment search (HMMER1 specific).'

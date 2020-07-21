@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cksum.cwl
+id: ../../../cksum.cwl
 inputs:
 - id: file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nseg_locut.cwl
+id: ../../../nseg_locut.cwl
 inputs:
 - id: ns_eg
   doc: ''

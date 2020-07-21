@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iterative_cdhit.cwl
+id: ../../../iterative_cdhit.cwl
 inputs:
 - id: input_fasta_file
   doc: input FASTA file of protein sequences [_combined_files]

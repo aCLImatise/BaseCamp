@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tbprofiler_rank_mutations.py.cwl
+id: ../../../tbprofiler_rank_mutations.py.cwl
 inputs:
 - id: samples
   doc: 'NGS Platform (default: None)'

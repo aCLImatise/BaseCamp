@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/yamllint.cwl
+id: ../../../yamllint.cwl
 inputs:
 - id: config_file
   doc: path to a custom configuration

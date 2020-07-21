@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/enasearch_retrieve_taxons.cwl
+id: ../../../enasearch_retrieve_taxons.cwl
 inputs:
 - id: ids
   doc: Ids for taxon to return [multiple]  [required]

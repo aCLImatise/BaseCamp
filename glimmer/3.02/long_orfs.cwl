@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/long_orfs.cwl
+id: ../../../long_orfs.cwl
 inputs:
 - id: stop_codons
   doc: 'Use comma-separated list of codons as stop codons Sample format:  -Z tag,tga,taa'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedpetovcf.cwl
+id: ../../../bedpetovcf.cwl
 inputs:
 - id: bed_pe
   doc: 'BEDPE input (default: stdin)'

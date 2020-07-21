@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xcmp.cwl
+id: ../../../xcmp.cwl
 inputs:
 - id: input_v_cfs
   doc: Two VCF files to compare (use file:sample  for a specific sample column).

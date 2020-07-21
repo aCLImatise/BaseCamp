@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/breakseq2_gen_bplib.py.cwl
+id: ../../../breakseq2_gen_bplib.py.cwl
 inputs:
 - id: reference
   doc: 'Reference FASTA (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/modeltest_ng.cwl
+id: ../../../modeltest_ng.cwl
 inputs:
 - id: datatype
   doc: sets the data type

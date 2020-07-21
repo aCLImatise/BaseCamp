@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tripaille_expression_add_biomaterial.cwl
+id: ../../../tripaille_expression_add_biomaterial.cwl
 inputs:
 - id: analysis_id
   doc: The id of the associated analysis. Required for TripalV3

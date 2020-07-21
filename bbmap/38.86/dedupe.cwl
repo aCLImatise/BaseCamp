@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dedupe.sh.cwl
+id: ../../../dedupe.sh.cwl
 inputs:
 - id: x_mx_two_zero_g
   doc: specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.

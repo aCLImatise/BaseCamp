@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/IDDecoyProbability.cwl
+id: ../../../IDDecoyProbability.cwl
 inputs:
 - id: in
   doc: "Identification input of combined forward decoy search (reindex with PeptideIndexer\

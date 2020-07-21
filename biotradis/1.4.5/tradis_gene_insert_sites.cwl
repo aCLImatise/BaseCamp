@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tradis_gene_insert_sites.cwl
+id: ../../../tradis_gene_insert_sites.cwl
 inputs:
 - id: outputsuffix_suffix_add
   doc: '|output_suffix     <suffix to add to output files (optional, default = tradis_gene_insert_sites.csv)>'

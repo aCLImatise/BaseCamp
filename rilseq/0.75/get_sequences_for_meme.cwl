@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_sequences_for_meme.py_outhead.cwl
+id: ../../../get_sequences_for_meme.py_outhead.cwl
 inputs:
 - id: p
   doc: ''

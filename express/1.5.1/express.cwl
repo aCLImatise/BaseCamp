@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/express.cwl
+id: ../../../express.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

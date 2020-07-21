@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/class_run.py.cwl
+id: ../../../class_run.py.cwl
 inputs:
 - id: clean
   doc: ''

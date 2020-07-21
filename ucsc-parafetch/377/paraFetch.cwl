@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paraFetch.cwl
+id: ../../../paraFetch.cwl
 inputs:
 - id: newer
   doc: only download a file if it is newer than the version we already have.

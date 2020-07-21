@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_lowest_common_ancestor.pl.cwl
+id: ../../../get_lowest_common_ancestor.pl.cwl
 inputs:
 - id: obo_input_file
   doc: OBO input file

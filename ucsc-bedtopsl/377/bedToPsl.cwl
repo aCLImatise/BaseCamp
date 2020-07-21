@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedToPsl.cwl
+id: ../../../bedToPsl.cwl
 inputs:
 - id: chrom_sizes
   doc: ''

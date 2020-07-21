@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bash5tools.py.cwl
+id: ../../../bash5tools.py.cwl
 inputs:
 - id: verbose
   doc: 'Set the verbosity level (default: None)'

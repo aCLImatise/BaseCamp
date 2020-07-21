@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/overlapSelect.cwl
+id: ../../../overlapSelect.cwl
 inputs:
 - id: dropped
   doc: '- output rows that were dropped to this file.'

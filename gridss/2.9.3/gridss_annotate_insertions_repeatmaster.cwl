@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gridss_annotate_insertions_repeatmaster.cwl
+id: ../../../gridss_annotate_insertions_repeatmaster.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

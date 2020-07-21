@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trimReads.cwl
+id: ../../../trimReads.cwl
 inputs:
 - id: path_read_store
   doc: path to read store

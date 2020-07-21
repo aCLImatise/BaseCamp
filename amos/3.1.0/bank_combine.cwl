@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bank_combine.cwl
+id: ../../../bank_combine.cwl
 inputs:
 - id: in_n
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fgendist.cwl
+id: ../../../fgendist.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

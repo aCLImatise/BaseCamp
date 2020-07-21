@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cutprimers.sh.cwl
+id: ../../../cutprimers.sh.cwl
 inputs:
 - id: in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cols.cwl
+id: ../../../cols.cwl
 inputs:
 - id: tab_view_do_tpy
   doc: ''

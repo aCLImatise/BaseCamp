@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makehist.cwl
+id: ../../../makehist.cwl
 inputs:
 - id: distfile
   doc: .dist    Score file to read (required).

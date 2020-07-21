@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mateclever.cwl
+id: ../../../mateclever.cwl
 inputs:
 - id: threads
   doc: Threads.

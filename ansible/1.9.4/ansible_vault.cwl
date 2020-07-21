@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ansible_vault.cwl
+id: ../../../ansible_vault.cwl
 inputs:
 - id: create_vertical_line_decrypt_vertical_line_edit_vertical_line_encrypt_vertical_line_re_key_vertical_line_view
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hartemink2psp.cwl
+id: ../../../hartemink2psp.cwl
 inputs:
 - id: mod
   doc: '|zoops|tcm   create MEME prior for given model default: zoops'

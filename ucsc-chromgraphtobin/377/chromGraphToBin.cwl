@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chromGraphToBin.cwl
+id: ../../../chromGraphToBin.cwl
 inputs:
 - id: in_dot_tab
   doc: ''

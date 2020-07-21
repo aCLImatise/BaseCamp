@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasttree.cwl
+id: ../../../fasttree.cwl
 inputs:
 - id: expert
   doc: -- see more options

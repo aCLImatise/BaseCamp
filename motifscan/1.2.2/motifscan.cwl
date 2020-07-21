@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/motifscan.cwl
+id: ../../../motifscan.cwl
 inputs:
 - id: v
   doc: ''

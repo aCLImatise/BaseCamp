@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dsh_traverse_paths.cwl
+id: ../../../dsh_traverse_paths.cwl
 inputs:
 - id: about
   doc: display about message [optional]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_sessions_login.cwl
+id: ../../../omero_sessions_login.cwl
 inputs:
 - id: timeout
   doc: Timeout for session. After this many inactive seconds, the session will be

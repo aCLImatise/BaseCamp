@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/yacrd.cwl
+id: ../../../yacrd.cwl
 inputs:
 - id: coverage
   doc: 'if coverage reach this value region is mark as bad [default: 0]'

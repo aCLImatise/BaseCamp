@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_ls.cwl
+id: ../../../gsutil_ls.cwl
 inputs:
 - id: prints_long_listing
   doc: Prints long listing (owner, length).

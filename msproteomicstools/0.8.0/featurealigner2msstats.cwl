@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/featurealigner2msstats.py.cwl
+id: ../../../featurealigner2msstats.py.cwl
 inputs:
 - id: align_two_ms_stats_do_tpy
   doc: ''

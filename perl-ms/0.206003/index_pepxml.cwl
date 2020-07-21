@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/index_pepxml.cwl
+id: ../../../index_pepxml.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

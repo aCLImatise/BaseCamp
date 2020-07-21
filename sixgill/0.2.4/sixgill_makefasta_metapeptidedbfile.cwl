@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sixgill_makefasta_metapeptidedbfile.cwl
+id: ../../../sixgill_makefasta_metapeptidedbfile.cwl
 inputs:
 - id: out
   doc: ''

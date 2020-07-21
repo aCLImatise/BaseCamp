@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdtools_DOWNLOAD.cwl
+id: ../../../gdtools_DOWNLOAD.cwl
 inputs:
 - id: login
   doc: Login user:password information for private server access.

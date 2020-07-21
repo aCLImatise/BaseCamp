@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedRestrictToPositions.cwl
+id: ../../../bedRestrictToPositions.cwl
 inputs:
 - id: in_dot_bed
   doc: ''

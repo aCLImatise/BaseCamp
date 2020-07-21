@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_fixmate.cwl
+id: ../../../abyss_fixmate.cwl
 inputs:
 - id: no_qname
   doc: set the qname to * [default]

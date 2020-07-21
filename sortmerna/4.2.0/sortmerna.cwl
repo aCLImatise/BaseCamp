@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sortmerna.cwl
+id: ../../../sortmerna.cwl
 inputs:
 - id: cmd
   doc: BOOL        Optional  Launch an interactive session (command prompt)          False

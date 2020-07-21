@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rebaseextract.cwl
+id: ../../../rebaseextract.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

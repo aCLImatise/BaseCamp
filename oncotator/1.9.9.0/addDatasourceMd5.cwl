@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/addDatasourceMd5.cwl
+id: ../../../addDatasourceMd5.cwl
 inputs:
 - id: ds_dir
   doc: datasource directory.  This should be the genome_build dir inside a datasource

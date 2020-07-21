@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_fastqread.cwl
+id: ../../../extract_fastqread.cwl
 inputs:
 - id: r
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BaselineFilter.cwl
+id: ../../../BaselineFilter.cwl
 inputs:
 - id: in
   doc: "*                Input raw data file  (valid formats: 'mzML')"

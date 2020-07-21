@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/var_agg.cwl
+id: ../../../var_agg.cwl
 inputs:
 - id: verbose
   doc: Increase verbosity

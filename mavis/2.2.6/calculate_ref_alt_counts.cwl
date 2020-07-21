@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/calculate_ref_alt_counts.cwl
+id: ../../../calculate_ref_alt_counts.cwl
 inputs:
 - id: output
   doc: Path to the output file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lilypad.sh.cwl
+id: ../../../lilypad.sh.cwl
 inputs:
 - id: in
   doc: ''

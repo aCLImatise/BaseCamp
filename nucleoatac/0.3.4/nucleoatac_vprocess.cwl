@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nucleoatac_vprocess.cwl
+id: ../../../nucleoatac_vprocess.cwl
 inputs:
 - id: sizes
   doc: Insert distribution file

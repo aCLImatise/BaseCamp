@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gatk3_register_SUFFIX.cwl
+id: ../../../gatk3_register_SUFFIX.cwl
 inputs:
 - id: g_atk_three_register
   doc: ''

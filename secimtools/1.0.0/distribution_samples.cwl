@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/distribution_samples.py.cwl
+id: ../../../distribution_samples.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qualfa2fq.pl.cwl
+id: ../../../qualfa2fq.pl.cwl
 inputs:
 - id: in_dot_fast_a
   doc: ''

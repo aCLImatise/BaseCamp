@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runcon.cwl
+id: ../../../runcon.cwl
 inputs:
 - id: compute
   doc: compute process transition context before modifying

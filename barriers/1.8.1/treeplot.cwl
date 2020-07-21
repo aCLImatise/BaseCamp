@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treeplot.pl.cwl
+id: ../../../treeplot.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

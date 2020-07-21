@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jalview.cwl
+id: ../../../jalview.cwl
 inputs:
 - id: open
   doc: ''

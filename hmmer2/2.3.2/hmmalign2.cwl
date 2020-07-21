@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmalign2.cwl
+id: ../../../hmmalign2.cwl
 inputs:
 - id: only_print_symbols
   doc: ': only print symbols aligned to match states'

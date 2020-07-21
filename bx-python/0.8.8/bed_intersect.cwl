@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bed_intersect.py.cwl
+id: ../../../bed_intersect.py.cwl
 inputs:
 - id: min_cols
   doc: Require this much overlap (default 1bp)

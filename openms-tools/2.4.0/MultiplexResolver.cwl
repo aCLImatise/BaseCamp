@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MultiplexResolver.cwl
+id: ../../../MultiplexResolver.cwl
 inputs:
 - id: in
   doc: "*            Peptide multiplets with assigned sequence information (valid\

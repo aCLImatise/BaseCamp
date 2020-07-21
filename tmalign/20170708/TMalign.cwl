@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TMalign.cwl
+id: ../../../TMalign.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

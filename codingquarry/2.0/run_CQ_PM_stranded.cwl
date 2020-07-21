@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_CQ_PM_stranded.sh.cwl
+id: ../../../run_CQ_PM_stranded.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

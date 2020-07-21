@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/contig_cleaner.cwl
+id: ../../../contig_cleaner.cwl
 inputs:
 - id: cut_off_length
   doc: Minimum acceptable contig length [2000]

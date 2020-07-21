@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_check.cwl
+id: ../../../fasta_check.cwl
 inputs:
 - id: qc
   doc: ''

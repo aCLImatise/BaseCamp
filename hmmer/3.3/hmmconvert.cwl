@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmconvert.cwl
+id: ../../../hmmconvert.cwl
 inputs:
 - id: ascii_output_models
   doc: ': ascii:  output models in HMMER3 ASCII format  [default]'

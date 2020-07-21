@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/import_igenome.cwl
+id: ../../../import_igenome.cwl
 inputs:
 - id: path
   doc: path to the desired genome tarball or directory to integrate

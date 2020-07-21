@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/albatradis_gene_reports.cwl
+id: ../../../albatradis_gene_reports.cwl
 inputs:
 - id: prefix
   doc: 'Output directory prefix (default: output)'

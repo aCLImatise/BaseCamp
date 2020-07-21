@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rdfgraphisomorphism.cwl
+id: ../../../rdfgraphisomorphism.cwl
 inputs:
 - id: stdin
   doc: Load from STDIN as well

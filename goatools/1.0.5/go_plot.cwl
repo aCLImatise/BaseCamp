@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/go_plot.py.cwl
+id: ../../../go_plot.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

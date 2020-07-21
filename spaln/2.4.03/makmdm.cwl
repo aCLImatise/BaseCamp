@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makmdm.cwl
+id: ../../../makmdm.cwl
 inputs:
 - id: _brosum_series
   doc: ':     Brosum series'

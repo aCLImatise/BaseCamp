@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gtf2gff.pl.cwl
+id: ../../../gtf2gff.pl.cwl
 inputs:
 - id: print_exon
   doc: print exon features (may include CDS and UTR parts)

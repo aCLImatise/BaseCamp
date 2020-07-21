@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_end_pairs.pl.cwl
+id: ../../../create_end_pairs.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

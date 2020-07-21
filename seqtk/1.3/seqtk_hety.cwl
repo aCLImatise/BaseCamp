@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqtk_hety.cwl
+id: ../../../seqtk_hety.cwl
 inputs:
 - id: window_size
   doc: window size [50000]

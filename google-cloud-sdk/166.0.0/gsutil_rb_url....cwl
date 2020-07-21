@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_rb_url....cwl
+id: ../../../gsutil_rb_url....cwl
 inputs:
 - id: continues_silently_printing
   doc: Continues silently (without printing error messages) despite errors when removing

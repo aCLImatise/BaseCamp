@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/process_reads_fasta.py.cwl
+id: ../../../process_reads_fasta.py.cwl
 inputs:
 - id: fast_an
   doc: ''

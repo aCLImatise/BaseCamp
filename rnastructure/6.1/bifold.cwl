@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bifold.cwl
+id: ../../../bifold.cwl
 inputs:
 - id: seq_file_one
   doc: ''

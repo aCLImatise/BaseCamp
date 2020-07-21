@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Linearize.cwl
+id: ../../../Linearize.cwl
 inputs:
 - id: b
   doc: ''

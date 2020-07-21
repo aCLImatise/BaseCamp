@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/loadTrimmedReads.cwl
+id: ../../../loadTrimmedReads.cwl
 inputs:
 - id: s
   doc: ''

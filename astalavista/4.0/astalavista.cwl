@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/astalavista.cwl
+id: ../../../astalavista.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

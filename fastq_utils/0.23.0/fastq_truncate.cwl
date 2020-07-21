@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_truncate.cwl
+id: ../../../fastq_truncate.cwl
 inputs:
 - id: fast_q_one
   doc: ''

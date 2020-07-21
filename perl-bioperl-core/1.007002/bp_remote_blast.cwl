@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_remote_blast.pl.cwl
+id: ../../../bp_remote_blast.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

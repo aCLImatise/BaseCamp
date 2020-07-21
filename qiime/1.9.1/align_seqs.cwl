@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/align_seqs.py.cwl
+id: ../../../align_seqs.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

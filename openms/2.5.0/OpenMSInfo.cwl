@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/OpenMSInfo.cwl
+id: ../../../OpenMSInfo.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

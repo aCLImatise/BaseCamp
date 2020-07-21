@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CRISPRessoPooled.cwl
+id: ../../../CRISPRessoPooled.cwl
 inputs:
 - id: trim_sequences
   doc: 'Enable the trimming of Illumina adapters with Trimmomatic (default: False)'

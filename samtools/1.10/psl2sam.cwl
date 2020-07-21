@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/psl2sam.pl.cwl
+id: ../../../psl2sam.pl.cwl
 inputs:
 - id: a
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msa2vcf.py.cwl
+id: ../../../msa2vcf.py.cwl
 inputs:
 - id: ref
   doc: 'reference name used for the CHROM column. Optional Default: chrUn'

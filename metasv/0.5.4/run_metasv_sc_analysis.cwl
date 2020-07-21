@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_metasv_sc_analysis.py.cwl
+id: ../../../run_metasv_sc_analysis.py.cwl
 inputs:
 - id: overlap_ratio
   doc: 'Reciprocal overlap ratio (default: 0.5)'

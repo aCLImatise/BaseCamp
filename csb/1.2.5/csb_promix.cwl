@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csb_promix.cwl
+id: ../../../csb_promix.cwl
 inputs:
 - id: components
   doc: Number of components (default=-1)

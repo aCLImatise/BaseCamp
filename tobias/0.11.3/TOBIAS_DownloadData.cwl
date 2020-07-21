@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TOBIAS_DownloadData.cwl
+id: ../../../TOBIAS_DownloadData.cwl
 inputs:
 - id: endpoint
   doc: 'Link to the s3 server (default: The loosolab s3 server)'

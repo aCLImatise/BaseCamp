@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spingo.cwl
+id: ../../../spingo.cwl
 inputs:
 - id: _version_information
   doc: '[ --version ]             get version information'

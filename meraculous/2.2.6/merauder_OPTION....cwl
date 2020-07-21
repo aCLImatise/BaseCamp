@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merauder_OPTION....cwl
+id: ../../../merauder_OPTION....cwl
 inputs:
 - id: max
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RNALalifold.cwl
+id: ../../../RNALalifold.cwl
 inputs:
 - id: span
   doc: Set the maximum allowed separation of a base  pair to span. I.e. no pairs (i,j)

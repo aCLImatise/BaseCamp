@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/addssu.sh.cwl
+id: ../../../addssu.sh.cwl
 inputs:
 - id: in
   doc: ''

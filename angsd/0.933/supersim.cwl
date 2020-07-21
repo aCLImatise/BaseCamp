@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/supersim.cwl
+id: ../../../supersim.cwl
 inputs:
 - id: out_files
   doc: PREFIX.seq PREFIX.glf PREFIX.frq PREFIX.arg

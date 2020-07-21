@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treemaker.cwl
+id: ../../../treemaker.cwl
 inputs:
 - id: output
   doc: output file

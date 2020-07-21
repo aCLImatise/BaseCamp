@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chado_export_gaf.cwl
+id: ../../../chado_export_gaf.cwl
 inputs:
 - id: verbose
   doc: verbose mode

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faToFastq.cwl
+id: ../../../faToFastq.cwl
 inputs:
 - id: qual
   doc: quality letter to use.  Default is '<' which is good I think....

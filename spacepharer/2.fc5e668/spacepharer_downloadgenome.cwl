@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spacepharer_downloadgenome.cwl
+id: ../../../spacepharer_downloadgenome.cwl
 inputs:
 - id: reverse_set_db
   doc: Create additional setDB with reversed fragments to compute under null [0,1]

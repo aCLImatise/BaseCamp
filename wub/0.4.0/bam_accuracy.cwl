@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam_accuracy.py.cwl
+id: ../../../bam_accuracy.py.cwl
 inputs:
 - id: bam_region_none
   doc: BAM region (None).

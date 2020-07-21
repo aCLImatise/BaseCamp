@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cmsip.cwl
+id: ../../../cmsip.cwl
 inputs:
 - id: config
   doc: Configuration file in YAML format.

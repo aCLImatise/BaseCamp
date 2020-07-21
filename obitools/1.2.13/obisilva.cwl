@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obisilva.cwl
+id: ../../../obisilva.cwl
 inputs:
 - id: debug
   doc: Set logging in debug mode

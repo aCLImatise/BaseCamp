@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_ssdraw_SS postscript template.cwl
+id: ../../../esl_ssdraw_SS postscript template.cwl
 inputs:
 - id: esl_ss_draw
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/reduce_sr.cwl
+id: ../../../reduce_sr.cwl
 inputs:
 - id: maximum_search_depth
   doc: Check at most this many possible containing SuperReads (100)

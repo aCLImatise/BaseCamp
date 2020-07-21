@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dsrc.cwl
+id: ../../../dsrc.cwl
 inputs:
 - id: dna_compression_mode
   doc: '<n>   : DNA compression mode: 0-3, default: 0'

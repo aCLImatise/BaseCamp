@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_fetch.cwl
+id: ../../../fasta_fetch.cwl
 inputs:
 - id: fast_a
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/twoBitMask.cwl
+id: ../../../twoBitMask.cwl
 inputs:
 - id: add
   doc: Don't remove pre-existing masking before applying maskFile.

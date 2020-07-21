@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ivar_consensus.cwl
+id: ../../../ivar_consensus.cwl
 inputs:
 - id: minimum_quality_score
   doc: 'Minimum quality score threshold to count base (Default: 20)'

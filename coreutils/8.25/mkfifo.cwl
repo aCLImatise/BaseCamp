@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mkfifo.cwl
+id: ../../../mkfifo.cwl
 inputs:
 - id: mode
   doc: set file permission bits to MODE, not a=rw - umask

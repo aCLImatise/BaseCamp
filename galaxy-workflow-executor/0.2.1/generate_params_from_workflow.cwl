@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generate_params_from_workflow.py.cwl
+id: ../../../generate_params_from_workflow.py.cwl
 inputs:
 - id: conf
   doc: A yaml file describing the galaxy credentials

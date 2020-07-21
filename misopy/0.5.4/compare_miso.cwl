@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compare_miso.cwl
+id: ../../../compare_miso.cwl
 inputs:
 - id: compare_samples
   doc: "Compute comparison statistics between the two given samples. Expects three\

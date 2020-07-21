@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/daijin.cwl
+id: ../../../daijin.cwl
 inputs:
 - id: a
   doc: ''

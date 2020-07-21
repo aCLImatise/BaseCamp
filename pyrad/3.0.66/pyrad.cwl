@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyrad.cwl
+id: ../../../pyrad.cwl
 inputs:
 - id: input_file_sample
   doc: input file for within sample filtering and clustering

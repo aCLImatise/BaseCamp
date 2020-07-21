@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tabix.cwl
+id: ../../../tabix.cwl
 inputs:
 - id: preset_gff_bed
   doc: 'preset: gff, bed, sam, vcf, psltbl [gff]'

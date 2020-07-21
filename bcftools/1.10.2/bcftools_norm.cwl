@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcftools_norm.cwl
+id: ../../../bcftools_norm.cwl
 inputs:
 - id: check_ref
   doc: check REF alleles and exit (e), warn (w), exclude (x), or set (s) bad sites

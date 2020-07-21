@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mapDamage.cwl
+id: ../../../mapDamage.cwl
 inputs:
 - id: input
   doc: SAM/BAM file, must contain a valid header, use '-' for reading a BAM from stdin

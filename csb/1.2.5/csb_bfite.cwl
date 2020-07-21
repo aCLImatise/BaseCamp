@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csb_bfite.cwl
+id: ../../../csb_bfite.cwl
 inputs:
 - id: chain
   doc: Chain (default=A)

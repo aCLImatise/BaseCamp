@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gtf2bed.pl.cwl
+id: ../../../gtf2bed.pl.cwl
 inputs:
 - id: input_gtf
   doc: ''

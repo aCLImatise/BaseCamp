@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pandaseq.cwl
+id: ../../../pandaseq.cwl
 inputs:
 - id: input_fastq_file_containing_forward
   doc: Input FASTQ file containing forward reads.

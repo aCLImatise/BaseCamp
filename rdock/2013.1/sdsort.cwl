@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sdsort.cwl
+id: ../../../sdsort.cwl
 inputs:
 - id: numeric_sort_default
   doc: numeric sort (default is text sort)

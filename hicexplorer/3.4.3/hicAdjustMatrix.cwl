@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicAdjustMatrix.cwl
+id: ../../../hicAdjustMatrix.cwl
 inputs:
 - id: chromosomes
   doc: List of chromosomes to keep / remove.

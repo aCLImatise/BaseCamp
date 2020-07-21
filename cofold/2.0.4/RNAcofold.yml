@@ -1,0 +1,208 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Print help, including all details and hidden  options, and exit
+  synonyms:
+  - --detailed-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print help, including hidden options, and exit
+  synonyms:
+  - --full-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Calculate structures subject to constraints. (default=off)
+  synonyms:
+  - -C
+  - --constraint
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not automatically substitude nucleotide  "T" with "U" (default=off)
+  synonyms:
+  - --noconv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not produce postscript output (default=off)
+  synonyms:
+  - --noPS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[=INT]          Calculate the partition function and base  pairing\
+    \ probability matrix in addition to the  mfe structure. Default is calculation\
+    \ of mfe  structure only. (default=`1')"
+  synonyms:
+  - -p
+  - --partfunc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compute the partition function and free  energies not only of the hetero-dimer  consisting
+    of the two input sequences (the  "AB dimer"), but also of the homo-dimers AA  and
+    BB as well as A and B monomers. (default=off)
+  synonyms:
+  - -a
+  - --all_pf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: In addition to everything listed under the -a  option, read in initial
+    monomer  concentrations and compute the expected  equilibrium concentrations of
+    the 5 possible  species (AB, AA, BB, A, B). (default=off)
+  synonyms:
+  - -c
+  - --concentrations
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify a file with initial concentrations for  the to sequences.
+  synonyms:
+  - -f
+  - --concfile
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: Rescale energy parameters to a temperature of  temp C. Default is 37C.
+  synonyms:
+  - -T
+  - --temp
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: Do not include special stabilizing energies for  certain tetra-loops.
+    Mostly for testing. (default=off)
+  synonyms:
+  - '-4'
+  - --noTetra
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: How to treat "dangling end" energies for  bases adjacent to helices
+    in free ends and  multi-loops (default=`2')
+  synonyms:
+  - -d
+  - --dangles
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Produce structures without lonely pairs  (helices of length 1). (default=off)
+  synonyms:
+  - --noLP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not allow GU pairs (default=off)
+  synonyms:
+  - --noGU
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not allow GU pairs at the end of helices (default=off)
+  synonyms:
+  - --noClosingGU
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Read energy parameters from paramfile, instead  of using the default
+    parameter set.
+  synonyms:
+  - -P
+  - --paramFile
+  args: !SimpleFlagArg
+    name: paramfile
+  optional: true
+command:
+- RNAcofold
+parent:
+subcommands: []
+help_flag: !Flag
+  description: Print help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "RNAcofold 2.0.4\n\ncalculate secondary structures of two RNAs with dimerization\n\
+  \nUsage: RNAcofold [OPTIONS]...\n\nThe program works much like RNAfold, but allows\
+  \ to specify two RNA sequences \nwich are then allowed to form a dimer structure.\
+  \ RNA sequences are read from \nstdin in the usual format, i.e. each line of input\
+  \ corresponds to one sequence, \nexcept for lines starting with \">\" which contain\
+  \ the name of the next \nsequence.\nTo compute the hybrid structure of two molecules,\
+  \ the two sequences must be \nconcatenated using the '&' character as separator.\n\
+  RNAcofold can compute minimum free energy (mfe) structures, as well as \npartition\
+  \ function (pf) and base pairing probability matrix (using the -p \nswitch)\nSince\
+  \ dimer formation is concentration dependent, RNAcofold can be used to \ncompute\
+  \ equilibrium concentrations for all five monomer and (homo/hetero)-dimer \nspecies,\
+  \ given input concentrations for the monomers.\nOutput consists of the mfe structure\
+  \ in bracket notation as well as PostScript \nstructure plots and \"dot plot\" files\
+  \ containing the pair probabilities, see \nthe RNAfold man page for details. In\
+  \ the dot plots a cross marks the chain \nbreak between the two concatenated sequences.\n\
+  The program will continue to read new sequences until a line consisting of the \n\
+  single character @ or an end of file condition is encountered.\n\n\n\n  -h, --help\
+  \                    Print help and exit\n      --detailed-help           Print\
+  \ help, including all details and hidden \n                                  options,\
+  \ and exit\n      --full-help               Print help, including hidden options,\
+  \ and exit\n  -V, --version                 Print version and exit\n\nGeneral Options:\n\
+  \  Below are command line options which alter the general behavior of this \n  program\n\
+  \n  -C, --constraint              Calculate structures subject to constraints.\n\
+  \                                    (default=off)\n      --noconv             \
+  \     Do not automatically substitude nucleotide \n                            \
+  \      \"T\" with \"U\"\n                                  \n                  \
+  \                  (default=off)\n      --noPS                    Do not produce\
+  \ postscript output\n                                  \n                      \
+  \              (default=off)\n\nAlgorithms:\n  Select additional algorithms which\
+  \ should be included in the calculations.\n  The Minimum free energy (MFE) and a\
+  \ structure representative are calculated \n  in any case.\n  \n\n  -p, --partfunc[=INT]\
+  \          Calculate the partition function and base \n                        \
+  \          pairing probability matrix in addition to the \n                    \
+  \              mfe structure. Default is calculation of mfe \n                 \
+  \                 structure only.\n                                    (default=`1')\n\
+  \  -a, --all_pf                  Compute the partition function and free \n    \
+  \                              energies not only of the hetero-dimer \n        \
+  \                          consisting of the two input sequences (the \n       \
+  \                           \"AB dimer\"), but also of the homo-dimers AA \n   \
+  \                               and BB as well as A and B monomers.\n          \
+  \                          (default=off)\n  -c, --concentrations          In addition\
+  \ to everything listed under the -a \n                                  option,\
+  \ read in initial monomer \n                                  concentrations and\
+  \ compute the expected \n                                  equilibrium concentrations\
+  \ of the 5 possible \n                                  species (AB, AA, BB, A,\
+  \ B).\n                                    (default=off)\n  -f, --concfile=filename\
+  \       Specify a file with initial concentrations for \n                      \
+  \            the to sequences.\n\nModel Details:\n  -T, --temp=DOUBLE          \
+  \   Rescale energy parameters to a temperature of \n                           \
+  \       temp C. Default is 37C.\n                                  \n\n  -4, --noTetra\
+  \                 Do not include special stabilizing energies for \n           \
+  \                       certain tetra-loops. Mostly for testing.\n             \
+  \                     \n                                    (default=off)\n  -d,\
+  \ --dangles=INT             How to treat \"dangling end\" energies for \n      \
+  \                            bases adjacent to helices in free ends and \n     \
+  \                             multi-loops\n                                    (default=`2')\n\
+  \      --noLP                    Produce structures without lonely pairs \n    \
+  \                              (helices of length 1).\n                        \
+  \            (default=off)\n      --noGU                    Do not allow GU pairs\n\
+  \                                  \n                                    (default=off)\n\
+  \      --noClosingGU             Do not allow GU pairs at the end of helices\n \
+  \                                 \n                                    (default=off)\n\
+  \  -P, --paramFile=paramfile     Read energy parameters from paramfile, instead\
+  \ \n                                  of using the default parameter set.\n\n\n\
+  If in doubt our program is right, nature is at fault.\nComments should be sent to\
+  \ rna@tbi.univie.ac.at.\n\n"
+generated_using:
+- --help

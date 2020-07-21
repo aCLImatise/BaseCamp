@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trim_alignments.cwl
+id: ../../../trim_alignments.cwl
 inputs:
 - id: ref_name
   doc: 'Reference to process, only needed if bams contain multiple references. (default:

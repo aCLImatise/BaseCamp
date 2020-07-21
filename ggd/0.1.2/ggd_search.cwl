@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ggd_search.cwl
+id: ../../../ggd_search.cwl
 inputs:
 - id: genome_build
   doc: (Optional) Filter results by the genome build of the desired recipe

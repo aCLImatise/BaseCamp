@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/addFeatureToMatrix.cwl
+id: ../../../addFeatureToMatrix.cwl
 inputs:
 - id: matrix
   doc: 'deeptools matrix (default: None)'

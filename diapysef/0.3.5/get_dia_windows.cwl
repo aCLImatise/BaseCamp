@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_dia_windows.py.cwl
+id: ../../../get_dia_windows.py.cwl
 inputs:
 - id: tims_analysis_directory
   doc: ''

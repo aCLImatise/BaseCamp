@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crossrates.pl.cwl
+id: ../../../crossrates.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

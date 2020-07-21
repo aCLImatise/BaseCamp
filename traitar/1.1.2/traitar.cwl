@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/traitar.cwl
+id: ../../../traitar.cwl
 inputs:
 - id: v
   doc: ''

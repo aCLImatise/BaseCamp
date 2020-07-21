@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nl.cwl
+id: ../../../nl.cwl
 inputs:
 - id: body_numbering
   doc: use STYLE for numbering body lines

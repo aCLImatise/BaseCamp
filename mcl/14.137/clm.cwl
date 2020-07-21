@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clm.cwl
+id: ../../../clm.cwl
 inputs:
 - id: nop
   doc: ''

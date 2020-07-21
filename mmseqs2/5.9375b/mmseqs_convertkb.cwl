@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_convertkb.cwl
+id: ../../../mmseqs_convertkb.cwl
 inputs:
 - id: mapping_file
   doc: specify a file that translates the keys of a DB to new keys, TSV format

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf_species_in_all_files.py.cwl
+id: ../../../maf_species_in_all_files.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

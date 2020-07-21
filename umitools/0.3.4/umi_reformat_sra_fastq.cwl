@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/umi_reformat_sra_fastq.cwl
+id: ../../../umi_reformat_sra_fastq.cwl
 inputs:
 - id: input
   doc: 'the input fastq file. (default: None)'

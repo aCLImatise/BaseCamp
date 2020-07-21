@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bank2lib.cwl
+id: ../../../bank2lib.cwl
 inputs:
 - id: bank
   doc: bank where assembly is stored

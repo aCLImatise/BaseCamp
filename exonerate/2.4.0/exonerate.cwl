@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/exonerate.cwl
+id: ../../../exonerate.cwl
 inputs:
 - id: custom_server
   doc: '[NULL] '

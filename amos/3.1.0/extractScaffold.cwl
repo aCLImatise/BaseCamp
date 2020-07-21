@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extractScaffold.cwl
+id: ../../../extractScaffold.cwl
 inputs:
 - id: _bank_operated
   doc: '- The bank to be operated on. '

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MRMMapper.cwl
+id: ../../../MRMMapper.cwl
 inputs:
 - id: in
   doc: "*        Input file containing chromatograms (converted mzXML file) (valid\

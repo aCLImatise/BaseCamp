@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ovl_degr_dist.cwl
+id: ../../../ovl_degr_dist.cwl
 inputs:
 - id: adjust_genome_length
   doc: Adjust genome length to get best match to distrib input from stdin

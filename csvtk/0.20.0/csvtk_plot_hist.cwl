@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk_plot_hist.cwl
+id: ../../../csvtk_plot_hist.cwl
 inputs:
 - id: bins
   doc: number of bins (default 50)

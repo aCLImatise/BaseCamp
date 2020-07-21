@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/modFreqs.cwl
+id: ../../../modFreqs.cwl
 inputs:
 - id: tree_dot_mod
   doc: ''

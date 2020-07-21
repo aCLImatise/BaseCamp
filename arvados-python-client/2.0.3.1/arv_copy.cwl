@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arv_copy.cwl
+id: ../../../arv_copy.cwl
 inputs:
 - id: verbose
   doc: Verbose output.

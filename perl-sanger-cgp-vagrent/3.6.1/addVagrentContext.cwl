@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/addVagrentContext.pl.cwl
+id: ../../../addVagrentContext.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cactus_blast_chunkFlowerSequences.cwl
+id: ../../../cactus_blast_chunkFlowerSequences.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

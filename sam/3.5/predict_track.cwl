@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/predict_track.cwl
+id: ../../../predict_track.cwl
 inputs:
 - id: ehl_model_alphabet
   doc: ',EHL                   Model alphabet and alphabet to predict OR'

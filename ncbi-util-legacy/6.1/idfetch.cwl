@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/idfetch.cwl
+id: ../../../idfetch.cwl
 inputs:
 - id: output_type_text
   doc: 'Output type:      1=text asn.1 2=Binary asn.1 3=Genbank (Seq-entry only) 4=genpept

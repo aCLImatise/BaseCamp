@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_seqfeature_load.pl.cwl
+id: ../../../bp_seqfeature_load.pl.cwl
 inputs:
 - id: gff_or_fast_a_file_one
   doc: ''

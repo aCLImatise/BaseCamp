@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_clipper.cwl
+id: ../../../fastq_clipper.cwl
 inputs:
 - id: output_file_stats
   doc: Output file (stats to stdout)

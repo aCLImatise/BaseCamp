@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkmodel.cwl
+id: ../../../checkmodel.cwl
 inputs:
 - id: option
   doc: ''

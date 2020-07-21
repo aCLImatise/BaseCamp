@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_to_deletionlist.cwl
+id: ../../../vcf_to_deletionlist.cwl
 inputs:
 - id: maximal_length_considered
   doc: Maximal length to be considered.

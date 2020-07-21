@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/top_em_equi_3_step_prod.py.cwl
+id: ../../../top_em_equi_3_step_prod.py.cwl
 inputs:
 - id: input_pdb_file
   doc: Input PDB file

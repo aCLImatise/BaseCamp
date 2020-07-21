@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sbg_cwl_runner.cwl
+id: ../../../sbg_cwl_runner.cwl
 inputs:
 - id: outdir
   doc: 'Directory to put results in [default: ./]'

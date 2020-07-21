@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getTargetSpecificKmersStat.cwl
+id: ../../../getTargetSpecificKmersStat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

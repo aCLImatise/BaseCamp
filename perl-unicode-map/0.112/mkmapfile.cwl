@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mkmapfile.cwl
+id: ../../../mkmapfile.cwl
 inputs:
 - id: m
   doc: ''

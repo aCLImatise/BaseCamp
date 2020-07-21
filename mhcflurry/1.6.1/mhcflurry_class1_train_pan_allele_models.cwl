@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mhcflurry_class1_train_pan_allele_models.cwl
+id: ../../../mhcflurry_class1_train_pan_allele_models.cwl
 inputs:
 - id: ignore_inequalities
   doc: Do not use affinity value inequalities even when present in data

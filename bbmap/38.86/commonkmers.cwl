@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/commonkmers.sh.cwl
+id: ../../../commonkmers.sh.cwl
 inputs:
 - id: in
   doc: ''

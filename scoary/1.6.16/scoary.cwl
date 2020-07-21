@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scoary.cwl
+id: ../../../scoary.cwl
 inputs:
 - id: traits
   doc: Input trait table (comma-separated-values). Trait presence is indicated by

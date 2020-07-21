@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mkbitmap.cwl
+id: ../../../mkbitmap.cwl
 inputs:
 - id: license
   doc: '- print license info and exit'

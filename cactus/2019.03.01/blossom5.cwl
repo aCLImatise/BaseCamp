@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blossom5.cwl
+id: ../../../blossom5.cwl
 inputs:
 - id: see
   doc: ''

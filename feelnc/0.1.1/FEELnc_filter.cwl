@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FEELnc_filter.pl.cwl
+id: ../../../FEELnc_filter.pl.cwl
 inputs:
 - id: man
   doc: Open man page

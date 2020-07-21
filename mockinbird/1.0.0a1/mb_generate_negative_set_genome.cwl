@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_generate_negative_set_genome.cwl
+id: ../../../mb_generate_negative_set_genome.cwl
 inputs:
 - id: number
   doc: ''

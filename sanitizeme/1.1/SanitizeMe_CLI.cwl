@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SanitizeMe_CLI.py.cwl
+id: ../../../SanitizeMe_CLI.py.cwl
 inputs:
 - id: input_folder
   doc: Folder containing fastq files. Only files ending in .fq, .fg.gz, .fastq, and

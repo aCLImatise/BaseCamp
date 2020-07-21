@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scran_build_snn_graph.R.cwl
+id: ../../../scran_build_snn_graph.R.cwl
 inputs:
 - id: input_sce_object
   doc: Path to the input SCE object in rds format.

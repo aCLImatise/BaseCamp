@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pybel_serialize.cwl
+id: ../../../pybel_serialize.cwl
 inputs:
 - id: csv
   doc: Path to output a CSV file.

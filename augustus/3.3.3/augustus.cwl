@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/augustus.cwl
+id: ../../../augustus.cwl
 inputs:
 - id: species
   doc: ''

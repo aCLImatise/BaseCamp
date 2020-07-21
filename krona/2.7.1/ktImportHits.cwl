@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ktImportHits.cwl
+id: ../../../ktImportHits.cwl
 inputs:
 - id: hits
   doc: Tabular file whose fields are [query, subject, score]. Subject must be an accession

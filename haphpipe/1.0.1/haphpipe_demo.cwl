@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/haphpipe_demo.cwl
+id: ../../../haphpipe_demo.cwl
 inputs:
 - id: outdir
   doc: ''

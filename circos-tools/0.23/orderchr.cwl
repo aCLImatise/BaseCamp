@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/orderchr.cwl
+id: ../../../orderchr.cwl
 inputs:
 - id: links
   doc: ''

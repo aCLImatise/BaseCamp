@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_info.cwl
+id: ../../../fastq_info.cwl
 inputs:
 - id: reads_two_fastq
   doc: ': the reads in the two fastq files have the same ordering'

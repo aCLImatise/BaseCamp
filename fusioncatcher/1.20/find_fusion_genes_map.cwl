@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/find_fusion_genes_map.py.cwl
+id: ../../../find_fusion_genes_map.py.cwl
 inputs:
 - id: input
   doc: The input file in Bowtie MAP format (sorted by read name, i.e. column number

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/singlem_get_tree.cwl
+id: ../../../singlem_get_tree.cwl
 inputs:
 - id: debug
   doc: output debug information

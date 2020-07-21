@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bigWigCorrelate.cwl
+id: ../../../bigWigCorrelate.cwl
 inputs:
 - id: a_dot_bigwig
   doc: ''

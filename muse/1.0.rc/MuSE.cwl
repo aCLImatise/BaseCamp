@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MuSE.cwl
+id: ../../../MuSE.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

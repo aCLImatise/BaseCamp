@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MapAlignerTreeGuided.cwl
+id: ../../../MapAlignerTreeGuided.cwl
 inputs:
 - id: in
   doc: "*        Input files to align (all must have the same file type) (valid formats:\

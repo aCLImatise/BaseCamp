@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/verify_mapping_quality.pl.cwl
+id: ../../../verify_mapping_quality.pl.cwl
 inputs:
 - id: output
   doc: Path to write human readable report

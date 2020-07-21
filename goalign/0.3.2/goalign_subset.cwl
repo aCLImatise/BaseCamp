@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_subset.cwl
+id: ../../../goalign_subset.cwl
 inputs:
 - id: indices
   doc: If true, extracts given sequence indices instead of sequence names (0-based)

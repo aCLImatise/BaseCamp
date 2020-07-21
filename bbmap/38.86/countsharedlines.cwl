@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/countsharedlines.sh.cwl
+id: ../../../countsharedlines.sh.cwl
 inputs:
 - id: in_one
   doc: ''

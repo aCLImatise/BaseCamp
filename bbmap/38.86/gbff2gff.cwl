@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gbff2gff.sh.cwl
+id: ../../../gbff2gff.sh.cwl
 inputs:
 - id: gb_ff_file
   doc: ''

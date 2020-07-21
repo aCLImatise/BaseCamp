@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ema.cwl
+id: ../../../ema.cwl
 inputs:
 - id: specify_barcode_whitelist
   doc: ': specify barcode whitelist [required]'

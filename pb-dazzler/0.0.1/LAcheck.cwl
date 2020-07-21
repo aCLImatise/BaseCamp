@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LAcheck.cwl
+id: ../../../LAcheck.cwl
 inputs:
 - id: verbose_mode_output
   doc: ': Verbose mode, output error messages.'

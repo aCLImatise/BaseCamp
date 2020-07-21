@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MUSIC.cwl
+id: ../../../MUSIC.cwl
 inputs:
 - id: preprocess
   doc: '[File format ("SAM"/"ELAND"/"bowtie"/"tagAlign"/"BED5"/"BED6")] [Mapped reads

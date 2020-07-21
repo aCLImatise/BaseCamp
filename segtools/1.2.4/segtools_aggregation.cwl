@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segtools_aggregation.cwl
+id: ../../../segtools_aggregation.cwl
 inputs:
 - id: mnemonic_file
   doc: If specified, labels will be shown using mnemonics found in FILE

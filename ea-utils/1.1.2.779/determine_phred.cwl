@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/determine_phred.cwl
+id: ../../../determine_phred.cwl
 inputs:
 - id: no
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mascot_search.rb.cwl
+id: ../../../mascot_search.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

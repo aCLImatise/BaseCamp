@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ptof.cwl
+id: ../../../ptof.cwl
 inputs:
 - id: impose_limit_line
   doc: ': do not impose limit on line length.'

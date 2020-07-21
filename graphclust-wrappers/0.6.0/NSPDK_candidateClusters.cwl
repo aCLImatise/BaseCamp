@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NSPDK_candidateClusters.pl.cwl
+id: ../../../NSPDK_candidateClusters.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cbTool.cwl
+id: ../../../cbTool.cwl
 inputs:
 - id: debug
   doc: show debug messages

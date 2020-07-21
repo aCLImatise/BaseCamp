@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeTableList.cwl
+id: ../../../makeTableList.cwl
 inputs:
 - id: host
   doc: 'show tables: mysql host'

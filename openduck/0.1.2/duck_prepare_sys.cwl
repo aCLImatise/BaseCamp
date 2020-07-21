@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/duck_prepare_sys.cwl
+id: ../../../duck_prepare_sys.cwl
 inputs:
 - id: protein
   doc: Apoprotein in PDB format

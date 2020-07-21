@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GraphicsMagickWand_config.cwl
+id: ../../../GraphicsMagickWand_config.cwl
 inputs:
 - id: cflags
   doc: ''

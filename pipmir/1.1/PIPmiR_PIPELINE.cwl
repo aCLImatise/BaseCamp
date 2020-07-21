@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PIPmiR_PIPELINE.cwl
+id: ../../../PIPmiR_PIPELINE.cwl
 inputs:
 - id: minimum_size_precursor
   doc: 'Minimum size for a precursor sequence (Default: 50)'

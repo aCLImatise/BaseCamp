@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/calculate_snp_distances.py.cwl
+id: ../../../calculate_snp_distances.py.cwl
 inputs:
 - id: force
   doc: 'Force processing even when result file already exists and is newer than inputs

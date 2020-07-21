@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_upload.cwl
+id: ../../../hca_dss_upload.cwl
 inputs:
 - id: src_dir
   doc: ''

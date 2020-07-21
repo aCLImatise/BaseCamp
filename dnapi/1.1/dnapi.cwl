@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dnapi.py.cwl
+id: ../../../dnapi.py.cwl
 inputs:
 - id: range_single_kmer
   doc: "[KMER_BEG:KMER_END:INCREMENT | KMER_LEN] range of kmers or a single kmer to\

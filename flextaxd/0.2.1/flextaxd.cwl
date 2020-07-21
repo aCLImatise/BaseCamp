@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flextaxd.cwl
+id: ../../../flextaxd.cwl
 inputs:
 - id: db
   doc: ', --database      Custom taxonomy sqlite3 database file (fullpath)'

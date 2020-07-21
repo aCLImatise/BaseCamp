@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_create_preautomated_report.pl.cwl
+id: ../../../gaas_create_preautomated_report.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

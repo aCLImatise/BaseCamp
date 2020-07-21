@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plot_counts_correlation.py.cwl
+id: ../../../plot_counts_correlation.py.cwl
 inputs:
 - id: report_pdf
   doc: Report PDF.

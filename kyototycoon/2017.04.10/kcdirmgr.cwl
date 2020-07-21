@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kcdirmgr.cwl
+id: ../../../kcdirmgr.cwl
 inputs:
 - id: otr
   doc: ''

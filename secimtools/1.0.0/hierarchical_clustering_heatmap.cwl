@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hierarchical_clustering_heatmap.py.cwl
+id: ../../../hierarchical_clustering_heatmap.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scaladoc.cwl
+id: ../../../scaladoc.cwl
 inputs:
 - id: author
   doc: Include authors.

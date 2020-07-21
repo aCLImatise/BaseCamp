@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chira_quantify.py.cwl
+id: ../../../chira_quantify.py.cwl
 inputs:
 - id: _bed_input
   doc: ', --bed            Input BED file (default: None)'

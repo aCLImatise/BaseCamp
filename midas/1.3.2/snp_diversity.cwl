@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snp_diversity.py.cwl
+id: ../../../snp_diversity.py.cwl
 inputs:
 - id: out
   doc: path to output file (/dev/stdout)

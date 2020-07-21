@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seq_to_first_iso.cwl
+id: ../../../seq_to_first_iso.cwl
 inputs:
 - id: output
   doc: name of output file

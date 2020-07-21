@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pickUniquePolish.cwl
+id: ../../../pickUniquePolish.cwl
 inputs:
 - id: only_report_alignments
   doc: Only report alignments where the best is qualDiff better in percent identity

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcffixup.cwl
+id: ../../../vcffixup.cwl
 inputs:
 - id: vcf_file
   doc: ''

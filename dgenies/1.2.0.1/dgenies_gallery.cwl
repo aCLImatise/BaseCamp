@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dgenies_gallery.cwl
+id: ../../../dgenies_gallery.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/break_contigs.pl.cwl
+id: ../../../break_contigs.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

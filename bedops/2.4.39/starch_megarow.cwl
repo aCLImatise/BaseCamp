@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/starch_megarow.cwl
+id: ../../../starch_megarow.cwl
 inputs:
 - id: starch
   doc: ''

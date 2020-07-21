@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sketchy_feature_lineage.cwl
+id: ../../../sketchy_feature_lineage.cwl
 inputs:
 - id: data
   doc: Path to data file to summarize trait data from [required]  [required]

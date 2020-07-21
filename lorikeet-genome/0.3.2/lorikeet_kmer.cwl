@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lorikeet_kmer.cwl
+id: ../../../lorikeet_kmer.cwl
 inputs:
 - id: reference
   doc: ''

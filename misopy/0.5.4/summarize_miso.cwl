@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summarize_miso.cwl
+id: ../../../summarize_miso.cwl
 inputs:
 - id: summarize_samples
   doc: Compute summary statistics of the given set of samples. Expects a directory

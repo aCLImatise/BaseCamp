@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_unalign.cwl
+id: ../../../goalign_unalign.cwl
 inputs:
 - id: output_prefix
   doc: Unaligned alignment output file prefix (default "stdout")

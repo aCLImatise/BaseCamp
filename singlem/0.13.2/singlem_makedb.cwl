@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/singlem_makedb.cwl
+id: ../../../singlem_makedb.cwl
 inputs:
 - id: debug
   doc: ''

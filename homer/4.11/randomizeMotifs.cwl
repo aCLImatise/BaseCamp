@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/randomizeMotifs.pl.cwl
+id: ../../../randomizeMotifs.pl.cwl
 inputs:
 - id: motif_file
   doc: ''

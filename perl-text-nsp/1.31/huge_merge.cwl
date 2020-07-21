@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/huge_merge.pl.cwl
+id: ../../../huge_merge.pl.cwl
 inputs:
 - id: keep
   doc: Keep the unmerged files. The unmerged files are deleted by default.

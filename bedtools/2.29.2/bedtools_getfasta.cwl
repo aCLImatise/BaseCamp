@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools_getfasta.cwl
+id: ../../../bedtools_getfasta.cwl
 inputs:
 - id: fi
   doc: Input FASTA file

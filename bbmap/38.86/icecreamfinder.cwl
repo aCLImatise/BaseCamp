@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/icecreamfinder.sh.cwl
+id: ../../../icecreamfinder.sh.cwl
 inputs:
 - id: in
   doc: ''

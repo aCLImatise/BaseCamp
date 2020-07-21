@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cfm_annotate.cwl
+id: ../../../cfm_annotate.cwl
 inputs:
 - id: smiles_or_inch_i
   doc: ''

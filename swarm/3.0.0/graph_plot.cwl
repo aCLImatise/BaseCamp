@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/graph_plot.py.cwl
+id: ../../../graph_plot.py.cwl
 inputs:
 - id: swarms
   doc: <FILENAME> contains swarm's results

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bxtools_mol.cwl
+id: ../../../bxtools_mol.cwl
 inputs:
 - id: verbose
   doc: Set verbose output

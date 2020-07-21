@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chicQualityControl.cwl
+id: ../../../chicQualityControl.cwl
 inputs:
 - id: matrices
   doc: The input matrices to apply the QC on.

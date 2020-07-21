@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Sqt2XML.cwl
+id: ../../../Sqt2XML.cwl
 inputs:
 - id: where_enzyme_trypsin
   doc: 'Where <enzyme> is:  trypsin - Cut: KR, No Cut: P, Sense: C-term (default)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/readreduce_FASTA.cwl
+id: ../../../readreduce_FASTA.cwl
 inputs:
 - id: o
   doc: ''

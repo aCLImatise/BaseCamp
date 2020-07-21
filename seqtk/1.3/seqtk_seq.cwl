@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqtk_seq.cwl
+id: ../../../seqtk_seq.cwl
 inputs:
 - id: mask_bases_lower
   doc: mask bases with quality lower than INT [0]

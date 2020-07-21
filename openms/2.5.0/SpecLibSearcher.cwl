@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SpecLibSearcher.cwl
+id: ../../../SpecLibSearcher.cwl
 inputs:
 - id: in
   doc: "*                                      Input files (valid formats: 'mzML')"

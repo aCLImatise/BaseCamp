@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obo_trimming.pl.cwl
+id: ../../../obo_trimming.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

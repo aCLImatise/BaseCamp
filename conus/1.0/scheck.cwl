@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scheck.cwl
+id: ../../../scheck.cwl
 inputs:
 - id: options
   doc: ''

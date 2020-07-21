@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_paste.py.cwl
+id: ../../../vcf_paste.py.cwl
 inputs:
 - id: master
   doc: VCF file to set first 8 columns of variant info [first file in vcf_list]

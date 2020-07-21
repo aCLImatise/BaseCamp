@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sucos.cwl
+id: ../../../sucos.cwl
 inputs:
 - id: target
   doc: molecule to compare against

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/heavychains.cwl
+id: ../../../heavychains.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

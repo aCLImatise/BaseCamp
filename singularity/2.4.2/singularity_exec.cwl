@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/singularity_exec.cwl
+id: ../../../singularity_exec.cwl
 inputs:
 - id: app
   doc: Exec a command relevant to an application directory

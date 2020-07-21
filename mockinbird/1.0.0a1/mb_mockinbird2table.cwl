@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_mockinbird2table.cwl
+id: ../../../mb_mockinbird2table.cwl
 inputs:
 - id: post_thresh
   doc: ''

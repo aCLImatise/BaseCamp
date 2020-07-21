@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kinshipDecompose.cwl
+id: ../../../kinshipDecompose.cwl
 inputs:
 - id: in
   doc: ': Input kinship file'

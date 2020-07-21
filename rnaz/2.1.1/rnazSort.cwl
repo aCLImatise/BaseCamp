@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnazSort.pl.cwl
+id: ../../../rnazSort.pl.cwl
 inputs:
 - id: reverse
   doc: Sort in reverse order.

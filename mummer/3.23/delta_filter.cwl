@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/delta_filter.cwl
+id: ../../../delta_filter.cwl
 inputs:
 - id: delta_file
   doc: ''

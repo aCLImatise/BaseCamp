@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pdb_to_xyzr.cwl
+id: ../../../pdb_to_xyzr.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flye_samtools_reheader.cwl
+id: ../../../flye_samtools_reheader.cwl
 inputs:
 - id: no_pg
   doc: Do not generate an @PG header line.

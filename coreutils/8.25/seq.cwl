@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seq.cwl
+id: ../../../seq.cwl
 inputs:
 - id: format
   doc: use printf style floating-point FORMAT

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/analyzeRNA.pl.cwl
+id: ../../../analyzeRNA.pl.cwl
 inputs:
 - id: or
   doc: ': analyzeRNA.pl <custom RNA/GTF file> <organism|none>  [additional options...]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varda2_client_sample.cwl
+id: ../../../varda2_client_sample.cwl
 inputs:
 - id: uuid
   doc: Sample UUID

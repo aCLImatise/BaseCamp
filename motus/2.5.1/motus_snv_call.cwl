@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/motus_snv_call.cwl
+id: ../../../motus_snv_call.cwl
 inputs:
 - id: dir_call_metasnv
   doc: DIR     Call metaSNV on all bam files in the directory. [Mandatory]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gimme_match.cwl
+id: ../../../gimme_match.cwl
 inputs:
 - id: h
   doc: ''

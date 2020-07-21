@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CRISPRessoBatch.cwl
+id: ../../../CRISPRessoBatch.cwl
 inputs:
 - id: fast_q_r_one
   doc: 'First fastq file (default: Fastq filename)'

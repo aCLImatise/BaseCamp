@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_fusion_genes.py.cwl
+id: ../../../extract_fusion_genes.py.cwl
 inputs:
 - id: input
   doc: The input file in text tab delimited format containing the fusion genes candidates

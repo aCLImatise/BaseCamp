@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_generate_histogram.pl.cwl
+id: ../../../bp_generate_histogram.pl.cwl
 inputs:
 - id: dsn
   doc: <dsn>       Data source (default dbi:mysql:test)

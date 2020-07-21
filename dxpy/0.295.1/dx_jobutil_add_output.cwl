@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dx_jobutil_add_output.cwl
+id: ../../../dx_jobutil_add_output.cwl
 inputs:
 - id: class
   doc: ''

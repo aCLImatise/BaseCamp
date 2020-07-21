@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/evolve.py.cwl
+id: ../../../evolve.py.cwl
 inputs:
 - id: output_dir
   doc: 'Path to output directory (default: None)'

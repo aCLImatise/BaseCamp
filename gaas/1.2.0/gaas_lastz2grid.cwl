@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_lastz2grid.pl.cwl
+id: ../../../gaas_lastz2grid.pl.cwl
 inputs:
 - id: query
   doc: name of the query genome file.

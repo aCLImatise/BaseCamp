@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genotypeSummary.cwl
+id: ../../../genotypeSummary.cwl
 inputs:
 - id: type
   doc: ''

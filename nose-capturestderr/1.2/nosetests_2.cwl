@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nosetests_2.7.cwl
+id: ../../../nosetests_2.7.cwl
 inputs:
 - id: plugins
   doc: Output list of available plugins and exit. Combine with higher verbosity for

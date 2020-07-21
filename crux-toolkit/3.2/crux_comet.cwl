@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_comet.cwl
+id: ../../../crux_comet.cwl
 inputs:
 - id: input_spectra
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tadpipe.sh.cwl
+id: ../../../tadpipe.sh.cwl
 inputs:
 - id: in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/recognicer_df.cwl
+id: ../../../recognicer_df.cwl
 inputs:
 - id: treatment_file
   doc: Names of the sample file you wish to run RECOGNICER on. This can either be

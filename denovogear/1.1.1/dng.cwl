@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dng.cwl
+id: ../../../dng.cwl
 inputs:
 - id: command
   doc: ''

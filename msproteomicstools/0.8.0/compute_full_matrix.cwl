@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compute_full_matrix.py.cwl
+id: ../../../compute_full_matrix.py.cwl
 inputs:
 - id: aligner_m_score_threshold
   doc: cutoff used at alignment, for coloring realigned values in blue

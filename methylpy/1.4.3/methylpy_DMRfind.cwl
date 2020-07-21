@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/methylpy_DMRfind.cwl
+id: ../../../methylpy_DMRfind.cwl
 inputs:
 - id: all_c_files
   doc: 'List of allc files. (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mothur.cwl
+id: ../../../mothur.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

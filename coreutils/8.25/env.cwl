@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/env.cwl
+id: ../../../env.cwl
 inputs:
 - id: ignore_environment
   doc: start with an empty environment

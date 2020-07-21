@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summarizePolishes.cwl
+id: ../../../summarizePolishes.cwl
 inputs:
 - id: excel
   doc: ''

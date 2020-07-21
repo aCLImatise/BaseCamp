@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samplot_vcf.cwl
+id: ../../../samplot_vcf.cwl
 inputs:
 - id: vcf
   doc: 'VCF file containing structural variants (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nanovar.cwl
+id: ../../../nanovar.cwl
 inputs:
 - id: data_type
   doc: type of long-read data [ont] ont - Oxford Nanopore Technologies pacbio-clr

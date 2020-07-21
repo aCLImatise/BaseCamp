@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioconvert_stats.cwl
+id: ../../../bioconvert_stats.cwl
 inputs:
 - id: v
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_cmfinder.pl.cwl
+id: ../../../_cmfinder.pl.cwl
 inputs:
 - id: use_blast_search
   doc: Do not use BLAST search to locate anchors

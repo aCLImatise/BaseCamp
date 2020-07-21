@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vdb_dump.2.10.7.cwl
+id: ../../../vdb_dump.2.10.7.cwl
 inputs:
 - id: row_id_on
   doc: print row id

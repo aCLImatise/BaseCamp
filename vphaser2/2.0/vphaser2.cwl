@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vphaser2.cwl
+id: ../../../vphaser2.cwl
 inputs:
 - id: _input_sorted
   doc: '[input.bam] -- input sorted bam file'

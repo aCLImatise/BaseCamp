@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_ldap_list.cwl
+id: ../../../omero_ldap_list.cwl
 inputs:
 - id: style
   doc: use alternative output style (default=sql)

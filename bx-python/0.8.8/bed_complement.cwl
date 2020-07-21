@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bed_complement.py.cwl
+id: ../../../bed_complement.py.cwl
 inputs:
 - id: bed_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_fasta_extractFaFromMultiFa.sh_f.cwl
+id: ../../../gaas_fasta_extractFaFromMultiFa.sh_f.cwl
 inputs:
 - id: extended_regexp
   doc: PATTERNS are extended regular expressions

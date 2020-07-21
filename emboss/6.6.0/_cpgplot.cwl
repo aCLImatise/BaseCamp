@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_cpgplot.cwl
+id: ../../../_cpgplot.cwl
 inputs:
 - id: window
   doc: integer    [100] The percentage CG content and the Observed frequency of CG

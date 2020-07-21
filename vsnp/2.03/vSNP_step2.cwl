@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vSNP_step2.py.cwl
+id: ../../../vSNP_step2.py.cwl
 inputs:
 - id: reference
   doc: provide a valid reference, see -t output

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_export_items_order.cwl
+id: ../../../anvi_export_items_order.cwl
 inputs:
 - id: path__dbpath
   doc: PATH, --db-path DB PATH An appropriate anvi'o database.

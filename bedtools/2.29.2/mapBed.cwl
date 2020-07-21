@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mapBed.cwl
+id: ../../../mapBed.cwl
 inputs:
 - id: specify_columns_map
   doc: 'Specify columns from the B file to map onto intervals in A. Default: 5. Multiple

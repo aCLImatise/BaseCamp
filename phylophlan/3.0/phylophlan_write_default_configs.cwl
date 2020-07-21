@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phylophlan_write_default_configs.sh.cwl
+id: ../../../phylophlan_write_default_configs.sh.cwl
 inputs:
 - id: mode
   doc: set file mode (as in chmod), not a=rwx - umask

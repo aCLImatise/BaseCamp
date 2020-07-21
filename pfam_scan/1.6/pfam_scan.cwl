@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pfam_scan.pl.cwl
+id: ../../../pfam_scan.pl.cwl
 inputs:
 - id: fast_a
   doc: ''

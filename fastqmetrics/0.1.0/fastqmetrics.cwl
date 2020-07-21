@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastqmetrics.cwl
+id: ../../../fastqmetrics.cwl
 inputs:
 - id: threads
   doc: Set the allowed number of threads to be used by the script. This only applies

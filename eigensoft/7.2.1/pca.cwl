@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pca.cwl
+id: ../../../pca.cwl
 inputs:
 - id: i
   doc: ''

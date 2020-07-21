@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nibSize.cwl
+id: ../../../nibSize.cwl
 inputs:
 - id: nib_one
   doc: ''

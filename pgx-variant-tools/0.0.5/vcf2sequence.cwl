@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf2sequence.cwl
+id: ../../../vcf2sequence.cwl
 inputs:
 - id: vcf
   doc: Path to input VCF  [required]

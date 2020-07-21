@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scale_metagenome.py.cwl
+id: ../../../scale_metagenome.py.cwl
 inputs:
 - id: input_seq_depth_file
   doc: an input tab-delimited table, with samples as the first column and an integer

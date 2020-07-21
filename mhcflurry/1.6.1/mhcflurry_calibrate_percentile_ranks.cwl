@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mhcflurry_calibrate_percentile_ranks.cwl
+id: ../../../mhcflurry_calibrate_percentile_ranks.cwl
 inputs:
 - id: prediction_batch_size
   doc: Keras batch size for predictions

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/set_haploid_region.cwl
+id: ../../../set_haploid_region.cwl
 inputs:
 - id: region_file
   doc: A bed file specifying the regions to be converted  (required)

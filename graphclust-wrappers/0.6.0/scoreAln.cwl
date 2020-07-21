@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scoreAln.pl.cwl
+id: ../../../scoreAln.pl.cwl
 inputs:
 - id: an_alignment_file
   doc: An alignment file                       [REQUIRED]

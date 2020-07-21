@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mglobspectrophore.cwl
+id: ../../../mglobspectrophore.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

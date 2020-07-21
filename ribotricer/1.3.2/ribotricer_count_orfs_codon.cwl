@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ribotricer_count_orfs_codon.cwl
+id: ../../../ribotricer_count_orfs_codon.cwl
 inputs:
 - id: ribot_ricer_index
   doc: Path to the index file of ribotricer This file should be generated using ribotricer

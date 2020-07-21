@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/annot_blast_btop2.pl.cwl
+id: ../../../annot_blast_btop2.pl.cwl
 inputs:
 - id: help
   doc: description

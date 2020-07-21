@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pfsearch.cwl
+id: ../../../pfsearch.cwl
 inputs:
 - id: report_optimal_alignment
   doc: ': report optimal alignment for all sequences.'

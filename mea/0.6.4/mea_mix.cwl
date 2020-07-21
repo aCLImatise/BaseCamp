@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mea_mix.cwl
+id: ../../../mea_mix.cwl
 inputs:
 - id: gamma_one
   doc: base pair weight factor, first pair probabilities (default=`1.0')

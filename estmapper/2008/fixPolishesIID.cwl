@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fixPolishesIID.cwl
+id: ../../../fixPolishesIID.cwl
 inputs:
 - id: read_cdna_deflines
   doc: Read cDNA deflines from c.fasta

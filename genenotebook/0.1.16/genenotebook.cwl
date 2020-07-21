@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genenotebook.cwl
+id: ../../../genenotebook.cwl
 inputs:
 - id: command
   doc: ''

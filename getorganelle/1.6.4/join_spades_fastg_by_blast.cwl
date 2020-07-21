@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/join_spades_fastg_by_blast.py.cwl
+id: ../../../join_spades_fastg_by_blast.py.cwl
 inputs:
 - id: followed_input_fastg
   doc: followed by your input fastg file

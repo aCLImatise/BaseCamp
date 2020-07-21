@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/allele_specific_modification.cwl
+id: ../../../allele_specific_modification.cwl
 inputs:
 - id: bed
   doc: Bed file to aggregate modifications on.

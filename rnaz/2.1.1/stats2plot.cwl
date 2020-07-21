@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stats2plot.pl.cwl
+id: ../../../stats2plot.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

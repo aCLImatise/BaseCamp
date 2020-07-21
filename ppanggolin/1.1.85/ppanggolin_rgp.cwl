@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ppanggolin_rgp.cwl
+id: ../../../ppanggolin_rgp.cwl
 inputs:
 - id: persistent_penalty
   doc: 'Penalty score to apply to persistent genes (default: 3)'

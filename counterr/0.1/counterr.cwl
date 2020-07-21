@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/counterr.cwl
+id: ../../../counterr.cwl
 inputs:
 - id: bam
   doc: 'the input bam file (default: None)'

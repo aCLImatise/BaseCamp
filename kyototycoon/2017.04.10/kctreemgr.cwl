@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kctreemgr.cwl
+id: ../../../kctreemgr.cwl
 inputs:
 - id: otr
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ngm_core_debug.cwl
+id: ../../../ngm_core_debug.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

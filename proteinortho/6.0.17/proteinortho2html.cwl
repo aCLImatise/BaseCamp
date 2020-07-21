@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteinortho2html.pl.cwl
+id: ../../../proteinortho2html.pl.cwl
 inputs:
 - id: my_project_dot_protein_ortho
   doc: ''

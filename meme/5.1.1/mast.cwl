@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mast.cwl
+id: ../../../mast.cwl
 inputs:
 - id: b_file
   doc: read background frequencies from <bf>

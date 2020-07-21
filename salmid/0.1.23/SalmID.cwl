@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SalmID.py.cwl
+id: ../../../SalmID.py.cwl
 inputs:
 - id: input_file
   doc: Single fastq.gz file input, include path to file if file is not in same directory

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nw_stats_filename|_.cwl
+id: ../../../nw_stats_filename|_.cwl
 inputs:
 - id: format_l_default
   doc: '[lc]: format in lines (l) or columns (c). Default is l.'

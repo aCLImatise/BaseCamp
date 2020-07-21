@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/neighbor_joining.py.cwl
+id: ../../../neighbor_joining.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

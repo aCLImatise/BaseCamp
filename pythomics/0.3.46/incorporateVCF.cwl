@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/incorporateVCF.py.cwl
+id: ../../../incorporateVCF.py.cwl
 inputs:
 - id: threads_to_run
   doc: Threads to run

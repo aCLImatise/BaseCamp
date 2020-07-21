@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mag_improve.cwl
+id: ../../../mag_improve.cwl
 inputs:
 - id: kmer_length_use
   doc: k-mer length to use

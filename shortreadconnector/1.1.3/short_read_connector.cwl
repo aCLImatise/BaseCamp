@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/short_read_connector.sh.cwl
+id: ../../../short_read_connector.sh.cwl
 inputs:
 - id: shortreadconnectorcounter_srccounter
   doc: short_read_connector_counter (SRC_counter)

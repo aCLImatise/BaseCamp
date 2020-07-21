@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/erne_filter.cwl
+id: ../../../erne_filter.cwl
 inputs:
 - id: contamination_reference
   doc: reference file to use (in our format and with  .ebh extension)

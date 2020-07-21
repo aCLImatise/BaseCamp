@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/refine_alignments.pl.cwl
+id: ../../../refine_alignments.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

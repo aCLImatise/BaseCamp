@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clipedge_INPUT.cwl
+id: ../../../clipedge_INPUT.cwl
 inputs:
 - id: r
   doc: ''

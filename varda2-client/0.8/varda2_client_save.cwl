@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varda2_client_save.cwl
+id: ../../../varda2_client_save.cwl
 inputs:
 - id: p
   doc: ''

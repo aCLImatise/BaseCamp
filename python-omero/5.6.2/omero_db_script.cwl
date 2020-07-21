@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_db_script.cwl
+id: ../../../omero_db_script.cwl
 inputs:
 - id: file
   doc: Optional file to save to. Use '-' for stdout.

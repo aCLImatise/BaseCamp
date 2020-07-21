@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/novoutil_rename.cwl
+id: ../../../novoutil_rename.cwl
 inputs:
 - id: assembly_report_dot_txt
   doc: ''

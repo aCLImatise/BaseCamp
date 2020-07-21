@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arv_ws.cwl
+id: ../../../arv_ws.cwl
 inputs:
 - id: uuid
   doc: Filter events on object_uuid

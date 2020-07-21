@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof_cut.cwl
+id: ../../../smof_cut.cwl
 inputs:
 - id: fields
   doc: Indices to print, comma delimited, with ranges

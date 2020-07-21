@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bwa_index.cwl
+id: ../../../bwa_index.cwl
 inputs:
 - id: bwt_construction_algorithm
   doc: 'BWT construction algorithm: bwtsw, is or rb2 [auto]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ChIPAssoc.cwl
+id: ../../../ChIPAssoc.cwl
 inputs:
 - id: bed
   doc: BED file of genomic coordinates (e.g. ChIP-Seq peaks). The center of each peak

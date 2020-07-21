@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Circos.pl.cwl
+id: ../../../Circos.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

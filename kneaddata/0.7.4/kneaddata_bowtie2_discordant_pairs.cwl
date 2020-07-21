@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kneaddata_bowtie2_discordant_pairs.cwl
+id: ../../../kneaddata_bowtie2_discordant_pairs.cwl
 inputs:
 - id: one
   doc: the fastq file of pair1 reads

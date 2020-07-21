@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/knights.cwl
+id: ../../../knights.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

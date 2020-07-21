@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TOBIAS_FilterFragments.cwl
+id: ../../../TOBIAS_FilterFragments.cwl
 inputs:
 - id: bam
   doc: .bam-file to filter

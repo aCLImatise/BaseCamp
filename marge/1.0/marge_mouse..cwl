@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/marge_mouse..cwl
+id: ../../../marge_mouse..cwl
 inputs:
 - id: marge
   doc: ''

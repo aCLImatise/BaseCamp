@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hardklor.cwl
+id: ../../../hardklor.cwl
 inputs:
 - id: config_file
   doc: ''

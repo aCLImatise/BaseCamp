@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prodigal.cwl
+id: ../../../prodigal.cwl
 inputs:
 - id: write_protein_translations
   doc: ':  Write protein translations to the selected file.'

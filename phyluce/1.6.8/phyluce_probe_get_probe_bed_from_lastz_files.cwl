@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_probe_get_probe_bed_from_lastz_files.cwl
+id: ../../../phyluce_probe_get_probe_bed_from_lastz_files.cwl
 inputs:
 - id: input
   doc: The input directory containing lastz files

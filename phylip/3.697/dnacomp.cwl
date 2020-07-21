@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dnacomp.cwl
+id: ../../../dnacomp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

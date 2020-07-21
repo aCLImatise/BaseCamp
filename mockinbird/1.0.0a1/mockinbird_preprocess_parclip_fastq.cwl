@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mockinbird_preprocess_parclip_fastq.cwl
+id: ../../../mockinbird_preprocess_parclip_fastq.cwl
 inputs:
 - id: log_level
   doc: ''

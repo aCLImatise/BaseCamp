@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ribotish_predict.cwl
+id: ../../../ribotish_predict.cwl
 inputs:
 - id: tis_enriched_riboseq
   doc: TIS enriched riboseq bam files, comma seperated

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkv_repeats.cwl
+id: ../../../checkv_repeats.cwl
 inputs:
 - id: min_tr_len
   doc: Min length of TR

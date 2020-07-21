@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_sam.cwl
+id: ../../../extract_sam.cwl
 inputs:
 - id: name_hxb_
   doc: Name of target contig, e.g. HXB2:2253-2256

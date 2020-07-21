@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/printsplitimage.cwl
+id: ../../../printsplitimage.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

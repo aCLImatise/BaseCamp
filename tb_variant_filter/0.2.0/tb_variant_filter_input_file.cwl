@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tb_variant_filter_input_file.cwl
+id: ../../../tb_variant_filter_input_file.cwl
 inputs:
 - id: region_filter
   doc: ''

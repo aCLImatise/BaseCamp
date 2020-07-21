@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_fasta_statistics.pl.cwl
+id: ../../../gaas_fasta_statistics.pl.cwl
 inputs:
 - id: in_file
   doc: Input fasta file containing DNA sequences.

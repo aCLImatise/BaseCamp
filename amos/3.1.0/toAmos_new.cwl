@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/toAmos_new.cwl
+id: ../../../toAmos_new.cwl
 inputs:
 - id: t
   doc: '[SCUFL]'

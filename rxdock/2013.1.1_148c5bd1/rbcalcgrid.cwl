@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbcalcgrid.cwl
+id: ../../../rbcalcgrid.cwl
 inputs:
 - id: outputsuffix_suffix_grid
   doc: <OutputSuffix> - suffix for grid (.grd IS required)

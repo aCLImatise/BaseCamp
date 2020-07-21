@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cramtools_bam.cwl
+id: ../../../cramtools_bam.cwl
 inputs:
 - id: calculate_md_tag
   doc: 'Calculate MD tag. (default: false)'

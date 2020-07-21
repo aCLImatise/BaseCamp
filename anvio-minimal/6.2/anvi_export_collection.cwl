@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_export_collection.cwl
+id: ../../../anvi_export_collection.cwl
 inputs:
 - id: pan_or_profile_db
   doc: Anvi'o pan or profile database (and even genes database in appropriate contexts).

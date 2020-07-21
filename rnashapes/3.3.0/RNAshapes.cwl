@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RNAshapes.cwl
+id: ../../../RNAshapes.cwl
 inputs:
 - id: mode
   doc: ': Select the computation mode. Available modes are "mfe", "subopt", "shapes",

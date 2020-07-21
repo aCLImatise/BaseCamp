@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mummer.cwl
+id: ../../../mummer.cwl
 inputs:
 - id: reference_file
   doc: ''

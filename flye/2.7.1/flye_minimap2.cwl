@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flye_minimap2.cwl
+id: ../../../flye_minimap2.cwl
 inputs:
 - id: use_homopolymercompressed_kmer
   doc: use homopolymer-compressed k-mer (preferrable for PacBio)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genomeOntology.cwl
+id: ../../../genomeOntology.cwl
 inputs:
 - id: given_maximum_distance
   doc: '<#|given> (Maximum distance between peak centers to consider, default: 100)

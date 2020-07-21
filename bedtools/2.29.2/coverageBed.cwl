@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coverageBed.cwl
+id: ../../../coverageBed.cwl
 inputs:
 - id: hist
   doc: 'Report a histogram of coverage for each feature in A as well as a summary

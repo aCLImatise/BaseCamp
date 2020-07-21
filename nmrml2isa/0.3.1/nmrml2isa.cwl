@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nmrml2isa.cwl
+id: ../../../nmrml2isa.cwl
 inputs:
 - id: input_folder_archive
   doc: input folder or archive containing nmrML files

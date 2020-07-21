@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/STARwrapper.py.cwl
+id: ../../../STARwrapper.py.cwl
 inputs:
 - id: cpus
   doc: 'Number of threads (default: 10)'

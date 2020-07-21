@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prokka_hamap_to_hmm.cwl
+id: ../../../prokka_hamap_to_hmm.cwl
 inputs:
 - id: verbose
   doc: "!      Verbose progress (default '0')."

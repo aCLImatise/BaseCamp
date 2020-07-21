@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dsh_intersect_bed.cwl
+id: ../../../dsh_intersect_bed.cwl
 inputs:
 - id: a_input_file
   doc: '[class java.io.File]  A input BED file, default stdin [optional]'

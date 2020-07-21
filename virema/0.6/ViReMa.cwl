@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ViReMa.py.cwl
+id: ../../../ViReMa.py.cwl
 inputs:
 - id: host_index
   doc: Host genome reference index key, e.g. d_melanogaster_fb5_22

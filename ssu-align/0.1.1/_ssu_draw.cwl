@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_ssu_draw.cwl
+id: ../../../_ssu_draw.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

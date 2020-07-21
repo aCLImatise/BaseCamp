@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/picopore_test.cwl
+id: ../../../picopore_test.cwl
 inputs:
 - id: mode
   doc: choose compression mode

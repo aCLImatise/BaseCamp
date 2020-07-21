@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SampleDiff.cwl
+id: ../../../SampleDiff.cwl
 inputs:
 - id: in_one
   doc: Input variant list in GSvar format.

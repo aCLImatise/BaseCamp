@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plot_roh.py.cwl
+id: ../../../plot_roh.py.cwl
 inputs:
 - id: highlight
   doc: +group1,-group2       Highlight calls shared within group1 but not present

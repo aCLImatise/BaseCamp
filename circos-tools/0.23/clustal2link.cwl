@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clustal2link.cwl
+id: ../../../clustal2link.cwl
 inputs:
 - id: aln
   doc: ''

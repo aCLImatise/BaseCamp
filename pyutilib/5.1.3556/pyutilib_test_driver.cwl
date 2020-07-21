@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyutilib_test_driver.cwl
+id: ../../../pyutilib_test_driver.cwl
 inputs:
 - id: debug
   doc: Set debugging flag

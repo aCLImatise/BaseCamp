@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cmpress_cmfile.cwl
+id: ../../../cmpress_cmfile.cwl
 inputs:
 - id: options
   doc: ''

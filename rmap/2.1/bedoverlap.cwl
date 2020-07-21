@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedoverlap.cwl
+id: ../../../bedoverlap.cwl
 inputs:
 - id: output
   doc: 'Name of output file (default: stdout) '

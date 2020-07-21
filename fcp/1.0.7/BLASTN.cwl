@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BLASTN.py.cwl
+id: ../../../BLASTN.py.cwl
 inputs:
 - id: blastn_path
   doc: ''

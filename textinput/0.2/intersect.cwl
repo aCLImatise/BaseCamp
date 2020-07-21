@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/intersect.cwl
+id: ../../../intersect.cwl
 inputs:
 - id: option
   doc: ''

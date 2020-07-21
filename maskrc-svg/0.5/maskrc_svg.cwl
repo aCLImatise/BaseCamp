@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maskrc_svg.py.cwl
+id: ../../../maskrc_svg.py.cwl
 inputs:
 - id: gubbins
   doc: parse as Gubbins instead of ClonalFrameML

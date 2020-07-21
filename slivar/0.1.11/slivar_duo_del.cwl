@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/slivar_duo_del.cwl
+id: ../../../slivar_duo_del.cwl
 inputs:
 - id: ped
   doc: required ped file describing the duos in the VCF

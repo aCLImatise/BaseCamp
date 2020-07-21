@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_mixdchlet_fit_in_countfile.cwl
+id: ../../../esl_mixdchlet_fit_in_countfile.cwl
 inputs:
 - id: options
   doc: ''

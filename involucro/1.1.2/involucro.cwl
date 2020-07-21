@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/involucro.cwl
+id: ../../../involucro.cwl
 inputs:
 - id: set_url_docker
   doc: Set the URL of the Docker instance (default "unix:///var/run/docker.sock")

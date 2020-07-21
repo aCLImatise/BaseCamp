@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/consect.sh.cwl
+id: ../../../consect.sh.cwl
 inputs:
 - id: in
   doc: ''

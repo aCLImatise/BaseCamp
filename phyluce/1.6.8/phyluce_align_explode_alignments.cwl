@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_explode_alignments.cwl
+id: ../../../phyluce_align_explode_alignments.cwl
 inputs:
 - id: alignments
   doc: Input folder of alignments

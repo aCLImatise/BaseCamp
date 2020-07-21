@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslSwap.cwl
+id: ../../../pslSwap.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

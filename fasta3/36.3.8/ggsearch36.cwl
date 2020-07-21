@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ggsearch36.cwl
+id: ../../../ggsearch36.cwl
 inputs:
 - id: compare_forward_strand
   doc: compare forward strand only

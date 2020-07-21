@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/detrend.py.cwl
+id: ../../../detrend.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

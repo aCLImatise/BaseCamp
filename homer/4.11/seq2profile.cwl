@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seq2profile.pl.cwl
+id: ../../../seq2profile.pl.cwl
 inputs:
 - id: consensus_sequence
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coral.cwl
+id: ../../../coral.cwl
 inputs:
 - id: preview
   doc: determine fragment-length-range and library-type and exit

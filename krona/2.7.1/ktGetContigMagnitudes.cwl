@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ktGetContigMagnitudes.cwl
+id: ../../../ktGetContigMagnitudes.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

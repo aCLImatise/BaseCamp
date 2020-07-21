@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_transcript_to_gene_map_from_trinity.cwl
+id: ../../../extract_transcript_to_gene_map_from_trinity.cwl
 inputs:
 - id: trinity_fast_a_file
   doc: ''

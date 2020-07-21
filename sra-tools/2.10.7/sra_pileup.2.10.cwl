@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sra_pileup.2.10.7.cwl
+id: ../../../sra_pileup.2.10.7.cwl
 inputs:
 - id: aligned_region
   doc: '<name[:from-to]>[,...] Filter by position on genome. Name can either be file

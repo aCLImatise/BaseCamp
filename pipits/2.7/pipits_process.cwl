@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pipits_process.cwl
+id: ../../../pipits_process.cwl
 inputs:
 - id: sequences_fasta_typically
   doc: '[REQUIRED] ITS sequences in FASTA. Typically output from pipits_funits'

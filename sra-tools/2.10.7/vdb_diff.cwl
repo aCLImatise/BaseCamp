@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vdb_diff.2.cwl
+id: ../../../vdb_diff.2.cwl
 inputs:
 - id: rows
   doc: 'set of rows to be comparend (default all) '

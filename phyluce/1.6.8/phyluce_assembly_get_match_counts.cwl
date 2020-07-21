@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_assembly_get_match_counts.cwl
+id: ../../../phyluce_assembly_get_match_counts.cwl
 inputs:
 - id: locus_db
   doc: ''

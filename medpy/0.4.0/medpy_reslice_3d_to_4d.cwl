@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_reslice_3d_to_4d.py.cwl
+id: ../../../medpy_reslice_3d_to_4d.py.cwl
 inputs:
 - id: display_more_information
   doc: Display more information.

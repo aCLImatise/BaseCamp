@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/correct.py.cwl
+id: ../../../correct.py.cwl
 inputs:
 - id: debug
   doc: Print debug messages (very verbose).

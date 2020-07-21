@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ref_seqs_from_bam.cwl
+id: ../../../ref_seqs_from_bam.cwl
 inputs:
 - id: bam
   doc: input bam file, MD tag must be set (mini_align -m).

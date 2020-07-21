@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stag_flatten.pl.cwl
+id: ../../../stag_flatten.pl.cwl
 inputs:
 - id: parser_format_format
   doc: '|parser FORMAT FORMAT is one of xml, sxpr or itext xml assumed as default'

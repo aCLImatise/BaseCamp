@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/structure_2_gspan.pl.cwl
+id: ../../../structure_2_gspan.pl.cwl
 inputs:
 - id: tmp
   doc: '"/var/tmp/fasta2shrep"'

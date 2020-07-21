@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pysradb_srs_to_gsm.cwl
+id: ../../../pysradb_srs_to_gsm.cwl
 inputs:
 - id: db
   doc: Path to SRAmetadb.sqlite file

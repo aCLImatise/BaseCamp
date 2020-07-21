@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/windowMaker.cwl
+id: ../../../windowMaker.cwl
 inputs:
 - id: genome_file_size
   doc: Genome file size (see notes below). Windows will be created for each chromosome

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NLStradamus.cwl
+id: ../../../NLStradamus.cwl
 inputs:
 - id: i
   doc: ''

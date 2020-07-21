@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/myrimatch.cwl
+id: ../../../myrimatch.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

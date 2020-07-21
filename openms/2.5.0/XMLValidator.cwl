@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/XMLValidator.cwl
+id: ../../../XMLValidator.cwl
 inputs:
 - id: in
   doc: "*        File to validate (valid formats: 'mzML', 'mzData', 'featureXML',\

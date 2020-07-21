@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedparse_promoter_bedfile.cwl
+id: ../../../bedparse_promoter_bedfile.cwl
 inputs:
 - id: up
   doc: ''

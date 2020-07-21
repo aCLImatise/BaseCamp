@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/combineMUMs.cwl
+id: ../../../combineMUMs.cwl
 inputs:
 - id: ref_sequence
   doc: ''

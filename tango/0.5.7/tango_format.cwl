@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tango_format.cwl
+id: ../../../tango_format.cwl
 inputs:
 - id: force
   doc: Force overwrite of existing reformatted fastafile

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fisher_exact_pos_succ.cwl
+id: ../../../fisher_exact_pos_succ.cwl
 inputs:
 - id: pos
   doc: ''

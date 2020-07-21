@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/toulligqc.cwl
+id: ../../../toulligqc.cwl
 inputs:
 - id: conf_file
   doc: Specify config file

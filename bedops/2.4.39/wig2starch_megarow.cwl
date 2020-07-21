@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wig2starch_megarow.cwl
+id: ../../../wig2starch_megarow.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

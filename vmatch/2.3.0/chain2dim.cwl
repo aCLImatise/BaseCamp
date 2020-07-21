@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chain2dim.cwl
+id: ../../../chain2dim.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

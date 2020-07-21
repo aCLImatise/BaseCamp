@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequenza_utils_bam2seqz.cwl
+id: ../../../sequenza_utils_bam2seqz.cwl
 inputs:
 - id: pile_up
   doc: Use pileups as input files instead of BAMs.

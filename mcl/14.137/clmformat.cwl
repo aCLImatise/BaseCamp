@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clmformat.cwl
+id: ../../../clmformat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

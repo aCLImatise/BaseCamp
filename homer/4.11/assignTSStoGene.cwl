@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/assignTSStoGene.pl.cwl
+id: ../../../assignTSStoGene.pl.cwl
 inputs:
 - id: genome
   doc: (use default homer gene annotation/RefSeq)

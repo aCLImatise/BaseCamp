@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hailctl_dataproc_connect.cwl
+id: ../../../hailctl_dataproc_connect.cwl
 inputs:
 - id: port
   doc: 'Local port to use for SSH tunnel to master node (default: 10000).'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fgrep.cwl
+id: ../../../fgrep.cwl
 inputs:
 - id: extended_regexp
   doc: PATTERNS are extended regular expressions

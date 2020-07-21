@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_fdolmove.cwl
+id: ../../../_fdolmove.cwl
 inputs:
 - id: weights
   doc: properties Weights file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/edamisid.cwl
+id: ../../../edamisid.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/emapper.py.cwl
+id: ../../../emapper.py.cwl
 inputs:
 - id: tax_scope
   doc: Fix the taxonomic scope used for annotation, so only orthologs from a particular

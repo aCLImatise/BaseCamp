@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merfishtools_multidiffexp.cwl
+id: ../../../merfishtools_multidiffexp.cwl
 inputs:
 - id: max_null_cv
   doc: Maximum coefficient of variation (CV) considered as no differential expression

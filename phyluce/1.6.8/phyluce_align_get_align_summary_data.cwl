@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_get_align_summary_data.cwl
+id: ../../../phyluce_align_get_align_summary_data.cwl
 inputs:
 - id: alignments
   doc: 'The directory containing alignments to be summarized. (default: None)'

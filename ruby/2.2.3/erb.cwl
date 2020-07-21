@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/erb.cwl
+id: ../../../erb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

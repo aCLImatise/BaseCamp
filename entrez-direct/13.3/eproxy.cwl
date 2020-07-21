@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/eproxy.cwl
+id: ../../../eproxy.cwl
 inputs:
 - id: alias
   doc: File of aliases

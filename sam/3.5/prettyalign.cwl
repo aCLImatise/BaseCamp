@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prettyalign.cwl
+id: ../../../prettyalign.cwl
 inputs:
 - id: output_fastalike_format
   doc: Output in a FASTA-like format (off).

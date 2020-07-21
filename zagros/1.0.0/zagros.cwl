@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/zagros.cwl
+id: ../../../zagros.cwl
 inputs:
 - id: output
   doc: 'output file name (default: stdout) '

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getRna.cwl
+id: ../../../getRna.cwl
 inputs:
 - id: cds_upper_all
   doc: '- like -cdsUpper, except keep sequeneces without CDS'

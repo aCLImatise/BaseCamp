@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dot2pp.cwl
+id: ../../../dot2pp.cwl
 inputs:
 - id: man
   doc: documentation

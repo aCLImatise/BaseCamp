@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stripGapColumns.cwl
+id: ../../../stripGapColumns.cwl
 inputs:
 - id: input_x_mfa
   doc: ''

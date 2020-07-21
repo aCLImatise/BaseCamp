@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BedSort.cwl
+id: ../../../BedSort.cwl
 inputs:
 - id: in
   doc: "Input BED file. If unset, reads from STDIN. Default value: ''"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbsim.cwl
+id: ../../../pbsim.cwl
 inputs:
 - id: prefix
   doc: prefix of output files (sd).

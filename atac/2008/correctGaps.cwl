@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/correctGaps.cwl
+id: ../../../correctGaps.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

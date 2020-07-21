@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getTopPeaks.pl.cwl
+id: ../../../getTopPeaks.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

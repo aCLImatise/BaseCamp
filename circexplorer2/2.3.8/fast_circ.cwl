@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fast_circ.py.cwl
+id: ../../../fast_circ.py.cwl
 inputs:
 - id: ref
   doc: Gene annotation.

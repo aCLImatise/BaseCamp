@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_draw.cwl
+id: ../../../goalign_draw.cwl
 inputs:
 - id: output
   doc: Alignment draw output file (default "stdout")

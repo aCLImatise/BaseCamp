@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pentominoes.cwl
+id: ../../../pentominoes.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

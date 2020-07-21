@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wr_sections.py.cwl
+id: ../../../wr_sections.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

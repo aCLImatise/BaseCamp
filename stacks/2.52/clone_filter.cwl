@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clone_filter.cwl
+id: ../../../clone_filter.cwl
 inputs:
 - id: inline_null
   doc: ':   random oligo is inline with sequence, occurs only on single-end read (default).'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_nucleotide_changer.cwl
+id: ../../../fasta_nucleotide_changer.cwl
 inputs:
 - id: z
   doc: ''

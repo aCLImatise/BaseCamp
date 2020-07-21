@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/intersectBed.cwl
+id: ../../../intersectBed.cwl
 inputs:
 - id: wa
   doc: Write the original entry in A for each overlap.

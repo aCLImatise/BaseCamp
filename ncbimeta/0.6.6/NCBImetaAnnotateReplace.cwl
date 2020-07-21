@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NCBImetaAnnotateReplace.py.cwl
+id: ../../../NCBImetaAnnotateReplace.py.cwl
 inputs:
 - id: an_not_file
   doc: '[--version]'

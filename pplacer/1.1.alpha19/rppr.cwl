@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rppr.cwl
+id: ../../../rppr.cwl
 inputs:
 - id: cmds
   doc: Print a list of the available commands.

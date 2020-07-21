@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FastqExtractUMI.cwl
+id: ../../../FastqExtractUMI.cwl
 inputs:
 - id: in_one
   doc: Input FASTQ file 1.

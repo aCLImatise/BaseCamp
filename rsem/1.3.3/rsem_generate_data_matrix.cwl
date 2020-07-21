@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_generate_data_matrix.cwl
+id: ../../../rsem_generate_data_matrix.cwl
 inputs:
 - id: sample_a_dot
   doc: ''

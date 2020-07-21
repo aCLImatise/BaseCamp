@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findphyl.cwl
+id: ../../../findphyl.cwl
 inputs:
 - id: limit
   doc: ''

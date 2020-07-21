@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genePredFilter.cwl
+id: ../../../genePredFilter.cwl
 inputs:
 - id: verbose
   doc: '- level >= 2 prints out errors for each problem found.'

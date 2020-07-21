@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_quality_filter.cwl
+id: ../../../fastq_quality_filter.cwl
 inputs:
 - id: v
   doc: ''

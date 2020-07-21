@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stride_overlap.cwl
+id: ../../../stride_overlap.cwl
 inputs:
 - id: verbose
   doc: display verbose output

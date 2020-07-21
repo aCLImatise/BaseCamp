@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bed_coverage_by_interval.py.cwl
+id: ../../../bed_coverage_by_interval.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

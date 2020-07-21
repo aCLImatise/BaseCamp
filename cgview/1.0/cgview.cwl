@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cgview.cwl
+id: ../../../cgview.cwl
 inputs:
 - id: jar
   doc: ''

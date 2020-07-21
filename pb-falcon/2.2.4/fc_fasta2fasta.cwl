@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_fasta2fasta.cwl
+id: ../../../fc_fasta2fasta.cwl
 inputs:
 - id: gzip
   doc: Compress intermediate fasta with gzip. (Not currently implemented.)

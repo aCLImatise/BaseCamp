@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mob_cluster.cwl
+id: ../../../mob_cluster.cwl
 inputs:
 - id: mode
   doc: 'Build: Create a new database from scratch, Update: Update an existing database

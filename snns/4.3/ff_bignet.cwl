@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ff_bignet.cwl
+id: ../../../ff_bignet.cwl
 inputs:
 - id: link_definition
   doc: ''

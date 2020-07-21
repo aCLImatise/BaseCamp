@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fa2htgs.cwl
+id: ../../../fa2htgs.cwl
 inputs:
 - id: arbitrary_keyword_optional
   doc: Arbitrary Keyword [String]  Optional

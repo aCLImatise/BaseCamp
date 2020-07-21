@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pildriver.py.cwl
+id: ../../../pildriver.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

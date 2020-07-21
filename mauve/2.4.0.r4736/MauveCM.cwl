@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MauveCM.cwl
+id: ../../../MauveCM.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gappa_edit_multiplicity.cwl
+id: ../../../gappa_edit_multiplicity.cwl
 inputs:
 - id: j_place_path
   doc: :PATH(existing)=[] ... REQUIRED List of jplace files or directories to process.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pispino_createreadpairslist.cwl
+id: ../../../pispino_createreadpairslist.cwl
 inputs:
 - id: directory_raw_sequences
   doc: '[REQUIRED] Directory with your raw sequences in gzipped FASTQ'

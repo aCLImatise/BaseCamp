@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BedAnnotateGC.cwl
+id: ../../../BedAnnotateGC.cwl
 inputs:
 - id: in
   doc: "Input BED file. If unset, reads from STDIN. Default value: ''"

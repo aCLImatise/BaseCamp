@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_extract_sub_volume_auto.py.cwl
+id: ../../../medpy_extract_sub_volume_auto.py.cwl
 inputs:
 - id: set_flag_override
   doc: Set this flag to silently override files that exist.

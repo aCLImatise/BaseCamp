@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/index_blast_pairs.remove_gene_pair.pl.cwl
+id: ../../../index_blast_pairs.remove_gene_pair.pl.cwl
 inputs:
 - id: ct_at_genome_lib_dir
   doc: ''

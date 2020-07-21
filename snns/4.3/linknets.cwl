@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/linknets.cwl
+id: ../../../linknets.cwl
 inputs:
 - id: in_units
   doc: use copies of input units

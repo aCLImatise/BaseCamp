@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nf_core_lint.cwl
+id: ../../../nf_core_lint.cwl
 inputs:
 - id: release
   doc: Execute additional checks for release-ready workflows.

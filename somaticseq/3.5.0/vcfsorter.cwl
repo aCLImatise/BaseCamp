@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfsorter.pl.cwl
+id: ../../../vcfsorter.pl.cwl
 inputs:
 - id: genome_dot_dict
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RADpainter_paint.cwl
+id: ../../../RADpainter_paint.cwl
 inputs:
 - id: ploidy
   doc: ploidy of the species being analysed (default is 2N, i.e. diploid)

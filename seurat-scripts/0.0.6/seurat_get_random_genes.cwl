@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seurat_get_random_genes.R.cwl
+id: ../../../seurat_get_random_genes.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dx_generate_dxapp.cwl
+id: ../../../dx_generate_dxapp.cwl
 inputs:
 - id: target_module
   doc: The fully-qualified module that contains the target method.

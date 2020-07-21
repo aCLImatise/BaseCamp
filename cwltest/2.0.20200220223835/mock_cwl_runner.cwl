@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mock_cwl_runner.cwl
+id: ../../../mock_cwl_runner.cwl
 inputs:
 - id: outdir
   doc: ''

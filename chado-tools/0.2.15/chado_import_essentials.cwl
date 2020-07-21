@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chado_import_essentials.cwl
+id: ../../../chado_import_essentials.cwl
 inputs:
 - id: verbose
   doc: verbose mode

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_create_bam_statistics.cwl
+id: ../../../mb_create_bam_statistics.cwl
 inputs:
 - id: gff_file
   doc: ''

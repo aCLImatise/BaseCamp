@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_vep.pl.cwl
+id: ../../../filter_vep.pl.cwl
 inputs:
 - id: arguments
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ipyrad.cwl
+id: ../../../ipyrad.cwl
 inputs:
 - id: v
   doc: ''

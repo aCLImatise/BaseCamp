@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/edd_unalignable_regions.cwl
+id: ../../../edd_unalignable_regions.cwl
 inputs:
 - id: bin_size
   doc: ''

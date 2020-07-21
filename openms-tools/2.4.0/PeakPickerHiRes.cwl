@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PeakPickerHiRes.cwl
+id: ../../../PeakPickerHiRes.cwl
 inputs:
 - id: in
   doc: "*        Input profile data file  (valid formats: 'mzML')"

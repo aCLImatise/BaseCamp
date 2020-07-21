@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfjoincalls.cwl
+id: ../../../vcfjoincalls.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

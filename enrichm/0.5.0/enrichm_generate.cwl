@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/enrichm_generate.cwl
+id: ../../../enrichm_generate.cwl
 inputs:
 - id: log
   doc: Output logging information to this file.

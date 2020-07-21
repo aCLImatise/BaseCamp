@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msdir.cwl
+id: ../../../msdir.cwl
 inputs:
 - id: b
   doc: '[ --brief ]        : display brief listing [default]'

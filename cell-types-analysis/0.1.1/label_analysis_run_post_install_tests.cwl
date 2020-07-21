@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/label_analysis_run_post_install_tests.sh.cwl
+id: ../../../label_analysis_run_post_install_tests.sh.cwl
 inputs:
 - id: run_post_install_tests_dots_h
   doc: ''

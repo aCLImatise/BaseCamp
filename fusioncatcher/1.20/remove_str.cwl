@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/remove_str.py.cwl
+id: ../../../remove_str.py.cwl
 inputs:
 - id: input
   doc: The input FASTQ file.

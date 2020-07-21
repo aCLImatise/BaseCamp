@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plaScope.sh.cwl
+id: ../../../plaScope.sh.cwl
 inputs:
 - id: no_banner
   doc: don't print beautiful banners

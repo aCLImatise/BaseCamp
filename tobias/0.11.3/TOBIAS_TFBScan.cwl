@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TOBIAS_TFBScan.cwl
+id: ../../../TOBIAS_TFBScan.cwl
 inputs:
 - id: _motifs_file
   doc: ', --motifs         File containing motifs in either MEME, PFM or JASPAR format'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/revoppMotif.pl.cwl
+id: ../../../revoppMotif.pl.cwl
 inputs:
 - id: motif_file
   doc: ''

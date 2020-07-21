@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_plot_metagene_nobs_gff.cwl
+id: ../../../mb_plot_metagene_nobs_gff.cwl
 inputs:
 - id: downstream
   doc: ''

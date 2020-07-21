@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dbxobo.cwl
+id: ../../../dbxobo.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

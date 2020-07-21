@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hp_join_reads.cwl
+id: ../../../hp_join_reads.cwl
 inputs:
 - id: fq_one
   doc: Fastq file with read 1

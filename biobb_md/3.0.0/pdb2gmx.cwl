@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pdb2gmx.cwl
+id: ../../../pdb2gmx.cwl
 inputs:
 - id: config
   doc: This file can be a YAML file, JSON file or JSON string

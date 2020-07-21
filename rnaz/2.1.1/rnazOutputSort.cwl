@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnazOutputSort.pl.cwl
+id: ../../../rnazOutputSort.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

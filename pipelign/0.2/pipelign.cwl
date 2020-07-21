@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pipelign.cwl
+id: ../../../pipelign.cwl
 inputs:
 - id: in_file
   doc: Input sequence file in FASTA format

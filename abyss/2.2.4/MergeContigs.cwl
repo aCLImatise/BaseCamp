@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MergeContigs.cwl
+id: ../../../MergeContigs.cwl
 inputs:
 - id: km_er
   doc: k-mer size

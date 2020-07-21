@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wdl_parse.cwl
+id: ../../../wdl_parse.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

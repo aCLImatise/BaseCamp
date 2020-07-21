@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gtf2bed_float128.cwl
+id: ../../../gtf2bed_float128.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

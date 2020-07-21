@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xgboost_model_predictor.R.cwl
+id: ../../../xgboost_model_predictor.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

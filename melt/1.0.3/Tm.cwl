@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Tm.cwl
+id: ../../../Tm.cwl
 inputs:
 - id: uncorrected
   doc: Do not use monovalent/divalent cation corrections

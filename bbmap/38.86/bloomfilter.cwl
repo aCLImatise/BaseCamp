@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bloomfilter.sh.cwl
+id: ../../../bloomfilter.sh.cwl
 inputs:
 - id: in
   doc: ''

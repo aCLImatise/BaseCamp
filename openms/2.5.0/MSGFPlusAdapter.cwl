@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MSGFPlusAdapter.cwl
+id: ../../../MSGFPlusAdapter.cwl
 inputs:
 - id: in
   doc: "*                        Input file (MS-GF+ parameter '-s') (valid formats:\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/capCmain.cwl
+id: ../../../capCmain.cwl
 inputs:
 - id: fragfile_bed_file
   doc: frag_file   is a bed file of restriction enzyme fragments genome wide

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_sealer.cwl
+id: ../../../abyss_sealer.cwl
 inputs:
 - id: print_flanks
   doc: outputs flank files

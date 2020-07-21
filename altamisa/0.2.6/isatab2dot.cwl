@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/isatab2dot.cwl
+id: ../../../isatab2dot.cwl
 inputs:
 - id: investigation_file
   doc: Path to investigation file

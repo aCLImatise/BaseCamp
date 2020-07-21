@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CruxAdapter.cwl
+id: ../../../CruxAdapter.cwl
 inputs:
 - id: in
   doc: "*                            Input file (valid formats: 'mzML')"

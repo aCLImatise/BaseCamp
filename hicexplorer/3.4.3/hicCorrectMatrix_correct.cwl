@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicCorrectMatrix_correct.cwl
+id: ../../../hicCorrectMatrix_correct.cwl
 inputs:
 - id: matrix
   doc: 'Name of the Hi-C matrix to correct in .h5 format. (default: None)'

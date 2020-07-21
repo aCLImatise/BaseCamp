@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kccachetest.cwl
+id: ../../../kccachetest.cwl
 inputs:
 - id: th
   doc: ''

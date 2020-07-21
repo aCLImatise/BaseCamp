@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HiLine.cwl
+id: ../../../HiLine.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dupre.cwl
+id: ../../../dupre.cwl
 inputs:
 - id: observed
   doc: observed occupancy vector (space-separated ints, or a filename)

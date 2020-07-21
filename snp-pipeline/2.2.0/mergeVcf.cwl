@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergeVcf.sh.cwl
+id: ../../../mergeVcf.sh.cwl
 inputs:
 - id: force
   doc: 'Force processing even when result files already exist and are newer than inputs

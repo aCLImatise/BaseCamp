@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mcast.cwl
+id: ../../../mcast.cwl
 inputs:
 - id: alpha
   doc: The fraction of all TF binding sites that are binding sites for the TF of interest.

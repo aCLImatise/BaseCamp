@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/limix_runner.cwl
+id: ../../../limix_runner.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

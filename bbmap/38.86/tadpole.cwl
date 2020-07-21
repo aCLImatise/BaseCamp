@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tadpole.sh.cwl
+id: ../../../tadpole.sh.cwl
 inputs:
 - id: assembly
   doc: ''

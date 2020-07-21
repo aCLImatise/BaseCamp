@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/newPythonProg.cwl
+id: ../../../newPythonProg.cwl
 inputs:
 - id: program_name
   doc: ''

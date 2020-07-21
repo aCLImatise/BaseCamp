@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/protpars.cwl
+id: ../../../protpars.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/optimir_process.cwl
+id: ../../../optimir_process.cwl
 inputs:
 - id: fq
   doc: 'Full path of the sample fastq file (accepted formats and extensions: fastq,

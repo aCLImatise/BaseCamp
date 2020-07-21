@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/miranda.cwl
+id: ../../../miranda.cwl
 inputs:
 - id: license
   doc: Display license information

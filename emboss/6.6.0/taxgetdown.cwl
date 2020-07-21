@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxgetdown.cwl
+id: ../../../taxgetdown.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

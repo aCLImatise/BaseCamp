@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SURVIVOR.cwl
+id: ../../../SURVIVOR.cwl
 inputs:
 - id: sims_v
   doc: Simulates SVs and SNPs on a reference genome.

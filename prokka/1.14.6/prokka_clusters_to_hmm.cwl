@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prokka_clusters_to_hmm.cwl
+id: ../../../prokka_clusters_to_hmm.cwl
 inputs:
 - id: verbose
   doc: "!      Verbose output (default '0')."

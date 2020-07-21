@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gkmpredict.cwl
+id: ../../../gkmpredict.cwl
 inputs:
 - id: set_level_verbosity
   doc: 'set the level of verbosity (default: 2) 0 -- error msgs only (ERROR) 1 --

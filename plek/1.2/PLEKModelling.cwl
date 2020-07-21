@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PLEKModelling.py.cwl
+id: ../../../PLEKModelling.py.cwl
 inputs:
 - id: is_balanced
   doc: mRNA transcripts used to build predictor, in fasta format.

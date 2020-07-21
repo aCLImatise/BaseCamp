@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svm_classifier.py.cwl
+id: ../../../svm_classifier.py.cwl
 inputs:
 - id: out_classification
   doc: Name of the output file to store classification performed on the traing data

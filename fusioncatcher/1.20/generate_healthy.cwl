@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generate_healthy.py.cwl
+id: ../../../generate_healthy.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the list of allowed candidate fusion genes

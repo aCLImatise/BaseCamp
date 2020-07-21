@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdtools_SUBTRACT.cwl
+id: ../../../gdtools_SUBTRACT.cwl
 inputs:
 - id: output
   doc: output GD file (DEFAULT=output.gd)

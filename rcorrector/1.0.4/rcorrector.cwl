@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rcorrector.cwl
+id: ../../../rcorrector.cwl
 inputs:
 - id: od
   doc: '(default: ./)'

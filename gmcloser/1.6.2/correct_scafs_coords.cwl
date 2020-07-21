@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/correct_scafs_coords.pl.cwl
+id: ../../../correct_scafs_coords.pl.cwl
 inputs:
 - id: query
   doc: input scaffold fasta file (e.g., scaf.fa)

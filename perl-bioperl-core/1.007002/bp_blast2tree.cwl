@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_blast2tree.pl.cwl
+id: ../../../bp_blast2tree.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

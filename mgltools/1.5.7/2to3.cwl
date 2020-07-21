@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/2to3.cwl
+id: ../../../2to3.cwl
 inputs:
 - id: doc_tests_only
   doc: Fix up doctests only

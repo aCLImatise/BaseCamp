@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mglobprobe.cwl
+id: ../../../mglobprobe.cwl
 inputs:
 - id: step_size
   doc: step size

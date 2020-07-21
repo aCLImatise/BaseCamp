@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gridss_somatic_filter.cwl
+id: ../../../gridss_somatic_filter.cwl
 inputs:
 - id: gc
   doc: Perform garbage collection after freeing of large objects.

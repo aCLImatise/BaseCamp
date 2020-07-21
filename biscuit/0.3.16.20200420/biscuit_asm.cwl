@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biscuit_asm.cwl
+id: ../../../biscuit_asm.cwl
 inputs:
 - id: input_dot_epi_read
   doc: ''

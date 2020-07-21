@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/collectl.cwl
+id: ../../../collectl.cwl
 inputs:
 - id: count
   doc: count      collect this number of samples and exit

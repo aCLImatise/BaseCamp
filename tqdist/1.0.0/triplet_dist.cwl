@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/triplet_dist.cwl
+id: ../../../triplet_dist.cwl
 inputs:
 - id: v
   doc: ''

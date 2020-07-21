@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Piranha.cwl
+id: ../../../Piranha.cwl
 inputs:
 - id: output
   doc: 'Name of output file, STDOUT if omitted '

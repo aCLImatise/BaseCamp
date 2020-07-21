@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/find_positions_used.pl.cwl
+id: ../../../find_positions_used.pl.cwl
 inputs:
 - id: tab
   doc: ': Print in tab-deliminted format'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chromosomer_fragmentmapstat_output.cwl
+id: ../../../chromosomer_fragmentmapstat_output.cwl
 inputs:
 - id: chromosome_r
   doc: ''

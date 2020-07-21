@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_pileup2sites.cwl
+id: ../../../mb_pileup2sites.cwl
 inputs:
 - id: pile_up_file
   doc: ''

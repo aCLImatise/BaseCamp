@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mknod.cwl
+id: ../../../mknod.cwl
 inputs:
 - id: mode
   doc: set file permission bits to MODE, not a=rw - umask

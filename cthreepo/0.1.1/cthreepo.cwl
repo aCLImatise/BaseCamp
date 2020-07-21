@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cthreepo.cwl
+id: ../../../cthreepo.cwl
 inputs:
 - id: in_file
   doc: input file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mutplot.cwl
+id: ../../../mutplot.cwl
 inputs:
 - id: _vcf_vcf
   doc: ', --vcf            VCF file which contains cultivar and mutant bulk. in this

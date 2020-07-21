@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fmlrc.cwl
+id: ../../../fmlrc.cwl
 inputs:
 - id: print_version_number
   doc: print version number and exit

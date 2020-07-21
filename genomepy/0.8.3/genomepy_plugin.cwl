@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genomepy_plugin.cwl
+id: ../../../genomepy_plugin.cwl
 inputs:
 - id: command
   doc: ''

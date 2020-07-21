@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools_mpileup.cwl
+id: ../../../samtools_mpileup.cwl
 inputs:
 - id: reference_sequence_file
   doc: reference sequence file [null]

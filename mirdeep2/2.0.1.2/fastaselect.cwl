@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastaselect.pl.cwl
+id: ../../../fastaselect.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

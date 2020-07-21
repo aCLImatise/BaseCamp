@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/storescp.cwl
+id: ../../../storescp.cwl
 inputs:
 - id: single_process
   doc: single process mode (default)

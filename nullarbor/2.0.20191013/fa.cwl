@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fa.cwl
+id: ../../../fa.cwl
 inputs:
 - id: verbose
   doc: "!      Debug info (default '0')."

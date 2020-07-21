@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dipenum.cwl
+id: ../../../dipenum.cwl
 inputs:
 - id: input_file
   doc: The input VCF/BCF file (use file:sample to specify a sample)

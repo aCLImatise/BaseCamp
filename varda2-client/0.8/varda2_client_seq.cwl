@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varda2_client_seq.cwl
+id: ../../../varda2_client_seq.cwl
 inputs:
 - id: sequence
   doc: Sequence

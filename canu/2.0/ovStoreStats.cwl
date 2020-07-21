@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ovStoreStats.cwl
+id: ../../../ovStoreStats.cwl
 inputs:
 - id: expect_coverage_mean
   doc: Expect coverage at mean (below 1/3 this is 'low coverage', above 5/3 is 'repeat')

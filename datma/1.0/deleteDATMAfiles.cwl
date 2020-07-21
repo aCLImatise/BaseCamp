@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deleteDATMAfiles.py.cwl
+id: ../../../deleteDATMAfiles.py.cwl
 inputs:
 - id: file
   doc: configuration file

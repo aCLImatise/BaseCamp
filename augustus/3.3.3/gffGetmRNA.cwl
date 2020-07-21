@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gffGetmRNA.pl.cwl
+id: ../../../gffGetmRNA.pl.cwl
 inputs:
 - id: genome
   doc: Input a fasta file with the genomic sequences.

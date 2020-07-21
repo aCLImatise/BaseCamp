@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastaannotatecdna.cwl
+id: ../../../fastaannotatecdna.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

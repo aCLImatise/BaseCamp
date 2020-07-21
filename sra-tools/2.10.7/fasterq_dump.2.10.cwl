@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasterq_dump.2.10.7.cwl
+id: ../../../fasterq_dump.2.10.7.cwl
 inputs:
 - id: outfile
   doc: full path of outputfile (overrides usage of current directory and given accession)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chromatiblock.cwl
+id: ../../../chromatiblock.cwl
 inputs:
 - id: d
   doc: ''

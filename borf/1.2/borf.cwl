@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/borf.cwl
+id: ../../../borf.cwl
 inputs:
 - id: output_path
   doc: 'path to write output files. [OUTPUT_PATH].pep and [OUTPUT_PATH].txt (default:

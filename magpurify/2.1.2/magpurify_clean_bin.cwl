@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/magpurify_clean_bin.cwl
+id: ../../../magpurify_clean_bin.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

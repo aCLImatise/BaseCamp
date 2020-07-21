@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CanSNPs.pl.cwl
+id: ../../../CanSNPs.pl.cwl
 inputs:
 - id: threshold
   doc: Fraction of nucleotide in a group for defining Canonical SNPs (default :0.5)

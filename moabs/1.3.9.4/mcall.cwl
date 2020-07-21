@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mcall.cwl
+id: ../../../mcall.cwl
 inputs:
 - id: arg_specify_names
   doc: '[ --mappedFiles ] arg           Specify the names of RRBS/WGBS alignment  files

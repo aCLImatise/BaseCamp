@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmsearch_hmmfile.cwl
+id: ../../../hmmsearch_hmmfile.cwl
 inputs:
 - id: seq_db
   doc: ''

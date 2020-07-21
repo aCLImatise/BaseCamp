@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_consensi.py.cwl
+id: ../../../make_consensi.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

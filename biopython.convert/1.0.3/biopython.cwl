@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biopython.convert.cwl
+id: ../../../biopython.convert.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

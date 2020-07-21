@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_restover.cwl
+id: ../../../_restover.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

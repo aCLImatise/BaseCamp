@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/multi_qsub.py.cwl
+id: ../../../multi_qsub.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

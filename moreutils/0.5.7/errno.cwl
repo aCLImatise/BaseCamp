@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/errno.cwl
+id: ../../../errno.cwl
 inputs:
 - id: lss
   doc: ''

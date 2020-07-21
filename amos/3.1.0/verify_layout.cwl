@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/verify_layout.cwl
+id: ../../../verify_layout.cwl
 inputs:
 - id: bank_name
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/isjobcomplete.sh.cwl
+id: ../../../isjobcomplete.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

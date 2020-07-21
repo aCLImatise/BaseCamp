@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arv_crunch_job.cwl
+id: ../../../arv_crunch_job.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

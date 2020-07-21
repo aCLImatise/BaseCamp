@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runInteMAP.py.cwl
+id: ../../../runInteMAP.py.cwl
 inputs:
 - id: outfile
   doc: Output contig file

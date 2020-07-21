@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/graphlan_annotate.py.cwl
+id: ../../../graphlan_annotate.py.cwl
 inputs:
 - id: an_not
   doc: specify the annotation file

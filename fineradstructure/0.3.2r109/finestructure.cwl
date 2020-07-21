@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/finestructure.cwl
+id: ../../../finestructure.cwl
 inputs:
 - id: data_file
   doc: ''

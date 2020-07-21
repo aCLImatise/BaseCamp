@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generate_exons.py.cwl
+id: ../../../generate_exons.py.cwl
 inputs:
 - id: input_exons
   doc: Input file with exons positions.

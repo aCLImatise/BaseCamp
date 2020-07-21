@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ceqlogo.cwl
+id: ../../../ceqlogo.cwl
 inputs:
 - id: loads_motif_file
   doc: Loads a motif from the file specified by the previous -i option. The motif

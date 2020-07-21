@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dnase_cut_counter.py_output.cwl
+id: ../../../dnase_cut_counter.py_output.cwl
 inputs:
 - id: a
   doc: ''

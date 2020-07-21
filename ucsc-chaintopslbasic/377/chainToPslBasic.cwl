@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chainToPslBasic.cwl
+id: ../../../chainToPslBasic.cwl
 inputs:
 - id: chain_top_sl
   doc: ''

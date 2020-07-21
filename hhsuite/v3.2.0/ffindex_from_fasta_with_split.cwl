@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ffindex_from_fasta_with_split.cwl
+id: ../../../ffindex_from_fasta_with_split.cwl
 inputs:
 - id: sort_index_file
   doc: sort index file

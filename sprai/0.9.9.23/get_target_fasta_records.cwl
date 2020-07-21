@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_target_fasta_records.pl.cwl
+id: ../../../get_target_fasta_records.pl.cwl
 inputs:
 - id: this
   doc: ''

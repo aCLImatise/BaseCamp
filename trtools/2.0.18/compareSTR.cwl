@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compareSTR.cwl
+id: ../../../compareSTR.cwl
 inputs:
 - id: vcf_one
   doc: First VCF file to compare (must be sorted, bgzipped, and indexed)

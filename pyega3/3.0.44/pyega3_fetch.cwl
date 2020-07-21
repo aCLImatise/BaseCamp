@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyega3_fetch.cwl
+id: ../../../pyega3_fetch.cwl
 inputs:
 - id: reference_name
   doc: The reference sequence name, for example 'chr1', '1', or 'chrX'. If unspecified,

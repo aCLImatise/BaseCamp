@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/design_generategraphml.py.cwl
+id: ../../../design_generategraphml.py.cwl
 inputs:
 - id: input
   doc: Read custom structures and sequence constraints from stdin

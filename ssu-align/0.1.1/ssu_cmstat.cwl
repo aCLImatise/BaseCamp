@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_cmstat.cwl
+id: ../../../ssu_cmstat.cwl
 inputs:
 - id: configure_cm_glocal
   doc: ': configure CM for glocal alignment [default: local]'

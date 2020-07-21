@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/truspades.py.cwl
+id: ../../../truspades.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

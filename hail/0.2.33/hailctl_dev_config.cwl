@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hailctl_dev_config.cwl
+id: ../../../hailctl_dev_config.cwl
 inputs:
 - id: location
   doc: 'Location. (default: external)'

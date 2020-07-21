@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_abund_single.py.cwl
+id: ../../../filter_abund_single.py.cwl
 inputs:
 - id: gzip
   doc: 'Compress output using gzip (default: False)'

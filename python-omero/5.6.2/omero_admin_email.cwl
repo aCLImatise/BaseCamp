@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_admin_email.cwl
+id: ../../../omero_admin_email.cwl
 inputs:
 - id: everyone
   doc: Contact everyone in the system regardless of other arguments.

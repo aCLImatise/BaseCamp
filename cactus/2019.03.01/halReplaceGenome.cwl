@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halReplaceGenome.cwl
+id: ../../../halReplaceGenome.cwl
 inputs:
 - id: in_file
   doc: ''

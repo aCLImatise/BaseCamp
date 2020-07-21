@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flextaxd_create.cwl
+id: ../../../flextaxd_create.cwl
 inputs:
 - id: _outdir_directory
   doc: ', --outdir      Output directory (same directory as custom_taxonomy_databases

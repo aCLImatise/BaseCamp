@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sixgill_build.cwl
+id: ../../../sixgill_build.cwl
 inputs:
 - id: minlength
   doc: min AA length of a metapeptide

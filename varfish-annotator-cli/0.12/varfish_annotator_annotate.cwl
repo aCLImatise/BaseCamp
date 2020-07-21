@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varfish_annotator_annotate.cwl
+id: ../../../varfish_annotator_annotate.cwl
 inputs:
 - id: case_id
   doc: 'The value to use for case ID Default: .'

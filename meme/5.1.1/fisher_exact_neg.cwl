@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fisher_exact_neg.cwl
+id: ../../../fisher_exact_neg.cwl
 inputs:
 - id: fisher_exact
   doc: ''

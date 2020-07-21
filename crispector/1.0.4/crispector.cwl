@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crispector.cwl
+id: ../../../crispector.cwl
 inputs:
 - id: min_editing_activity
   doc: 'RANGE Minimum editing activity (%). Sites with editing activity lower than

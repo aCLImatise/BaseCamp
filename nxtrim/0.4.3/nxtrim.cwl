@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nxtrim.cwl
+id: ../../../nxtrim.cwl
 inputs:
 - id: one
   doc: '[ --r1 ] arg                 read 1 in fastq format (gzip allowed)'

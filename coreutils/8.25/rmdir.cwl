@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rmdir.cwl
+id: ../../../rmdir.cwl
 inputs:
 - id: ignore_fail_on_non_empty
   doc: ignore each failure that is solely because a directory is non-empty

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gffcompare.cwl
+id: ../../../gffcompare.cwl
 inputs:
 - id: c_slash_a_slash_x
   doc: ', do NOT discard any redundant transfrag matching a reference'

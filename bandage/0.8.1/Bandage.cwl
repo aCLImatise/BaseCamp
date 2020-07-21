@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Bandage.cwl
+id: ../../../Bandage.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

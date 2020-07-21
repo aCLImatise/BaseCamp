@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Rsample_smp.cwl
+id: ../../../Rsample_smp.cwl
 inputs:
 - id: r_sample
   doc: ''

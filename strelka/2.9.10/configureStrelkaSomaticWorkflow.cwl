@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/configureStrelkaSomaticWorkflow.py.cwl
+id: ../../../configureStrelkaSomaticWorkflow.py.cwl
 inputs:
 - id: normal_bam
   doc: Normal sample BAM or CRAM file. (no default)

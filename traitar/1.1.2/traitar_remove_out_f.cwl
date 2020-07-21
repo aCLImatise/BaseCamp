@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/traitar_remove_out_f.cwl
+id: ../../../traitar_remove_out_f.cwl
 inputs:
 - id: keep
   doc: ''

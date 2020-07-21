@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/psiphi.cwl
+id: ../../../psiphi.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

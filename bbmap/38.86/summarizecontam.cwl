@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summarizecontam.sh.cwl
+id: ../../../summarizecontam.sh.cwl
 inputs:
 - id: input_files
   doc: ''

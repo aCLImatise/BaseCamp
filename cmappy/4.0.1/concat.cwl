@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/concat.cwl
+id: ../../../concat.cwl
 inputs:
 - id: concat_direction
   doc: 'which direction to concatenate (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_index.cwl
+id: ../../../abyss_index.cwl
 inputs:
 - id: both
   doc: build both FAI and FM indexes [default]

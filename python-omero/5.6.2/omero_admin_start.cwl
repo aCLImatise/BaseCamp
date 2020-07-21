@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_admin_start.cwl
+id: ../../../omero_admin_start.cwl
 inputs:
 - id: wait
   doc: Seconds to wait for operation

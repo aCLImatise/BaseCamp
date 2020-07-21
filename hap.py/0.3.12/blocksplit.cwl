@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blocksplit.cwl
+id: ../../../blocksplit.cwl
 inputs:
 - id: input_file
   doc: The input VCF/BCF file(s) (use file:sample to  specify a sample)

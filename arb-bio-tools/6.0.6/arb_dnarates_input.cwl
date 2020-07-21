@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_dnarates_input.cwl
+id: ../../../arb_dnarates_input.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

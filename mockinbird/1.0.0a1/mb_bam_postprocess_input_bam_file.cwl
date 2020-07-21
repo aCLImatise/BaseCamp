@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_bam_postprocess_input_bam_file.cwl
+id: ../../../mb_bam_postprocess_input_bam_file.cwl
 inputs:
 - id: min_length
   doc: ''

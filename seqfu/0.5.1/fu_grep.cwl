@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fu_grep.cwl
+id: ../../../fu_grep.cwl
 inputs:
 - id: pattern
   doc: ''

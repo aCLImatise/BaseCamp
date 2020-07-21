@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uropa.cwl
+id: ../../../uropa.cwl
 inputs:
 - id: _bed_filename
   doc: ', --bed                       Filename of .bed-file to annotate'

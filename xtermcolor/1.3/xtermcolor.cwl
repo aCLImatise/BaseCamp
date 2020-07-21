@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xtermcolor.cwl
+id: ../../../xtermcolor.cwl
 inputs:
 - id: color
   doc: Color to convert

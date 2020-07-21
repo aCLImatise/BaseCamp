@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/OpenPepXLLF.cwl
+id: ../../../OpenPepXLLF.cwl
 inputs:
 - id: in
   doc: "*                                       Input file containing the spectra.\

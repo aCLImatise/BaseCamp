@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_gtfs.pl.cwl
+id: ../../../filter_gtfs.pl.cwl
 inputs:
 - id: list_filter_types
   doc: ': List filter types'

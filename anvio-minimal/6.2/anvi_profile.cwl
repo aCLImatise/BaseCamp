@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_profile.cwl
+id: ../../../anvi_profile.cwl
 inputs:
 - id: input_file
   doc: Sorted and indexed BAM file to analyze. Takes a long time depending on the

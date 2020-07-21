@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf_print_chroms.py.cwl
+id: ../../../maf_print_chroms.py.cwl
 inputs:
 - id: ref_index
   doc: ''

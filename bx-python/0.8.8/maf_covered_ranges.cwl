@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf_covered_ranges.py.cwl
+id: ../../../maf_covered_ranges.py.cwl
 inputs:
 - id: species_one
   doc: ''

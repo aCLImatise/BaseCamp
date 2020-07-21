@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/virsorter_train_feature.cwl
+id: ../../../virsorter_train_feature.cwl
 inputs:
 - id: working_dir
   doc: output directory  [required]

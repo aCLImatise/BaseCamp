@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DBstats.cwl
+id: ../../../DBstats.cwl
 inputs:
 - id: nu
   doc: ''

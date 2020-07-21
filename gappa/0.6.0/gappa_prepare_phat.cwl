@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gappa_prepare_phat.cwl
+id: ../../../gappa_prepare_phat.cwl
 inputs:
 - id: taxonomy_file
   doc: :FILE REQUIRED File that lists the taxa of the database.

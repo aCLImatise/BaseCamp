@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/braker.pl.cwl
+id: ../../../braker.pl.cwl
 inputs:
 - id: show_target_gff
   doc: '... > exfile'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/radiotherapy.cwl
+id: ../../../radiotherapy.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

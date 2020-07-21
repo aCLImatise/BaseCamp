@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdal_grid.cwl
+id: ../../../gdal_grid.cwl
 inputs:
 - id: help_general
   doc: ''

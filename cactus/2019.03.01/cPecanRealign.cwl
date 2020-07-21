@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cPecanRealign.cwl
+id: ../../../cPecanRealign.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

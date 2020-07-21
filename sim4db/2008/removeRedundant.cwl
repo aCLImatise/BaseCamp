@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/removeRedundant.cwl
+id: ../../../removeRedundant.cwl
 inputs:
 - id: gff_three
   doc: ''

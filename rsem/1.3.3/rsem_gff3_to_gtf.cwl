@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_gff3_to_gtf.cwl
+id: ../../../rsem_gff3_to_gtf.cwl
 inputs:
 - id: make_genes_as_transcripts
   doc: 'GFF3 file does not contain transcripts, make each gene as a transcript. (default:

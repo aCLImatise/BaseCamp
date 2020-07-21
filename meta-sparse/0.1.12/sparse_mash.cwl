@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sparse_mash.cwl
+id: ../../../sparse_mash.cwl
 inputs:
 - id: dbname
   doc: Name for the database folder. REQUIRED.

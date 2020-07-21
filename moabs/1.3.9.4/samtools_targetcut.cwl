@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools_targetcut.cwl
+id: ../../../samtools_targetcut.cwl
 inputs:
 - id: q
   doc: ''

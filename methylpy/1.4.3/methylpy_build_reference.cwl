@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/methylpy_build_reference.cwl
+id: ../../../methylpy_build_reference.cwl
 inputs:
 - id: input_files
   doc: 'List of genome fasta files to build a reference from. (default: None)'

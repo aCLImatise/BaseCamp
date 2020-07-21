@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bigWigCluster.cwl
+id: ../../../bigWigCluster.cwl
 inputs:
 - id: threads
   doc: '- number of threads to use, default 10'

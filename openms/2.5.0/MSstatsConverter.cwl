@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MSstatsConverter.cwl
+id: ../../../MSstatsConverter.cwl
 inputs:
 - id: in
   doc: "*                                     Input consensusXML with peptide intensities\

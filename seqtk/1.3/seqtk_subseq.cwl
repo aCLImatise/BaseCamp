@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqtk_subseq.cwl
+id: ../../../seqtk_subseq.cwl
 inputs:
 - id: tab_delimited_output
   doc: TAB delimited output

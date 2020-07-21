@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GTFupdate.cwl
+id: ../../../GTFupdate.cwl
 inputs:
 - id: gtf_file
   doc: ''

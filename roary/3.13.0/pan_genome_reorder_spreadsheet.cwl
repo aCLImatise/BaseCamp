@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pan_genome_reorder_spreadsheet.cwl
+id: ../../../pan_genome_reorder_spreadsheet.cwl
 inputs:
 - id: tree_filename
   doc: tree filename []

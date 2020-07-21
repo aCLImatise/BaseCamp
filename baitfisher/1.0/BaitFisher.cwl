@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BaitFisher.cwl
+id: ../../../BaitFisher.cwl
 inputs:
 - id: parameter_file
   doc: ''

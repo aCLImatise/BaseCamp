@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/loadGenome.pl.cwl
+id: ../../../loadGenome.pl.cwl
 inputs:
 - id: org
   doc: <organism name, ok to use 'null'>

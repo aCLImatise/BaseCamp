@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quasitools_hydra.cwl
+id: ../../../quasitools_hydra.cwl
 inputs:
 - id: generate_consensus
   doc: Generate a mixed base consensus sequence.

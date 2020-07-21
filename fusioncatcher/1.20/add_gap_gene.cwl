@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/add_gap_gene.py.cwl
+id: ../../../add_gap_gene.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the list of banned candidate fusion genes

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fqtrim.cwl
+id: ../../../fqtrim.cwl
 inputs:
 - id: minimum_length_exact
   doc: 'minimum length of exact suffix-prefix match with adapter sequence that can

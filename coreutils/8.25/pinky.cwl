@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pinky.cwl
+id: ../../../pinky.cwl
 inputs:
 - id: long_format_output
   doc: long format output for the specified USERs

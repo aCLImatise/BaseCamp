@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_map.cwl
+id: ../../../abyss_map.cwl
 inputs:
 - id: min_align
   doc: find matches at least N bp [1]

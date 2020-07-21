@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varda2_client_mnv.cwl
+id: ../../../varda2_client_mnv.cwl
 inputs:
 - id: start
   doc: Start of region

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/artic_fasta_header.cwl
+id: ../../../artic_fasta_header.cwl
 inputs:
 - id: filename
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sqt2pin.cwl
+id: ../../../sqt2pin.cwl
 inputs:
 - id: enzyme
   doc: Type of enzyme  "no_enzyme","elastase","pepsin","proteinasek","therm olysin","chymotrypsin","lys-n","lys-c","arg-c","asp-

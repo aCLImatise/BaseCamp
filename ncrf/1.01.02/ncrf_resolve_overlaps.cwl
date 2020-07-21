@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ncrf_resolve_overlaps.py.cwl
+id: ../../../ncrf_resolve_overlaps.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

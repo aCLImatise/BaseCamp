@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kmerlimit2.sh.cwl
+id: ../../../kmerlimit2.sh.cwl
 inputs:
 - id: in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vsnp_fasta_to_snps_table.py.cwl
+id: ../../../vsnp_fasta_to_snps_table.py.cwl
 inputs:
 - id: fast_a
   doc: provide an aligned fasta

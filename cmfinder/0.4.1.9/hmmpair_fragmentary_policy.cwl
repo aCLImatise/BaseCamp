@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmpair_fragmentary_policy.cwl
+id: ../../../hmmpair_fragmentary_policy.cwl
 inputs:
 - id: hmm_pair
   doc: ''

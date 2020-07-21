@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/freq2group.pl.cwl
+id: ../../../freq2group.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

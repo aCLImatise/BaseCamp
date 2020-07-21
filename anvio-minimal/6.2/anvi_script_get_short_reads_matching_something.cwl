@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_script_get_short_reads_matching_something.cwl
+id: ../../../anvi_script_get_short_reads_matching_something.cwl
 inputs:
 - id: min_remainder_length
   doc: Minimum lenght of the remainder of the read after the match. If your short

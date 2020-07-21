@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pfscan.cwl
+id: ../../../pfscan.cwl
 inputs:
 - id: report_optimal_alignment
   doc: ': report optimal alignment for all profiles.'

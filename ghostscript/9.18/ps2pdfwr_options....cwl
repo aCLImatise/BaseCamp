@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ps2pdfwr_options....cwl
+id: ../../../ps2pdfwr_options....cwl
 inputs:
 - id: dict
   doc: :1191/1684(ro)(G)--   --dict:0/20(G)--   --dict:78/200(L)--

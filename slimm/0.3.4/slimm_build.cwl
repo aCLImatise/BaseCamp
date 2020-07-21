@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/slimm_build.cwl
+id: ../../../slimm_build.cwl
 inputs:
 - id: version_check
   doc: 'Turn this option off to disable version update notifications of the application.

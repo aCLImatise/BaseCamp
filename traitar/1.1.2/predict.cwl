@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/predict.py.cwl
+id: ../../../predict.py.cwl
 inputs:
 - id: k
   doc: ''

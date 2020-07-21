@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/soap.cwl
+id: ../../../soap.cwl
 inputs:
 - id: str_query_file
   doc: <str>   query a file, *.fq, *.fa

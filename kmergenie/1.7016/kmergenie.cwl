@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kmergenie.cwl
+id: ../../../kmergenie.cwl
 inputs:
 - id: diploid
   doc: 'use the diploid model (default: haploid model)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spine.pl.cwl
+id: ../../../spine.pl.cwl
 inputs:
 - id: file
   doc: "file with list of input sequence files. Accepted file formats include fasta\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spades_assembly.sh.cwl
+id: ../../../spades_assembly.sh.cwl
 inputs:
 - id: usage_message
   doc: usage message

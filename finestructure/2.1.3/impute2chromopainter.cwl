@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/impute2chromopainter.pl.cwl
+id: ../../../impute2chromopainter.pl.cwl
 inputs:
 - id: impute_output_file_dot_haps
   doc: ''

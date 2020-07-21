@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hailctl_dataproc_modify.cwl
+id: ../../../hailctl_dataproc_modify.cwl
 inputs:
 - id: wheel
   doc: New Hail installation.

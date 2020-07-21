@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_sfetch_name.cwl
+id: ../../../esl_sfetch_name.cwl
 inputs:
 - id: esl_s_fetch
   doc: ''

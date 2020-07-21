@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pk_tmax_cmax_sim.cwl
+id: ../../../pk_tmax_cmax_sim.cwl
 inputs:
 - id: half_life
   doc: half life (hours)

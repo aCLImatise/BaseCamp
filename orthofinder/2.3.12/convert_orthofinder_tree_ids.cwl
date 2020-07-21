@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convert_orthofinder_tree_ids.py_SpeciesIDs.cwl
+id: ../../../convert_orthofinder_tree_ids.py_SpeciesIDs.cwl
 inputs:
 - id: convert_ortho_finder_tree_ids_do_tpy
   doc: ''

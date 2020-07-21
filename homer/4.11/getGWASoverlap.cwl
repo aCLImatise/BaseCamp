@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getGWASoverlap.pl.cwl
+id: ../../../getGWASoverlap.pl.cwl
 inputs:
 - id: overlap_distance_default
   doc: '<#> (Overlap distance, default: 1000)'

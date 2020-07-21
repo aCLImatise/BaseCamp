@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ribo_run.cwl
+id: ../../../ribo_run.cwl
 inputs:
 - id: threads
   doc: "if your cores are hyperthreaded, set number threads to the number of threads\

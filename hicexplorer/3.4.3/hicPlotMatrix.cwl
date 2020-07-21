@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicPlotMatrix.cwl
+id: ../../../hicPlotMatrix.cwl
 inputs:
 - id: matrix
   doc: Path of the Hi-C matrix to plot.

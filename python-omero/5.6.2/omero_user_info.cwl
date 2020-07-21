@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_user_info.cwl
+id: ../../../omero_user_info.cwl
 inputs:
 - id: style
   doc: use alternative output style (default=sql)

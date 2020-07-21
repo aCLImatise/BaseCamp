@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/admixture.cwl
+id: ../../../admixture.cwl
 inputs:
 - id: jx
   doc: ': do computation on X threads                                '

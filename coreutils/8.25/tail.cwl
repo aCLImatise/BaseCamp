@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tail.cwl
+id: ../../../tail.cwl
 inputs:
 - id: bytes
   doc: =[+]NUM       output the last NUM bytes; or use -c +NUM to output starting

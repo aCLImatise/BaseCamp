@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/processspeed.sh.cwl
+id: ../../../processspeed.sh.cwl
 inputs:
 - id: file
   doc: ''

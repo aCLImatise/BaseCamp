@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/subindel.cwl
+id: ../../../subindel.cwl
 inputs:
 - id: i
   doc: ''

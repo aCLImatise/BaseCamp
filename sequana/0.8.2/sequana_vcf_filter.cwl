@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequana_vcf_filter.cwl
+id: ../../../sequana_vcf_filter.cwl
 inputs:
 - id: only
   doc: ''

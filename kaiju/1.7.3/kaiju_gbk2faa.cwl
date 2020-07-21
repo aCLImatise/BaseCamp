@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kaiju_gbk2faa.pl.cwl
+id: ../../../kaiju_gbk2faa.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

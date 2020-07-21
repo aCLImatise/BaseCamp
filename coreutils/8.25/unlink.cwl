@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unlink.cwl
+id: ../../../unlink.cwl
 inputs:
 - id: file
   doc: ''

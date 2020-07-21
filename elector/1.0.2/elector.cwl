@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/elector.cwl
+id: ../../../elector.cwl
 inputs:
 - id: _number_threads
   doc: '[THREADS]    Number of threads'

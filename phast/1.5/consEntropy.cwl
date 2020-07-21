@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/consEntropy.cwl
+id: ../../../consEntropy.cwl
 inputs:
 - id: target_coverage
   doc: ''

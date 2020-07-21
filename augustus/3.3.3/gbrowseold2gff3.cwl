@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gbrowseold2gff3.pl.cwl
+id: ../../../gbrowseold2gff3.pl.cwl
 inputs:
 - id: hints
   doc: convert gff format for intron hints to gff3

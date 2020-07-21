@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bipartition_smp.cwl
+id: ../../../bipartition_smp.cwl
 inputs:
 - id: bi_partition
   doc: ''

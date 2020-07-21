@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxon_utils_filter.cwl
+id: ../../../taxon_utils_filter.cwl
 inputs:
 - id: taxonomy
   doc: Taxonomy file  [required]

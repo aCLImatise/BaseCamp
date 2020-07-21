@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/remock.cwl
+id: ../../../remock.cwl
 inputs:
 - id: file
   doc: 'Explicit source: Centrifuge output file as source'

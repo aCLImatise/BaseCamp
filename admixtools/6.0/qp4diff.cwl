@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qp4diff.cwl
+id: ../../../qp4diff.cwl
 inputs:
 - id: use_parameters_file
   doc: '... use parameters from <file> .'

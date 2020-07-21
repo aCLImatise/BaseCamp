@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/workflow_to_tools.cwl
+id: ../../../workflow_to_tools.cwl
 inputs:
 - id: workflow
   doc: A space separated list of galaxy workflow description files in json format

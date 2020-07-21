@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_seq.cwl
+id: ../../../filter_seq.cwl
 inputs:
 - id: index
   doc: an index file of the copy file

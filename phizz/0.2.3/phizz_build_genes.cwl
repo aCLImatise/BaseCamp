@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phizz_build_genes.cwl
+id: ../../../phizz_build_genes.cwl
 inputs:
 - id: gene_file
   doc: ''

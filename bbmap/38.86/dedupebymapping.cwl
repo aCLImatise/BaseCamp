@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dedupebymapping.sh.cwl
+id: ../../../dedupebymapping.sh.cwl
 inputs:
 - id: in
   doc: ''

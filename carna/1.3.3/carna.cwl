@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/carna.pl.cwl
+id: ../../../carna.pl.cwl
 inputs:
 - id: args
   doc: Arguments passed to carna. Call carna --help or --args '--help' for the available

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gff3ToPsl.cwl
+id: ../../../gff3ToPsl.cwl
 inputs:
 - id: drop_q
   doc: drop record when query not found in queryChromSizes

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/count_kmers.cwl
+id: ../../../count_kmers.cwl
 inputs:
 - id: multifasta_file_count
   doc: multifasta file to count

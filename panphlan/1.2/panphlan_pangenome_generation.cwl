@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/panphlan_pangenome_generation.py.cwl
+id: ../../../panphlan_pangenome_generation.py.cwl
 inputs:
 - id: i_ffn
   doc: Folder containing the .ffn gene sequence files

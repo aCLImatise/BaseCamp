@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/split_mate_pairs.cwl
+id: ../../../split_mate_pairs.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

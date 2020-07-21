@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compute_core_microbiome.py.cwl
+id: ../../../compute_core_microbiome.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

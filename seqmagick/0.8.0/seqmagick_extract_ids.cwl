@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqmagick_extract_ids.cwl
+id: ../../../seqmagick_extract_ids.cwl
 inputs:
 - id: output_file
   doc: Destination file

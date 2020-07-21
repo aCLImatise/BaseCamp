@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafSpeciesList.cwl
+id: ../../../mafSpeciesList.cwl
 inputs:
 - id: ignore_first
   doc: '- If true ignore first species in each maf, useful when this is a mafFrags

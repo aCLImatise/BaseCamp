@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_db_csv_table_name.cwl
+id: ../../../abyss_db_csv_table_name.cwl
 inputs:
 - id: abyss_db_csv
   doc: ''

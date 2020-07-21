@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Chainer.cwl
+id: ../../../Chainer.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

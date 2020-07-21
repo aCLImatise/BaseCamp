@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DASmap.cwl
+id: ../../../DASmap.cwl
 inputs:
 - id: p
   doc: ''

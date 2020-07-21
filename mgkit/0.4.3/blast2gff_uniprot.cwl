@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blast2gff_uniprot.cwl
+id: ../../../blast2gff_uniprot.cwl
 inputs:
 - id: db_used
   doc: 'Uniprot database used with BLAST  [default: UNIPROT-SP]'

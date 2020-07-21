@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runStrelkaSomaticWorkflowDemo.bash.cwl
+id: ../../../runStrelkaSomaticWorkflowDemo.bash.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

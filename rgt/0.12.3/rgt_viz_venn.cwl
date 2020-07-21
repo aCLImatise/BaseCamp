@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rgt_viz_venn.cwl
+id: ../../../rgt_viz_venn.cwl
 inputs:
 - id: s_one
   doc: Define the file for gene set 1 (BED or gene list)

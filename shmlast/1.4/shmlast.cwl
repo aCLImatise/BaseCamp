@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shmlast.cwl
+id: ../../../shmlast.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

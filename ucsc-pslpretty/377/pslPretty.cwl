@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslPretty.cwl
+id: ../../../pslPretty.cwl
 inputs:
 - id: axt
   doc: Save in format like Scott Schwartz's axt format. Note gaps in both sequences

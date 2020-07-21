@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyprophet_backpropagate.cwl
+id: ../../../pyprophet_backpropagate.cwl
 inputs:
 - id: in
   doc: Single run PyProphet input file.  [required]

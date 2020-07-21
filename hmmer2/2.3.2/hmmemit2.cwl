@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmemit2.cwl
+id: ../../../hmmemit2.cwl
 inputs:
 - id: write_generated_sequences
   doc: ': write generated sequences as an alignment, not FASTA'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/identify_missing_files.py.cwl
+id: ../../../identify_missing_files.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

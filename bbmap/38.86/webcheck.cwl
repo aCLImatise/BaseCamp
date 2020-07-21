@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/webcheck.sh.cwl
+id: ../../../webcheck.sh.cwl
 inputs:
 - id: input_files
   doc: ''

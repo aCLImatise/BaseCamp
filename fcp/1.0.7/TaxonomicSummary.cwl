@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TaxonomicSummary.py.cwl
+id: ../../../TaxonomicSummary.py.cwl
 inputs:
 - id: query_file
   doc: ''

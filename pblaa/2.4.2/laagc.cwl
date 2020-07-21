@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/laagc.cwl
+id: ../../../laagc.cwl
 inputs:
 - id: rng_seed
   doc: RNG seed, modulates reservoir filtering of reads. [42]

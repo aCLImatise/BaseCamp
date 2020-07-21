@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AssayGeneratorMetabo.cwl
+id: ../../../AssayGeneratorMetabo.cwl
 inputs:
 - id: executable
   doc: SIRIUS executable e.g. sirius

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/aa2nonred.pl.cwl
+id: ../../../aa2nonred.pl.cwl
 inputs:
 - id: input_dot_fa
   doc: ''

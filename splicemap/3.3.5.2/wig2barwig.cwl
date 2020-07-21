@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wig2barwig.cwl
+id: ../../../wig2barwig.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

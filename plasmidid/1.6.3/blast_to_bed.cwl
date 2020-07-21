@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blast_to_bed.sh.cwl
+id: ../../../blast_to_bed.sh.cwl
 inputs:
 - id: usage_message
   doc: usage message

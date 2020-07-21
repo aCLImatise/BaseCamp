@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergeCharges.pl.cwl
+id: ../../../mergeCharges.pl.cwl
 inputs:
 - id: i
   doc: ''

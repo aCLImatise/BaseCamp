@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splitseq.cwl
+id: ../../../splitseq.cwl
 inputs:
 - id: option
   doc: ''

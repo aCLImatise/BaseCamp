@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/GapCutter.cwl
+id: ../../../GapCutter.cwl
 inputs:
 - id: no_split
   doc: "(0 arg) :    Don't split flank sharing gaps"

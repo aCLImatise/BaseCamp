@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/remove_from_embl.py.cwl
+id: ../../../remove_from_embl.py.cwl
 inputs:
 - id: organism_to_excluded
   doc: Organism to be excluded

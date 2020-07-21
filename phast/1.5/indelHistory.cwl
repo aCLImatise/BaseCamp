@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/indelHistory.cwl
+id: ../../../indelHistory.cwl
 inputs:
 - id: output_alignment
   doc: Instead of a summary of indels only, output an alignment in FASTA format of

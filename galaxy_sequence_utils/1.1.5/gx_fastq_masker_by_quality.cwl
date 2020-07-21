@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gx_fastq_masker_by_quality.cwl
+id: ../../../gx_fastq_masker_by_quality.cwl
 inputs:
 - id: format
   doc: FASTQ variant type

@@ -1,0 +1,115 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Input fasta file.
+  synonyms:
+  - -f
+  - --fasta
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: Integer - Split the multi fasta in such amount of file. Sequences will
+    be distributed evenly.
+  synonyms:
+  - --nb_chunks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Integer - Split the multi fasta in order to get such amount of sequences
+    within each file.
+  synonyms:
+  - --nb_seq_by_chunk
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Integer - split sequences to be at this maximum size. When split, the
+    suffix _partX will be added, where X in an incremented integer.
+  synonyms:
+  - --size_seq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Integer - overlaping part to keep between the split sequences. Used
+    only when <--size_seq> option activated.
+  synonyms:
+  - --overlap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[value: attach(default),remove,detach]. Used only when <--size_seq>
+    option activated. When splitting a sequence the last chunk can be very short.
+    attach: When the last chunk is more than 50% shorter of the --size_seq value we
+    attach it to the previous chunk. In such case the last chunk of a split sequence
+    can have as (rounded superior) maximum length: size_seq + (size_seq / 2) - 1 minimum
+    length: (size_seq / 2) remove: The last chunk will be throw away if shorter than
+    --size_seq value. detach: The last chunck stay as it is. In the worse case it
+    can be 1 nucleotide long.'
+  synonyms:
+  - --leftover
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output folder. Default split_result
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+command:
+- gaas_fasta_splitter.pl
+parent:
+subcommands: []
+help_flag: !Flag
+  description: Display this helpful text.
+  synonyms:
+  - -h
+  - --help
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Genome Assembly Annotation Service (AGAT) - Version: v1.1.0              |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \  \n\nName:\n    gaas_fasta_splitter.pl\n\nDescription:\n    This script filter\
+  \ sequences by size. It will remove from the output all\n    sequences under a certain\
+  \ size (1000 bp/aa by default) We keep all\n    sequences >= --size\n\nUsage:\n\
+  \        gaas_fasta_splitter.pl -f infile.fasta [ -o outfile ]\n        gaas_fasta_splitter.pl\
+  \ --help\n\nOptions:\n    -f or --fasta\n            Input fasta file.\n\n    --nb_chunks\n\
+  \            Integer - Split the multi fasta in such amount of file.\n         \
+  \   Sequences will be distributed evenly.\n\n    --nb_seq_by_chunk\n           \
+  \ Integer - Split the multi fasta in order to get such amount of\n            sequences\
+  \ within each file.\n\n    --size_seq\n            Integer - split sequences to\
+  \ be at this maximum size. When\n            split, the suffix _partX will be added,\
+  \ where X in an\n            incremented integer.\n\n    --overlap\n           \
+  \ Integer - overlaping part to keep between the split sequences.\n            Used\
+  \ only when <--size_seq> option activated.\n\n    --leftover\n            [value:\
+  \ attach(default),remove,detach]. Used only when\n            <--size_seq> option\
+  \ activated. When splitting a sequence the\n            last chunk can be very short.\
+  \ attach: When the last chunk is\n            more than 50% shorter of the --size_seq\
+  \ value we attach it to\n            the previous chunk. In such case the last chunk\
+  \ of a split\n            sequence can have as (rounded superior) maximum length:\
+  \ size_seq\n            + (size_seq / 2) - 1 minimum length: (size_seq / 2) remove:\
+  \ The\n            last chunk will be throw away if shorter than --size_seq value.\n\
+  \            detach: The last chunck stay as it is. In the worse case it can\n \
+  \           be 1 nucleotide long.\n\n    -o or --output\n            Output folder.\
+  \ Default split_result\n\n    -h or --help\n            Display this helpful text.\n\
+  \nFeedback:\n  Did you find a bug?:\n    Do not hesitate to report bugs to help\
+  \ us keep track of the bugs and\n    their resolution. Please use the GitHub issue\
+  \ tracking system available\n    at this address:\n\n                https://github.com/NBISweden/GAAS/issues\n\
+  \n     Ensure that the bug was not already reported by searching under Issues.\n\
+  \     If you're unable to find an (open) issue addressing the problem, open a new\
+  \ one.\n     Try as much as possible to include in the issue when relevant:\n  \
+  \   - a clear description,\n     - as much relevant information as possible,\n \
+  \    - the command used,\n     - a data sample,\n     - an explanation of the expected\
+  \ behaviour that is not occurring.\n\n  Do you want to contribute?:\n    You are\
+  \ very welcome, visit this address for the Contributing\n    guidelines:\n    https://github.com/NBISweden/GAAS/blob/master/CONTRIBUTING.md\n\
+  \n"
+generated_using:
+- --help

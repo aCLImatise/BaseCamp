@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/query_pan_genome.cwl
+id: ../../../query_pan_genome.cwl
 inputs:
 - id: groups_filename
   doc: groups filename [clustered_proteins]

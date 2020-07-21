@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk.cwl
+id: ../../../csvtk.cwl
 inputs:
 - id: chunk_size
   doc: chunk size of CSV reader (default 50)

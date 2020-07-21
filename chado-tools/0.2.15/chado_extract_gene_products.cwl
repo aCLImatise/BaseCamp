@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chado_extract_gene_products.cwl
+id: ../../../chado_extract_gene_products.cwl
 inputs:
 - id: verbose
   doc: verbose mode

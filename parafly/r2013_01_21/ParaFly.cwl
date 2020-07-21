@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ParaFly.cwl
+id: ../../../ParaFly.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

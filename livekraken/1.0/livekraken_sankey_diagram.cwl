@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/livekraken_sankey_diagram.py.cwl
+id: ../../../livekraken_sankey_diagram.py.cwl
 inputs:
 - id: in_file
   doc: Used to list input files, can be used several times to input an ordered list

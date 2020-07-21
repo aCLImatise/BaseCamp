@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RNALalifold.cwl
+id: ../../../RNALalifold.cwl
 inputs:
 - id: verbose
   doc: Be verbose. (default=off)

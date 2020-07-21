@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmconvert2.cwl
+id: ../../../hmmconvert2.cwl
 inputs:
 - id: convert_hmmer_ascii
   doc: ': convert to HMMER ASCII file (the default)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/verifybamid2.cwl
+id: ../../../verifybamid2.cwl
 inputs:
 - id: bam_file
   doc: '[Empty],'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/incorporateGFF.py.cwl
+id: ../../../incorporateGFF.py.cwl
 inputs:
 - id: threads_to_run
   doc: Threads to run

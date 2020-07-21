@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxonomy_util_get_name.cwl
+id: ../../../taxonomy_util_get_name.cwl
 inputs:
 - id: id
   doc: ''

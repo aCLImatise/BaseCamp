@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_sed.cwl
+id: ../../../arb_sed.cwl
 inputs:
 - id: silent
   doc: suppress automatic printing of pattern space

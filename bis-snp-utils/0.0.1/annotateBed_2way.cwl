@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/annotateBed_2way.pl.cwl
+id: ../../../annotateBed_2way.pl.cwl
 inputs:
 - id: an_no
   doc: ''

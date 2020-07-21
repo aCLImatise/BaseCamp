@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ipa_dist.cwl
+id: ../../../ipa_dist.cwl
 inputs:
 - id: input_fn
   doc: '(Required.) Input reads in FASTA, FASTQ, BAM, XML or FOFN formats. Repeat

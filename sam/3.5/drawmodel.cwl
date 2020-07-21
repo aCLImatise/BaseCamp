@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/drawmodel.cwl
+id: ../../../drawmodel.cwl
 inputs:
 - id: mod
   doc: '[n]      Draw first or nth model'

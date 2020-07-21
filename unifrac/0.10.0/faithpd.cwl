@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faithpd.cwl
+id: ../../../faithpd.cwl
 inputs:
 - id: input_biom_table
   doc: The input BIOM table.

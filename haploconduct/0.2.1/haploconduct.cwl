@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/haploconduct.cwl
+id: ../../../haploconduct.cwl
 inputs:
 - id: program
   doc: ''

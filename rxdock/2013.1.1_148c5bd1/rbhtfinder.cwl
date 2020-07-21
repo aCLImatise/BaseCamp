@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbhtfinder.cwl
+id: ../../../rbhtfinder.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

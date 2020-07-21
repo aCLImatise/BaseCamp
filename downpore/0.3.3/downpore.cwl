@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/downpore.cwl
+id: ../../../downpore.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

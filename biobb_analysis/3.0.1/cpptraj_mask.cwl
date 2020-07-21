@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cpptraj_mask.cwl
+id: ../../../cpptraj_mask.cwl
 inputs:
 - id: config
   doc: Configuration file

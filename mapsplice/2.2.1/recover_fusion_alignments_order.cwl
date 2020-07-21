@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/recover_fusion_alignments_order.cwl
+id: ../../../recover_fusion_alignments_order.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

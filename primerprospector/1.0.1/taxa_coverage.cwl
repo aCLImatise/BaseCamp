@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxa_coverage.py.cwl
+id: ../../../taxa_coverage.py.cwl
 inputs:
 - id: hits_fps
   doc: Target primer hits files to generate linkers against. Separate multiple files

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sam_to_gff3.py.cwl
+id: ../../../sam_to_gff3.py.cwl
 inputs:
 - id: input_fast_a
   doc: (Optional) input fasta. If given, coverage will be calculated.

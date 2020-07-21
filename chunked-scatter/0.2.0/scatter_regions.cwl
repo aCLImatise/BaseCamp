@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scatter_regions.cwl
+id: ../../../scatter_regions.cwl
 inputs:
 - id: prefix
   doc: "The prefix of the ouput files. Output will be named like: <PREFIX><N>.bed,\

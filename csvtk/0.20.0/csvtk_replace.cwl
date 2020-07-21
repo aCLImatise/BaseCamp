@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk_replace.cwl
+id: ../../../csvtk_replace.cwl
 inputs:
 - id: fields
   doc: select only these fields. e.g -f 1,2 or -f columnA,columnB (default "1")

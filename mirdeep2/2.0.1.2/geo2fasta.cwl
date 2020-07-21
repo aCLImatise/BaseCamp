@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/geo2fasta.pl.cwl
+id: ../../../geo2fasta.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

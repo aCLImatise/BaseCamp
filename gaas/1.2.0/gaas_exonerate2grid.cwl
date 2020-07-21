@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_exonerate2grid.pl.cwl
+id: ../../../gaas_exonerate2grid.pl.cwl
 inputs:
 - id: genome
   doc: The name of the genome fasta file to use as target.

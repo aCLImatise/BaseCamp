@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_phylowgs_inputs.py.cwl
+id: ../../../create_phylowgs_inputs.py.cwl
 inputs:
 - id: vcf_type
   doc: ''

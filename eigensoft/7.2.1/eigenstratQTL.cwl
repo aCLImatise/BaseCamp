@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/eigenstratQTL.cwl
+id: ../../../eigenstratQTL.cwl
 inputs:
 - id: i
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/speedtest.py.cwl
+id: ../../../speedtest.py.cwl
 inputs:
 - id: n_features
   doc: Number of random windows to make. The size of each feature is (start - stop)

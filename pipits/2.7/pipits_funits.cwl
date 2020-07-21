@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pipits_funits.cwl
+id: ../../../pipits_funits.cwl
 inputs:
 - id: joined_filtered_sequences
   doc: '[REQUIRED] Joined, quality filtered sequences in FASTA. Typically output from

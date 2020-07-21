@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterTagDirectory.pl.cwl
+id: ../../../filterTagDirectory.pl.cwl
 inputs:
 - id: strand
   doc: (filter reads from the same strand only)

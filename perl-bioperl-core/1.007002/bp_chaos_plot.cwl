@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_chaos_plot.pl.cwl
+id: ../../../bp_chaos_plot.pl.cwl
 inputs:
 - id: i_slash_input
   doc: ''

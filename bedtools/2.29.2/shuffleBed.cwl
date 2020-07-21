@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shuffleBed.cwl
+id: ../../../shuffleBed.cwl
 inputs:
 - id: excl
   doc: A BED/GFF/VCF file of coordinates in which features in -i should not be placed

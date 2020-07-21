@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nebulizer_whoami.cwl
+id: ../../../nebulizer_whoami.cwl
 inputs:
 - id: galaxy
   doc: ''

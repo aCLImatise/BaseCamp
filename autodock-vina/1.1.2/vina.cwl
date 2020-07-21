@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vina.cwl
+id: ../../../vina.cwl
 inputs:
 - id: receptor
   doc: rigid part of the receptor (PDBQT)

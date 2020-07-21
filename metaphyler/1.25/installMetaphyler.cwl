@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/installMetaphyler.pl.cwl
+id: ../../../installMetaphyler.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generate_pairs_pseudogenes.py.cwl
+id: ../../../generate_pairs_pseudogenes.py.cwl
 inputs:
 - id: input
   doc: Input file with genes positions.

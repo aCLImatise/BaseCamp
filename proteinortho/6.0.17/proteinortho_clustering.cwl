@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteinortho_clustering.cwl
+id: ../../../proteinortho_clustering.cwl
 inputs:
 - id: verbose
   doc: report progress

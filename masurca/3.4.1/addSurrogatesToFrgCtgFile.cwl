@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/addSurrogatesToFrgCtgFile.cwl
+id: ../../../addSurrogatesToFrgCtgFile.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

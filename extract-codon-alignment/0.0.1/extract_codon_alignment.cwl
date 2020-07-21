@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_codon_alignment.cwl
+id: ../../../extract_codon_alignment.cwl
 inputs:
 - id: aligned_cds
   doc: The CDS alignment.

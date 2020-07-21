@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterassemblysummary.sh.cwl
+id: ../../../filterassemblysummary.sh.cwl
 inputs:
 - id: in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sq_add_hash_tag.pl.cwl
+id: ../../../agat_sq_add_hash_tag.pl.cwl
 inputs:
 - id: input
   doc: 'STRING: Input GTF/GFF file.'

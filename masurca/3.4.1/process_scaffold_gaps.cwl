@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/process_scaffold_gaps.pl.cwl
+id: ../../../process_scaffold_gaps.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

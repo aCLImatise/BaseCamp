@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RefreshParser.cwl
+id: ../../../RefreshParser.cwl
 inputs:
 - id: pep_xml_file
   doc: ''

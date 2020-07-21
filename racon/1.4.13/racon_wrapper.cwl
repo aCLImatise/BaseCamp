@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/racon_wrapper.cwl
+id: ../../../racon_wrapper.cwl
 inputs:
 - id: split
   doc: 'split target sequences into chunks of desired size in bytes (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/textHistogram.cwl
+id: ../../../textHistogram.cwl
 inputs:
 - id: binsize
   doc: '- Size of bins, default 1'

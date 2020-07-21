@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sp_filter_feature_by_attribute_value.pl.cwl
+id: ../../../agat_sp_filter_feature_by_attribute_value.pl.cwl
 inputs:
 - id: output
   doc: Output GFF file. If no output file is specified, the output will be written

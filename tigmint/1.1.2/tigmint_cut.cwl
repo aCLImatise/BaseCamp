@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tigmint_cut.cwl
+id: ../../../tigmint_cut.cwl
 inputs:
 - id: fast_a_out
   doc: The output FASTA file.

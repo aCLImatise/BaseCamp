@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gifrop.cwl
+id: ../../../gifrop.cwl
 inputs:
 - id: threads
   doc: Number of threads to use for parallel abricate commands

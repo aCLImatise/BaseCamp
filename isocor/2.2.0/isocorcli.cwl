@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/isocorcli.cwl
+id: ../../../isocorcli.cwl
 inputs:
 - id: path_metabolites_database
   doc: path to metabolites database

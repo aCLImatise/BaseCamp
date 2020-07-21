@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sparse_init.cwl
+id: ../../../sparse_init.cwl
 inputs:
 - id: dbname
   doc: 'Name for the new database to be generated. '

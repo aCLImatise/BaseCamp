@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/combineGO.pl.cwl
+id: ../../../combineGO.pl.cwl
 inputs:
 - id: filename_join_values
   doc: (Filename to join enrichment values from)

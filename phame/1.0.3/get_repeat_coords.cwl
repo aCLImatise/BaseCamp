@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_repeat_coords.pl.cwl
+id: ../../../get_repeat_coords.pl.cwl
 inputs:
 - id: identity_cutoff_default
   doc: 'the identity cutoff 0 to 100 (default: 95)'

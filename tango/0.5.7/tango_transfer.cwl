@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tango_transfer.cwl
+id: ../../../tango_transfer.cwl
 inputs:
 - id: ignore_unc_rank
   doc: Ignore ORFs unclassified at <rank>

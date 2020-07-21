@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SeedListGenerator.cwl
+id: ../../../SeedListGenerator.cwl
 inputs:
 - id: in
   doc: "*         Input file (see below for details) (valid formats: 'mzML', 'idXML',\

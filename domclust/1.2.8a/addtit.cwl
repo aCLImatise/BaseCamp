@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/addtit.pl.cwl
+id: ../../../addtit.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

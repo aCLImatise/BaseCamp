@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/assembly_stats.cwl
+id: ../../../assembly_stats.cwl
 inputs:
 - id: stats
   doc: ''

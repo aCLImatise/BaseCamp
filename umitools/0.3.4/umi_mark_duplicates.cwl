@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/umi_mark_duplicates.cwl
+id: ../../../umi_mark_duplicates.cwl
 inputs:
 - id: file
   doc: the input bam file

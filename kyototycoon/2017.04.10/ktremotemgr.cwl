@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ktremotemgr.cwl
+id: ../../../ktremotemgr.cwl
 inputs:
 - id: host
   doc: ''

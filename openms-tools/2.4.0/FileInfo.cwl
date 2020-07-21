@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FileInfo.cwl
+id: ../../../FileInfo.cwl
 inputs:
 - id: in
   doc: "*        Input file  (valid formats: 'mzData', 'mzXML', 'mzML', 'dta', 'dta2d',\

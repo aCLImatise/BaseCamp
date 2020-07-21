@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkqc_ws.cwl
+id: ../../../checkqc_ws.cwl
 inputs:
 - id: port
   doc: 'Port which checkqc-ws will listen to (default: 9999).'

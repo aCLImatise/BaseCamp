@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MapRTTransformer.cwl
+id: ../../../MapRTTransformer.cwl
 inputs:
 - id: in
   doc: "Input file to transform (separated by blanks) (valid formats: 'mzML', 'featureXML',\

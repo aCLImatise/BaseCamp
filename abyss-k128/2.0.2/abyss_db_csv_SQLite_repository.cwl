@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_db_csv_SQLite_repository.cwl
+id: ../../../abyss_db_csv_SQLite_repository.cwl
 inputs:
 - id: table_name
   doc: ''

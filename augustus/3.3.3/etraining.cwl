@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/etraining.cwl
+id: ../../../etraining.cwl
 inputs:
 - id: species
   doc: ''

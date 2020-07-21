@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_patmatdb.cwl
+id: ../../../_patmatdb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

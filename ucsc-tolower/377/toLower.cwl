@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/toLower.cwl
+id: ../../../toLower.cwl
 inputs:
 - id: in_file
   doc: ''

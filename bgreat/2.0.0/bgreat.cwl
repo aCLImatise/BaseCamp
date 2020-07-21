@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bgreat.cwl
+id: ../../../bgreat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

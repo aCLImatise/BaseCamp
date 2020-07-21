@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbmm2.cwl
+id: ../../../pbmm2.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stringmeup.cwl
+id: ../../../stringmeup.cwl
 inputs:
 - id: output_report
   doc: File to save the Kraken 2 report in.

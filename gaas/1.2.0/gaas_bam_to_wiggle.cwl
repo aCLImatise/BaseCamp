@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_bam_to_wiggle.py.cwl
+id: ../../../gaas_bam_to_wiggle.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

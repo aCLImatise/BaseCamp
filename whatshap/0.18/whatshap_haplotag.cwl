@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/whatshap_haplotag.cwl
+id: ../../../whatshap_haplotag.cwl
 inputs:
 - id: output
   doc: Output file. If omitted, use standard output.

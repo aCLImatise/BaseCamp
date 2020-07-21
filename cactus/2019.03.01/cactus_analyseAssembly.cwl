@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cactus_analyseAssembly.cwl
+id: ../../../cactus_analyseAssembly.cwl
 inputs:
 - id: no
   doc: ''

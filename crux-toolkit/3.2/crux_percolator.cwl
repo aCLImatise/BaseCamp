@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_percolator.cwl
+id: ../../../crux_percolator.cwl
 inputs:
 - id: peptide_spectrum_matches
   doc: ''

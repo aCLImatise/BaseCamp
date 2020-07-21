@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/netSplit.cwl
+id: ../../../netSplit.cwl
 inputs:
 - id: in_dotnet
   doc: ''

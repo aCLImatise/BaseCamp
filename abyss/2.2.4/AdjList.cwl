@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AdjList.cwl
+id: ../../../AdjList.cwl
 inputs:
 - id: length_when_set
   doc: the length of a k-mer (when -K is not set) or the span of a k-mer pair (when

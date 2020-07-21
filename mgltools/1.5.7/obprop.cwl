@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obprop.cwl
+id: ../../../obprop.cwl
 inputs:
 - id: filename
   doc: ''

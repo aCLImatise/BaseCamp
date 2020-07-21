@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mkGottchaTaxTree.pl.cwl
+id: ../../../mkGottchaTaxTree.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

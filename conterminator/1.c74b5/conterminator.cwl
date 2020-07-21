@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/conterminator.cwl
+id: ../../../conterminator.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

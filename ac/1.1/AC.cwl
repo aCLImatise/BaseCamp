@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AC.cwl
+id: ../../../AC.cwl
 inputs:
 - id: reference_file_loaded
   doc: 'reference file ("-rm" are loaded here),     '

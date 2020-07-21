@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summarizeseal.sh.cwl
+id: ../../../summarizeseal.sh.cwl
 inputs:
 - id: in
   doc: ''

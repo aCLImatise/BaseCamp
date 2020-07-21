@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/links2sql.pl.cwl
+id: ../../../links2sql.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

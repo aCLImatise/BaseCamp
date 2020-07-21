@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_heterogeneity_test.pl.cwl
+id: ../../../bp_heterogeneity_test.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

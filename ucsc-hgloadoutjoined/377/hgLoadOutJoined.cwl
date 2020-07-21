@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hgLoadOutJoined.cwl
+id: ../../../hgLoadOutJoined.cwl
 inputs:
 - id: tab_file
   doc: "- don't actually load database, just create tab file"

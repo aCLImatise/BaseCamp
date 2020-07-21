@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dx_build_applet.cwl
+id: ../../../dx_build_applet.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/idba_hybrid.cwl
+id: ../../../idba_hybrid.cwl
 inputs:
 - id: out
   doc: (=out)                   output directory

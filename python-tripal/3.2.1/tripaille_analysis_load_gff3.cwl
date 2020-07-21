@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tripaille_analysis_load_gff3.cwl
+id: ../../../tripaille_analysis_load_gff3.cwl
 inputs:
 - id: organism
   doc: Organism common name or abbreviation

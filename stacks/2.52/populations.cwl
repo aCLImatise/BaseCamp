@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/populations.cwl
+id: ../../../populations.cwl
 inputs:
 - id: in_path
   doc: ': path to a directory containing Stacks ouput files.'

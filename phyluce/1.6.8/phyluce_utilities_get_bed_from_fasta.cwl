@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_utilities_get_bed_from_fasta.cwl
+id: ../../../phyluce_utilities_get_bed_from_fasta.cwl
 inputs:
 - id: input
   doc: The fasta file to parse

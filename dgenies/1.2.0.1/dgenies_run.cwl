@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dgenies_run.cwl
+id: ../../../dgenies_run.cwl
 inputs:
 - id: mode
   doc: Mode into run the application

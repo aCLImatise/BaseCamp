@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/subChar.cwl
+id: ../../../subChar.cwl
 inputs:
 - id: old_char
   doc: ''

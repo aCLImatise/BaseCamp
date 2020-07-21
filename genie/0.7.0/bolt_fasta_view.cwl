@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bolt_fasta_view.cwl
+id: ../../../bolt_fasta_view.cwl
 inputs:
 - id: file_path
   doc: A bam file (*require)

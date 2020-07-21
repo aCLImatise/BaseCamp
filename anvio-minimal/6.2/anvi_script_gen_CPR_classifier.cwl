@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_script_gen_CPR_classifier.cwl
+id: ../../../anvi_script_gen_CPR_classifier.cwl
 inputs:
 - id: output
   doc: Output file name for the classifier.

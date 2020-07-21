@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wellington_footprints.py.cwl
+id: ../../../wellington_footprints.py.cwl
 inputs:
 - id: bonferroni
   doc: 'Performs a bonferroni correction (default: False)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_fs_mkdir.cwl
+id: ../../../omero_fs_mkdir.cwl
 inputs:
 - id: parents
   doc: ensure whole path exists

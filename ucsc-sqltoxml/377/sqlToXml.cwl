@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sqlToXml.cwl
+id: ../../../sqlToXml.cwl
 inputs:
 - id: tab
   doc: "- number of spaces betweeen tabs in xml.dumpSpec - by default it's 8. (It\

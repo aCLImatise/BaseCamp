@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/minimus2_blat.cwl
+id: ../../../minimus2_blat.cwl
 inputs:
 - id: prefix
   doc: ''

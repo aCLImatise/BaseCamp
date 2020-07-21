@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iu_deinterleave_fastq.cwl
+id: ../../../iu_deinterleave_fastq.cwl
 inputs:
 - id: one
   doc: ''

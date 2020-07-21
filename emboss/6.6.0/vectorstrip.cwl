@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vectorstrip.cwl
+id: ../../../vectorstrip.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

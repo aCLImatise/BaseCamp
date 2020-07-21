@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/synchain_mugsy.cwl
+id: ../../../synchain_mugsy.cwl
 inputs:
 - id: mugsy_chaining
   doc: ''

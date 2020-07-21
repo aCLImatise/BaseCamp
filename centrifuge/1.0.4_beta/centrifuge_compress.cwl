@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/centrifuge_compress.pl.cwl
+id: ../../../centrifuge_compress.pl.cwl
 inputs:
 - id: map
   doc: ''

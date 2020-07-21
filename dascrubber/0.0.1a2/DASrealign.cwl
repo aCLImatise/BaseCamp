@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DASrealign.cwl
+id: ../../../DASrealign.cwl
 inputs:
 - id: v
   doc: ''

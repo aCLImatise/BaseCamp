@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicConvertFormat.cwl
+id: ../../../hicConvertFormat.cwl
 inputs:
 - id: matrices
   doc: 'input file(s). Could be one or many files. (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HighResPrecursorMassCorrector.cwl
+id: ../../../HighResPrecursorMassCorrector.cwl
 inputs:
 - id: in
   doc: "*                                 Input file (centroided data) (valid formats:\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crc32.cwl
+id: ../../../crc32.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

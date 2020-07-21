@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merfishtools_gen_mhd4.cwl
+id: ../../../merfishtools_gen_mhd4.cwl
 inputs:
 - id: one_bits
   doc: Number of 1-bits.

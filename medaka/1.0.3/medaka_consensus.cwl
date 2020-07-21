@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medaka_consensus.cwl
+id: ../../../medaka_consensus.cwl
 inputs:
 - id: debug
   doc: 'Verbose logging of debug information. (default: 20)'

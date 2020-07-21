@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/divide_it.pl.cwl
+id: ../../../divide_it.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

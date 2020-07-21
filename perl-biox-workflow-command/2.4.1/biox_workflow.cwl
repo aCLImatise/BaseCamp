@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biox_workflow.pl_run.cwl
+id: ../../../biox_workflow.pl_run.cwl
 inputs:
 - id: plugins
   doc: Load aplication plugins [Multiple; Split by "," ]

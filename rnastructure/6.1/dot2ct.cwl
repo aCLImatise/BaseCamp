@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dot2ct.cwl
+id: ../../../dot2ct.cwl
 inputs:
 - id: bracket_file
   doc: ''

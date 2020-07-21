@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam.cwl
+id: ../../../bam.cwl
 inputs:
 - id: tool
   doc: ''

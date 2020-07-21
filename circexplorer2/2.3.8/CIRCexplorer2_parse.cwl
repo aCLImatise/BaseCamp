@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CIRCexplorer2_parse.cwl
+id: ../../../CIRCexplorer2_parse.cwl
 inputs:
 - id: aligner_tophatfusion_star
   doc: Aligner (TopHat-Fusion, STAR, MapSplice, BWA, segemehl).

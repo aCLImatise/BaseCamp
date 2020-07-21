@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PATHOGIST_visualize.cwl
+id: ../../../PATHOGIST_visualize.cwl
 inputs:
 - id: input
   doc: ''

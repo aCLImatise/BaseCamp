@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phasescreen.pl.cwl
+id: ../../../phasescreen.pl.cwl
 inputs:
 - id: perl
   doc: ''

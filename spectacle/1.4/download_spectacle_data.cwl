@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/download_spectacle_data.sh.cwl
+id: ../../../download_spectacle_data.sh.cwl
 inputs:
 - id: silent
   doc: suppress most error messages (on by default)

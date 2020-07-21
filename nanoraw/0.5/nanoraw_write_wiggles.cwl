@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nanoraw_write_wiggles.cwl
+id: ../../../nanoraw_write_wiggles.cwl
 inputs:
 - id: base_call_subgroups
   doc: "FAST5 subgroup (under Analyses/[corrected-group]) where individual template\

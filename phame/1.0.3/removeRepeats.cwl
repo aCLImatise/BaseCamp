@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/removeRepeats.pl.cwl
+id: ../../../removeRepeats.pl.cwl
 inputs:
 - id: reference_sequence_filename
   doc: reference sequence filename

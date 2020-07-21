@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wcFst.cwl
+id: ../../../wcFst.cwl
 inputs:
 - id: target
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/magpurify_coverage.cwl
+id: ../../../magpurify_coverage.cwl
 inputs:
 - id: max_deviation
   doc: 'Contigs with coverage greater than [max-deviation * mean coverage] or less

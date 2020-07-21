@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kinGenMacrostates.cwl
+id: ../../../kinGenMacrostates.cwl
 inputs:
 - id: energy_band_width
   doc: ':     energy band width (in kcal) in which structures are completely enumerated

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xml_to_bas.pl.cwl
+id: ../../../xml_to_bas.pl.cwl
 inputs:
 - id: uri
   doc: -d    Same URI used by gtdownload

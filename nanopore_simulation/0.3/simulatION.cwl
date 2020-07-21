@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/simulatION.cwl
+id: ../../../simulatION.cwl
 inputs:
 - id: v
   doc: ''

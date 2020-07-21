@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtk_vcf2bed.cwl
+id: ../../../svtk_vcf2bed.cwl
 inputs:
 - id: no_samples
   doc: Don't include comma-delimited list of called samples for each variant.

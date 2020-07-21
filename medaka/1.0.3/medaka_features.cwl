@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medaka_features.cwl
+id: ../../../medaka_features.cwl
 inputs:
 - id: bam
   doc: Input alignments.

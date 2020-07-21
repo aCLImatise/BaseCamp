@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plotProfile.cwl
+id: ../../../plotProfile.cwl
 inputs:
 - id: matrix_file
   doc: 'Matrix file from the computeMatrix tool. (default: None)'

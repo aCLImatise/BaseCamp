@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msstitch_isosummarize.cwl
+id: ../../../msstitch_isosummarize.cwl
 inputs:
 - id: input_file_format
   doc: Input file of {} format

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/contig_cmp.cwl
+id: ../../../contig_cmp.cwl
 inputs:
 - id: a_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hisat2_align_l.cwl
+id: ../../../hisat2_align_l.cwl
 inputs:
 - id: query_input_files_fastq
   doc: query input files are FASTQ .fq/.fastq (default)

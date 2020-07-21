@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_resultsbyset.cwl
+id: ../../../mmseqs_resultsbyset.cwl
 inputs:
 - id: alpha
   doc: '0.001           Set alpha for combining p-values during aggregation         '

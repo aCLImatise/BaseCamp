@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hash_list.cwl
+id: ../../../hash_list.cwl
 inputs:
 - id: no
   doc: ''

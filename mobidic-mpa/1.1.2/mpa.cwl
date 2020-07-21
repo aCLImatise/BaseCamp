@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mpa.cwl
+id: ../../../mpa.cwl
 inputs:
 - id: mpa_directory
   doc: 'The path to the MPA installation folder. [Default: /tmp/tmpjlb2c7kj/bin]'

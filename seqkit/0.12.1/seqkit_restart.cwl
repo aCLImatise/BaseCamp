@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_restart.cwl
+id: ../../../seqkit_restart.cwl
 inputs:
 - id: new_start
   doc: new start position (1-base, supporting negative value counting from the end)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xsd.cwl
+id: ../../../xsd.cwl
 inputs:
 - id: help
   doc: Print usage information and exit. Use 'help <cmd>' for command-specific options.

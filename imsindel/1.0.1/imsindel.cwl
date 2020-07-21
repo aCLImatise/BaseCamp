@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/imsindel.cwl
+id: ../../../imsindel.cwl
 inputs:
 - id: output_consensus_seq
   doc: /path/to/output-dir

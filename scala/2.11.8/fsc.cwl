@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fsc.cwl
+id: ../../../fsc.cwl
 inputs:
 - id: ipv_four
   doc: Use IPv4 rather than IPv6 for the server socket

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf_count.py.cwl
+id: ../../../maf_count.py.cwl
 inputs:
 - id: cols
   doc: count alignment columns rather than number of alignments

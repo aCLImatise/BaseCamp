@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/minipolish.cwl
+id: ../../../minipolish.cwl
 inputs:
 - id: threads
   doc: 'Number of threads to use for alignment and polishing (default: 8)'

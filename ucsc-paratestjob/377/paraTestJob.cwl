@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paraTestJob.cwl
+id: ../../../paraTestJob.cwl
 inputs:
 - id: crash
   doc: Try to write to NULL when done.

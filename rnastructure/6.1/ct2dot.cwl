@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ct2dot.cwl
+id: ../../../ct2dot.cwl
 inputs:
 - id: ct_file
   doc: ''

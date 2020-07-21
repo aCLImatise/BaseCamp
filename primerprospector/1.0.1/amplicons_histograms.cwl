@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/amplicons_histograms.py.cwl
+id: ../../../amplicons_histograms.py.cwl
 inputs:
 - id: amplicons_file_path
   doc: Target amplicons files.  Separate multiple files with a colon. [REQUIRED]

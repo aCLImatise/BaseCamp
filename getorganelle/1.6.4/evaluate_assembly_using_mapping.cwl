@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/evaluate_assembly_using_mapping.py.cwl
+id: ../../../evaluate_assembly_using_mapping.py.cwl
 inputs:
 - id: which_bowtie_two
   doc: 'Assign the path to Bowtie2 binary files if not added to the path. Default:

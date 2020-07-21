@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/radical_utils_fix_headers.pl.cwl
+id: ../../../radical_utils_fix_headers.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

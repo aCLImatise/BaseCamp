@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stats.cwl
+id: ../../../stats.cwl
 inputs:
 - id: prefix_stats_files
   doc: 'Prefix for output stats files [default: stats]'

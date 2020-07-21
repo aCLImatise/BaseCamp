@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam2fasta.cwl
+id: ../../../bam2fasta.cwl
 inputs:
 - id: command
   doc: ''

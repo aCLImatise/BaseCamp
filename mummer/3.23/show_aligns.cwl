@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/show_aligns.cwl
+id: ../../../show_aligns.cwl
 inputs:
 - id: delta_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/batchMakeHiCMatrix.pl.cwl
+id: ../../../batchMakeHiCMatrix.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gottcha.pl.cwl
+id: ../../../gottcha.pl.cwl
 inputs:
 - id: input
   doc: '|i    <STRING>  Input one or multiple FASTQ file(s). Use comma (,) to separate

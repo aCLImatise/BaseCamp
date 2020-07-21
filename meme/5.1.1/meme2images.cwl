@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/meme2images.cwl
+id: ../../../meme2images.cwl
 inputs:
 - id: motif
   doc: output only a selected motif; repeatable

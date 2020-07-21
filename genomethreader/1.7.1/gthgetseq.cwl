@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gthgetseq.cwl
+id: ../../../gthgetseq.cwl
 inputs:
 - id: get_cdna
   doc: ''

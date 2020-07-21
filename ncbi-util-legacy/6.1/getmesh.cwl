@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getmesh.cwl
+id: ../../../getmesh.cwl
 inputs:
 - id: output_list
   doc: Output list [File Out]

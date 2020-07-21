@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ppanini_infer_gene.cwl
+id: ../../../ppanini_infer_gene.cwl
 inputs:
 - id: output
   doc: ''

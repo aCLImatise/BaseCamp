@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/slice_fasta_gff.cwl
+id: ../../../slice_fasta_gff.cwl
 inputs:
 - id: type
   doc: only look at features of particular type

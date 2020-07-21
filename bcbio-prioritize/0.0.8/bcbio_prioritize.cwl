@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcbio_prioritize.cwl
+id: ../../../bcbio_prioritize.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

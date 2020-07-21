@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sambamba_subsample.cwl
+id: ../../../sambamba_subsample.cwl
 inputs:
 - id: type
   doc: '[fasthash]   Algorithm for subsampling (fasthash, default is none)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shred.cwl
+id: ../../../shred.cwl
 inputs:
 - id: force
   doc: change permissions to allow writing if necessary

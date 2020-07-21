@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RunTHetA.py.cwl
+id: ../../../RunTHetA.py.cwl
 inputs:
 - id: graph_format
   doc: Options are .pdf, .jpg, .png, .eps

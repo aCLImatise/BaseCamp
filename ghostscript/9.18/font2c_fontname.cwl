@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/font2c_fontname.cwl
+id: ../../../font2c_fontname.cwl
 inputs:
 - id: nostringval
   doc: cfile   (--help)   (w)

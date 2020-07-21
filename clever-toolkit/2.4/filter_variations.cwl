@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_variations.cwl
+id: ../../../filter_variations.cwl
 inputs:
 - id: arg_maximum_allowed_distance
   doc: '[ --max_offset ] arg (=100)     Maximum allowed distance.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CombineOut.cwl
+id: ../../../CombineOut.cwl
 inputs:
 - id: path_to_directory_one_with_out_files
   doc: ''

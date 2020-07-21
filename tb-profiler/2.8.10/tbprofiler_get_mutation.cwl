@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tbprofiler_get_mutation.py.cwl
+id: ../../../tbprofiler_get_mutation.py.cwl
 inputs:
 - id: sample_file
   doc: ''

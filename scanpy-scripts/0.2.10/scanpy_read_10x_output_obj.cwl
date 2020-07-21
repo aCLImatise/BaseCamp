@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scanpy_read_10x_output_obj.cwl
+id: ../../../scanpy_read_10x_output_obj.cwl
 inputs:
 - id: input_one_zero_x_h_five
   doc: Input 10x data in Cell-Ranger hdf5 format.

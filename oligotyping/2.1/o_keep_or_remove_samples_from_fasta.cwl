@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o_keep_or_remove_samples_from_fasta.cwl
+id: ../../../o_keep_or_remove_samples_from_fasta.cwl
 inputs:
 - id: retain
   doc: If declared, resulting FASTA file would contain samples that "match" sample

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/psass_convert.cwl
+id: ../../../psass_convert.cwl
 inputs:
 - id: input
   doc: ''

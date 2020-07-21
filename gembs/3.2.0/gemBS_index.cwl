@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gemBS_index.cwl
+id: ../../../gemBS_index.cwl
 inputs:
 - id: loglevel
   doc: ''

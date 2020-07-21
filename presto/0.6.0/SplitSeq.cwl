@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SplitSeq.py_selected.cwl
+id: ../../../SplitSeq.py_selected.cwl
 inputs:
 - id: split_seq_do_tpy
   doc: ''

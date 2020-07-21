@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kissreads2.cwl
+id: ../../../kissreads2.cwl
 inputs:
 - id: phasing
   doc: '(0 arg) :    [Experimental] Phase alleles mapped by the same (pair of) read(s)'

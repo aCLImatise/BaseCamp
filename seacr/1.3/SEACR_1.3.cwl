@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SEACR_1.3.sh.cwl
+id: ../../../SEACR_1.3.sh.cwl
 inputs:
 - id: experimental_bed_graph
   doc: ''

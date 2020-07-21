@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MSE2mzML.py.cwl
+id: ../../../MSE2mzML.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

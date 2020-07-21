@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_utils_split.cwl
+id: ../../../fasta_utils_split.cwl
 inputs:
 - id: prefix
   doc: 'Prefix for the file name in output  [default: split]'

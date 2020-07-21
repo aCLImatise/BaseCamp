@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BedChunk.cwl
+id: ../../../BedChunk.cwl
 inputs:
 - id: desired_chunk_size
   doc: 'The desired chunk size. Note: Not all chunks will have this size. Regions

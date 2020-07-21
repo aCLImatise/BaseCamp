@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MassTraceExtractor.cwl
+id: ../../../MassTraceExtractor.cwl
 inputs:
 - id: in
   doc: "*        Input centroided mzML file (valid formats: 'mzML')"

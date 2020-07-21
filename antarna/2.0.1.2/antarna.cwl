@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/antarna.py_DP.cwl
+id: ../../../antarna.py_DP.cwl
 inputs:
 - id: diff_accessibility
   doc: Define an differential accessibility evaluation block.

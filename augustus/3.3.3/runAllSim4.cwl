@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runAllSim4.pl.cwl
+id: ../../../runAllSim4.pl.cwl
 inputs:
 - id: no
   doc: ''

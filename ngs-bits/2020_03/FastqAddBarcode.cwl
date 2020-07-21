@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FastqAddBarcode.cwl
+id: ../../../FastqAddBarcode.cwl
 inputs:
 - id: in_one
   doc: Input FASTQ file 1.

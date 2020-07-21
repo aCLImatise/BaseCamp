@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_gtf_transcripts.py.cwl
+id: ../../../merge_gtf_transcripts.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

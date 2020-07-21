@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htsbox_bcfidx.cwl
+id: ../../../htsbox_bcfidx.cwl
 inputs:
 - id: s
   doc: ''

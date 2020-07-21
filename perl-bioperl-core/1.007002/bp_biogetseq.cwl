@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_biogetseq.pl.cwl
+id: ../../../bp_biogetseq.pl.cwl
 inputs:
 - id: namespace
   doc: id [ ids... ]

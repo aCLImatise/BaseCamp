@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/configureStrelkaGermlineWorkflow.py.cwl
+id: ../../../configureStrelkaGermlineWorkflow.py.cwl
 inputs:
 - id: bam
   doc: Sample BAM or CRAM file. May be specified more than once, multiple inputs will

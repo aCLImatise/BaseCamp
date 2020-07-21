@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dep_init.cwl
+id: ../../../dep_init.cwl
 inputs:
 - id: go_path
   doc: 'search in GOPATH for dependencies (default: false)'

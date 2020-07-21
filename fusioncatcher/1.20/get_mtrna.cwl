@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_mtrna.py.cwl
+id: ../../../get_mtrna.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the rRNA sequences are downloaded, e.g.

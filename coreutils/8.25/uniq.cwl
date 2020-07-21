@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uniq.cwl
+id: ../../../uniq.cwl
 inputs:
 - id: count
   doc: prefix lines by the number of occurrences

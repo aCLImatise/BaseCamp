@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pairtools_sort.cwl
+id: ../../../pairtools_sort.cwl
 inputs:
 - id: output
   doc: output pairs file. If the path ends with .gz or .lz4, the output is compressed

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/methylpy_reidentify_DMR.cwl
+id: ../../../methylpy_reidentify_DMR.cwl
 inputs:
 - id: input_rms_file
   doc: 'File storing the results of RMS tests (from DMRfind function. (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splitchr.py_size.cwl
+id: ../../../splitchr.py_size.cwl
 inputs:
 - id: bed
   doc: ''

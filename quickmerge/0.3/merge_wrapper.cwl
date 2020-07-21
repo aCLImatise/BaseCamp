@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_wrapper.py.cwl
+id: ../../../merge_wrapper.py.cwl
 inputs:
 - id: prefix
   doc: the prefix for all output files

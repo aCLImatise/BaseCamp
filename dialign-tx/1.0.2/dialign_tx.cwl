@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dialign_tx.cwl
+id: ../../../dialign_tx.cwl
 inputs:
 - id: debugmode_debug_statements
   doc: Debug-Mode  [DEFAULT 0] 0 no debug statements 1 debugs the current phase of

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/psascan.cwl
+id: ../../../psascan.cwl
 inputs:
 - id: gap
   doc: 'specify the file holding the gap array (default: FILE.sa5.gap)'

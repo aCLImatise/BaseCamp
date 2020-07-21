@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/primer3_core.cwl
+id: ../../../primer3_core.cwl
 inputs:
 - id: format_output
   doc: ''

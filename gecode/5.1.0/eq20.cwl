@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/eq20.cwl
+id: ../../../eq20.cwl
 inputs:
 - id: trace
   doc: '(init,prune,fix,fail,done,propagate,commit,none,all,variable,general) default:

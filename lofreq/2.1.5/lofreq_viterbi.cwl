@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lofreq_viterbi.cwl
+id: ../../../lofreq_viterbi.cwl
 inputs:
 - id: _ref_file
   doc: '| --ref FILE     Indexed reference fasta file [null]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kaiju_mergeOutputs.cwl
+id: ../../../kaiju_mergeOutputs.cwl
 inputs:
 - id: name_first_input
   doc: Name of first input file

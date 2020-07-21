@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/regtools_cis_ase.cwl
+id: ../../../regtools_cis_ase.cwl
 inputs:
 - id: command
   doc: ''

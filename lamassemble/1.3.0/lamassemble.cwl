@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lamassemble.cwl
+id: ../../../lamassemble.cwl
 inputs:
 - id: number_parallel_threads
   doc: number of parallel threads (default=1)

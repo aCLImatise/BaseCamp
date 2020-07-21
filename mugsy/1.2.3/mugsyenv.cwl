@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mugsyenv.sh.cwl
+id: ../../../mugsyenv.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

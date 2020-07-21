@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_utilities_merge_multiple_gzip_files.cwl
+id: ../../../phyluce_utilities_merge_multiple_gzip_files.cwl
 inputs:
 - id: config
   doc: The path to the config file to use for merging.

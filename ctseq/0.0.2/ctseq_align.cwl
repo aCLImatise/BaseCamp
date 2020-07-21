@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ctseq_align.cwl
+id: ../../../ctseq_align.cwl
 inputs:
 - id: ref_dir
   doc: Full path to directory where you have already built your methylation reference

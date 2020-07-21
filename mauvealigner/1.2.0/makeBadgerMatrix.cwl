@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/makeBadgerMatrix.cwl
+id: ../../../makeBadgerMatrix.cwl
 inputs:
 - id: input_x_mfa
   doc: ''

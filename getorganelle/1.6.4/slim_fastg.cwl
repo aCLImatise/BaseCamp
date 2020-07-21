@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/slim_fastg.py.cwl
+id: ../../../slim_fastg.py.cwl
 inputs:
 - id: followed_commas_corresponds
   doc: 'followed with mode embplant_pt, other_pt, embplant_mt, embplant_nr, animal_mt,

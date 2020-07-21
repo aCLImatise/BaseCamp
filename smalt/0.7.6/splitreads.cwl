@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splitreads.cwl
+id: ../../../splitreads.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

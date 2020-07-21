@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ipa2_graph_to_contig.cwl
+id: ../../../ipa2_graph_to_contig.cwl
 inputs:
 - id: sg_edges_list_fn
   doc: 'Input. File containing string graph edges, produced by ovlp_to_graph.py. (default:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ob2fps.cwl
+id: ../../../ob2fps.cwl
 inputs:
 - id: fp_two
   doc: linear fragments up to 7 atoms

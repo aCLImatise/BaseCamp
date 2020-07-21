@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/br_pmfetch.rb.cwl
+id: ../../../br_pmfetch.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gretel.cwl
+id: ../../../gretel.cwl
 inputs:
 - id: start
   doc: '1-indexed included start base position [default: 1]'

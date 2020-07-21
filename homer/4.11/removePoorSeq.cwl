@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/removePoorSeq.pl.cwl
+id: ../../../removePoorSeq.pl.cwl
 inputs:
 - id: seq_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/strainest_snpdist.cwl
+id: ../../../strainest_snpdist.cwl
 inputs:
 - id: snp
   doc: ''

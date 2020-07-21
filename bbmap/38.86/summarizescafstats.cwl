@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summarizescafstats.sh.cwl
+id: ../../../summarizescafstats.sh.cwl
 inputs:
 - id: in
   doc: ''

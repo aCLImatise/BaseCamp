@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SVrefine.cwl
+id: ../../../SVrefine.cwl
 inputs:
 - id: sv_regions
   doc: Specify the path to which to write a BED file containing the widened coordinates

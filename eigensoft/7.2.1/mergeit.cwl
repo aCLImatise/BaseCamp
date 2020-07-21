@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergeit.cwl
+id: ../../../mergeit.cwl
 inputs:
 - id: bad
   doc: ''

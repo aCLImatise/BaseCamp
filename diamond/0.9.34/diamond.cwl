@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/diamond.cwl
+id: ../../../diamond.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslToChain.cwl
+id: ../../../pslToChain.cwl
 inputs:
 - id: ignore
   doc: ignore psl records with negative target strand rather than exiting

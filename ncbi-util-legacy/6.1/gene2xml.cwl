@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gene2xml.cwl
+id: ../../../gene2xml.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

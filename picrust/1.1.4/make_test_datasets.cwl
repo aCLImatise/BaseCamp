@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_test_datasets.py.cwl
+id: ../../../make_test_datasets.py.cwl
 inputs:
 - id: input_trait_table
   doc: the input trait table. [REQUIRED]

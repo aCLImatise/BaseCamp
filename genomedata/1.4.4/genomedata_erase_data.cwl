@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genomedata_erase_data.cwl
+id: ../../../genomedata_erase_data.cwl
 inputs:
 - id: track_name
   doc: tracknames to erase

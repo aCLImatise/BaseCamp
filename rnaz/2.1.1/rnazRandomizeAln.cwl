@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnazRandomizeAln.pl.cwl
+id: ../../../rnazRandomizeAln.pl.cwl
 inputs:
 - id: slide
   doc: Long alignment blocks should be shuffled locally in order to maintain local

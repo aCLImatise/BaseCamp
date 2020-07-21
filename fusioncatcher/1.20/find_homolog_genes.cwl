@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/find_homolog_genes.py.cwl
+id: ../../../find_homolog_genes.py.cwl
 inputs:
 - id: input
   doc: The input file in Bowtie MAP format (sorted by read name) containing the short

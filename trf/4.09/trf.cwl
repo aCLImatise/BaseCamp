@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trf.cwl
+id: ../../../trf.cwl
 inputs:
 - id: masked_sequence_file
   doc: masked sequence file

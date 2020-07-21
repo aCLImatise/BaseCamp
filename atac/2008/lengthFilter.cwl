@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lengthFilter.cwl
+id: ../../../lengthFilter.cwl
 inputs:
 - id: l
   doc: ''

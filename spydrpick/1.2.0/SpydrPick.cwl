@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SpydrPick.cwl
+id: ../../../SpydrPick.cwl
 inputs:
 - id: _be_verbose
   doc: '[ --verbose ]                      Be verbose.'

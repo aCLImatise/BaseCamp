@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/peptides2alternatives.pl.cwl
+id: ../../../peptides2alternatives.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

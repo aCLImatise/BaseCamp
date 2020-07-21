@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastx_grep.py_output_fastx.cwl
+id: ../../../fastx_grep.py_output_fastx.cwl
 inputs:
 - id: i
   doc: ''

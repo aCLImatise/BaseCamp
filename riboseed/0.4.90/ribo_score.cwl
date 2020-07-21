@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ribo_score.cwl
+id: ../../../ribo_score.cwl
 inputs:
 - id: output
   doc: directory in which to place the output files

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pauda_build.cwl
+id: ../../../pauda_build.cwl
 inputs:
 - id: references_fast_a
   doc: ''

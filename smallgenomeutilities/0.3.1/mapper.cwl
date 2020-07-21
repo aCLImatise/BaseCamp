@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mapper.cwl
+id: ../../../mapper.cwl
 inputs:
 - id: name_coordinates_source
   doc: Name and Coordinates of source contig, e.g. CONSENSUS:100-200

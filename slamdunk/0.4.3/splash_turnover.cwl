@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splash_turnover.cwl
+id: ../../../splash_turnover.cwl
 inputs:
 - id: bed
   doc: BED file

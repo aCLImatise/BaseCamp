@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sga_mergeDriver.pl.cwl
+id: ../../../sga_mergeDriver.pl.cwl
 inputs:
 - id: threads
   doc: use N threads for the merge processes

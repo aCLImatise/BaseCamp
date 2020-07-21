@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blastdb_aliastool.cwl
+id: ../../../blastdb_aliastool.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

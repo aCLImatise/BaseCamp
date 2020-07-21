@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioportal_csv2obo.pl.cwl
+id: ../../../bioportal_csv2obo.pl.cwl
 inputs:
 - id: csv_input_file
   doc: CSV input file

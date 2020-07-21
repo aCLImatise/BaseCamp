@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyssw.py.cwl
+id: ../../../pyssw.py.cwl
 inputs:
 - id: s_libpath
   doc: path of libssw.so

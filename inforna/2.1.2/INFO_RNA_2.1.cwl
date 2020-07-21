@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/INFO_RNA_2.1.2.cwl
+id: ../../../INFO_RNA_2.1.2.cwl
 inputs:
 - id: constraining_sequence_given
   doc: '"constraints"        Constraining sequence given in IUPAC code.'

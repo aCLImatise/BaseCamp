@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biom_relative_abundance.py.cwl
+id: ../../../biom_relative_abundance.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

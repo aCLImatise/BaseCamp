@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chimerascan_exclude_transcriptome_events.cwl
+id: ../../../chimerascan_exclude_transcriptome_events.cwl
 inputs:
 - id: extended_regexp
   doc: PATTERNS are extended regular expressions

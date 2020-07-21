@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_join_masks.py.cwl
+id: ../../../medpy_join_masks.py.cwl
 inputs:
 - id: operation
   doc: Combinatorial operation to conduct.

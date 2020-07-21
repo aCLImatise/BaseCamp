@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_naligner.cwl
+id: ../../../arb_naligner.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

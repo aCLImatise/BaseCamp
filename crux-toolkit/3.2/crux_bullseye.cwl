@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crux_bullseye.cwl
+id: ../../../crux_bullseye.cwl
 inputs:
 - id: ms_one_spectra
   doc: ''

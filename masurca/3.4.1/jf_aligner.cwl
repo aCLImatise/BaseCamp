@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jf_aligner.cwl
+id: ../../../jf_aligner.cwl
 inputs:
 - id: size
   doc: '*Number of k-mers in SuperReads'

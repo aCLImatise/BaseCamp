@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/andi.cwl
+id: ../../../andi.cwl
 inputs:
 - id: bootstrap
   doc: Print additional bootstrap matrices

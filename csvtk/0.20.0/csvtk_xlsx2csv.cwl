@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk_xlsx2csv.cwl
+id: ../../../csvtk_xlsx2csv.cwl
 inputs:
 - id: list_sheets
   doc: list all sheets

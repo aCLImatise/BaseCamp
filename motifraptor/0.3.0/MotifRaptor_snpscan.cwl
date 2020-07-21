@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MotifRaptor_snpscan.cwl
+id: ../../../MotifRaptor_snpscan.cwl
 inputs:
 - id: indexed_genome_db
   doc: indexed genome_database_folder

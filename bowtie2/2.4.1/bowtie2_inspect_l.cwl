@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bowtie2_inspect_l.cwl
+id: ../../../bowtie2_inspect_l.cwl
 inputs:
 - id: a_slash_across
   doc: 'Number of characters across in FASTA output (default: 60)'

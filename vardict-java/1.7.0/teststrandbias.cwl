@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/teststrandbias.R.cwl
+id: ../../../teststrandbias.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sarscov2summary.cwl
+id: ../../../sarscov2summary.cwl
 inputs:
 - id: output
   doc: Write results here

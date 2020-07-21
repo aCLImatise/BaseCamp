@@ -1,0 +1,314 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'The minimum # of reads to determine strand bias, default 2'
+  synonyms:
+  - -B
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: If set, reads with mapping quality less than INT will be filtered and
+    ignored
+  synonyms:
+  - -Q
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'The phred score for a base to be considered a good call.  Default:
+    22.5 (for Illumina) For PGM, set it to ~15, as PGM tends to under estimate base
+    quality.'
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'If set, reads with mismatches more than INT will be filtered and ignored.  Gaps
+    are not counted as mismatches.   Valid only for bowtie2/TopHat or BWA aln followed
+    by sampe.  BWA mem is calculated as NM - Indels.  Default: 8, or reads with more
+    than 8 mismatches will not be used.'
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Trim bases after [INT] bases in the reads
+  synonyms:
+  - -T
+  - --trim
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Extension of bp to look for mismatches after insersion or deletion.  Default
+    to 3 bp, or only calls when they are within 3 bp.
+  synonyms:
+  - -X
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Extension of bp of reference to build lookup table.  Default to 1200
+    bp.  Increase the number will slowdown the program. The main purpose is to call
+    large indels within 1000 bp that can be missed by discordant mate pairs.
+  synonyms:
+  - -Y
+  - --ref-extension
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'The read position filter.  If the mean variants position is less that
+    specified, it is considered false positive.  Default: 5'
+  synonyms:
+  - -P
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: 'For downsampling fraction.  e.g. 0.7 means roughly 70% downsampling.  Default:
+    No downsampling.  Use with caution.  The downsampling will be random and non-reproducible.'
+  synonyms:
+  - -Z
+  - --downsample
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: 'The Qratio of (good_quality_reads)/(bad_quality_reads+0.5).  The quality
+    is defined by -q option.  Default: 1.5'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: Qratio
+  optional: true
+- !Flag
+  description: 'The reads should have at least mean MapQ to be considered a valid
+    variant.  Default: no filtering'
+  synonyms:
+  - -O
+  args: !SimpleFlagArg
+    name: MapQ
+  optional: true
+- !Flag
+  description: The lowest frequency in normal sample allowed for a putative somatic
+    mutations.  Default to 0.05
+  synonyms:
+  - -V
+  args: !SimpleFlagArg
+    name: freq
+  optional: true
+- !Flag
+  description: 'The indel size.  Default: 50bp'
+  synonyms:
+  - -I
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'The minimum matches for a read to be considered.  If, after soft-clipping,
+    the matched bp is less than INT, then the  read is discarded.  It is meant for
+    PCR based targeted sequencing where there is no insert and the matching is only
+    the primers. Default: 25, or reads with matches less than 25bp will be filtered'
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'The minimum structural variant length to be presented using <DEL>
+    <DUP> <INV> <INS>, etc.  Default: 500.  Any indel, complex variants less than
+    this will be spelled out with exact nucleotides'
+  synonyms:
+  - -L
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'The insert size.  Used for SV calling.  Default: 300'
+  synonyms:
+  - -w
+  - --insert-size
+  args: !SimpleFlagArg
+    name: INSERT_SIZE
+  optional: true
+- !Flag
+  description: 'The insert size STD.  Used for SV calling.  Default: 100'
+  synonyms:
+  - -W
+  - --insert-std
+  args: !SimpleFlagArg
+    name: INSERT_STD
+  optional: true
+- !Flag
+  description: 'The number of STD.  A pair will be considered for DEL if INSERT >
+    INSERT_SIZE + INSERT_STD_AMT * INSERT_STD.  Default: 4'
+  synonyms:
+  - -A
+  args: !SimpleFlagArg
+    name: INSERT_STD_AMT
+  optional: true
+- !Flag
+  description: The genomic position that CRISPR/Cas9 suppose to cut, typically 3bp
+    from the PAM NGG site and within the guide.  For CRISPR mode only.  It will adjust
+    the variants (mostly In-Del) start and end sites to as close to this location
+    as possible, if there are alternatives. The option should only be used for CRISPR
+    mode.
+  synonyms:
+  - -J
+  - --crispr
+  args: !SimpleFlagArg
+    name: CRISPR_cutting_site
+  optional: true
+- !Flag
+  description: 'In CRISPR mode, the minimum amount in bp that a read needs to overlap
+    with cutting site.  If a read does not meet the criteria, it will not be used
+    for variant calling, since it is likely just a partially amplified PCR.  Default:
+    not set, or no filtering '
+  synonyms:
+  - -j
+  args: !SimpleFlagArg
+    name: CRISPR_filtering_bp
+  optional: true
+- !Flag
+  description: Filter adaptor sequences so that they are not used in realignment.  Multiple
+    adaptors can be supplied by multiple of this option.
+  synonyms:
+  - --adaptor
+  args: !SimpleFlagArg
+    name: adaptor_seq
+  optional: true
+- !Flag
+  description: Indicate to turn off chimeric reads filtering.  Chimeric reads are
+    artifacts from library construction, where a read can be split into two segments,
+    each will be aligned within 1-2 read length distance, but in opposite direction.
+  synonyms:
+  - --chimeric
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- vardict.pl
+parent:
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "    /tmp/tmp545pmhcn/bin/vardict.pl [-n name_reg] [-b bam] [-c chr] [-S\
+  \ start] [-E end] [-s seg_starts] [-e seg_ends] [-x #_nu] [-g gene] [-f freq] [-r\
+  \ #_reads] [-B #_reads] region_info\n\n    VarDict is a variant calling program\
+  \ for SNV, MNV, indels (<120 bp default, but can be set using -I option), and complex\
+  \ variants.  It accepts any BAM format, either\n    from DNA-seq or RNA-seq.  There\
+  \ are several distinct features over other variant callers.  First, it can perform\
+  \ local\n    realignment over indels on the fly for more accurate allele frequencies\
+  \ of indels.  Second, it rescues softly clipped reads\n    to identify indels not\
+  \ present in the alignments or support existing indels.  Third, when given the PCR\
+  \ amplicon information,\n    it will perform amplicon-based variant calling and\
+  \ filter out variants that show amplicon bias, a common false positive in PCR\n\
+  \    based targeted deep sequencing.  Forth, it has very efficient memory management\
+  \ and memory usage is linear to the region of\n    interest, not the depth.  Five,\
+  \ it can handle ultra-deep sequencing and the performance is only linear to the\
+  \ depth.  It has\n    been tested on depth over 2M reads.  Finally, it has a build-in\
+  \ capability to perform paired sample analysis, intended for\n    somatic mutation\
+  \ identification, comparing DNA-seq and RNA-seq, or resistant vs sensitive in cancer\
+  \ research.  By default,\n    the region_info is an entry of refGene.txt from IGV,\
+  \ but can be any region or bed files.\n\n    -H|-? Print this help page\n\n    -h|--header\n\
+  \       Print a header row decribing columns\n\n    -v VCF format output\n\n   \
+  \ -i|--splice \n       Output splicing read counts\n\n    -p Do pileup regarless\
+  \ the frequency\n\n    -C Indicate the chromosome names are just numbers, such as\
+  \ 1, 2, not chr1, chr2 (deprecated)\n\n    -D|--debug\n       Debug mode.  Will\
+  \ print some error messages and append full genotype at the end.\n\n    -y|verbose\n\
+  \       Verbose mode.  Will output variant calling process.\n\n    -M Similar to\
+  \ -D, but will append individual quality and position data instead of mean\n\n \
+  \   -t|--dedup\n       Indicate to remove duplicated reads.  Only one pair with\
+  \ same start positions will be kept\n\n    -3 Indicate to move indels to 3-prime\
+  \ if alternative alignment can be achieved.\n\n    -U|--nosv Turn off structural\
+  \ variant calling\n\n    -u Indicate unique mode, which when mate pairs overlap,\
+  \ the overlapping part will be counted only once using forward read only.\n\n  \
+  \  -F bit\n       The hexical to filter reads using samtools. Default: 0x500 (filter\
+  \ 2nd alignments and duplicates).  Use -F 0 to turn it off.\n\n    -z 0/1\n    \
+  \   Indicate wehther is zero-based cooridates, as IGV does.  Default: 1 for BED\
+  \ file or amplicon BED file.  Use 0 to turn it off.\n       When use -R option,\
+  \ it is set to 0\n       \n    -a|--amplicon int:float\n       Indicate it is amplicon\
+  \ based calling.  Reads do not map to the amplicon will be skipped.  A read pair\
+  \ is considered belonging\n       the amplicon if the edges are less than int bp\
+  \ to the amplicon, and overlap fraction is at least float.  Default: 10:0.95\n \
+  \      \n    -k 0/1\n       Indicate whether to perform local realignment.  Default:\
+  \ 1 or yes.  Set to 0 to disable it.  For Ion or PacBio, 0 is recommended.\n   \
+  \    \n    -G Genome fasta\n       The the reference fasta.  Should be indexed (.fai).\
+  \  Default to: /ngs/reference_data/genomes/Hsapiens/hg19/seq/hg19.fa\n       \n\
+  \    -R Region\n       The region of interest.  In the format of chr:start-end.\
+  \  If end is omitted, then a single position.  No BED is needed.\n       \n    -d\
+  \ delimiter\n       The delimiter for split region_info, default to tab \"\t\"\n\
+  \       \n    -n regular_expression\n       The regular expression to extract sample\
+  \ name from bam filenames.  Default to: /([^/._]+?)_[^/]*.bam/\n       \n    -N\
+  \ string\n       The sample name to be used directly.  Will overwrite -n option\n\
+  \       \n    -b string\n       The indexed BAM file\n       \n    -c INT\n    \
+  \   The column for chromosome\n       \n    -S INT\n       The column for region\
+  \ start, e.g. gene start\n       \n    -E INT\n       The column for region end,\
+  \ e.g. gene end\n       \n    -s INT\n       The column for segment starts in the\
+  \ region, e.g. exon starts\n       \n    -e INT\n       The column for segment ends\
+  \ in the region, e.g. exon ends\n       \n    -g INT\n       The column for gene\
+  \ name, or segment annotation\n       \n    -x INT\n       The number of nucleotide\
+  \ to extend for each segment, default: 0\n       \n    -f double\n       The threshold\
+  \ for allele frequency, default: 0.01 or 1%\n       \n    -r minimum reads\n   \
+  \    The minimum # of variance reads, default 2\n       \n    -B INT\n       The\
+  \ minimum # of reads to determine strand bias, default 2\n       \n    -Q INT\n\
+  \       If set, reads with mapping quality less than INT will be filtered and ignored\n\
+  \       \n    -q INT\n       The phred score for a base to be considered a good\
+  \ call.  Default: 22.5 (for Illumina)\n       For PGM, set it to ~15, as PGM tends\
+  \ to under estimate base quality.\n       \n    -m INT\n       If set, reads with\
+  \ mismatches more than INT will be filtered and ignored.  Gaps are not counted as\
+  \ mismatches.  \n       Valid only for bowtie2/TopHat or BWA aln followed by sampe.\
+  \  BWA mem is calculated as NM - Indels.  Default: 8,\n       or reads with more\
+  \ than 8 mismatches will not be used.\n   \n    -T|--trim INT\n       Trim bases\
+  \ after [INT] bases in the reads\n       \n    -X INT\n       Extension of bp to\
+  \ look for mismatches after insersion or deletion.  Default to 3 bp, or only calls\
+  \ when they are within 3 bp.\n       \n    -Y|--ref-extension INT\n       Extension\
+  \ of bp of reference to build lookup table.  Default to 1200 bp.  Increase the number\
+  \ will slowdown the program.\n       The main purpose is to call large indels within\
+  \ 1000 bp that can be missed by discordant mate pairs.\n       \n    -P number\n\
+  \       The read position filter.  If the mean variants position is less that specified,\
+  \ it is considered false positive.  Default: 5\n       \n    -Z|--downsample double\n\
+  \       For downsampling fraction.  e.g. 0.7 means roughly 70% downsampling.  Default:\
+  \ No downsampling.  Use with caution.  The\n       downsampling will be random and\
+  \ non-reproducible.\n       \n    -o Qratio\n       The Qratio of (good_quality_reads)/(bad_quality_reads+0.5).\
+  \  The quality is defined by -q option.  Default: 1.5\n       \n    -O MapQ\n  \
+  \     The reads should have at least mean MapQ to be considered a valid variant.\
+  \  Default: no filtering\n       \n    -V freq\n       The lowest frequency in normal\
+  \ sample allowed for a putative somatic mutations.  Default to 0.05\n       \n \
+  \   -I INT\n       The indel size.  Default: 50bp\n       \n    -M INT\n       The\
+  \ minimum matches for a read to be considered.  If, after soft-clipping, the matched\
+  \ bp is less than INT, then the \n       read is discarded.  It is meant for PCR\
+  \ based targeted sequencing where there is no insert and the matching is only the\
+  \ primers.\n       Default: 25, or reads with matches less than 25bp will be filtered\n\
+  \       \n    -L INT\n       The minimum structural variant length to be presented\
+  \ using <DEL> <DUP> <INV> <INS>, etc.  Default: 500.  Any indel, complex\n     \
+  \  variants less than this will be spelled out with exact nucleotides\n       \n\
+  \    -w|--insert-size INSERT_SIZE\n       The insert size.  Used for SV calling.\
+  \  Default: 300\n       \n    -W|--insert-std INSERT_STD\n       The insert size\
+  \ STD.  Used for SV calling.  Default: 100\n       \n    -A INSERT_STD_AMT\n   \
+  \    The number of STD.  A pair will be considered for DEL if INSERT > INSERT_SIZE\
+  \ + INSERT_STD_AMT * INSERT_STD.  Default: 4\n       \n    -J|--crispr CRISPR_cutting_site\n\
+  \       The genomic position that CRISPR/Cas9 suppose to cut, typically 3bp from\
+  \ the PAM NGG site and within the guide.  For\n       CRISPR mode only.  It will\
+  \ adjust the variants (mostly In-Del) start and end sites to as close to this location\
+  \ as possible,\n       if there are alternatives. The option should only be used\
+  \ for CRISPR mode.\n       \n    -j CRISPR_filtering_bp\n       In CRISPR mode,\
+  \ the minimum amount in bp that a read needs to overlap with cutting site.  If a\
+  \ read does not meet the criteria,\n       it will not be used for variant calling,\
+  \ since it is likely just a partially amplified PCR.  Default: not set, or no filtering\
+  \ \n\n    --adaptor adaptor_seq\n       Filter adaptor sequences so that they are\
+  \ not used in realignment.  Multiple adaptors can be supplied by multiple of this\
+  \ option.\n\n    --chimeric\n       Indicate to turn off chimeric reads filtering.\
+  \  Chimeric reads are artifacts from library construction, where a read can be split\n\
+  \       into two segments, each will be aligned within 1-2 read length distance,\
+  \ but in opposite direction.\n\nAUTHOR\n       Written by Zhongwu Lai, AstraZeneca,\
+  \ Boston, USA\n\nREPORTING BUGS\n       Report bugs to zhongwu@yahoo.com\n\nCOPYRIGHT\n\
+  \       This is free software: you are free to change and redistribute it.  There\
+  \ is NO WARRANTY, to the extent permitted by law.\n\n"
+generated_using:
+- -h

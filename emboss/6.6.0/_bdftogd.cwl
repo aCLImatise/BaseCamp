@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_bdftogd.cwl
+id: ../../../_bdftogd.cwl
 inputs:
 - id: bdf_to_gd
   doc: ''

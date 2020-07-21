@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtk_count_svtypes.cwl
+id: ../../../svtk_count_svtypes.cwl
 inputs:
 - id: no_header
   doc: Don't include header in output

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam2sam.cwl
+id: ../../../bam2sam.cwl
 inputs:
 - id: no_header
   doc: Omit header from output.

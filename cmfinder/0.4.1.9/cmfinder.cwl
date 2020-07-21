@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cmfinder.cwl
+id: ../../../cmfinder.cwl
 inputs:
 - id: _candidate_file
   doc: ': the candidate file '

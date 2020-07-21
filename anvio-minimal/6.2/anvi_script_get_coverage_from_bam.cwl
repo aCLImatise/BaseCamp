@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_script_get_coverage_from_bam.cwl
+id: ../../../anvi_script_get_coverage_from_bam.cwl
 inputs:
 - id: bam_file
   doc: Sorted and indexed BAM file to analyze.

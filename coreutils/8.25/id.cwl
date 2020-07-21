@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/id.cwl
+id: ../../../id.cwl
 inputs:
 - id: ignore_compatibility_other
   doc: ignore, for compatibility with other versions

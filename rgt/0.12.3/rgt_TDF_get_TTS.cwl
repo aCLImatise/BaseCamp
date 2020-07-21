@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rgt_TDF_get_TTS.cwl
+id: ../../../rgt_TDF_get_TTS.cwl
 inputs:
 - id: input_bed_file
   doc: Input BED file of the target regions

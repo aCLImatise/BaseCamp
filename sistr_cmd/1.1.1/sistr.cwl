@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sistr.cwl
+id: ../../../sistr.cwl
 inputs:
 - id: genomename__inputfastagenomename
   doc: genome_name, --input-fasta-genome-name fasta_path genome_name fasta file path

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_em.py.cwl
+id: ../../../run_em.py.cwl
 inputs:
 - id: input
   doc: Input FASTA file

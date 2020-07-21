@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafFrags.cwl
+id: ../../../mafFrags.cwl
 inputs:
 - id: ref_coords
   doc: '- output actual reference genome coordinates in MAF.'

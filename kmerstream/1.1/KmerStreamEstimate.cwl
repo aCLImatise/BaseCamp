@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/KmerStreamEstimate.py.cwl
+id: ../../../KmerStreamEstimate.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fop.cwl
+id: ../../../fop.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

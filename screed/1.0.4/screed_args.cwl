@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/screed_args.cwl
+id: ../../../screed_args.cwl
 inputs:
 - id: screed
   doc: ''

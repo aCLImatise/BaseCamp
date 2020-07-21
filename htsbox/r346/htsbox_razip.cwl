@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htsbox_razip.cwl
+id: ../../../htsbox_razip.cwl
 inputs:
 - id: write_standard_output
   doc: write on standard output, keep original files unchanged

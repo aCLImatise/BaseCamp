@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/randomly_select_sequences.py.cwl
+id: ../../../randomly_select_sequences.py.cwl
 inputs:
 - id: randomly
   doc: ''

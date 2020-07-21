@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RNAblueprint.cwl
+id: ../../../RNAblueprint.cwl
 inputs:
 - id: _be_verbose
   doc: '[ --verbose ]             be verbose'

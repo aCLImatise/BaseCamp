@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/countsam.cwl
+id: ../../../countsam.cwl
 inputs:
 - id: in_file_dots_am
   doc: ''

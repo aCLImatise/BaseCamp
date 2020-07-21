@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sumlabels.py.cwl
+id: ../../../sumlabels.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

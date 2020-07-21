@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/demuxbyname.sh.cwl
+id: ../../../demuxbyname.sh.cwl
 inputs:
 - id: in
   doc: ''

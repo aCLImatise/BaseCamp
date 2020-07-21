@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/isPcr.cwl
+id: ../../../isPcr.cwl
 inputs:
 - id: database
   doc: ''

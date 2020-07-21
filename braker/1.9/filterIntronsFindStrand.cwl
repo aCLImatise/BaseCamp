@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filterIntronsFindStrand.pl.cwl
+id: ../../../filterIntronsFindStrand.pl.cwl
 inputs:
 - id: allowed
   doc: ',gcaag,atac       Allowed acceptor and donor splice site types'

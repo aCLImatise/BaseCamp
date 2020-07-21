@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halApiTests.cwl
+id: ../../../halApiTests.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

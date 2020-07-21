@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/postprocess_predictions.cwl
+id: ../../../postprocess_predictions.cwl
 inputs:
 - id: minimum_expected_support_deletion
   doc: Minimum expected support for deletion cliques (cliques with lower support are

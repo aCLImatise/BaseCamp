@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtk_sr_test.cwl
+id: ../../../svtk_sr_test.cwl
 inputs:
 - id: window
   doc: Window around variant start/end to consider for split read support. [100]

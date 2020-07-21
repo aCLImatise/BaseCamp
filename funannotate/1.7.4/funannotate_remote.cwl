@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/funannotate_remote.cwl
+id: ../../../funannotate_remote.cwl
 inputs:
 - id: genbank
   doc: GenBank file (must be annotated).

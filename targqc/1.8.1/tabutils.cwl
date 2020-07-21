@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tabutils.cwl
+id: ../../../tabutils.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

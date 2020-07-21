@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hitac.py_predictions.cwl
+id: ../../../hitac.py_predictions.cwl
 inputs:
 - id: km_er
   doc: ''

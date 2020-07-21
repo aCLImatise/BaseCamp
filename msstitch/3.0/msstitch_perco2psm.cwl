@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msstitch_perco2psm.cwl
+id: ../../../msstitch_perco2psm.cwl
 inputs:
 - id: directory_to_output
   doc: Directory to output in

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/factor.cwl
+id: ../../../factor.cwl
 inputs:
 - id: number
   doc: ''

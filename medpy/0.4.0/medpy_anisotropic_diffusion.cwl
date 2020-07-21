@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_anisotropic_diffusion.py.cwl
+id: ../../../medpy_anisotropic_diffusion.py.cwl
 inputs:
 - id: iterations
   doc: The number of smoothing iterations. Strong parameter.

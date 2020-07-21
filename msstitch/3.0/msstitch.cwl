@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msstitch.cwl
+id: ../../../msstitch.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cfm_test.cwl
+id: ../../../cfm_test.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_hash_filename....cwl
+id: ../../../gsutil_hash_filename....cwl
 inputs:
 - id: calculate_crcc_hash
   doc: Calculate a CRC32c hash for the file.

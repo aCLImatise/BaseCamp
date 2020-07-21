@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Sequest2XML.cwl
+id: ../../../Sequest2XML.cwl
 inputs:
 - id: html_file
   doc: ''

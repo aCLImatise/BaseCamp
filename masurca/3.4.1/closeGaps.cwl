@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/closeGaps.perl.cwl
+id: ../../../closeGaps.perl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

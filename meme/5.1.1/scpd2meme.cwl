@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scpd2meme.cwl
+id: ../../../scpd2meme.cwl
 inputs:
 - id: skip
   doc: skip this ID (may be repeated)

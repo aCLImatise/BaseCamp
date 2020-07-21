@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findopt.cwl
+id: ../../../findopt.cwl
 inputs:
 - id: b
   doc: ''

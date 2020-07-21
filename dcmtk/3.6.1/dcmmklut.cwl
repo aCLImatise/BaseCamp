@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dcmmklut.cwl
+id: ../../../dcmmklut.cwl
 inputs:
 - id: _quiet_print
   doc: --quiet         quiet mode, print no warnings and errors

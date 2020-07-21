@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mashtree.cwl
+id: ../../../mashtree.cwl
 inputs:
 - id: seed
   doc: 42   Seed for mash sketch

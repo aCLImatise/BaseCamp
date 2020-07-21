@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/var2vcf_paired.pl.cwl
+id: ../../../var2vcf_paired.pl.cwl
 inputs:
 - id: print_this_usage
   doc: Print this usage.

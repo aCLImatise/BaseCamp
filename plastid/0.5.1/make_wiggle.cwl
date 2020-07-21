@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_wiggle.cwl
+id: ../../../make_wiggle.cwl
 inputs:
 - id: out
   doc: Base name for output files

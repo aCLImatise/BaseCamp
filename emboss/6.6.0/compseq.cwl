@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compseq.cwl
+id: ../../../compseq.cwl
 inputs:
 - id: word
   doc: integer    [2] This is the size of word (n-mer) to count. Thus if you want

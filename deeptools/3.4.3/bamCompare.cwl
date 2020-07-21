@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamCompare.cwl
+id: ../../../bamCompare.cwl
 inputs:
 - id: bam_file_one
   doc: 'file, -b1 BAM file Sorted BAM file 1. Usually the BAM file for the treatment.

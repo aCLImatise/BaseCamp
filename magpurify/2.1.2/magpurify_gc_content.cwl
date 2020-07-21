@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/magpurify_gc_content.cwl
+id: ../../../magpurify_gc_content.cwl
 inputs:
 - id: cut_off
   doc: 'Cutoff (default: 15.75)'

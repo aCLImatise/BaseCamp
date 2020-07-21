@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ctseq.cwl
+id: ../../../ctseq.cwl
 inputs:
 - id: v
   doc: ''

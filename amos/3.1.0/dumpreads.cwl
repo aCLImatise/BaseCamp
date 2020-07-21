@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dumpreads.cwl
+id: ../../../dumpreads.cwl
 inputs:
 - id: dump_reads_fastq
   doc: Dump reads in fastq format

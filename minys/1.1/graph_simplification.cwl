@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/graph_simplification.py.cwl
+id: ../../../graph_simplification.py.cwl
 inputs:
 - id: length_minimal_suffix
   doc: Length of minimal suffix for node merging

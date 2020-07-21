@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mapCounter.cwl
+id: ../../../mapCounter.cwl
 inputs:
 - id: seg
   doc: Outputs in SEG format

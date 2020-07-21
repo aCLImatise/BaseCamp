@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gtdbtk.cwl
+id: ../../../gtdbtk.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

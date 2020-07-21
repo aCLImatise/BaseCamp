@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compute_mds.cwl
+id: ../../../compute_mds.cwl
 inputs:
 - id: start
   doc: 'Starting position of the region of interest, 0-based indexing (default: 2252)'

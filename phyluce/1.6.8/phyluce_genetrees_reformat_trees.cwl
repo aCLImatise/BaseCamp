@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_genetrees_reformat_trees.cwl
+id: ../../../phyluce_genetrees_reformat_trees.cwl
 inputs:
 - id: input
   doc: The input trees directory

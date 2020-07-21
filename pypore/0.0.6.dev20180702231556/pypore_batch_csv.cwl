@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pypore_batch_csv.py.cwl
+id: ../../../pypore_batch_csv.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

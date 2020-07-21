@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmer2sam.cwl
+id: ../../../hmmer2sam.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedparse_join_bedfile.cwl
+id: ../../../bedparse_join_bedfile.cwl
 inputs:
 - id: annotation
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/proteinortho_grab_proteins.pl.cwl
+id: ../../../proteinortho_grab_proteins.pl.cwl
 inputs:
 - id: to_files
   doc: print everything to files instead of stdout files are called OrthoGroup**.fasta

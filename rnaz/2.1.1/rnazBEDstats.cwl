@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnazBEDstats.pl.cwl
+id: ../../../rnazBEDstats.pl.cwl
 inputs:
 - id: man
   doc: Prints a detailed manual page and exits.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o_generate_consensus_from_alignment.cwl
+id: ../../../o_generate_consensus_from_alignment.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

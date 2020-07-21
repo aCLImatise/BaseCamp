@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/exclude_seqs_by_blast.py.cwl
+id: ../../../exclude_seqs_by_blast.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

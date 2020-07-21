@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esummary.cwl
+id: ../../../esummary.cwl
 inputs:
 - id: format
   doc: Format of record or report

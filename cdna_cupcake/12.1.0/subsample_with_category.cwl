@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/subsample_with_category.py.cwl
+id: ../../../subsample_with_category.py.cwl
 inputs:
 - id: by
   doc: 'Unique specifier name(default: id)'

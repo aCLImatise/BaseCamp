@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqboot.cwl
+id: ../../../seqboot.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

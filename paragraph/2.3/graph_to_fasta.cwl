@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/graph_to_fasta.cwl
+id: ../../../graph_to_fasta.cwl
 inputs:
 - id: arg_json_files
   doc: '[ --graph-spec ] arg    JSON file(s) describing the graph'

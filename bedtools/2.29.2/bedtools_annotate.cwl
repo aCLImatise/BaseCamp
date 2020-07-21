@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools_annotate.cwl
+id: ../../../bedtools_annotate.cwl
 inputs:
 - id: both
   doc: Report the counts followed by the % coverage. - Default is to report the fraction

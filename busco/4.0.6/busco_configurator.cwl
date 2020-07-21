@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/busco_configurator.py.cwl
+id: ../../../busco_configurator.py.cwl
 inputs:
 - id: config_dot_in_idot_default
   doc: ''

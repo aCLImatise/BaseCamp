@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ceas.cwl
+id: ../../../ceas.cwl
 inputs:
 - id: bed
   doc: BED file of ChIP regions.

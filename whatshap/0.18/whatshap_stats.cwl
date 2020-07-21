@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/whatshap_stats.cwl
+id: ../../../whatshap_stats.cwl
 inputs:
 - id: gtf
   doc: Write phased blocks to GTF file.

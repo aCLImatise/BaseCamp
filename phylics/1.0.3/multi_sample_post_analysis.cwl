@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/multi_sample_post_analysis.cwl
+id: ../../../multi_sample_post_analysis.cwl
 inputs:
 - id: n_permutations
   doc: ''

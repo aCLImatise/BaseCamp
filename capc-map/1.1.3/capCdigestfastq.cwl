@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/capCdigestfastq.cwl
+id: ../../../capCdigestfastq.cwl
 inputs:
 - id: firstfq_first_pair
   doc: first_fq    is the first of the pair of fastq files

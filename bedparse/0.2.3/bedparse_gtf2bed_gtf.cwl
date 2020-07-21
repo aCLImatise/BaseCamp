@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedparse_gtf2bed_gtf.cwl
+id: ../../../bedparse_gtf2bed_gtf.cwl
 inputs:
 - id: extrafields
   doc: ''

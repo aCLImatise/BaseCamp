@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/split_sequences.py.cwl
+id: ../../../split_sequences.py.cwl
 inputs:
 - id: threshold
   doc: Split based on this threshold of length

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mapsembler2_extend.cwl
+id: ../../../mapsembler2_extend.cwl
 inputs:
 - id: where_write_default
   doc: ': where to write outputs. Default: "res_mapsembler" '

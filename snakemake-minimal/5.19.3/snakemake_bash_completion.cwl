@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snakemake_bash_completion.cwl
+id: ../../../snakemake_bash_completion.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

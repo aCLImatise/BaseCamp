@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iit_dump.cwl
+id: ../../../iit_dump.cwl
 inputs:
 - id: options_dot_dot_dot
   doc: ''

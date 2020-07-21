@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/classifier.cwl
+id: ../../../classifier.cwl
 inputs:
 - id: bootstrap_outfile
   doc: the output file containing the number of matching assignments out of 100 bootstraps

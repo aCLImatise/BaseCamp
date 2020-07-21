@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf_cut.cwl
+id: ../../../maf_cut.cwl
 inputs:
 - id: chr_n
   doc: ''

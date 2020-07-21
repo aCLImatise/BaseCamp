@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trace_seq_extract_seq.cwl
+id: ../../../trace_seq_extract_seq.cwl
 inputs:
 - id: no
   doc: ''

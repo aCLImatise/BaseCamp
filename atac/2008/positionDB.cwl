@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/positionDB.cwl
+id: ../../../positionDB.cwl
 inputs:
 - id: args
   doc: ''

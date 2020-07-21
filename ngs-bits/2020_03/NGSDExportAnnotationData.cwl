@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NGSDExportAnnotationData.cwl
+id: ../../../NGSDExportAnnotationData.cwl
 inputs:
 - id: variants
   doc: Output variant list as VCF.

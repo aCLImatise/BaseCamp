@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pearRM.cwl
+id: ../../../pearRM.cwl
 inputs:
 - id: forward_fast_q
   doc: <str>     Forward paired-end FASTQ file.

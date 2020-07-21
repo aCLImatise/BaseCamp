@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyrosim.cwl
+id: ../../../pyrosim.cwl
 inputs:
 - id: fast_a
   doc: ''

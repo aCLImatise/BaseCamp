@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/raw_n50.cwl
+id: ../../../raw_n50.cwl
 inputs:
 - id: contigs_dot_fa
   doc: ''

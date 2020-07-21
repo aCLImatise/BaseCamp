@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/byobu_ugraph.cwl
+id: ../../../byobu_ugraph.cwl
 inputs:
 - id: file_read_points
   doc: ': File to read data points from. (only required if no command specified).'

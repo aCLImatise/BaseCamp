@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergeSuperReadsUniquely.pl.cwl
+id: ../../../mergeSuperReadsUniquely.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

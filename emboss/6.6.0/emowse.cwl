@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/emowse.cwl
+id: ../../../emowse.cwl
 inputs:
 - id: weight
   doc: integer    [0] Whole sequence molwt (Any integer value)

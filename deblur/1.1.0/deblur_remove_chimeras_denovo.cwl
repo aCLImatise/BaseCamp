@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deblur_remove_chimeras_denovo.cwl
+id: ../../../deblur_remove_chimeras_denovo.cwl
 inputs:
 - id: log_level
   doc: 'RANGE  Level of messages for log file(range 1-debug to 5-critical  [default:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obrms.cwl
+id: ../../../obrms.cwl
 inputs:
 - id: first_only
   doc: ''

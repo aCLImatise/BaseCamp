@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_ncbi_chunk_fasta_for_ncbi.cwl
+id: ../../../phyluce_ncbi_chunk_fasta_for_ncbi.cwl
 inputs:
 - id: input
   doc: ''

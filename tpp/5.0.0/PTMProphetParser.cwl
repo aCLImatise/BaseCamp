@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PTMProphetParser.cwl
+id: ../../../PTMProphetParser.cwl
 inputs:
 - id: input_file_dot_pep_dot_xml
   doc: ''

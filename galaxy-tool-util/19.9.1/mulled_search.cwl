@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mulled_search.cwl
+id: ../../../mulled_search.cwl
 inputs:
 - id: organization
   doc: Change organization. Default is biocontainers.

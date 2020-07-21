@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/align2hints.pl.cwl
+id: ../../../align2hints.pl.cwl
 inputs:
 - id: skip_alignment_out
   doc: '... -o gthfile'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_sreformat.pl.cwl
+id: ../../../bp_sreformat.pl.cwl
 inputs:
 - id: no_interleaved
   doc: -- for phylip,non-interleaved format

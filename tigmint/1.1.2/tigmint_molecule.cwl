@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tigmint_molecule.cwl
+id: ../../../tigmint_molecule.cwl
 inputs:
 - id: output
   doc: Output TSV file [stdout]

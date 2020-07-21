@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdallocationinfo.cwl
+id: ../../../gdallocationinfo.cwl
 inputs:
 - id: help_general
   doc: ''

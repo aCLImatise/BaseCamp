@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tensorboard.cwl
+id: ../../../tensorboard.cwl
 inputs:
 - id: reload_interval
   doc: How often the backend should load more data.

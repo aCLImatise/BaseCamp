@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/haphpipe_sample_reads.cwl
+id: ../../../haphpipe_sample_reads.cwl
 inputs:
 - id: fq_one
   doc: Fastq file with read 1

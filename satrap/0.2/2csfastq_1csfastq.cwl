@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/2csfastq_1csfastq.cwl
+id: ../../../2csfastq_1csfastq.cwl
 inputs:
 - id: cs_fast_q_one
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nw_match.cwl
+id: ../../../nw_match.cwl
 inputs:
 - id: hv
   doc: ''

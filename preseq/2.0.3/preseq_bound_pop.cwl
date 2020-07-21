@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/preseq_bound_pop.cwl
+id: ../../../preseq_bound_pop.cwl
 inputs:
 - id: output
   doc: 'species richness output file (default: stdout) '

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o_fasta_length_distribution.cwl
+id: ../../../o_fasta_length_distribution.cwl
 inputs:
 - id: output
   doc: Output file name to store distribution figure

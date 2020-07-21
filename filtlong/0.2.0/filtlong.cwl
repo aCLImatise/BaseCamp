@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filtlong.cwl
+id: ../../../filtlong.cwl
 inputs:
 - id: keep_only_best
   doc: '[int], --target_bases [int]          keep only the best reads up to this many

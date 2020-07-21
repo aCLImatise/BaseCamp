@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bayesTyper_genotype.cwl
+id: ../../../bayesTyper_genotype.cwl
 inputs:
 - id: arg_variantclustersbin_file
   doc: '[ --variant-clusters-file ] arg    variant_clusters.bin file (BayesTyper cluster

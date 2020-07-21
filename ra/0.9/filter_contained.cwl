@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_contained.cwl
+id: ../../../filter_contained.cwl
 inputs:
 - id: depot
   doc: ''

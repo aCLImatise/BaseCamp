@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/test.pyomo.cwl
+id: ../../../test.pyomo.cwl
 inputs:
 - id: dir
   doc: Top-level source directory where the tests are applied.

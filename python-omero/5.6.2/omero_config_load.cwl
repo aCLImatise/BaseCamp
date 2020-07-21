@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_config_load.cwl
+id: ../../../omero_config_load.cwl
 inputs:
 - id: no_error_conflict
   doc: No error on conflict

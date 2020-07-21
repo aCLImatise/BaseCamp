@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TsvFilter.cwl
+id: ../../../TsvFilter.cwl
 inputs:
 - id: filter
   doc: Filter string with column name, operation and value,e.g. 'depth > 17'.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wiggle_to_chr_binned_array.py.cwl
+id: ../../../wiggle_to_chr_binned_array.py.cwl
 inputs:
 - id: score_file
   doc: ''

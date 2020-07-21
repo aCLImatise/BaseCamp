@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dirname.cwl
+id: ../../../dirname.cwl
 inputs:
 - id: end_output_line
   doc: end each output line with NUL, not newline

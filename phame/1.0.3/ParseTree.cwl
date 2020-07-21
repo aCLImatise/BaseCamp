@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ParseTree.pl.cwl
+id: ../../../ParseTree.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

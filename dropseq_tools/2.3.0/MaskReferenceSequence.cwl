@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MaskReferenceSequence.cwl
+id: ../../../MaskReferenceSequence.cwl
 inputs:
 - id: default_g
   doc: (default 4g)

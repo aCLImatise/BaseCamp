@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hgSpeciesRna.cwl
+id: ../../../hgSpeciesRna.cwl
 inputs:
 - id: est
   doc: '- If set will get ESTs rather than mRNAs'

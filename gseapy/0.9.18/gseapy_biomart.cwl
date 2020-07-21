@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gseapy_biomart.cwl
+id: ../../../gseapy_biomart.cwl
 inputs:
 - id: value__filter
   doc: VALUE, --filter NAME VALUE Which filter to use. Input filter name, and value.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/predict_metagenomes.py.cwl
+id: ../../../predict_metagenomes.py.cwl
 inputs:
 - id: input_otu_table
   doc: the input otu table in biom format [REQUIRED]

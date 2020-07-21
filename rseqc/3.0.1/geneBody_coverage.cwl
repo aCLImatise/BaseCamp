@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/geneBody_coverage.py.cwl
+id: ../../../geneBody_coverage.py.cwl
 inputs:
 - id: input
   doc: 'Input file(s) in BAM format. "-i" takes these input: 1) a single BAM file.

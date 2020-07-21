@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssw_test.cwl
+id: ../../../ssw_test.cwl
 inputs:
 - id: n_positive_integer_weight
   doc: 'N is a positive integer for weight match in genome sequence alignment. [default:

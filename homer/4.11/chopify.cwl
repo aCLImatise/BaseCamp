@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chopify.pl.cwl
+id: ../../../chopify.pl.cwl
 inputs:
 - id: peak_slash_bed_file
   doc: ''

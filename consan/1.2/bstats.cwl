@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bstats.cwl
+id: ../../../bstats.cwl
 inputs:
 - id: _verbose
   doc: ': verbose '

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/message_validate.cwl
+id: ../../../message_validate.cwl
 inputs:
 - id: message
   doc: ''

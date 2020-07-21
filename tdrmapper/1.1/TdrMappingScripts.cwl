@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TdrMappingScripts.pl.cwl
+id: ../../../TdrMappingScripts.pl.cwl
 inputs:
 - id: reference_trna_dot_fa
   doc: ''

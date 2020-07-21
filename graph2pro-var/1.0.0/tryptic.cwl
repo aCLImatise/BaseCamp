@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tryptic.py.cwl
+id: ../../../tryptic.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

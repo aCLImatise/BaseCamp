@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iHS.cwl
+id: ../../../iHS.cwl
 inputs:
 - id: target
   doc: ''

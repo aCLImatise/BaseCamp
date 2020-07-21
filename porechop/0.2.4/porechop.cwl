@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/porechop.cwl
+id: ../../../porechop.cwl
 inputs:
 - id: input
   doc: FASTA/FASTQ of input reads or a directory which will be recursively searched

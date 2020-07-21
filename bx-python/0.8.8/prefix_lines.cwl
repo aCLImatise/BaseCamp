@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prefix_lines.py.cwl
+id: ../../../prefix_lines.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

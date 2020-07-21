@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Out2XML.cwl
+id: ../../../Out2XML.cwl
 inputs:
 - id: use_default_setting_specified
   doc: ': use monoisotopic precursor weight (default: setting specified in sequest.params)'

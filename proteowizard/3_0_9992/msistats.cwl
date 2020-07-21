@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msistats.cwl
+id: ../../../msistats.cwl
 inputs:
 - id: arg_windows_use
   doc: '[ --mz ] arg (=5)    : Windows to use for finding nearest time neighbor.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/build_fixed.cwl
+id: ../../../build_fixed.cwl
 inputs:
 - id: set_depth_model
   doc: Set depth of model to <num>

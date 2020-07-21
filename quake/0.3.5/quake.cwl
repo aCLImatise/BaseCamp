@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quake.py.cwl
+id: ../../../quake.py.cwl
 inputs:
 - id: no_jelly
   doc: Count k-mers using a simpler program than Jellyfish

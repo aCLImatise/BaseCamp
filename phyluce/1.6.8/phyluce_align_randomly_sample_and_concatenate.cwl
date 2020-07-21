@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_randomly_sample_and_concatenate.cwl
+id: ../../../phyluce_align_randomly_sample_and_concatenate.cwl
 inputs:
 - id: alignments
   doc: The directory containing NEXUS alignments to sample and concatenate

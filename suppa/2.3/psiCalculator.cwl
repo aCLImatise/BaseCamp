@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/psiCalculator.py.cwl
+id: ../../../psiCalculator.py.cwl
 inputs:
 - id: i
   doc: ''

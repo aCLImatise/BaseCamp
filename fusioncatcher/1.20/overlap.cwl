@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/overlap.py.cwl
+id: ../../../overlap.py.cwl
 inputs:
 - id: input_one
   doc: The input FASTQ file containing the reads from 5' fragment end.

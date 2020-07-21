@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runHyPhy.pl.cwl
+id: ../../../runHyPhy.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

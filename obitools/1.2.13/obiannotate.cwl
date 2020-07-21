@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obiannotate.cwl
+id: ../../../obiannotate.cwl
 inputs:
 - id: with_tax_on_at_rank
   doc: seq1.fasta > seq2.fasta

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_diff.py_input2.cwl
+id: ../../../medpy_diff.py_input2.cwl
 inputs:
 - id: v
   doc: ''

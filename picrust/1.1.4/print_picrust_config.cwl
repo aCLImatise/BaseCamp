@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/print_picrust_config.py.cwl
+id: ../../../print_picrust_config.py.cwl
 inputs:
 - id: verbose
   doc: 'Print information during execution -- useful for debugging [default: False]'

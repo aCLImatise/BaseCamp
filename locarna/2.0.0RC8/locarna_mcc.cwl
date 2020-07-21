@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/locarna_mcc.cwl
+id: ../../../locarna_mcc.cwl
 inputs:
 - id: structure_annotation_file
   doc: Structure annotation file. Mandatory argument.

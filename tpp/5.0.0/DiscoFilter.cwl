@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DiscoFilter.cwl
+id: ../../../DiscoFilter.cwl
 inputs:
 - id: mzm_lslash_mz_xml_input_file
   doc: ''

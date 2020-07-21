@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tgStoreDump.cwl
+id: ../../../tgStoreDump.cwl
 inputs:
 - id: path_sequence_store
   doc: path to the sequence store

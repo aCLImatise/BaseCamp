@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runGMES.cwl
+id: ../../../runGMES.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

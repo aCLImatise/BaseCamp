@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rpkmforgenes.py.cwl
+id: ../../../rpkmforgenes.py.cwl
 inputs:
 - id: by_output_file
   doc: by output file

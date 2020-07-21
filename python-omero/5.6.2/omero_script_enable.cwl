@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_script_enable.cwl
+id: ../../../omero_script_enable.cwl
 inputs:
 - id: mimetype
   doc: Use a mimetype other than the default (text/x-python)

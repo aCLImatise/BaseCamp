@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ProteinInference.cwl
+id: ../../../ProteinInference.cwl
 inputs:
 - id: in
   doc: "*                                               Input file(s) (valid formats:\

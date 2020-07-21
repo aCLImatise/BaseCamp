@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_binary_resampling.py.cwl
+id: ../../../medpy_binary_resampling.py.cwl
 inputs:
 - id: order
   doc: the bspline order, default is 0 (= nearest neighbour)

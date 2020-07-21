@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/watchmedo_auto_restart.cwl
+id: ../../../watchmedo_auto_restart.cwl
 inputs:
 - id: directory
   doc: 'Directory to watch. Use another -d or --directory option for each directory.

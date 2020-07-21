@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/XXmotif.cwl
+id: ../../../XXmotif.cwl
 inputs:
 - id: neg_set
   doc: sequence set which has to be used as a reference set

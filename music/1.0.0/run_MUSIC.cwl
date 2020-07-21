@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_MUSIC.csh.cwl
+id: ../../../run_MUSIC.csh.cwl
 inputs:
 - id: arguments
   doc: ''

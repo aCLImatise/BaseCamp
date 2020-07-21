@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quast_download_gridss.cwl
+id: ../../../quast_download_gridss.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

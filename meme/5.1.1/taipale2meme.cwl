@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taipale2meme.cwl
+id: ../../../taipale2meme.cwl
 inputs:
 - id: postfix
   doc: text to append to motif names.

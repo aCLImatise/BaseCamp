@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CollectStructuralVariantReadMetrics.cwl
+id: ../../../CollectStructuralVariantReadMetrics.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

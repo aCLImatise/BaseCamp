@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obo_union.pl.cwl
+id: ../../../obo_union.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

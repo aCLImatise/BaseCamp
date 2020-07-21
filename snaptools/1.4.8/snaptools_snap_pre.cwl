@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snaptools_snap_pre.cwl
+id: ../../../snaptools_snap_pre.cwl
 inputs:
 - id: input_file
   doc: 'input bam, bed or bed.gz file. (default: None)'

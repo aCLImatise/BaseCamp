@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hp_demo.cwl
+id: ../../../hp_demo.cwl
 inputs:
 - id: outdir
   doc: 'Output directory (default: .)'

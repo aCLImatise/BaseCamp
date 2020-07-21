@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gseapy_prerank.cwl
+id: ../../../gseapy_prerank.cwl
 inputs:
 - id: rnk
   doc: Ranking metric file in .rnk format. Same with GSEA.

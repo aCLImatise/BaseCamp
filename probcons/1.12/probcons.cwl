@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/probcons.cwl
+id: ../../../probcons.cwl
 inputs:
 - id: clustalw
   doc: use CLUSTALW output format instead of MFA

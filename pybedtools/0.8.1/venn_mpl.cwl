@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/venn_mpl.py.cwl
+id: ../../../venn_mpl.py.cwl
 inputs:
 - id: file_use_leftmost
   doc: File to use for the left-most circle

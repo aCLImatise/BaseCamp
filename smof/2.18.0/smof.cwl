@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof.cwl
+id: ../../../smof.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

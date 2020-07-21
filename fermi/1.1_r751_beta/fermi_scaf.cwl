@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi_scaf.cwl
+id: ../../../fermi_scaf.cwl
 inputs:
 - id: number_of_threads
   doc: number of threads [1]

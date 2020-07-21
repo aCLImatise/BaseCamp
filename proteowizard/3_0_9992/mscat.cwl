@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mscat.cwl
+id: ../../../mscat.cwl
 inputs:
 - id: filename
   doc: ''

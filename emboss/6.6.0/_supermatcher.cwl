@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_supermatcher.cwl
+id: ../../../_supermatcher.cwl
 inputs:
 - id: gap_open
   doc: float      [10.0 for any sequence type] Gap opening penalty (Number from 0.000

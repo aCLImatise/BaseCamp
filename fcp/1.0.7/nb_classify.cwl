@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nb_classify.cwl
+id: ../../../nb_classify.cwl
 inputs:
 - id: contact
   doc: Print contact information.

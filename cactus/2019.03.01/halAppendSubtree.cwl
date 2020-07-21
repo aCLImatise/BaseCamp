@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halAppendSubtree.cwl
+id: ../../../halAppendSubtree.cwl
 inputs:
 - id: main_file
   doc: ''

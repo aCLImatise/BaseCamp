@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tadwrapper.sh.cwl
+id: ../../../tadwrapper.sh.cwl
 inputs:
 - id: in
   doc: ''

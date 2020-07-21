@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedIntersect.cwl
+id: ../../../bedIntersect.cwl
 inputs:
 - id: b_score
   doc: output score from b.bed (must be at least 5 field bed)

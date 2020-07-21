@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gof3r.cwl
+id: ../../../gof3r.cwl
 inputs:
 - id: man_page
   doc: Create gof3r.man man page in current directory

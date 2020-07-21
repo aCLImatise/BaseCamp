@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/psass.cwl
+id: ../../../psass.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

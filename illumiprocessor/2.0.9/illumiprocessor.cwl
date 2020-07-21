@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/illumiprocessor.cwl
+id: ../../../illumiprocessor.cwl
 inputs:
 - id: input
   doc: 'The input directory of raw reads to trim. (default: None)'

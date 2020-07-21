@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequana_mapping.cwl
+id: ../../../sequana_mapping.cwl
 inputs:
 - id: file_one
   doc: R1 fastq file (zipped)

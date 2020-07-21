@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/homGeneMapping.cwl
+id: ../../../homGeneMapping.cwl
 inputs:
 - id: gt_fs
   doc: ''

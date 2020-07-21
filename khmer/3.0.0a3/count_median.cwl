@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/count_median.py.cwl
+id: ../../../count_median.py.cwl
 inputs:
 - id: info
   doc: print citation information

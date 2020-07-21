@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nanoraw_plot_motif_with_stats.cwl
+id: ../../../nanoraw_plot_motif_with_stats.cwl
 inputs:
 - id: base_call_subgroups
   doc: "FAST5 subgroup (under Analyses/[corrected-group]) where individual template\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gcpp.cwl
+id: ../../../gcpp.cwl
 inputs:
 - id: reference
   doc: FILE   The filename of the reference FASTA file.

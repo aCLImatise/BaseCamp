@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cdhit_cluster.sh.cwl
+id: ../../../cdhit_cluster.sh.cwl
 inputs:
 - id: usage_message
   doc: usage message

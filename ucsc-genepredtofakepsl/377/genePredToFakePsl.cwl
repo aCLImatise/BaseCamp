@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genePredToFakePsl.cwl
+id: ../../../genePredToFakePsl.cwl
 inputs:
 - id: q_sizes
   doc: Read in query sizes to fixup qSize and qStarts

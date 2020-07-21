@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blasr.cwl
+id: ../../../blasr.cwl
 inputs:
 - id: no_split_sub_reads
   doc: Do not split subreads at adapters. This is typically only  useful when the

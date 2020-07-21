@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/removeOutOfBoundsReads.pl.cwl
+id: ../../../removeOutOfBoundsReads.pl.cwl
 inputs:
 - id: tag_directory
   doc: ''

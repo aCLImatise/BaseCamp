@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msisensor_scan.cwl
+id: ../../../msisensor_scan.cwl
 inputs:
 - id: string_file_format
   doc: <string>   reference genome sequences file, *.fasta format

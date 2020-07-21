@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/revFasta.cwl
+id: ../../../revFasta.cwl
 inputs:
 - id: reverse_complement_specified
   doc: Reverse complement the specified id only

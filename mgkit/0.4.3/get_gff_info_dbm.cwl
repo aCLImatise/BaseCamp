@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_gff_info_dbm.cwl
+id: ../../../get_gff_info_dbm.cwl
 inputs:
 - id: output_dir
   doc: 'Directory for the database  [default: gff-dbm]'

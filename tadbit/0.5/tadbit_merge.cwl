@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tadbit_merge.cwl
+id: ../../../tadbit_merge.cwl
 inputs:
 - id: workdir
   doc: path to a new output folder

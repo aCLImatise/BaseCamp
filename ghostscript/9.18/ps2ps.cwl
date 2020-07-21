@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ps2ps.cwl
+id: ../../../ps2ps.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/novo2sam.pl.cwl
+id: ../../../novo2sam.pl.cwl
 inputs:
 - id: options
   doc: ''

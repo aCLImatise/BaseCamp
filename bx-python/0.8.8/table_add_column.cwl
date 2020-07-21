@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/table_add_column.py.cwl
+id: ../../../table_add_column.py.cwl
 inputs:
 - id: header
   doc: keep header in output

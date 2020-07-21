@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/design_ligandswitch.py.cwl
+id: ../../../design_ligandswitch.py.cwl
 inputs:
 - id: file
   doc: Read file in *.inp format

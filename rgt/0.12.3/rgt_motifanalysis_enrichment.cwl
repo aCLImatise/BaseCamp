@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rgt_motifanalysis_enrichment.cwl
+id: ../../../rgt_motifanalysis_enrichment.cwl
 inputs:
 - id: organism
   doc: Organism considered on the analysis. Must have been setup in the RGTDATA folder.

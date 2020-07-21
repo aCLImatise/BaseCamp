@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msa2bam_INPUT.cwl
+id: ../../../msa2bam_INPUT.cwl
 inputs:
 - id: r
   doc: ''

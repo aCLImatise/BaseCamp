@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/atac.pl.cwl
+id: ../../../atac.pl.cwl
 inputs:
 - id: genome_dir
   doc: -- path to the GENOMES directory

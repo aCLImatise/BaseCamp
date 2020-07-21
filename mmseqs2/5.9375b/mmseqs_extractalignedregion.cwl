@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_extractalignedregion.cwl
+id: ../../../mmseqs_extractalignedregion.cwl
 inputs:
 - id: extract_mode
   doc: '2               Query 1, Target 2                                           '

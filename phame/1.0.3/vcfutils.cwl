@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfutils.pl_vcf2fq.cwl
+id: ../../../vcfutils.pl_vcf2fq.cwl
 inputs:
 - id: minimum_depth_
   doc: minimum depth          [3]

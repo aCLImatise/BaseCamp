@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/aws_completer.cwl
+id: ../../../aws_completer.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

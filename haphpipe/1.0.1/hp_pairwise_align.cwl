@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hp_pairwise_align.cwl
+id: ../../../hp_pairwise_align.cwl
 inputs:
 - id: amplicons_fa
   doc: Assembled amplicons (fasta)

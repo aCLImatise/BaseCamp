@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/idpAssemble.cwl
+id: ../../../idpAssemble.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

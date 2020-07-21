@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stacks_summary.py.cwl
+id: ../../../stacks_summary.py.cwl
 inputs:
 - id: stacks_prog
   doc: ''

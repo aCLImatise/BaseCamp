@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/countChars.cwl
+id: ../../../countChars.cwl
 inputs:
 - id: char
   doc: ''

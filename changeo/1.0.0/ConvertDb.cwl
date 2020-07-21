@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ConvertDb.py_genbank.cwl
+id: ../../../ConvertDb.py_genbank.cwl
 inputs:
 - id: list_tab_delimited
   doc: 'A list of tab delimited database files. (default: None)'

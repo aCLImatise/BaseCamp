@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scram_flagstat.cwl
+id: ../../../scram_flagstat.cwl
 inputs:
 - id: set_input_format
   doc: 'Set input format:  "bam", "sam" or "cram".'

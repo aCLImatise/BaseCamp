@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sga_assemble.cwl
+id: ../../../sga_assemble.cwl
 inputs:
 - id: verbose
   doc: display verbose output

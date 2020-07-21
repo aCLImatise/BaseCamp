@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mhapConvert.cwl
+id: ../../../mhapConvert.cwl
 inputs:
 - id: s
   doc: ''

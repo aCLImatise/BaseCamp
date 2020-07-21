@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/STAMP.cwl
+id: ../../../STAMP.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

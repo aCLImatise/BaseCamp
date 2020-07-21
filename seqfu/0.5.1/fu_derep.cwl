@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fu_derep.cwl
+id: ../../../fu_derep.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

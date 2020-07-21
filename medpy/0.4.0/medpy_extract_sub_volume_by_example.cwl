@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_extract_sub_volume_by_example.py.cwl
+id: ../../../medpy_extract_sub_volume_by_example.py.cwl
 inputs:
 - id: offset
   doc: Set an offset by which the extracted sub-volume size should be increased in

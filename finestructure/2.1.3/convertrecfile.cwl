@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convertrecfile.pl.cwl
+id: ../../../convertrecfile.pl.cwl
 inputs:
 - id: val_specify_val
   doc: ': <val>:      Specify the major mode. <val> can be: hapmap: The hapmap format

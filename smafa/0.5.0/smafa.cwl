@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smafa.cwl
+id: ../../../smafa.cwl
 inputs:
 - id: quiet
   doc: Unless there is an error, do not print logging information

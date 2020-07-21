@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/acpype_params_ac.cwl
+id: ../../../acpype_params_ac.cwl
 inputs:
 - id: config
   doc: Configuration file

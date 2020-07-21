@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ropebwt2.cwl
+id: ../../../ropebwt2.cwl
 inputs:
 - id: leaf_block_length
   doc: leaf block length [0]

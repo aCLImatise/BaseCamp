@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treekin.cwl
+id: ../../../treekin.cwl
 inputs:
 - id: absorb
   doc: Make a state absorbing

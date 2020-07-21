@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MRMPairFinder.cwl
+id: ../../../MRMPairFinder.cwl
 inputs:
 - id: in
   doc: "*          Input featureXML file containing the features of the MRM experiment\

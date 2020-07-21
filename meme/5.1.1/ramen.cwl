@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ramen.cwl
+id: ../../../ramen.cwl
 inputs:
 - id: lin_reg_dump_dir
   doc: Dump (R-format) TSV files of each regression.

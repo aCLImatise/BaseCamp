@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vseqselect.cwl
+id: ../../../vseqselect.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

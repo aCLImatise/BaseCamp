@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gestimator.cwl
+id: ../../../gestimator.cwl
 inputs:
 - id: write_results_outfile
   doc: ': write results to outfile'

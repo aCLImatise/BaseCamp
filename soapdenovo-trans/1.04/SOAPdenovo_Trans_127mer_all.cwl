@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SOAPdenovo_Trans_127mer_all.cwl
+id: ../../../SOAPdenovo_Trans_127mer_all.cwl
 inputs:
 - id: string_configfile_file
   doc: '<string>        configFile: the config file of reads'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/line_select.py.cwl
+id: ../../../line_select.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

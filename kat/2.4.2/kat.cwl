@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kat.cwl
+id: ../../../kat.cwl
 inputs:
 - id: print_extra_information
   doc: '[ --verbose ]      Print extra information'

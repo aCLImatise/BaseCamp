@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ribo_seed.cwl
+id: ../../../ribo_seed.cwl
 inputs:
 - id: reference_genbank
   doc: genbank reference, used to estimate insert sizes, and compare with QUAST

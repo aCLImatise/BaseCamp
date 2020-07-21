@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/autoreconf.bak.cwl
+id: ../../../autoreconf.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

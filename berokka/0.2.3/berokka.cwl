@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/berokka.cwl
+id: ../../../berokka.cwl
 inputs:
 - id: debug
   doc: Debug info.

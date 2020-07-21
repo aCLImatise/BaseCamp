@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/build_report_fusions_psl2.py.cwl
+id: ../../../build_report_fusions_psl2.py.cwl
 inputs:
 - id: input_fast_q
   doc: The input FASTQ file containing all the reads.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbcavity_ReceptorPrmFile.cwl
+id: ../../../rbcavity_ReceptorPrmFile.cwl
 inputs:
 - id: receptor
   doc: receptor file

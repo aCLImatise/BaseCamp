@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htsbox_peovlp.cwl
+id: ../../../htsbox_peovlp.cwl
 inputs:
 - id: barcode_file_overriding
   doc: barcode file (overriding -B) []

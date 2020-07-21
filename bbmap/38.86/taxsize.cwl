@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxsize.sh.cwl
+id: ../../../taxsize.sh.cwl
 inputs:
 - id: in
   doc: ''

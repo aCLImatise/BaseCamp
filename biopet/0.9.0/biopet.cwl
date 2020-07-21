@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biopet.cwl
+id: ../../../biopet.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

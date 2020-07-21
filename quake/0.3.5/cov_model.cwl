@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cov_model.py.cwl
+id: ../../../cov_model.py.cwl
 inputs:
 - id: int
   doc: 'Kmers were counted as integers w/o the use of quality values [default: False]'

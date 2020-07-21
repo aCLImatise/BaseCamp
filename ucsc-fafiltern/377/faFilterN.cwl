@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faFilterN.cwl
+id: ../../../faFilterN.cwl
 inputs:
 - id: in_dot_fa
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_help2xml.cwl
+id: ../../../arb_help2xml.cwl
 inputs:
 - id: arb_help_file
   doc: ''

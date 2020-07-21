@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_graph_to_contig.cwl
+id: ../../../fc_graph_to_contig.cwl
 inputs:
 - id: improper_p_ctg
   doc: 'Skip the initial read in each p_ctg path. (default: False)'

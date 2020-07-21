@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fsnviz_star_fusion.cwl
+id: ../../../fsnviz_star_fusion.cwl
 inputs:
 - id: input
   doc: ''

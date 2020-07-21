@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_export_rates.cwl
+id: ../../../arb_export_rates.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

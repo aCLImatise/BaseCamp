@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/boink.cwl
+id: ../../../boink.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

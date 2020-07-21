@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lav2plt.pl.cwl
+id: ../../../lav2plt.pl.cwl
 inputs:
 - id: help
   doc: description

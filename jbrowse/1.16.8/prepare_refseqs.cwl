@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prepare_refseqs.pl.cwl
+id: ../../../prepare_refseqs.pl.cwl
 inputs:
 - id: track_config
   doc: "'{ \"glyph\": \"ProcessedTranscript\" }'"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_tblastn2grid.pl.cwl
+id: ../../../gaas_tblastn2grid.pl.cwl
 inputs:
 - id: fast_a
   doc: name of the protein file to read.

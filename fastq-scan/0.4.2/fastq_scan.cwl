@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_scan.cwl
+id: ../../../fastq_scan.cwl
 inputs:
 - id: genome_size_calculating
   doc: Genome size for calculating estimated sequencing coverage. (Default 1)

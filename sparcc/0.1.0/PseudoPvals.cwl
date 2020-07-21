@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PseudoPvals.py.cwl
+id: ../../../PseudoPvals.py.cwl
 inputs:
 - id: type
   doc: Type of p-values to computed.  oned-sided | two-sided (default).

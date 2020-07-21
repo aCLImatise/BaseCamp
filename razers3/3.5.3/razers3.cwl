@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/razers3.cwl
+id: ../../../razers3.cwl
 inputs:
 - id: percent_identity
   doc: 'Percent identity threshold. In range [50..100]. Default: 95.'

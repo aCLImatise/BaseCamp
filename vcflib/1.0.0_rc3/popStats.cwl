@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/popStats.cwl
+id: ../../../popStats.cwl
 inputs:
 - id: type
   doc: ''

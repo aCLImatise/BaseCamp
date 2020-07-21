@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cluster_butina.cwl
+id: ../../../cluster_butina.cwl
 inputs:
 - id: threshold
   doc: similarity clustering threshold (1.0 means identical)

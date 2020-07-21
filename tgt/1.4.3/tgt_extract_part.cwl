@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tgt_extract_part.py.cwl
+id: ../../../tgt_extract_part.py.cwl
 inputs:
 - id: start_time_interval
   doc: Start time of the interval to be extracted.

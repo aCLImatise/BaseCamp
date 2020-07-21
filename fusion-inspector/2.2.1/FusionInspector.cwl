@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FusionInspector.cwl
+id: ../../../FusionInspector.cwl
 inputs:
 - id: fusions
   doc: fusions summary files (list, comma-delimited and no spaces)

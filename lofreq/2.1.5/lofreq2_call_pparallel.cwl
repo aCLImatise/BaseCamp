@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lofreq2_call_pparallel.py.cwl
+id: ../../../lofreq2_call_pparallel.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

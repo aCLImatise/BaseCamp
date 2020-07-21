@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedRemoveOverlap.cwl
+id: ../../../bedRemoveOverlap.cwl
 inputs:
 - id: in_dot_bed
   doc: ''

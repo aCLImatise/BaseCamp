@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flowcraft_build.cwl
+id: ../../../flowcraft_build.cwl
 inputs:
 - id: tasks
   doc: Space separated tasks of the pipeline

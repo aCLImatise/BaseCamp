@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generate_genes_gff.py.cwl
+id: ../../../generate_genes_gff.py.cwl
 inputs:
 - id: bc_chr_list
   doc: A comma separated dictionary of chromosome names from the BioCyc name to the

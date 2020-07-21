@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/who.cwl
+id: ../../../who.cwl
 inputs:
 - id: all
   doc: as -b -d --login -p -r -t -T -u

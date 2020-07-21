@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_tracks_file.cwl
+id: ../../../make_tracks_file.cwl
 inputs:
 - id: track_files
   doc: 'Files to use in for the tracks. The ending of the file is used to define the

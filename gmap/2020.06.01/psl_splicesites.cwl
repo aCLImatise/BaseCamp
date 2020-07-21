@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/psl_splicesites.cwl
+id: ../../../psl_splicesites.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

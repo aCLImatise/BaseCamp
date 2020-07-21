@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbvalidate.cwl
+id: ../../../pbvalidate.cwl
 inputs:
 - id: log_file
   doc: 'Write the log to file. Default(None) will write to stdout. (default: None)'

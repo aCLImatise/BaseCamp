@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/last_train.cwl
+id: ../../../last_train.cwl
 inputs:
 - id: rev_sym
   doc: force reverse-complement symmetry

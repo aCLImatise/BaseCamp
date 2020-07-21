@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/methylation_consistency.cwl
+id: ../../../methylation_consistency.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

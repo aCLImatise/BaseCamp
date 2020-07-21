@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fpa_gfa_SUBCOMMAND.cwl
+id: ../../../fpa_gfa_SUBCOMMAND.cwl
 inputs:
 - id: input
   doc: ''

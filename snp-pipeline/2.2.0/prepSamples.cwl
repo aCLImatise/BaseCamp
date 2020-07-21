@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prepSamples.sh.cwl
+id: ../../../prepSamples.sh.cwl
 inputs:
 - id: force
   doc: 'Force processing even when result files already exist and are newer than inputs

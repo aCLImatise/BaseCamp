@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dx_cwl_run_workflow.cwl
+id: ../../../dx_cwl_run_workflow.cwl
 inputs:
 - id: token
   doc: DNAnexus authentication token

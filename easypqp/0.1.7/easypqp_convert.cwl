@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/easypqp_convert.cwl
+id: ../../../easypqp_convert.cwl
 inputs:
 - id: pep_xml
   doc: The input MSFragger TSV file.  [required]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_genome.cwl
+id: ../../../get_genome.cwl
 inputs:
 - id: dir
   doc: Genome directory

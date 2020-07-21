@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/portcullis_rule_filter.cwl
+id: ../../../portcullis_rule_filter.cwl
 inputs:
 - id: script
   doc: ''

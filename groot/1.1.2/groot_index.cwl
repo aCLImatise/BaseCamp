@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/groot_index.cwl
+id: ../../../groot_index.cwl
 inputs:
 - id: km_er_size
   doc: size of k-mer (default 31)

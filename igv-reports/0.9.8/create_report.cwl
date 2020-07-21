@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/create_report.cwl
+id: ../../../create_report.cwl
 inputs:
 - id: ideogram
   doc: ideogram file in UCSC cytoIdeo format

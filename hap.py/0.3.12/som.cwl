@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/som.py.cwl
+id: ../../../som.py.cwl
 inputs:
 - id: output
   doc: Output file prefix for statistics and feature table (when selected)

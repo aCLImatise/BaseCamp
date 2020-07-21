@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gffToBed_gff.cwl
+id: ../../../gffToBed_gff.cwl
 inputs:
 - id: emit_tool_contract
   doc: ''

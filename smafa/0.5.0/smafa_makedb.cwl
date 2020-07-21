@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smafa_makedb.cwl
+id: ../../../smafa_makedb.cwl
 inputs:
 - id: amino_acid
   doc: 'Sequences are amino acid [default: nucleotide]'

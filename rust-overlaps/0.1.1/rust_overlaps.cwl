@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rust_overlaps.cwl
+id: ../../../rust_overlaps.cwl
 inputs:
 - id: edit_distance
   doc: Uses Levenshtein / edit distance instead of Hamming distance

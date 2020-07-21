@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summary_report_pid.py.cwl
+id: ../../../summary_report_pid.py.cwl
 inputs:
 - id: input
   doc: REQUIRED.Input pID folder

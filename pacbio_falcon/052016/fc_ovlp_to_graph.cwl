@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_ovlp_to_graph.cwl
+id: ../../../fc_ovlp_to_graph.cwl
 inputs:
 - id: min_len
   doc: minimum length of the reads to be considered for assembling

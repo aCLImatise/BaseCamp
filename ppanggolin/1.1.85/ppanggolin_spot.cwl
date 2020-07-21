@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ppanggolin_spot.cwl
+id: ../../../ppanggolin_spot.cwl
 inputs:
 - id: output
   doc: 'Output directory (default: ppanggolin_output_DATE2020- 06-23_HOUR13.46.37_PID31916)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicInfo.cwl
+id: ../../../hicInfo.cwl
 inputs:
 - id: matrices
   doc: 'The matrix (or multiple matrices) to get information about. HiCExplorer supports

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checktrans.cwl
+id: ../../../checktrans.cwl
 inputs:
 - id: or_fml
   doc: integer    [100] Minimum ORF Length to report (Integer 1 or more)

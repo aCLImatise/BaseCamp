@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dsk.cwl
+id: ../../../dsk.cwl
 inputs:
 - id: t
   doc: ''

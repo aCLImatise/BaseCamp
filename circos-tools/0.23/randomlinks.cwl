@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/randomlinks.cwl
+id: ../../../randomlinks.cwl
 inputs:
 - id: karyotype
   doc: ''

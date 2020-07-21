@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merBlast_128mer.cwl
+id: ../../../merBlast_128mer.cwl
 inputs:
 - id: contigs_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/infer_sv.pl.cwl
+id: ../../../infer_sv.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

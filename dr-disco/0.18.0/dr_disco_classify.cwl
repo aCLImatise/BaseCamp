@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dr_disco_classify.cwl
+id: ../../../dr_disco_classify.cwl
 inputs:
 - id: only_valid
   doc: Only return results marked as 'valid'

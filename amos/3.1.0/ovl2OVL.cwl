@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ovl2OVL.cwl
+id: ../../../ovl2OVL.cwl
 inputs:
 - id: version_print_version
   doc: '|version      - Print the version and exit;'

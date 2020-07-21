@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/funannotate_remote_arguments.cwl
+id: ../../../funannotate_remote_arguments.cwl
 inputs:
 - id: i
   doc: ''

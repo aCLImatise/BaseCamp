@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/netSyntenic.cwl
+id: ../../../netSyntenic.cwl
 inputs:
 - id: in_dotnet
   doc: ''

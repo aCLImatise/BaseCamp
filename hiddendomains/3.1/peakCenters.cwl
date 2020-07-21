@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/peakCenters.cwl
+id: ../../../peakCenters.cwl
 inputs:
 - id: options
   doc: ''

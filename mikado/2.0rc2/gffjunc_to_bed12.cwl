@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gffjunc_to_bed12.py.cwl
+id: ../../../gffjunc_to_bed12.py.cwl
 inputs:
 - id: gff
   doc: ''

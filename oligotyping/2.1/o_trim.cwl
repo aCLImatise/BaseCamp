@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o_trim.cwl
+id: ../../../o_trim.cwl
 inputs:
 - id: trim_from
   doc: Start position

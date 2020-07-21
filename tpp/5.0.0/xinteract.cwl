@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xinteract.cwl
+id: ../../../xinteract.cwl
 inputs:
 - id: n_my_file_dot_pep_dot_xml
   doc: "[write output to file 'myfile.pep.xml']"

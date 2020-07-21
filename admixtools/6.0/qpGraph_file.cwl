@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qpGraph_file.cwl
+id: ../../../qpGraph_file.cwl
 inputs:
 - id: bad
   doc: ''

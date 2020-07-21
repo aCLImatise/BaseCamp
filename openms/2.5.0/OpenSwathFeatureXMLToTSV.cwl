@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/OpenSwathFeatureXMLToTSV.cwl
+id: ../../../OpenSwathFeatureXMLToTSV.cwl
 inputs:
 - id: in
   doc: "*                     Input files separated by blank (valid formats: 'featureXML')"

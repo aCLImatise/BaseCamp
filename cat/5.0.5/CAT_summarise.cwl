@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CAT_summarise.cwl
+id: ../../../CAT_summarise.cwl
 inputs:
 - id: _inputfile_path
   doc: ', --input_file     Path to named CAT contig classification file or BAT bin

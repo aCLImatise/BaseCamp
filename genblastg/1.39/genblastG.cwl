@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genblastG.cwl
+id: ../../../genblastG.cwl
 inputs:
 - id: search_program_used
   doc: Search program used to produce HSPs, can be either "blast" or "wublast", default

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findGO.pl.cwl
+id: ../../../findGO.pl.cwl
 inputs:
 - id: cpu
   doc: <#> (number of cpus to use)

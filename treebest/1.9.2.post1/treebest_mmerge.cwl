@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treebest_mmerge.cwl
+id: ../../../treebest_mmerge.cwl
 inputs:
 - id: reroot
   doc: reroot

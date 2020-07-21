@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dcod2lum.cwl
+id: ../../../dcod2lum.cwl
 inputs:
 - id: in_file
   doc: hardcopy characteristic curve file to be converted

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqcoverage_FASTA.cwl
+id: ../../../seqcoverage_FASTA.cwl
 inputs:
 - id: o
   doc: ''

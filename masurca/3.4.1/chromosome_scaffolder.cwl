@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chromosome_scaffolder.sh.cwl
+id: ../../../chromosome_scaffolder.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

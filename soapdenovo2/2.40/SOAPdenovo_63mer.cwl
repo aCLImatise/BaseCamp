@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SOAPdenovo_63mer.cwl
+id: ../../../SOAPdenovo_63mer.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splitHaplotype.cwl
+id: ../../../splitHaplotype.cwl
 inputs:
 - id: path_input_classify
   doc: path to input seqStore of reads to classify.

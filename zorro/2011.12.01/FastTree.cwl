@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FastTree.cwl
+id: ../../../FastTree.cwl
 inputs:
 - id: bio_nj
   doc: ': weighted joins as in BIONJ (default) FastTree will also weight joins during

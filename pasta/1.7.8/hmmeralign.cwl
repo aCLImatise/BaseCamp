@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmeralign.cwl
+id: ../../../hmmeralign.cwl
 inputs:
 - id: output_alignment_file
   doc: ': output alignment to file <f>, not stdout'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hgsqldump.cwl
+id: ../../../hgsqldump.cwl
 inputs:
 - id: database
   doc: ''

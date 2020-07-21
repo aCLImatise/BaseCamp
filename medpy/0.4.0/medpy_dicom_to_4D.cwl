@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_dicom_to_4D.py_offset.cwl
+id: ../../../medpy_dicom_to_4D.py_offset.cwl
 inputs:
 - id: v
   doc: ''

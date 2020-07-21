@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AnnotateReferenceCoverage.cwl
+id: ../../../AnnotateReferenceCoverage.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

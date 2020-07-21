@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chainPreNet.cwl
+id: ../../../chainPreNet.cwl
 inputs:
 - id: dots
   doc: '- output a dot every so often'

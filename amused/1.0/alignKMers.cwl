@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alignKMers.cwl
+id: ../../../alignKMers.cwl
 inputs:
 - id: o
   doc: = where to output results [default=stdout]

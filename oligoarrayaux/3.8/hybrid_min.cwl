@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hybrid_min.cwl
+id: ../../../hybrid_min.cwl
 inputs:
 - id: file_one
   doc: ''

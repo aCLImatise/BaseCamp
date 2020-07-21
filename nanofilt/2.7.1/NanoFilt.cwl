@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/NanoFilt.cwl
+id: ../../../NanoFilt.cwl
 inputs:
 - id: log_file
   doc: Specify the path and filename for the log file.

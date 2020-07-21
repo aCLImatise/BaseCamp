@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mockinbird_postprocess_config_file.cwl
+id: ../../../mockinbird_postprocess_config_file.cwl
 inputs:
 - id: prefix
   doc: ''

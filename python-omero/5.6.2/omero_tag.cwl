@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_tag.cwl
+id: ../../../omero_tag.cwl
 inputs:
 - id: create_new_session
   doc: Create a new session regardless of existing ones

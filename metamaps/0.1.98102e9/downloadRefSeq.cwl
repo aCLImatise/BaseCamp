@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/downloadRefSeq.pl.cwl
+id: ../../../downloadRefSeq.pl.cwl
 inputs:
 - id: var_0
   doc: ''

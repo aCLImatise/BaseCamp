@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnftools_et2roc.cwl
+id: ../../../rnftools_et2roc.cwl
 inputs:
 - id: et
   doc: Input ET file (evaluated read tuples, - for standard input).

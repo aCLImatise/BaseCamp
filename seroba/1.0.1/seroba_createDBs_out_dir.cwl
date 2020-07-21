@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seroba_createDBs_out_dir.cwl
+id: ../../../seroba_createDBs_out_dir.cwl
 inputs:
 - id: se_rob_a
   doc: ''

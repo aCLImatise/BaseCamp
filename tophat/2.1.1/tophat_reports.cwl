@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tophat_reports.cwl
+id: ../../../tophat_reports.cwl
 inputs:
 - id: junctions_dot_bed
   doc: ''

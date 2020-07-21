@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kaptive.py.cwl
+id: ../../../kaptive.py.cwl
 inputs:
 - id: assembly
   doc: 'FASTA file(s) for assemblies (default: None)'

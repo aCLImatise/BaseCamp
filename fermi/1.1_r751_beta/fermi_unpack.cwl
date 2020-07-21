@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fermi_unpack.cwl
+id: ../../../fermi_unpack.cwl
 inputs:
 - id: index_read_starting
   doc: index of the read to output, starting from 0 [null]

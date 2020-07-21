@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pirs_diploid.cwl
+id: ../../../pirs_diploid.cwl
 inputs:
 - id: snp_rate
   doc: 'A floating-point number in the interval [0, 1] that specifies the heterozygous

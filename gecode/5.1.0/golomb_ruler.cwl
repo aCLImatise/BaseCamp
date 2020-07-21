@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/golomb_ruler.cwl
+id: ../../../golomb_ruler.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

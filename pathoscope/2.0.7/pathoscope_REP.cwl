@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pathoscope_REP.cwl
+id: ../../../pathoscope_REP.cwl
 inputs:
 - id: sam_tools_home
   doc: 'Full Path to samtools binary directory (Default: Uses samtools in system path)'

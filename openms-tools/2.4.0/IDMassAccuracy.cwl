@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/IDMassAccuracy.cwl
+id: ../../../IDMassAccuracy.cwl
 inputs:
 - id: in
   doc: "*                      Input mzML file list, containing the spectra. (valid\

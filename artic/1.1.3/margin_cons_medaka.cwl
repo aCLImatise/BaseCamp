@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/margin_cons_medaka.cwl
+id: ../../../margin_cons_medaka.cwl
 inputs:
 - id: depth
   doc: minimum depth to call a variant

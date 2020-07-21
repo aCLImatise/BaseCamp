@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trim_reads.py.cwl
+id: ../../../trim_reads.py.cwl
 inputs:
 - id: input
   doc: Input FASTQ file which contanins the reads which will be trimmed.

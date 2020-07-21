@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/infinitesites.cwl
+id: ../../../infinitesites.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

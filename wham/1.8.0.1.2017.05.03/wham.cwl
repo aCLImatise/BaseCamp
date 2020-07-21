@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wham.cwl
+id: ../../../wham.cwl
 inputs:
 - id: if
   doc: find a bug, please open a report on github!

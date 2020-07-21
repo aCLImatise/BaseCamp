@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqmerge.cwl
+id: ../../../seqmerge.cwl
 inputs:
 - id: separator
   doc: sequence count will be appended as '(SEP)COUNT'

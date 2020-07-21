@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_polydot.cwl
+id: ../../../_polydot.cwl
 inputs:
 - id: word_size
   doc: integer    [6] Word size (Integer 2 or more)

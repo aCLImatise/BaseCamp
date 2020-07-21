@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/acpype_params_gmx_opls.cwl
+id: ../../../acpype_params_gmx_opls.cwl
 inputs:
 - id: config
   doc: Configuration file

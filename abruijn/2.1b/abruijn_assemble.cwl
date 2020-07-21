@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abruijn_assemble.cwl
+id: ../../../abruijn_assemble.cwl
 inputs:
 - id: kmer_size_
   doc: 'k-mer size [default = 15] '

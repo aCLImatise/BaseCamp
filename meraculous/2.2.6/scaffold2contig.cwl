@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scaffold2contig.pl.cwl
+id: ../../../scaffold2contig.pl.cwl
 inputs:
 - id: scaffold_seq_file
   doc: ''

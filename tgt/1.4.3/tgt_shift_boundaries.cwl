@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tgt_shift_boundaries.py_file.cwl
+id: ../../../tgt_shift_boundaries.py_file.cwl
 inputs:
 - id: e
   doc: ''

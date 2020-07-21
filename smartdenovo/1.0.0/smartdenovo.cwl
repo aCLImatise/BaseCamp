@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smartdenovo.pl.cwl
+id: ../../../smartdenovo.pl.cwl
 inputs:
 - id: output_prefix
   doc: output prefix [wtasm]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clean_pairs_memory.py.cwl
+id: ../../../clean_pairs_memory.py.cwl
 inputs:
 - id: one
   doc: ''

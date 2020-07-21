@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_sessions_group.cwl
+id: ../../../omero_sessions_group.cwl
 inputs:
 - id: target
   doc: Id or name of the group to switch this session to

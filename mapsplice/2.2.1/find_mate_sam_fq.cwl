@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/find_mate_sam_fq.cwl
+id: ../../../find_mate_sam_fq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

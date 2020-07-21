@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/psass_analyze_OUTPUT_FILE.cwl
+id: ../../../psass_analyze_OUTPUT_FILE.cwl
 inputs:
 - id: ps_ass
   doc: ''

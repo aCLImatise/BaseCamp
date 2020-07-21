@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wtgbo.cwl
+id: ../../../wtgbo.cwl
 inputs:
 - id: number_of_threads
   doc: Number of threads, [1]

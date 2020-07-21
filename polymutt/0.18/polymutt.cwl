@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/polymutt.cwl
+id: ../../../polymutt.cwl
 inputs:
 - id: rate_de_novo
   doc: '[1.5e-08],'

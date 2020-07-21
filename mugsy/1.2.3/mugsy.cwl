@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mugsy.cwl
+id: ../../../mugsy.cwl
 inputs:
 - id: duplications
   doc: '- Detect and report duplications. 0 - Skip. Default is 0.'

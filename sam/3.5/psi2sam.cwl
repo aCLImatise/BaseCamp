@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/psi2sam.cwl
+id: ../../../psi2sam.cwl
 inputs:
 - id: option
   doc: ''

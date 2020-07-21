@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tdbQuery.cwl
+id: ../../../tdbQuery.cwl
 inputs:
 - id: root
   doc: =/path/to/trackDb/root/dir

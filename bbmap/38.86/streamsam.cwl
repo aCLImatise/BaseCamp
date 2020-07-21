@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/streamsam.sh.cwl
+id: ../../../streamsam.sh.cwl
 inputs:
 - id: in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ataqv.cwl
+id: ../../../ataqv.cwl
 inputs:
 - id: fly
   doc: '2R 2L 3R 3L 4 '

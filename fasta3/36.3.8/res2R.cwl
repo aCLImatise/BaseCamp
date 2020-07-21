@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/res2R.pl.cwl
+id: ../../../res2R.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

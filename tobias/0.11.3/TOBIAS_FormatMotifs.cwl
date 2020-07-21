@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TOBIAS_FormatMotifs.cwl
+id: ../../../TOBIAS_FormatMotifs.cwl
 inputs:
 - id: input
   doc: '[ [ ...]]  One or more input motif files (required)'

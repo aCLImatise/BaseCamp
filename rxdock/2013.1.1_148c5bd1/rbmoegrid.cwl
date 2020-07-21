@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbmoegrid.cwl
+id: ../../../rbmoegrid.cwl
 inputs:
 - id: output
   doc: 'output file name prefix (.grd is suffixed) (default: moegrid)'

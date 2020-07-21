@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svm_predict.cwl
+id: ../../../svm_predict.cwl
 inputs:
 - id: test_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paladin_index.cwl
+id: ../../../paladin_index.cwl
 inputs:
 - id: enable_indexing_frames
   doc: Enable indexing all frames in nucleotide references

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AccessFold.cwl
+id: ../../../AccessFold.cwl
 inputs:
 - id: seq_file_one
   doc: ''

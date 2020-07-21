@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/get_seqs_from_list.py.cwl
+id: ../../../get_seqs_from_list.py.cwl
 inputs:
 - id: partial
   doc: ''

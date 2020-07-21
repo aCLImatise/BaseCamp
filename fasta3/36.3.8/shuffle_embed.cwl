@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shuffle_embed.pl.cwl
+id: ../../../shuffle_embed.pl.cwl
 inputs:
 - id: help
   doc: include description

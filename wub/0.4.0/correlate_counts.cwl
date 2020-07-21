@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/correlate_counts.py.cwl
+id: ../../../correlate_counts.py.cwl
 inputs:
 - id: report_pdf_bammultiqcpdf
   doc: Report PDF (bam_multi_qc.pdf).

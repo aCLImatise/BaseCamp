@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compare_vcfs.cwl
+id: ../../../compare_vcfs.cwl
 inputs:
 - id: vcf_before
   doc: Full path to first Platypus VCF output from BAM_ANALYSIS module. This will

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/orfm.cwl
+id: ../../../orfm.cwl
 inputs:
 - id: minimum_number_nucleotides
   doc: 'minimum number of nucleotides (not amino acids) to call an ORF on [default:

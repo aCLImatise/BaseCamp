@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/insert_length_histogram.cwl
+id: ../../../insert_length_histogram.cwl
 inputs:
 - id: arg_minimum_number
   doc: '[ --min_count_per_bin ] arg (=20) Minimum number of counts per bin. If  necessary,

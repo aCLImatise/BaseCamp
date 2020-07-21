@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/humann2_humann1_kegg.cwl
+id: ../../../humann2_humann1_kegg.cwl
 inputs:
 - id: var_0
   doc: '[IGENELS]'

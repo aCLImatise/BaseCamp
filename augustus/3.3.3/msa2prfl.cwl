@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msa2prfl.pl.cwl
+id: ../../../msa2prfl.pl.cwl
 inputs:
 - id: relax
   doc: consider MSA as partial (allow arbitrary distance at  beginning and end)

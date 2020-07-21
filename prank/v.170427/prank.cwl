@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prank.cwl
+id: ../../../prank.cwl
 inputs:
 - id: gap_rate
   doc: '=# [gap opening rate; default: dna 0.025 / prot 0.005]'

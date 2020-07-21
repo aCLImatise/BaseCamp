@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools_idxstats.cwl
+id: ../../../samtools_idxstats.cwl
 inputs:
 - id: in_dot_bam
   doc: ''

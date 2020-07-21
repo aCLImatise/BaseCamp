@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bank_clean.cwl
+id: ../../../bank_clean.cwl
 inputs:
 - id: directory_path_clean
   doc: The directory path of the bank to clean

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_import.cwl
+id: ../../../omero_import.cwl
 inputs:
 - id: java_help
   doc: Show the Java help text

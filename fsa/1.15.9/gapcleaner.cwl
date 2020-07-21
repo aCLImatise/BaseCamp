@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gapcleaner.cwl
+id: ../../../gapcleaner.cwl
 inputs:
 - id: multi_fast_a_or_stockholm_alignment
   doc: ''

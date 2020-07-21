@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioformats_renameseq.cwl
+id: ../../../bioformats_renameseq.cwl
 inputs:
 - id: fast_a
   doc: the input file is of the FASTA format

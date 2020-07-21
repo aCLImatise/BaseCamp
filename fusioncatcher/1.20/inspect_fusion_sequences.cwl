@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/inspect_fusion_sequences.py.cwl
+id: ../../../inspect_fusion_sequences.py.cwl
 inputs:
 - id: input
   doc: The input file containing the fusion (chromosomal) coordinates for each fusion

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lwp_mirror.cwl
+id: ../../../lwp_mirror.cwl
 inputs:
 - id: print_version_number
   doc: print version number of program

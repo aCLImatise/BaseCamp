@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/randomFQ.cwl
+id: ../../../randomFQ.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

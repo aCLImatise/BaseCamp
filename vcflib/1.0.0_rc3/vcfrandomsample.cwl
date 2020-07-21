@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfrandomsample.cwl
+id: ../../../vcfrandomsample.cwl
 inputs:
 - id: rate
   doc: base sampling probability per locus

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/isnovoindex.cwl
+id: ../../../isnovoindex.cwl
 inputs:
 - id: filename
   doc: ''

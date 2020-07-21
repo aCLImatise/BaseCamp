@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/miso.cwl
+id: ../../../miso.cwl
 inputs:
 - id: run
   doc: 'Compute Psi values for a given GFF annotation of either whole mRNA isoforms

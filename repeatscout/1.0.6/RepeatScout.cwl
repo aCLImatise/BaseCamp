@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RepeatScout.cwl
+id: ../../../RepeatScout.cwl
 inputs:
 - id: size_extend_left
   doc: '# size of region to extend left or right (10000) '

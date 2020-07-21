@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pseudoknot_analyzer.py.cwl
+id: ../../../pseudoknot_analyzer.py.cwl
 inputs:
 - id: keep_length_one_stems
   doc: For all input formats except forgi bg/cg files, this controlls whether stems

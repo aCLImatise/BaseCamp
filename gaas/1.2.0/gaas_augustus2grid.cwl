@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_augustus2grid.pl.cwl
+id: ../../../gaas_augustus2grid.pl.cwl
 inputs:
 - id: genome
   doc: The name of the genome fasta file.

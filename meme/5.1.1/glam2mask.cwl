@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/glam2mask.cwl
+id: ../../../glam2mask.cwl
 inputs:
 - id: my_motif_dot_glam_two
   doc: ''

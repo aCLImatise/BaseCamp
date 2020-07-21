@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/IntaRNA_plotRegions.R.cwl
+id: ../../../IntaRNA_plotRegions.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/barcode_splitter.cwl
+id: ../../../barcode_splitter.cwl
 inputs:
 - id: bc_file
   doc: 'REQUIRED: Tab delimited file: "Sample_ID <tab> Barcode_Sequence" Multiple

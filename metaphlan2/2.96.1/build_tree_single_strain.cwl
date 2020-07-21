@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/build_tree_single_strain.py.cwl
+id: ../../../build_tree_single_strain.py.cwl
 inputs:
 - id: ifn_alignments
   doc: The alignment file.

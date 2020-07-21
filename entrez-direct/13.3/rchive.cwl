@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rchive.Linux.cwl
+id: ../../../rchive.Linux.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

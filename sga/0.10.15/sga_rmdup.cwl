@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sga_rmdup.cwl
+id: ../../../sga_rmdup.cwl
 inputs:
 - id: verbose
   doc: display verbose output

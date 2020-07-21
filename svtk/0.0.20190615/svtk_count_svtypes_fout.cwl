@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtk_count_svtypes_fout.cwl
+id: ../../../svtk_count_svtypes_fout.cwl
 inputs:
 - id: no_header
   doc: ''

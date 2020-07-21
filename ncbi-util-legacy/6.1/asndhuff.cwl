@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/asndhuff.cwl
+id: ../../../asndhuff.cwl
 inputs:
 - id: input_file
   doc: Input file [File In]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/upload_genomes.py.cwl
+id: ../../../upload_genomes.py.cwl
 inputs:
 - id: select_taxa_do_tpy
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fqz_comp.cwl
+id: ../../../fqz_comp.cwl
 inputs:
 - id: perform_lossy_compression
   doc: Perform lossy compression with all quality values being within 'num' distance

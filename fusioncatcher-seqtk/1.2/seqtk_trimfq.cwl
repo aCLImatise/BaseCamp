@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqtk_trimfq.cwl
+id: ../../../seqtk_trimfq.cwl
 inputs:
 - id: error_rate_threshold
   doc: error rate threshold (disabled by -b/-e/-B/-E) [0.05]

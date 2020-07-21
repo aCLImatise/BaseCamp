@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/QCumber_2.cwl
+id: ../../../QCumber_2.cwl
 inputs:
 - id: threads
   doc: 'Number of threads. Default: 4'

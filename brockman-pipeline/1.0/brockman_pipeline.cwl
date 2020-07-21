@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/brockman_pipeline.cwl
+id: ../../../brockman_pipeline.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

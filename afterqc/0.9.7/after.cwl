@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/after.py.cwl
+id: ../../../after.py.cwl
 inputs:
 - id: read_one_file
   doc: file name of read1, required. If input_dir is specified, then this arg is ignored.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/regtools_cis_splice_effects_associate.cwl
+id: ../../../regtools_cis_splice_effects_associate.cwl
 inputs:
 - id: output_file_containing_aberrant_splice_junctions
   doc: Output file containing the aberrant splice junctions with annotations. [STDOUT]

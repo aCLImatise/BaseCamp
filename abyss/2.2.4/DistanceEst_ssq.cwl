@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DistanceEst_ssq.cwl
+id: ../../../DistanceEst_ssq.cwl
 inputs:
 - id: mind
   doc: minimum distance between contigs [-(k-1)]

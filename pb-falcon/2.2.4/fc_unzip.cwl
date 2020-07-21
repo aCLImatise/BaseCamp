@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_unzip.py.cwl
+id: ../../../fc_unzip.py.cwl
 inputs:
 - id: target
   doc: 'target pipeline: clr=regular; ccs=only ccs data (default: clr)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_lmer_tables.prl.cwl
+id: ../../../merge_lmer_tables.prl.cwl
 inputs:
 - id: no
   doc: ''

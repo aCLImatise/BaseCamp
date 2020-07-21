@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/design_thermoswitch.py.cwl
+id: ../../../design_thermoswitch.py.cwl
 inputs:
 - id: package
   doc: 'Chose the calculation package: hotknots, pkiss, nupack, or vrna/ViennaRNA

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_coords.cwl
+id: ../../../merge_coords.cwl
 inputs:
 - id: output
   doc: Output file (stdout)

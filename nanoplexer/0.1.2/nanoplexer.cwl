@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nanoplexer.cwl
+id: ../../../nanoplexer.cwl
 inputs:
 - id: file__barcode_file
   doc: FILE    barcode file

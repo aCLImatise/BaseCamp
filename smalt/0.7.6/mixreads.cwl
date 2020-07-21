@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mixreads.cwl
+id: ../../../mixreads.cwl
 inputs:
 - id: root_name_fast_q_file_a
   doc: ''

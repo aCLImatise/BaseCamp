@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pout2mzid.cwl
+id: ../../../pout2mzid.cwl
 inputs:
 - id: percolator_out_xml
   doc: '[ --percolatorfile ] [Value] Percolator Out XML result file'

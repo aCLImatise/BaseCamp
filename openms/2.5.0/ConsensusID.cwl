@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ConsensusID.cwl
+id: ../../../ConsensusID.cwl
 inputs:
 - id: in
   doc: "*                       Input file (valid formats: 'idXML', 'featureXML',\

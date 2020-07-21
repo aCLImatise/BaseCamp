@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rapid_ParseSam.pl.cwl
+id: ../../../rapid_ParseSam.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

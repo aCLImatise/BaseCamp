@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/comparesketch.sh.cwl
+id: ../../../comparesketch.sh.cwl
 inputs:
 - id: nucleotides_dot
   doc: Designed for prokaryotes.

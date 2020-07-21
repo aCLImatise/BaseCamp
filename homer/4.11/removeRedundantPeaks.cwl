@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/removeRedundantPeaks.pl.cwl
+id: ../../../removeRedundantPeaks.pl.cwl
 inputs:
 - id: peak_file
   doc: ''

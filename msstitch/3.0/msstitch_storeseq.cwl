@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msstitch_storeseq.cwl
+id: ../../../msstitch_storeseq.cwl
 inputs:
 - id: dbfile
   doc: Database lookup file

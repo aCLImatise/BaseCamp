@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/slidejuncs.cwl
+id: ../../../slidejuncs.cwl
 inputs:
 - id: max_slide
   doc: "Maximum number of nt to search 5' and 3' of intron boundaries (Default: 10)"

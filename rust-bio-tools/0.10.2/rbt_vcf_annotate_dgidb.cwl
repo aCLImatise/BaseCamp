@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbt_vcf_annotate_dgidb.cwl
+id: ../../../rbt_vcf_annotate_dgidb.cwl
 inputs:
 - id: api_path
   doc: 'url prefix for requesting interaction drugs by gene names. [default: http://dgidb.org/api/v2/interactions.json?genes=]'

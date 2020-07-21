@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parse_m9.pl.cwl
+id: ../../../parse_m9.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

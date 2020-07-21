@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/doit.cwl
+id: ../../../doit.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

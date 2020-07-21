@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sq_rfam_analyzer.pl.cwl
+id: ../../../agat_sq_rfam_analyzer.pl.cwl
 inputs:
 - id: input
   doc: 'STRING: Input GTF/GFF file(s). Several files can be processed at once: -i

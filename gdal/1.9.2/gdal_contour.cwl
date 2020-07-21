@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdal_contour.cwl
+id: ../../../gdal_contour.cwl
 inputs:
 - id: b
   doc: ''

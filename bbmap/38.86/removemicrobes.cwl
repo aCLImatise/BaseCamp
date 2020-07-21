@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/removemicrobes.sh.cwl
+id: ../../../removemicrobes.sh.cwl
 inputs:
 - id: in
   doc: ''

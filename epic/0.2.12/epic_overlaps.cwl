@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/epic_overlaps.cwl
+id: ../../../epic_overlaps.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

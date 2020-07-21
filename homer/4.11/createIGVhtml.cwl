@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/createIGVhtml.pl.cwl
+id: ../../../createIGVhtml.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

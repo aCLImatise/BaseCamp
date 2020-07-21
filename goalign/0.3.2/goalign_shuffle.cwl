@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_shuffle.cwl
+id: ../../../goalign_shuffle.cwl
 inputs:
 - id: output
   doc: Shuffled alignment output file (default "stdout")

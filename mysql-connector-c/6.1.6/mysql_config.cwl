@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mysql_config.cwl
+id: ../../../mysql_config.cwl
 inputs:
 - id: pkg_libdir
   doc: '[/tmp/tmp5kms2cfc/lib]'

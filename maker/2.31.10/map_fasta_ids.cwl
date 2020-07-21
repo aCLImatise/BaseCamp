@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/map_fasta_ids.cwl
+id: ../../../map_fasta_ids.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

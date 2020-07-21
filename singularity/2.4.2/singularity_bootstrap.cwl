@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/singularity_bootstrap.cwl
+id: ../../../singularity_bootstrap.cwl
 inputs:
 - id: singularity
   doc: ''

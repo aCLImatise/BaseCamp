@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/createChargeFile.pl.cwl
+id: ../../../createChargeFile.pl.cwl
 inputs:
 - id: format
   doc: ': format of input file or directory the version only support CPM output of

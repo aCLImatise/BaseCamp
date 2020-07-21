@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/minion.cwl
+id: ../../../minion.cwl
 inputs:
 - id: search_adapter_vertical_line_help_vertical_line_version
   doc: ''

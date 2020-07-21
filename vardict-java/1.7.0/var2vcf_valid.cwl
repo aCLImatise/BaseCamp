@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/var2vcf_valid.pl.cwl
+id: ../../../var2vcf_valid.pl.cwl
 inputs:
 - id: var_0
   doc: this usage.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pybel_manage_nodes.cwl
+id: ../../../pybel_manage_nodes.cwl
 inputs:
 - id: command
   doc: ''

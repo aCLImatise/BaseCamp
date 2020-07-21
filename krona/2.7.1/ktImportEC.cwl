@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ktImportEC.cwl
+id: ../../../ktImportEC.cwl
 inputs:
 - id: ec_numbers
   doc: Tab-delimited files with EC numbers and (optionally) query IDs, magnitudes

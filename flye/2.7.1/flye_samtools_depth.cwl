@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flye_samtools_depth.cwl
+id: ../../../flye_samtools_depth.cwl
 inputs:
 - id: list_positions_regions
   doc: list of positions or regions

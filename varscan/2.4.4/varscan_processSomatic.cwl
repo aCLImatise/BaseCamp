@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varscan_processSomatic.cwl
+id: ../../../varscan_processSomatic.cwl
 inputs:
 - id: min_tumor_freq
   doc: '- Minimum variant allele frequency in tumor [0.10]'

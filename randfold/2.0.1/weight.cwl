@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/weight.cwl
+id: ../../../weight.cwl
 inputs:
 - id: use_blosum_scheme
   doc: ': use BLOSUM weighting scheme at <f> fractional identity'

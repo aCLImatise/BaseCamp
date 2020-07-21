@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mv.cwl
+id: ../../../mv.cwl
 inputs:
 - id: backup
   doc: '[=CONTROL]       make a backup of each existing destination file'

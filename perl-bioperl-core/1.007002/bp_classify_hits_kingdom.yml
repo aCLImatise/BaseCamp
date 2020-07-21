@@ -1,0 +1,83 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: where the taxonomy .dmp files are (from NCBI)
+  synonyms:
+  - -t/--taxonomy
+  args: !SimpleFlagArg
+    name: Directory
+  optional: true
+- !Flag
+  description: File path of the gi2taxid file (gi_taxid_prot.dmp for proteins or gi_taxid_nucl.dmp
+    if the search was against a nucleid database)
+  synonyms:
+  - -g/--gi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The name of the tab delimited -m8/-m9 output files to process
+  synonyms:
+  - -i/--in
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Provide an E-value cutoff for hits to be considered
+  synonyms:
+  - -e/--evalue
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to the 'zcat' executable, can also be 'gunzip -c' if no zcat on
+    your system.
+  synonyms:
+  - -z/--zcat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: To turn on verbose messages
+  synonyms:
+  - -v/--verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display this helpful information
+  synonyms:
+  - -h/--help
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- bp_classify_hits_kingdom.pl
+parent:
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\e[1mNAME\e[0m\n    bp_classify_hits_kingdom - classify BLAST hits by\
+  \ taxonomic kingdom\n\n  \e[1mUSAGE\e[0m\n    bp_classify_hits_kingdom [-i tab_file]\
+  \ [-i second_BLAST_file] [-e\n    evalue_cutoff] [-t dir_where_TAXONOMY_files_are]\
+  \ [-g gi2taxid] [-z\n    PATH_TO_zcat] [-v]\n\n  \e[1mDESCRIPTION\e[0m\n    Will\
+  \ print out the taxonomic distribution (at the kingdom level) for a set\n    of\
+  \ hits against the NR database. By default, this script assumes you did a\n    search\
+  \ against the protein database (gi_taxid_nuc.dump file).\n\n    This expects BLAST\
+  \ files in tabbed -m9 or -m8 format. Output with -m 8 or\n    use blast2table.pl\
+  \ to convert (or fastam9_to_table.PLS if using FASTA).\n\n      Input values:\n\
+  \        -t/--taxonomy Directory where the taxonomy .dmp files are (from NCBI)\n\
+  \        -g/--gi       File path of the gi2taxid file (gi_taxid_prot.dmp for proteins\n\
+  \                      or gi_taxid_nucl.dmp if the search was against a nucleid\
+  \ database)\n        -i/--in       The name of the tab delimited -m8/-m9 output\
+  \ files to process\n        -e/--evalue   Provide an E-value cutoff for hits to\
+  \ be considered\n        -z/--zcat     Path to the 'zcat' executable, can also be\
+  \ 'gunzip -c'\n                      if no zcat on your system.\n      Flags:\n\
+  \        -v/--verbose  To turn on verbose messages\n        -h/--help     Display\
+  \ this helpful information\n\n    This is intended to be useful starting script,\
+  \ but users may want to\n    customize the output and parameters. Note that I am\
+  \ summarizing the\n    kingdoms here and Eukaryota not falling into Metazoa, Viridiplantae,\
+  \ or\n    Fungi gets grouped into the general superkingdom Eukaryota for simplicity.\n\
+  \    There are comments in the code directing you to where changes can be made\n\
+  \    if you wanted to display hits by phylum for example. Note that you must\n \
+  \   wipe out the cache file 'gi2class' that is created in your directory after\n\
+  \    making these changes.\n\n  \e[1mAUTHOR\e[0m\n    Jason Stajich jason_at_bioperl_dot_org\n\
+  \n"
+generated_using:
+- --help

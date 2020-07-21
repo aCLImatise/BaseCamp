@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/summarizecrossblock.sh.cwl
+id: ../../../summarizecrossblock.sh.cwl
 inputs:
 - id: in
   doc: ''

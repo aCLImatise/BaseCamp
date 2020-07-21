@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmmemit.cwl
+id: ../../../hmmemit.cwl
 inputs:
 - id: send_sequence_output
   doc: ': send sequence output to file <f>, not stdout'

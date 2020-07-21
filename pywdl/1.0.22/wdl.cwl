@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wdl.cwl
+id: ../../../wdl.cwl
 inputs:
 - id: debug
   doc: Open the floodgates

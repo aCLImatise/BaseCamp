@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafFetch.cwl
+id: ../../../mafFetch.cwl
 inputs:
 - id: db
   doc: ''

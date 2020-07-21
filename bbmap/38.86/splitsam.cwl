@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splitsam.sh.cwl
+id: ../../../splitsam.sh.cwl
 inputs:
 - id: input
   doc: ''

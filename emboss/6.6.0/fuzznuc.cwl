@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fuzznuc.cwl
+id: ../../../fuzznuc.cwl
 inputs:
 - id: pattern
   doc: "pattern    The standard IUPAC one-letter codes for the nucleotides are used.\

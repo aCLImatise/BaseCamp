@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/squizz.cwl
+id: ../../../squizz.cwl
 inputs:
 - id: detect_alignment_formats
   doc: '... Detect alignment formats only.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ldHgGene.cwl
+id: ../../../ldHgGene.cwl
 inputs:
 - id: implied_stop_after_cds
   doc: '- implied stop codon in GFF/GTF after CDS'

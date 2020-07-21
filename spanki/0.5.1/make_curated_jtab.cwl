@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_curated_jtab.cwl
+id: ../../../make_curated_jtab.cwl
 inputs:
 - id: bam_file_name
   doc: BAM file name

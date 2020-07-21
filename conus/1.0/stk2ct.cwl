@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stk2ct.cwl
+id: ../../../stk2ct.cwl
 inputs:
 - id: options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/graph_gtfs.pl.cwl
+id: ../../../graph_gtfs.pl.cwl
 inputs:
 - id: options
   doc: ''

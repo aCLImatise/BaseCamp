@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/glam2.cwl
+id: ../../../glam2.cwl
 inputs:
 - id: alphabet
   doc: ''

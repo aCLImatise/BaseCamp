@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools_split.cwl
+id: ../../../bedtools_split.cwl
 inputs:
 - id: i
   doc: ''

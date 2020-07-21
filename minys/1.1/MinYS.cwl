@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MinYS.py.cwl
+id: ../../../MinYS.py.cwl
 inputs:
 - id: in
   doc: '(1 arg) :    Input reads file'

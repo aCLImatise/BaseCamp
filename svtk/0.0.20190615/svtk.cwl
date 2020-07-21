@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtk.cwl
+id: ../../../svtk.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

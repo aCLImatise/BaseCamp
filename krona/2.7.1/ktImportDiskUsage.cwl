@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ktImportDiskUsage.cwl
+id: ../../../ktImportDiskUsage.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

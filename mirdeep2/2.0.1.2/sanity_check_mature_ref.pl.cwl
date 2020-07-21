@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sanity_check_mature_ref.pl.orig.cwl
+id: ../../../sanity_check_mature_ref.pl.orig.cwl
 inputs:
 - id: no
   doc: ''

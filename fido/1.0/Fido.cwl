@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Fido.cwl
+id: ../../../Fido.cwl
 inputs:
 - id: graph_file
   doc: ''

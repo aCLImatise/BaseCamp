@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/shrinkaccession.sh.cwl
+id: ../../../shrinkaccession.sh.cwl
 inputs:
 - id: in
   doc: ''

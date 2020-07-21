@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AssignGenes.py_igblast.cwl
+id: ../../../AssignGenes.py_igblast.cwl
 inputs:
 - id: explicit_output_file
   doc: 'Explicit output file name. Note, this argument cannot be used with the --failed,

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastxTrimmer.py.cwl
+id: ../../../fastxTrimmer.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

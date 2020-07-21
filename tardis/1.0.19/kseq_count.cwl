@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kseq_count.cwl
+id: ../../../kseq_count.cwl
 inputs:
 - id: a
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_pfam2grid.pl.cwl
+id: ../../../gaas_pfam2grid.pl.cwl
 inputs:
 - id: fast_a
   doc: The name of the fasta file to read.

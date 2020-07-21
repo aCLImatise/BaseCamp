@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kraken2_inspect.cwl
+id: ../../../kraken2_inspect.cwl
 inputs:
 - id: db
   doc: 'Name for Kraken 2 DB (default: none)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfnull2ref.cwl
+id: ../../../vcfnull2ref.cwl
 inputs:
 - id: vcf_file
   doc: ''

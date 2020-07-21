@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/diskbench.sh.cwl
+id: ../../../diskbench.sh.cwl
 inputs:
 - id: path
   doc: ''

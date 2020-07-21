@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scran_post_install_tests.sh.cwl
+id: ../../../scran_post_install_tests.sh.cwl
 inputs:
 - id: action
   doc: ''

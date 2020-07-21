@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_fasta_removeSeqFromIDlist.pl.cwl
+id: ../../../gaas_fasta_removeSeqFromIDlist.pl.cwl
 inputs:
 - id: fast_a_one
   doc: Fasta file 1. The headers of sequences of this file will be used to compare

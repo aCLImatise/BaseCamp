@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chainFilter.cwl
+id: ../../../chainFilter.cwl
 inputs:
 - id: chr_restrict_query_sequence_named
   doc: ',chr2 - restrict query side sequence to those named'

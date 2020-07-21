@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prune_otus.py.cwl
+id: ../../../prune_otus.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

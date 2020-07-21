@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/assembly_annotation_tool.py.cwl
+id: ../../../assembly_annotation_tool.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_fastq_guessMyFormat.pl.cwl
+id: ../../../gaas_fastq_guessMyFormat.pl.cwl
 inputs:
 - id: fast_q
   doc: 'STRING: Input fastq file that will be read.'

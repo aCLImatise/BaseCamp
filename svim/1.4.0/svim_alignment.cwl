@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svim_alignment.cwl
+id: ../../../svim_alignment.cwl
 inputs:
 - id: verbose
   doc: 'Enable more verbose logging (default: False)'

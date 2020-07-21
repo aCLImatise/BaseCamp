@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csb_hhfrag.cwl
+id: ../../../csb_hhfrag.cwl
 inputs:
 - id: hh_search
   doc: path to the HHsearch executable (default=hhsearch)

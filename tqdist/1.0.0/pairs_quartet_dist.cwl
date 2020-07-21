@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pairs_quartet_dist.cwl
+id: ../../../pairs_quartet_dist.cwl
 inputs:
 - id: v
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DaisySuite_target.cwl
+id: ../../../DaisySuite_target.cwl
 inputs:
 - id: cores
   doc: number of cores

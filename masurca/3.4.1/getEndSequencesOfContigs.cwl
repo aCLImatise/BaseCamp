@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getEndSequencesOfContigs.perl.cwl
+id: ../../../getEndSequencesOfContigs.perl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

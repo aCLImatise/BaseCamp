@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gepardcmd.cwl
+id: ../../../gepardcmd.cwl
 inputs:
 - id: seq_one
   doc: ':        first sequence file'

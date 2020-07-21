@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samplot_plot.cwl
+id: ../../../samplot_plot.cwl
 inputs:
 - id: titles
   doc: Space-delimited list of plot titles. Use quote marks to include spaces (i.e.

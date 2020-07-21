@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mashtree_cluster.pl.cwl
+id: ../../../mashtree_cluster.pl.cwl
 inputs:
 - id: threshold
   doc: 0.1       Maximum any two genomes can be from the seed in a given cluster

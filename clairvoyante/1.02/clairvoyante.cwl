@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clairvoyante.py.cwl
+id: ../../../clairvoyante.py.cwl
 inputs:
 - id: submodule_name
   doc: ''

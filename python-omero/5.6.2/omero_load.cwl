@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_load.cwl
+id: ../../../omero_load.cwl
 inputs:
 - id: glob
   doc: Input paths are shell globs that should be expanded and sorted.

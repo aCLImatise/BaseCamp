@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmm_assembler.pl.cwl
+id: ../../../hmm_assembler.pl.cwl
 inputs:
 - id: var_0
   doc: <length>       [500]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BedToFasta.cwl
+id: ../../../BedToFasta.cwl
 inputs:
 - id: in
   doc: Input BED file.

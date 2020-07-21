@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_sq_add_attributes_from_tsv.pl.cwl
+id: ../../../agat_sq_add_attributes_from_tsv.pl.cwl
 inputs:
 - id: gff
   doc: 'STRING: Input GTF/GFF file.'

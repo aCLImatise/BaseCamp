@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmtkDTindex.cwl
+id: ../../../gmtkDTindex.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

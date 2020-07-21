@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/IDRipper.cwl
+id: ../../../IDRipper.cwl
 inputs:
 - id: in
   doc: "*        Input file, in which the protein/peptide identifications must be\

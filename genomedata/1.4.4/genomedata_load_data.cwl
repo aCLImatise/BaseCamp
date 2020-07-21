@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genomedata_load_data.cwl
+id: ../../../genomedata_load_data.cwl
 inputs:
 - id: option_dot_dot_dot
   doc: ''

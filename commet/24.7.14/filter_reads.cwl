@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_reads.cwl
+id: ../../../filter_reads.cwl
 inputs:
 - id: file_where_written
   doc: ': file where the boolean vector will be written [default=input_file.bv]'

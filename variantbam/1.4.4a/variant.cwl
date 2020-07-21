@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/variant.cwl
+id: ../../../variant.cwl
 inputs:
 - id: verbose
   doc: Verbose output

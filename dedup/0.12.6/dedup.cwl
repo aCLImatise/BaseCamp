@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dedup.cwl
+id: ../../../dedup.cwl
 inputs:
 - id: input
   doc: the input file if this option is not specified, the input is expected to be

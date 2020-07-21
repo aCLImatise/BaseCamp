@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obconformer.cwl
+id: ../../../obconformer.cwl
 inputs:
 - id: n_steps
   doc: ''

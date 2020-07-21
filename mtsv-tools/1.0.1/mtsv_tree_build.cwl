@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mtsv_tree_build.cwl
+id: ../../../mtsv_tree_build.cwl
 inputs:
 - id: include_flag_trigger
   doc: Include this flag to trigger debug-level logging.

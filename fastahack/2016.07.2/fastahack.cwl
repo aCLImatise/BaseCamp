@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastahack.cwl
+id: ../../../fastahack.cwl
 inputs:
 - id: index
   doc: generate fasta index <fasta reference>.fai

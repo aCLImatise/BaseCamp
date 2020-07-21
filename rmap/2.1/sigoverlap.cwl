@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sigoverlap.cwl
+id: ../../../sigoverlap.cwl
 inputs:
 - id: output
   doc: 'Name of output file (default: stdout) '

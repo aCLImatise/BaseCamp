@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/CAT_bin.cwl
+id: ../../../CAT_bin.cwl
 inputs:
 - id: _path_bin
   doc: ', --bin_fasta      Path to bin fasta file.'

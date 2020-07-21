@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_textedit.cwl
+id: ../../../arb_textedit.cwl
 inputs:
 - id: filename
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sarscov2formatter.cwl
+id: ../../../sarscov2formatter.cwl
 inputs:
 - id: alignment
   doc: Mulitple sequence alignment file

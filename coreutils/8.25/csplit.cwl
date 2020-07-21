@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csplit.cwl
+id: ../../../csplit.cwl
 inputs:
 - id: suffix_format
   doc: use sprintf FORMAT instead of %02d

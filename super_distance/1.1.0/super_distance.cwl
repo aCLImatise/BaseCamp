@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/super_distance.cwl
+id: ../../../super_distance.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

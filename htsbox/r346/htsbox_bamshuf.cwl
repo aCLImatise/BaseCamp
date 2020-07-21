@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/htsbox_bamshuf.cwl
+id: ../../../htsbox_bamshuf.cwl
 inputs:
 - id: output_to_stdout
   doc: output to stdout

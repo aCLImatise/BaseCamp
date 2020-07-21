@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fourpop.cwl
+id: ../../../fourpop.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

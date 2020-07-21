@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jq.cwl
+id: ../../../jq.cwl
 inputs:
 - id: compact_instead_prettyprinted
   doc: compact instead of pretty-printed output;

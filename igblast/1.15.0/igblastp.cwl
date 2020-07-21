@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/igblastp.cwl
+id: ../../../igblastp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

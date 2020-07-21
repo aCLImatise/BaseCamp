@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedToIgv.cwl
+id: ../../../bedToIgv.cwl
 inputs:
 - id: path
   doc: 'The full path to which the IGV snapshots should be written. (STRING) Default:

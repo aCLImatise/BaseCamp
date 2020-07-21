@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flatfile_to_json.pl.cwl
+id: ../../../flatfile_to_json.pl.cwl
 inputs:
 - id: gbk
   doc: Process a GFF3, BED, or GenBank file containing annotation data. This script

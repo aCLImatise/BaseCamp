@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pmmrcalculator.cwl
+id: ../../../pmmrcalculator.cwl
 inputs:
 - id: input
   doc: The desired input file prefix. Input files are assumed to be <INPUT PREFIX>.geno,

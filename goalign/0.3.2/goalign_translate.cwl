@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_translate.cwl
+id: ../../../goalign_translate.cwl
 inputs:
 - id: genetic_code
   doc: 'Genetic Code: standard, mitoi (invertebrate mitochondrial) or mitov (vertebrate

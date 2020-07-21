@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/show_ma_asm.cwl
+id: ../../../show_ma_asm.cwl
 inputs:
 - id: count_gaps_printed
   doc: Count gaps in printed consensus positions

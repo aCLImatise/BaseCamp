@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/f4ratio.cwl
+id: ../../../f4ratio.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

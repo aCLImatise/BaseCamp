@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/br_bioflat.rb.cwl
+id: ../../../br_bioflat.rb.cwl
 inputs:
 - id: primary
   doc: set primary namespece to UNIQUE Default primary/secondary namespaces depend

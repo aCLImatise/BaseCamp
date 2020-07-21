@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastatranslate.cwl
+id: ../../../fastatranslate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

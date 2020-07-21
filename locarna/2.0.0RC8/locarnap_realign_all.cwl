@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/locarnap_realign_all.pl.cwl
+id: ../../../locarnap_realign_all.pl.cwl
 inputs:
 - id: annotation_file
   doc: ''

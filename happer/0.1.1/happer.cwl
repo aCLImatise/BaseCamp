@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/happer.cwl
+id: ../../../happer.cwl
 inputs:
 - id: out
   doc: write haplotype sequences to the specified file; default is the terminal (stdout)

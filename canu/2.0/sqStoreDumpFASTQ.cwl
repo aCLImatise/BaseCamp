@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sqStoreDumpFASTQ.cwl
+id: ../../../sqStoreDumpFASTQ.cwl
 inputs:
 - id: write_files_outprefixlibnamefastq
   doc: write files out-prefix.(libname).fastq, ... if out-prefix is '-', all sequences

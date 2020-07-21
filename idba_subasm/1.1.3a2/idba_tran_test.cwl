@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/idba_tran_test.cwl
+id: ../../../idba_tran_test.cwl
 inputs:
 - id: out
   doc: (=out)                   output directory

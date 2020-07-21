@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslToPslx.cwl
+id: ../../../pslToPslx.cwl
 inputs:
 - id: masked
   doc: '- if specified, repeats are in lower case cases, otherwise entire sequence

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hclust2.py.cwl
+id: ../../../hclust2.py.cwl
 inputs:
 - id: _input_matrix
   doc: '[INPUT_FILE], --inp [INPUT_FILE], --in [INPUT_FILE] The input matrix'

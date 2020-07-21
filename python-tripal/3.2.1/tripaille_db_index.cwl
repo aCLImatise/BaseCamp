@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tripaille_db_index.cwl
+id: ../../../tripaille_db_index.cwl
 inputs:
 - id: mode
   doc: "Indexing mode: 'website' to index the website , 'nodes' for the website nodes,\

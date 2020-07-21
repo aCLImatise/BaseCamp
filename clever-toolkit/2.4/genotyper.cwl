@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genotyper.cwl
+id: ../../../genotyper.cwl
 inputs:
 - id: arg_maximum_allowed_read
   doc: '[ --max_offset_split ] arg (=10)   Maximum allowed distance between two  split

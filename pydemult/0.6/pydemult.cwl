@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pydemult.cwl
+id: ../../../pydemult.cwl
 inputs:
 - id: fast_q
   doc: ''

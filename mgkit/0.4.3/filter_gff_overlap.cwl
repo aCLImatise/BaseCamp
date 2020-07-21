@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_gff_overlap.cwl
+id: ../../../filter_gff_overlap.cwl
 inputs:
 - id: size
   doc: 'Size of the overlap that triggers the filter [default: 100]'

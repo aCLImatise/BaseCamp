@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mapMers_depth.cwl
+id: ../../../mapMers_depth.cwl
 inputs:
 - id: count
   doc: "- report the count (c) of the single kmer that starts at position (p). Format:\

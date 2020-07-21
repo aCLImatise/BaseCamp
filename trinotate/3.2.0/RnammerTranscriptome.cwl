@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RnammerTranscriptome.pl.cwl
+id: ../../../RnammerTranscriptome.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

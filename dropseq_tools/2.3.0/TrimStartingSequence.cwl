@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TrimStartingSequence.cwl
+id: ../../../TrimStartingSequence.cwl
 inputs:
 - id: default_g
   doc: (default 4g)

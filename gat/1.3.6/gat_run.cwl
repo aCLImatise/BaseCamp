@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gat_run.py.cwl
+id: ../../../gat_run.py.cwl
 inputs:
 - id: annotation_bed_file
   doc: filename with annotations [default=[]].

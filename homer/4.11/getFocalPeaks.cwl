@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getFocalPeaks.pl.cwl
+id: ../../../getFocalPeaks.pl.cwl
 inputs:
 - id: min
   doc: '<#> (minimum focus ratio threshold, default: 0.75)'

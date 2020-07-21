@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ProteinResolver.cwl
+id: ../../../ProteinResolver.cwl
 inputs:
 - id: fast_a
   doc: "*                       Input database file (valid formats: 'fasta')"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convert2blastmask.cwl
+id: ../../../convert2blastmask.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

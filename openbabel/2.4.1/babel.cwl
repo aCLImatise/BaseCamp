@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/babel.cwl
+id: ../../../babel.cwl
 inputs:
 - id: i
   doc: ''

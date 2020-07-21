@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/telescope_resume.cwl
+id: ../../../telescope_resume.cwl
 inputs:
 - id: quiet
   doc: 'Silence (most) output. (default: False)'

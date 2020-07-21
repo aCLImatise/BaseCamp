@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genomepy_install.cwl
+id: ../../../genomepy_install.cwl
 inputs:
 - id: genomes_dir
   doc: genomes directory

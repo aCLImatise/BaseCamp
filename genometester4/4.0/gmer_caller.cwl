@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmer_caller.cwl
+id: ../../../gmer_caller.cwl
 inputs:
 - id: training_size
   doc: '- Use NUM markers for training (default 100000)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/adjusthomopolymers.sh.cwl
+id: ../../../adjusthomopolymers.sh.cwl
 inputs:
 - id: in
   doc: ''

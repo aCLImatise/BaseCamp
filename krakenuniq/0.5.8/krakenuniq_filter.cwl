@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/krakenuniq_filter.cwl
+id: ../../../krakenuniq_filter.cwl
 inputs:
 - id: db
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/depthOfPolishes.cwl
+id: ../../../depthOfPolishes.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

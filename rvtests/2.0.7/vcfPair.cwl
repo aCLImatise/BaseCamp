@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfPair.cwl
+id: ../../../vcfPair.cwl
 inputs:
 - id: people_include_id
   doc: '[], --peopleIncludeFile []'

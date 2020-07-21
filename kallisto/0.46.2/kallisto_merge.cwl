@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kallisto_merge.cwl
+id: ../../../kallisto_merge.cwl
 inputs:
 - id: arguments
   doc: ''

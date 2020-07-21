@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sampleseqs.cwl
+id: ../../../sampleseqs.cwl
 inputs:
 - id: n_seq
   doc: specifies number of sequences to create.

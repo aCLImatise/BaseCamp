@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamToBw.pl.cwl
+id: ../../../bamToBw.pl.cwl
 inputs:
 - id: bam
   doc: -b   BAM/CRAM file to be processed.

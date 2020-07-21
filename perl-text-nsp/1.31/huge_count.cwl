@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/huge_count.pl.cwl
+id: ../../../huge_count.pl.cwl
 inputs:
 - id: token_list
   doc: ''

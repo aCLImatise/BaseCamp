@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kallisto_quant.cwl
+id: ../../../kallisto_quant.cwl
 inputs:
 - id: bias
   doc: Perform sequence based bias correction

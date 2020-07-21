@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qpGraph.cwl
+id: ../../../qpGraph.cwl
 inputs:
 - id: use_val_z
   doc: '... use <val> as Z threshold.'

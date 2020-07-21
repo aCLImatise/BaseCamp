@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcbio_monitor.cwl
+id: ../../../bcbio_monitor.cwl
 inputs:
 - id: config
   doc: PAth to the configuration file, defaults to ~/.bcbio/monitor.yaml

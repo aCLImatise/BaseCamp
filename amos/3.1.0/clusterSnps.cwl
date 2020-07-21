@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clusterSnps.cwl
+id: ../../../clusterSnps.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

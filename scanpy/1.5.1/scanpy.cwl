@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scanpy.cwl
+id: ../../../scanpy.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

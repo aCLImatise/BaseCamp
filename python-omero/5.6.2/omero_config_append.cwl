@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_config_append.cwl
+id: ../../../omero_config_append.cwl
 inputs:
 - id: report
   doc: Report if changes are made

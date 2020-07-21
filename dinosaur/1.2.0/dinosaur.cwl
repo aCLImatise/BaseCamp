@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dinosaur.cwl
+id: ../../../dinosaur.cwl
 inputs:
 - id: adv_params
   doc: path to adv param file

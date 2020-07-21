@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/draw_circos_images.sh.cwl
+id: ../../../draw_circos_images.sh.cwl
 inputs:
 - id: usage_message
   doc: usage message

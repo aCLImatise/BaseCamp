@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/assemblyget.cwl
+id: ../../../assemblyget.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

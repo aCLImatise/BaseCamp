@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/exporTPP.pl.cwl
+id: ../../../exporTPP.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

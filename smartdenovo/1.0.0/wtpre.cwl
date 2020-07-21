@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wtpre.cwl
+id: ../../../wtpre.cwl
 inputs:
 - id: output_processed_reads
   doc: Output of processed reads, [-]

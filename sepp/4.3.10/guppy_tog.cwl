@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/guppy_tog.cwl
+id: ../../../guppy_tog.cwl
 inputs:
 - id: pp
   doc: Use posterior probability for the weight.

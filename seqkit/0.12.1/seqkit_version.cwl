@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_version.cwl
+id: ../../../seqkit_version.cwl
 inputs:
 - id: check_update
   doc: check update

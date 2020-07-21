@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tb_variant_filter.cwl
+id: ../../../tb_variant_filter.cwl
 inputs:
 - id: close_to_in_del_filter
   doc: Mask out single nucleotide variants that are too close to indels

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/metagene.cwl
+id: ../../../metagene.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

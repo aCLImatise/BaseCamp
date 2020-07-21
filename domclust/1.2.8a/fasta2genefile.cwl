@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta2genefile.pl.cwl
+id: ../../../fasta2genefile.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

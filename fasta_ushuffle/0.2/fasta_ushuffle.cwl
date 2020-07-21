@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_ushuffle.cwl
+id: ../../../fasta_ushuffle.cwl
 inputs:
 - id: print_original_unshuffled
   doc: Print original (unshuffled) in output file.

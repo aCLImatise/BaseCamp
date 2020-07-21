@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Minimo.cwl
+id: ../../../Minimo.cwl
 inputs:
 - id: fast_a_in
   doc: ''

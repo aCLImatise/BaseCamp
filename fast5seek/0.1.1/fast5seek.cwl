@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fast5seek.cwl
+id: ../../../fast5seek.cwl
 inputs:
 - id: fast_five_dir
   doc: Directory of fast5 files you want to query. Program will walk recursively through

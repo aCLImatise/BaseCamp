@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_simulate_reads.cwl
+id: ../../../rsem_simulate_reads.cwl
 inputs:
 - id: seed
   doc: ''

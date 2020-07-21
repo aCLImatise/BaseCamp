@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/asqcan.cwl
+id: ../../../asqcan.cwl
 inputs:
 - id: fast_q_dir
   doc: Path to a directory with your interleaved fastq files.

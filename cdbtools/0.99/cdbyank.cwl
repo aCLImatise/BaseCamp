@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cdbyank.cwl
+id: ../../../cdbyank.cwl
 inputs:
 - id: number_records_indexed
   doc: the number of records indexed

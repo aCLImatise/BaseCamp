@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PeptideIndexer.cwl
+id: ../../../PeptideIndexer.cwl
 inputs:
 - id: in
   doc: "*                      Input idXML file containing the identifications. (valid\

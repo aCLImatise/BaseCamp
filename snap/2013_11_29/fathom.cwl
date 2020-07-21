@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fathom.cwl
+id: ../../../fathom.cwl
 inputs:
 - id: ann
   doc: ''

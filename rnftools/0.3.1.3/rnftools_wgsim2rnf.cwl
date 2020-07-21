@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnftools_wgsim2rnf.cwl
+id: ../../../rnftools_wgsim2rnf.cwl
 inputs:
 - id: wg_sim_fast_q_one
   doc: First WgSim FASTQ file (- for standard input)

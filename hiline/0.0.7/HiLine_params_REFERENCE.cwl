@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HiLine_params_REFERENCE.cwl
+id: ../../../HiLine_params_REFERENCE.cwl
 inputs:
 - id: restriction_sites
   doc: ''

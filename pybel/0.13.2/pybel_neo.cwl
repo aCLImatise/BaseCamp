@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pybel_neo.cwl
+id: ../../../pybel_neo.cwl
 inputs:
 - id: path
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_overlap_file.cwl
+id: ../../../filter_overlap_file.cwl
 inputs:
 - id: threads
   doc: Number of threads (1)

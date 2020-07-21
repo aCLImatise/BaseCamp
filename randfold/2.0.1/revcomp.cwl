@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/revcomp.cwl
+id: ../../../revcomp.cwl
 inputs:
 - id: options
   doc: ''

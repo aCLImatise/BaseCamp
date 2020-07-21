@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta_formatter.cwl
+id: ../../../fasta_formatter.cwl
 inputs:
 - id: i
   doc: ''

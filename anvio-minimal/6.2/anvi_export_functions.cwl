@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_export_functions.cwl
+id: ../../../anvi_export_functions.cwl
 inputs:
 - id: list_annotation_sources
   doc: List available functional annotation sources.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/graftM.cwl
+id: ../../../graftM.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

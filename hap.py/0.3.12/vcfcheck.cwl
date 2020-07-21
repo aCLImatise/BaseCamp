@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfcheck.cwl
+id: ../../../vcfcheck.cwl
 inputs:
 - id: input_file
   doc: The input file

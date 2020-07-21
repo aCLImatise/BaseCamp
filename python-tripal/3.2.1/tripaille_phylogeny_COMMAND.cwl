@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tripaille_phylogeny_COMMAND.cwl
+id: ../../../tripaille_phylogeny_COMMAND.cwl
 inputs:
 - id: args
   doc: ''

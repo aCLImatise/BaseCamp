@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_get_collection.cwl
+id: ../../../hca_dss_get_collection.cwl
 inputs:
 - id: uuid
   doc: A RFC4122-compliant ID for the collection.

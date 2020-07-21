@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/IntaRNAens.cwl
+id: ../../../IntaRNAens.cwl
 inputs:
 - id: q
   doc: "[ --query ] arg            either an RNA sequence or the stream/file name\

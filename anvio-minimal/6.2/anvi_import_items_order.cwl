@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_import_items_order.cwl
+id: ../../../anvi_import_items_order.cwl
 inputs:
 - id: input_order
   doc: "One of the two important things you must provide: the file that contains the\

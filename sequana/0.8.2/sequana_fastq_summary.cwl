@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequana_fastq_summary.cwl
+id: ../../../sequana_fastq_summary.cwl
 inputs:
 - id: pattern
   doc: input fastq gzipped or not

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/grabdp.cwl
+id: ../../../grabdp.cwl
 inputs:
 - id: required_or_modelfile
   doc: required (or -modelfile)

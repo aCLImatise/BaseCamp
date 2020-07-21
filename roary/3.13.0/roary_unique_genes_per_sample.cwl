@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/roary_unique_genes_per_sample.cwl
+id: ../../../roary_unique_genes_per_sample.cwl
 inputs:
 - id: output_filename
   doc: output filename [unique_genes_per_sample.tsv]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergeribo.sh.cwl
+id: ../../../mergeribo.sh.cwl
 inputs:
 - id: sequence_dot
   doc: Mutually exclusive with best.

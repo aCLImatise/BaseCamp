@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sync.cwl
+id: ../../../sync.cwl
 inputs:
 - id: data
   doc: sync only file data, no unneeded metadata

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cacheensembl.cwl
+id: ../../../cacheensembl.cwl
 inputs:
 - id: servername
   doc: string     Server name (Any string)

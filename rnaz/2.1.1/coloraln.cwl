@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coloraln.pl.cwl
+id: ../../../coloraln.pl.cwl
 inputs:
 - id: read_file_extract
   doc: 'read file to extract the consensus structure (default: "alirna.ps")'

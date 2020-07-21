@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/platon.cwl
+id: ../../../platon.cwl
 inputs:
 - id: db
   doc: database path (default = <platon_path>/db)

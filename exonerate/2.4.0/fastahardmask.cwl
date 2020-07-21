@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastahardmask.cwl
+id: ../../../fastahardmask.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

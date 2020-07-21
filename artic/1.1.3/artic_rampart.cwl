@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/artic_rampart.cwl
+id: ../../../artic_rampart.cwl
 inputs:
 - id: quiet
   doc: Do not output warnings to stderr

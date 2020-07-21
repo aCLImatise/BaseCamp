@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/test_glibc.sh.cwl
+id: ../../../test_glibc.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

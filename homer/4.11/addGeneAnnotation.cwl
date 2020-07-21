@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/addGeneAnnotation.pl.cwl
+id: ../../../addGeneAnnotation.pl.cwl
 inputs:
 - id: data_file
   doc: ''

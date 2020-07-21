@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maf_chunk.py.cwl
+id: ../../../maf_chunk.py.cwl
 inputs:
 - id: prob
   doc: Probability of writing a given chunk

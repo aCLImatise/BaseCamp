@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jannovar_annotate_vcf.cwl
+id: ../../../jannovar_annotate_vcf.cwl
 inputs:
 - id: input_vcf
   doc: Path to input VCF file

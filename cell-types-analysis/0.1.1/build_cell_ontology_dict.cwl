@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/build_cell_ontology_dict.R.cwl
+id: ../../../build_cell_ontology_dict.R.cwl
 inputs:
 - id: input_dir
   doc: Path to the directory with condensed SDRF files

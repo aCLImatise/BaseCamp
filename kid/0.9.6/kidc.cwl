@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kidc.cwl
+id: ../../../kidc.cwl
 inputs:
 - id: force
   doc: Force compilation even if .pyc file already exists.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/zoom.cwl
+id: ../../../zoom.cwl
 inputs:
 - id: root
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedPileUps.cwl
+id: ../../../bedPileUps.cwl
 inputs:
 - id: name
   doc: '- include BED name field 4 when evaluating uniqueness'

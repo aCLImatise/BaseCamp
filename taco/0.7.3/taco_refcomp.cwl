@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taco_refcomp.cwl
+id: ../../../taco_refcomp.cwl
 inputs:
 - id: output_dir
   doc: 'Directory for reference comparison output (default: taco_compare)'

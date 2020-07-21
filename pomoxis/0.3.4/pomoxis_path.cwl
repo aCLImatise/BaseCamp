@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pomoxis_path.cwl
+id: ../../../pomoxis_path.cwl
 inputs:
 - id: program
   doc: name of program.

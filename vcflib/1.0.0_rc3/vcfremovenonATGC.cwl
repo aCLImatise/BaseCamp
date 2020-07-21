@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfremovenonATGC.cwl
+id: ../../../vcfremovenonATGC.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

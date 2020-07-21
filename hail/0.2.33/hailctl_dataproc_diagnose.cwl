@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hailctl_dataproc_diagnose.cwl
+id: ../../../hailctl_dataproc_diagnose.cwl
 inputs:
 - id: dest
   doc: Directory for diagnose output -- must be local.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prank.cwl
+id: ../../../prank.cwl
 inputs:
 - id: f
   doc: '[equivalent]'

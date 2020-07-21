@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hsp.py.cwl
+id: ../../../hsp.py.cwl
 inputs:
 - id: tree
   doc: The full reference tree in newick format containing both study sequences (i.e.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BedInfo.cwl
+id: ../../../BedInfo.cwl
 inputs:
 - id: in
   doc: "Input BED file. If unset, reads from STDIN. Default value: ''"

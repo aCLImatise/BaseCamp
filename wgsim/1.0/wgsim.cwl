@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wgsim.cwl
+id: ../../../wgsim.cwl
 inputs:
 - id: base_error_rate
   doc: base error rate [0.000]

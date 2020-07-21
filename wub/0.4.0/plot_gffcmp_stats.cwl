@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plot_gffcmp_stats.py.cwl
+id: ../../../plot_gffcmp_stats.py.cwl
 inputs:
 - id: report_pdf_plotgffcmpstatspdf
   doc: Report PDF (plot_gffcmp_stats.pdf).

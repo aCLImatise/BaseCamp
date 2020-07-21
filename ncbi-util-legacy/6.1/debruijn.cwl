@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/debruijn.cwl
+id: ../../../debruijn.cwl
 inputs:
 - id: word_size
   doc: word size [Integer]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioformats_gff2to3.cwl
+id: ../../../bioformats_gff2to3.cwl
 inputs:
 - id: ignore_incorrect_records
   doc: ignore incorrect records in the specified input GFF2 file

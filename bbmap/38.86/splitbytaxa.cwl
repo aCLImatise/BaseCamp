@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splitbytaxa.sh.cwl
+id: ../../../splitbytaxa.sh.cwl
 inputs:
 - id: in
   doc: ''

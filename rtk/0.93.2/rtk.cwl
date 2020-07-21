@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rtk.cwl
+id: ../../../rtk.cwl
 inputs:
 - id: path_txt_file
   doc: path to an .txt file (tab delimited) to rarefy

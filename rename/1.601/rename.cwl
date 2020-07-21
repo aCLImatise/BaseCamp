@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rename.cwl
+id: ../../../rename.cwl
 inputs:
 - id: camelcase
   doc: (see manual)

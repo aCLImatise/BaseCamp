@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rnftools_merge.cwl
+id: ../../../rnftools_merge.cwl
 inputs:
 - id: input_fastq_files
   doc: input FASTQ files

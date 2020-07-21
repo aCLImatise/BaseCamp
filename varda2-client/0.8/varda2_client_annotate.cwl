@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/varda2_client_annotate.cwl
+id: ../../../varda2_client_annotate.cwl
 inputs:
 - id: sample_sheet
   doc: 'Sample sheet file: sample_id, gvcf, vcf, bam'

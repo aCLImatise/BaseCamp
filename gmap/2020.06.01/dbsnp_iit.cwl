@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dbsnp_iit.cwl
+id: ../../../dbsnp_iit.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

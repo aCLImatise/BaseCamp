@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/halAppendCactusSubtree.cwl
+id: ../../../halAppendCactusSubtree.cwl
 inputs:
 - id: cactus_dot_ctw_oh_file
   doc: ''

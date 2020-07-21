@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gendb.cwl
+id: ../../../gendb.cwl
 inputs:
 - id: alph
   doc: Set the alphabet (overrides -type)

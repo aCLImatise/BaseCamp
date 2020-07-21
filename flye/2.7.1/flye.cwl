@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/flye.cwl
+id: ../../../flye.cwl
 inputs:
 - id: pac_bio_raw
   doc: PacBio raw reads

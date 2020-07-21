@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Antisense.py.cwl
+id: ../../../Antisense.py.cwl
 inputs:
 - id: input_file_format
   doc: 'input file, format: qseq/fastq/fasta/sequence'

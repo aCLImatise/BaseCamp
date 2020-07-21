@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/complete_ant_cmd.pl.cwl
+id: ../../../complete_ant_cmd.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

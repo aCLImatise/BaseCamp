@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PATHOGIST_consensus.cwl
+id: ../../../PATHOGIST_consensus.cwl
 inputs:
 - id: all_constraints
   doc: add all constraints to the optimization problem, not just those with mixed

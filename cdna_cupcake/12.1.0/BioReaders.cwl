@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BioReaders.py.cwl
+id: ../../../BioReaders.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

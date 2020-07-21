@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gffutils_cli_children.cwl
+id: ../../../gffutils_cli_children.cwl
 inputs:
 - id: limit
   doc: 'Feature type (string), or level (integer). No children below this level will

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/raiss.cwl
+id: ../../../raiss.cwl
 inputs:
 - id: chrom
   doc: chromosome to impute to the chr\d+ format

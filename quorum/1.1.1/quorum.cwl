@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/quorum.cwl
+id: ../../../quorum.cwl
 inputs:
 - id: size
   doc: Mer database size (default 200M)

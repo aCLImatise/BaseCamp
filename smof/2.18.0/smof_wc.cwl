@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof_wc.cwl
+id: ../../../smof_wc.cwl
 inputs:
 - id: chars
   doc: writes the summed length of all sequences

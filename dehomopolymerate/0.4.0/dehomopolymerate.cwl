@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dehomopolymerate.cwl
+id: ../../../dehomopolymerate.cwl
 inputs:
 - id: print_version_exit
   doc: Print version and exit

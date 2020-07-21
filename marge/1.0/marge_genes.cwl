@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/marge_genes.cwl
+id: ../../../marge_genes.cwl
 inputs:
 - id: marge
   doc: ''

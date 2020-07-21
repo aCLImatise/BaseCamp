@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamleftalign.cwl
+id: ../../../bamleftalign.cwl
 inputs:
 - id: fast_a_reference
   doc: FASTA reference file to use for realignment (required)

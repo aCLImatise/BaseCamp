@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LinkFragments.py.cwl
+id: ../../../LinkFragments.py.cwl
 inputs:
 - id: file_unlinked_hapcut
   doc: '[FRAGMENTS], --fragments [FRAGMENTS] file with unlinked hapcut2 fragments

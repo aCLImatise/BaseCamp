@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_eval_run_em.cwl
+id: ../../../rsem_eval_run_em.cwl
 inputs:
 - id: number_user_wants
   doc: ': number of threads which user wants to use. (default: 1)'

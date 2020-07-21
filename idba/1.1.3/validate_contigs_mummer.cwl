@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/validate_contigs_mummer.cwl
+id: ../../../validate_contigs_mummer.cwl
 inputs:
 - id: min_contig
   doc: (=100)            minimum contigs

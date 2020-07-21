@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergeRanges.cwl
+id: ../../../mergeRanges.cwl
 inputs:
 - id: s
   doc: ''

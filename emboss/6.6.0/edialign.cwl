@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/edialign.cwl
+id: ../../../edialign.cwl
 inputs:
 - id: overlap_w
   doc: selection  [default (when Nseq =< 35)] By default overlap weights are used

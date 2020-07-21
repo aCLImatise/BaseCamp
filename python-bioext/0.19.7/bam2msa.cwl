@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam2msa.cwl
+id: ../../../bam2msa.cwl
 inputs:
 - id: region
   doc: only include sequences in a certain REGION

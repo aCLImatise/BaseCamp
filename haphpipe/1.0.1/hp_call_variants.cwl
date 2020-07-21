@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hp_call_variants.cwl
+id: ../../../hp_call_variants.cwl
 inputs:
 - id: aln_bam
   doc: Alignment file.

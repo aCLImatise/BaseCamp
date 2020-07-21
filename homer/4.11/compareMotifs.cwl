@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/compareMotifs.pl.cwl
+id: ../../../compareMotifs.pl.cwl
 inputs:
 - id: bits
   doc: (scale logos to bit content, default present nucleotide percentage)

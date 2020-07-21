@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bcalm.cwl
+id: ../../../bcalm.cwl
 inputs:
 - id: nb_cores
   doc: "(1 arg) :    number of cores  [default '0']"

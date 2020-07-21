@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_download_collection.cwl
+id: ../../../hca_dss_download_collection.cwl
 inputs:
 - id: uuid
   doc: The uuid of the collection to download

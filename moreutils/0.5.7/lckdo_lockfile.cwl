@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lckdo_lockfile.cwl
+id: ../../../lckdo_lockfile.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

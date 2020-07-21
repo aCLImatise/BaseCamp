@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dimspy.cwl
+id: ../../../dimspy.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

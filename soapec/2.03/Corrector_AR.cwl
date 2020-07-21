@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Corrector_AR.cwl
+id: ../../../Corrector_AR.cwl
 inputs:
 - id: set_size_consecutive
   doc: 'Set size of consecutive kmer, default=17. Note: this value must be set to

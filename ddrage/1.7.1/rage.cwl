@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rage.cwl
+id: ../../../rage.cwl
 inputs:
 - id: verbose
   doc: 'Increase verbosity of output. -v: Show progress of simulation. -vv: Print

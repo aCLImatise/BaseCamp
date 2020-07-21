@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mhcflurry_downloads.cwl
+id: ../../../mhcflurry_downloads.cwl
 inputs:
 - id: quiet
   doc: Output less

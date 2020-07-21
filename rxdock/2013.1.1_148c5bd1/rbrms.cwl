@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbrms.cwl
+id: ../../../rbrms.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

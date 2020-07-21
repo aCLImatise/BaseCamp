@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ktrimfrg.cwl
+id: ../../../ktrimfrg.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

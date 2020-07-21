@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/syrupy.py.cwl
+id: ../../../syrupy.py.cwl
 inputs:
 - id: poll_pid
   doc: ignore COMMAND if given, and poll external process with specified PID

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dsh_rename_references.cwl
+id: ../../../dsh_rename_references.cwl
 inputs:
 - id: about
   doc: display about message [optional]

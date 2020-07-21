@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dumpmates.cwl
+id: ../../../dumpmates.cwl
 inputs:
 - id: report_objects_eid
   doc: Report objects by EID instead of IID

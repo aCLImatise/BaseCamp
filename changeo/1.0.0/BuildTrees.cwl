@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BuildTrees.py.cwl
+id: ../../../BuildTrees.py.cwl
 inputs:
 - id: list_tab_delimited
   doc: 'A list of tab delimited database files. (default: None)'

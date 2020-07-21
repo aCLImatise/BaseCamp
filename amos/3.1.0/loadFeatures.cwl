@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/loadFeatures.cwl
+id: ../../../loadFeatures.cwl
 inputs:
 - id: are_ungapped
   doc: are ungapped

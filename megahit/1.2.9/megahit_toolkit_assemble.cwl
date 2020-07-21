@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/megahit_toolkit_assemble.cwl
+id: ../../../megahit_toolkit_assemble.cwl
 inputs:
 - id: s_dbg_name
   doc: succinct de Bruijn graph name

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parse_matchAnnot.py.cwl
+id: ../../../parse_matchAnnot.py.cwl
 inputs:
 - id: not_p_bid
   doc: ''

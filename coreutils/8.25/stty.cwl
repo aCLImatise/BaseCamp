@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stty.cwl
+id: ../../../stty.cwl
 inputs:
 - id: all
   doc: print all current settings in human-readable form

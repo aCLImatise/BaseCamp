@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/REPqv.cwl
+id: ../../../REPqv.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bioformats_vcfgeno2bed.cwl
+id: ../../../bioformats_vcfgeno2bed.cwl
 inputs:
 - id: individuals
   doc: a file with the list of individuals to be considered for genotype counting

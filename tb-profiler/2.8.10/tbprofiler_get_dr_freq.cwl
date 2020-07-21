@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tbprofiler_get_dr_freq.py.cwl
+id: ../../../tbprofiler_get_dr_freq.py.cwl
 inputs:
 - id: meta
   doc: ''

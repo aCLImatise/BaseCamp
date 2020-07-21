@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_sample.cwl
+id: ../../../seqkit_sample.cwl
 inputs:
 - id: number
   doc: sample by number (result may not exactly match), DO NOT use on large FASTQ

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Trinotate_BLAST_loader.pl.cwl
+id: ../../../Trinotate_BLAST_loader.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

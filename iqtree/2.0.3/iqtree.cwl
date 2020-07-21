@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iqtree.cwl
+id: ../../../iqtree.cwl
 inputs:
 - id: seqtype
   doc: 'BIN, DNA, AA, NT2AA, CODON, MORPH (default: auto-detect)'

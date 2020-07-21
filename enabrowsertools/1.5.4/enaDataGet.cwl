@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/enaDataGet.cwl
+id: ../../../enaDataGet.cwl
 inputs:
 - id: format
   doc: 'File format required. Format requested must be permitted for data type selected.

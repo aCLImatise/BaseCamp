@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/multiBamSummary.cwl
+id: ../../../multiBamSummary.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

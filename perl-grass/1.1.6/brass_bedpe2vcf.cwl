@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/brass_bedpe2vcf.pl.cwl
+id: ../../../brass_bedpe2vcf.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

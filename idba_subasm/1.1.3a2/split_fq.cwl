@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/split_fq.cwl
+id: ../../../split_fq.cwl
 inputs:
 - id: paired
   doc: if the reads are paired-end in one file

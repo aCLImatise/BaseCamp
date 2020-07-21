@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/artic_plot_amplicon_depth.cwl
+id: ../../../artic_plot_amplicon_depth.cwl
 inputs:
 - id: primer_scheme
   doc: the ARTIC primer scheme

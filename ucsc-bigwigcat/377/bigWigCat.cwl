@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bigWigCat.cwl
+id: ../../../bigWigCat.cwl
 inputs:
 - id: items_per_slot
   doc: '- Number of data points bundled at lowest level. Default 1024'

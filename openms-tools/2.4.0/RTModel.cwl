@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RTModel.cwl
+id: ../../../RTModel.cwl
 inputs:
 - id: in
   doc: "This is the name of the input file (RT prediction). It is assumed that the\

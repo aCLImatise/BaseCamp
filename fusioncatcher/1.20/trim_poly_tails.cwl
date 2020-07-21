@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trim_poly_tails.py.cwl
+id: ../../../trim_poly_tails.py.cwl
 inputs:
 - id: input
   doc: The input file in FASTQ format.

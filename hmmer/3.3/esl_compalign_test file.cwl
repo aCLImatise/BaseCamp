@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_compalign_test file.cwl
+id: ../../../esl_compalign_test file.cwl
 inputs:
 - id: options
   doc: ''

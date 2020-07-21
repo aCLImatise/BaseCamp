@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/match_w_annotation.py.cwl
+id: ../../../match_w_annotation.py.cwl
 inputs:
 - id: min_query_overlap
   doc: 'Minimum query overlap, in ratio (default: 0.0)'

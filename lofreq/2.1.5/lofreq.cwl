@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lofreq.cwl
+id: ../../../lofreq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

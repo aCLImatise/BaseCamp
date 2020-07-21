@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_upload_forget.cwl
+id: ../../../hca_upload_forget.cwl
 inputs:
 - id: uuid_or_alias
   doc: Full or partial (alias) UUID of an upload area.

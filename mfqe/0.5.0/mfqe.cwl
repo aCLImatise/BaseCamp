@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mfqe.cwl
+id: ../../../mfqe.cwl
 inputs:
 - id: output_uncompressed
   doc: 'Output sequences uncompressed [default: gzip compress outputs]'

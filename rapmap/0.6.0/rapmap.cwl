@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rapmap.cwl
+id: ../../../rapmap.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

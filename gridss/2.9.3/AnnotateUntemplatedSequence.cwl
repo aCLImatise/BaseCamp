@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AnnotateUntemplatedSequence.cwl
+id: ../../../AnnotateUntemplatedSequence.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/move.cwl
+id: ../../../move.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

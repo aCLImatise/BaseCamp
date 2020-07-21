@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ivar_trim.cwl
+id: ../../../ivar_trim.cwl
 inputs:
 - id: required_sorted_bam
   doc: (Required) Sorted bam file, with aligned reads, to trim primers and quality

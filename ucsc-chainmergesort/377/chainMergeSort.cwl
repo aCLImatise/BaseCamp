@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chainMergeSort.cwl
+id: ../../../chainMergeSort.cwl
 inputs:
 - id: save_id
   doc: '- keep the existing chain ids.'

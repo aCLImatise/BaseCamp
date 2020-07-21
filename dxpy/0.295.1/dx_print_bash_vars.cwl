@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dx_print_bash_vars.cwl
+id: ../../../dx_print_bash_vars.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

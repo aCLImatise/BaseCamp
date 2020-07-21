@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medpy_join_xd_to_xplus1d.py.cwl
+id: ../../../medpy_join_xd_to_xplus1d.py.cwl
 inputs:
 - id: voxel_spacing_newly
   doc: The voxel spacing of the newly created dimension. Default is 1.

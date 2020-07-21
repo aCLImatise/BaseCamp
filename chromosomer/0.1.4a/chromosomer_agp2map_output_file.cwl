@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chromosomer_agp2map_output_file.cwl
+id: ../../../chromosomer_agp2map_output_file.cwl
 inputs:
 - id: chromosome_r
   doc: ''

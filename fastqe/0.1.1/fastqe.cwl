@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastqe.cwl
+id: ../../../fastqe.cwl
 inputs:
 - id: min_len
   doc: Minimum length sequence to include in stats (default 0)

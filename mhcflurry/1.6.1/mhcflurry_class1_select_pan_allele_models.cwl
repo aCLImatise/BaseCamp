@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mhcflurry_class1_select_pan_allele_models.cwl
+id: ../../../mhcflurry_class1_select_pan_allele_models.cwl
 inputs:
 - id: data
   doc: 'Model selection data CSV. Expected columns: allele, peptide, measurement_value'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_mask_by_search.pl.cwl
+id: ../../../bp_mask_by_search.pl.cwl
 inputs:
 - id: f_slash_format
   doc: Search report format (fasta,blast,axt,hmmer,etc)

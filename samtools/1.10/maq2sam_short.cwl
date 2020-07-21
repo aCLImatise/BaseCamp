@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/maq2sam_short.cwl
+id: ../../../maq2sam_short.cwl
 inputs:
 - id: maq_two_sam
   doc: ''

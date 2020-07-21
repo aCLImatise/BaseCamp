@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sccaf_assess.cwl
+id: ../../../sccaf_assess.cwl
 inputs:
 - id: input_file
   doc: Path to input in AnnData or Loom

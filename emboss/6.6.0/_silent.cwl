@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_silent.cwl
+id: ../../../_silent.cwl
 inputs:
 - id: enzymes
   doc: string     [all] Comma separated enzyme list (Any string)

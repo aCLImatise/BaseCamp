@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedtools_multiinter.cwl
+id: ../../../bedtools_multiinter.cwl
 inputs:
 - id: cluster
   doc: Invoke Ryan Layers's clustering algorithm.

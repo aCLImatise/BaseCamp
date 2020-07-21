@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/axtChain.cwl
+id: ../../../axtChain.cwl
 inputs:
 - id: linear_gap
   doc: ''

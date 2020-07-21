@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Bifrost.cwl
+id: ../../../Bifrost.cwl
 inputs:
 - id: colors
   doc: Color the compacted de Bruijn graph (default is no coloring)

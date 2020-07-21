@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nasp.cwl
+id: ../../../nasp.cwl
 inputs:
 - id: config
   doc: Path to the configuration xml file.

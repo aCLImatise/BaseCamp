@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/comparessu.sh.cwl
+id: ../../../comparessu.sh.cwl
 inputs:
 - id: in
   doc: ''

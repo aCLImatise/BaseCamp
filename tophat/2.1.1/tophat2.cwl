@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tophat2.cwl
+id: ../../../tophat2.cwl
 inputs:
 - id: tmp_dir
   doc: '<dirname>   [ default: <output_dir>/tmp ]'

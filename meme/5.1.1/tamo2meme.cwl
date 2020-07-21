@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tamo2meme.cwl
+id: ../../../tamo2meme.cwl
 inputs:
 - id: skip
   doc: skip this ID (may be repeated)

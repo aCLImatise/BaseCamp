@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vdb_copy.2.cwl
+id: ../../../vdb_copy.2.cwl
 inputs:
 - id: table
   doc: 'table-name '

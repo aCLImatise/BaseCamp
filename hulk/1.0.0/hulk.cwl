@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hulk.cwl
+id: ../../../hulk.cwl
 inputs:
 - id: km_er_size
   doc: minimizer k-mer length (default 21)

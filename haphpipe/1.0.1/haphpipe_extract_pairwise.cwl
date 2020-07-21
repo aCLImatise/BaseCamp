@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/haphpipe_extract_pairwise.cwl
+id: ../../../haphpipe_extract_pairwise.cwl
 inputs:
 - id: align_json
   doc: JSON file describing alignment (output of pairwise_align stage)

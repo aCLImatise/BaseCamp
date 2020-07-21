@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ftbl2cumoAb.cwl
+id: ../../../ftbl2cumoAb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

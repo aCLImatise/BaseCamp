@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fasta2stab.pl.bak.cwl
+id: ../../../fasta2stab.pl.bak.cwl
 inputs:
 - id: extract_only_num
   doc: ': Extract only line <num> of the fasta from each sequence (useful for parsing

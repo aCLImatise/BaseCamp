@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_macsetup.cwl
+id: ../../../arb_macsetup.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

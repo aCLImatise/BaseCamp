@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/analyze_read_depth.cwl
+id: ../../../analyze_read_depth.cwl
 inputs:
 - id: verbose
   doc: a verbose output

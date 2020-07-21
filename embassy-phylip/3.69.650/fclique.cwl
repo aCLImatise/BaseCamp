@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fclique.cwl
+id: ../../../fclique.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

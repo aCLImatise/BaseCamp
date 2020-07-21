@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bbmap.sh.cwl
+id: ../../../bbmap.sh.cwl
 inputs:
 - id: best
   doc: (use the first best site)

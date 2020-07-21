@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/traitar_evaluate.cwl
+id: ../../../traitar_evaluate.cwl
 inputs:
 - id: are_pt_ids
   doc: set if the gold standard phenotype are index via phenotype ids rather than

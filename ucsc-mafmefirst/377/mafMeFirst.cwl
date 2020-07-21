@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafMeFirst.cwl
+id: ../../../mafMeFirst.cwl
 inputs:
 - id: in_dot_maf
   doc: ''

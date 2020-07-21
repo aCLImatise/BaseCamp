@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/biscuit_bsconv.cwl
+id: ../../../biscuit_bsconv.cwl
 inputs:
 - id: region
   doc: region.

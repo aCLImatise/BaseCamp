@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ExtractSVReads.cwl
+id: ../../../ExtractSVReads.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

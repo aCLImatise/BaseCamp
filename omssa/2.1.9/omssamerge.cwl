@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omssamerge.cwl
+id: ../../../omssamerge.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

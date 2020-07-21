@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chakin_expression_add_expression.cwl
+id: ../../../chakin_expression_add_expression.cwl
 inputs:
 - id: separator
   doc: "Separating character in the matrix file (ex : ','). Default character is tab.\

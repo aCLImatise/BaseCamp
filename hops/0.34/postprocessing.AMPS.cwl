@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/postprocessing.AMPS.r.cwl
+id: ../../../postprocessing.AMPS.r.cwl
 inputs:
 - id: rmaexdotoutdotfld
   doc: MALTextract output folder.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/.minorseq_post_link.sh.cwl
+id: ../../../.minorseq_post_link.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

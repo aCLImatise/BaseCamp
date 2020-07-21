@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dicey.cwl
+id: ../../../dicey.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

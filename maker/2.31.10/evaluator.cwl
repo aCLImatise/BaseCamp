@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/evaluator.cwl
+id: ../../../evaluator.cwl
 inputs:
 - id: genome_gff
   doc: Specify the maker gff file to evaluate.

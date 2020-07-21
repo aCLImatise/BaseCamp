@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_short_reads.py.cwl
+id: ../../../extract_short_reads.py.cwl
 inputs:
 - id: input
   doc: The input file in FASTQ format (Solexa). Can be given as gzipped file too.

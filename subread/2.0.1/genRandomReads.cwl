@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genRandomReads.cwl
+id: ../../../genRandomReads.cwl
 inputs:
 - id: transcript_fast_a
   doc: '[--simpleTranscriptId]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AssemblePairs.py_assemble_fail.cwl
+id: ../../../AssemblePairs.py_assemble_fail.cwl
 inputs:
 - id: assemble_pairs_do_tpy
   doc: ''

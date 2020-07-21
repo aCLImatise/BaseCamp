@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/singularity_image.cwl
+id: ../../../singularity_image.cwl
 inputs:
 - id: image_dot_create
   doc: Create an image

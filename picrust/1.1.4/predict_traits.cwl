@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/predict_traits.py.cwl
+id: ../../../predict_traits.py.cwl
 inputs:
 - id: observed_trait_table
   doc: the input trait table describing directly observed traits (e.g. sequenced genomes)

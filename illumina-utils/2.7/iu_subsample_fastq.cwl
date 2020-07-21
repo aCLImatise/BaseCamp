@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iu_subsample_fastq.cwl
+id: ../../../iu_subsample_fastq.cwl
 inputs:
 - id: r_one
   doc: FASTQ file to be subsampled. If you are subsampling a merged FASTQ or you don't

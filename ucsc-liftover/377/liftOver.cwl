@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/liftOver.cwl
+id: ../../../liftOver.cwl
 inputs:
 - id: min_match
   doc: Minimum ratio of bases that must remap. Default 0.95

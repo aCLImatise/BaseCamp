@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LDA_bubble.py.cwl
+id: ../../../LDA_bubble.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hp_model_test.cwl
+id: ../../../hp_model_test.cwl
 inputs:
 - id: seqs
   doc: Alignment in FASTA or PHYLIP format

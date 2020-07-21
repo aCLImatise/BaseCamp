@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/to_fasta.py.cwl
+id: ../../../to_fasta.py.cwl
 inputs:
 - id: three
   doc: 3'adapter sequence

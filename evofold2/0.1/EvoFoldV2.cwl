@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/EvoFoldV2.cwl
+id: ../../../EvoFoldV2.cwl
 inputs:
 - id: arg_path_evofold
   doc: '[ --configFilePath ] arg (=./) Path to EvoFold configuration files.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gtf_introns.cwl
+id: ../../../gtf_introns.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

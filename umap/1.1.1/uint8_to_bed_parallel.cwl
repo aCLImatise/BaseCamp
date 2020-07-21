@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uint8_to_bed_parallel.py.cwl
+id: ../../../uint8_to_bed_parallel.py.cwl
 inputs:
 - id: c_two_t
   doc: If using converted genomes specify -C2T or -G2A

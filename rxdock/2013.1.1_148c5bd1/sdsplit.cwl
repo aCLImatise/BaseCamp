@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sdsplit.cwl
+id: ../../../sdsplit.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

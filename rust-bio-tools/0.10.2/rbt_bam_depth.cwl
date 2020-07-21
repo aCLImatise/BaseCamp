@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbt_bam_depth.cwl
+id: ../../../rbt_bam_depth.cwl
 inputs:
 - id: excl_flags
   doc: Skip reads with mask bits set [UNMAP, SECONDARY, QCFAIL, DUP].

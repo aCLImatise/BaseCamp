@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fpa_index.cwl
+id: ../../../fpa_index.cwl
 inputs:
 - id: filename
   doc: Write index of mapping passing filter in path passed as parameter

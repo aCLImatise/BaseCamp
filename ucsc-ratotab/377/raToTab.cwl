@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/raToTab.cwl
+id: ../../../raToTab.cwl
 inputs:
 - id: cols
   doc: ",b,c - List columns in order to output in table Only these columns will be\

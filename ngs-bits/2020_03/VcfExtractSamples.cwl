@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/VcfExtractSamples.cwl
+id: ../../../VcfExtractSamples.cwl
 inputs:
 - id: samples
   doc: Comma-separated list of samples to extract (in the given order).

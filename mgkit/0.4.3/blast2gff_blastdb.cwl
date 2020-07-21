@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blast2gff_blastdb.cwl
+id: ../../../blast2gff_blastdb.cwl
 inputs:
 - id: db_used
   doc: 'blastdb used  [default: NCBI-NT]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dreme.cwl
+id: ../../../dreme.cwl
 inputs:
 - id: directory_create_directory
   doc: <directory>         create the specified output directory  and write all output

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/refseqsplit.py.cwl
+id: ../../../refseqsplit.py.cwl
 inputs:
 - id: file
   doc: read from FILE

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_snp_find_snps_in_bed_interval.cwl
+id: ../../../phyluce_snp_find_snps_in_bed_interval.cwl
 inputs:
 - id: uce
   doc: The UCE BED file

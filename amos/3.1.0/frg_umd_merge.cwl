@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/frg_umd_merge.cwl
+id: ../../../frg_umd_merge.cwl
 inputs:
 - id: determines_field_match
   doc: Determines which field on fasta header line must match the seqname in the src

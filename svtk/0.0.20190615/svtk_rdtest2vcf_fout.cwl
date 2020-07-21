@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtk_rdtest2vcf_fout.cwl
+id: ../../../svtk_rdtest2vcf_fout.cwl
 inputs:
 - id: contigs
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cp.cwl
+id: ../../../cp.cwl
 inputs:
 - id: archive
   doc: same as -dR --preserve=all

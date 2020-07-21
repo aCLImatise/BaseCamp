@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/QCCalculator.cwl
+id: ../../../QCCalculator.cwl
 inputs:
 - id: in
   doc: "*                  Raw data input file (this is relevant if you want to look\

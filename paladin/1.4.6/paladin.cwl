@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paladin.cwl
+id: ../../../paladin.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

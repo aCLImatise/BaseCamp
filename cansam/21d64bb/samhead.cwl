@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samhead.cwl
+id: ../../../samhead.cwl
 inputs:
 - id: file
   doc: ''

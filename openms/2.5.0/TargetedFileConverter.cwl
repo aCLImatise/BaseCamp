@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TargetedFileConverter.cwl
+id: ../../../TargetedFileConverter.cwl
 inputs:
 - id: in
   doc: "*        Input file to convert. See http://www.openms.de/current_doxygen/html/UTILS_TargetedFileConverter.html\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spspaln.pl.cwl
+id: ../../../spspaln.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

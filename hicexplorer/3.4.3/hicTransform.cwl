@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicTransform.cwl
+id: ../../../hicTransform.cwl
 inputs:
 - id: matrix
   doc: 'input file. The computation is done per chromosome. (default: None)'

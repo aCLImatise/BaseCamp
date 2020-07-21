@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedItemOverlapCount.cwl
+id: ../../../bedItemOverlapCount.cwl
 inputs:
 - id: host
   doc: mysql host used to get chrom sizes

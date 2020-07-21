@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arem.cwl
+id: ../../../arem.cwl
 inputs:
 - id: treatment
   doc: ChIP-seq treatment files. REQUIRED. When ELANDMULTIPET is selected, you must

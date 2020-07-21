@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rmsk2bed_megarow.cwl
+id: ../../../rmsk2bed_megarow.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

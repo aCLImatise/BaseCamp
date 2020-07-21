@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/IDFilter.cwl
+id: ../../../IDFilter.cwl
 inputs:
 - id: in
   doc: "*                                               Input file  (valid formats:\

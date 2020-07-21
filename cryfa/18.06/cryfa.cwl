@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cryfa.cwl
+id: ../../../cryfa.cwl
 inputs:
 - id: key_file_name
   doc: '[KEY_FILE],  --key [KEY_FILE] key file name -- MANDATORY The KEY_FILE would

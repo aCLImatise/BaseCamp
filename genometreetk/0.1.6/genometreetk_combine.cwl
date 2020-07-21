@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genometreetk_combine.cwl
+id: ../../../genometreetk_combine.cwl
 inputs:
 - id: support_type
   doc: 'type of support values to compute (default: average)'

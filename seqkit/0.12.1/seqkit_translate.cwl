@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_translate.cwl
+id: ../../../seqkit_translate.cwl
 inputs:
 - id: allow_unknown_codon
   doc: translate unknown code to 'X'. And you may not use flag --trim which removes

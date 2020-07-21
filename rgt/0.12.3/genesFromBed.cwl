@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genesFromBed.py.cwl
+id: ../../../genesFromBed.py.cwl
 inputs:
 - id: mode
   doc: choose mode

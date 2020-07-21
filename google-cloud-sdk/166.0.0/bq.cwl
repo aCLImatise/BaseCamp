@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bq.cwl
+id: ../../../bq.cwl
 inputs:
 - id: global_flags
   doc: ''

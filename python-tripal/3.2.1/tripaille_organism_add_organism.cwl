@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tripaille_organism_add_organism.cwl
+id: ../../../tripaille_organism_add_organism.cwl
 inputs:
 - id: common
   doc: The common name of the organism

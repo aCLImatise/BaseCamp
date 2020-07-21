@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_convert_sp_gxf2gxf.pl.cwl
+id: ../../../agat_convert_sp_gxf2gxf.pl.cwl
 inputs:
 - id: gff
   doc: Input GTF/GFF file.

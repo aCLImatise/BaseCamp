@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prune.cwl
+id: ../../../prune.cwl
 inputs:
 - id: distance
   doc: max separation distance (bp) of adjacent loci in cluster [50]

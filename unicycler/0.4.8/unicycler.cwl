@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unicycler.cwl
+id: ../../../unicycler.cwl
 inputs:
 - id: help_all
   doc: Show a help message with all program options

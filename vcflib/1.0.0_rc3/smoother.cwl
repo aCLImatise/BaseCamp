@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smoother.cwl
+id: ../../../smoother.cwl
 inputs:
 - id: format
   doc: ''

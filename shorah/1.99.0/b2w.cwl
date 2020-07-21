@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/b2w.cwl
+id: ../../../b2w.cwl
 inputs:
 - id: window_length_int
   doc: ': window length (INT)'

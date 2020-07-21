@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/happer_bed.cwl
+id: ../../../happer_bed.cwl
 inputs:
 - id: v
   doc: ''

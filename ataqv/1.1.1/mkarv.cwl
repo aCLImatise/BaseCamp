@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mkarv.cwl
+id: ../../../mkarv.cwl
 inputs:
 - id: concurrency
   doc: 'The number of concurrent processes to use (default: 1). (default: 1)'

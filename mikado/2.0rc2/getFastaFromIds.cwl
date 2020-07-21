@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getFastaFromIds.py_out.cwl
+id: ../../../getFastaFromIds.py_out.cwl
 inputs:
 - id: v
   doc: ''

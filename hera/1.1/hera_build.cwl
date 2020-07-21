@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hera_build.cwl
+id: ../../../hera_build.cwl
 inputs:
 - id: fast_a
   doc: input reference genome fasta file

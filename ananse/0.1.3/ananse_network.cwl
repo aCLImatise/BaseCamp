@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ananse_network.cwl
+id: ../../../ananse_network.cwl
 inputs:
 - id: binding
   doc: All TFs binding file

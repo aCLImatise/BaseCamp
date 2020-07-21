@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/validate_blat_parallel_rna.cwl
+id: ../../../validate_blat_parallel_rna.cwl
 inputs:
 - id: num_threads
   doc: (=8)             number of threads

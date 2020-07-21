@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sanity_check_mapping_file.pl.cwl
+id: ../../../sanity_check_mapping_file.pl.cwl
 inputs:
 - id: no
   doc: ''

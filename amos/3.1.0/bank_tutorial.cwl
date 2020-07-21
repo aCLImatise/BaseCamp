@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bank_tutorial.cwl
+id: ../../../bank_tutorial.cwl
 inputs:
 - id: bank_name_slash
   doc: ''

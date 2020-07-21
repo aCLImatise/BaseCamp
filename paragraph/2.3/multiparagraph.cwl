@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/multiparagraph.py.cwl
+id: ../../../multiparagraph.py.cwl
 inputs:
 - id: bam
   doc: BAM file name

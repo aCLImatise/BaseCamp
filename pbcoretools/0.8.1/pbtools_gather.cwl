@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbtools_gather.cwl
+id: ../../../pbtools_gather.cwl
 inputs:
 - id: log_file
   doc: 'Write the log to file. Default(None) will write to stdout. (default: None)'

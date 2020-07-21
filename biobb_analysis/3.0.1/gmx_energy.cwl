@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmx_energy.cwl
+id: ../../../gmx_energy.cwl
 inputs:
 - id: config
   doc: Configuration file

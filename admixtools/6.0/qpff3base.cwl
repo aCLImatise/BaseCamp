@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qpff3base.cwl
+id: ../../../qpff3base.cwl
 inputs:
 - id: use_val_lambda
   doc: '... use <val> as lambda scale.'

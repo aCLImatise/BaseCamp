@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_diff.cwl
+id: ../../../goalign_diff.cwl
 inputs:
 - id: counts
   doc: Count differences instead of writting only identical characters

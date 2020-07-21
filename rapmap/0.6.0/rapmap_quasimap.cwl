@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rapmap_quasimap.cwl
+id: ../../../rapmap_quasimap.cwl
 inputs:
 - id: i
   doc: ''

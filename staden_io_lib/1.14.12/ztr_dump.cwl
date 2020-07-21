@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ztr_dump.cwl
+id: ../../../ztr_dump.cwl
 inputs:
 - id: no
   doc: ''

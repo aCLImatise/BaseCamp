@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_convert_sp_gff2gtf.pl.cwl
+id: ../../../agat_convert_sp_gff2gtf.pl.cwl
 inputs:
 - id: _output_
   doc: ', --output , --out , --outfile or --gtf Output GTF file. If no output file

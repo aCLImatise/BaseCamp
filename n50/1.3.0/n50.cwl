@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/n50.cwl
+id: ../../../n50.cwl
 inputs:
 - id: full
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/assignGeneWeights.pl.cwl
+id: ../../../assignGeneWeights.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scrub_sample_GFF_junctions.py.cwl
+id: ../../../scrub_sample_GFF_junctions.py.cwl
 inputs:
 - id: min_sample
   doc: 'Minimum number of samples as evidence (default: 1)'

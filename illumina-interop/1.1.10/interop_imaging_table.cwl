@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/interop_imaging_table.cwl
+id: ../../../interop_imaging_table.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

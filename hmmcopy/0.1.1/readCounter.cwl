@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/readCounter.cwl
+id: ../../../readCounter.cwl
 inputs:
 - id: seg
   doc: Outputs in SEG format

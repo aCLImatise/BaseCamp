@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sequana_coverage.cwl
+id: ../../../sequana_coverage.cwl
 inputs:
 - id: input
   doc: 'Input file in BED or BAM format. If a BAM file is provided, it will be converted

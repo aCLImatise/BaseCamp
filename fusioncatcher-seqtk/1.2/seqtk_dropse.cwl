@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqtk_dropse.cwl
+id: ../../../seqtk_dropse.cwl
 inputs:
 - id: in_dot_fq
   doc: ''

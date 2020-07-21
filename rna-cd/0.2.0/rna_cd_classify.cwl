@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rna_cd_classify.cwl
+id: ../../../rna_cd_classify.cwl
 inputs:
 - id: chunksize
   doc: Chunksize in bases. Default = 100

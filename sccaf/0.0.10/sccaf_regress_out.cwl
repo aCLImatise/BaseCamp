@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sccaf_regress_out.cwl
+id: ../../../sccaf_regress_out.cwl
 inputs:
 - id: input_file
   doc: Path to input in AnnData or Loom

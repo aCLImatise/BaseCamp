@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_mergedbs.cwl
+id: ../../../mmseqs_mergedbs.cwl
 inputs:
 - id: prefixes
   doc: 'Comma separated list of prefixes for each entry             '

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samsifter.cwl
+id: ../../../samsifter.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/validate_locus.cwl
+id: ../../../validate_locus.cwl
 inputs:
 - id: input
   doc: Path to input locus file

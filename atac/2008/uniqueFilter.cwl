@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uniqueFilter.cwl
+id: ../../../uniqueFilter.cwl
 inputs:
 - id: instead_finding_regions
   doc: instead of finding regions to remove by looking for duplicatd regions in inputFile,

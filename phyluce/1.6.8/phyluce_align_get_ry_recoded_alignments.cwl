@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_get_ry_recoded_alignments.cwl
+id: ../../../phyluce_align_get_ry_recoded_alignments.cwl
 inputs:
 - id: alignments
   doc: The input directory containing nexus files to filter

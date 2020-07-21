@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iprscan2gff3.cwl
+id: ../../../iprscan2gff3.cwl
 inputs:
 - id: iprs_can_dot_raw
   doc: ''

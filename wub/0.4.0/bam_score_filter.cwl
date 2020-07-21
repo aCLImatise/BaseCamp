@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam_score_filter.py.cwl
+id: ../../../bam_score_filter.py.cwl
 inputs:
 - id: inputoutput_format_sam
   doc: Input/output format (SAM).

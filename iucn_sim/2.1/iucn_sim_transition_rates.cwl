@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iucn_sim_transition_rates.cwl
+id: ../../../iucn_sim_transition_rates.cwl
 inputs:
 - id: species_data
   doc: File containing species list and current IUCN status of species, as well as

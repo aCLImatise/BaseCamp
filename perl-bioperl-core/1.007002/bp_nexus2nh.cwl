@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bp_nexus2nh.pl.cwl
+id: ../../../bp_nexus2nh.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

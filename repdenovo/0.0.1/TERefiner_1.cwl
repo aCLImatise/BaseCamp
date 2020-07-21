@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TERefiner_1.cwl
+id: ../../../TERefiner_1.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

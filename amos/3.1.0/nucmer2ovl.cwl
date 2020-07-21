@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nucmer2ovl.cwl
+id: ../../../nucmer2ovl.cwl
 inputs:
 - id: tab
   doc: '- Output format (Default: AMOS)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/livekraken.cwl
+id: ../../../livekraken.cwl
 inputs:
 - id: bcl_max_tile
   doc: 'Maximum tile to analyse, in XYZZ tile format. Default: Up to tile 2316 (for

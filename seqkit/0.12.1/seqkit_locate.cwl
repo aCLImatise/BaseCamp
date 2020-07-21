@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_locate.cwl
+id: ../../../seqkit_locate.cwl
 inputs:
 - id: bed
   doc: output in BED6 format

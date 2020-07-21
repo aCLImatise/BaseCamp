@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/panaroo_plot_abundance.cwl
+id: ../../../panaroo_plot_abundance.cwl
 inputs:
 - id: graph_type
   doc: the type of graph to generate

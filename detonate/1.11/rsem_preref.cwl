@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_preref.cwl
+id: ../../../rsem_preref.cwl
 inputs:
 - id: polyalen_specify_length
   doc: ': polyALen: specify the length of polyA tail you want to pad. Default is 100'

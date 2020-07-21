@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coval_filter_short.pl.cwl
+id: ../../../coval_filter_short.pl.cwl
 inputs:
 - id: ref
   doc: reference fasta file used for the alignment

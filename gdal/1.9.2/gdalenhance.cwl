@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gdalenhance.cwl
+id: ../../../gdalenhance.cwl
 inputs:
 - id: help_general
   doc: ''

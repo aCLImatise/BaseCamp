@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plotEnrichment.cwl
+id: ../../../plotEnrichment.cwl
 inputs:
 - id: bam_files
   doc: file2.bam [file1.bam file2.bam ...], -b file1.bam file2.bam [file1.bam file2.bam

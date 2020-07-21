@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/merge_transcript_sets.pl.cwl
+id: ../../../merge_transcript_sets.pl.cwl
 inputs:
 - id: set_ndot_gtf
   doc: file with gene predictions in gtf format

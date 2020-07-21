@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Bundler.cwl
+id: ../../../Bundler.cwl
 inputs:
 - id: b
   doc: ''

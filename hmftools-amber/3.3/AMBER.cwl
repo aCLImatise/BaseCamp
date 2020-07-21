@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/AMBER.cwl
+id: ../../../AMBER.cwl
 inputs:
 - id: loci
   doc: Path to BAF loci vcf file

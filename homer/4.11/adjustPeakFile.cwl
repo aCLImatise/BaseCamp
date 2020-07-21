@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/adjustPeakFile.pl.cwl
+id: ../../../adjustPeakFile.pl.cwl
 inputs:
 - id: size
   doc: <#> (resize peak [around center] to this size, supports -size <#,#>)

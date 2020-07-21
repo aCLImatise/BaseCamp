@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/base32.cwl
+id: ../../../base32.cwl
 inputs:
 - id: decode
   doc: decode data

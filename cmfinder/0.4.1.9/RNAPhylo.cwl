@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/RNAPhylo.cwl
+id: ../../../RNAPhylo.cwl
 inputs:
 - id: _phylogeny_tree
   doc: ': The phylogeny tree '

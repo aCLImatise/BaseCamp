@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pyssw.py.cwl
+id: ../../../pyssw.py.cwl
 inputs:
 - id: subject
   doc: Path of the fasta file containing the subject genome sequence. Can be gziped.

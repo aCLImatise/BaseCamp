@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alignTranscripts1.0.cwl
+id: ../../../alignTranscripts1.0.cwl
 inputs:
 - id: gene_a
   doc: ''

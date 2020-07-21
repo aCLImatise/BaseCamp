@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/WisecondorX.cwl
+id: ../../../WisecondorX.cwl
 inputs:
 - id: loglevel
   doc: ''

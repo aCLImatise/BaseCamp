@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paraNodeStatus.cwl
+id: ../../../paraNodeStatus.cwl
 inputs:
 - id: long
   doc: List details of current and recent jobs.

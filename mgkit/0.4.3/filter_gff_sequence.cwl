@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_gff_sequence.cwl
+id: ../../../filter_gff_sequence.cwl
 inputs:
 - id: sorted
   doc: If the GFF file is sorted (all of a sequence annotations are contiguos) can

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastasort.cwl
+id: ../../../fastasort.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arb_installubuntu4arb.sh.cwl
+id: ../../../arb_installubuntu4arb.sh.cwl
 inputs:
 - id: what
   doc: ''

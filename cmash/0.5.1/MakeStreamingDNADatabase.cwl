@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MakeStreamingDNADatabase.py.cwl
+id: ../../../MakeStreamingDNADatabase.py.cwl
 inputs:
 - id: prime
   doc: 'Prime (for modding hashes) (default: 9999999999971)'

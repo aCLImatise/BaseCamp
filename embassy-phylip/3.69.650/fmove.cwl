@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fmove.cwl
+id: ../../../fmove.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runLSC.py.cwl
+id: ../../../runLSC.py.cwl
 inputs:
 - id: long_reads
   doc: 'FASTAFILE Long reads to correct. Required in mode 0 or 1. (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faTrans.cwl
+id: ../../../faTrans.cwl
 inputs:
 - id: stop
   doc: at first stop codon (otherwise puts in Z for stop codons)

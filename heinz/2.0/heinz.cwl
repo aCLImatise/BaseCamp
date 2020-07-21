@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/heinz.cwl
+id: ../../../heinz.cwl
 inputs:
 - id: fdr
   doc: Specifies fdr

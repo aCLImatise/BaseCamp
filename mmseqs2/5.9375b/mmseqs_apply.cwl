@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_apply.cwl
+id: ../../../mmseqs_apply.cwl
 inputs:
 - id: threads
   doc: 8               number of cores used for the computation (uses all cores by

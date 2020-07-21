@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vsnp_path_adder.py.cwl
+id: ../../../vsnp_path_adder.py.cwl
 inputs:
 - id: cwd
   doc: Absolute directory path to be added to find reference option files.

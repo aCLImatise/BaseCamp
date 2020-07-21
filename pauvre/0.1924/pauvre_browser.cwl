@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pauvre_browser.cwl
+id: ../../../pauvre_browser.cwl
 inputs:
 - id: quiet
   doc: Do not output warnings to stderr

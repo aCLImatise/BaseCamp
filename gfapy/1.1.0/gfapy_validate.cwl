@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gfapy_validate.cwl
+id: ../../../gfapy_validate.cwl
 inputs:
 - id: filename
   doc: ''

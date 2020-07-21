@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tree_doctor.cwl
+id: ../../../tree_doctor.cwl
 inputs:
 - id: newick
   doc: The input file is in Newick format (necessary if file name does not end in

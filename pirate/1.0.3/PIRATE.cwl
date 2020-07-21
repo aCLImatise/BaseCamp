@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PIRATE.cwl
+id: ../../../PIRATE.cwl
 inputs:
 - id: threads
   doc: 'number of threads/cores used by PIRATE [default: 2]'

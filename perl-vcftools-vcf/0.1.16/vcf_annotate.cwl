@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_annotate.cwl
+id: ../../../vcf_annotate.cwl
 inputs:
 - id: annotations
   doc: 'The tabix indexed file with the annotations: CHR\tFROM[\tTO][\tVALUE]+.'

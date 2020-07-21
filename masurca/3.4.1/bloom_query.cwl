@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bloom_query.cwl
+id: ../../../bloom_query.cwl
 inputs:
 - id: mer
   doc: '*k-mer size'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sv_classifier.py.cwl
+id: ../../../sv_classifier.py.cwl
 inputs:
 - id: input
   doc: VCF input [stdin]

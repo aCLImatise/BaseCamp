@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cmfetch_key.cwl
+id: ../../../cmfetch_key.cwl
 inputs:
 - id: cm_fetch
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf2snv_alignment.pl.cwl
+id: ../../../vcf2snv_alignment.pl.cwl
 inputs:
 - id: consolidate_vcf
   doc: ''

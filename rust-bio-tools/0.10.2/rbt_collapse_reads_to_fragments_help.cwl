@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rbt_collapse_reads_to_fragments_help.cwl
+id: ../../../rbt_collapse_reads_to_fragments_help.cwl
 inputs:
 - id: for
   doc: ''

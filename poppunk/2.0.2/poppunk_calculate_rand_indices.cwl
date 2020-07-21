@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/poppunk_calculate_rand_indices.py.cwl
+id: ../../../poppunk_calculate_rand_indices.py.cwl
 inputs:
 - id: input
   doc: Comma separated list of clustering CSVs between which indices should be calculated

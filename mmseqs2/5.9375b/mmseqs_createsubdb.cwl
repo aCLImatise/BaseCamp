@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_createsubdb.cwl
+id: ../../../mmseqs_createsubdb.cwl
 inputs:
 - id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splitFileByColumn.cwl
+id: ../../../splitFileByColumn.cwl
 inputs:
 - id: col
   doc: '- Use the Nth column value (default: N=1, first column)'

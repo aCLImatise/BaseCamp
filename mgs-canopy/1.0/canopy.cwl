@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/canopy.cwl
+id: ../../../canopy.cwl
 inputs:
 - id: arg_path_input
   doc: '[ --input_file_path ] arg          Path to the input file'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wes_client.cwl
+id: ../../../wes_client.cwl
 inputs:
 - id: host
   doc: ''

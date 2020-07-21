@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LCA.cwl
+id: ../../../LCA.cwl
 inputs:
 - id: assignments_sequences_ref
   doc: assignments of sequences to ref database in blast .m8 tab delimited format

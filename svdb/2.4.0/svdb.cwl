@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svdb.cwl
+id: ../../../svdb.cwl
 inputs:
 - id: build
   doc: create a db

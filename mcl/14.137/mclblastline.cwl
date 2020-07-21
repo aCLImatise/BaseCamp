@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mclblastline.cwl
+id: ../../../mclblastline.cwl
 inputs:
 - id: what_if
   doc: shows only what would be done.

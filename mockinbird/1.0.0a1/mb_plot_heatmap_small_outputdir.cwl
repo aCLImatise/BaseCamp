@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_plot_heatmap_small_outputdir.cwl
+id: ../../../mb_plot_heatmap_small_outputdir.cwl
 inputs:
 - id: downstream
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ranksum_test.cwl
+id: ../../../ranksum_test.cwl
 inputs:
 - id: p_value
   doc: '|0|1|2|3 (-1=left, 0=one-tailed,1=right, 2=two-tailed, 3=all (default))'

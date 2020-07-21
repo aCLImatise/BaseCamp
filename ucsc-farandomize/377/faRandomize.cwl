@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faRandomize.cwl
+id: ../../../faRandomize.cwl
 inputs:
 - id: seed
   doc: ''

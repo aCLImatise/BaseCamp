@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/avro.cwl
+id: ../../../avro.cwl
 inputs:
 - id: count
   doc: number of records to print

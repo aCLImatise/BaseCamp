@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parseCluster.cwl
+id: ../../../parseCluster.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

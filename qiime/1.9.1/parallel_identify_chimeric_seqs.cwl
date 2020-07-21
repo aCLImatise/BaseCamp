@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parallel_identify_chimeric_seqs.py.cwl
+id: ../../../parallel_identify_chimeric_seqs.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

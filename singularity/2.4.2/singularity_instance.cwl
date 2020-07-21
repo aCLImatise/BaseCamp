@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/singularity_instance.cwl
+id: ../../../singularity_instance.cwl
 inputs:
 - id: instance_dot_list
   doc: Print all running container instances

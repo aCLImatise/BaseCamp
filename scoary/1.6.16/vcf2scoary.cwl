@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf2scoary.cwl
+id: ../../../vcf2scoary.cwl
 inputs:
 - id: out
   doc: The path to the output file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cvgChop.cwl
+id: ../../../cvgChop.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

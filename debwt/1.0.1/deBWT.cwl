@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deBWT.cwl
+id: ../../../deBWT.cwl
 inputs:
 - id: reference
   doc: ''

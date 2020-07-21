@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kobas_annotate.cwl
+id: ../../../kobas_annotate.cwl
 inputs:
 - id: list
   doc: list available species, or list available databases for a specific species

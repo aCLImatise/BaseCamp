@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_bam_postprocess.cwl
+id: ../../../mb_bam_postprocess.cwl
 inputs:
 - id: min_length
   doc: minimum alignment length in bp

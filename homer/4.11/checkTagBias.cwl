@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/checkTagBias.pl.cwl
+id: ../../../checkTagBias.pl.cwl
 inputs:
 - id: start
   doc: <#> (offset to start frequency calculation, default=-50)

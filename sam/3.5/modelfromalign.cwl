@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/modelfromalign.cwl
+id: ../../../modelfromalign.cwl
 inputs:
 - id: option
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/comm.cwl
+id: ../../../comm.cwl
 inputs:
 - id: one
   doc: suppress column 1 (lines unique to FILE1)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/truncate.cwl
+id: ../../../truncate.cwl
 inputs:
 - id: no_create
   doc: do not create any files

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lofreq_filter.cwl
+id: ../../../lofreq_filter.cwl
 inputs:
 - id: sb_no_compound
   doc: Don't use compound filter

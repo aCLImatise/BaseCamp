@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cirdna.cwl
+id: ../../../cirdna.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convert2bed_megarow.cwl
+id: ../../../convert2bed_megarow.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

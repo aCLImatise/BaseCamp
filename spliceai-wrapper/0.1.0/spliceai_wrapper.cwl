@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spliceai_wrapper.cwl
+id: ../../../spliceai_wrapper.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

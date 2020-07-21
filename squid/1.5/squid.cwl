@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/squid.cwl
+id: ../../../squid.cwl
 inputs:
 - id: bool_output_gragh
   doc: bool    Output gragh file (0)

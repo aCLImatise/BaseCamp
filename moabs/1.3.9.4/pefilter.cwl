@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pefilter.cwl
+id: ../../../pefilter.cwl
 inputs:
 - id: arg_input_bam
   doc: '[ --infile ] arg          Input BAM file. It should be indexed.'

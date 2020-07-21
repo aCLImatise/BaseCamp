@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/crimson_picard.cwl
+id: ../../../crimson_picard.cwl
 inputs:
 - id: input
   doc: ''

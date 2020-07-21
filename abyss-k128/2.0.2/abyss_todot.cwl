@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_todot.cwl
+id: ../../../abyss_todot.cwl
 inputs:
 - id: km_er
   doc: report the mean k-mer coverage, otherwise the sum k-mer coverage is reported

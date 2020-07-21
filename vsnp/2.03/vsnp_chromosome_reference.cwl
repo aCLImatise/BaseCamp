@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vsnp_chromosome_reference.py.cwl
+id: ../../../vsnp_chromosome_reference.py.cwl
 inputs:
 - id: cwd
   doc: 'Optional: path to VCF files'

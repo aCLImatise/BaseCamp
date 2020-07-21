@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mutmap.cwl
+id: ../../../mutmap.cwl
 inputs:
 - id: var_0
   doc: '[-T] [-e <DATABASE>]'

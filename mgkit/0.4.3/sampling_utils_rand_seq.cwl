@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sampling_utils_rand_seq.cwl
+id: ../../../sampling_utils_rand_seq.cwl
 inputs:
 - id: num_seqs
   doc: 'Number of sequences to generate  [default: 1000]'

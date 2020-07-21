@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ninety_five_percent.py.cwl
+id: ../../../ninety_five_percent.py.cwl
 inputs:
 - id: cat
   doc: ''

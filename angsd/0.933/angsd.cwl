@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/angsd.cwl
+id: ../../../angsd.cwl
 inputs:
 - id: n_threads
   doc: 1       Number of threads to use

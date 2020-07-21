@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gappa_random.cwl
+id: ../../../gappa_random.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

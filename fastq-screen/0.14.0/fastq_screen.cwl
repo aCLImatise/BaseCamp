@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastq_screen.cwl
+id: ../../../fastq_screen.cwl
 inputs:
 - id: add_genome
   doc: "Edits the file 'fastq_screen.conf' (in the folder where this script is saved)\

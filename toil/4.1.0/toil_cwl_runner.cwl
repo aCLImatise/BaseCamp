@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/toil_cwl_runner.cwl
+id: ../../../toil_cwl_runner.cwl
 inputs:
 - id: tmpdir_prefix
   doc: Path prefix for temporary directories

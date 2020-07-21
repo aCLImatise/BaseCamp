@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mprobability.cwl
+id: ../../../mprobability.cwl
 inputs:
 - id: separation_std_dev
   doc: The standard deviation of the mean length of the separation

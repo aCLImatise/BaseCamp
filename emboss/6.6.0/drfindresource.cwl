@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/drfindresource.cwl
+id: ../../../drfindresource.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

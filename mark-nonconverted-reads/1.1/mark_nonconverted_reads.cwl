@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mark_nonconverted_reads.py.cwl
+id: ../../../mark_nonconverted_reads.py.cwl
 inputs:
 - id: reference
   doc: Reference fasta file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genometreetk_append.cwl
+id: ../../../genometreetk_append.cwl
 inputs:
 - id: silent
   doc: suppress output

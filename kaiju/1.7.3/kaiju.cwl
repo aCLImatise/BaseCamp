@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kaiju.cwl
+id: ../../../kaiju.cwl
 inputs:
 - id: name_nodesdmp_file
   doc: Name of nodes.dmp file

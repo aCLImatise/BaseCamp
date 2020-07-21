@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iu_fastq_to_fasta.cwl
+id: ../../../iu_fastq_to_fasta.cwl
 inputs:
 - id: number_of_sequences
   doc: Number of sequences to be converted

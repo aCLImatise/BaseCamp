@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dbxedam.cwl
+id: ../../../dbxedam.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

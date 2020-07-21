@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snoscan.cwl
+id: ../../../snoscan.cwl
 inputs:
 - id: options
   doc: ''

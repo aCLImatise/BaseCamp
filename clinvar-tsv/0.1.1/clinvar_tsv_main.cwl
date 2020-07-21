@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clinvar_tsv_main.cwl
+id: ../../../clinvar_tsv_main.cwl
 inputs:
 - id: b_three_seven_path
   doc: Path to GRCh37 FAI-indexed FASTA file.

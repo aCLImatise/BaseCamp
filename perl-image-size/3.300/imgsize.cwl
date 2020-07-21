@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/imgsize.cwl
+id: ../../../imgsize.cwl
 inputs:
 - id: options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_fs_rename.cwl
+id: ../../../omero_fs_rename.cwl
 inputs:
 - id: no_move
   doc: do not move original files and import log

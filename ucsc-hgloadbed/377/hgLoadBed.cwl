@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hgLoadBed.cwl
+id: ../../../hgLoadBed.cwl
 inputs:
 - id: tmpdir
   doc: '- path to directory for creation of temporary .tab file - which will be removed

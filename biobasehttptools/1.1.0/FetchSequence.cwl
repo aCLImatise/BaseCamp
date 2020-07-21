@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FetchSequence.cwl
+id: ../../../FetchSequence.cwl
 inputs:
 - id: verbose
   doc: Loud verbosity

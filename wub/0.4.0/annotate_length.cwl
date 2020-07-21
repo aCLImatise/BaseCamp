@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/annotate_length.py_output_fastx.cwl
+id: ../../../annotate_length.py_output_fastx.cwl
 inputs:
 - id: i
   doc: ''

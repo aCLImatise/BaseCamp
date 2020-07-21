@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_layout.cwl
+id: ../../../abyss_layout.cwl
 inputs:
 - id: min_length
   doc: minimum sequence length [0]

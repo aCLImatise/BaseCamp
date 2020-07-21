@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk_sep.cwl
+id: ../../../csvtk_sep.cwl
 inputs:
 - id: drop
   doc: drop extra data, exclusive with --merge

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pairsnp.cwl
+id: ../../../pairsnp.cwl
 inputs:
 - id: print_version_exit
   doc: Print version and exit

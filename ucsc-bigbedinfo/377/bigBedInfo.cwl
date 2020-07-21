@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bigBedInfo.cwl
+id: ../../../bigBedInfo.cwl
 inputs:
 - id: udc_dir
   doc: =/dir/to/cache - place to put cache for remote bigBed/bigWigs

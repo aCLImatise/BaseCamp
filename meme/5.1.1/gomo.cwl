@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gomo.cwl
+id: ../../../gomo.cwl
 inputs:
 - id: name_directory_not
   doc: "name of the directory for output. Will not replace an existing directory;\

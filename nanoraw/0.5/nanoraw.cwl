@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nanoraw.cwl
+id: ../../../nanoraw.cwl
 inputs:
 - id: v
   doc: ''

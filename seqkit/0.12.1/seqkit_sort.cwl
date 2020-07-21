@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_sort.cwl
+id: ../../../seqkit_sort.cwl
 inputs:
 - id: by_length
   doc: by sequence length

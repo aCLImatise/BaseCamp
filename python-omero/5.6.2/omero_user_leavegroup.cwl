@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_user_leavegroup.cwl
+id: ../../../omero_user_leavegroup.cwl
 inputs:
 - id: id
   doc: ID of the user. Default to the current user

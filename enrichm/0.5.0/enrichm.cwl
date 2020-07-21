@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/enrichm.cwl
+id: ../../../enrichm.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

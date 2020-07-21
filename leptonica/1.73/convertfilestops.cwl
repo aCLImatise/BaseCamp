@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/convertfilestops.cwl
+id: ../../../convertfilestops.cwl
 inputs:
 - id: where
   doc: "dirin:  input directory for image files substr:  Use 'allfiles' to convert\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MindTheGap_fill.cwl
+id: ../../../MindTheGap_fill.cwl
 inputs:
 - id: in
   doc: "(1 arg) :    input read file(s)  [default '']"

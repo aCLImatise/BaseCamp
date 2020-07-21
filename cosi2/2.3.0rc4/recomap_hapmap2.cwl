@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/recomap_hapmap2.cwl
+id: ../../../recomap_hapmap2.cwl
 inputs:
 - id: one_kg_map_directory
   doc: ''

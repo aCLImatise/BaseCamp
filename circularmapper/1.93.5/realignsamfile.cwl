@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/realignsamfile.cwl
+id: ../../../realignsamfile.cwl
 inputs:
 - id: elongation
   doc: the elongation factor [INT]

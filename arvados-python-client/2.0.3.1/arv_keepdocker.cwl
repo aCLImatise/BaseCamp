@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/arv_keepdocker.cwl
+id: ../../../arv_keepdocker.cwl
 inputs:
 - id: force
   doc: Re-upload the image even if it already exists on the server

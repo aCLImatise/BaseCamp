@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hisat2_inspect_s.cwl
+id: ../../../hisat2_inspect_s.cwl
 inputs:
 - id: a_slash_across
   doc: 'Number of characters across in FASTA output (default: 60)'

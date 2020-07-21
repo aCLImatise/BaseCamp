@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bactopia_search.py.cwl
+id: ../../../bactopia_search.py.cwl
 inputs:
 - id: exact_tax_on
   doc: Exclude Taxon ID descendents.

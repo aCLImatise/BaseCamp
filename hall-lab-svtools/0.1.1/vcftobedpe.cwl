@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcftobedpe.cwl
+id: ../../../vcftobedpe.cwl
 inputs:
 - id: input
   doc: 'VCF input (default: stdin)'

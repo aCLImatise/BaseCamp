@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tadtool_plot.cwl
+id: ../../../tadtool_plot.cwl
 inputs:
 - id: window_sizes
   doc: Window sizes in base pairs used for TAD calculation. You can pass (1) a filename

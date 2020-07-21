@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/batchParallel.pl.cwl
+id: ../../../batchParallel.pl.cwl
 inputs:
 - id: f
   doc: ''

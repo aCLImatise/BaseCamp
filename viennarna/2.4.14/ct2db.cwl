@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ct2db.cwl
+id: ../../../ct2db.cwl
 inputs:
 - id: remove_pk
   doc: Remove pseudoknots from structure (default=off)

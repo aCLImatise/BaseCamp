@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedGraphPack.cwl
+id: ../../../bedGraphPack.cwl
 inputs:
 - id: in_dot_bed_graph
   doc: ''

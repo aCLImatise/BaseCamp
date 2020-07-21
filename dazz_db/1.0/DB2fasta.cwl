@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DB2fasta.cwl
+id: ../../../DB2fasta.cwl
 inputs:
 - id: vu
   doc: ''

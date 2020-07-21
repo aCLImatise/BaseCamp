@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pp2dot.cwl
+id: ../../../pp2dot.cwl
 inputs:
 - id: colors
   doc: 'Color palette. Use --colors2 to define a second palette for the lower-left

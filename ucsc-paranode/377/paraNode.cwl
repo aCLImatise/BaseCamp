@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paraNode.cwl
+id: ../../../paraNode.cwl
 inputs:
 - id: cpu
   doc: Number of CPUs to use - default 1.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cs_generate.cwl
+id: ../../../cs_generate.cwl
 inputs:
 - id: quiet
   doc: Suppress all warning messages. Cannot use with '-v'.

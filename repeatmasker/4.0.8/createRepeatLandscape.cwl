@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/createRepeatLandscape.pl.cwl
+id: ../../../createRepeatLandscape.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

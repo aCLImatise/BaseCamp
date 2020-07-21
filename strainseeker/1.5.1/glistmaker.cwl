@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/glistmaker.cwl
+id: ../../../glistmaker.cwl
 inputs:
 - id: word_length
   doc: '- specify index wordsize (1-32) (default 16)'

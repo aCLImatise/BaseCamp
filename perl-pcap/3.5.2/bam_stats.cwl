@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam_stats.pl.cwl
+id: ../../../bam_stats.pl.cwl
 inputs:
 - id: input
   doc: -i   File path to read in.

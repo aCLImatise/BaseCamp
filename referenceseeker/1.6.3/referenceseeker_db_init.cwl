@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/referenceseeker_db_init.cwl
+id: ../../../referenceseeker_db_init.cwl
 inputs:
 - id: output
   doc: output directory (default = current working directory)

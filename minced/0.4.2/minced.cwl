@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/minced.cwl
+id: ../../../minced.cwl
 inputs:
 - id: search_wl
   doc: 'Length of search window used to discover CRISPRs (range: 6-9). Default: 8'

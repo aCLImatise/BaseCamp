@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/twstats.cwl
+id: ../../../twstats.cwl
 inputs:
 - id: bad
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pfam_runner.pl.cwl
+id: ../../../pfam_runner.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/isoseq3_cluster.cwl
+id: ../../../isoseq3_cluster.cwl
 inputs:
 - id: poa_cov
   doc: INT   Maximum number of CCS reads used for POA consensus. [10]

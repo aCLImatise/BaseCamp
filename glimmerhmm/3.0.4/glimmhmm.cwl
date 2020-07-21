@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/glimmhmm.pl.cwl
+id: ../../../glimmhmm.pl.cwl
 inputs:
 - id: glimmer_hmm_program
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/HiLine_dangling_end.cwl
+id: ../../../HiLine_dangling_end.cwl
 inputs:
 - id: sort
   doc: / --no-sort  Sort and index output. Default=sort

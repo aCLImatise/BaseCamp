@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/unshuffle.py.cwl
+id: ../../../unshuffle.py.cwl
 inputs:
 - id: input
   doc: The first FASTQ input file containing the short reads which are interleaved.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obijoinpairedend.cwl
+id: ../../../obijoinpairedend.cwl
 inputs:
 - id: skip
   doc: skip the N first sequences

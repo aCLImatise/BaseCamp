@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FEELnc_classifier.pl.cwl
+id: ../../../FEELnc_classifier.pl.cwl
 inputs:
 - id: biotype
   doc: Print the biotype of each transcripts in the output

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/renamePeaks.pl.cwl
+id: ../../../renamePeaks.pl.cwl
 inputs:
 - id: peak_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/demux_isoseq2_no_genome.py.cwl
+id: ../../../demux_isoseq2_no_genome.py.cwl
 inputs:
 - id: job_dir
   doc: Job directory (if given, automatically finds required files)

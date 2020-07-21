@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coverm.cwl
+id: ../../../coverm.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

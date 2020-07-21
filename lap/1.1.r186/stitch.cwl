@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stitch.cwl
+id: ../../../stitch.cwl
 inputs:
 - id: out_ie
   doc: Reverse complement the first mate, instead of the second

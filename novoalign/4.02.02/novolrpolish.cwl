@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/novolrpolish.cwl
+id: ../../../novolrpolish.cwl
 inputs:
 - id: in
   doc: the input BAM file [stdin]

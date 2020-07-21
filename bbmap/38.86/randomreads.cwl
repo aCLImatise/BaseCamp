@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/randomreads.sh.cwl
+id: ../../../randomreads.sh.cwl
 inputs:
 - id: ref
   doc: ''

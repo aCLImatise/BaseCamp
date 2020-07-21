@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_download.cwl
+id: ../../../hca_dss_download.cwl
 inputs:
 - id: bundle_uuid
   doc: The uuid of the bundle to download

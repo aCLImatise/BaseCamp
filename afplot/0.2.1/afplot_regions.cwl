@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/afplot_regions.cwl
+id: ../../../afplot_regions.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

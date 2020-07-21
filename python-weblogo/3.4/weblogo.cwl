@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/weblogo.cwl
+id: ../../../weblogo.cwl
 inputs:
 - id: fin
   doc: 'Sequence input file (default: stdin)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ProbabilityPlot.cwl
+id: ../../../ProbabilityPlot.cwl
 inputs:
 - id: input_file
   doc: ''

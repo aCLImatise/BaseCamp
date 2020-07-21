@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seqkit_sana.cwl
+id: ../../../seqkit_sana.cwl
 inputs:
 - id: qual_ascii_base
   doc: ASCII BASE, 33 for Phred+33 (default 33)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/parseGTF.pl.cwl
+id: ../../../parseGTF.pl.cwl
 inputs:
 - id: gff
   doc: (input file is gff format-treats 9th column as ID)

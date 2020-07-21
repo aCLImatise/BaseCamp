@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hint_cnv.cwl
+id: ../../../hint_cnv.cwl
 inputs:
 - id: matrix_file
   doc: The matrix compressed file contains single or multiple resolutions Hi-C contact

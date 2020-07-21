@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/alimask.cwl
+id: ../../../alimask.cwl
 inputs:
 - id: direct_summary_output
   doc: ': direct summary output to file <f>, not stdout'

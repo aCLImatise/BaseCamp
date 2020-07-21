@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deSALT.cwl
+id: ../../../deSALT.cwl
 inputs:
 - id: thread
   doc: '[INT]    Number of threads. [4]'

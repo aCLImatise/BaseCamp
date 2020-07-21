@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uniprobe2meme.cwl
+id: ../../../uniprobe2meme.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bolt_bed_count.cwl
+id: ../../../bolt_bed_count.cwl
 inputs:
 - id: file_path
   doc: A bam file (*require)

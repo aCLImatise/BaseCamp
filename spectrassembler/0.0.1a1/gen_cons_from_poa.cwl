@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gen_cons_from_poa.py.cwl
+id: ../../../gen_cons_from_poa.py.cwl
 inputs:
 - id: root
   doc: directory where to look for files (the one given to spectral_layout_from_minimap.py).

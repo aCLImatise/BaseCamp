@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/SNP_INDEL_count.pl.cwl
+id: ../../../SNP_INDEL_count.pl.cwl
 inputs:
 - id: perl
   doc: ''

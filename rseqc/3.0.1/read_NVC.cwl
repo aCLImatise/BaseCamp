@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/read_NVC.py.cwl
+id: ../../../read_NVC.py.cwl
 inputs:
 - id: input_file
   doc: Input file in BAM or SAM format.[required]

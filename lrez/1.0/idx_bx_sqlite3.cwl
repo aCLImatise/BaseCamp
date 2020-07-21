@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/idx_bx_sqlite3.py.cwl
+id: ../../../idx_bx_sqlite3.py.cwl
 inputs:
 - id: basic
   doc: barcoded Fastq file from reads obtained with longranger basic

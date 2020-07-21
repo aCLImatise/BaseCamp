@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hp_ph_parser.cwl
+id: ../../../hp_ph_parser.cwl
 inputs:
 - id: haplotypes_fa
   doc: Haplotype file created by PredictHaplo.

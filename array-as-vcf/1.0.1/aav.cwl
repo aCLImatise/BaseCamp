@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/aav.cwl
+id: ../../../aav.cwl
 inputs:
 - id: path
   doc: 'Path to array file (default: None)'

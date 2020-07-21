@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/draw_model_graph_output.cwl
+id: ../../../draw_model_graph_output.cwl
 inputs:
 - id: draw_model_graph
   doc: ''

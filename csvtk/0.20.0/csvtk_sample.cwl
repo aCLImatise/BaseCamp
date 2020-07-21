@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/csvtk_sample.cwl
+id: ../../../csvtk_sample.cwl
 inputs:
 - id: line_number
   doc: print line number as the first column ("n")

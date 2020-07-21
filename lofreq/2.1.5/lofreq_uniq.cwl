@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lofreq_uniq.cwl
+id: ../../../lofreq_uniq.cwl
 inputs:
 - id: _file_file
   doc: '| --vcf-in FILE      Input vcf file listing variants [- = stdin; gzip supported]'

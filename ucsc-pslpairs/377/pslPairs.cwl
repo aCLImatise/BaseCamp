@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslPairs.cwl
+id: ../../../pslPairs.cwl
 inputs:
 - id: max
   doc: '- maximum length of clone sequence (default=47000)'

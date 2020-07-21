@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mmseqs_mergeclusters.cwl
+id: ../../../mmseqs_mergeclusters.cwl
 inputs:
 - id: threads
   doc: 8               number of cores used for the computation (uses all cores by

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nw_duration.cwl
+id: ../../../nw_duration.cwl
 inputs:
 - id: bh_il
   doc: ''

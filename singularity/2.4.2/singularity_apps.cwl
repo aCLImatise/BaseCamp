@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/singularity_apps.cwl
+id: ../../../singularity_apps.cwl
 inputs:
 - id: singularity_appname
   doc: the name of the application

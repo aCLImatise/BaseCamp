@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DAM2fasta.cwl
+id: ../../../DAM2fasta.cwl
 inputs:
 - id: use_upper_case
   doc: ': Use upper case for DNA (default is lower case).'

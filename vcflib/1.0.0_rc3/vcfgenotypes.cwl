@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcfgenotypes.cwl
+id: ../../../vcfgenotypes.cwl
 inputs:
 - id: vcf_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BlibFilter.cwl
+id: ../../../BlibFilter.cwl
 inputs:
 - id: arg_sqlite_size
   doc: '[ --memory-cache ] arg (=250)  SQLite memory cache size in Megs.  Default  250M.'

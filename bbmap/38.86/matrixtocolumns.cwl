@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/matrixtocolumns.sh.cwl
+id: ../../../matrixtocolumns.sh.cwl
 inputs:
 - id: in_one
   doc: ''

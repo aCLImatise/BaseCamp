@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedparse_validateFormat_bedfile.cwl
+id: ../../../bedparse_validateFormat_bedfile.cwl
 inputs:
 - id: fix_separators
   doc: ''

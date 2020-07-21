@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gil2bin.cwl
+id: ../../../gil2bin.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

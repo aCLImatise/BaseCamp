@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snap_aligner_index.cwl
+id: ../../../snap_aligner_index.cwl
 inputs:
 - id: seed_size_default
   doc: 'Seed size (default: 20)'

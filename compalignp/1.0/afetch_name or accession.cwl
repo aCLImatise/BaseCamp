@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/afetch_name or accession.cwl
+id: ../../../afetch_name or accession.cwl
 inputs:
 - id: options
   doc: ''

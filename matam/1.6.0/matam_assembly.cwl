@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/matam_assembly.py.cwl
+id: ../../../matam_assembly.py.cwl
 inputs:
 - id: input_fast_q
   doc: Input reads file (fasta or fastq format)

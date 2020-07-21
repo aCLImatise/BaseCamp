@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_isoncorrect.cwl
+id: ../../../run_isoncorrect.cwl
 inputs:
 - id: fast_q_folder
   doc: 'Path to input fastq folder with reads in clusters (default: False)'

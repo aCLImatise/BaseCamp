@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ParseLog.py.cwl
+id: ../../../ParseLog.py.cwl
 inputs:
 - id: explicit_output_file
   doc: 'Explicit output file name(s). Note, this argument cannot be used with the

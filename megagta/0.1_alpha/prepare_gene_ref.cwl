@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prepare_gene_ref.sh.cwl
+id: ../../../prepare_gene_ref.sh.cwl
 inputs:
 - id: no
   doc: ''

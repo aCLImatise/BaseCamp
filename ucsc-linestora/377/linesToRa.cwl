@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/linesToRa.cwl
+id: ../../../linesToRa.cwl
 inputs:
 - id: in_dot_txt
   doc: ''

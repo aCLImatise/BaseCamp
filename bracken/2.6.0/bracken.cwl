@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bracken.cwl
+id: ../../../bracken.cwl
 inputs:
 - id: d
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bbduk.sh.cwl
+id: ../../../bbduk.sh.cwl
 inputs:
 - id: km_ers_dot
   doc: 1 means use all, 2 means use every other kmer, etc.

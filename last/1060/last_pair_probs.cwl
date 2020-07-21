@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/last_pair_probs.cwl
+id: ../../../last_pair_probs.cwl
 inputs:
 - id: rna
   doc: assume the reads are from potentially-spliced RNA

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TOBIAS_ScoreBigwig.cwl
+id: ../../../TOBIAS_ScoreBigwig.cwl
 inputs:
 - id: signal
   doc: A .bw file of ATAC-seq cutsite signal

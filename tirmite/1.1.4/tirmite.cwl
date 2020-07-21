@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tirmite.cwl
+id: ../../../tirmite.cwl
 inputs:
 - id: genome
   doc: Path to target genome that will be queried with HMMs.

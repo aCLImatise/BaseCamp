@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/countRead.cwl
+id: ../../../countRead.cwl
 inputs:
 - id: normalized_data_case
   doc: ': the normalized data for the case genome; This is is an required option'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nanopolish_merge.py.cwl
+id: ../../../nanopolish_merge.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

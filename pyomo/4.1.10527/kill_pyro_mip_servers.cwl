@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kill_pyro_mip_servers.cwl
+id: ../../../kill_pyro_mip_servers.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

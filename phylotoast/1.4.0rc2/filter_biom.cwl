@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_biom.py.cwl
+id: ../../../filter_biom.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

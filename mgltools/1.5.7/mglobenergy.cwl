@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mglobenergy.cwl
+id: ../../../mglobenergy.cwl
 inputs:
 - id: verbose_print_interactions
   doc: 'verbose: print out indivual energy interactions'

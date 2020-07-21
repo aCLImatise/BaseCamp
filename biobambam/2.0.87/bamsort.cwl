@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamsort.cwl
+id: ../../../bamsort.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

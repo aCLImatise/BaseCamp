@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mavis.cwl
+id: ../../../mavis.cwl
 inputs:
 - id: v
   doc: ''

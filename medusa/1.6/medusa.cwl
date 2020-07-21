@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/medusa.cwl
+id: ../../../medusa.cwl
 inputs:
 - id: optional_parameterthe_option_d
   doc: 'OPTIONAL PARAMETER;The option *-d* allows for the estimation of the distance

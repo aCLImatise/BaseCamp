@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jeprof.cwl
+id: ../../../jeprof.cwl
 inputs:
 - id: cum
   doc: Sort by cumulative data

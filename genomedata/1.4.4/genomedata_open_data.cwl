@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genomedata_open_data.cwl
+id: ../../../genomedata_open_data.cwl
 inputs:
 - id: track_names
   doc: tracknames to open

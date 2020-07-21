@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TEsorter.cwl
+id: ../../../TEsorter.cwl
 inputs:
 - id: hmm_database
   doc: the database used [default=rexdb]

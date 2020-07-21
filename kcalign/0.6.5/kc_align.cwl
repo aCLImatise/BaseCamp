@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kc_align.cwl
+id: ../../../kc_align.cwl
 inputs:
 - id: reference
   doc: Reference sequence

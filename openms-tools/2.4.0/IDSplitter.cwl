@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/IDSplitter.cwl
+id: ../../../IDSplitter.cwl
 inputs:
 - id: in
   doc: "*        Input file (data annotated with identifications) (valid formats:\

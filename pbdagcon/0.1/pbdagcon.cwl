@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pbdagcon.cwl
+id: ../../../pbdagcon.cwl
 inputs:
 - id: v
   doc: ''

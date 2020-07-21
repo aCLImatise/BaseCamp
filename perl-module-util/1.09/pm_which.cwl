@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pm_which.cwl
+id: ../../../pm_which.cwl
 inputs:
 - id: module
   doc: ''

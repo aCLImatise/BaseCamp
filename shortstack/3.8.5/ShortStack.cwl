@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ShortStack.cwl
+id: ../../../ShortStack.cwl
 inputs:
 - id: loci_file_dot
   doc: the value for --total_primaries to make a single locus run fast.

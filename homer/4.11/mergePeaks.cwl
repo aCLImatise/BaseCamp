@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mergePeaks.cwl
+id: ../../../mergePeaks.cwl
 inputs:
 - id: strand
   doc: '(Only merge/consider peaks on the same strand, default: either strand)'

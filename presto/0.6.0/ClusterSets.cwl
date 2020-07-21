@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ClusterSets.py_CLUSTER.cwl
+id: ../../../ClusterSets.py_CLUSTER.cwl
 inputs:
 - id: cluster_sets_do_tpy
   doc: ''

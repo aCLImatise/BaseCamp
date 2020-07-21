@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transform_marker_file.R.cwl
+id: ../../../transform_marker_file.R.cwl
 inputs:
 - id: input_marker_file
   doc: Path to the SCXA-style marker gene file in .txt format

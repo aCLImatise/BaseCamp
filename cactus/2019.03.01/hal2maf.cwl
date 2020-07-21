@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hal2maf.cwl
+id: ../../../hal2maf.cwl
 inputs:
 - id: hal_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nthll.cwl
+id: ../../../nthll.cwl
 inputs:
 - id: threads
   doc: use N parallel threads [1] (N>=2 should be used when input files are >=2)

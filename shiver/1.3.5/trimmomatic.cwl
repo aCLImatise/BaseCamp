@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/trimmomatic.cwl
+id: ../../../trimmomatic.cwl
 inputs:
 - id: version
   doc: ''

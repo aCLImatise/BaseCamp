@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pslSomeRecords.cwl
+id: ../../../pslSomeRecords.cwl
 inputs:
 - id: not
   doc: '- include psl if name is NOT in list'

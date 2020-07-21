@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mzrt_match.py.cwl
+id: ../../../mzrt_match.py.cwl
 inputs:
 - id: an_no_one
   doc: Out path for first file

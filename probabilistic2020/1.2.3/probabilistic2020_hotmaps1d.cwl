@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/probabilistic2020_hotmaps1d.cwl
+id: ../../../probabilistic2020_hotmaps1d.cwl
 inputs:
 - id: input
   doc: gene FASTA file from extract_gene_seq.py script

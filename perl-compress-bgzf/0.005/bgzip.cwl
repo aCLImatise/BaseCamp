@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bgzip.pl.cwl
+id: ../../../bgzip.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

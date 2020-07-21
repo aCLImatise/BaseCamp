@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vdb_unlock.2.cwl
+id: ../../../vdb_unlock.2.cwl
 inputs:
 - id: log_level
   doc: 'Logging level as number or enum string. One  of (fatal|sys|int|err|warn|info|debug)

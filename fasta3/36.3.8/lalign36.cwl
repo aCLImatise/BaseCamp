@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lalign36.cwl
+id: ../../../lalign36.cwl
 inputs:
 - id: compare_forward_strand
   doc: compare forward strand only

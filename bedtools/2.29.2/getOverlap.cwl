@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getOverlap.cwl
+id: ../../../getOverlap.cwl
 inputs:
 - id: input_file_use
   doc: Input file. Use "stdin" for pipes.

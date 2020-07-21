@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/vcf_phased_join.cwl
+id: ../../../vcf_phased_join.cwl
 inputs:
 - id: min_join_quality
   doc: Quality threshold for gluing the pre-phased blocks together [10]

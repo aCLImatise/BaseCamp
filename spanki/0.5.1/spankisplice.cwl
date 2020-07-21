@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spankisplice.cwl
+id: ../../../spankisplice.cwl
 inputs:
 - id: reference_gtf
   doc: Reference GTF

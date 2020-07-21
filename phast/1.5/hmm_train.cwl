@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hmm_train.cwl
+id: ../../../hmm_train.cwl
 inputs:
 - id: _outhmm
   doc: '[OPTIONS] > out.hmm '

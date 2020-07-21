@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/readlength.sh.cwl
+id: ../../../readlength.sh.cwl
 inputs:
 - id: in
   doc: ''

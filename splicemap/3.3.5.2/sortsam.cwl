@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sortsam.cwl
+id: ../../../sortsam.cwl
 inputs:
 - id: pos
   doc: -- Sort by chromosome position

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Initial_Conditions.py.cwl
+id: ../../../Initial_Conditions.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

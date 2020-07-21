@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nanonetcall.cwl
+id: ../../../nanonetcall.cwl
 inputs:
 - id: watch
   doc: 'Switch to watching folder, argument value used as timeout period. (default:

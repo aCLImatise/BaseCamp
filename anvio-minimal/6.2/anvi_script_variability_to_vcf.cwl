@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_script_variability_to_vcf.cwl
+id: ../../../anvi_script_variability_to_vcf.cwl
 inputs:
 - id: input
   doc: Filepath to the SNV table. This is the output from the anvi-gen-variability-profile

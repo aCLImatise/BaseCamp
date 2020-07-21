@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/khist.sh.cwl
+id: ../../../khist.sh.cwl
 inputs:
 - id: in
   doc: ''

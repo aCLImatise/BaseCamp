@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_epestfind.cwl
+id: ../../../_epestfind.cwl
 inputs:
 - id: window
   doc: integer    [10] Minimal distance between positively charged amino acids. (Integer

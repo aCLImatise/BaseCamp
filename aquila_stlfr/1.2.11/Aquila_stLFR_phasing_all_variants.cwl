@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Aquila_stLFR_phasing_all_variants.cwl
+id: ../../../Aquila_stLFR_phasing_all_variants.cwl
 inputs:
 - id: assembly_vcf
   doc: vcf file

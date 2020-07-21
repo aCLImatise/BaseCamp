@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/UnitTest_LV.cwl
+id: ../../../UnitTest_LV.cwl
 inputs:
 - id: list_tests
   doc: list all/matching test cases

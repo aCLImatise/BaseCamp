@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cmph.cwl
+id: ../../../cmph.cwl
 inputs:
 - id: var_0
   doc: ''

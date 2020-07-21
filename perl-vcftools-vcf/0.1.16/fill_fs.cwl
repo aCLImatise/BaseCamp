@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fill_fs.cwl
+id: ../../../fill_fs.cwl
 inputs:
 - id: bed_mask
   doc: Regions to mask (tabix indexed), multiple files can be given

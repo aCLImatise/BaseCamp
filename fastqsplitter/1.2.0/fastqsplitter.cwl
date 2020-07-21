@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastqsplitter.cwl
+id: ../../../fastqsplitter.cwl
 inputs:
 - id: input
   doc: The fastq file to be scattered.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hailctl_auth_login.cwl
+id: ../../../hailctl_auth_login.cwl
 inputs:
 - id: namespace
   doc: 'Specify namespace for auth server. (default: from deploy configuration)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/transabyss_merge_PATH.cwl
+id: ../../../transabyss_merge_PATH.cwl
 inputs:
 - id: mink
   doc: ''

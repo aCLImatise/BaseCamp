@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_label.cwl
+id: ../../../gsutil_label.cwl
 inputs:
 - id: add_update_label
   doc: Add or update a label with the specified key and value.

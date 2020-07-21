@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seer.cwl
+id: ../../../seer.cwl
 inputs:
 - id: arg_dsm_kmer
   doc: '[ --kmers ] arg       dsm kmer output file'

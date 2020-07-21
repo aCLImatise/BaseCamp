@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coverm_shell_completion.cwl
+id: ../../../coverm_shell_completion.cwl
 inputs:
 - id: output_file
   doc: '--shell <shell>                 [possible values: zsh, bash, fish, powershell,

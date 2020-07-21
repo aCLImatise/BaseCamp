@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/krakenuniq_download.cwl
+id: ../../../krakenuniq_download.cwl
 inputs:
 - id: folder_files_downloaded
   doc: "Folder to which the files are downloaded. Default: '.'"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pathway_pipeline.py.cwl
+id: ../../../pathway_pipeline.py.cwl
 inputs:
 - id: i
   doc: ''

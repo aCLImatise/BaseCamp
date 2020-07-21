@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/inhale.py.cwl
+id: ../../../inhale.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

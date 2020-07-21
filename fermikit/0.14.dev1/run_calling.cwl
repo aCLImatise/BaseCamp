@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_calling.cwl
+id: ../../../run_calling.cwl
 inputs:
 - id: prefix_output_files
   doc: prefix of output files [inferred from input]

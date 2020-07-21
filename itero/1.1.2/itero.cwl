@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/itero.cwl
+id: ../../../itero.cwl
 inputs:
 - id: v
   doc: ''

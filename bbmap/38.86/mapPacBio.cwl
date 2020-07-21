@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mapPacBio.sh.cwl
+id: ../../../mapPacBio.sh.cwl
 inputs:
 - id: best
   doc: (use the first best site)

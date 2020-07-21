@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/protxml_to_psql.rb.cwl
+id: ../../../protxml_to_psql.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

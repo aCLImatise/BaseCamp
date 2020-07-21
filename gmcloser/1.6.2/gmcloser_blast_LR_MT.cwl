@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gmcloser_blast_LR_MT.pl.cwl
+id: ../../../gmcloser_blast_LR_MT.pl.cwl
 inputs:
 - id: long_read
   doc: 'query sequence file is a fasta file of long reads (PacBio reads must be error-corrected)

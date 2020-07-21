@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/THESIAS.cwl
+id: ../../../THESIAS.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clustalw2fasta.cwl
+id: ../../../clustalw2fasta.cwl
 inputs:
 - id: alignment_file
   doc: ''

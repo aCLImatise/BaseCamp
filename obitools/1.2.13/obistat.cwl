@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/obistat.cwl
+id: ../../../obistat.cwl
 inputs:
 - id: category_attribute
   doc: Attribute used to categorize the sequence records.

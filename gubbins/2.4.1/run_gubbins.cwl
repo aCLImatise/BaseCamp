@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/run_gubbins.py.cwl
+id: ../../../run_gubbins.py.cwl
 inputs:
 - id: out_group
   doc: 'Outgroup name for rerooting. A list of comma separated names can be used if

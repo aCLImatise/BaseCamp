@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_gff_values.cwl
+id: ../../../filter_gff_values.cwl
 inputs:
 - id: str_eq
   doc: filter by custom key:value, if the argument is 'key:value' the annotation is

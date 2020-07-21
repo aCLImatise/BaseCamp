@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/db_recover.cwl
+id: ../../../db_recover.cwl
 inputs:
 - id: cef_vv
   doc: ''

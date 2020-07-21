@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/junctools.cwl
+id: ../../../junctools.cwl
 inputs:
 - id: this
   doc: ''

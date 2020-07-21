@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chewie.cwl
+id: ../../../chewie.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

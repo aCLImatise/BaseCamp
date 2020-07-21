@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hlso.cwl
+id: ../../../hlso.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

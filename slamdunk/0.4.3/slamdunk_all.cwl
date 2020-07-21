@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/slamdunk_all.cwl
+id: ../../../slamdunk_all.cwl
 inputs:
 - id: reference
   doc: Reference fasta file

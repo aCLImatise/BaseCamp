@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gargammel.cwl
+id: ../../../gargammel.cwl
 inputs:
 - id: comp
   doc: '[B,C,E]                          Composition of the final set in fraction  the

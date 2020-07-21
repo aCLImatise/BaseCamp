@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_export_table.cwl
+id: ../../../anvi_export_table.cwl
 inputs:
 - id: table
   doc: Table name to export.

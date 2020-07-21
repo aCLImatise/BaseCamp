@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/svtk_collect_pesr.cwl
+id: ../../../svtk_collect_pesr.cwl
 inputs:
 - id: index_dir
   doc: Directory of local BAM indexes if accessing a remote S3 bam.

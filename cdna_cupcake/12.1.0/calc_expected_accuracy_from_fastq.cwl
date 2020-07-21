@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/calc_expected_accuracy_from_fastq.py.cwl
+id: ../../../calc_expected_accuracy_from_fastq.py.cwl
 inputs:
 - id: qv_trim_five
   doc: "Ignore length on 5' for QV calculation (default: 100 bp)"

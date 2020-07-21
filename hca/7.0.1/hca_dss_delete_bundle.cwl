@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_delete_bundle.cwl
+id: ../../../hca_dss_delete_bundle.cwl
 inputs:
 - id: reason
   doc: User-friendly reason for the bundle or timestamp-specfic bundle deletion.

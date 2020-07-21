@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dnal.cwl
+id: ../../../dnal.cwl
 inputs:
 - id: dy_debug
   doc: drop into dynamite dp matrix debugger

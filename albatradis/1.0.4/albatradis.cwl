@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/albatradis.cwl
+id: ../../../albatradis.cwl
 inputs:
 - id: span_gaps
   doc: 'Span a gap if it is this multiple of a window size (default: 1)'

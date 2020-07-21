@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runquake.py.cwl
+id: ../../../runquake.py.cwl
 inputs:
 - id: parameters
   doc: ''

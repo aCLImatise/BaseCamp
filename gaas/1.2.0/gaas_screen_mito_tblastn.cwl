@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gaas_screen_mito_tblastn.pl.cwl
+id: ../../../gaas_screen_mito_tblastn.pl.cwl
 inputs:
 - id: tab
   doc: Input tabulated blast file -outfmt 6

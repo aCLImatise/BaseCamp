@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/wtlay.cwl
+id: ../../../wtlay.cwl
 inputs:
 - id: long_reads_files
   doc: Long reads sequences file(s), + *

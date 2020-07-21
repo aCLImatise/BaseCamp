@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clipping_profile.py.cwl
+id: ../../../clipping_profile.py.cwl
 inputs:
 - id: input_file
   doc: Alignment file in BAM or SAM format.

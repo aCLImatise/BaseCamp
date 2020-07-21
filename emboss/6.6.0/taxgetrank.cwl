@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/taxgetrank.cwl
+id: ../../../taxgetrank.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

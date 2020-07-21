@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fungalrelease.sh.cwl
+id: ../../../fungalrelease.sh.cwl
 inputs:
 - id: in
   doc: ''

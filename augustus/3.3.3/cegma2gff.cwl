@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cegma2gff.pl.cwl
+id: ../../../cegma2gff.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/singularity_inspect.cwl
+id: ../../../singularity_inspect.cwl
 inputs:
 - id: app
   doc: Inspect an application specified in the container

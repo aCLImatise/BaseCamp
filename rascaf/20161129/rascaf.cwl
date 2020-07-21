@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rascaf.cwl
+id: ../../../rascaf.cwl
 inputs:
 - id: required_path_coordinatesorted
   doc: '(required): the path to the coordinate-sorted alignment BAM file'

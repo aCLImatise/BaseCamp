@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/funannotate_species.cwl
+id: ../../../funannotate_species.cwl
 inputs:
 - id: s
   doc: ''

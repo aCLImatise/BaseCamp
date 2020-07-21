@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/filter_contig.cwl
+id: ../../../filter_contig.cwl
 inputs:
 - id: contig_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_script_gen_short_reads.cwl
+id: ../../../anvi_script_gen_short_reads.cwl
 inputs:
 - id: output_file_path
   doc: Output FASTA file path

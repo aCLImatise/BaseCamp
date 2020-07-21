@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/combineAndAnnotateReferences.pl.cwl
+id: ../../../combineAndAnnotateReferences.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

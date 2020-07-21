@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/snakemake.cwl
+id: ../../../snakemake.cwl
 inputs:
 - id: dry_run
   doc: 'Do not execute anything, and display what would be done. If you have a very

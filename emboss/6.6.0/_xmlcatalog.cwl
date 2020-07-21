@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_xmlcatalog.cwl
+id: ../../../_xmlcatalog.cwl
 inputs:
 - id: sgml
   doc: ': handle SGML Super catalogs for --add and --del'

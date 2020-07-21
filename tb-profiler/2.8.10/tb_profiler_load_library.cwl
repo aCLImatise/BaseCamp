@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tb_profiler_load_library.cwl
+id: ../../../tb_profiler_load_library.cwl
 inputs:
 - id: prefix
   doc: Prefix to the library files

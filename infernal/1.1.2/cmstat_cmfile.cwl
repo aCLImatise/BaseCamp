@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cmstat_cmfile.cwl
+id: ../../../cmstat_cmfile.cwl
 inputs:
 - id: options
   doc: ''

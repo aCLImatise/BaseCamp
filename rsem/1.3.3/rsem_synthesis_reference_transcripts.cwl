@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_synthesis_reference_transcripts.cwl
+id: ../../../rsem_synthesis_reference_transcripts.cwl
 inputs:
 - id: synthesis_ref
   doc: ''

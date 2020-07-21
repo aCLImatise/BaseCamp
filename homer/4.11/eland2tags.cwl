@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/eland2tags.pl.cwl
+id: ../../../eland2tags.pl.cwl
 inputs:
 - id: mis
   doc: <0,1,2> (Max mismatches, default=2)

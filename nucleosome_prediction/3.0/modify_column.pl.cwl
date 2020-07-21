@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/modify_column.pl.bak.cwl
+id: ../../../modify_column.pl.bak.cwl
 inputs:
 - id: column_modify_default
   doc: 'The column to modify (default: 0; specify multiple columns using commas) (zero-based)'

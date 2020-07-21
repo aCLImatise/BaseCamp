@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prophyle_plot_tree.py.cwl
+id: ../../../prophyle_plot_tree.py.cwl
 inputs:
 - id: attribute_print_node
   doc: attribute to print with each node (e.g., sci_name)

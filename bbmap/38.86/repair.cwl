@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/repair.sh.cwl
+id: ../../../repair.sh.cwl
 inputs:
 - id: names_dot
   doc: Uses much more memory than 'fint' mode.

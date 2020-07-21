@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splinter_scaffolds.pl.cwl
+id: ../../../splinter_scaffolds.pl.cwl
 inputs:
 - id: options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_bsfinder.cwl
+id: ../../../mb_bsfinder.cwl
 inputs:
 - id: threshold
   doc: set maximum p-value for site selection

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/freebayes.cwl
+id: ../../../freebayes.cwl
 inputs:
 - id: haplotype_length
   doc: aln.bam

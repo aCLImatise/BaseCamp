@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MosaikBuild.cwl
+id: ../../../MosaikBuild.cwl
 inputs:
 - id: fr
   doc: the FASTA reference sequences file

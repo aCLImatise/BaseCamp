@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/realpath.cwl
+id: ../../../realpath.cwl
 inputs:
 - id: canonicalize_existing
   doc: all components of the path must exist

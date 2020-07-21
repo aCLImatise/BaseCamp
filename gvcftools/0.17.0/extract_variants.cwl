@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_variants.cwl
+id: ../../../extract_variants.cwl
 inputs:
 - id: skip_header
   doc: Write gVCF output without header

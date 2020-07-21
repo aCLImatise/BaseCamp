@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sentieon_bwa_bwtupdate.cwl
+id: ../../../sentieon_bwa_bwtupdate.cwl
 inputs:
 - id: bwa
   doc: ''

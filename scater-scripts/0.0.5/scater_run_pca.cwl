@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scater_run_pca.R.cwl
+id: ../../../scater_run_pca.R.cwl
 inputs:
 - id: input_object_file
   doc: singleCellExperiment object containing expression values and experimental information.

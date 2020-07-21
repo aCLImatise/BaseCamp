@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_help.cwl
+id: ../../../anvi_help.cwl
 inputs:
 - id: requires
   doc: Restrict to programs that require this search term

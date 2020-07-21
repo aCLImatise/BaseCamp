@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/EvaluateBlastResults.pl.cwl
+id: ../../../EvaluateBlastResults.pl.cwl
 inputs:
 - id: diffs_caf
   doc: ''

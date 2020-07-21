@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DBdump.cwl
+id: ../../../DBdump.cwl
 inputs:
 - id: r_read_number
   doc: ': R #              - read number'

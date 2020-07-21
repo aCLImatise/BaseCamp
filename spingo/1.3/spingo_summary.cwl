@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/spingo_summary.py_RESULTS_FILE.cwl
+id: ../../../spingo_summary.py_RESULTS_FILE.cwl
 inputs:
 - id: level
   doc: ''

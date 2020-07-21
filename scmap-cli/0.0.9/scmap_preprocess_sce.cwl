@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/scmap_preprocess_sce.R.cwl
+id: ../../../scmap_preprocess_sce.R.cwl
 inputs:
 - id: input_object
   doc: Path to an SCE object in .rds format

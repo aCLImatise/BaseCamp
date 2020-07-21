@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findGapsInCoverageOfPacbios.cwl
+id: ../../../findGapsInCoverageOfPacbios.cwl
 inputs:
 - id: input_file
   doc: '*Pacbio read-super-read match file'

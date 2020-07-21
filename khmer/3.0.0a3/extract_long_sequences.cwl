@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/extract_long_sequences.py.cwl
+id: ../../../extract_long_sequences.py.cwl
 inputs:
 - id: info
   doc: print citation information

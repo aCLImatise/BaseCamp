@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/errhdr.cwl
+id: ../../../errhdr.cwl
 inputs:
 - id: codesubcode_tuples
   doc: code,subcode tuples

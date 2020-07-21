@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/msaconverter.cwl
+id: ../../../msaconverter.cwl
 inputs:
 - id: input_msa_file
   doc: input msa file

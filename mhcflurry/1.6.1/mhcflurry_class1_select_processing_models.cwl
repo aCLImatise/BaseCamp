@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mhcflurry_class1_select_processing_models.cwl
+id: ../../../mhcflurry_class1_select_processing_models.cwl
 inputs:
 - id: data
   doc: 'Model selection data CSV. Expected columns: peptide, hit, fold_0, ..., fold_N'

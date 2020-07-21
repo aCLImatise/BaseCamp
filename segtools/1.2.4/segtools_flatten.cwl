@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segtools_flatten.cwl
+id: ../../../segtools_flatten.cwl
 inputs:
 - id: quiet
   doc: Do not print diagnostic messages.

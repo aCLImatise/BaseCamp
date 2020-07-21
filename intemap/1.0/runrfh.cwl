@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runrfh.py.cwl
+id: ../../../runrfh.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

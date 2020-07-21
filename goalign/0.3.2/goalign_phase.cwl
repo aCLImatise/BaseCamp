@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_phase.cwl
+id: ../../../goalign_phase.cwl
 inputs:
 - id: aa_output
   doc: Output Met "phased" aa FASTA file (default "none")

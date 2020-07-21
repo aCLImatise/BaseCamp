@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/paralog_matchtable.pl.cwl
+id: ../../../paralog_matchtable.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/EdgeInfo.cwl
+id: ../../../EdgeInfo.cwl
 inputs:
 - id: arg_one
   doc: ''

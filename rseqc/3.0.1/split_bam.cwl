@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/split_bam.py.cwl
+id: ../../../split_bam.py.cwl
 inputs:
 - id: input_file
   doc: Alignment file in BAM or SAM format. BAM file should be sorted and indexed.

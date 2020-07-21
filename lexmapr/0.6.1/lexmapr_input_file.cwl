@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/lexmapr_input_file.cwl
+id: ../../../lexmapr_input_file.cwl
 inputs:
 - id: o
   doc: ''

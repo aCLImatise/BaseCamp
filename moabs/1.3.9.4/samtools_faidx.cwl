@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools_faidx.cwl
+id: ../../../samtools_faidx.cwl
 inputs:
 - id: fa_idx
   doc: ''

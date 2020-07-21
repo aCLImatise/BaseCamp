@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ffreqboot.cwl
+id: ../../../ffreqboot.cwl
 inputs:
 - id: weights
   doc: properties Weights file

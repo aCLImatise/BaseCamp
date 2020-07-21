@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/motif_fit_B.cwl
+id: ../../../motif_fit_B.cwl
 inputs:
 - id: i
   doc: ''

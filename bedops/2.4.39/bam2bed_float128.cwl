@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bam2bed_float128.cwl
+id: ../../../bam2bed_float128.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

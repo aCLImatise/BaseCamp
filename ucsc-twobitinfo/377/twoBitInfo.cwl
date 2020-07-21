@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/twoBitInfo.cwl
+id: ../../../twoBitInfo.cwl
 inputs:
 - id: n_bed
   doc: instead of seq sizes, output BED records that define  areas with N's in sequence

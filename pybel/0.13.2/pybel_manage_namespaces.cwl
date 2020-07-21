@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pybel_manage_namespaces.cwl
+id: ../../../pybel_manage_namespaces.cwl
 inputs:
 - id: drop
   doc: Drop a namespace by URL.

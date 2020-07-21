@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/coefficient_variation_flags.py.cwl
+id: ../../../coefficient_variation_flags.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/agat_convert_mfannot2gff.pl.cwl
+id: ../../../agat_convert_mfannot2gff.pl.cwl
 inputs:
 - id: m_fan_not
   doc: The mfannot input file

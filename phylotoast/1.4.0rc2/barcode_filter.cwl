@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/barcode_filter.py.cwl
+id: ../../../barcode_filter.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

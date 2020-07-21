@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_logout.cwl
+id: ../../../hca_dss_logout.cwl
 inputs:
 - id: log_level
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_alimask_msafile.cwl
+id: ../../../ssu_esl_alimask_msafile.cwl
 inputs:
 - id: mask_file
   doc: ''

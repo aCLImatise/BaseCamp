@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/chromGraphFromBin.cwl
+id: ../../../chromGraphFromBin.cwl
 inputs:
 - id: chrom
   doc: '- restrict output to single chromosome'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MappingQC.cwl
+id: ../../../MappingQC.cwl
 inputs:
 - id: in
   doc: Input BAM file.

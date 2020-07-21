@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/uri_unescape.pl.cwl
+id: ../../../uri_unescape.pl.cwl
 inputs:
 - id: no
   doc: ''

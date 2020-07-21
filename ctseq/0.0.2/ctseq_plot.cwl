@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ctseq_plot.cwl
+id: ../../../ctseq_plot.cwl
 inputs:
 - id: dir
   doc: Path to directory where you have your plot input files. If no '--dir' is specified,

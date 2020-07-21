@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/anvi_gen_fixation_index_matrix.cwl
+id: ../../../anvi_gen_fixation_index_matrix.cwl
 inputs:
 - id: profile_db
   doc: Anvi'o profile database

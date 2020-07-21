@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/genome_complexity_fast.cwl
+id: ../../../genome_complexity_fast.cwl
 inputs:
 - id: fasta_file_evaluate
   doc: fasta file to evaluate

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kitsch.cwl
+id: ../../../kitsch.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

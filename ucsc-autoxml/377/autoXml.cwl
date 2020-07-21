@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/autoXml.cwl
+id: ../../../autoXml.cwl
 inputs:
 - id: text_field
   doc: what to name text between start/end tags. Default 'text'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/combineResults.pl.cwl
+id: ../../../combineResults.pl.cwl
 inputs:
 - id: x_ann_dot_groups
   doc: ''

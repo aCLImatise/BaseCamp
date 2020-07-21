@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/slicedimage.cwl
+id: ../../../slicedimage.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

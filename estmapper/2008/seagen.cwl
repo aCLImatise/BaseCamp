@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/seagen.cwl
+id: ../../../seagen.cwl
 inputs:
 - id: num_threads
   doc: Use n search threads

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tigmint.cwl
+id: ../../../tigmint.cwl
 inputs:
 - id: ignored_for_compatibility
   doc: Ignored for compatibility.

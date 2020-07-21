@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/kmer_cov_plot.cwl
+id: ../../../kmer_cov_plot.cwl
 inputs:
 - id: tabular
   doc: Output the information as one read per line, as the FASTA/FASTQ tag followed

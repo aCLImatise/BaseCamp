@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ngd.cwl
+id: ../../../ngd.cwl
 inputs:
 - id: section
   doc: 'NCBI section to download (default: refseq)'

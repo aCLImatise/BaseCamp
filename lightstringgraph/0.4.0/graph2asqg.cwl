@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/graph2asqg.cwl
+id: ../../../graph2asqg.cwl
 inputs:
 - id: b
   doc: '# (required)'

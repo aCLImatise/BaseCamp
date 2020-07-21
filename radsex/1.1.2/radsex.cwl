@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/radsex.cwl
+id: ../../../radsex.cwl
 inputs:
 - id: depth
   doc: Compute number of retained reads for each individual

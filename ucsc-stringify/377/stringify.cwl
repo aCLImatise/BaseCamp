@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stringify.cwl
+id: ../../../stringify.cwl
 inputs:
 - id: var
   doc: '- create a variable with the specified name containing the string.'

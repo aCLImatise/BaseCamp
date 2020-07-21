@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/DaisySuite_template.cwl
+id: ../../../DaisySuite_template.cwl
 inputs:
 - id: archive
   doc: same as -dR --preserve=all

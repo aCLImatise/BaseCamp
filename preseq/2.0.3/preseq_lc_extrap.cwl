@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/preseq_lc_extrap.cwl
+id: ../../../preseq_lc_extrap.cwl
 inputs:
 - id: output
   doc: 'yield output file (default: stdout) '

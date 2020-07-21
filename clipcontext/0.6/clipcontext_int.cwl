@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/clipcontext_int.cwl
+id: ../../../clipcontext_int.cwl
 inputs:
 - id: min_intron_ol
   doc: 'Minimum intron overlap of a site to be reported as intron overlapping (intersectBed

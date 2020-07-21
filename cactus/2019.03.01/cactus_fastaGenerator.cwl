@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cactus_fastaGenerator.cwl
+id: ../../../cactus_fastaGenerator.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sortgrcd.cwl
+id: ../../../sortgrcd.cwl
 inputs:
 - id: cn
   doc: ':    Minimum % of coverage (0-100)'

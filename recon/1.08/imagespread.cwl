@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/imagespread.cwl
+id: ../../../imagespread.cwl
 inputs:
 - id: seq_name_list
   doc: ''

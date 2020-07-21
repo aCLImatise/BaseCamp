@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/nebulizer_ping.cwl
+id: ../../../nebulizer_ping.cwl
 inputs:
 - id: count
   doc: if set then stop after sending COUNT requests (default is to send requests

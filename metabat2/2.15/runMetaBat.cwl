@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runMetaBat.sh.cwl
+id: ../../../runMetaBat.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

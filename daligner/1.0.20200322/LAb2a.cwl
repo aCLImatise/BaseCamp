@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LAb2a.cwl
+id: ../../../LAb2a.cwl
 inputs:
 - id: la_a_two_b
   doc: ''

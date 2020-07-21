@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/epydoc.cwl
+id: ../../../epydoc.cwl
 inputs:
 - id: html
   doc: Write HTML output.

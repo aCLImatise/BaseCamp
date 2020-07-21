@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bwjoin.cwl
+id: ../../../bwjoin.cwl
 inputs:
 - id: f
   doc: ''

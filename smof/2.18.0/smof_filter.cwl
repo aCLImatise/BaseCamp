@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/smof_filter.cwl
+id: ../../../smof_filter.cwl
 inputs:
 - id: shorter_than
   doc: keep only if length is less than or equal to LEN

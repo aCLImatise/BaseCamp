@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fastx_clipper.cwl
+id: ../../../fastx_clipper.cwl
 inputs:
 - id: a
   doc: ''

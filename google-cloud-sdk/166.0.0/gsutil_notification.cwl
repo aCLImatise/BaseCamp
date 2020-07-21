@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gsutil_notification.cwl
+id: ../../../gsutil_notification.cwl
 inputs:
 - id: specify_type_filter
   doc: 'Specify an event type filter for this notification config. Cloud Storage will

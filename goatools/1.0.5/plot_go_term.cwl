@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/plot_go_term.py.cwl
+id: ../../../plot_go_term.py.cwl
 inputs:
 - id: description
   doc: write term descriptions to stdout from the obo file specified in args

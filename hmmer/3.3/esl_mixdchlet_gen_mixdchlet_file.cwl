@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_mixdchlet_gen_mixdchlet_file.cwl
+id: ../../../esl_mixdchlet_gen_mixdchlet_file.cwl
 inputs:
 - id: options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/adVNTR_Filtering.cwl
+id: ../../../adVNTR_Filtering.cwl
 inputs:
 - id: sequences_dot_fa
   doc: ''

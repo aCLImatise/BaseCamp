@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ucsc_gene_table_to_intervals.py.cwl
+id: ../../../ucsc_gene_table_to_intervals.py.cwl
 inputs:
 - id: region
   doc: 'Limit to region: one of coding, utr3, utr5, transcribed [default]'

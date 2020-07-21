@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/findKnownMotifs.pl.cwl
+id: ../../../findKnownMotifs.pl.cwl
 inputs:
 - id: known_motif_file
   doc: '(Known motif file, default: /tmp/tmpyjsfxisi/share/homer-4.11-1/.//data/knownTFs/known.motifs)'

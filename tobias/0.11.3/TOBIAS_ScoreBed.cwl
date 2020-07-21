@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TOBIAS_ScoreBed.cwl
+id: ../../../TOBIAS_ScoreBed.cwl
 inputs:
 - id: bed
   doc: Sites to score (.bed file)

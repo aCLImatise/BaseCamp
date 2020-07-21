@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pubmlst_list.cwl
+id: ../../../pubmlst_list.cwl
 inputs:
 - id: pattern
   doc: regex pattern to filter scheme names

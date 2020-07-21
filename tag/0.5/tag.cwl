@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/tag.cwl
+id: ../../../tag.cwl
 inputs:
 - id: v
   doc: ''

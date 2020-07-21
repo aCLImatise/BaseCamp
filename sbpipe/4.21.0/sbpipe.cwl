@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sbpipe.cwl
+id: ../../../sbpipe.cwl
 inputs:
 - id: create_project
   doc: create a project structure

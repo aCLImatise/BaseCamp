@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/matchingAndOrderingTests.cwl
+id: ../../../matchingAndOrderingTests.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

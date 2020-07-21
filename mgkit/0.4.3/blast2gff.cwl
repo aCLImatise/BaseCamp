@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blast2gff.cwl
+id: ../../../blast2gff.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

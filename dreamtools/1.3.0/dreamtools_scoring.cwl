@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/dreamtools_scoring.cwl
+id: ../../../dreamtools_scoring.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

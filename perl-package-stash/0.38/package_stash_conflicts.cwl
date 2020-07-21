@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/package_stash_conflicts.cwl
+id: ../../../package_stash_conflicts.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

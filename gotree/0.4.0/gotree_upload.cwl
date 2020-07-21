@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/gotree_upload.cwl
+id: ../../../gotree_upload.cwl
 inputs:
 - id: input
   doc: Input tree (default "stdin")

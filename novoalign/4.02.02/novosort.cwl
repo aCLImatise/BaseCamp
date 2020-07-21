@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/novosort.cwl
+id: ../../../novosort.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

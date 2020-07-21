@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/ipcress.cwl
+id: ../../../ipcress.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

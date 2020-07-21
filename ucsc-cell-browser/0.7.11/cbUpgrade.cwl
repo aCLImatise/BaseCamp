@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cbUpgrade.cwl
+id: ../../../cbUpgrade.cwl
 inputs:
 - id: debug
   doc: show debug messages

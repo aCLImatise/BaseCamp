@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/LuciphorAdapter.cwl
+id: ../../../LuciphorAdapter.cwl
 inputs:
 - id: in
   doc: "*                        Input spectrum file (valid formats: 'mzML')"

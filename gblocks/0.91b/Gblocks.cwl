@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/Gblocks.cwl
+id: ../../../Gblocks.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

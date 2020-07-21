@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/randomBed.cwl
+id: ../../../randomBed.cwl
 inputs:
 - id: length_generate_default
   doc: The length of the intervals to generate. - Default = 100. - (INTEGER)

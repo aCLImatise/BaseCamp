@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_get_events.cwl
+id: ../../../hca_dss_get_events.cwl
 inputs:
 - id: from_date
   doc: Timestamp to begin replaying events, in DSS_VERSION format.  If this is not

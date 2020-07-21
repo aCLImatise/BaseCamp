@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/segway_layer.cwl
+id: ../../../segway_layer.cwl
 inputs:
 - id: big_bed
   doc: specify bigBed output file

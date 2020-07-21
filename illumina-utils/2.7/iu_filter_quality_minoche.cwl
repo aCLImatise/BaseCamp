@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/iu_filter_quality_minoche.cwl
+id: ../../../iu_filter_quality_minoche.cwl
 inputs:
 - id: minimum_highquality_read
   doc: 'Minimum high-quality read length (default: 0.75)'

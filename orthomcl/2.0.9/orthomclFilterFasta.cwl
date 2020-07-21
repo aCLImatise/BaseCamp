@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/orthomclFilterFasta.cwl
+id: ../../../orthomclFilterFasta.cwl
 inputs:
 - id: input_dir
   doc: ''

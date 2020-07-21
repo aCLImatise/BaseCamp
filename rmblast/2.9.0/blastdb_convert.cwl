@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/blastdb_convert.cwl
+id: ../../../blastdb_convert.cwl
 inputs:
 - id: out
   doc: '[-logfile File_Name] [-version]'

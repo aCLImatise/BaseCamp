@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/opal_workflow.py.cwl
+id: ../../../opal_workflow.py.cwl
 inputs:
 - id: input_dir
   doc: Input directory containing gzipped FASTQ files

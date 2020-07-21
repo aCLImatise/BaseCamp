@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/postCAqc.cwl
+id: ../../../postCAqc.cwl
 inputs:
 - id: file_d_dstmap
   doc: (.inserts file) and -d (dstmap) allow to specify a map from the library ids

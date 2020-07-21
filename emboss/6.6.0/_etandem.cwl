@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/_etandem.cwl
+id: ../../../_etandem.cwl
 inputs:
 - id: min_repeat
   doc: integer    [10] Minimum repeat size (Integer, 2 or higher)

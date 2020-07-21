@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/join.cwl
+id: ../../../join.cwl
 inputs:
 - id: also_print_lines
   doc: also print unpairable lines from file FILENUM, where FILENUM is 1 or 2, corresponding

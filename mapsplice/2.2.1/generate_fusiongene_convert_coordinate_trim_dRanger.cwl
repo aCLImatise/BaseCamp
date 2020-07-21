@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/generate_fusiongene_convert_coordinate_trim_dRanger.cwl
+id: ../../../generate_fusiongene_convert_coordinate_trim_dRanger.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

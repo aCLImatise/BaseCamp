@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mhcflurry_class1_select_allele_specific_models.cwl
+id: ../../../mhcflurry_class1_select_allele_specific_models.cwl
 inputs:
 - id: alleles_select_models
   doc: Alleles to select models for. If not specified, all alleles with enough measurements

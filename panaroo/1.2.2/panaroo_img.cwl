@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/panaroo_img.cwl
+id: ../../../panaroo_img.cwl
 inputs:
 - id: tree
   doc: A dated phylogeny.

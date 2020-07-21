@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/runph.cwl
+id: ../../../runph.cwl
 inputs:
 - id: model_directory
   doc: The directory in which all model (reference and scenario) definitions are stored.

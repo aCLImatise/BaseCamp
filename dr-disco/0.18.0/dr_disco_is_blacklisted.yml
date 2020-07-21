@@ -1,0 +1,393 @@
+&id003 !Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: POS1
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: POS2
+  optional: true
+named:
+- !Flag
+  description: Blacklist these region-to-region junctions (custom format, see files
+    in ./share/)
+  synonyms:
+  - --blacklist-junctions
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+command:
+- dr-disco
+- is-blacklisted
+parent: &id001 !Command
+  positional: []
+  named: []
+  command:
+  - dr-disco
+  parent:
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: REGION1
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: REGION2
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: BAM_INPUT_FILE
+      optional: false
+    named: []
+    command:
+    - dr-disco
+    - bam-extract
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: dr-disco bam-extract [OPTIONS] REGION1 REGION2 BAM_INPUT_FILE\n\
+      \                            BAM_OUTPUT_FILE\n\nOptions:\n  --help  Show this\
+      \ message and exit.\n"
+    generated_using: &id002
+    - --help
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: TABLE_INPUT_FILE
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: TABLE_OUTPUT_FILE
+      optional: false
+    named:
+    - !Flag
+      description: Only return results marked as 'valid'
+      synonyms:
+      - --only-valid
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Blacklist these regions (BED file)
+      synonyms:
+      - --blacklist-regions
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Blacklist these region-to-region junctions (custom format, see
+        files in ./share/)
+      synonyms:
+      - --blacklist-junctions
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Minimum alignment length on each side of the junction. May need
+        to be set to smaller values for read lengths smaller than 75bp. Larger values
+        are more stringent. [default=50]
+      synonyms:
+      - --min-chim-overhang
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Lowers the threshold for the relative amount of mismatches, as
+        often found in FFPE material. Note that enabling this option will consequently
+        result in more false positives.
+      synonyms:
+      - --ffpe
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - dr-disco
+    - classify
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: dr-disco classify [OPTIONS] TABLE_INPUT_FILE TABLE_OUTPUT_FILE\n\
+      \nOptions:\n  --only-valid                 Only return results marked as 'valid'\n\
+      \  --blacklist-regions TEXT     Blacklist these regions (BED file)\n  --blacklist-junctions\
+      \ TEXT   Blacklist these region-to-region junctions\n                      \
+      \         (custom format, see files in ./share/)\n\n  --min-chim-overhang INTEGER\
+      \  Minimum alignment length on each side of the\n                          \
+      \     junction. May need to be set to smaller values\n                     \
+      \          for read lengths smaller than 75bp. Larger\n                    \
+      \           values are more stringent. [default=50]\n\n  --ffpe            \
+      \           Lowers the threshold for the relative amount of\n              \
+      \                 mismatches, as often found in FFPE material.\n           \
+      \                    Note that enabling this option will\n                 \
+      \              consequently result in more false positives.\n\n  --help    \
+      \                   Show this message and exit.\n"
+    generated_using: *id002
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: BAM_INPUT_FILE
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: OUTPUT_FILE
+      optional: false
+    named:
+    - !Flag
+      description: Minimal score to initiate pulling sub-graphs (larger numbers boost
+        performance but result in suboptimal results) [default=8]
+      synonyms:
+      - -m
+      - --min-e-score
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    command:
+    - dr-disco
+    - detect
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: dr-disco detect [OPTIONS] BAM_INPUT_FILE OUTPUT_FILE\n\nOptions:\n\
+      \  -m, --min-e-score INTEGER  Minimal score to initiate pulling sub-graphs\n\
+      \                             (larger numbers boost performance but result in\n\
+      \                             suboptimal results) [default=8]\n\n  --help  \
+      \                   Show this message and exit.\n"
+    generated_using: *id002
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: INPUT_ALIGNMENT_FILE
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: OUTPUT_ALIGNMENT_FILE
+      optional: false
+    named:
+    - !Flag
+      description: 'Path in which temp files are stored (default: /tmp)'
+      synonyms:
+      - -t
+      - --temp-dir
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    command:
+    - dr-disco
+    - fix
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: dr-disco fix [OPTIONS] INPUT_ALIGNMENT_FILE OUTPUT_ALIGNMENT_FILE\n\
+      \nOptions:\n  -t, --temp-dir PATH  Path in which temp files are stored (default:\
+      \ /tmp)\n  --help               Show this message and exit.\n"
+    generated_using: *id002
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: TABLE_INPUT_FILE
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: TABLE_OUTPUT_FILE
+      optional: false
+    named:
+    - !Flag
+      description: Use gene annotation for estimating fusion genes and improve classification
+        of exonic (GTF file)
+      synonyms:
+      - --gtf
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Use reference sequences to estimate edit distances to splice junction
+        motifs (FASTA file)
+      synonyms:
+      - --fasta
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    command:
+    - dr-disco
+    - integrate
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: dr-disco integrate [OPTIONS] TABLE_INPUT_FILE TABLE_OUTPUT_FILE\n\
+      \nOptions:\n  --gtf TEXT    Use gene annotation for estimating fusion genes\
+      \ and improve\n                classification of exonic (GTF file)\n\n  --fasta\
+      \ TEXT  Use reference sequences to estimate edit distances to splice\n     \
+      \           junction motifs (FASTA file)\n\n  --help        Show this message\
+      \ and exit.\n"
+    generated_using: *id002
+  - *id003
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: REGION
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: FASTA_INPUT_FILE
+      optional: false
+    named: []
+    command:
+    - dr-disco
+    - logo-sequence
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: dr-disco logo-sequence [OPTIONS] REGION FASTA_INPUT_FILE\n\
+      \                              FASTA_OUTPUT_FILE_NEGATIVE\n                \
+      \              FASTA_OUTPUT_FILE_POSITIVE\n\nOptions:\n  -n, --offset-negative\
+      \ INTEGER\n  -p, --offset-positive INTEGER\n  --help                       \
+      \  Show this message and exit.\n"
+    generated_using: *id002
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: INPUT_ALIGNMENT_FILE
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: OUTPUT_ALIGNMENT_FILE
+      optional: false
+    named:
+    - !Flag
+      description: 'Path in which temp files are stored (default: /tmp)'
+      synonyms:
+      - -t
+      - --temp-dir
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    command:
+    - dr-disco
+    - unfix
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: dr-disco unfix [OPTIONS] INPUT_ALIGNMENT_FILE OUTPUT_ALIGNMENT_FILE\n\
+      \nOptions:\n  -t, --temp-dir PATH  Path in which temp files are stored (default:\
+      \ /tmp)\n  --help               Show this message and exit.\n"
+    generated_using: *id002
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show the version and exit.
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+  help_text: "Usage: dr-disco [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  --version\
+    \  Show the version and exit.\n  --help     Show this message and exit.\n\nCommands:\n\
+    \  bam-extract     Extract reads from two chromosomal positions (and also take\n\
+    \                  the mates with the same name) - regions are in the format\n\
+    \                  chr1:123-546\n\n  classify        Classifies between true and\
+    \ false positivies, without\n                  rerunning a whole dataset.\n\n\
+    \  detect          Detects and interprets intronic break points\n  fix       \
+    \      Fixes chimeric SAM/BAM alignment produced by RNA-STAR\n  integrate    \
+    \   Maps junctions back together that are likely to correspond\n             \
+    \     to the same fusion event.\n\n  is-blacklisted  Quickly check whether a certain\
+    \ region or junction is\n                  blacklisted.\n\n  logo-sequence   Extracts\
+    \ the genomic sequence before (negative file) or\n                  after (positive\
+    \ file) a given genomic location, in order to\n                  be used for creating\
+    \ sequence logo's.\n\n  unfix           Tries to restore the BAM file\n"
+  generated_using: *id002
+subcommands: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: dr-disco is-blacklisted [OPTIONS] POS1 [POS2]\n\n  When only a\
+  \ single position is given, only matches with blacklisted\n  regions from blacklist_regions\
+  \ will be reported.\n\n  When both POS1 and POS2 are provided, also blacklisted\
+  \ junctions between\n  POS1 and POS2 as provided in the blacklist_junctions file\
+  \ will be\n  reported.\n\n  Positions need to be formated as chr:pos: chr1:1235\
+  \ or chr1:12,345\n\n  Positions can be made strand specific by adding them between\
+  \ curly\n  brackets: chr1:12,345(+) or chr2:12345(-)\n\nOptions:\n  --blacklist-regions\
+  \ TEXT\n  --blacklist-junctions TEXT  Blacklist these region-to-region junctions\n\
+  \                              (custom format, see files in ./share/)\n\n  --help\
+  \                      Show this message and exit.\n"
+generated_using: *id002

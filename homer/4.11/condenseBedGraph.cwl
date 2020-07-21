@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/condenseBedGraph.pl.cwl
+id: ../../../condenseBedGraph.pl.cwl
 inputs:
 - id: log
   doc: (output log2)

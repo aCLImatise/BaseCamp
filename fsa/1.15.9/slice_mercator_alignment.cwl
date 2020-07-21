@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/slice_mercator_alignment.cwl
+id: ../../../slice_mercator_alignment.cwl
 inputs:
 - id: data
   doc: path to map, genome and alignment files

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/edd_ip_bam.cwl
+id: ../../../edd_ip_bam.cwl
 inputs:
 - id: bin_size
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/sambamba_depth.cwl
+id: ../../../sambamba_depth.cwl
 inputs:
 - id: filter
   doc: set custom filter for alignments; the default value is 'mapping_quality > 0

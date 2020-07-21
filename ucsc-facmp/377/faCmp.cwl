@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/faCmp.cwl
+id: ../../../faCmp.cwl
 inputs:
 - id: soft_mask
   doc: '- use the soft masking information during the compare Differences will be

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/falconsense.cwl
+id: ../../../falconsense.cwl
 inputs:
 - id: mandatory_path_to
   doc: mandatory path to seqStore

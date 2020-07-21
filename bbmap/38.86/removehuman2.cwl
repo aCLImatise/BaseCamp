@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/removehuman2.sh.cwl
+id: ../../../removehuman2.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

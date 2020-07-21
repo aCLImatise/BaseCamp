@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/esl_mixdchlet_score.cwl
+id: ../../../esl_mixdchlet_score.cwl
 inputs:
 - id: options
   doc: ''

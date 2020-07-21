@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/TOBIAS_SubsampleBam.cwl
+id: ../../../TOBIAS_SubsampleBam.cwl
 inputs:
 - id: bam
   doc: Path to .bam-file

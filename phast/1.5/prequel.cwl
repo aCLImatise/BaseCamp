@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/prequel.cwl
+id: ../../../prequel.cwl
 inputs:
 - id: refseq
   doc: (for use with --msa-format MAF) Read the complete text of the reference sequence

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_table2fasta.cwl
+id: ../../../mb_table2fasta.cwl
 inputs:
 - id: flank_bp
   doc: ''

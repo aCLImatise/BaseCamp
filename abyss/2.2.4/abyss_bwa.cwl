@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/abyss_bwa.cwl
+id: ../../../abyss_bwa.cwl
 inputs:
 - id: option
   doc: ''

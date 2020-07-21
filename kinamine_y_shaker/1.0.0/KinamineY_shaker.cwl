@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/KinamineY_shaker.cwl
+id: ../../../KinamineY_shaker.cwl
 inputs:
 - id: jar
   doc: ''

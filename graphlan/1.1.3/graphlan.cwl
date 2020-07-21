@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/graphlan.py.cwl
+id: ../../../graphlan.py.cwl
 inputs:
 - id: format
   doc: "['output_image_format'] set the format of the output image (default none meaning\

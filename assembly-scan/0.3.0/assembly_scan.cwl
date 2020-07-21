@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/assembly_scan.cwl
+id: ../../../assembly_scan.cwl
 inputs:
 - id: assembly_summary_do_tpy
   doc: ''

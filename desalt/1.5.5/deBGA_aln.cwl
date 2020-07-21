@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/deBGA_aln.cwl
+id: ../../../deBGA_aln.cwl
 inputs:
 - id: index_route
   doc: ''

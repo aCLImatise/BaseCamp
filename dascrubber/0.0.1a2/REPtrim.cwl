@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/REPtrim.cwl
+id: ../../../REPtrim.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

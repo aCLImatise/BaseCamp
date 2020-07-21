@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/goalign_addid.cwl
+id: ../../../goalign_addid.cwl
 inputs:
 - id: name
   doc: String to add to sequence names (default "none")

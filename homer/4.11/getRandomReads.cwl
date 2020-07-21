@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/getRandomReads.pl.cwl
+id: ../../../getRandomReads.pl.cwl
 inputs:
 - id: tag_directory
   doc: ''

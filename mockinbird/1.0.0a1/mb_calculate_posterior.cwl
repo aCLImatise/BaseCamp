@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mb_calculate_posterior.cwl
+id: ../../../mb_calculate_posterior.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

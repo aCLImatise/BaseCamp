@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bedClip.cwl
+id: ../../../bedClip.cwl
 inputs:
 - id: truncate
   doc: '- truncate items that span ends of chrom instead of the default of dropping

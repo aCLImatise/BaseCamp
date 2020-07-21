@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/BtToxin_scanner.cwl
+id: ../../../BtToxin_scanner.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

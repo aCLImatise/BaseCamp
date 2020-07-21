@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/huge_split.pl.cwl
+id: ../../../huge_split.pl.cwl
 inputs:
 - id: split
   doc: 'Split the bigram file into smaller files. Every  smaller file contains N bigrams.

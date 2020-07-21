@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/breadth_depth.py.cwl
+id: ../../../breadth_depth.py.cwl
 inputs:
 - id: id__contig
   doc: ID, --contig REFERENCE ID Focus on a subset of references in the BAM file.

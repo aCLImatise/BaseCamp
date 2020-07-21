@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hca_dss_patch_bundle.cwl
+id: ../../../hca_dss_patch_bundle.cwl
 inputs:
 - id: add_files
   doc: List of new files to add to the bundle. File names must be unique.

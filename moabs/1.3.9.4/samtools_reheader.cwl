@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/samtools_reheader.cwl
+id: ../../../samtools_reheader.cwl
 inputs:
 - id: in_dot_header_dots_am
   doc: ''

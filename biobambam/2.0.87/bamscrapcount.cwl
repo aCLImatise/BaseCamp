@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bamscrapcount.cwl
+id: ../../../bamscrapcount.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/grf_alignment.cwl
+id: ../../../grf_alignment.cwl
 inputs:
 - id: type
   doc: ''

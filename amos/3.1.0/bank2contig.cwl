@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bank2contig.cwl
+id: ../../../bank2contig.cwl
 inputs:
 - id: display_compatible_version
   doc: Display the compatible bank version

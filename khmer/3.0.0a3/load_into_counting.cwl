@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/load_into_counting.py.cwl
+id: ../../../load_into_counting.py.cwl
 inputs:
 - id: info
   doc: ''

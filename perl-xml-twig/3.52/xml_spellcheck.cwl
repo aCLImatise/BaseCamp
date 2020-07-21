@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/xml_spellcheck.cwl
+id: ../../../xml_spellcheck.cwl
 inputs:
 - id: conf
   doc: Gets the options from a configuration file. NOT IMPLEMENTED YET.

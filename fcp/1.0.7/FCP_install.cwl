@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/FCP_install.py.cwl
+id: ../../../FCP_install.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

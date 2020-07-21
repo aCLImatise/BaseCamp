@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/omero_config_remove.cwl
+id: ../../../omero_config_remove.cwl
 inputs:
 - id: report
   doc: Report if changes are made

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/hicQC.cwl
+id: ../../../hicQC.cwl
 inputs:
 - id: log_files
   doc: Path to the log files to be processed

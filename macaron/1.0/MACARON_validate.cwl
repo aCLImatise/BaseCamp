@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/MACARON_validate.cwl
+id: ../../../MACARON_validate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

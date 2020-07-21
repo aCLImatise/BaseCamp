@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pauvre_redwood.cwl
+id: ../../../pauvre_redwood.cwl
 inputs:
 - id: quiet
   doc: Do not output warnings to stderr

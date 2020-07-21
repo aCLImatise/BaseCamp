@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stag_filter.pl.cwl
+id: ../../../stag_filter.pl.cwl
 inputs:
 - id: node
   doc: the name of the node/element we are filtering on

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mafFrag.cwl
+id: ../../../mafFrag.cwl
 inputs:
 - id: out_name
   doc: Use XXX instead of database.chrom for the name

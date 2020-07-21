@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_ctg_link_analysis.cwl
+id: ../../../fc_ctg_link_analysis.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

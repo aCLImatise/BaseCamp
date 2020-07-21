@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/find_knots.py.cwl
+id: ../../../find_knots.py.cwl
 inputs:
 - id: info
   doc: print citation information

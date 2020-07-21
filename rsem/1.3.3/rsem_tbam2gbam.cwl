@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/rsem_tbam2gbam.cwl
+id: ../../../rsem_tbam2gbam.cwl
 inputs:
 - id: p
   doc: ''

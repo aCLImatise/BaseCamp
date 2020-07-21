@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/annotate_junctions.cwl
+id: ../../../annotate_junctions.cwl
 inputs:
 - id: j_list
   doc: 'junctionlist (default: None)'

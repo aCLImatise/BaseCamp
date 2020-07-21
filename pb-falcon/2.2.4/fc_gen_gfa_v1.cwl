@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fc_gen_gfa_v1.cwl
+id: ../../../fc_gen_gfa_v1.cwl
 inputs:
 - id: collected_gfa
   doc: Path to the file with collected and formatted data for generating the GFA

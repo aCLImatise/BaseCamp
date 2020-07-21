@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/qpAdm.cwl
+id: ../../../qpAdm.cwl
 inputs:
 - id: use_parameters_file
   doc: '... use parameters from <file> .'

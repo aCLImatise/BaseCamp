@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/PepNovoAdapter.cwl
+id: ../../../PepNovoAdapter.cwl
 inputs:
 - id: in
   doc: "*                     Input file  (valid formats: 'mzML')"

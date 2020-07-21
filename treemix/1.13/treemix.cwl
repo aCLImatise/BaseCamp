@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/treemix.cwl
+id: ../../../treemix.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

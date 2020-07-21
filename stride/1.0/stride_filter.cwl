@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/stride_filter.cwl
+id: ../../../stride_filter.cwl
 inputs:
 - id: verbose
   doc: display verbose output

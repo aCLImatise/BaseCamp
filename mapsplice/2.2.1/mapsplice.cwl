@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/mapsplice.py.cwl
+id: ../../../mapsplice.py.cwl
 inputs:
 - id: c_slash_chromosome_dir
   doc: '<string>     reference sequence directory                       '

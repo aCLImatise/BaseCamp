@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/o_metaMDS_analysis_with_metadata.R.cwl
+id: ../../../o_metaMDS_analysis_with_metadata.R.cwl
 inputs:
 - id: output_file_prefix
   doc: Output file prefix [default "unknown"]

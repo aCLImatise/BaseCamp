@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/computeGCBias.cwl
+id: ../../../computeGCBias.cwl
 inputs:
 - id: bam_file
   doc: 'file, -b bam file Sorted BAM file. (default: None)'

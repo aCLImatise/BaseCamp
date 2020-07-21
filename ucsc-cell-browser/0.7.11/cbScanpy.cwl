@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/cbScanpy.cwl
+id: ../../../cbScanpy.cwl
 inputs:
 - id: expr_matrix
   doc: 'gene-cell expression matrix file, possible formats: .csv, .h5, .mtx, .txt,

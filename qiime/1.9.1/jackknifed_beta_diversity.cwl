@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/jackknifed_beta_diversity.py.cwl
+id: ../../../jackknifed_beta_diversity.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

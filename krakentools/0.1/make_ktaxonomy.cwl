@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/make_ktaxonomy.py.cwl
+id: ../../../make_ktaxonomy.py.cwl
 inputs:
 - id: nodes
   doc: nodes.dmp file from taxonomy

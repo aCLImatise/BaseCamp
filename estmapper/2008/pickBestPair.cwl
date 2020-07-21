@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/pickBestPair.cwl
+id: ../../../pickBestPair.cwl
 inputs:
 - id: one
   doc: ''

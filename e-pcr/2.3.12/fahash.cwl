@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/fahash.cwl
+id: ../../../fahash.cwl
 inputs:
 - id: print_word_usage
   doc: Print word usage statistics for hash-file

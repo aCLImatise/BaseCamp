@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/toAmos.cwl
+id: ../../../toAmos.cwl
 inputs:
 - id: acc
   doc: '- use accession numbers in FRG files'

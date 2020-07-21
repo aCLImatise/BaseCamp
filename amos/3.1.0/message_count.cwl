@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/message_count.cwl
+id: ../../../message_count.cwl
 inputs:
 - id: message
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/bl_insert_stats.cwl
+id: ../../../bl_insert_stats.cwl
 inputs:
 - id: specify_sam_file
   doc: specify the SAM input file
