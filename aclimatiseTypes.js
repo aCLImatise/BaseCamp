@@ -1,15 +1,17 @@
-module.exports = function ({ node }, pluginOptions) {
-  return [
+const yaml = require("js-yaml")
+
+module.exports = new yaml.Schema.create(
+  [
     "Command",
     "Positional",
     "Flag",
     "SimpleFlagArg",
     "EmptyFlagArg",
     "OptionalFlagArg",
-  ].map(type => ({
-    tag: `!${type}`,
-    options: {
-      kind: "mapping",
-    },
-  }))
-}
+  ].map(
+    type =>
+      new yaml.Type(`!${type}`, {
+        kind: "mapping",
+      })
+  )
+)

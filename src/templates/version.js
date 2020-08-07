@@ -6,6 +6,7 @@ import Table from "react-bulma-components/lib/components/table"
 import Heading from "react-bulma-components/lib/components/heading"
 import List from "react-bulma-components/lib/components/list"
 import Breadcrumb from "react-bulma-components/lib/components/breadcrumb"
+import Tag from "react-bulma-components/lib/components/tag"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -24,6 +25,7 @@ export const query = graphql`
           id
           path
           name
+          succeeded
           publicURL
         }
       }
@@ -60,6 +62,12 @@ export default function Version({ data }) {
               return (
                 <List.Item renderAs={"a"} href={withPrefix(child.publicURL)}>
                   {child.name}
+                  &nbsp;
+                  {child.succeeded ? (
+                    <Tag color="success">Succeeded</Tag>
+                  ) : (
+                    <Tag color="danger">Failed</Tag>
+                  )}
                 </List.Item>
               )
             })}
