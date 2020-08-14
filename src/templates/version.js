@@ -14,20 +14,15 @@ export const query = graphql`
   query version($version: String) {
     condaVersion(id: { eq: $version }) {
       name
-      parent {
-        ... on CondaPackage {
-          name
-          publicURL
-        }
+      package {
+        name
+        publicURL
       }
-      children {
-        ... on CondaExecutable {
-          id
-          path
-          name
-          succeeded
-          publicURL
-        }
+      executables {
+        id
+        name
+        succeeded
+        publicURL
       }
     }
   }

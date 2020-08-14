@@ -13,11 +13,9 @@ import SEO from "../components/seo"
 export const query = graphql`
   query package($package: String) {
     condaPackage(id: { eq: $package }) {
-      children {
-        ... on CondaVersion {
-          name
-          publicURL
-        }
+      versions {
+        name
+        publicURL
       }
       name
       publicURL
