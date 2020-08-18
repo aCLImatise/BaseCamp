@@ -14,7 +14,7 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     {
-      // We need this so that gatsby-source-git works properly 
+      // We need this so that gatsby-source-git works properly
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `dummy`,
@@ -27,7 +27,7 @@ module.exports = {
         name: `Definitions`,
         branch: "master",
         remote: `https://github.com/aCLImatise/ToolDefinitions.git`,
-        // patterns: 'bwa/**',
+        // patterns: "bwa/**",
         local: `${__dirname}/ToolDefinitions`,
       },
     },
@@ -37,7 +37,7 @@ module.exports = {
         name: `Wrappers`,
         branch: "master",
         remote: `https://github.com/aCLImatise/ToolWrappers.git`,
-        // patterns: 'bwa/**',
+        // patterns: "bwa/**",
         local: `${__dirname}/ToolWrappers`,
       },
     },
