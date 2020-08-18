@@ -8,6 +8,7 @@ module.exports = new yaml.Schema.create(
     "SimpleFlagArg",
     "EmptyFlagArg",
     "OptionalFlagArg",
+    "ChoiceFlagArg",
   ].map(
     type =>
       new yaml.Type(`!${type}`, {
