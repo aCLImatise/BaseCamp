@@ -36,10 +36,10 @@ export default function Package({ path, location, pageResources, data }) {
       <Section>
         <Container>
           <Heading size={2}>
-            {pack.name} Package{" "}
+            {pack.name} Package
             <Tag color={tagColour} pull="right">
               {pack.succeededProportion * 100}% Success
-            </Tag>{" "}
+            </Tag>
           </Heading>
           <Heading size={3}>Detail</Heading>
           <Table>

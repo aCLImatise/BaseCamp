@@ -16,7 +16,6 @@ import {
   faAngleDown,
   faAngleUp,
 } from "@fortawesome/free-solid-svg-icons"
-// import useCollapse from "react-collapsed"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -89,10 +88,6 @@ export const query = graphql`
 
 function Wrapper({ file }) {
   const [collapseToggle, collapseStyle, collapseVisible] = useCollapse()
-  // const { getCollapseProps, getToggleProps, isExpanded } = useCollapse({
-  //   duration: 10,
-  //   easing: "linear"
-  // })
   const data = useAxios({
     url: file.publicURL,
     method: "get",
