@@ -286,6 +286,14 @@ async function createExecutables(helpers) {
   await Promise.all(
     result.data.allFile.group.map(async ({ nodes, fieldValue }) => {
       const yamlNode = nodes.filter(node => node.extension === "yml")[0]
+      if (!yamlNode) {
+        const names = nodes.map(node => node.relativePath)
+        throw Error(
+          `No YAML file found for a group of files with paths: ${names.join(
+            ", "
+          )}`
+        )
+      }
       const [packageName, versionName, filename] = yamlNode.relativePath.split(
         path.sep
       )
