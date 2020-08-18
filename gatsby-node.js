@@ -17,12 +17,15 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
           resolve(source, args, context, info) {
             return context.nodeModel.getNodesByIds({
               ids: source.versions,
-              // type: "CondaVersion"
+              type: "CondaVersion",
             })
           },
         },
       },
       interfaces: ["Node"],
+      extensions: {
+        infer: false,
+      },
     }),
 
     schema.buildObjectType({
@@ -37,10 +40,11 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
         package: {
           type: "CondaPackage",
           resolve(source, args, context, info) {
-            return context.nodeModel.getNodeById({
-              id: source.package,
+            const ret = context.nodeModel.getNodeById({
+              id: source.fields.package,
               type: "CondaPackage",
             })
+            return ret
           },
         },
         executables: {
@@ -48,12 +52,15 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
           resolve(source, args, context, info) {
             return context.nodeModel.getNodesByIds({
               ids: source.executables,
-              // type: "CondaExecutable"
+              type: "CondaExecutable",
             })
           },
         },
       },
       interfaces: ["Node"],
+      extensions: {
+        infer: false,
+      },
     }),
     schema.buildObjectType({
       name: "CondaExecutable",
@@ -63,7 +70,7 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
           resolve(source, args, context, info) {
             return context.nodeModel.getNodesByIds({
               ids: source.wrappers,
-              // type: "File"
+              type: "File",
             })
           },
         },
@@ -76,7 +83,7 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
           type: "CondaVersion",
           resolve(source, args, context, info) {
             return context.nodeModel.getNodeById({
-              id: source.package,
+              id: source.fields.version,
               type: "CondaVersion",
             })
           },
@@ -84,6 +91,9 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
         publicURL: "String!",
       },
       interfaces: ["Node"],
+      extensions: {
+        infer: false,
+      },
     }),
   ])
 }
@@ -94,6 +104,7 @@ async function createPackages(helpers) {
     actions: { createNode, createNodeField, createPage },
     createContentDigest,
     createNodeId,
+    getNode,
   } = helpers
   const result = await graphql(`
     {
@@ -101,6 +112,7 @@ async function createPackages(helpers) {
         group(field: packageName) {
           nodes {
             id
+            publicURL
             internal {
               fieldOwners
             }
@@ -132,6 +144,8 @@ async function createPackages(helpers) {
         succeededProportion,
         publicURL: packageUrl,
         versions: nodes.map(node => node.id),
+        parent: null,
+        children: [],
       }
       const pack = {
         ...fields,
@@ -142,7 +156,17 @@ async function createPackages(helpers) {
       }
       await createNode(pack)
       for (let node of nodes) {
-        createNodeField({ node: node, name: "package", value: packageId })
+        const resNode = getNode(node.id)
+        // Give the version a handle to its parent package
+        createNodeField({ node: resNode, name: "package", value: packageId })
+        // We now have enough information for the version page to be created
+        await createPage({
+          component: path.resolve(`./src/templates/version.js`),
+          path: resNode.publicURL,
+          context: {
+            version: resNode.id,
+          },
+        })
       }
       await createPage({
         component: path.resolve(`./src/templates/package.js`),
@@ -161,6 +185,7 @@ async function createVersions(helpers) {
     actions: { createNode, createNodeField, createPage },
     createContentDigest,
     createNodeId,
+    getNode,
   } = helpers
 
   const result = await graphql(`
@@ -200,6 +225,8 @@ async function createVersions(helpers) {
         name: versionName,
         packageName,
         executables: nodes.map(node => node.id),
+        parent: null,
+        children: [],
       }
       const version = {
         ...fields,
@@ -209,17 +236,11 @@ async function createVersions(helpers) {
         },
       }
       await createNode(version)
-      await createPage({
-        component: path.resolve(`./src/templates/version.js`),
-        path: publicUrl,
-        context: {
-          version: id,
-        },
-      })
 
       // Let the children have access to the parent
       for (let node of nodes) {
-        createNodeField({ node: node, name: "version", value: version.id })
+        const resNode = getNode(node.id)
+        createNodeField({ node: resNode, name: "version", value: version.id })
       }
     })
   )
@@ -291,6 +312,7 @@ async function createExecutables(helpers) {
         // path: yamlNode.relativePath.split(".")[0],
         wrappers: nodes.map(node => node.id),
         publicURL: publicUrl,
+        children: [],
       }
       const exe = {
         ...fields,

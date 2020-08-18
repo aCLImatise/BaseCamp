@@ -11,7 +11,12 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import Breadcrumb from "react-bulma-components/lib/components/breadcrumb"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Icon from "react-bulma-components/lib/components/icon"
-import { faDownload } from "@fortawesome/free-solid-svg-icons"
+import {
+  faDownload,
+  faAngleDown,
+  faAngleUp,
+} from "@fortawesome/free-solid-svg-icons"
+// import useCollapse from "react-collapsed"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -28,6 +33,20 @@ function chooseLanguage(extension) {
     default:
       return extension
   }
+}
+
+function useCollapse({ initial = false } = {}) {
+  const [visible, setVisible] = useState(initial)
+  const toggle = () => {
+    setVisible(v => !v)
+  }
+  const props = visible
+    ? {}
+    : {
+        display: "none",
+      }
+
+  return [toggle, props, visible]
 }
 
 const useAxios = config => {
@@ -50,16 +69,12 @@ export const query = graphql`
   query executable($exe: String) {
     condaExecutable(id: { eq: $exe }) {
       name
-      parent {
-        ... on CondaVersion {
+      version {
+        name
+        publicURL
+        package {
           name
           publicURL
-          parent {
-            ... on CondaPackage {
-              name
-              publicURL
-            }
-          }
         }
       }
       wrappers {
@@ -73,24 +88,50 @@ export const query = graphql`
 `
 
 function Wrapper({ file }) {
+  const [collapseToggle, collapseStyle, collapseVisible] = useCollapse()
+  // const { getCollapseProps, getToggleProps, isExpanded } = useCollapse({
+  //   duration: 10,
+  //   easing: "linear"
+  // })
   const data = useAxios({
     url: file.publicURL,
     method: "get",
     responseType: "text",
   })
   return (
-    <Card>
-      <Card.Header>
+    <Card
+      style={{
+        marginTop: "2em",
+        marginBottom: "2em",
+      }}
+    >
+      <Card.Header
+        onClick={collapseToggle}
+        style={{
+          cursor: "pointer",
+        }}
+      >
+        <Card.Header.Icon>
+          <Icon>
+            <FontAwesomeIcon icon={collapseVisible ? faAngleUp : faAngleDown} />
+          </Icon>
+        </Card.Header.Icon>
         <Card.Header.Title>{file.extension}</Card.Header.Title>
         <Card.Header.Icon>
-          <a href={file.publicURL} download>
+          <a
+            href={file.publicURL}
+            download
+            onClick={e => {
+              e.stopPropagation()
+            }}
+          >
             <Icon>
               <FontAwesomeIcon icon={faDownload} />
             </Icon>
           </a>
         </Card.Header.Icon>
       </Card.Header>
-      <Card.Content>
+      <Card.Content style={collapseStyle}>
         <SyntaxHighlighter
           style={dark}
           language={chooseLanguage(file.extension)}
@@ -104,8 +145,8 @@ function Wrapper({ file }) {
 
 export default function Executable({ data }) {
   const exe = data.condaExecutable
-  const version = exe.parent
-  const pack = exe.parent.parent
+  const version = exe.version
+  const pack = exe.version.package
   const title = `${pack.name} ${version.name} ${exe.name}`
   return (
     <Layout>

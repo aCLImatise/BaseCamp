@@ -9,6 +9,7 @@ import List from "react-bulma-components/lib/components/list"
 import Breadcrumb from "react-bulma-components/lib/components/breadcrumb"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Tag from "react-bulma-components/lib/components/tag"
 
 export const query = graphql`
   query package($package: String) {
@@ -16,7 +17,9 @@ export const query = graphql`
       versions {
         name
         publicURL
+        succeededProportion
       }
+      succeededProportion
       name
       publicURL
     }
@@ -26,12 +29,18 @@ export const query = graphql`
 export default function Package({ path, location, pageResources, data }) {
   const pack = data.condaPackage
   const condaUrl = `https://anaconda.org/bioconda/${pack.name}`
+  const tagColour = pack.succeededProportion > 0.7 ? "success" : "danger"
   return (
     <Layout>
       <SEO title={pack.name} />
       <Section>
         <Container>
-          <Heading size={2}>{pack.name} Package</Heading>
+          <Heading size={2}>
+            {pack.name} Package{" "}
+            <Tag color={tagColour} pull="right">
+              {pack.succeededProportion * 100}% Success
+            </Tag>{" "}
+          </Heading>
           <Heading size={3}>Detail</Heading>
           <Table>
             <tr>
@@ -42,15 +51,20 @@ export default function Package({ path, location, pageResources, data }) {
             </tr>
             <tr>
               <td>Versions in Database</td>
-              <td>{pack.children.length}</td>
+              <td>{pack.versions.length}</td>
             </tr>
           </Table>
           <Heading size={3}>Versions</Heading>
           <List>
-            {pack.children.map(child => {
+            {pack.versions.map(child => {
+              const tagColour =
+                child.succeededProportion > 0.7 ? "success" : "danger"
               return (
                 <List.Item renderAs={"a"} href={withPrefix(child.publicURL)}>
                   {child.name}
+                  <Tag color={tagColour} pull={"right"}>
+                    {child.succeededProportion * 100}% Success
+                  </Tag>
                 </List.Item>
               )
             })}
