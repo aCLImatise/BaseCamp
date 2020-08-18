@@ -1,0 +1,7 @@
+class: CommandLineTool
+id: ../../../inflate_denoiser_output.py.cwl
+inputs: []
+outputs: []
+cwlVersion: v1.1
+baseCommand:
+- inflate_denoiser_output.py

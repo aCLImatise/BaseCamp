@@ -1,0 +1,17 @@
+class: CommandLineTool
+id: ../../../agat_sp_fix_features_locations_duplicated.pl.cwl
+inputs:
+- id: file
+  doc: Input GTF/GFF file.
+  type: string
+  inputBinding:
+    prefix: --file
+- id: outfile
+  doc: Output file. If none given, will be display in standard output.
+  type: string
+  inputBinding:
+    prefix: --outfile
+outputs: []
+cwlVersion: v1.1
+baseCommand:
+- agat_sp_fix_features_locations_duplicated.pl

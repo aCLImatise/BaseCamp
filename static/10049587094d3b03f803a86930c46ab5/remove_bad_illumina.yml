@@ -1,0 +1,63 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The input file (in the newer Solexa FASTQ format, i.e. version 1.8
+    or newer) containing the short reads to be processed.
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT_FILENAME
+  optional: true
+- !Flag
+  description: The output FASTQ file containing the short reads which are marked as
+    good by Illumina.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+  optional: true
+- !Flag
+  description: It creates a link from the output file to the input file of type (soft,hard,copy)
+    in case that no operation is done on the input file. Default is 'soft'.
+  synonyms:
+  - --link
+  args: !SimpleFlagArg
+    name: LINK
+  optional: true
+command:
+- remove-bad-illumina.py
+parent:
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: remove-bad-illumina.py [options]\n\nIt takes a FASTQ file generated\
+  \ by Illumina Solexa pipeline and removes\n(truncates them to length one) the reads\
+  \ (which look like this\n@GQWE8:57:C00T6ABXX:2:1101:1233:2230 1:N:0:CTTGTA) marked\
+  \ as bad by Illumina.\nExample: It changes  to @GQWE8:57:C00T6ABXX:2:1101:1233:2230/1\n\
+  \nOptions:\n  --version             show program's version number and exit\n  -h,\
+  \ --help            show this help message and exit\n  -i INPUT_FILENAME, --input=INPUT_FILENAME\n\
+  \                        The input file (in the newer Solexa FASTQ format, i.e.\n\
+  \                        version 1.8 or newer) containing the short reads to be\n\
+  \                        processed.\n  -o OUTPUT_FILENAME, --output=OUTPUT_FILENAME\n\
+  \                        The output FASTQ file containing the short reads which\n\
+  \                        are marked as good by Illumina.\n  --link=LINK        \
+  \   It creates a link from the output file to the input\n                      \
+  \  file of type (soft,hard,copy) in case that no\n                        operation\
+  \ is done on the input file. Default is\n                        'soft'.\n"
+generated_using:
+- --help

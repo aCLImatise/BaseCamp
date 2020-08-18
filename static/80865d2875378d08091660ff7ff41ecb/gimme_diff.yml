@@ -1,0 +1,1057 @@
+&id005 !Command
+positional:
+- !Positional
+  description: FASTA-formatted inputfiles OR a BED file with an identifier in the
+    4th column, for instance a cluster number.
+  position: 0
+  name: FAFILES
+  optional: false
+- !Positional
+  description: FASTA-formatted background file
+  position: 1
+  name: BGFAFILE
+  optional: false
+- !Positional
+  description: outputfile (image)
+  position: 2
+  name: PNGFILE
+  optional: false
+named:
+- !Flag
+  description: 'PFM file with motifs (default: gimme.vertebrate.v5.0.pfm)'
+  synonyms:
+  - -p
+  - --pfmfile
+  args: !SimpleFlagArg
+    name: pfmfile
+  optional: true
+- !Flag
+  description: ', --cutoff         motif score cutoff or file with cutoffs (default
+    0.9)'
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum enrichment in at least one of the datasets compared to background
+  synonyms:
+  - -e
+  - --enrichment
+  args: !SimpleFlagArg
+    name: MINENR
+  optional: true
+- !Flag
+  description: minimum frequency in at least one of the datasets
+  synonyms:
+  - -f
+  - --frequency
+  args: !SimpleFlagArg
+    name: MINFREQ
+  optional: true
+- !Flag
+  description: Genome; only necessary in combination with a BED file with clusters
+    as inputfile.
+  synonyms:
+  - -g
+  - --genome
+  args: !SimpleFlagArg
+    name: GENOME
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- gimme
+- diff
+parent: &id001 !Command
+  positional: []
+  named: []
+  command:
+  - gimme
+  parent:
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: FASTA, BED, narrowPeak or region file.
+      position: 0
+      name: INPUT
+      optional: false
+    - !Positional
+      description: Output directory.
+      position: 1
+      name: OUTDIR
+      optional: false
+    named:
+    - !Flag
+      description: Background type (random,genomic,gc,promoter,custom) or a file with
+        background sequences (FASTA, BED or regions)
+      synonyms:
+      - -b
+      - --background
+      args: !SimpleFlagArg
+        name: BACKGROUND
+      optional: true
+    - !Flag
+      description: Genome name or fasta file
+      synonyms:
+      - -g
+      args: !SimpleFlagArg
+        name: GENOME
+      optional: true
+    - !Flag
+      description: Only use de novo motifs
+      synonyms:
+      - --denovo
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Only use known motifs
+      synonyms:
+      - --known
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Don't create a HTML report.
+      synonyms:
+      - --noreport
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Don't z-score normalize motif scores
+      synonyms:
+      - --rawscore
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Don't use GC% bins
+      synonyms:
+      - --nogc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Number of threads (default 12)
+      synonyms:
+      - -N
+      - --nthreads
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: 'PFM file with motifs.(default: gimme.vertebrate.v5.0.pfm)'
+      synonyms:
+      - -p
+      args: !SimpleFlagArg
+        name: PFMFILE
+      optional: true
+    - !Flag
+      description: Tools to use, any combination of MDmodule,MEME,MEMEW,D REME,Weeder,GADEM,MotifSampler,Trawler,Improbizer,BioP
+        rospector,Posmo,ChIPMunk,AMD,HMS,Homer,XXmotif,ProSamp ler,DiNAMO (default
+        MEME,BioProspector,Homer)
+      synonyms:
+      - -t
+      - --tools
+      args: !SimpleFlagArg
+        name: N
+      optional: true
+    - !Flag
+      description: 'Analysis type: small, medium, large, xl (xl)'
+      synonyms:
+      - -a
+      - --analysis
+      args: !SimpleFlagArg
+        name: ANALYSIS
+      optional: true
+    - !Flag
+      description: Don't delete intermediate files
+      synonyms:
+      - -k
+      - --keepintermediate
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Only predict motifs for single + strand (default is both)
+      synonyms:
+      - -S
+      - --singlestrand
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Fraction of peaks to use for motif predicton (0.2)
+      synonyms:
+      - -f
+      - --fraction
+      args: !SimpleFlagArg
+        name: FRACTION
+      optional: true
+    - !Flag
+      description: Region size to use for motif prediction (200). Set to 0 to use
+        the size of the input regions.
+      synonyms:
+      - -s
+      - --size
+      args: !SimpleFlagArg
+        name: N
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gimme
+    - motifs
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: gimme [-h] <subcommand> [options] motifs [-h] [-b BACKGROUND]\n\
+      \                                                [-g GENOME] [--denovo]\n  \
+      \                                              [--known] [--noreport]\n    \
+      \                                            [--rawscore] [--nogc] [-N INT]\n\
+      \                                                [-p PFMFILE] [-t N]\n     \
+      \                                           [-a ANALYSIS] [-k] [-S]\n      \
+      \                                          [-f FRACTION] [-s N]\n          \
+      \                                      INPUT OUTDIR\n\npositional arguments:\n\
+      \  INPUT                 FASTA, BED, narrowPeak or region file.\n  OUTDIR  \
+      \              Output directory.\n\noptional arguments:\n  -h, --help      \
+      \      show this help message and exit\n  -b BACKGROUND, --background BACKGROUND\n\
+      \                        Background type (random,genomic,gc,promoter,custom)\
+      \ or\n                        a file with background sequences (FASTA, BED or\n\
+      \                        regions)\n  -g GENOME             Genome name or fasta\
+      \ file\n  --denovo              Only use de novo motifs\n  --known         \
+      \      Only use known motifs\n  --noreport            Don't create a HTML report.\n\
+      \  --rawscore            Don't z-score normalize motif scores\n  --nogc    \
+      \            Don't use GC% bins\n  -N INT, --nthreads INT\n                \
+      \        Number of threads (default 12)\n\noptional arguments for known motifs:\n\
+      \  -p PFMFILE            PFM file with motifs.(default:\n                  \
+      \      gimme.vertebrate.v5.0.pfm)\n\noptional arguments for de novo motifs:\n\
+      \  -t N, --tools N       Tools to use, any combination of MDmodule,MEME,MEMEW,D\n\
+      \                        REME,Weeder,GADEM,MotifSampler,Trawler,Improbizer,BioP\n\
+      \                        rospector,Posmo,ChIPMunk,AMD,HMS,Homer,XXmotif,ProSamp\n\
+      \                        ler,DiNAMO (default MEME,BioProspector,Homer)\n  -a\
+      \ ANALYSIS, --analysis ANALYSIS\n                        Analysis type: small,\
+      \ medium, large, xl (xl)\n  -k, --keepintermediate\n                       \
+      \ Don't delete intermediate files\n  -S, --singlestrand    Only predict motifs\
+      \ for single + strand (default is\n                        both)\n  -f FRACTION,\
+      \ --fraction FRACTION\n                        Fraction of peaks to use for\
+      \ motif predicton (0.2)\n  -s N, --size N        Region size to use for motif\
+      \ prediction (200). Set to\n                        0 to use the size of the\
+      \ input regions.\n"
+    generated_using: &id002
+    - --help
+  - !Command
+    positional:
+    - !Positional
+      description: inputfile (FASTA, BED, regions)
+      position: 0
+      name: INPUTFILE
+      optional: false
+    named:
+    - !Flag
+      description: Genome
+      synonyms:
+      - -g
+      - --genome
+      args: !SimpleFlagArg
+        name: GENOME
+      optional: true
+    - !Flag
+      description: 'PFM file with motifs (default: gimme.vertebrate.v5.0.pfm)'
+      synonyms:
+      - -p
+      - --pfmfile
+      args: !SimpleFlagArg
+        name: pfmfile
+      optional: true
+    - !Flag
+      description: ', --fpr            FPR for motif scanning (default 0.01)'
+      synonyms:
+      - -f
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ', --bgfile         background file for threshold'
+      synonyms:
+      - -B
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ', --cutoff         motif score cutoff or file with cutoffs'
+      synonyms:
+      - -c
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: report the N best matches
+      synonyms:
+      - -n
+      - --nreport
+      args: !SimpleFlagArg
+        name: N
+      optional: true
+    - !Flag
+      description: don't scan reverse complement (- strand)
+      synonyms:
+      - -r
+      - --norc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: output bed format
+      synonyms:
+      - -b
+      - --bed
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: output counts in tabular format
+      synonyms:
+      - -t
+      - --table
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: output maximum score in tabular format
+      synonyms:
+      - -T
+      - --score_table
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: convert pfm logodds score to z-score
+      synonyms:
+      - -z
+      - --zscore
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: use GC frequency normalized z-score
+      synonyms:
+      - --gc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Number of threads (default 12)
+      synonyms:
+      - -N
+      - --nthreads
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gimme
+    - scan
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: gimme [-h] <subcommand> [options] scan [-h] [-g GENOME] [-p\
+      \ pfmfile]\n                                              [-f] [-B] [-c] [-n\
+      \ N] [-r] [-b]\n                                              [-t] [-T] [-z]\
+      \ [--gc] [-N INT]\n                                              INPUTFILE\n\
+      \npositional arguments:\n  INPUTFILE             inputfile (FASTA, BED, regions)\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  -g GENOME, --genome GENOME\n                        Genome\n  -p pfmfile,\
+      \ --pfmfile pfmfile\n                        PFM file with motifs (default:\n\
+      \                        gimme.vertebrate.v5.0.pfm)\n  -f , --fpr          \
+      \  FPR for motif scanning (default 0.01)\n  -B , --bgfile         background\
+      \ file for threshold\n  -c , --cutoff         motif score cutoff or file with\
+      \ cutoffs\n  -n N, --nreport N     report the N best matches\n  -r, --norc \
+      \           don't scan reverse complement (- strand)\n  -b, --bed          \
+      \   output bed format\n  -t, --table           output counts in tabular format\n\
+      \  -T, --score_table     output maximum score in tabular format\n  -z, --zscore\
+      \          convert pfm logodds score to z-score\n  --gc                  use\
+      \ GC frequency normalized z-score\n  -N INT, --nthreads INT\n              \
+      \          Number of threads (default 12)\n"
+    generated_using: *id002
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: gimme
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: subcommand
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: maelstrom
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -p
+      args: !SimpleFlagArg
+        name: pfmfile
+      optional: true
+    command:
+    - gimme
+    - maelstrom
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: gimme [-h] <subcommand> [options] maelstrom [-h] [-p pfmfile]\n\
+      \                                                   [-m NAMES] [-N INT]\n  \
+      \                                                 [--rawscore] [--nogc]\n  \
+      \                                                 INPUTFILE GENOME DIR\ngimme\
+      \ [-h] <subcommand> [options] maelstrom: error: the following arguments are\
+      \ required: INPUTFILE, GENOME, DIR\n"
+    generated_using: &id004
+    - --usage
+  - &id003 !Command
+    positional: []
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -d
+      args: !SimpleFlagArg
+        name: DBFILE
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -n
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    command:
+    - gimme
+    - match
+    parent: *id001
+    subcommands:
+    - !Command
+      positional:
+      - !Positional
+        description: File with pfms
+        position: 0
+        name: pfmfile
+        optional: false
+      named:
+      - !Flag
+        description: 'File with pfms to match against (default: gimme.vertebrate.v5.0.pfm)'
+        synonyms:
+        - -d
+        args: !SimpleFlagArg
+          name: DBFILE
+        optional: true
+      - !Flag
+        description: Number of matches to return (default 1)
+        synonyms:
+        - -n
+        args: !SimpleFlagArg
+          name: INT
+        optional: true
+      - !Flag
+        description: Output file with graphical report (png, svg, ps, pdf)
+        synonyms:
+        - -o
+        args: !SimpleFlagArg
+          name: FILE
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      command:
+      - gimme
+      - match
+      - gimme
+      parent: *id003
+      subcommands: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: gimme [-h] <subcommand> [options] match [-h] [-d DBFILE]\
+        \ [-n INT]\n                                               [-o FILE]\n   \
+        \                                            pfmfile\n\npositional arguments:\n\
+        \  pfmfile     File with pfms\n\noptional arguments:\n  -h, --help  show this\
+        \ help message and exit\n  -d DBFILE   File with pfms to match against (default:\n\
+        \              gimme.vertebrate.v5.0.pfm)\n  -n INT      Number of matches\
+        \ to return (default 1)\n  -o FILE     Output file with graphical report (png,\
+        \ svg, ps, pdf)\n"
+      generated_using: *id002
+    - !Command
+      positional:
+      - !Positional
+        description: File with pfms
+        position: 0
+        name: pfmfile
+        optional: false
+      named:
+      - !Flag
+        description: 'File with pfms to match against (default: gimme.vertebrate.v5.0.pfm)'
+        synonyms:
+        - -d
+        args: !SimpleFlagArg
+          name: DBFILE
+        optional: true
+      - !Flag
+        description: Number of matches to return (default 1)
+        synonyms:
+        - -n
+        args: !SimpleFlagArg
+          name: INT
+        optional: true
+      - !Flag
+        description: Output file with graphical report (png, svg, ps, pdf)
+        synonyms:
+        - -o
+        args: !SimpleFlagArg
+          name: FILE
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      command:
+      - gimme
+      - match
+      - subcommand
+      parent: *id003
+      subcommands: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: gimme [-h] <subcommand> [options] match [-h] [-d DBFILE]\
+        \ [-n INT]\n                                               [-o FILE]\n   \
+        \                                            pfmfile\n\npositional arguments:\n\
+        \  pfmfile     File with pfms\n\noptional arguments:\n  -h, --help  show this\
+        \ help message and exit\n  -d DBFILE   File with pfms to match against (default:\n\
+        \              gimme.vertebrate.v5.0.pfm)\n  -n INT      Number of matches\
+        \ to return (default 1)\n  -o FILE     Output file with graphical report (png,\
+        \ svg, ps, pdf)\n"
+      generated_using: *id002
+    - !Command
+      positional:
+      - !Positional
+        description: File with pfms
+        position: 0
+        name: pfmfile
+        optional: false
+      named:
+      - !Flag
+        description: 'File with pfms to match against (default: gimme.vertebrate.v5.0.pfm)'
+        synonyms:
+        - -d
+        args: !SimpleFlagArg
+          name: DBFILE
+        optional: true
+      - !Flag
+        description: Number of matches to return (default 1)
+        synonyms:
+        - -n
+        args: !SimpleFlagArg
+          name: INT
+        optional: true
+      - !Flag
+        description: Output file with graphical report (png, svg, ps, pdf)
+        synonyms:
+        - -o
+        args: !SimpleFlagArg
+          name: FILE
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      command:
+      - gimme
+      - match
+      - match
+      parent: *id003
+      subcommands: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: gimme [-h] <subcommand> [options] match [-h] [-d DBFILE]\
+        \ [-n INT]\n                                               [-o FILE]\n   \
+        \                                            pfmfile\n\npositional arguments:\n\
+        \  pfmfile     File with pfms\n\noptional arguments:\n  -h, --help  show this\
+        \ help message and exit\n  -d DBFILE   File with pfms to match against (default:\n\
+        \              gimme.vertebrate.v5.0.pfm)\n  -n INT      Number of matches\
+        \ to return (default 1)\n  -o FILE     Output file with graphical report (png,\
+        \ svg, ps, pdf)\n"
+      generated_using: *id002
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: gimme [-h] <subcommand> [options] match [-h] [-d DBFILE] [-n\
+      \ INT]\n                                               [-o FILE]\n         \
+      \                                      pfmfile\ngimme [-h] <subcommand> [options]\
+      \ match: error: the following arguments are required: pfmfile\n"
+    generated_using: *id004
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: gimme
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: subcommand
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: logo
+      optional: false
+    named:
+    - !Flag
+      description: PFM file with motifs
+      synonyms:
+      - -p
+      - --pfmfile
+      args: !SimpleFlagArg
+        name: pfmfile
+      optional: true
+    - !Flag
+      description: Comma-separated list of motif ids (default is all ids)
+      synonyms:
+      - -i
+      - --ids
+      args: !SimpleFlagArg
+        name: IDS
+      optional: true
+    - !Flag
+      description: Type of motif (information, frequency, energy or ensembl)
+      synonyms:
+      - -k
+      - --kind
+      args: !SimpleFlagArg
+        name: TYPE
+      optional: true
+    - !Flag
+      description: Don't include motif ID as title
+      synonyms:
+      - --notitle
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gimme
+    - logo
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: gimme [-h] <subcommand> [options] logo [-h] [-p pfmfile] [-i\
+      \ IDS]\n                                              [-k TYPE] [--notitle]\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  -p pfmfile, --pfmfile pfmfile\n                        PFM file with motifs\n\
+      \  -i IDS, --ids IDS     Comma-separated list of motif ids (default is all ids)\n\
+      \  -k TYPE, --kind TYPE  Type of motif (information, frequency, energy or\n\
+      \                        ensembl)\n  --notitle             Don't include motif\
+      \ ID as title\n"
+    generated_using: *id002
+  - !Command
+    positional:
+    - !Positional
+      description: Inputfile (PFM format)
+      position: 0
+      name: INPUTFILE
+      optional: false
+    - !Positional
+      description: Name of output directory
+      position: 1
+      name: OUTDIR
+      optional: false
+    named:
+    - !Flag
+      description: Don't compare reverse complements of motifs
+      synonyms:
+      - -s
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Cluster threshold
+      synonyms:
+      - -t
+      args: !SimpleFlagArg
+        name: THRESHOLD
+      optional: true
+    - !Flag
+      description: Number of threads (default 12)
+      synonyms:
+      - -N
+      - --nthreads
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gimme
+    - cluster
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: gimme [-h] <subcommand> [options] cluster [-h] [-s] [-t THRESHOLD]\n\
+      \                                                 [-N INT]\n               \
+      \                                  INPUTFILE OUTDIR\n\npositional arguments:\n\
+      \  INPUTFILE             Inputfile (PFM format)\n  OUTDIR                Name\
+      \ of output directory\n\noptional arguments:\n  -h, --help            show this\
+      \ help message and exit\n  -s                    Don't compare reverse complements\
+      \ of motifs\n  -t THRESHOLD          Cluster threshold\n  -N INT, --nthreads\
+      \ INT\n                        Number of threads (default 12)\n"
+    generated_using: *id002
+  - !Command
+    positional:
+    - !Positional
+      description: outputfile
+      position: 0
+      name: FILE
+      optional: false
+    - !Positional
+      description: type of background sequences to generate (random,genomic,gc,promoter)
+      position: 1
+      name: TYPE
+      optional: false
+    named:
+    - !Flag
+      description: input sequences (BED or FASTA)
+      synonyms:
+      - -i
+      args: !SimpleFlagArg
+        name: FILE
+      optional: true
+    - !Flag
+      description: output format (BED or FASTA
+      synonyms:
+      - -f
+      args: !SimpleFlagArg
+        name: TYPE
+      optional: true
+    - !Flag
+      description: size of random sequences
+      synonyms:
+      - -s
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: number of sequence to generate
+      synonyms:
+      - -n
+      args: !SimpleFlagArg
+        name: NUMBER
+      optional: true
+    - !Flag
+      description: genome version (not for type 'random')
+      synonyms:
+      - -g
+      args: !SimpleFlagArg
+        name: GENOME
+      optional: true
+    - !Flag
+      description: order of the Markov model (only for type 'random', default 1)
+      synonyms:
+      - -m
+      args: !SimpleFlagArg
+        name: N
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gimme
+    - background
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: gimme [-h] <subcommand> [options] background [-h] [-i FILE]\
+      \ [-f TYPE]\n                                                    [-s INT] [-n\
+      \ NUMBER]\n                                                    [-g GENOME] [-m\
+      \ N]\n                                                    FILE TYPE\n\npositional\
+      \ arguments:\n  FILE        outputfile\n  TYPE        type of background sequences\
+      \ to generate\n              (random,genomic,gc,promoter)\n\noptional arguments:\n\
+      \  -h, --help  show this help message and exit\n  -i FILE     input sequences\
+      \ (BED or FASTA)\n  -f TYPE     output format (BED or FASTA\n  -s INT      size\
+      \ of random sequences\n  -n NUMBER   number of sequence to generate\n  -g GENOME\
+      \   genome version (not for type 'random')\n  -m N        order of the Markov\
+      \ model (only for type 'random', default 1)\n"
+    generated_using: *id002
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: gimme
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: subcommand
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: threshold
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: pfmfile
+      optional: false
+    - !Positional
+      description: ''
+      position: 4
+      name: FAFILE
+      optional: false
+    - !Positional
+      description: ''
+      position: 5
+      name: FPR
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gimme
+    - threshold
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: gimme [-h] <subcommand> [options] threshold [-h] pfmfile FAFILE\
+      \ FPR\ngimme [-h] <subcommand> [options] threshold: error: the following arguments\
+      \ are required: pfmfile, FAFILE, FPR\n"
+    generated_using: *id004
+  - !Command
+    positional:
+    - !Positional
+      description: File with pfms
+      position: 0
+      name: pfmfile
+      optional: false
+    - !Positional
+      description: Fasta formatted file
+      position: 1
+      name: FAFILE
+      optional: false
+    named:
+    - !Flag
+      description: 'Set size to W (default: determined from fastafile)'
+      synonyms:
+      - -s
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: Comma-separated list of motif ids to plot (default is all ids)
+      synonyms:
+      - -i
+      args: !SimpleFlagArg
+        name: IDS
+      optional: true
+    - !Flag
+      description: Cutoff for motif scanning (default 0.95)
+      synonyms:
+      - -c
+      args: !SimpleFlagArg
+        name: CUTOFF
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gimme
+    - location
+    parent: *id001
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: gimme [-h] <subcommand> [options] location [-h] [-s INT] [-i\
+      \ IDS]\n                                                  [-c CUTOFF]\n    \
+      \                                              pfmfile FAFILE\n\npositional\
+      \ arguments:\n  pfmfile     File with pfms\n  FAFILE      Fasta formatted file\n\
+      \noptional arguments:\n  -h, --help  show this help message and exit\n  -s INT\
+      \      Set size to W (default: determined from fastafile)\n  -i IDS      Comma-separated\
+      \ list of motif ids to plot (default is all ids)\n  -c CUTOFF   Cutoff for motif\
+      \ scanning (default 0.95)\n"
+    generated_using: *id002
+  - *id005
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "\e[93mtype `gimme --help -h` for more details\e[0m\n\nusage: gimme [-h]\
+    \ <subcommand> [options]\n\n    GimmeMotifs v0.14.4\n    \n\npositional arguments:\n\
+    \  {motifs,scan,maelstrom,match,logo,cluster,background,threshold,location,diff,prediction}\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \n    commands:\n        motifs      identify enriched motifs (known and/or de\
+    \ novo)\n        scan        scan for known motifs\n        maelstrom   find differential\
+    \ motifs\n        match       find motif matches in database\n        logo   \
+    \     create sequence logo(s)\n        cluster     cluster similar motifs\n  \
+    \      background  create a background file\n        threshold   calculate motif\
+    \ scan threshold\n        location    motif location histograms\n        diff\
+    \        compare motif frequency and enrichment\n                    between fasta\
+    \ files\n\n    type `gimme <command> -h` for more details\n    \n"
+  generated_using: *id002
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: gimme [-h] <subcommand> [options] diff [-h] [-p pfmfile] [-c]\n\
+  \                                              [-e MINENR] [-f MINFREQ]\n      \
+  \                                        [-g GENOME]\n                         \
+  \                     FAFILES BGFAFILE PNGFILE\n\npositional arguments:\n  FAFILES\
+  \               FASTA-formatted inputfiles OR a BED file with an\n             \
+  \           identifier in the 4th column, for instance a cluster\n             \
+  \           number.\n  BGFAFILE              FASTA-formatted background file\n \
+  \ PNGFILE               outputfile (image)\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -p pfmfile, --pfmfile pfmfile\n\
+  \                        PFM file with motifs (default:\n                      \
+  \  gimme.vertebrate.v5.0.pfm)\n  -c , --cutoff         motif score cutoff or file\
+  \ with cutoffs (default 0.9)\n  -e MINENR, --enrichment MINENR\n               \
+  \         minimum enrichment in at least one of the datasets\n                 \
+  \       compared to background\n  -f MINFREQ, --frequency MINFREQ\n            \
+  \            minimum frequency in at least one of the datasets\n  -g GENOME, --genome\
+  \ GENOME\n                        Genome; only necessary in combination with a BED\
+  \ file\n                        with clusters as inputfile.\n"
+generated_using: *id002

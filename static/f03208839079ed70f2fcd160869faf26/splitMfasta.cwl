@@ -1,7 +1,0 @@
-class: CommandLineTool
-id: ../../../../home/ubuntu/BiocondaCli/splitMfasta.pl.cwl
-inputs: []
-outputs: []
-cwlVersion: v1.1
-baseCommand:
-- splitMfasta.pl

@@ -1,0 +1,78 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: file.vcf.gz
+  optional: false
+named:
+- !Flag
+  description: List of comma-separated column names or one column name per line in
+    a file.
+  synonyms:
+  - -c
+  - --columns
+  args: !SimpleFlagArg
+    name: file|list
+  optional: true
+- !Flag
+  description: The default is '%CHROM:%POS\t%REF[\t%SAMPLE=%GT]\n'
+  synonyms:
+  - -f
+  - --format
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: List columns.
+  synonyms:
+  - -l
+  - --list-columns
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: :from-to            Retrieve the region. (Runs tabix.)
+  synonyms:
+  - -r
+  - --region
+  args: !SimpleFlagArg
+    name: chr
+  optional: true
+- !Flag
+  description: Use old version of API, which is slow but more robust.
+  synonyms:
+  - --use-old-method
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- vcf-query
+parent:
+subcommands: []
+help_flag: !Flag
+  description: ', -?, --help                      This help message.'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: vcf-query [OPTIONS] file.vcf.gz\nOptions:\n   -c, --columns <file|list>\
+  \           List of comma-separated column names or one column name per line in\
+  \ a file.\n   -f, --format <string>               The default is '%CHROM:%POS\\\
+  t%REF[\\t%SAMPLE=%GT]\\n'\n   -l, --list-columns                  List columns.\n\
+  \   -r, --region chr:from-to            Retrieve the region. (Runs tabix.)\n   \
+  \    --use-old-method                Use old version of API, which is slow but more\
+  \ robust.\n   -h, -?, --help                      This help message.\nExpressions:\n\
+  \   %CHROM          The CHROM column (similarly also other columns)\n   %GT    \
+  \         Translated genotype (e.g. C/A)\n   %GTR            Raw genotype (e.g.\
+  \ 0/1)\n   %INFO/TAG       Any tag in the INFO column\n   %LINE           Prints\
+  \ the whole line\n   %SAMPLE         Sample name\n   []              The brackets\
+  \ loop over all samples\n   %*<A><B>        All format fields printed as KEY<A>VALUE<B>\n\
+  Examples:\n   vcf-query file.vcf.gz 1:1000-2000 -c NA001,NA002,NA003\n   vcf-query\
+  \ file.vcf.gz -r 1:1000-2000 -f '%CHROM:%POS\\t%REF\\t%ALT[\\t%SAMPLE:%*=,]\\n'\n\
+  \   vcf-query file.vcf.gz -f '[%GT\\t]%LINE\\n'\n   vcf-query file.vcf.gz -f '[%GT\\\
+  \ ]%LINE\\n'\n   vcf-query file.vcf.gz -f '%CHROM\\_%POS\\t%INFO/DP\\t%FILTER\\\
+  n'\nNotes:\n   Please use `bcftools query` instead, this script will not be supported\
+  \ in future.\n\n"
+generated_using:
+- --help

@@ -1,0 +1,94 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: in.vcf.gz
+  optional: false
+named:
+- !Flag
+  description: Remove alternate alleles if not found in the subset
+  synonyms:
+  - -a
+  - --trim-alt-alleles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: File or comma-separated list of columns to keep in the vcf file. If
+    file, one column per row
+  synonyms:
+  - -c
+  - --columns
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Exclude rows not containing variants.
+  synonyms:
+  - -e
+  - --exclude-ref
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Proceed anyway even if VCF does not contain some of the samples.
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print only rows where only the subset columns carry an alternate allele.
+  synonyms:
+  - -p
+  - --private
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Replace the excluded types with reference allele instead of dot.
+  synonyms:
+  - -r
+  - --replace-with-ref
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Comma-separated list of variant types to include: ref,SNPs,indels,MNPs,other.'
+  synonyms:
+  - -t
+  - --type
+  args: !SimpleFlagArg
+    name: list
+  optional: true
+- !Flag
+  description: Do not exclude rows without calls.
+  synonyms:
+  - -u
+  - --keep-uncalled
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- vcf-subset
+parent:
+subcommands: []
+help_flag: !Flag
+  description: ', -?, --help                   This help message.'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: vcf-subset [OPTIONS] in.vcf.gz > out.vcf\nOptions:\n   -a, --trim-alt-alleles\
+  \           Remove alternate alleles if not found in the subset\n   -c, --columns\
+  \ <string>           File or comma-separated list of columns to keep in the vcf\
+  \ file. If file, one column per row\n   -e, --exclude-ref                Exclude\
+  \ rows not containing variants.\n   -f, --force                      Proceed anyway\
+  \ even if VCF does not contain some of the samples.\n   -p, --private          \
+  \          Print only rows where only the subset columns carry an alternate allele.\n\
+  \   -r, --replace-with-ref           Replace the excluded types with reference allele\
+  \ instead of dot.\n   -t, --type <list>                Comma-separated list of variant\
+  \ types to include: ref,SNPs,indels,MNPs,other.\n   -u, --keep-uncalled        \
+  \      Do not exclude rows without calls.\n   -h, -?, --help                   This\
+  \ help message.\nExamples:\n   cat in.vcf | vcf-subset -r -t indels -e -c SAMPLE1\
+  \ > out.vcf\n\n"
+generated_using:
+- --help

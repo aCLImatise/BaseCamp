@@ -1,0 +1,167 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: cat
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: in.vcf
+  optional: false
+named:
+- !Flag
+  description: 'The tabix indexed file with the annotations: CHR\tFROM[\tTO][\tVALUE]+.'
+  synonyms:
+  - -a
+  - --annotations
+  args: !SimpleFlagArg
+    name: file.gz
+  optional: true
+- !Flag
+  description: The list of columns in the annotation file, e.g. CHROM,FROM,TO,-,QUAL,INFO/STR,INFO/GN.
+    The dash in this example indicates that the third column should be ignored. If
+    TO is not present, it is assumed that TO equals to FROM. When REF and ALT columns
+    are present, only matching lines are annotated.
+  synonyms:
+  - -c
+  - --columns
+  args: !SimpleFlagArg
+    name: list
+  optional: true
+- !Flag
+  description: Header annotation, e.g. key=INFO,ID=HM2,Number=0,Type=Flag,Description='HapMap2
+    membership'. The descriptions can be read from a file, one annotation per line.
+  synonyms:
+  - -d
+  - --description
+  args: !SimpleFlagArg
+    name: file|string
+  optional: true
+- !Flag
+  description: (Re)Calculate AC and AN tags
+  synonyms:
+  - --fill-AC-AN
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Re)Calculate HWE, AC and AN tags
+  synonyms:
+  - --fill-HWE
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Re)Calculate Inbreeding Coefficient F, HWE, AC and AN
+  synonyms:
+  - --fill-ICF
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Annotate INFO/TYPE with snp,del,ins,mnp,complex
+  synonyms:
+  - --fill-type
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Apply filters, list is in the format flt1=value/flt2/flt3=value/etc.
+    If argument to -f is a file, user-defined filters be applied. See User Defined
+    Filters below.
+  synonyms:
+  - -f
+  - --filter
+  args: !SimpleFlagArg
+    name: file|list
+  optional: true
+- !Flag
+  description: Remove lines with FILTER anything else than PASS or "."
+  synonyms:
+  - -H
+  - --hard-filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Make REF and ALT alleles more compact if possible (e.g. TA,TAA -> T,TA).
+  synonyms:
+  - -n
+  - --normalize-alleles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Comma-separated list of tags to be removed (e.g. ID,INFO/DP,FORMAT/DP,FILTER).
+  synonyms:
+  - -r
+  - --remove
+  args: !SimpleFlagArg
+    name: list
+  optional: true
+command:
+- vcf-annotate
+parent:
+subcommands: []
+help_flag: !Flag
+  description: ', -?, --help                      This help message.'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "About: Annotates VCF file, adding filters or custom annotations. Requires\
+  \ tabix indexed file with annotations.\n   Currently it can annotate ID, QUAL, FILTER\
+  \ and INFO columns, but will be extended on popular demand.\n   For examples of\
+  \ user-defined filters see online documentation or examples/filters.txt in vcftools\
+  \ distribution.\nUsage: cat in.vcf | vcf-annotate [OPTIONS] > out.vcf\nOptions:\n\
+  \   -a, --annotations <file.gz>         The tabix indexed file with the annotations:\
+  \ CHR\\tFROM[\\tTO][\\tVALUE]+.\n   -c, --columns <list>                The list\
+  \ of columns in the annotation file, e.g. CHROM,FROM,TO,-,QUAL,INFO/STR,INFO/GN.\
+  \ The dash\n                                           in this example indicates\
+  \ that the third column should be ignored. If TO is not\n                      \
+  \                     present, it is assumed that TO equals to FROM. When REF and\
+  \ ALT columns are present, only\n                                           matching\
+  \ lines are annotated.\n   -d, --description <file|string>     Header annotation,\
+  \ e.g. key=INFO,ID=HM2,Number=0,Type=Flag,Description='HapMap2 membership'.\n  \
+  \                                         The descriptions can be read from a file,\
+  \ one annotation per line.\n       --fill-AC-AN                    (Re)Calculate\
+  \ AC and AN tags\n       --fill-HWE                      (Re)Calculate HWE, AC and\
+  \ AN tags\n       --fill-ICF                      (Re)Calculate Inbreeding Coefficient\
+  \ F, HWE, AC and AN\n       --fill-type                     Annotate INFO/TYPE with\
+  \ snp,del,ins,mnp,complex\n   -f, --filter <file|list>            Apply filters,\
+  \ list is in the format flt1=value/flt2/flt3=value/etc. If argument to -f is a file,\n\
+  \                                           user-defined filters be applied. See\
+  \ User Defined Filters below.\n   -H, --hard-filter                   Remove lines\
+  \ with FILTER anything else than PASS or \".\"\n   -n, --normalize-alleles     \
+  \        Make REF and ALT alleles more compact if possible (e.g. TA,TAA -> T,TA).\n\
+  \   -r, --remove <list>                 Comma-separated list of tags to be removed\
+  \ (e.g. ID,INFO/DP,FORMAT/DP,FILTER).\n   -h, -?, --help                      This\
+  \ help message.\nFilters:\n\t+                           \t\tApply all filters with\
+  \ default values (can be overriden, see the example below).\n\t-X              \
+  \            \t\tExclude the filter X\n\t1, StrandBias  FLOAT        \t\tMin P-value\
+  \ for strand bias (INFO/PV4) [0.0001]\n\t2, BaseQualBias  FLOAT      \t\tMin P-value\
+  \ for baseQ bias (INFO/PV4) [0]\n\t3, MapQualBias  FLOAT       \t\tMin P-value for\
+  \ mapQ bias (INFO/PV4) [0]\n\t4, EndDistBias  FLOAT       \t\tMin P-value for end\
+  \ distance bias (INFO/PV4) [0.0001]\n\ta, MinAB  INT               \t\tMinimum number\
+  \ of alternate bases (INFO/DP4) [2]\n\tc, SnpCluster  INT1,INT2    \t\tFilters clusters\
+  \ of 'INT1' or more SNPs within a run of 'INT2' bases []\n\tD, MaxDP  INT      \
+  \         \t\tMaximum read depth (INFO/DP or INFO/DP4) [10000000]\n\td, MinDP  INT\
+  \               \t\tMinimum read depth (INFO/DP or INFO/DP4) [2]\n\tH, HWE  FLOAT\
+  \               \t\tMinimum P-value for HWE and F<0 (invokes --fill-HWE) []\n\t\
+  H2, HWE2  FLOAT              \t\tMinimum P-value for HWE (plus F<0) (INFO/AC and\
+  \ INFO/AN or --fill-AC-AN) []\n\tHG, HWE_G3  FLOAT            \t\tMinimum P-value\
+  \ for HWE and F<0 (INFO/HWE and INFO/G3) []\n\tq, MinMQ  INT               \t\t\
+  Minimum RMS mapping quality for SNPs (INFO/MQ) [10]\n\tQ, Qual  INT            \
+  \    \t\tMinimum value of the QUAL field [10]\n\tr, RefN                     \t\t\
+  Reference base is N []\n\tv, VDB  FLOAT               \t\tMinimum Variant Distance\
+  \ Bias (INFO/VDB) [0]\n\tW, GapWin  INT              \t\tWindow size for filtering\
+  \ adjacent gaps [3]\n\tw, SnpGap  INT              \t\tSNP within INT bp around\
+  \ a gap to be filtered [10]\nExamples:\n   zcat in.vcf.gz | vcf-annotate -a annotations.gz\
+  \ -d descriptions.txt -c FROM,TO,CHROM,ID,INFO/DP | bgzip -c >out.vcf.gz \n   zcat\
+  \ in.vcf.gz | vcf-annotate -f +/-a/c=3,10/q=3/d=5/-D -a annotations.gz -d key=INFO,ID=GN,Number=1,Type=String,Description='Gene\
+  \ Name' | bgzip -c >out.vcf.gz \n   zcat in.vcf.gz | vcf-annotate -a dbSNPv132.tab.gz\
+  \ -c CHROM,POS,REF,ALT,ID,-,-,- | bgzip -c >out.vcf.gz \n   zcat in.vcf.gz | vcf-annotate\
+  \ -r FILTER/MinDP | bgzip -c >out.vcf.gz \nWhere descriptions.txt contains:\n  \
+  \ key=INFO,ID=GN,Number=1,Type=String,Description='Gene Name'\n   key=INFO,ID=STR,Number=1,Type=Integer,Description='Strand'\n\
+  The file dbSNPv132.tab.gz with dbSNP IDs can be downloaded from\n   ftp://ftp.sanger.ac.uk/pub/1000genomes/pd3/dbSNP/\n\
+  \n"
+generated_using:
+- --help

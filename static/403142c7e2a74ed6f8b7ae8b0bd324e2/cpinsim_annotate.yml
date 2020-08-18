@@ -1,0 +1,267 @@
+&id001 !Command
+positional: []
+named:
+- !Flag
+  description: 'Files containing the underlying network: pairwise interactions without
+    constraints. Two columns InteractorA | InteractorB'
+  synonyms:
+  - --interactions_without_constraints
+  - -i
+  args: !RepeatFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: 'Files containing the competitions. Two columns: Host | Competitors
+    (comma separated)'
+  synonyms:
+  - --competitions
+  - -c
+  args: !RepeatFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: 'Files containing the allosteric effects. Four columns: Host | Interactor
+    | Activator | Inhibitor'
+  synonyms:
+  - --allosteric_effects
+  - -a
+  args: !RepeatFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Extended inference for missing domains in competitions.
+  synonyms:
+  - --extended_inference
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: One output file containing all annotated pairwise interactions.
+  synonyms:
+  - --output_interactions
+  - -oi
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: One output file containing all annotated competitions.
+  synonyms:
+  - --output_competitions
+  - -oc
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: One output file containing all annotated allosteric effects.
+  synonyms:
+  - --output_allosterics
+  - -oa
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+command:
+- cpinsim
+- annotate
+parent: &id002 !Command
+  positional: []
+  named: []
+  command:
+  - cpinsim
+  parent:
+  subcommands:
+  - *id001
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Files containing the annotated pairwise interactions.
+      synonyms:
+      - --interactions_without_constraints
+      - -i
+      args: !RepeatFlagArg
+        name: INTERACTIONS_WITHOUT_CONSTRAINTS
+      optional: true
+    - !Flag
+      description: Files containing the annotated competitions.
+      synonyms:
+      - --competitions
+      - -c
+      args: !RepeatFlagArg
+        name: COMPETITIONS
+      optional: true
+    - !Flag
+      description: Files containing the annotated allosteric effects.
+      synonyms:
+      - --allosteric_effects
+      - -a
+      args: !RepeatFlagArg
+        name: ALLOSTERIC_EFFECTS
+      optional: true
+    - !Flag
+      description: Output file containing the parsed proteins.
+      synonyms:
+      - --output
+      - -o
+      args: !SimpleFlagArg
+        name: OUTPUT
+      optional: true
+    command:
+    - cpinsim
+    - parse
+    parent: *id002
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: cpinsim parse [-h]\n                     [--interactions_without_constraints\
+      \ INTERACTIONS_WITHOUT_CONSTRAINTS [INTERACTIONS_WITHOUT_CONSTRAINTS ...]]\n\
+      \                     [--competitions COMPETITIONS [COMPETITIONS ...]]\n   \
+      \                  [--allosteric_effects ALLOSTERIC_EFFECTS [ALLOSTERIC_EFFECTS\
+      \ ...]]\n                     [--output OUTPUT]\n\noptional arguments:\n  -h,\
+      \ --help            show this help message and exit\n  --interactions_without_constraints\
+      \ INTERACTIONS_WITHOUT_CONSTRAINTS [INTERACTIONS_WITHOUT_CONSTRAINTS ...], -i\
+      \ INTERACTIONS_WITHOUT_CONSTRAINTS [INTERACTIONS_WITHOUT_CONSTRAINTS ...]\n\
+      \                        Files containing the annotated pairwise interactions.\n\
+      \  --competitions COMPETITIONS [COMPETITIONS ...], -c COMPETITIONS [COMPETITIONS\
+      \ ...]\n                        Files containing the annotated competitions.\n\
+      \  --allosteric_effects ALLOSTERIC_EFFECTS [ALLOSTERIC_EFFECTS ...], -a ALLOSTERIC_EFFECTS\
+      \ [ALLOSTERIC_EFFECTS ...]\n                        Files containing the annotated\
+      \ allosteric effects.\n  --output OUTPUT, -o OUTPUT\n                      \
+      \  Output file containing the parsed proteins.\n"
+    generated_using: &id003
+    - --help
+  - !Command
+    positional:
+    - !Positional
+      description: Path to a csv-file containing the parsed proteins.
+      position: 0
+      name: proteins
+      optional: false
+    named:
+    - !Flag
+      description: Pickle the complete graph at the end of simulation (after last
+        dissociation step) and write it to the given path.
+      synonyms:
+      - --output-graph
+      - -og
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Write some log information of each simulation stept to the given
+        path. If not specified, std-out is used.
+      synonyms:
+      - --output-log
+      - -ol
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    command:
+    - cpinsim
+    - simulate
+    parent: *id002
+    subcommands: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: cpinsim simulate [-h]\n                        [--concentrations\
+      \ MAX-PROTEIN-INSTANCES PATH/TO/CONCENTRATIONS | --number-of-copies N]\n   \
+      \                     [--association-probability P]\n                      \
+      \  [--dissociation-probability P] [--max-steps MAX_STEPS]\n                \
+      \        [--perturbation PROTEIN FACTOR] --output-graph PATH\n             \
+      \           [--output-log PATH]\n                        proteins\n\npositional\
+      \ arguments:\n  proteins              Path to a csv-file containing the parsed\
+      \ proteins.\n\noptional arguments:\n  -h, --help            show this help message\
+      \ and exit\n  --concentrations MAX-PROTEIN-INSTANCES PATH/TO/CONCENTRATIONS,\
+      \ -c MAX-PROTEIN-INSTANCES PATH/TO/CONCENTRATIONS\n                        Maximum\
+      \ number of protein instances and path to a csv-\n                        file\
+      \ containing a concentration for each protein.\n  --number-of-copies N, -n N\n\
+      \                        Number of copies for each protein type.\n  --association-probability\
+      \ P, -ap P\n                        The probability for a new association between\
+      \ two\n                        proteins (default: 0.005).\n  --dissociation-probability\
+      \ P, -dp P\n                        The probability for a dissociation of a\
+      \ pairwise\n                        interaction (default: 0.0125).\n  --max-steps\
+      \ MAX_STEPS, -m MAX_STEPS\n                        Maximum number of simulation\
+      \ steps if convergence is\n                        not reached until then (default:\
+      \ 1000).\n  --perturbation PROTEIN FACTOR, -p PROTEIN FACTOR\n             \
+      \           Protein that should be overexpressed or down regulated\n       \
+      \                 by factor FACTOR for perturbation analysis.\n  --output-graph\
+      \ PATH, -og PATH\n                        Pickle the complete graph at the end\
+      \ of simulation\n                        (after last dissociation step) and\
+      \ write it to the\n                        given path.\n  --output-log PATH,\
+      \ -ol PATH\n                        Write some log information of each simulation\
+      \ stept to\n                        the given path. If not specified, std-out\
+      \ is used.\n"
+    generated_using: *id003
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: cpinsim [-h] {annotate,parse,simulate} ...\n\nCPINSim - Constrained\
+    \ Protein Interaction Networks Simulator Package for the\nsimulation of constrained\
+    \ protein interaction networks. Beside simulation\nthere are methods for data\
+    \ preprocessing provided: Annotation of interactions\nand constraints with domains;\
+    \ A parser to provide the needed protein input\nformat.\n\npositional arguments:\n\
+    \  {annotate,parse,simulate}\n                        Choose one of the following\
+    \ functions from the cpinsim\n                        package.\n    annotate \
+    \           Annotate constraints and interactions without\n                  \
+    \      constraints with domains.\n    parse               Parse proteins from\
+    \ annotated constraints and\n                        interactions into defined\
+    \ text format.\n    simulate            Simulate the complex formation in a cell\
+    \ with given\n                        proteins. The proteins either have a fixed\
+    \ number of\n                        copies, or are chosen according to protein\n\
+    \                        concentrations. Proteins associate or dissociate\n  \
+    \                      according to the association- and dissociation-\n     \
+    \                   probability. It is possible to perturb proteins and\n    \
+    \                    modify their concentration to simulate knockout or\n    \
+    \                    overexpression.\n\noptional arguments:\n  -h, --help    \
+    \        show this help message and exit\n"
+  generated_using: *id003
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: cpinsim annotate [-h]\n                        [--interactions_without_constraints\
+  \ PATH [PATH ...]]\n                        [--competitions PATH [PATH ...]]\n \
+  \                       [--allosteric_effects PATH [PATH ...]]\n               \
+  \         [--extended_inference] [--output_interactions PATH]\n                \
+  \        [--output_competitions PATH]\n                        [--output_allosterics\
+  \ PATH]\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  --interactions_without_constraints PATH [PATH ...], -i PATH [PATH ...]\n\
+  \                        Files containing the underlying network: pairwise\n   \
+  \                     interactions without constraints. Two columns\n          \
+  \              InteractorA | InteractorB\n  --competitions PATH [PATH ...], -c PATH\
+  \ [PATH ...]\n                        Files containing the competitions. Two columns:\
+  \ Host |\n                        Competitors (comma separated)\n  --allosteric_effects\
+  \ PATH [PATH ...], -a PATH [PATH ...]\n                        Files containing\
+  \ the allosteric effects. Four columns:\n                        Host | Interactor\
+  \ | Activator | Inhibitor\n  --extended_inference, -e\n                        Extended\
+  \ inference for missing domains in\n                        competitions.\n  --output_interactions\
+  \ PATH, -oi PATH\n                        One output file containing all annotated\
+  \ pairwise\n                        interactions.\n  --output_competitions PATH,\
+  \ -oc PATH\n                        One output file containing all annotated competitions.\n\
+  \  --output_allosterics PATH, -oa PATH\n                        One output file\
+  \ containing all annotated allosteric\n                        effects.\n"
+generated_using: *id003
