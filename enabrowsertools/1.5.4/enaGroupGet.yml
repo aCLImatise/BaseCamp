@@ -1,42 +1,44 @@
 !Command
+command:
+- enaGroupGet
 positional:
 - !Positional
-  description: Study or sample accession or NCBI tax ID to fetch data for
-  position: 0
-  name: accession
+  description: 'optional arguments:'
+  position: 1
+  name: for
   optional: false
 named:
 - !Flag
-  description: Data group to be downloaded for this study/sample/taxon (default is
-    read)
+  description: "Data group to be downloaded for this\nstudy/sample/taxon (default\
+    \ is read)"
   synonyms:
   - -g
   - --group
   args: !ChoiceFlagArg
     choices: !!set
+      wgs:
+      assembly:
+      sequence:
       read:
       analysis:
-      sequence:
-      assembly:
-      wgs:
   optional: true
 - !Flag
-  description: 'File format required. Format requested must be permitted for data
-    group selected. sequence, assembly and wgs groups: embl and fasta formats. read
-    group: submitted, fastq and sra formats. analysis group: submitted only.'
+  description: "File format required. Format requested must be\npermitted for data\
+    \ group selected. sequence, assembly\nand wgs groups: embl and fasta formats.\
+    \ read group:\nsubmitted, fastq and sra formats. analysis group:\nsubmitted only."
   synonyms:
   - -f
   - --format
   args: !ChoiceFlagArg
     choices: !!set
       submitted:
+      fasta:
+      sra:
       fastq:
       embl:
-      sra:
-      fasta:
   optional: true
 - !Flag
-  description: Destination directory (default is current running directory)
+  description: "Destination directory (default is current running\ndirectory)"
   synonyms:
   - -d
   - --dest
@@ -44,52 +46,53 @@ named:
     name: DEST
   optional: true
 - !Flag
-  description: Download WGS set for each assembly if available (default is false)
+  description: "Download WGS set for each assembly if available\n(default is false)"
   synonyms:
   - -w
   - --wgs
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Extract WGS scaffolds for each assembly if available (default is false)
+  description: "Extract WGS scaffolds for each assembly if available\n(default is\
+    \ false)"
   synonyms:
   - -e
   - --extract-wgs
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Expand CON scaffolds when downloading embl format (default is false)
+  description: "Expand CON scaffolds when downloading embl format\n(default is false)"
   synonyms:
   - -exp
   - --expanded
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Download read or analysis XML in addition to data files (default is
-    false)
+  description: "Download read or analysis XML in addition to data\nfiles (default\
+    \ is false)"
   synonyms:
   - -m
   - --meta
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Download CRAM index files with submitted CRAM files, if any (default
-    is false). This flag is ignored for fastq and sra format options.
+  description: "Download CRAM index files with submitted CRAM files,\nif any (default\
+    \ is false). This flag is ignored for\nfastq and sra format options."
   synonyms:
   - -i
   - --index
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use the aspera command line client to download, instead of FTP.
+  description: "Use the aspera command line client to download,\ninstead of FTP."
   synonyms:
   - -a
   - --aspera
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use the provided settings file, will otherwise check for environment
-    variable or default settings file location.
+  description: "Use the provided settings file, will otherwise check\nfor environment\
+    \ variable or default settings file\nlocation."
   synonyms:
   - -as
   - --aspera-settings
@@ -97,17 +100,16 @@ named:
     name: ASPERA_SETTINGS
   optional: true
 - !Flag
-  description: Include subordinate taxa (taxon subtree) when querying with NCBI tax
-    ID (default is false)
+  description: "Include subordinate taxa (taxon subtree) when querying\nwith NCBI\
+    \ tax ID (default is false)"
   synonyms:
   - -t
   - --subtree
   args: !EmptyFlagArg {}
   optional: true
-command:
-- enaGroupGet
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

@@ -1,5 +1,12 @@
 !Command
-positional: []
+command:
+- single_to_multi_fast5
+positional:
+- !Positional
+  description: -c {vbz,vbz_legacy_v0,gzip,None}, --compression {vbz,vbz_legacy_v0,gzip,None}
+  position: 0
+  name: files
+  optional: false
 named:
 - !Flag
   description: Folder containing single read fast5 files
@@ -18,7 +25,7 @@ named:
     name: SAVE_PATH
   optional: true
 - !Flag
-  description: Root of output filename, default='batch' -> 'batch_0.fast5'
+  description: "Root of output filename, default='batch' ->\n'batch_0.fast5'"
   synonyms:
   - -f
   - --filename_base
@@ -42,33 +49,20 @@ named:
     name: THREADS
   optional: true
 - !Flag
-  description: Search recursively through folders for single_read fast5 files
+  description: "Search recursively through folders for single_read\nfast5 files"
   synonyms:
   - --recursive
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Ignore symlinks when searching recursively for fast5 files
+  description: Ignore symlinks when searching recursively for fast5
   synonyms:
   - --ignore_symlinks
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: Target output compression type
-  synonyms:
-  - -c
-  - --compression
-  args: !ChoiceFlagArg
-    choices: !!set
-      None:
-      vbz_legacy_v0:
-      gzip:
-      vbz:
-  optional: true
-command:
-- single_to_multi_fast5
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

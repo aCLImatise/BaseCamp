@@ -1,10 +1,7 @@
-!Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: http
-  optional: false
+&id001 !Command
+command:
+- hubCheck
+positional: []
 named:
 - !Flag
   description: "- don't check remote files for tracks, just trackDb (faster)"
@@ -19,8 +16,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: =[v?|url]     - version to validate settings against (defaults to version
-    in hub.txt, or current standard)
+  description: "=[v?|url]     - version to validate settings against\n(defaults to\
+    \ version in hub.txt, or current standard)"
   synonyms:
   - -version
   args: !EmptyFlagArg {}
@@ -45,8 +42,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: =/dir/to/cache - place to put cache for remote bigBed/bigWigs. Will
-    create this directory if not existing
+  description: "=/dir/to/cache - place to put cache for remote bigBed/bigWigs.\nWill\
+    \ create this directory if not existing"
   synonyms:
   - -udcDir
   args: !EmptyFlagArg {}
@@ -71,10 +68,31 @@ named:
   args: !SimpleFlagArg
     name: '2'
   optional: true
-command:
-- hubCheck
 parent:
-subcommands: []
+subcommands:
+- !Command
+  command:
+  - hubCheck
+  - http
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using:
+  - -h
+usage: []
 help_flag:
 usage_flag:
 version_flag:

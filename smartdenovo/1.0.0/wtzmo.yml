@@ -1,4 +1,6 @@
 !Command
+command:
+- wtzmo
 positional: []
 named:
 - !Flag
@@ -16,8 +18,8 @@ named:
     name: int
   optional: true
 - !Flag
-  description: Index of current job (0-based), [0] Suppose to run wtzmo parallelly
-    in 60 nodes. For node1, -P 60 -p 0; node2, -P 60 -p 1, ...
+  description: "Index of current job (0-based), [0]\nSuppose to run wtzmo parallelly\
+    \ in 60 nodes. For node1, -P 60 -p 0; node2, -P 60 -p 1, ..."
   synonyms:
   - -p
   args: !SimpleFlagArg
@@ -31,16 +33,17 @@ named:
     name: string
   optional: true
 - !Flag
-  description: Long reads sequence file, DON'T build index on them, + If specified,
-    program will only align them against all sequences from <-i> Useful in -I mapping
-    contigs(not too large) against -i pacbio reads
+  description: "Long reads sequence file, DON'T build index on them, +\nIf specified,\
+    \ program will only align them against all sequences from <-i>\nUseful in -I mapping\
+    \ contigs(not too large) against -i pacbio reads"
   synonyms:
   - -I
   args: !SimpleFlagArg
     name: string
   optional: true
 - !Flag
-  description: 'Long reads retained region, often from wtobt/wtcyc, + Format: read_name\toffset\tlength\toriginal_len'
+  description: "Long reads retained region, often from wtobt/wtcyc, +\nFormat: read_name\\\
+    toffset\\tlength\\toriginal_len"
   synonyms:
   - -b
   args: !SimpleFlagArg
@@ -70,7 +73,7 @@ named:
   optional: true
 - !Flag
   description: "Record pairs of sequences have beed aligned regardless of successful,\
-    \ including pairs from '-L' Format: read1\\tread2"
+    \ including pairs from '-L'\nFormat: read1\\tread2"
   synonyms:
   - '-9'
   args: !SimpleFlagArg
@@ -83,8 +86,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Option of homopolymer compression, [3] 1: trun on compression on kmer
-    2: trun on compression on small-kmer(zmer)'
+  description: "Option of homopolymer compression, [3]\n1: trun on compression on\
+    \ kmer\n2: trun on compression on small-kmer(zmer)"
   synonyms:
   - -H
   args: !SimpleFlagArg
@@ -98,8 +101,8 @@ named:
     name: int
   optional: true
 - !Flag
-  description: 'Filter high frequency kmers, maybe repetitive, [0] 0: set K to 5 *
-    <average_kmer_depth>, but no less than 100'
+  description: "Filter high frequency kmers, maybe repetitive, [0]\n0: set K to 5\
+    \ * <average_kmer_depth>, but no less than 100"
   synonyms:
   - -K
   args: !SimpleFlagArg
@@ -120,11 +123,11 @@ named:
     name: int
   optional: true
 - !Flag
-  description: 'Build kmer index in multiple iterations to save memory, 1: once, [1]
-    Given 10M reads having 100G bases, about 100/(4)=25G used in seq storage, about
-    100*(6)G=600G used in kmer-index. If -G = 10, kmer-index is divided into 10 pieces,
-    thus taking 60G. But we need additional 10M / <tot_jobs: -P> * 8 * <num_of_cand:
-    -A> memory to store candidates to be aligned.'
+  description: "Build kmer index in multiple iterations to save memory, 1: once, [1]\n\
+    Given 10M reads having 100G bases, about 100/(4)=25G used in seq storage, about\
+    \ 100*(6)G=600G\nused in kmer-index. If -G = 10, kmer-index is divided into 10\
+    \ pieces, thus taking 60G. But we need additional\n10M / <tot_jobs: -P> * 8 *\
+    \ <num_of_cand: -A> memory to store candidates to be aligned."
   synonyms:
   - -G
   args: !SimpleFlagArg
@@ -145,12 +148,12 @@ named:
     name: int
   optional: true
 - !Flag
-  description: 'Ultra-fast dot matrix alignment, pattern search in zmer image Usage:
-    wtzmo <other_options> -s 200 -m 0.1 -U 128 -U 64 -U 160 -U 1.0 -U 0.05 (1)    (2)   (3)    (4)    (5)
-    Intra-block (1): max_gap, (2): max_deviation, (3): min_size Inter-block (4): deviation
-    penalty, (5): gap size penalty use -U -1 instead of type six default parameters
-    Will trun off -y -R -r -l -q -B -C -M -X -O -W -T -w -W -e -n -y <int>    Zmer
-    window, [800]'
+  description: "Ultra-fast dot matrix alignment, pattern search in zmer image\nUsage:\
+    \ wtzmo <other_options> -s 200 -m 0.1 -U 128 -U 64 -U 160 -U 1.0 -U 0.05\n(1)\
+    \    (2)   (3)    (4)    (5)\nIntra-block (1): max_gap, (2): max_deviation, (3):\
+    \ min_size\nInter-block (4): deviation penalty, (5): gap size penalty\nuse -U\
+    \ -1 instead of type six default parameters\nWill trun off -y -R -r -l -q -B -C\
+    \ -M -X -O -W -T -w -W -e -n -y <int>    Zmer window, [800]"
   synonyms:
   - -U
   args: !SimpleFlagArg
@@ -194,8 +197,8 @@ named:
     name: int
   optional: true
 - !Flag
-  description: Limit number of best overlaps per read, [100] So call 'best' is estimated
-    by seed-windows, and increase as rd_len / avg_rd_len
+  description: "Limit number of best overlaps per read, [100]\nSo call 'best' is estimated\
+    \ by seed-windows, and increase as rd_len / avg_rd_len"
   synonyms:
   - -B
   args: !SimpleFlagArg
@@ -299,10 +302,9 @@ named:
   - -v
   args: !EmptyFlagArg {}
   optional: true
-command:
-- wtzmo
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

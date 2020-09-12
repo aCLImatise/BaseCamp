@@ -1,4 +1,6 @@
 !Command
+command:
+- netChainSubset
 positional:
 - !Positional
   description: ''
@@ -10,16 +12,44 @@ positional:
   position: 1
   name: in.chain
   optional: false
-- !Positional
-  description: ''
-  position: 2
-  name: out.chain
-  optional: false
-named: []
-command:
-- netChainSubset
+named:
+- !Flag
+  description: '- Output gap sizes to file'
+  synonyms:
+  - -gapOut
+  args: !SimpleFlagArg
+    name: gap.tab
+  optional: true
+- !Flag
+  description: '- Restrict output to particular type in net file'
+  synonyms:
+  - -type
+  args: !SimpleFlagArg
+    name: XXX
+  optional: true
+- !Flag
+  description: '- Split chain when get an insertion of another chain'
+  synonyms:
+  - -splitOnInsert
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Write entire chain references by net, don't split\nwhen a high-level\
+    \ net is encoundered.  This is useful when nets\nhave been filtered."
+  synonyms:
+  - -wholeChains
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- skip chains that are not found instead of generating\nan error.\
+    \  Useful if chains have been filtered.\n"
+  synonyms:
+  - -skipMissing
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

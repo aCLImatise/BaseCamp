@@ -1,25 +1,102 @@
 !Command
+command:
+- metaxa2_si
 positional: []
 named:
 - !Flag
-  description: ''
+  description: ': Input taxonomy file from Metaxa2'
   synonyms:
   - -i
-  args: !SimpleFlagArg
-    name: input file
+  args: !ChoiceFlagArg
+    choices: !!set
+      file:
   optional: true
 - !Flag
-  description: ''
+  description: ': Output file'
   synonyms:
   - -o
-  args: !SimpleFlagArg
-    name: output file
+  args: !ChoiceFlagArg
+    choices: !!set
+      file:
   optional: true
-command:
-- metaxa2_si
+- !Flag
+  description: ': Taxonomic level for performing inference (1 = domain -> 7 = species),
+    default = 7 (species level)'
+  synonyms:
+  - -l
+  args: !ChoiceFlagArg
+    choices: !!set
+      integer:
+  optional: true
+- !Flag
+  description: ': Percent identity cutoff for allowing inference, default = 97'
+  synonyms:
+  - -c
+  args: !ChoiceFlagArg
+    choices: !!set
+      value:
+  optional: true
+- !Flag
+  description: ': Lists all possibilities for sequence entries with multiple possible
+    inferences, off (F) by default'
+  synonyms:
+  - --list_all
+  args: !ChoiceFlagArg
+    choices: !!set
+      or:
+      F:
+      T:
+  optional: true
+- !Flag
+  description: ": Decides how to handle entries with multiple possible inferences,\
+    \ default = keep\n('assign' will randomly assign the entry to a possible taxa)"
+  synonyms:
+  - --multiple
+  args: !ChoiceFlagArg
+    choices: !!set
+      assign:
+      remove:
+      keep:
+      merge:
+  optional: true
+- !Flag
+  description: ': Decides how to handle entries with sequence identity below cutoff,
+    default = keep'
+  synonyms:
+  - --low_identity
+  args: !ChoiceFlagArg
+    choices: !!set
+      remove:
+      keep:
+      merge:
+  optional: true
+- !Flag
+  description: ': displays this help message'
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': displays the bug fixes and known bugs in this version of Metaxa'
+  synonyms:
+  - --bugs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': displays licensing information'
+  synonyms:
+  - --license
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ': displays short usage information'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: metaxa2_si -i <input file> -o <output file>\nOptions:\n-i {file}\

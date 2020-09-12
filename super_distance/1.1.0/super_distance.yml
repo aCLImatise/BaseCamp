@@ -1,13 +1,65 @@
 !Command
-positional: []
-named: []
 command:
 - super_distance
+positional:
+- !Positional
+  description: '[-h|--help] [-v|--version] [-F|--fast] [-e|--epsilon=<double>] [-s|--species=<species
+    names>] [-o|--output=<newick>] <file> [<file>]...'
+  position: 0
+  name: super_distance
+  optional: false
+named:
+- !Flag
+  description: for too many leaves, estimates only two species trees
+  synonyms:
+  - -F
+  - --fast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: tolerance (small value below which a branch length is considered zero
+    for nodal distances)
+  synonyms:
+  - -e
+  - --epsilon
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: file with species names, one per line (comments in square braces allowed);
+    if absent, orthology is assumed
+  synonyms:
+  - -s
+  - --species
+  args: !SimpleFlagArg
+    name: species names
+  optional: true
+- !Flag
+  description: output file with species supertrees, in newick format (default '-')
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: newick
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: print a longer help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "super_distance 1.1.0 \nMatrix Representation with Distances: calculates\
   \ pairwise distances between gene leaves, and estimates species trees from summary\
   \ distance matrices\nThe complete syntax is:\n\n super_distance  [-h|--help] [-v|--version]\

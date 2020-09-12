@@ -1,10 +1,82 @@
 !Command
+command:
+- test_blackbox
 positional: []
 named:
+- !Flag
+  description: "List the names of all tests instead of running them. The name of\n\
+    TEST(Foo, Bar) is \"Foo.Bar\"."
+  synonyms:
+  - --gtest_list_tests
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[-NEGATIVE_PATTERNS]\nRun only the tests whose name matches one of\
+    \ the positive patterns but\nnone of the negative patterns. '?' matches any single\
+    \ character; '*'\nmatches any substring; ':' separates two patterns."
+  synonyms:
+  - --gtest_filter
+  args: !SimpleFlagArg
+    name: POSTIVE_PATTERNS
+  optional: true
 - !Flag
   description: Run all disabled tests too.
   synonyms:
   - --gtest_also_run_disabled_tests
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[COUNT]\nRun the tests repeatedly; use a negative count to repeat\
+    \ forever."
+  synonyms:
+  - --gtest_repeat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Randomize tests' orders on every iteration.
+  synonyms:
+  - --gtest_shuffle
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=[NUMBER]\nRandom number seed to use for shuffling test orders (between\
+    \ 1 and\n99999, or 0 to use a seed based on the current time)."
+  synonyms:
+  - --gtest_random_seed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=(yes|no|auto)\nEnable/disable colored output. The default is auto."
+  synonyms:
+  - --gtest_color
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't print the elapsed time of each test.
+  synonyms:
+  - --gtest_print_time
+  args: !SimpleFlagArg
+    name: '0'
+  optional: true
+- !Flag
+  description: "[:DIRECTORY_PATH/|:FILE_PATH]\nGenerate an XML report in the given\
+    \ directory or with the given file\nname. FILE_PATH defaults to test_details.xml."
+  synonyms:
+  - --gtest_output
+  args: !SimpleFlagArg
+    name: xml
+  optional: true
+- !Flag
+  description: ":PORT\nStream test results to the given server."
+  synonyms:
+  - --gtest_stream_result_to
+  args: !SimpleFlagArg
+    name: HOST
+  optional: true
+- !Flag
+  description: "=(fast|threadsafe)\nSet the default death test style."
+  synonyms:
+  - --gtest_death_test_style
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -20,17 +92,16 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not report exceptions as test failures. Instead, allow them to crash
-    the program or throw a pop-up (on Windows).
+  description: "Do not report exceptions as test failures. Instead, allow them\nto\
+    \ crash the program or throw a pop-up (on Windows)."
   synonyms:
   - --gtest_catch_exceptions
   args: !SimpleFlagArg
     name: '0'
   optional: true
-command:
-- test_blackbox
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

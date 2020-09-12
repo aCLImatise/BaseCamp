@@ -1,0 +1,139 @@
+!Command
+command:
+- bbsplit.sh
+positional:
+- !Positional
+  description: (use the first best site)
+  position: 0
+  name: best
+  optional: false
+- !Positional
+  description: (consider unmapped)
+  position: 1
+  name: toss
+  optional: false
+- !Positional
+  description: (select one top-scoring site randomly)
+  position: 2
+  name: random
+  optional: false
+- !Positional
+  description: (retain all top-scoring sites.  Does not work yet with SAM output)
+  position: 3
+  name: all
+  optional: false
+- !Positional
+  description: (use the first best site)
+  position: 0
+  name: best
+  optional: false
+- !Positional
+  description: (consider unmapped)
+  position: 1
+  name: toss
+  optional: false
+- !Positional
+  description: (write a copy to the output for each reference to which it maps)
+  position: 2
+  name: all
+  optional: false
+- !Positional
+  description: (write a copy to the AMBIGUOUS_ output for each reference to which
+    it maps)
+  position: 3
+  name: split
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an\nout-of-memory exception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nBBSplit\nWritten by Brian Bushnell, from Dec. 2010 - present\nLast modified\
+  \ June 11, 2018\n\nDescription:  Maps reads to multiple references simultaneously.\n\
+  Outputs reads to a file for the reference they best match, with multiple options\
+  \ for dealing with ambiguous mappings.\n\nTo index:     bbsplit.sh build=<1> ref_x=<reference\
+  \ fasta> ref_y=<another reference fasta>\nTo map:       bbsplit.sh build=<1> in=<reads>\
+  \ out_x=<output file> out_y=<another output file>\n\nTo be concise, and do everything\
+  \ in one command:\nbbsplit.sh ref=x.fa,y.fa in=reads.fq basename=o%.fq\n\nthat is\
+  \ equivalent to\nbbsplit.sh build=1 in=reads.fq ref_x=x.fa ref_y=y.fa out_x=ox.fq\
+  \ out_y=oy.fq\n\nBy default paired reads will yield interleaved output, but you\
+  \ can use the # symbol to produce twin output files.\nFor example, basename=o%_#.fq\
+  \ will produce ox_1.fq, ox_2.fq, oy_1.fq, and oy_2.fq.\n\n     \nIndexing Parameters\
+  \ (required when building the index):\nref=<file,file>     A list of references,\
+  \ or directories containing fasta files.\nref_<name>=<ref.fa> Alternate, longer\
+  \ way to specify references. e.g., ref_ecoli=ecoli.fa\n                    These\
+  \ can also be comma-delimited lists of files; e.g., ref_a=a1.fa,a2.fa,a3.fa\nbuild=<1>\
+  \           If multiple references are indexed in the same directory, each needs\
+  \ a unique build ID.\npath=<.>            Specify the location to write the index,\
+  \ if you don't want it in the current working directory.\n\nInput Parameters:\n\
+  build=<1>           Designate index to use.  Corresponds to the number specified\
+  \ when building the index.\nin=<reads.fq>       Primary reads input; required parameter.\n\
+  in2=<reads2.fq>     For paired reads in two files.\nqin=<auto>          Set to 33\
+  \ or 64 to specify input quality value ASCII offset.\ninterleaved=<auto>  True forces\
+  \ paired/interleaved input; false forces single-ended mapping.\n               \
+  \     If not specified, interleaved status will be autodetected from read names.\n\
+  \nMapping Parameters:\nmaxindel=<20>       Don't look for indels longer than this.\
+  \  Lower is faster.  Set to >=100k for RNA-seq.\nminratio=<0.56>     Fraction of\
+  \ max alignment score required to keep a site.  Higher is faster.\nminhits=<1> \
+  \        Minimum number of seed hits required for candidate sites.  Higher is faster.\n\
+  ambiguous=<best>    Set behavior on ambiguously-mapped reads (with multiple top-scoring\
+  \ mapping locations).\n                       best   (use the first best site)\n\
+  \                       toss   (consider unmapped)\n                       random\
+  \   (select one top-scoring site randomly)\n                       all   (retain\
+  \ all top-scoring sites.  Does not work yet with SAM output)\nambiguous2=<best>\
+  \   Set behavior only for reads that map ambiguously to multiple different references.\n\
+  \                    Normal 'ambiguous=' controls behavior on all ambiguous reads;\n\
+  \                    Ambiguous2 excludes reads that map ambiguously within a single\
+  \ reference.\n                       best   (use the first best site)\n        \
+  \               toss   (consider unmapped)\n                       all   (write\
+  \ a copy to the output for each reference to which it maps)\n                  \
+  \     split   (write a copy to the AMBIGUOUS_ output for each reference to which\
+  \ it maps)\nqtrim=<true>        Quality-trim ends to Q5 before mapping.  Options\
+  \ are 'l' (left), 'r' (right), and 'lr' (both).\nuntrim=<true>       Undo trimming\
+  \ after mapping.  Untrimmed bases will be soft-clipped in cigar strings.\n\nOutput\
+  \ Parameters:\nout_<name>=<file>   Output reads that map to the reference <name>\
+  \ to <file>.\nbasename=prefix%suffix     Equivalent to multiple out_%=prefix%suffix\
+  \ expressions, in which each % is replaced by the name of a reference file.\nbs=<file>\
+  \           Write a shell script to 'file' that will turn the sam output into a\
+  \ sorted, indexed bam file.\nscafstats=<file>    Write statistics on how many reads\
+  \ mapped to which scaffold to this file.\nrefstats=<file>     Write statistics on\
+  \ how many reads were assigned to which reference to this file.\n              \
+  \      Unmapped reads whose mate mapped to a reference are considered assigned and\
+  \ will be counted.\nnzo=t               Only print lines with nonzero coverage.\n\
+  \n***** Notes *****\nAlmost all BBMap parameters can be used; run bbmap.sh for more\
+  \ details.\nExceptions include the 'nodisk' flag, which BBSplit does not support.\n\
+  BBSplit is recommended for fastq and fasta output, not for sam/bam output.\nWhen\
+  \ the reference sequences are shorter than read length, use Seal instead of BBSplit.\n\
+  \nJava Parameters:\n-Xmx                This will set Java's memory usage, overriding\
+  \ autodetection.\n                    -Xmx20g will specify 20 gigs of RAM, and -Xmx200m\
+  \ will specify 200 megs.\n                    The max is typically 85% of physical\
+  \ memory.\n-eoom               This flag will cause the process to exit if an\n\
+  \                    out-of-memory exception occurs.  Requires Java 8u92+.\n-da\
+  \                 Disable assertions.\n\nThis list is not complete.  For more information,\
+  \ please consult /readme.txt\nPlease contact Brian Bushnell at bbushnell@lbl.gov\
+  \ if you encounter any problems.\n\n"
+generated_using:
+- --help

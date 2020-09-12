@@ -1,4 +1,6 @@
 !Command
+command:
+- sequana_bam_splitter
 positional:
 - !Positional
   description: ''
@@ -35,14 +37,63 @@ positional:
   position: 6
   name: secondary
   optional: false
-named: []
-command:
-- sequana_bam_splitter
+named:
+- !Flag
+  description: 'input SAM/BAM/CRAM file (default: None)'
+  synonyms:
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: 'input fastq gzipped or not (default: None)'
+  synonyms:
+  - --output-directory
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: 'keep unmapped files (default: False)'
+  synonyms:
+  - --keep-unmapped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --level
+  args: !ChoiceFlagArg
+    choices: !!set
+      ERROR:
+      INFO:
+      DEBUG:
+      WARNING:
+      CRITICAL:
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: 'print version (default: False)'
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "Welcome to sequana_bam_splitter\nusage: sequana_bam_splitter This BAM/SAM/CRAM\
   \ filter removes unmapped and secondary\nreads (flag 256+4) saving the mapped reads\
   \ in a file, and the unmapped in\nanother file\nusage2: sequana_bam_splitter --input\

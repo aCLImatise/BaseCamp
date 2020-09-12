@@ -1,13 +1,165 @@
 !Command
-positional: []
-named: []
 command:
 - mclcm
+positional: []
+named:
+- !Flag
+  description: shared mcl options
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: opts
+  optional: true
+- !Flag
+  description: <func(arg)[, func(arg)]*> apply unary transformations to matrix values
+  synonyms:
+  - -tf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: show default shared options
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: dedicated parameters to construct base transformed matrix
+  synonyms:
+  - -b1
+  args: !SimpleFlagArg
+    name: opts
+  optional: true
+- !Flag
+  description: dedicated parameters to construct base expanded matrix
+  synonyms:
+  - -b2
+  args: !SimpleFlagArg
+    name: opts
+  optional: true
+- !Flag
+  description: describes the experiment, useful when command-line is propagated
+  synonyms:
+  - -annot
+  args: !SimpleFlagArg
+    name: tag/description
+  optional: true
+- !Flag
+  description: use as start clustering
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: use contraction approach (default)
+  synonyms:
+  - --contract
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use subclustering approach
+  synonyms:
+  - --subcluster
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: construct hierarchy from cluster (file) arguments
+  synonyms:
+  - --integrate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: construct hierarchy from multiple mcl runs
+  synonyms:
+  - --dispatch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'iterate at most <num> times (default: until root clustering)'
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: make sure universe clustering is at the top
+  synonyms:
+  - -root
+  args: !SimpleFlagArg
+    name: y/n
+  optional: true
+- !Flag
+  description: file to write nested cluster stack to
+  synonyms:
+  - -cone
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: file to write expanded cluster stack to
+  synonyms:
+  - -stack
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: file to write coarsened graphs to
+  synonyms:
+  - -coarse
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: file to write base graph to
+  synonyms:
+  - -write-base
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: <tags> may contain 'stack', 'cone', 'coarse', 'steps'
+  synonyms:
+  - -write
+  args: !SimpleFlagArg
+    name: tags
+  optional: true
+- !Flag
+  description: file prefix for cone, stack, and coarse
+  synonyms:
+  - -stem
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: additionally write clusterings to separate files
+  synonyms:
+  - --mplex
+  args: !SimpleFlagArg
+    name: y/n
+  optional: true
+- !Flag
+  description: quiet level of logging
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: log-spec
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: this info
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: output version information, exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "Usage: mclcm <mx-name> [mclcm options] [-- \"<mcl-opts>\"*]\n\n-a <opts>\
   \                     shared mcl options\n-tf <func(arg)[, func(arg)]*> apply unary\
   \ transformations to matrix values\n-z                            show default shared\

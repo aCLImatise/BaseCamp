@@ -1,4 +1,6 @@
 !Command
+command:
+- XXmotif
 positional:
 - !Positional
   description: ''
@@ -65,16 +67,16 @@ named:
     name: NUMBER
   optional: true
 - !Flag
-  description: 'defines what kind of start seeds are used (DEFAULT: ALL) - possible
-    types: ALL, FIVEMERS, PALINDROME, TANDEM, NOPALINDROME, NOTANDEM'
+  description: "defines what kind of start seeds are used (DEFAULT: ALL)\n- possible\
+    \ types: ALL, FIVEMERS, PALINDROME, TANDEM, NOPALINDROME, NOTANDEM"
   synonyms:
   - --type
   args: !SimpleFlagArg
     name: TYPE
   optional: true
 - !Flag
-  description: 'defines the similarity threshold for merging motifs (DEFAULT: HIGH)
-    - possible modes: LOW, MEDIUM, HIGH'
+  description: "defines the similarity threshold for merging motifs (DEFAULT: HIGH)\n\
+    - possible modes: LOW, MEDIUM, HIGH"
   synonyms:
   - --merge-motif-threshold
   args: !SimpleFlagArg
@@ -130,8 +132,8 @@ named:
     name: NUMBER
   optional: true
 - !Flag
-  description: use localization information to calculate combined P-values  (sequences
-    should have all the same length)
+  description: "use localization information to calculate combined P-values\n(sequences\
+    \ should have all the same length)"
   synonyms:
   - --localization
   args: !EmptyFlagArg {}
@@ -177,6 +179,282 @@ named:
     name: NUMBER
   optional: true
 - !Flag
+  description: EM mode.
+  synonyms:
+  - --em
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Binding sites file name to initialize a single Markov model. Sequence
+    lengths must not differ and be provided line-by-line.
+  synonyms:
+  - --bindingSiteFile
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Specify the length of binding sites provided by --bindingSiteFile (not
+    mandatory).
+  synonyms:
+  - --bindingSiteLength
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Markov model file name (without ending) to initialize a single Markov
+    model. Files <FILE>.conds and <FILE>.probs need to be available.
+  synonyms:
+  - --markovModelFile
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "[<INTEGER>...]\nNumber of one or more XXmotif models in the ranking\
+    \ used to initialize Markov models. The remaining parameters available to choose\
+    \ models from XXmotif results are ignored."
+  synonyms:
+  - --nrModels
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Min. number of XXmotif models used to initialize Markov models. Independent
+    on options --maxPvalue and --minOccurrence. <INTEGER> > 0 (default: 1).'
+  synonyms:
+  - --minModels
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Max. number of XXmotif models used to initialize Markov models. <INTEGER>
+    > 0 (default: max. integer).'
+  synonyms:
+  - --maxModels
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Max. p-value of XXmotif models used to initialize Markov models. Not
+    applied to min. number of models. (default: 1).'
+  synonyms:
+  - --maxPvalue
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Min. percentage of sequences containing a binding site instance. Not
+    applied to min. number of models. (default: 0).'
+  synonyms:
+  - --minOccurrence
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "{1,2}\nAdd columns to the left and/or right of models. <INTEGER> >=\
+    \ 0 (default: 0 0)."
+  synonyms:
+  - --addColumns
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Markov model order. <INTEGER> >= 0 (default: 0).'
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "[<FLOAT>...]\nMarkov model pseudo-counts factor(s). Markov model order\
+    \ k fixes vector size to k+1. <FLOAT> >= 0 (default: 10)."
+  synonyms:
+  - -a
+  - --alpha
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "[<FLOAT>...]\nMarkov model pseudo-counts factor(s) defined by --alpha\
+    \ and -q. Markov model order k fixes vector size to k+1. Specify either --eta\
+    \ or --alpha. <FLOAT> >= 0 (default: 10)."
+  synonyms:
+  - --eta
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Interpolate between higher- and lower-order probabilities.
+  synonyms:
+  - --interpolate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Background model order. <INTEGER> >= 0. (default: 0).'
+  synonyms:
+  - -K
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Background model pseudo-counts factor. <FLOAT> >= 0 (default: 10).'
+  synonyms:
+  - -A
+  - --Alpha
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Initialize Markov model but skip EM phase.
+  synonyms:
+  - --noExpectationMaximizationPhase
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specificity factor approximates the percentage of sequences contributing
+    to the Markov model. 0 < <FLOAT> < 1 (default: 0.1).'
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'EM convergence parameter. <FLOAT> > 0 (default: 0.001).'
+  synonyms:
+  - --epsilon
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Max. number of EM iterations (default: max. integer).'
+  synonyms:
+  - --maxEMIterations
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Intensity or significance values for positive sequences. The higher
+    the values the higher the weights.
+  synonyms:
+  - --sequenceIntsFile
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Parameter to initialize models from XXmotif results by weighting instances
+    with corresponding sequence weigths. Option --sequenceIntsFile must be provided
+    simultaneously. Options --bindingSiteFile and --markovModelFile must not be provided
+    simultaneously.
+  synonyms:
+  - --initInts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Rank-based weighting (default: intensity-based weighting).'
+  synonyms:
+  - --rankWeighting
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Quantile to estimate the background intensity value (or rank). Sequences
+    having their intensity value (rank) below (above) the background intensity value
+    (rank) get assigned to weight zero. 0 <= <FLOAT> <= 1 (default: 0).'
+  synonyms:
+  - --backgroundQuantile
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Background intensity value. Sequences having their intensity value
+    below the background intensity value get assigned to weight zero. Option --rankWeighting
+    must not be provided simultaneously (default: min. intensity value).'
+  synonyms:
+  - --backgroundIntensity
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Background intensity rank. Sequences having their intensity rank above
+    the background intensity rank get assigned to weight zero. Option --rankWeighting
+    must be provided simultaneously (default: max. rank).'
+  synonyms:
+  - --backgroundRank
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Intensity or significance values for binding site sequences. The higher
+    the values the higher the weights. Option --bindingSiteFile must be provided simultaneously.
+  synonyms:
+  - --bindingSiteIntsFile
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Binding site rank-based weighting (default: intensity-based weighting).'
+  synonyms:
+  - --bindingSiteRankWeighting
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Quantile to estimate the background intensity value (or rank). Binding
+    sites having their intensity value (rank) below (below) the background intensity
+    value (rank) get assigned to weight zero. 0 <= <FLOAT> <= 1 (default: 0).'
+  synonyms:
+  - --bindingSiteBackgroundQuantile
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Background intensity value. Binding sites having their intensity value
+    below the background intensity value get assigned to weight zero. Option --bindingSiteRankWeighting
+    must not be provided simultaneously (default: min. intensity value).'
+  synonyms:
+  - --bindingSiteBackgroundIntensity
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Background intensity rank. Binding sites having their intensity rank
+    above the background intensity rank get assigned to weight zero. Option --bindingSiteRankWeighting
+    must be provided simultaneously (default: max. rank).'
+  synonyms:
+  - --bindingSiteBackgroundRank
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Evaluate model(s) on training sequences.
+  synonyms:
+  - --testPosSet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Evaluate model(s) on background sequences.
+  synonyms:
+  - --testNegSet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Evaluate model(s) on sequences in FASTA format. Specify one or more
+    files. Sequence lengths may differ.
+  synonyms:
+  - --testSet
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Evaluate PWM model(s) used to initialize Markov model(s) on test sequences.
+  synonyms:
+  - --evaluatePWMs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Calculate log probabilities instead of log likelihood ratios.
+  synonyms:
+  - --logProbs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: Save Markov models after initialization to file.
   synonyms:
   - --saveInitModels
@@ -201,15 +479,14 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Verbose printouts.
+  description: "Verbose printouts.\n"
   synonyms:
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
-command:
-- XXmotif
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: print this help page
   synonyms:

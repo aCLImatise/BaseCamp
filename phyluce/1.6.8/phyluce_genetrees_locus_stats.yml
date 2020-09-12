@@ -1,5 +1,12 @@
 !Command
-positional: []
+command:
+- phyluce_genetrees_locus_stats
+positional:
+- !Positional
+  description: '[--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]'
+  position: 0
+  name: ALIGNMENTS
+  optional: false
 named:
 - !Flag
   description: The gene tree configuration file
@@ -21,12 +28,12 @@ named:
   - --input-format
   args: !ChoiceFlagArg
     choices: !!set
-      nexus:
-      clustal:
       fasta:
-      stockholm:
-      emboss:
       phylip:
+      stockholm:
+      nexus:
+      emboss:
+      clustal:
   optional: true
 - !Flag
   description: The logging level to use.
@@ -34,8 +41,8 @@ named:
   - --verbosity
   args: !ChoiceFlagArg
     choices: !!set
-      WARN:
       CRITICAL:
+      WARN:
       INFO:
   optional: true
 - !Flag
@@ -46,17 +53,16 @@ named:
     name: LOG_PATH
   optional: true
 - !Flag
-  description: Process alignments in parallel using --cores for alignment. This is
-    the number of PHYSICAL CPUs.
+  description: "Process alignments in parallel using --cores for\nalignment. This\
+    \ is the number of PHYSICAL CPUs.\n"
   synonyms:
   - --cores
   args: !SimpleFlagArg
     name: CORES
   optional: true
-command:
-- phyluce_genetrees_locus_stats
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

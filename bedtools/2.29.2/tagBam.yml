@@ -1,4 +1,6 @@
 !Command
+command:
+- tagBam
 positional:
 - !Positional
   description: ''
@@ -12,8 +14,52 @@ positional:
   optional: false
 named:
 - !Flag
-  description: Use the full interval (including name, score, and strand) to populate
-    tags. Requires the -labels option to identify from which file the interval came.
+  description: "Require overlaps on the same strand.  That is, only tag alignments\
+    \ that have the same\nstrand as a feature in the annotation file(s)."
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Require overlaps on the opposite strand.  That is, only tag alignments\
+    \ that have the opposite\nstrand as a feature in the annotation file(s)."
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum overlap required as a fraction of the alignment.\n- Default\
+    \ is 1E-9 (i.e., 1bp).\n- FLOAT (e.g. 0.50)"
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Dictate what the tag should be. Default is YB.\n- STRING (two characters,\
+    \ e.g., YK)"
+  synonyms:
+  - -tag
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use the name field from the annotation files to populate tags.\nBy\
+    \ default, the -labels values are used."
+  synonyms:
+  - -names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "the score field from the annotation files to populate tags.\nBy default,\
+    \ the -labels values are used."
+  synonyms:
+  - -scores
+  args: !SimpleFlagArg
+    name: Use
+  optional: true
+- !Flag
+  description: "Use the full interval (including name, score, and strand) to populate\
+    \ tags.\nRequires the -labels option to identify from which file the interval\
+    \ came.\n"
   synonyms:
   - -intervals
   args: !EmptyFlagArg {}
@@ -21,9 +67,9 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -i
-  args: !SimpleFlagArg
-    name: BAM
+  - -labels
+  args: !RepeatFlagArg
+    name: LABn
   optional: true
 - !Flag
   description: ''
@@ -35,14 +81,13 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -labels
-  args: !RepeatFlagArg
-    name: LABn
+  - -i
+  args: !SimpleFlagArg
+    name: BAM
   optional: true
-command:
-- tagBam
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

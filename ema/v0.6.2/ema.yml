@@ -1,4 +1,6 @@
 !Command
+command:
+- ema
 positional:
 - !Positional
   description: ''
@@ -20,11 +22,98 @@ named:
   args: !SimpleFlagArg
     name: output prefix
   optional: true
-command:
-- ema
+- !Flag
+  description: ': number of barcode buckets to make [500]'
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: num buckets
+  optional: true
+- !Flag
+  description: ': output BX:Z-formatted FASTQs [off]'
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': set number of threads [1]'
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: threads
+  optional: true
+- !Flag
+  description: ': first (preprocessed and sorted) FASTQ file [none]'
+  synonyms:
+  - '-1'
+  args: !SimpleFlagArg
+    name: FASTQ1 path
+  optional: true
+- !Flag
+  description: ': second (preprocessed and sorted) FASTQ file [none]'
+  synonyms:
+  - '-2'
+  args: !SimpleFlagArg
+    name: FASTQ2 path
+  optional: true
+- !Flag
+  description: ': specify special FASTQ path [none]'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: EMA-FASTQ path
+  optional: true
+- !Flag
+  description: ': multi-input mode; takes input files after flags and spawns a thread
+    for each [off]'
+  synonyms:
+  - -x
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': indexed reference [required]'
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: FASTA path
+  optional: true
+- !Flag
+  description: ": full read group string (e.g. '@RG\\tID:foo\\tSM:bar') [none]"
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: RG string
+  optional: true
+- !Flag
+  description: ': apply fragment read density optimization [off]'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": sequencing platform (one of '10x', 'tru', 'cpt') [10x]"
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: platform
+  optional: true
+- !Flag
+  description: ": index to follow 'BX' tag in SAM output [1]  -t <threads>: set number\
+    \ of threads [1]"
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: index
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ': apply Hamming-2 correction [off]'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "error: unrecognized mode\nusage: ema <count|preproc|align|help> [options]\n\

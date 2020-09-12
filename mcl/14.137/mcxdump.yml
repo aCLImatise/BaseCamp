@@ -1,27 +1,322 @@
 !Command
+command:
+- mcxdump
 positional: []
 named:
 - !Flag
-  description: ''
+  description: read matrix from file <fname>
   synonyms:
   - -imx
   args: !SimpleFlagArg
     name: fname
   optional: true
 - !Flag
-  description: ''
+  description: read clustering from file <fname>, dump lines
+  synonyms:
+  - -icl
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: dump multiple matrices encoded in cat file
+  synonyms:
+  - -imx-cat
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: stackify and dump multiple matrices encoded in cone file
+  synonyms:
+  - -imx-tree
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: output to file <fname> (- for STDOUT)
   synonyms:
   - -o
   args: !SimpleFlagArg
     name: fname
   optional: true
-command:
-- mcxdump
+- !Flag
+  description: read tab file from <fname> for all identifiers
+  synonyms:
+  - -tab
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: read tab file from <fname> for column domain identifiers
+  synonyms:
+  - -tabc
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: read tab file from <fname> for row domain identifiers
+  synonyms:
+  - -tabr
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: tab file(s) may mismatch matrix domain(s)
+  synonyms:
+  - --lazy-tab
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not emit values
+  synonyms:
+  - --no-values
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: prefix column indices with <string>
+  synonyms:
+  - -prefixc
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: do not include self in listing
+  synonyms:
+  - --no-loops
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: skip columns with no entries
+  synonyms:
+  - --omit-empty
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '{ascending,descending} sort mode'
+  synonyms:
+  - -sort
+  args: !SimpleFlagArg
+    name: size-
+  optional: true
+- !Flag
+  description: force self in listing
+  synonyms:
+  - --force-loops
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: only do the first <num> files
+  synonyms:
+  - -cat-max
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: split multiple matrices over different files
+  synonyms:
+  - -split-stem
+  args: !SimpleFlagArg
+    name: file-name-stem
+  optional: true
+- !Flag
+  description: dump mcl matrix
+  synonyms:
+  - --write-matrix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: work with the transposed matrix
+  synonyms:
+  - --transpose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <func(arg)[, func(arg)]*>     apply unary transformations to input
+    matrix values
+  synonyms:
+  - -tf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: dump a single column/row matrix pair per output line
+  synonyms:
+  - --dump-pairs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: dump upper part of the matrix excluding diagonal
+  synonyms:
+  - --dump-upper
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: dump upper part of the matrix including diagonal
+  synonyms:
+  - --dump-upperi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: dump lower part of the matrix excluding diagonal
+  synonyms:
+  - --dump-lower
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: dump lower part of the matrix including diagonal
+  synonyms:
+  - --dump-loweri
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: join all row entries on a single line
+  synonyms:
+  - --dump-lines
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: as --dump-lines, do not emit the leading column identifier
+  synonyms:
+  - --dump-rlines
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: join all row entries on a single line, print column value
+  synonyms:
+  - --dump-vlines
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: dump SIF format with second field set to <relationship-type>
+  synonyms:
+  - -dump-sif
+  args: !SimpleFlagArg
+    name: relationship-type
+  optional: true
+- !Flag
+  description: as -dump-sif, output extended label:weight format
+  synonyms:
+  - -dump-sifx
+  args: !SimpleFlagArg
+    name: relationship-type
+  optional: true
+- !Flag
+  description: write newick string
+  synonyms:
+  - --newick
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: dump complete matrix including zeroes
+  synonyms:
+  - --dump-table
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: limit table dump to first <num> fields
+  synonyms:
+  - -table-nfields
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: limit table dump to first <num> lines
+  synonyms:
+  - -table-nlines
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: do not dump lead node (with --dump-table)
+  synonyms:
+  - --dump-lead-off
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: precision to use in interchange format
+  synonyms:
+  - -digits
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: write tab file on column domain
+  synonyms:
+  - --write-tabc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write tab file on row domain
+  synonyms:
+  - --write-tabr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: dump the row domain
+  synonyms:
+  - --dump-domr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: dump the col domain
+  synonyms:
+  - --dump-domc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: create empty matrix, honour domains
+  synonyms:
+  - --skeleton
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use <string> to separate col from row list (default tab)
+  synonyms:
+  - -sep-lead
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: use <string> to separate row indices (default tab)
+  synonyms:
+  - -sep-field
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: use <string> as node/value separator (default colon)
+  synonyms:
+  - -sep-value
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: use <string> to separate cat matrix dumps (cf -imx-cat)
+  synonyms:
+  - -sep-cat
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: print this help
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: print this help
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version information
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "Usage: mcxdump -imx <fname> [-o <fname>] [options]\n\n-imx <fname>   \
   \                   read matrix from file <fname>\n-icl <fname>                \
   \      read clustering from file <fname>, dump lines\n-imx-cat <fname>         \

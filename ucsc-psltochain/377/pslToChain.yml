@@ -1,15 +1,7 @@
-!Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: pslIn
-  optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: chainOut
-  optional: false
+&id001 !Command
+command:
+- pslToChain
+positional: []
 named:
 - !Flag
   description: ignore psl records with negative target strand rather than exiting
@@ -17,10 +9,31 @@ named:
   - -ignore
   args: !EmptyFlagArg {}
   optional: true
-command:
-- pslToChain
 parent:
-subcommands: []
+subcommands:
+- !Command
+  command:
+  - pslToChain
+  - pslIn
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using:
+  - -h
+usage: []
 help_flag:
 usage_flag:
 version_flag:

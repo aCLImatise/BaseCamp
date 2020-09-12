@@ -1,0 +1,40 @@
+!Command
+command:
+- bp_process_gadfly.pl
+positional: []
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nThis script massages the RELEASE 3 Flybase/Gadfly GFF files located\
+  \ at\nhttp://www.fruitfly.org/sequence/release3download.shtml into the\n\"correct\"\
+  \ version of the GFF format.\n\nTo use this script, download the whole genome FASTA\
+  \ file and save it\nto disk.  (The downloaded file will be called something like\n\
+  \"na_whole-genome_genomic_dmel_RELEASE3.FASTA\", but the link on the\nHTML page\
+  \ doesn't give the filename.)  Do the same for the whole\ngenome GFF annotation\
+  \ file (the saved file will be called something\nlike \"whole-genome_annotation-feature-region_dmel_RELEASE3.GFF\"\
+  .)  If\nyou wish you can download the ZIP compressed versions of these files.\n\n\
+  Next run this script on the two files, indicating the name of the\ndownloaded FASTA\
+  \ file first, followed by the gff file:\n\n % process_gadfly.pl na_whole-genome_genomic_dmel_RELEASE3.FASTA\
+  \ whole-genome_annotation-feature-region_dmel_RELEASE3.GFF > fly.gff\n\nThe gadfly.gff\
+  \ file and the fasta file can now be loaded into a Bio::DB::GFF database\nusing\
+  \ the following command:\n\n  % bulk_load_gff.pl -d fly -fasta na_whole-genome_genomic_dmel_RELEASE3.FASTA\
+  \ fly.gff \n\n(Where \"fly\" is the name of the database.  Change it as appropriate.\n\
+  The database must already exist and be writable by you!)\n\nThe resulting database\
+  \ will have the following feature types\n(represented as \"method:source\"):\n\n\
+  \  Component:arm              A chromosome arm\n  Component:scaffold\t     A chromosome\
+  \ scaffold (accession #)\n  Component:gap\t             A gap in the assembly\n\
+  \  clone:clonelocator         A BAC clone\n  gene:gadfly                A gene accession\
+  \ number\n  transcript:gadfly          A transcript accession number\n  translation:gadfly\
+  \         A translation\n  codon:gadfly               Significance unknown\n  exon:gadfly\
+  \                An exon\n  symbol:gadfly              A classical gene symbol\n\
+  \  similarity:blastn          A BLASTN hit\n  similarity:blastx          A BLASTX\
+  \ hit\n  similarity:sim4            EST->genome using SIM4\n  similarity:groupest\
+  \        EST->genome using GROUPEST\n  similarity:repeatmasker    A repeat\n\nIMPORTANT\
+  \ NOTE: This script will *only* work with the RELEASE3 gadfly\nfiles and will not\
+  \ work with earlier releases.\n\n"
+generated_using:
+- --help

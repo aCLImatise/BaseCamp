@@ -1,13 +1,66 @@
 !Command
+command:
+- smina
 positional:
 - !Positional
-  description: ''
+  description: 'Scoring and minimization options:'
   position: 0
-  name: Input
+  name: residues
+  optional: false
+- !Positional
+  description: '--minimize_iters arg (=0)     number iterations of steepest descent;
+    default '
+  position: 1
+  name: clashes
+  optional: false
+- !Positional
+  description: --user_grid_lambda arg (=-1)  Scales user_grid and functional scoring
+  position: 0
+  name: calculations
+  optional: false
+- !Positional
+  description: --print_atom_types            Print all available atom types
+  position: 1
+  name: parameterizations
+  optional: false
+- !Positional
+  description: --out_flex arg                output file for flexible receptor residues
+  position: 0
+  name: extension
+  optional: false
+- !Positional
+  description: '--atom_term_data              embedded per-atom interaction terms
+    in output '
+  position: 1
+  name: values
+  optional: false
+- !Positional
+  description: -q [ --quiet ]                Suppress output messages
+  position: 0
+  name: redundancy
   optional: false
 named:
 - !Flag
-  description: flexible side chains specified by comma  separated list of chain:resid
+  description: '[ --receptor ] arg         rigid part of the receptor (PDBQT)'
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: flexible side chains, if any (PDBQT)
+  synonyms:
+  - --flex
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[ --ligand ] arg           ligand(s)'
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "flexible side chains specified by comma\nseparated list of chain:resid"
   synonyms:
   - --flexres
   args: !SimpleFlagArg
@@ -21,8 +74,8 @@ named:
     name: arg
   optional: true
 - !Flag
-  description: set all side chains within specified distance  to flexdist_ligand to
-    flexible
+  description: "set all side chains within specified distance\nto flexdist_ligand\
+    \ to flexible"
   synonyms:
   - --flexdist
   args: !SimpleFlagArg
@@ -78,15 +131,15 @@ named:
     name: arg
   optional: true
 - !Flag
-  description: Amount of buffer space to add to auto-generated box (default +4 on
-    all six sides)
+  description: "Amount of buffer space to add to auto-generated\nbox (default +4 on\
+    \ all six sides)"
   synonyms:
   - --autobox_add
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: no ligand; for sampling/minimizing flexible  residues
+  description: no ligand; for sampling/minimizing flexible
   synonyms:
   - --no_lig
   args: !EmptyFlagArg {}
@@ -119,7 +172,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: local search only using autobox (you probably  want to use --minimize)
+  description: "local search only using autobox (you probably\nwant to use --minimize)"
   synonyms:
   - --local_only
   args: !EmptyFlagArg {}
@@ -131,18 +184,10 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: generate random poses, attempting to avoid  clashes
+  description: generate random poses, attempting to avoid
   synonyms:
   - --randomize_only
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: (=0)     number iterations of steepest descent; default  scales with
-    rotors and usually isn't sufficient for convergence
-  synonyms:
-  - --minimize_iters
-  args: !SimpleFlagArg
-    name: arg
   optional: true
 - !Flag
   description: use accurate line search
@@ -151,7 +196,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Stop minimization before convergence conditions are fully met.
+  description: "Stop minimization before convergence conditions\nare fully met."
   synonyms:
   - --minimize_early_term
   args: !EmptyFlagArg {}
@@ -164,57 +209,37 @@ named:
     name: arg
   optional: true
 - !Flag
-  description: 'approximation factor: higher results in a  finer-grained approximation'
+  description: "approximation factor: higher results in a\nfiner-grained approximation"
   synonyms:
   - --factor
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: max allowed force; lower values more gently  minimize clashing structures
+  description: "max allowed force; lower values more gently\nminimize clashing structures"
   synonyms:
   - --force_cap
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: Autodock map file for user grid data based  calculations
+  description: Autodock map file for user grid data based
   synonyms:
   - --user_grid
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: (=-1)  Scales user_grid and functional scoring
-  synonyms:
-  - --user_grid_lambda
-  args: !SimpleFlagArg
-    name: arg
-  optional: true
-- !Flag
-  description: Print all available terms with default  parameterizations
+  description: Print all available terms with default
   synonyms:
   - --print_terms
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Print all available atom types
-  synonyms:
-  - --print_atom_types
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '[ --out ] arg              output file name, format taken from file  extension'
+  description: '[ --out ] arg              output file name, format taken from file'
   synonyms:
   - -o
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: output file for flexible receptor residues
-  synonyms:
-  - --out_flex
-  args: !SimpleFlagArg
-    name: arg
   optional: true
 - !Flag
   description: optionally, write log file
@@ -224,21 +249,15 @@ named:
     name: arg
   optional: true
 - !Flag
-  description: optionally write per-atom interaction term  values
+  description: optionally write per-atom interaction term
   synonyms:
   - --atom_terms
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: embedded per-atom interaction terms in output  sd data
-  synonyms:
-  - --atom_term_data
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: the number of CPUs to use (the default is to  try to detect the number
-    of CPUs or, failing  that, use 1)
+  description: "the number of CPUs to use (the default is to\ntry to detect the number\
+    \ of CPUs or, failing\nthat, use 1)"
   synonyms:
   - --cpu
   args: !SimpleFlagArg
@@ -252,8 +271,8 @@ named:
     name: arg
   optional: true
 - !Flag
-  description: (=8)     exhaustiveness of the global search (roughly  proportional
-    to time)
+  description: "(=8)     exhaustiveness of the global search (roughly\nproportional\
+    \ to time)"
   synonyms:
   - --exhaustiveness
   args: !SimpleFlagArg
@@ -267,28 +286,22 @@ named:
     name: arg
   optional: true
 - !Flag
-  description: (=3)       maximum energy difference between the best  binding mode
-    and the worst one displayed  (kcal/mol)
+  description: "(=3)       maximum energy difference between the best\nbinding mode\
+    \ and the worst one displayed\n(kcal/mol)"
   synonyms:
   - --energy_range
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: (=1)    rmsd value used to filter final poses to remove redundancy
+  description: (=1)    rmsd value used to filter final poses to remove
   synonyms:
   - --min_rmsd_filter
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: '[ --quiet ]                Suppress output messages'
-  synonyms:
-  - -q
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: automatically add hydrogens in ligands (on by  default)
+  description: "automatically add hydrogens in ligands (on by\ndefault)"
   synonyms:
   - --addH
   args: !SimpleFlagArg
@@ -307,10 +320,9 @@ named:
   - --help_hidden
   args: !EmptyFlagArg {}
   optional: true
-command:
-- smina
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: display usage summary
   synonyms:
@@ -324,9 +336,8 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
-help_text: "Command line parse error: unrecognised option '-h'\n\nCorrect usage:\n\
-  \nInput:\n  -r [ --receptor ] arg         rigid part of the receptor (PDBQT)\n \
-  \ --flex arg                    flexible side chains, if any (PDBQT)\n  -l [ --ligand\
+help_text: "\nInput:\n  -r [ --receptor ] arg         rigid part of the receptor (PDBQT)\n\
+  \  --flex arg                    flexible side chains, if any (PDBQT)\n  -l [ --ligand\
   \ ] arg           ligand(s)\n  --flexres arg                 flexible side chains\
   \ specified by comma \n                                separated list of chain:resid\n\
   \  --flexdist_ligand arg         Ligand to use for flexdist\n  --flexdist arg  \
@@ -386,4 +397,4 @@ help_text: "Command line parse error: unrecognised option '-h'\n\nCorrect usage:
   \         display usage summary with hidden options\n  --version               \
   \      display program version\n\n"
 generated_using:
-- -h
+- --help

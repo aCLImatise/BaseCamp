@@ -1,4 +1,6 @@
 !Command
+command:
+- my_print_defaults
 positional:
 - !Positional
   description: ''
@@ -7,16 +9,74 @@ positional:
   optional: false
 named:
 - !Flag
+  description: "Deprecated, please use --defaults-file instead. Name of\nconfig file\
+    \ to read; if no extension is given, default\nextension (e.g., .ini or .cnf) will\
+    \ be added"
+  synonyms:
+  - -c
+  - --config-file
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: "Like --config-file, except: if first option, then read\nthis file\
+    \ only, do not read global or per-user config\nfiles; should be the first option"
+  synonyms:
+  - -c
+  - --defaults-file
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: "Read this file after the global config file and before\nthe config\
+    \ file in the users home directory; should be\nthe first option"
+  synonyms:
+  - -e
+  - --defaults-extra-file
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: "In addition to the given groups, read also groups with\nthis suffix"
+  synonyms:
+  - -g
+  - --defaults-group-suffix
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: Deprecated. Synonym for --defaults-extra-file.
+  synonyms:
+  - -e
+  - --extra-file
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: "Ignore reading of default option file(s), except for\nlogin file."
+  synonyms:
+  - -n
+  - --no-defaults
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to be read from under the login file.
+  synonyms:
+  - -l
+  - --login-path
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
   description: Increase the output level
   synonyms:
   - -v
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
-command:
-- my_print_defaults
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag
@@ -49,7 +109,7 @@ help_text: "my_print_defaults  Ver 1.6 for Linux at x86_64\nCopyright (c) 2000, 
   \ login file.\n  -?, --help          Display this help message and exit.\n  -v,\
   \ --verbose       Increase the output level\n  -V, --version       Output version\
   \ information and exit.\n\nDefault options are read from the following files in\
-  \ the given order:\n/etc/my.cnf /etc/mysql/my.cnf /tmp/tmp5kms2cfc/etc/my.cnf ~/.my.cnf\
+  \ the given order:\n/etc/my.cnf /etc/mysql/my.cnf /usr/local/etc/my.cnf ~/.my.cnf\
   \ \n\nVariables (--variable-name=value)\nand boolean options {FALSE|TRUE}  Value\
   \ (after reading options)\n--------------------------------- ----------------------------------------\n\
   config-file                       my\ndefaults-file                     my\ndefaults-extra-file\

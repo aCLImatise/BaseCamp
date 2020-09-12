@@ -1,8 +1,10 @@
 !Command
+command:
+- fargene
 positional: []
 named:
 - !Flag
-  description: Input file(s) to be searched. Could either be in FASTA or FASTQ format.
+  description: "Input file(s) to be searched. Could either be in FASTA\nor FASTQ format."
   synonyms:
   - --infiles
   - -i
@@ -10,16 +12,16 @@ named:
     name: INFILES
   optional: true
 - !Flag
-  description: The Hidden Markov Model that should be used to analyse the data. Could
-    either be one of the pre-defined models or the path to a custom HMM.
+  description: "The Hidden Markov Model that should be used to analyse\nthe data.\
+    \ Could either be one of the pre-defined\nmodels or the path to a custom HMM."
   synonyms:
   - --hmm-model
   args: !SimpleFlagArg
     name: HMM_MODEL
   optional: true
 - !Flag
-  description: 'The threshold score for a sequence to be classified as a (almost)
-    complete gene (default: None).'
+  description: "The threshold score for a sequence to be classified as\na (almost)\
+    \ complete gene (default: None)."
   synonyms:
   - --score
   - -sl
@@ -27,14 +29,14 @@ named:
     name: LONG_SCORE
   optional: true
 - !Flag
-  description: 'If the input data is paired end metagenomic data (default: False).'
+  description: "If the input data is paired end metagenomic data\n(default: False)."
   synonyms:
   - --meta
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'The threshold score for a fragment to be classified as a positive.
-    Expressed as score per amino acid (default: None).'
+  description: "The threshold score for a fragment to be classified as\na positive.\
+    \ Expressed as score per amino acid\n(default: None)."
   synonyms:
   - --meta-score
   - -sm
@@ -42,7 +44,7 @@ named:
     name: META_SCORE
   optional: true
 - !Flag
-  description: 'The output directory for the whole run (default: ./fargene_output).'
+  description: "The output directory for the whole run (default:\n./fargene_output)."
   synonyms:
   - --output
   - -o
@@ -50,28 +52,28 @@ named:
     name: OUTDIR
   optional: true
 - !Flag
-  description: 'Overwrite output directory if it exists (default: False).'
+  description: "Overwrite output directory if it exists (default:\nFalse)."
   synonyms:
   - --force
   - -f
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Directory for (sometimes large) intermediate files. (default: OUT_DIR/tmpdir)'
+  description: "Directory for (sometimes large) intermediate files.\n(default: OUT_DIR/tmpdir)"
   synonyms:
   - --tmp-dir
   args: !SimpleFlagArg
     name: TMP_DIR
   optional: true
 - !Flag
-  description: 'If the input sequence(s) is amino acids (default: False).'
+  description: "If the input sequence(s) is amino acids (default:\nFalse)."
   synonyms:
   - --protein
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Number of processes to be used when processing metagenomic data (default:
-    1).'
+  description: "Number of processes to be used when processing\nmetagenomic data (default:\
+    \ 1)."
   synonyms:
   - --processes
   - -p
@@ -79,16 +81,16 @@ named:
     name: PROCESSES
   optional: true
 - !Flag
-  description: 'The minimal length for a retrieved predicted ORF (nt). (default: 90%
-    of the length of the chosen hmm.)'
+  description: "The minimal length for a retrieved predicted ORF (nt).\n(default:\
+    \ 90% of the length of the chosen hmm.)"
   synonyms:
   - --min-orf-length
   args: !SimpleFlagArg
     name: MIN_ORF_LENGTH
   optional: true
 - !Flag
-  description: 'Use this flag if the whole sequence where a hit is detected should
-    be retrieved (default: False).'
+  description: "Use this flag if the whole sequence where a hit is\ndetected should\
+    \ be retrieved (default: False)."
   synonyms:
   - --retrieve-whole
   args: !EmptyFlagArg {}
@@ -100,60 +102,61 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Use if no quality control should be performed on the metagenomic data
-    (default: False).'
+  description: "Use if no quality control should be performed on the\nmetagenomic\
+    \ data (default: False)."
   synonyms:
   - --no-quality-filtering
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Use if you want to skip the assembly and retrieval of contigs for
-    metagenomic data (default: False).'
+  description: "Use if you want to skip the assembly and retrieval of\ncontigs for\
+    \ metagenomic data (default: False)."
   synonyms:
   - --no-assembly
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Use NCBI ORFfinder instead of prodigal for ORF prediction of genomes/contigs
-    (default: False).'
+  description: "Use NCBI ORFfinder instead of prodigal for ORF\nprediction of genomes/contigs\
+    \ (default: False)."
   synonyms:
   - --orf-finder
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Store the translated sequences. Useful if you plan to redo the analysis
-    using a different model and want to skip the preprocessing steps (default: False).'
+  description: "Store the translated sequences. Useful if you plan to\nredo the analysis\
+    \ using a different model and want to\nskip the preprocessing steps (default:\
+    \ False)."
   synonyms:
   - --store-peptides
   - -sp
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Use of you want to redo the analysis or do the analysis using a different
-    model and have kept either the nucletide or amino acid sequences. Please note
-    that this only works if the input data is the same for both runs (default: False).'
+  description: "Use of you want to redo the analysis or do the\nanalysis using a different\
+    \ model and have kept either\nthe nucletide or amino acid sequences. Please note\n\
+    that this only works if the input data is the same for\nboth runs (default: False)."
   synonyms:
   - --rerun
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Where the amino acid sequences generated by the method are located.
-    Only to be used in combination with --rerun
+  description: "Where the amino acid sequences generated by the method\nare located.\
+    \ Only to be used in combination with\n--rerun"
   synonyms:
   - --amino-dir
   args: !SimpleFlagArg
     name: AMINO_DIR
   optional: true
 - !Flag
-  description: Where the nucleotide sequences in FASTA generated by previous runs
-    of the method are located. Only to be used in combination with --rerun
+  description: "Where the nucleotide sequences in FASTA generated by\nprevious runs\
+    \ of the method are located. Only to be\nused in combination with --rerun"
   synonyms:
   - --fasta-dir
   args: !SimpleFlagArg
     name: FASTA_DIR
   optional: true
 - !Flag
-  description: 'The translation format that transeq should use. (default: pearson)'
+  description: "The translation format that transeq should use.\n(default: pearson)"
   synonyms:
   - --translation-format
   args: !SimpleFlagArg
@@ -165,8 +168,8 @@ named:
   - --loglevel
   args: !ChoiceFlagArg
     choices: !!set
-      INFO:
       DEBUG:
+      INFO:
   optional: true
 - !Flag
   description: 'Logfile (default: fargene_analysis.log).'
@@ -175,10 +178,9 @@ named:
   args: !SimpleFlagArg
     name: LOGFILE
   optional: true
-command:
-- fargene
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

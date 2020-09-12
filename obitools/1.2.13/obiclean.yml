@@ -1,6 +1,67 @@
 !Command
+command:
+- obiclean
 positional: []
 named:
+- !Flag
+  description: Set logging in debug mode
+  synonyms:
+  - --DEBUG
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: desactivate progress bar
+  synonyms:
+  - --without-progress-bar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "###, --distance=###\nMaximum numbers of errors between two variant\n\
+    sequences [default: 1]"
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Tag containing sample descriptions
+  synonyms:
+  - -s
+  - --sample
+  args: !SimpleFlagArg
+    name: TAGNAME
+  optional: true
+- !Flag
+  description: File name where the clustering graphs are saved
+  synonyms:
+  - -g
+  - --graph
+  args: !SimpleFlagArg
+    name: TAGNAME
+  optional: true
+- !Flag
+  description: "Minimum ratio between counts of two sequence records\nso that the\
+    \ less abundant one can be considered as a\nvariant of the more abundant [default:\
+    \ 0.5]"
+  synonyms:
+  - -r
+  - --ratio
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Outputs only head tagged sequence records
+  synonyms:
+  - -H
+  - --head
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set obiclean in clustering mode
+  synonyms:
+  - -C
+  - --cluster
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: skip the N first sequences
   synonyms:
@@ -34,7 +95,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input file is in fasta nucleic format (including obitools fasta extentions)
+  description: "Input file is in fasta nucleic format (including\nobitools fasta extentions)"
   synonyms:
   - --fasta
   args: !EmptyFlagArg {}
@@ -46,19 +107,19 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input file is in fasta format (but more tolerant to format variant)
+  description: "Input file is in fasta format (but more tolerant to\nformat variant)"
   synonyms:
   - --raw-fasta
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input file is in sanger fastq nucleic format (standard fastq)
+  description: "Input file is in sanger fastq nucleic format (standard\nfastq)"
   synonyms:
   - --sanger
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input file is in fastq nucleic format produced by solexa sequencer
+  description: "Input file is in fastq nucleic format produced by\nsolexa sequencer"
   synonyms:
   - --solexa
   args: !EmptyFlagArg {}
@@ -94,8 +155,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Output sequences in ecopcr database format (sequence records are not
-    printed on standard output)
+  description: "Output sequences in ecopcr database format (sequence\nrecords are\
+    \ not printed on standard output)"
   synonyms:
   - --ecopcrdb-output
   args: !SimpleFlagArg
@@ -107,11 +168,16 @@ named:
   - --uppercase
   args: !EmptyFlagArg {}
   optional: true
-command:
-- obiclean
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: \n:py:mod:`obiclean`: tags a set of sequences for PCR/sequencing\

@@ -1,24 +1,26 @@
 !Command
+command:
+- ngm
 positional: []
 named:
 - !Flag
-  description: Path to the config file. The config file contains all advanced options.
-    If this parameter is omitted, default values will be used.
+  description: "Path to the config file. The config file contains\nall advanced options.\
+    \ If this parameter is\nomitted, default values will be used."
   synonyms:
   - -c/--config
   args: !SimpleFlagArg
     name: path
   optional: true
 - !Flag
-  description: 'Path to the reference genome (format: FASTA, can be gzipped).'
+  description: "Path to the reference genome\n(format: FASTA, can be gzipped)."
   synonyms:
   - -r/--reference
   args: !SimpleFlagArg
     name: path
   optional: true
 - !Flag
-  description: <path>              Path to the read file. If the file contains interleaved
-    mates use -p/--paired.
+  description: "<path>              Path to the read file. If the file contains\n\
+    interleaved mates use -p/--paired."
   synonyms:
   - -q/--qry
   args: !EmptyFlagArg {}
@@ -31,43 +33,43 @@ named:
     name: path
   optional: true
 - !Flag
-  description: 'Path to the read file containing mates 2. Valid input formats are:
-    FASTA/Q (gzipped), SAM/BAM. If the query file(s) is/are omitted, NGM will only
-    pre-process the reference.'
+  description: "Path to the read file containing mates 2.\nValid input formats are:\
+    \ FASTA/Q (gzipped),\nSAM/BAM. If the query file(s) is/are omitted,\nNGM will\
+    \ only pre-process the reference."
   synonyms:
   - -2/--qry2
   args: !SimpleFlagArg
     name: path
   optional: true
 - !Flag
-  description: 'Input data is paired end. NOT required if -1/-2 are used. (default:
-    off)'
+  description: "Input data is paired end.\nNOT required if -1/-2 are used. (default:\
+    \ off)"
   synonyms:
   - -p/--paired
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'The min insert size for paired end alignments (default: 0)'
+  description: "The min insert size for paired end alignments\n(default: 0)"
   synonyms:
   - -I/--min-insert-size
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'The max insert size for paired end alignments (default: 1000)'
+  description: "The max insert size for paired end alignments\n(default: 1000)"
   synonyms:
   - -X/--max-insert-size
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Length of longest read in input. (default: estimated from data)'
+  description: "Length of longest read in input.\n(default: estimated from data)"
   synonyms:
   - --max-read-length
   args: !SimpleFlagArg
     name: int
   optional: true
 - !Flag
-  description: 'Forces NextgenMap to run through all reads to find the max. read length.
-    (default: off)'
+  description: "Forces NextgenMap to run through all reads to\nfind the max. read\
+    \ length. (default: off)"
   synonyms:
   - --force-rlength-check
   args: !EmptyFlagArg {}
@@ -80,16 +82,16 @@ named:
     name: path
   optional: true
 - !Flag
-  description: 'Prints the <n> best alignments sorted by alignment score (default:
-    1)'
+  description: "Prints the <n> best alignments sorted by\nalignment score (default:\
+    \ 1)"
   synonyms:
   - -n/--topn
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Only  output  the  highest  scoring  mappings for any  given  read,  up  to
-    <n> mappings per read. If a read has more than <n> mappings with the same score,
-    it is discarded and reported as unmapped.
+  description: "Only  output  the  highest  scoring  mappings\nfor any  given  read,\
+    \  up  to <n> mappings per\nread. If a read has more than <n> mappings with\n\
+    the same score, it is discarded and reported\nas unmapped."
   synonyms:
   - --strata
   args: !EmptyFlagArg {}
@@ -101,7 +103,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Copy BAM/SAM tags present in input file to output file (default: off)'
+  description: "Copy BAM/SAM tags present in input file to\noutput file (default:\
+    \ off)"
   synonyms:
   - --keep-tags
   args: !EmptyFlagArg {}
@@ -119,13 +122,13 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Hard clip reads but don't add clipping information to CIGAR string
+  description: "Hard clip reads but don't add clipping\ninformation to CIGAR string"
   synonyms:
   - --silent-clip
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Adds RG:Z:<string> to all alignments in SAM/BAM '
+  description: Adds RG:Z:<string> to all alignments in SAM/BAM
   synonyms:
   - --rg-id
   args: !SimpleFlagArg
@@ -209,48 +212,98 @@ named:
     name: string
   optional: true
 - !Flag
-  description: 'Character used in suffix that identifies mate 1 and 2. E.g. /1 and
-    /2. This suffixes will be removed to ensure proper SAM output (default: /)'
+  description: "Character used in suffix that identifies mate 1\nand 2. E.g. /1 and\
+    \ /2. This suffixes will be\nremoved to ensure proper SAM output\n(default: /)"
   synonyms:
   - -d/--pe-delimiter
   args: !SimpleFlagArg
     name: char
   optional: true
 - !Flag
-  description: 'All reads mapped with lower than <int> or <float> * read length residues
-    will be reported as unmapped. (default: 0.5)'
+  description: Number of candidate search threads
+  synonyms:
+  - -t/--threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "A value between 0 and 1 that determines the\nnumber of candidate mapping\
+    \ regions that will\nbe evaluated with an sequence alignment.\n0: all CMR(s) will\
+    \ be evaluated\n1: only the best CMR(s) will be evaluated\nHigher values will\
+    \ reduce the runtime but also\nhave a negative effect on mapping sensitivity.\n\
+    (default: estimated from input data)"
+  synonyms:
+  - -s/--sensitivity
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: 'Scale estimated sensitivity: Much faster, much less accurate'
+  synonyms:
+  - --very-fast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Scale estimated sensitivity: Faster, less accurate'
+  synonyms:
+  - --fast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Scale estimated sensitivity: More accurate, slower'
+  synonyms:
+  - --sensitive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Scale estimated sensitivity: Much more accurate, much slower'
+  synonyms:
+  - --very-sensitive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "All reads mapped with an identity lower than\nthis threshold will\
+    \ be reported as unmapped\n(default: 0.65)"
+  synonyms:
+  - -i/--min-identity
+  args: !SimpleFlagArg
+    name: 0-1
+  optional: true
+- !Flag
+  description: "All reads mapped with lower than\n<int> or <float> * read length residues\n\
+    will be reported as unmapped. (default: 0.5)"
   synonyms:
   - -R/--min-residues
   args: !SimpleFlagArg
     name: int/float
   optional: true
 - !Flag
-  description: 'All reads mapped with lower than <int> mapping quality will be reported
-    as unmapped. (default: 0)'
+  description: "All reads mapped with lower than <int>\nmapping quality will be reported\
+    \ as unmapped.\n(default: 0)"
   synonyms:
   - -Q/--min-mq
   args: !SimpleFlagArg
     name: int
   optional: true
 - !Flag
-  description: '[int,...]            Use GPU(s) for alignment computation NOTE: GPU
-    Ids are zero-based! -g or --gpu to use GPU -g 1 or --gpu 1 to use GPU 1 -g 0,1
-    or --gpu 0,1 to use GPU 0 and 1 If -g/--gpu is omitted, alignments will be computed
-    on the CPU (default)'
+  description: "[int,...]            Use GPU(s) for alignment computation\nNOTE: GPU\
+    \ Ids are zero-based!\n-g or --gpu to use GPU\n-g 1 or --gpu 1 to use GPU 1\n\
+    -g 0,1 or --gpu 0,1 to use GPU 0 and 1\nIf -g/--gpu is omitted, alignments will\
+    \ be\ncomputed on the CPU (default)"
   synonyms:
   - -g/--gpu
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Enables bisulfite mapping. For bs-mapping, kmer-skip will be applied
-    to the reads instead of the reference sequence.
+  description: "Enables bisulfite mapping.\nFor bs-mapping, kmer-skip will be applied\
+    \ to\nthe reads instead of the reference sequence."
   synonyms:
   - --bs-mapping
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Max. number of Ts in a k-mer. All k-mers were the number of Ts is
-    higher than <int> are ignored (default: 8)'
+  description: "Max. number of Ts in a k-mer. All k-mers were\nthe number of Ts is\
+    \ higher than <int> are\nignored (default: 8)"
   synonyms:
   - --bs-cutoff
   args: !SimpleFlagArg
@@ -269,118 +322,120 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Number of k-mers to skip when building the lookup table from the reference(default:
-    2)'
+  description: "Number of k-mers to skip when building the\nlookup table from the\
+    \ reference(default: 2)"
   synonyms:
   - --kmer-skip
   args: !SimpleFlagArg
     name: int
   optional: true
 - !Flag
-  description: 'Minimal number of k-mer hits required to consider a region a CMR.
-    (default: 0)'
+  description: "Minimal number of k-mer hits required to\nconsider a region a CMR.\
+    \ (default: 0)"
   synonyms:
   - --kmer-min
   args: !SimpleFlagArg
     name: int
   optional: true
 - !Flag
-  description: 'Reads that have more than <int> CMRs are ignored. (default: infinite)'
+  description: "Reads that have more than <int> CMRs are\nignored. (default: infinite)"
   synonyms:
   - --max-cmrs
   args: !SimpleFlagArg
     name: int
   optional: true
 - !Flag
-  description: Don't save index to disk. Saves disk space but increases runtime for
-    larger genomes.
+  description: "Don't save index to disk. Saves disk space but\nincreases runtime\
+    \ for larger genomes."
   synonyms:
   - --skip-save
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Perform local alignment. Ends might get clipped. (default: on)'
+  description: "Perform local alignment. Ends might get clipped.\n(default: on)"
   synonyms:
   - -l/--local
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Perform end-to-end alignment. No clipping. (default: off)'
+  description: "Perform end-to-end alignment. No clipping.\n(default: off)"
   synonyms:
   - -e/--end-to-end
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Use alignment algorithms that support affine gap costs. This will
-    give you better alignments for longer indels but will also increase the runtime.
-    (default: off)'
+  description: "Use alignment algorithms that support affine gap\ncosts. This will\
+    \ give you better alignments for\nlonger indels but will also increase the runtime.\n\
+    (default: off)"
   synonyms:
   - --affine
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Maximum number of consecutive indels allowed. (default: computed based
-    on avg. read length)'
+  description: "Maximum number of consecutive indels allowed.\n(default: computed\
+    \ based on avg. read length)"
   synonyms:
   - -C/--max-consec-indels
   args: !SimpleFlagArg
     name: int
   optional: true
 - !Flag
-  description: Mates are mapped individually. If the best alignments for the mates
-    give a proper pair they are marked as paired in the output. If not they are reported
-    as broken pair.
+  description: "Mates are mapped individually. If the best\nalignments for the mates\
+    \ give a proper pair\nthey are marked as paired in the output.\nIf not they are\
+    \ reported as broken pair."
   synonyms:
   - --fast-pairing
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'To find the best pairing all alignments of a read that have a score
-    in the range of:  [top score * pair-score-cutoff; top score] are taken into account.'
+  description: "To find the best pairing all alignments of a\nread that have a score\
+    \ in the range of:\n[top score * pair-score-cutoff; top score]\nare taken into\
+    \ account."
   synonyms:
   - --pair-score-cutoff
   args: !SimpleFlagArg
     name: 0-1
   optional: true
 - !Flag
-  description: "Don't check that both mates have the same name (default: off)"
+  description: "Don't check that both mates have the same name\n(default: off)"
   synonyms:
   - --skip-mate-check
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Match score (default: 10, affine: 10, bs-mapping: 4)'
+  description: "Match score\n(default: 10, affine: 10, bs-mapping: 4)"
   synonyms:
   - --match-bonus
   args: !SimpleFlagArg
     name: int
   optional: true
 - !Flag
-  description: '<int>      Mismatch penalty (default: 15, affine: 15, bs-mapping:
-    2)'
+  description: "<int>      Mismatch penalty\n(default: 15, affine: 15, bs-mapping:\
+    \ 2)"
   synonyms:
   - --mismatch
   args: !SimpleFlagArg
     name: penalty
   optional: true
 - !Flag
-  description: 'Penalty for a gap in the read (default: 20, affine: 33, bs-mapping:
-    10)'
+  description: "Penalty for a gap in the read\n(default: 20, affine: 33, bs-mapping:\
+    \ 10)"
   synonyms:
   - --gap-read-penalty
   args: !SimpleFlagArg
     name: int
   optional: true
 - !Flag
-  description: 'Penalty for a gap in the reference (default: 20, affine: 33, bs-mapping:
-    10)'
+  description: "Penalty for a gap in the reference\n(default: 20, affine: 33, bs-mapping:\
+    \ 10)"
   synonyms:
   - --gap-ref-penalty
   args: !SimpleFlagArg
     name: int
   optional: true
 - !Flag
-  description: 'Penalty for extending a gap (default: 20, affine: 3, bs-mapping: 10)'
+  description: "Penalty for extending a gap\n(default: 20, affine: 3, bs-mapping:\
+    \ 10)"
   synonyms:
   - --gap-extend-penalty
   args: !SimpleFlagArg
@@ -401,8 +456,8 @@ named:
     name: int
   optional: true
 - !Flag
-  description: 'Sets the size of the grid NextgenMap uses during CMR search to: 2^n
-    (default: 2) '
+  description: "Sets the size of the grid NextgenMap uses\nduring CMR search to: 2^n\
+    \ (default: 2)"
   synonyms:
   - --bin-size
   args: !SimpleFlagArg
@@ -421,7 +476,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "Don't print progress info while mapping (default: off)"
+  description: "Don't print progress info while mapping\n(default: off)\n"
   synonyms:
   - --no-progress
   args: !EmptyFlagArg {}
@@ -433,15 +488,14 @@ named:
   args: !SimpleFlagArg
     name: path
   optional: true
-command:
-- ngm
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:
-help_text: "[MAIN] NextGenMap 0.5.5\n[MAIN] Startup : x64 (build Mar  2 2019 21:24:17)\n\
-  [MAIN] Starting time: 2020-06-25.13:54:46\n/tmp/tmpfidnsajt/bin/ngm-core: unrecognized\
+help_text: "[MAIN] NextGenMap 0.5.5\n[MAIN] Startup : x64 (build Jul  3 2020 02:47:43)\n\
+  [MAIN] Starting time: 2020-09-09.21:46:11\n/usr/local/bin/ngm-core: unrecognized\
   \ option '--help'\nUsage:  ngm [-c <path>] {-q <reads> [-p] | -1 <mates 1> -2 <mates\
   \ 2>} -r <reference> -o <output> [parameter]\n\nInput:\n\n -c/--config <path>  \
   \          Path to the config file. The config file contains\n                 \

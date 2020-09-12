@@ -1,9 +1,45 @@
 !Command
+command:
+- FastTree
 positional: []
 named:
 - !Flag
-  description: ': weighted joins as in BIONJ (default) FastTree will also weight joins
-    during NNIs'
+  description: "-- search the visible set (the top hit for each node) only\nUnlike\
+    \ the original fast neighbor-joining, -fastest updates visible(C)\nafter joining\
+    \ A and B if join(AB,C) is better than join(C,visible(C))"
+  synonyms:
+  - -fastest
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "-- set the top-hit list size to parameter*sqrt(N)\nFastTree estimates\
+    \ the top m hits of a leaf from the\ntop 2*m hits of a 'close' neighbor, where\
+    \ close is\ndefined as d(seed,close) < 0.75 * d(seed, hit of rank 2*m),\nand updates\
+    \ the top-hits as joins proceed"
+  synonyms:
+  - -topm
+  args: !SimpleFlagArg
+    name: '1.0'
+  optional: true
+- !Flag
+  description: -- modify the close heuristic, lower is more conservative
+  synonyms:
+  - -close
+  args: !SimpleFlagArg
+    name: '0.75'
+  optional: true
+- !Flag
+  description: "-- compare a joined node to all other nodes if its\ntop-hit list is\
+    \ less than 80% of the desired length,\nor if the age of the top-hit list is log2(m)\
+    \ or greater"
+  synonyms:
+  - -refresh
+  args: !SimpleFlagArg
+    name: '0.8'
+  optional: true
+- !Flag
+  description: ": weighted joins as in BIONJ (default)\nFastTree will also weight\
+    \ joins during NNIs"
   synonyms:
   - -bionj
   args: !EmptyFlagArg {}
@@ -14,10 +50,9 @@ named:
   - -nj
   args: !EmptyFlagArg {}
   optional: true
-command:
-- FastTree
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

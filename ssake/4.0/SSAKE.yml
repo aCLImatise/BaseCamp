@@ -1,40 +1,150 @@
 !Command
+command:
+- SSAKE
 positional: []
 named:
 - !Flag
-  description: (de novo) assembly  i.e Targets used to recruit reads for de novo assembly,
-    not guide/seed reference-based assemblies (-i 1 = yes (default), 0 = no, optional)
+  description: "File containing all the [paired (-p 1)] reads (required)\nWith -p\
+    \ 1:"
   synonyms:
-  - -i
-  args: !SimpleFlagArg
-    name: Independent
+  - -f
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: sequence word size to hash (default -j 15)
+  description: Fasta file containing unpaired sequence reads (optional)
   synonyms:
-  - -j
-  args: !SimpleFlagArg
-    name: Target
+  - -g
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: read space restriction to seeds while -s option in use (-u 1 = yes,
-    default = no, optional)
+  description: "Minimum depth of coverage allowed for contigs (e.g. -w 1 = process\
+    \ all reads [v3.7 behavior], required, recommended -w 5)\n*The assembly will stop\
+    \ when 50+ contigs with coverage < -w have been seen.*"
   synonyms:
-  - -u
-  args: !SimpleFlagArg
-    name: Apply
+  - -w
+  args: !EmptyFlagArg {}
   optional: true
-command:
-- SSAKE
+- !Flag
+  description: "Fasta file containing sequences to use as seeds exclusively (specify\
+    \ only if different from read set, optional)\n-i Independent (de novo) assembly\
+    \  i.e Targets used to recruit reads for de novo assembly, not guide/seed reference-based\
+    \ assemblies (-i 1 = yes (default), 0 = no, optional)\n-j Target sequence word\
+    \ size to hash (default -j 15)\n-u Apply read space restriction to seeds while\
+    \ -s option in use (-u 1 = yes, default = no, optional)"
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum number of overlapping bases with the seed/contig during overhang
+    consensus build up (default -m 20)
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum number of reads needed to call a base during an extension (default
+    -o 2)
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum base ratio used to accept a overhang consensus base (default
+    -r 0.7)
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Trim up to -t base(s) on the contig end when all possibilities have
+    been exhausted for an extension (default -t 0, optional)
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Track base coverage and read position for each contig (default -c 0,
+    optional)
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore read mapping to consensus (-y 1 = yes, default = no, optional)
+  synonyms:
+  - -y
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Base name for your output files (optional)
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum contig size to track base coverage and read position (default
+    -z 100, optional)
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Break tie when no consensus base at position, pick random base (-q
+    1 = yes, default = no, optional)
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Paired-end reads used? (-p 1 = yes, default = no, optional)
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Runs in verbose mode (-v 1 = yes, default = no, optional)
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Error (%) allowed on mean distance   e.g. -e 0.75  == distance +/-
+    75% (default -e 0.75, optional)
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum number of links (read pairs) to compute scaffold (default -k
+    5, optional)
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Maximum link ratio between two best contig pairs *higher values lead
+    to least accurate scaffolding* (default -a 0.3, optional)
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Ignore read name/header *will use less RAM if set to -h 1* (-h 1 =
+    yes, default = no, optional)
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
-help_text: "\nUsage: /tmp/tmpnim7_8pv/bin/SSAKE [v4.0]\n-f  File containing all the\
-  \ [paired (-p 1)] reads (required)\n\t  With -p 1:\n\t! Target insert size must\
-  \ be indicated at the end of the header line (e.g. :400 for a 400bp fragment/insert\
-  \ size)\n\t! Paired reads must be separated by \":\"\n\t  >header:400 (or >header_barcode:400)\n\
+help_text: "\nUsage: /usr/local/bin/SSAKE [v4.0]\n-f  File containing all the [paired\
+  \ (-p 1)] reads (required)\n\t  With -p 1:\n\t! Target insert size must be indicated\
+  \ at the end of the header line (e.g. :400 for a 400bp fragment/insert size)\n\t\
+  ! Paired reads must be separated by \":\"\n\t  >header:400 (or >header_barcode:400)\n\
   \t  ACGACACTATGCATAAGCAGACGAGCAGCGACGCAGCACG:GCGCACGACGCAGCACAGCAGCAGACGAC\n-g \
   \ Fasta file containing unpaired sequence reads (optional)\n-w  Minimum depth of\
   \ coverage allowed for contigs (e.g. -w 1 = process all reads [v3.7 behavior], required,\

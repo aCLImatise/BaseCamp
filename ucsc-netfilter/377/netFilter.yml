@@ -1,10 +1,7 @@
-!Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: in.net
-  optional: false
+&id001 !Command
+command:
+- netFilter
+positional: []
 named:
 - !Flag
   description: ',chr2 - restrict query side sequence to those named'
@@ -175,7 +172,7 @@ named:
     name: XXX
   optional: true
 - !Flag
-  description: '- do filtering based on synteny (tuned for human/mouse).  '
+  description: '- do filtering based on synteny (tuned for human/mouse).'
   synonyms:
   - -syn
   args: !EmptyFlagArg {}
@@ -188,8 +185,8 @@ named:
     name: N
   optional: true
 - !Flag
-  description: '- Min syntenic block score (def=200,000).  Default covers 27,000 bases
-    including 9,000  aligning--a very stringent requirement. '
+  description: "- Min syntenic block score (def=200,000).\nDefault covers 27,000 bases\
+    \ including 9,000\naligning--a very stringent requirement."
   synonyms:
   - -minSynScore
   args: !SimpleFlagArg
@@ -210,20 +207,20 @@ named:
     name: N
   optional: true
 - !Flag
-  description: '- Max distance to allow synteny (def=200,000). '
+  description: '- Max distance to allow synteny (def=200,000).'
   synonyms:
   - -maxFar
   args: !SimpleFlagArg
     name: N
   optional: true
 - !Flag
-  description: '- do inverse filtering based on synteny (tuned for human/mouse).  '
+  description: '- do inverse filtering based on synteny (tuned for human/mouse).'
   synonyms:
   - -nonsyn
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '- do filtering based on synteny (tuned for human/chimp).  '
+  description: '- do filtering based on synteny (tuned for human/chimp).'
   synonyms:
   - -chimpSyn
   args: !EmptyFlagArg {}
@@ -258,10 +255,31 @@ named:
   - -noHap
   args: !EmptyFlagArg {}
   optional: true
-command:
-- netFilter
 parent:
-subcommands: []
+subcommands:
+- !Command
+  command:
+  - netFilter
+  - in.net
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using:
+  - -h
+usage: []
 help_flag:
 usage_flag:
 version_flag:

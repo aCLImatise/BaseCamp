@@ -1,54 +1,178 @@
 !Command
-positional: []
+command:
+- lastz_D
+positional:
+- !Positional
+  description: (by default no chaining is performed)
+  position: 0
+  name: anti-diagonal
+  optional: false
 named:
 - !Flag
-  description: don't report mirror-image alignments when using --self (default is
-    to skip processing them, but recreate them in the output)
+  description: "the target sequence is also the query\n(this replaces the query file)"
+  synonyms:
+  - --self
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <length>   use a word with no gaps instead of a seed pattern
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: match
+  optional: true
+- !Flag
+  description: set step length (default is 1)
+  synonyms:
+  - --step
+  args: !SimpleFlagArg
+    name: length
+  optional: true
+- !Flag
+  description: =<diag,anti>    perform chaining with given penalties for diagonal
+    and
+  synonyms:
+  - --chain
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "do not output a trivial self-alignment block if the\ntarget and query\
+    \ happen to be identical"
+  synonyms:
+  - --notrivial
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "read substitution scores from a file\n(default is HOXD70)"
+  synonyms:
+  - --scores
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ',<P>        scores are +R/-P for match/mismatch'
+  synonyms:
+  - --match
+  args: !SimpleFlagArg
+    name: R
+  optional: true
+- !Flag
+  description: =<open,extend>    set gap open and extend penalties (default is 400.000000,30.000000)
+  synonyms:
+  - --gap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: set x-drop threshold (default is 10*sub[A][A])
+  synonyms:
+  - --xdrop
+  args: !SimpleFlagArg
+    name: score
+  optional: true
+- !Flag
+  description: set y-drop threshold (default is open+300extend)
+  synonyms:
+  - --ydrop
+  args: !SimpleFlagArg
+    name: score
+  optional: true
+- !Flag
+  description: "if x-drop extension encounters end of sequence, don't\ntrim back to\
+    \ peak score (use this for short reads)"
+  synonyms:
+  - --noxtrim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "if y-drop extension encounters end of sequence, don't\ntrim back to\
+    \ peak score (use this for short reads)"
+  synonyms:
+  - --noytrim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "set threshold for high scoring pairs (default is 3000.000000)\nungapped\
+    \ extensions scoring lower are discarded\n<score> can also be a percentage or\
+    \ base count"
+  synonyms:
+  - --hspthresh
+  args: !SimpleFlagArg
+    name: score
+  optional: true
+- !Flag
+  description: "set threshold for exact matches\nif specified, exact matches are found\
+    \ rather than high\nscoring pairs (replaces --hspthresh)"
+  synonyms:
+  - --exact
+  args: !SimpleFlagArg
+    name: length
+  optional: true
+- !Flag
+  description: "set threshold for HSPs during interpolation\n(default is no interpolation)"
+  synonyms:
+  - --inner
+  args: !SimpleFlagArg
+    name: score
+  optional: true
+- !Flag
+  description: "set threshold for gapped alignments\ngapped extensions scoring lower\
+    \ are discarded\n<score> can also be a percentage or base count\n(default is to\
+    \ use same value as --hspthresh)"
+  synonyms:
+  - --gappedthresh
+  args: !SimpleFlagArg
+    name: score
+  optional: true
+- !Flag
+  description: "don't report mirror-image alignments when using --self\n(default is\
+    \ to skip processing them, but recreate them\nin the output)"
   synonyms:
   - --nomirror
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: :traceback=<bytes>  space for trace-back information (default is 80.0M)
+  description: ":traceback=<bytes>  space for trace-back information\n(default is\
+    \ 80.0M)"
   synonyms:
   - --allocate
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: mask any position in target hit this many times zero indicates no masking
-    (default is no masking)
+  description: "mask any position in target hit this many times\nzero indicates no\
+    \ masking\n(default is no masking)"
   synonyms:
   - --masking
   args: !SimpleFlagArg
     name: count
   optional: true
 - !Flag
-  description: '[..<max>] filter alignments by percent identity 0<=min<=max<=100;  blocks
-    (or HSPs) outside min..max are discarded (default is no identity filtering)'
+  description: "[..<max>] filter alignments by percent identity\n0<=min<=max<=100;\
+    \  blocks (or HSPs) outside min..max\nare discarded\n(default is no identity filtering)"
   synonyms:
   - --identity
   args: !SimpleFlagArg
     name: min
   optional: true
 - !Flag
-  description: '[..<max>] filter alignments by percentage of query covered 0<=min<=max<=100;  blocks
-    (or HSPs) outside min..max are discarded (default is no query coverage filtering)'
+  description: "[..<max>] filter alignments by percentage of query covered\n0<=min<=max<=100;\
+    \  blocks (or HSPs) outside min..max\nare discarded\n(default is no query coverage\
+    \ filtering)"
   synonyms:
   - --coverage
   args: !SimpleFlagArg
     name: min
   optional: true
 - !Flag
-  description: specify output alignment file;  otherwise alignments are written to
-    stdout
+  description: "specify output alignment file;  otherwise alignments\nare written\
+    \ to stdout"
   synonyms:
   - --output
   args: !SimpleFlagArg
     name: file
   optional: true
 - !Flag
-  description: specify output format; one of lav, axt, maf, cigar, rdotplot, text
-    or general (use --help=formats for more details) (by default output is LAV)
+  description: "specify output format; one of lav, axt, maf, cigar,\nrdotplot, text\
+    \ or general\n(use --help=formats for more details)\n(by default output is LAV)"
   synonyms:
   - --format
   args: !SimpleFlagArg
@@ -68,10 +192,9 @@ named:
   args: !SimpleFlagArg
     name: n
   optional: true
-command:
-- lastz_D
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag

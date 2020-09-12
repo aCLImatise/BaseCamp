@@ -1,13 +1,243 @@
 &id001 !Command
-positional: []
-named: []
 command:
 - svaba
+positional: []
+named: []
 parent:
 subcommands:
 - !Command
+  command:
+  - svaba
+  - refilter
   positional: []
   named:
+  - !Flag
+    description: 'Select verbosity level (0-4). Default: 1'
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Path to indexed reference genome to be used by BWA-MEM. Default is
+      Broad hg19 (/seq/reference/...)
+    synonyms:
+    - -g
+    - --reference-genome
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Input BAM file to get header from
+    synonyms:
+    - -b
+    - --opt-bam
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: String specifying the analysis ID to be used as part of ID common.
+    synonyms:
+    - -a
+    - --id-string
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Original bps.txt.gz file
+    synonyms:
+    - -i
+    - --input-bps
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: BAM file used to grab header from
+    synonyms:
+    - -b
+    - --bam
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: DBsnp database (VCF) to compare indels against
+    synonyms:
+    - -D
+    - --dbsnp-vcf
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: BED-file with blacklisted regions to not extract any reads from.
+    synonyms:
+    - -B
+    - --blacklist
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Path to indexed reference genome of microbial sequences to be used
+      by BWA-MEM to filter reads.
+    synonyms:
+    - -Y
+    - --microbial-genome
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: BED file containing sites of known germline SVs. Used as additional
+      filter for somatic SV detection
+    synonyms:
+    - -V
+    - --germline-sv-database
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: BED file containing sites of simple DNA that can confuse the contig
+      re-alignment.
+    synonyms:
+    - -R
+    - --simple-seq-database
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: LOD cutoff to classify indel as non-REF (tests AF=0 vs AF=MaxLikelihood(AF))
+      [8]
+    synonyms:
+    - --lod
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: LOD cutoff to classify indel as non-REF (tests AF=0 vs AF=MaxLikelihood(AF))
+      at DBSnp indel site [5]
+    synonyms:
+    - --lod-dbsnp
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: LOD cutoff to classify indel as somatic (tests AF=0 in normal vs
+      AF=ML(0.5)) [2.5]
+    synonyms:
+    - --lod-somatic
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: LOD cutoff to classify indel as somatic (tests AF=0 in normal vs
+      AF=ML(0.5)) at DBSnp indel site [4]
+    synonyms:
+    - --lod-somatic-dbsnp
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Scale the priors that a site is artifact at given repeat count. 0
+      means assume low (const) error rate [1]
+    synonyms:
+    - --scale-errors
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Track supporting reads by qname. Increases file sizes. [off]
+    synonyms:
+    - --read-tracking
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: bps.new.txt.gz
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Display this help and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "BAM is required (for the header)\n\nUsage: svaba refilter [OPTION] -i\
+    \ bps.txt.gz -o bps.new.txt.gz\n\n  Description: \n\n  General options\n  -v,\
+    \ --verbose                        Select verbosity level (0-4). Default: 1 \n\
+    \  -h, --help                           Display this help and exit\n  -g, --reference-genome\
+    \               Path to indexed reference genome to be used by BWA-MEM. Default\
+    \ is Broad hg19 (/seq/reference/...)\n  -b, --opt-bam                        Input\
+    \ BAM file to get header from\n  -a, --id-string                      String specifying\
+    \ the analysis ID to be used as part of ID common.\n  Required input\n  -i, --input-bps\
+    \                      Original bps.txt.gz file\n  -b, --bam                 \
+    \           BAM file used to grab header from\n  Optional external database\n\
+    \  -D, --dbsnp-vcf                      DBsnp database (VCF) to compare indels\
+    \ against\n  -B, --blacklist                      BED-file with blacklisted regions\
+    \ to not extract any reads from.\n  -Y, --microbial-genome               Path\
+    \ to indexed reference genome of microbial sequences to be used by BWA-MEM to\
+    \ filter reads.\n  -V, --germline-sv-database           BED file containing sites\
+    \ of known germline SVs. Used as additional filter for somatic SV detection\n\
+    \  -R, --simple-seq-database            BED file containing sites of simple DNA\
+    \ that can confuse the contig re-alignment.\n  Variant filtering and classification\n\
+    \      --lod                            LOD cutoff to classify indel as non-REF\
+    \ (tests AF=0 vs AF=MaxLikelihood(AF)) [8]\n      --lod-dbsnp                \
+    \      LOD cutoff to classify indel as non-REF (tests AF=0 vs AF=MaxLikelihood(AF))\
+    \ at DBSnp indel site [5]\n      --lod-somatic                    LOD cutoff to\
+    \ classify indel as somatic (tests AF=0 in normal vs AF=ML(0.5)) [2.5]\n     \
+    \ --lod-somatic-dbsnp              LOD cutoff to classify indel as somatic (tests\
+    \ AF=0 in normal vs AF=ML(0.5)) at DBSnp indel site [4]\n      --scale-errors\
+    \                   Scale the priors that a site is artifact at given repeat count.\
+    \ 0 means assume low (const) error rate [1]\n  Optional input\n      --read-tracking\
+    \                  Track supporting reads by qname. Increases file sizes. [off]\n\
+    \n"
+  generated_using: &id002
+  - --help
+- !Command
+  command:
+  - svaba
+  - run
+  positional: []
+  named:
+  - !Flag
+    description: 'Select verbosity level (0-4). Default: 0'
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Use NUM threads to run svaba. Default: 1'
+    synonyms:
+    - -p
+    - --threads
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: String specifying the analysis ID to be used as part of ID common.
+    synonyms:
+    - -a
+    - --id-string
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Path to indexed reference genome to be used by BWA-MEM.
+    synonyms:
+    - -G
+    - --reference-genome
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Case BAM/CRAM/SAM file (eg tumor). Can input multiple.
+    synonyms:
+    - -t
+    - --case-bam
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (optional) Control BAM/CRAM/SAM file (eg normal). Can input multiple.
+    synonyms:
+    - -n
+    - --control-bam
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Run on targeted intervals. Accepts BED file or Samtools-style string
+    synonyms:
+    - -k
+    - --region
+    args: !EmptyFlagArg {}
+    optional: true
   - !Flag
     description: Sets recommended settings for case-only analysis (eg germline). (-I,
       -L5, assembles NM >= 3 reads)
@@ -51,6 +281,53 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
+    description: Minimum number of somatic reads required to attempt mate-region lookup
+      [3]
+    synonyms:
+    - -L
+    - --mate-lookup-min
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Number of standard deviations of calculated insert-size distribution
+      to consider discordant. [3.92]
+    synonyms:
+    - -s
+    - --disc-sd-cutoff
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Size of a local assembly window (in bp). Set 0 for whole-BAM in one
+      assembly. [25000]
+    synonyms:
+    - -c
+    - --chunk-size
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Max total read count to read in from assembly region. Set 0 to turn
+      off. [50000]
+    synonyms:
+    - -x
+    - --max-reads
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Max weird reads to include from a mate lookup region. [400]
+    synonyms:
+    - -M
+    - --max-reads-mate-region
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Max read coverage to send to assembler (per BAM). Subsample reads
+      if exceeded. [500]
+    synonyms:
+    - -C
+    - --max-coverage
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
     description: Skip mate lookup for inter-chr candidate events. Reduces power for
       translocations but less I/O.
     synonyms:
@@ -58,7 +335,7 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: 'Only run the discordant read clustering module, skip assembly. '
+    description: Only run the discordant read clustering module, skip assembly.
     synonyms:
     - --discordant-only
     args: !EmptyFlagArg {}
@@ -90,6 +367,21 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
+    description: Gzip and tabix the output VCF files. [off]
+    synonyms:
+    - -z
+    - --g-zip
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output all contigs that were assembled, regardless of mapping or
+      length. [off]
+    synonyms:
+    - -A
+    - --all-contigs
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
     description: Track supporting reads by qname. Increases file sizes. [off]
     synonyms:
     - --read-tracking
@@ -99,6 +391,75 @@ subcommands:
     description: For the case BAM, write reads sent to assembly to a BAM file. [off]
     synonyms:
     - --write-extracted-reads
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: DBsnp database (VCF) to compare indels against
+    synonyms:
+    - -D
+    - --dbsnp-vcf
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: BED-file with blacklisted regions to not extract any reads from.
+    synonyms:
+    - -B
+    - --blacklist
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Path to indexed reference genome of microbial sequences to be used
+      by BWA-MEM to filter reads.
+    synonyms:
+    - -Y
+    - --microbial-genome
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: BED file containing sites of known germline SVs. Used as additional
+      filter for somatic SV detection
+    synonyms:
+    - -V
+    - --germline-sv-database
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: BED file containing sites of simple DNA that can confuse the contig
+      re-alignment.
+    synonyms:
+    - -R
+    - --simple-seq-database
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum read overlap, an SGA parameter. Default: 0.4* readlength'
+    synonyms:
+    - -m
+    - --min-overlap
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Fractional difference two reads can have to overlap. See SGA. 0 is
+      fast, but requires error correcting. [0]
+    synonyms:
+    - -e
+    - --error-rate
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (f) Fermi-kit BFC correction, (s) Kmer-correction from SGA, (0) no
+      correction (then suggest non-zero -e) [f]
+    synonyms:
+    - -K
+    - --ec-correct-type
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Learn from fraction of non-weird reads during error-correction. Lower
+      number = faster compute [0.5]
+    synonyms:
+    - -E
+    - --ec-subsample
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
@@ -167,33 +528,16 @@ subcommands:
     - --penalty-clip-5
     args: !EmptyFlagArg {}
     optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -t
-    args: !SimpleFlagArg
-      name: BAM/SAM/CRAM
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -G
-    args: !SimpleFlagArg
-      name: reference
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -a
-    args: !SimpleFlagArg
-      name: myid
-    optional: true
-  command:
-  - svaba
-  - run
   parent: *id001
   subcommands: []
-  help_flag:
+  usage: []
+  help_flag: !Flag
+    description: Display this help and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
   usage_flag:
   version_flag:
   help_text: "\nUsage: svaba run -t <BAM/SAM/CRAM> -G <reference> -a myid [OPTIONS]\n\
@@ -272,109 +616,8 @@ subcommands:
     \ mems for contig to genome alignments. BWA-MEM -r [1.5]\n      --penalty-clip-3\
     \                 Set the BWA-MEM penalty for 3' clipping. [5]\n      --penalty-clip-5\
     \                 Set the BWA-MEM penalty for 5' clipping. [5]\n\n"
-  generated_using: &id002
-  - --help
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: OPTION
-    optional: true
-  named:
-  - !Flag
-    description: LOD cutoff to classify indel as non-REF (tests AF=0 vs AF=MaxLikelihood(AF))
-      [8]
-    synonyms:
-    - --lod
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: LOD cutoff to classify indel as non-REF (tests AF=0 vs AF=MaxLikelihood(AF))
-      at DBSnp indel site [5]
-    synonyms:
-    - --lod-dbsnp
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: LOD cutoff to classify indel as somatic (tests AF=0 in normal vs
-      AF=ML(0.5)) [2.5]
-    synonyms:
-    - --lod-somatic
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: LOD cutoff to classify indel as somatic (tests AF=0 in normal vs
-      AF=ML(0.5)) at DBSnp indel site [4]
-    synonyms:
-    - --lod-somatic-dbsnp
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: Scale the priors that a site is artifact at given repeat count. 0
-      means assume low (const) error rate [1]
-    synonyms:
-    - --scale-errors
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: Track supporting reads by qname. Increases file sizes. [off]
-    synonyms:
-    - --read-tracking
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -i
-    args: !SimpleFlagArg
-      name: bps.txt.gz
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -o
-    args: !SimpleFlagArg
-      name: bps.new.txt.gz
-    optional: true
-  command:
-  - svaba
-  - refilter
-  parent: *id001
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
-  help_text: "BAM is required (for the header)\n\nUsage: svaba refilter [OPTION] -i\
-    \ bps.txt.gz -o bps.new.txt.gz\n\n  Description: \n\n  General options\n  -v,\
-    \ --verbose                        Select verbosity level (0-4). Default: 1 \n\
-    \  -h, --help                           Display this help and exit\n  -g, --reference-genome\
-    \               Path to indexed reference genome to be used by BWA-MEM. Default\
-    \ is Broad hg19 (/seq/reference/...)\n  -b, --opt-bam                        Input\
-    \ BAM file to get header from\n  -a, --id-string                      String specifying\
-    \ the analysis ID to be used as part of ID common.\n  Required input\n  -i, --input-bps\
-    \                      Original bps.txt.gz file\n  -b, --bam                 \
-    \           BAM file used to grab header from\n  Optional external database\n\
-    \  -D, --dbsnp-vcf                      DBsnp database (VCF) to compare indels\
-    \ against\n  -B, --blacklist                      BED-file with blacklisted regions\
-    \ to not extract any reads from.\n  -Y, --microbial-genome               Path\
-    \ to indexed reference genome of microbial sequences to be used by BWA-MEM to\
-    \ filter reads.\n  -V, --germline-sv-database           BED file containing sites\
-    \ of known germline SVs. Used as additional filter for somatic SV detection\n\
-    \  -R, --simple-seq-database            BED file containing sites of simple DNA\
-    \ that can confuse the contig re-alignment.\n  Variant filtering and classification\n\
-    \      --lod                            LOD cutoff to classify indel as non-REF\
-    \ (tests AF=0 vs AF=MaxLikelihood(AF)) [8]\n      --lod-dbsnp                \
-    \      LOD cutoff to classify indel as non-REF (tests AF=0 vs AF=MaxLikelihood(AF))\
-    \ at DBSnp indel site [5]\n      --lod-somatic                    LOD cutoff to\
-    \ classify indel as somatic (tests AF=0 in normal vs AF=ML(0.5)) [2.5]\n     \
-    \ --lod-somatic-dbsnp              LOD cutoff to classify indel as somatic (tests\
-    \ AF=0 in normal vs AF=ML(0.5)) at DBSnp indel site [4]\n      --scale-errors\
-    \                   Scale the priors that a site is artifact at given repeat count.\
-    \ 0 means assume low (const) error rate [1]\n  Optional input\n      --read-tracking\
-    \                  Track supporting reads by qname. Increases file sizes. [off]\n\
-    \n"
   generated_using: *id002
+usage: []
 help_flag:
 usage_flag:
 version_flag:

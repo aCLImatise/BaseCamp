@@ -1,4 +1,6 @@
 !Command
+command:
+- cram_filter
 positional:
 - !Positional
   description: ''
@@ -10,11 +12,46 @@ positional:
   position: 1
   name: out.cram
   optional: false
-named: []
-command:
-- cram_filter
+named:
+- !Flag
+  description: "[-end]    Only emit containers 'start' to 'end' inclusive.\n'-n 100'\
+    \ is equivalent to '-n 100-100'."
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: start
+  optional: true
+- !Flag
+  description: "Limit output to containers overlapping 'range'.\n'-r chr1' matches\
+    \ all of chr1.\n'-r chr1:1000' is equivalent to '-r chr1:1000-1000'."
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: range
+  optional: true
+- !Flag
+  description: Drop quality strings (CRAM QS).
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Discard comma separated list of tag types.
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: tag-list
+  optional: true
+- !Flag
+  description: Keep only aux. tag types in the specified list.
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: tag-list
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this help.
   synonyms:

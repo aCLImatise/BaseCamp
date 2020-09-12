@@ -1,12 +1,42 @@
 !Command
+command:
+- fragfinder
 positional: []
 named:
 - !Flag
-  description: ',file2,...         or ....'
+  description: ', which contains a MODEL, or'
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ', where file contains any model structure, or'
+  synonyms:
+  - -model_file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ',file2,..., for a multitrack model, or'
   synonyms:
   - -trackmod
   args: !SimpleFlagArg
     name: file1
+  optional: true
+- !Flag
+  description: for a Smith and Waterman query model.
+  synonyms:
+  - -query
+  args: !SimpleFlagArg
+    name: sequencefile
+  optional: true
+- !Flag
+  description: .
+  synonyms:
+  - -modelfile
+  args: !RepeatFlagArg
+    name: or
   optional: true
 - !Flag
   description: ',...           or ....'
@@ -16,15 +46,15 @@ named:
     name: file1
   optional: true
 - !Flag
-  description: 'Database to search for fragments.  Required. '
+  description: Database to search for fragments.  Required.
   synonyms:
   - -db
   args: !SimpleFlagArg
     name: seq_file
   optional: true
 - !Flag
-  description: Target single-sequence. Optional.  if present, will be first aligned
-    sequence
+  description: "Target single-sequence. Optional.\nif present, will be first aligned\
+    \ sequence"
   synonyms:
   - -firstsequence
   args: !SimpleFlagArg
@@ -43,10 +73,9 @@ named:
   - -numpermatch
   args: !EmptyFlagArg {}
   optional: true
-command:
-- fragfinder
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

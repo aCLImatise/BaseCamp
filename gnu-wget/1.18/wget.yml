@@ -1,10 +1,13 @@
 !Command
+command:
+- wget
 positional:
 - !Positional
-  description: ''
+  description: --no-if-modified-since      don't use conditional if-modified-since
+    get
   position: 0
-  name: OPTION
-  optional: true
+  name: local
+  optional: false
 named:
 - !Flag
   description: ',  --version                   display the version of Wget and exit'
@@ -82,19 +85,43 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ',  --base=URL                  resolves HTML input-file links (-i
-    -F) relative to URL --config=FILE               specify config file to use --no-config                 do
-    not read any config file --rejected-log=FILE         log reasons for URL rejection
-    to FILE'
+  description: ",  --base=URL                  resolves HTML input-file links (-i\
+    \ -F)\nrelative to URL"
   synonyms:
   - -B
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: specify config file to use
+  synonyms:
+  - --config
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: do not read any config file
+  synonyms:
+  - --no-config
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: log reasons for URL rejection to FILE
+  synonyms:
+  - --rejected-log
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
   description: ',  --tries=NUMBER              set number of retries to NUMBER (0
-    unlimits) --retry-connrefused         retry even if connection is refused'
+    unlimits)'
   synonyms:
   - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: retry even if connection is refused
+  synonyms:
+  - --retry-connrefused
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -104,7 +131,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: skip downloads that would download to existing files (overwriting them)
+  description: "skip downloads that would download to\nexisting files (overwriting\
+    \ them)"
   synonyms:
   - -nc
   - --no-clobber
@@ -112,54 +140,145 @@ named:
   optional: true
 - !Flag
   description: ',  --continue                  resume getting a partially-downloaded
-    file --start-pos=OFFSET          start downloading from zero-based position OFFSET
-    --progress=TYPE             select progress gauge type --show-progress             display
-    the progress bar in any verbosity mode'
+    file'
   synonyms:
   - -c
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: start downloading from zero-based position OFFSET
+  synonyms:
+  - --start-pos
+  args: !SimpleFlagArg
+    name: OFFSET
+  optional: true
+- !Flag
+  description: select progress gauge type
+  synonyms:
+  - --progress
+  args: !SimpleFlagArg
+    name: TYPE
+  optional: true
+- !Flag
+  description: display the progress bar in any verbosity mode
+  synonyms:
+  - --show-progress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: ",  --timestamping              don't re-retrieve files unless newer\
-    \ than local --no-if-modified-since      don't use conditional if-modified-since\
-    \ get requests in timestamping mode --no-use-server-timestamps  don't set the\
-    \ local file's timestamp by the one on the server"
+    \ than"
   synonyms:
   - -N
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ",  --server-response           print server response --spider    \
-    \                don't download anything"
+  description: "don't set the local file's timestamp by\nthe one on the server"
+  synonyms:
+  - --no-use-server-timestamps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',  --server-response           print server response'
   synonyms:
   - -S
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ',  --timeout=SECONDS           set all timeout values to SECONDS --dns-timeout=SECS          set
-    the DNS lookup timeout to SECS --connect-timeout=SECS      set the connect timeout
-    to SECS --read-timeout=SECS         set the read timeout to SECS'
+  description: don't download anything
+  synonyms:
+  - --spider
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',  --timeout=SECONDS           set all timeout values to SECONDS'
   synonyms:
   - -T
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ',  --wait=SECONDS              wait SECONDS between retrievals --waitretry=SECONDS         wait
-    1..SECONDS between retries of a retrieval --random-wait               wait from
-    0.5*WAIT...1.5*WAIT secs between retrievals --no-proxy                  explicitly
-    turn off proxy'
+  description: set the DNS lookup timeout to SECS
+  synonyms:
+  - --dns-timeout
+  args: !SimpleFlagArg
+    name: SECS
+  optional: true
+- !Flag
+  description: set the connect timeout to SECS
+  synonyms:
+  - --connect-timeout
+  args: !SimpleFlagArg
+    name: SECS
+  optional: true
+- !Flag
+  description: set the read timeout to SECS
+  synonyms:
+  - --read-timeout
+  args: !SimpleFlagArg
+    name: SECS
+  optional: true
+- !Flag
+  description: ',  --wait=SECONDS              wait SECONDS between retrievals'
   synonyms:
   - -w
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ',  --quota=NUMBER              set retrieval quota to NUMBER --bind-address=ADDRESS      bind
-    to ADDRESS (hostname or IP) on local host --limit-rate=RATE           limit download
-    rate to RATE --no-dns-cache              disable caching DNS lookups --restrict-file-names=OS    restrict
-    chars in file names to ones OS allows --ignore-case               ignore case
-    when matching files/directories'
+  description: wait 1..SECONDS between retries of a retrieval
+  synonyms:
+  - --waitretry
+  args: !SimpleFlagArg
+    name: SECONDS
+  optional: true
+- !Flag
+  description: wait from 0.5*WAIT...1.5*WAIT secs between retrievals
+  synonyms:
+  - --random-wait
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: explicitly turn off proxy
+  synonyms:
+  - --no-proxy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',  --quota=NUMBER              set retrieval quota to NUMBER'
   synonyms:
   - -Q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: bind to ADDRESS (hostname or IP) on local host
+  synonyms:
+  - --bind-address
+  args: !SimpleFlagArg
+    name: ADDRESS
+  optional: true
+- !Flag
+  description: limit download rate to RATE
+  synonyms:
+  - --limit-rate
+  args: !SimpleFlagArg
+    name: RATE
+  optional: true
+- !Flag
+  description: disable caching DNS lookups
+  synonyms:
+  - --no-dns-cache
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: restrict chars in file names to ones OS allows
+  synonyms:
+  - --restrict-file-names
+  args: !SimpleFlagArg
+    name: OS
+  optional: true
+- !Flag
+  description: ignore case when matching files/directories
+  synonyms:
+  - --ignore-case
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -169,15 +288,63 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ',  --inet6-only                connect only to IPv6 addresses --prefer-family=FAMILY      connect
-    first to addresses of specified family, one of IPv6, IPv4, or none --user=USER                 set
-    both ftp and http user to USER --password=PASS             set both ftp and http
-    password to PASS --ask-password              prompt for passwords --no-iri                    turn
-    off IRI support --local-encoding=ENC        use ENC as the local encoding for
-    IRIs --remote-encoding=ENC       use ENC as the default remote encoding --unlink                    remove
-    file before clobber'
+  description: ',  --inet6-only                connect only to IPv6 addresses'
   synonyms:
   - '-6'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "connect first to addresses of specified family,\none of IPv6, IPv4,\
+    \ or none"
+  synonyms:
+  - --prefer-family
+  args: !SimpleFlagArg
+    name: FAMILY
+  optional: true
+- !Flag
+  description: set both ftp and http user to USER
+  synonyms:
+  - --user
+  args: !SimpleFlagArg
+    name: USER
+  optional: true
+- !Flag
+  description: set both ftp and http password to PASS
+  synonyms:
+  - --password
+  args: !SimpleFlagArg
+    name: PASS
+  optional: true
+- !Flag
+  description: prompt for passwords
+  synonyms:
+  - --ask-password
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: turn off IRI support
+  synonyms:
+  - --no-iri
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use ENC as the local encoding for IRIs
+  synonyms:
+  - --local-encoding
+  args: !SimpleFlagArg
+    name: ENC
+  optional: true
+- !Flag
+  description: use ENC as the default remote encoding
+  synonyms:
+  - --remote-encoding
+  args: !SimpleFlagArg
+    name: ENC
+  optional: true
+- !Flag
+  description: remove file before clobber
+  synonyms:
+  - --unlink
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -207,45 +374,193 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ',  --directory-prefix=PREFIX   save files to PREFIX/.. --cut-dirs=NUMBER           ignore
-    NUMBER remote directory components'
+  description: ',  --directory-prefix=PREFIX   save files to PREFIX/..'
   synonyms:
   - -P
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ",  --adjust-extension          save HTML/CSS documents with proper\
-    \ extensions --ignore-length             ignore 'Content-Length' header field\
-    \ --header=STRING             insert STRING among the headers --max-redirect \
-    \             maximum redirections allowed per page --proxy-user=USER        \
-    \   set USER as proxy username --proxy-password=PASS       set PASS as proxy password\
-    \ --referer=URL               include 'Referer: URL' header in HTTP request --save-headers\
-    \              save the HTTP headers to file"
+  description: ignore NUMBER remote directory components
+  synonyms:
+  - --cut-dirs
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: set http user to USER
+  synonyms:
+  - --http-user
+  args: !SimpleFlagArg
+    name: USER
+  optional: true
+- !Flag
+  description: set http password to PASS
+  synonyms:
+  - --http-password
+  args: !SimpleFlagArg
+    name: PASS
+  optional: true
+- !Flag
+  description: disallow server-cached data
+  synonyms:
+  - --no-cache
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "change the default page name (normally\nthis is 'index.html'.)"
+  synonyms:
+  - --default-page
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: ',  --adjust-extension          save HTML/CSS documents with proper
+    extensions'
   synonyms:
   - -E
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ",  --user-agent=AGENT          identify as AGENT instead of Wget/VERSION\
-    \ --no-http-keep-alive        disable HTTP keep-alive (persistent connections)\
-    \ --no-cookies                don't use cookies --load-cookies=FILE         load\
-    \ cookies from FILE before session --save-cookies=FILE         save cookies to\
-    \ FILE after session --keep-session-cookies      load and save session (non-permanent)\
-    \ cookies --post-data=STRING          use the POST method; send STRING as the\
-    \ data --post-file=FILE            use the POST method; send contents of FILE\
-    \ --method=HTTPMethod         use method \"HTTPMethod\" in the request --body-data=STRING\
-    \          send STRING as data. --method MUST be set --body-file=FILE        \
-    \    send contents of FILE. --method MUST be set --content-disposition       honor\
-    \ the Content-Disposition header when choosing local file names (EXPERIMENTAL)\
-    \ --content-on-error          output the received content on server errors --auth-no-challenge\
-    \         send Basic HTTP authentication information without first waiting for\
-    \ the server's challenge"
+  description: ignore 'Content-Length' header field
+  synonyms:
+  - --ignore-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: insert STRING among the headers
+  synonyms:
+  - --header
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: maximum redirections allowed per page
+  synonyms:
+  - --max-redirect
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: set USER as proxy username
+  synonyms:
+  - --proxy-user
+  args: !SimpleFlagArg
+    name: USER
+  optional: true
+- !Flag
+  description: set PASS as proxy password
+  synonyms:
+  - --proxy-password
+  args: !SimpleFlagArg
+    name: PASS
+  optional: true
+- !Flag
+  description: "include 'Referer: URL' header in HTTP request"
+  synonyms:
+  - --referer
+  args: !SimpleFlagArg
+    name: URL
+  optional: true
+- !Flag
+  description: save the HTTP headers to file
+  synonyms:
+  - --save-headers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',  --user-agent=AGENT          identify as AGENT instead of Wget/VERSION'
   synonyms:
   - -U
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: choose secure protocol, one of auto, SSLv2, SSLv3, TLSv1 and PFS
+  description: disable HTTP keep-alive (persistent connections)
+  synonyms:
+  - --no-http-keep-alive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: don't use cookies
+  synonyms:
+  - --no-cookies
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: load cookies from FILE before session
+  synonyms:
+  - --load-cookies
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: save cookies to FILE after session
+  synonyms:
+  - --save-cookies
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: load and save session (non-permanent) cookies
+  synonyms:
+  - --keep-session-cookies
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use the POST method; send STRING as the data
+  synonyms:
+  - --post-data
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: use the POST method; send contents of FILE
+  synonyms:
+  - --post-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: use method "HTTPMethod" in the request
+  synonyms:
+  - --method
+  args: !SimpleFlagArg
+    name: HTTPMethod
+  optional: true
+- !Flag
+  description: send STRING as data. --method MUST be set
+  synonyms:
+  - --body-data
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: send contents of FILE. --method MUST be set
+  synonyms:
+  - --body-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "honor the Content-Disposition header when\nchoosing local file names\
+    \ (EXPERIMENTAL)"
+  synonyms:
+  - --content-disposition
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output the received content on server errors
+  synonyms:
+  - --content-on-error
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "send Basic HTTP authentication information\nwithout first waiting\
+    \ for the server's\nchallenge"
+  synonyms:
+  - --auth-no-challenge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "choose secure protocol, one of auto, SSLv2,\nSSLv3, TLSv1 and PFS"
   synonyms:
   - --secure-protocol
   args: !SimpleFlagArg
@@ -313,8 +628,8 @@ named:
     name: FILE
   optional: true
 - !Flag
-  description: Public key (PEM/DER) file, or any number of base64 encoded sha256 hashes
-    preceded by 'sha256//' and seperated by ';', to verify peer against
+  description: "Public key (PEM/DER) file, or any number\nof base64 encoded sha256\
+    \ hashes preceded by\n'sha256//' and seperated by ';', to verify\npeer against"
   synonyms:
   - --pinnedpubkey
   args: !SimpleFlagArg
@@ -397,8 +712,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: resume the SSL/TLS session started in the control connection when opening
-    a data connection
+  description: "resume the SSL/TLS session started in the control connection when\n\
+    opening a data connection"
   synonyms:
   - --ftps-resume-ssl
   args: !EmptyFlagArg {}
@@ -468,7 +783,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: location for temporary files created by the WARC writer
+  description: "location for temporary files created by the\nWARC writer"
   synonyms:
   - --warc-tempdir
   args: !SimpleFlagArg
@@ -482,19 +797,36 @@ named:
   optional: true
 - !Flag
   description: ',  --level=NUMBER              maximum recursion depth (inf or 0 for
-    infinite) --delete-after              delete files locally after downloading them'
+    infinite)'
   synonyms:
   - -l
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ',  --convert-links             make links in downloaded HTML or CSS
-    point to local files --convert-file-only         convert the file part of the
-    URLs only (usually known as the basename) --backups=N                 before writing
-    file X, rotate up to N backup files'
+  description: delete files locally after downloading them
+  synonyms:
+  - --delete-after
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",  --convert-links             make links in downloaded HTML or CSS\
+    \ point to\nlocal files"
   synonyms:
   - -k
   args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: convert the file part of the URLs only (usually known as the basename)
+  synonyms:
+  - --convert-file-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: before writing file X, rotate up to N backup files
+  synonyms:
+  - --backups
+  args: !SimpleFlagArg
+    name: N
   optional: true
 - !Flag
   description: ',  --backup-converted          before converting file X, back up as
@@ -511,9 +843,15 @@ named:
   optional: true
 - !Flag
   description: ',  --page-requisites           get all images, etc. needed to display
-    HTML page --strict-comments           turn on strict (SGML) handling of HTML comments'
+    HTML page'
   synonyms:
   - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: turn on strict (SGML) handling of HTML comments
+  synonyms:
+  - --strict-comments
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -523,22 +861,64 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ',  --reject=LIST               comma-separated list of rejected extensions
-    --accept-regex=REGEX        regex matching accepted URLs --reject-regex=REGEX        regex
-    matching rejected URLs --regex-type=TYPE           regex type (posix)'
+  description: ',  --reject=LIST               comma-separated list of rejected extensions'
   synonyms:
   - -R
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ',  --domains=LIST              comma-separated list of accepted domains
-    --exclude-domains=LIST      comma-separated list of rejected domains --follow-ftp                follow
-    FTP links from HTML documents --follow-tags=LIST          comma-separated list
-    of followed HTML tags --ignore-tags=LIST          comma-separated list of ignored
-    HTML tags'
+  description: regex matching accepted URLs
+  synonyms:
+  - --accept-regex
+  args: !SimpleFlagArg
+    name: REGEX
+  optional: true
+- !Flag
+  description: regex matching rejected URLs
+  synonyms:
+  - --reject-regex
+  args: !SimpleFlagArg
+    name: REGEX
+  optional: true
+- !Flag
+  description: regex type (posix)
+  synonyms:
+  - --regex-type
+  args: !SimpleFlagArg
+    name: TYPE
+  optional: true
+- !Flag
+  description: ',  --domains=LIST              comma-separated list of accepted domains'
   synonyms:
   - -D
   args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: comma-separated list of rejected domains
+  synonyms:
+  - --exclude-domains
+  args: !SimpleFlagArg
+    name: LIST
+  optional: true
+- !Flag
+  description: follow FTP links from HTML documents
+  synonyms:
+  - --follow-ftp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: comma-separated list of followed HTML tags
+  synonyms:
+  - --follow-tags
+  args: !SimpleFlagArg
+    name: LIST
+  optional: true
+- !Flag
+  description: comma-separated list of ignored HTML tags
+  synonyms:
+  - --ignore-tags
+  args: !SimpleFlagArg
+    name: LIST
   optional: true
 - !Flag
   description: ',  --span-hosts                go to foreign hosts when recursive'
@@ -553,10 +933,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ",  --include-directories=LIST  list of allowed directories --trust-server-names\
-    \        use the name specified by the redirection URL's last component"
+  description: ',  --include-directories=LIST  list of allowed directories'
   synonyms:
   - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "use the name specified by the redirection\nURL's last component"
+  synonyms:
+  - --trust-server-names
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -572,10 +957,9 @@ named:
   - --no-parent
   args: !EmptyFlagArg {}
   optional: true
-command:
-- wget
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ',  --help                      print this help'
   synonyms:

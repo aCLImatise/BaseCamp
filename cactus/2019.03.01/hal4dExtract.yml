@@ -1,4 +1,6 @@
 !Command
+command:
+- hal4dExtract
 positional:
 - !Positional
   description: ''
@@ -20,12 +22,74 @@ positional:
   position: 3
   name: outBed
   optional: false
-named: []
-command:
-- hal4dExtract
+named:
+- !Flag
+  description: ':               append to instead of overwrite output file. [default
+    = 0]'
+  synonyms:
+  - --append
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":   version of input bed file.  will be automatically detected if\n\
+    not specified [default = -1]"
+  synonyms:
+  - --bedVersion
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":   maximum size in bytes of regular hdf5 cache [default =\n15728640]"
+  synonyms:
+  - --cacheBytes
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':     number of metadata slots in hdf5 cache [default = 113]'
+  synonyms:
+  - --cacheMDC
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":     number of regular slots in hdf5 cache.  should be a prime\n\
+    number ~= 10 * DefaultCacheRDCBytes / chunk [default =\n599999]"
+  synonyms:
+  - --cacheRDC
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':      w0 parameter fro hdf5 cache [default = 0.75]'
+  synonyms:
+  - --cacheW0
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":            ensure 4d sites are 4d sites in all leaf genomes [default\
+    \ =\n0]"
+  synonyms:
+  - --conserved
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":             load all data in memory (and disable hdf5 cache) [default\
+    \ =\n0]\n"
+  synonyms:
+  - --inMemory
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ':                 dsiplay this help page [default = 0]'
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: " \n\nhal4dExtract v2.1: Extract Fourfold-Degenerate codon positions from\

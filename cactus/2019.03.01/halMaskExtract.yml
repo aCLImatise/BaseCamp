@@ -1,4 +1,6 @@
 !Command
+command:
+- halMaskExtract
 positional:
 - !Positional
   description: ''
@@ -10,12 +12,74 @@ positional:
   position: 1
   name: genome
   optional: false
-named: []
-command:
-- halMaskExtract
+named:
+- !Flag
+  description: ":   maximum size in bytes of regular hdf5 cache [default =\n15728640]"
+  synonyms:
+  - --cacheBytes
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':     number of metadata slots in hdf5 cache [default = 113]'
+  synonyms:
+  - --cacheMDC
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":     number of regular slots in hdf5 cache.  should be a prime\n\
+    number ~= 10 * DefaultCacheRDCBytes / chunk [default =\n599999]"
+  synonyms:
+  - --cacheRDC
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':      w0 parameter fro hdf5 cache [default = 0.75]'
+  synonyms:
+  - --cacheW0
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':       extend masked regions by given num. of bases. [default = 0]'
+  synonyms:
+  - --extend
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":    extend masked regions by percentage of their lengths [default\n\
+    = 0]"
+  synonyms:
+  - --extendPct
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":             load all data in memory (and disable hdf5 cache) [default\
+    \ =\n0]"
+  synonyms:
+  - --inMemory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':     path to bed file to write to [default = stdout]'
+  synonyms:
+  - --maskFile
+  args: !SimpleFlagArg
+    name: value
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ':                 dsiplay this help page [default = 0]'
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: " \n\nhalMaskExtract v2.1: Write masked intervals of genome into bed file\n\

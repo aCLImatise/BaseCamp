@@ -1,4 +1,6 @@
 !Command
+command:
+- pdf2dcm
 positional:
 - !Positional
   description: PDF input filename to be converted
@@ -11,6 +13,12 @@ positional:
   name: dcmfile-out
   optional: false
 named:
+- !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: --quiet              quiet mode, print no warnings and errors
   synonyms:
@@ -30,15 +38,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-level          [l]evel: string constant (fatal, error, warn,
-    info, debug, trace) use level l for the logger'
+  description: "--log-level          [l]evel: string constant\n(fatal, error, warn,\
+    \ info, debug, trace)\nuse level l for the logger"
   synonyms:
   - -ll
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-config         [f]ilename: string use config file f for the
-    logger'
+  description: "--log-config         [f]ilename: string\nuse config file f for the\
+    \ logger"
   synonyms:
   - -lc
   args: !EmptyFlagArg {}
@@ -50,20 +58,22 @@ named:
   - --annotation-no
   args: !EmptyFlagArg {}
   optional: true
-command:
-- pdf2dcm
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: --help               print this help text and exit --version            print
-    version information and exit --arguments          print expanded command line
-    arguments
+  description: --help               print this help text and exit
   synonyms:
   - -h
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "$dcmtk: pdf2dcm v3.6.1 2016-11-02 $\n\npdf2dcm: Convert PDF file to DICOM\n\
   usage: pdf2dcm [options] pdffile-in dcmfile-out\n\nparameters:\n  pdffile-in   \
   \               PDF input filename to be converted\n  dcmfile-out              \

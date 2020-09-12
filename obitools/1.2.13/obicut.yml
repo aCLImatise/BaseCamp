@@ -1,10 +1,24 @@
 !Command
+command:
+- obicut
 positional: []
 named:
 - !Flag
-  description: python expression to be evaluated in the sequence context. The attribute
-    name can be used in the expression as variable name. An extra variable named 'sequence'
-    refers to the sequence object itself.
+  description: Set logging in debug mode
+  synonyms:
+  - --DEBUG
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: desactivate progress bar
+  synonyms:
+  - --without-progress-bar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "python expression to be evaluated in the sequence\ncontext. The attribute\
+    \ name can be used in the\nexpression as variable name. An extra variable named\n\
+    'sequence' refers to the sequence object itself."
   synonyms:
   - -b
   - --begin
@@ -12,9 +26,9 @@ named:
     name: PYTHON_EXPRESSION
   optional: true
 - !Flag
-  description: python expression to be evaluated in the sequence context. The attribute
-    name can be used in the expression as variable name .An extra variable named 'sequence'
-    refersto the sequence object itself.
+  description: "python expression to be evaluated in the sequence\ncontext. The attribute\
+    \ name can be used in the\nexpression as variable name .An extra variable named\n\
+    'sequence' refersto the sequence object itself."
   synonyms:
   - -e
   - --end
@@ -22,8 +36,8 @@ named:
     name: PYTHON_EXPRESSION
   optional: true
 - !Flag
-  description: regular expression pattern used to select the sequence. The pattern
-    is case insensitive
+  description: "regular expression pattern used to select the\nsequence. The pattern\
+    \ is case insensitive"
   synonyms:
   - -s
   - --sequence
@@ -31,8 +45,8 @@ named:
     name: REGULAR_PATTERN
   optional: true
 - !Flag
-  description: regular expression pattern matched against the definition of the sequence.
-    The pattern is case sensitive
+  description: "regular expression pattern matched against the\ndefinition of the\
+    \ sequence. The pattern is case\nsensitive"
   synonyms:
   - -D
   - --definition
@@ -40,8 +54,8 @@ named:
     name: REGULAR_PATTERN
   optional: true
 - !Flag
-  description: regular expression pattern matched against the identifier of the sequence.
-    The pattern is case sensitive
+  description: "regular expression pattern matched against the\nidentifier of the\
+    \ sequence. The pattern is case\nsensitive"
   synonyms:
   - -I
   - --identifier
@@ -56,17 +70,18 @@ named:
     name: FILENAME
   optional: true
 - !Flag
-  description: ':<REGULAR_PATTERN>, --attribute=<ATTRIBUTE_NAME>:<REGULAR_PATTERN>
-    regular expression pattern matched against the attributes of the sequence. the
-    value of this atribute is of the form : attribute_name:regular_pattern. The pattern
-    is case sensitive.Several -a option can be used on the same commande line.'
+  description: ":<REGULAR_PATTERN>, --attribute=<ATTRIBUTE_NAME>:<REGULAR_PATTERN>\n\
+    regular expression pattern matched against the\nattributes of the sequence. the\
+    \ value of this atribute\nis of the form : attribute_name:regular_pattern. The\n\
+    pattern is case sensitive.Several -a option can be\nused on the same commande\
+    \ line."
   synonyms:
   - -a
   args: !SimpleFlagArg
     name: ATTRIBUTE_NAME
   optional: true
 - !Flag
-  description: select sequence with attribute <ATTRIBUTE_NAME> defined
+  description: "select sequence with attribute <ATTRIBUTE_NAME>\ndefined"
   synonyms:
   - -A
   - --has-attribute
@@ -74,10 +89,10 @@ named:
     name: ATTRIBUTE_NAME
   optional: true
 - !Flag
-  description: python boolean expression to be evaluated in the sequence context.
-    The attribute name can be used in the expression as variable name .An extra variable
-    named 'sequence' refersto the sequence object itself. Several -p option can be
-    used on the same commande line.
+  description: "python boolean expression to be evaluated in the\nsequence context.\
+    \ The attribute name can be used in\nthe expression as variable name .An extra\
+    \ variable\nnamed 'sequence' refersto the sequence object itself.\nSeveral -p\
+    \ option can be used on the same commande\nline."
   synonyms:
   - -p
   - --predicat
@@ -85,13 +100,13 @@ named:
     name: PYTHON_EXPRESSION
   optional: true
 - !Flag
-  description: <##>, --lmax=<##> keep sequences shorter than lmax
+  description: "<##>, --lmax=<##>\nkeep sequences shorter than lmax"
   synonyms:
   - -L
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: <##>, --lmin=<##> keep sequences longer than lmin
+  description: "<##>, --lmin=<##>\nkeep sequences longer than lmin"
   synonyms:
   - -l
   args: !EmptyFlagArg {}
@@ -120,16 +135,16 @@ named:
     name: FILENAME
   optional: true
 - !Flag
-  description: select sequence with taxid tag containing a parent of rank <RANK_NAME>
+  description: "select sequence with taxid tag containing a parent of\nrank <RANK_NAME>"
   synonyms:
   - --require-rank
   args: !SimpleFlagArg
     name: RANK_NAME
   optional: true
 - !Flag
-  description: Select the sequences having the ancestor of taxid <TAXID>. If several
-    ancestors are specified (with  '-r taxid1 -r taxid2'), the sequences having at
-    least one of them are selected
+  description: "Select the sequences having the ancestor of taxid\n<TAXID>. If several\
+    \ ancestors are specified (with  '-r\ntaxid1 -r taxid2'), the sequences having\
+    \ at least one\nof them are selected"
   synonyms:
   - -r
   - --required
@@ -177,7 +192,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input file is in fasta nucleic format (including obitools fasta extentions)
+  description: "Input file is in fasta nucleic format (including\nobitools fasta extentions)"
   synonyms:
   - --fasta
   args: !EmptyFlagArg {}
@@ -189,19 +204,19 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input file is in fasta format (but more tolerant to format variant)
+  description: "Input file is in fasta format (but more tolerant to\nformat variant)"
   synonyms:
   - --raw-fasta
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input file is in sanger fastq nucleic format (standard fastq)
+  description: "Input file is in sanger fastq nucleic format (standard\nfastq)"
   synonyms:
   - --sanger
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input file is in fastq nucleic format produced by solexa sequencer
+  description: "Input file is in fastq nucleic format produced by\nsolexa sequencer"
   synonyms:
   - --solexa
   args: !EmptyFlagArg {}
@@ -237,8 +252,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Output sequences in ecopcr database format (sequence records are not
-    printed on standard output)
+  description: "Output sequences in ecopcr database format (sequence\nrecords are\
+    \ not printed on standard output)"
   synonyms:
   - --ecopcrdb-output
   args: !SimpleFlagArg
@@ -250,11 +265,16 @@ named:
   - --uppercase
   args: !EmptyFlagArg {}
   optional: true
-command:
-- obicut
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "Usage: \n:py:mod:`obicut`: trims sequences\n=================================\n\

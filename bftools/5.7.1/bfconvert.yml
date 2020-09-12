@@ -1,5 +1,22 @@
 !Command
-positional: []
+command:
+- bfconvert
+positional:
+- !Positional
+  description: converted_Z0_T1.tiff
+  position: 0
+  name: converted_Z0_T0.tiff
+  optional: false
+- !Positional
+  description: converted_Z1_T0.tiff
+  position: 1
+  name: converted_Z0_T2.tiff
+  optional: false
+- !Positional
+  description: Each file would have a single image plane.
+  position: 0
+  name: converted_Z4_T2.tiff
+  optional: false
 named:
 - !Flag
   description: ': print the library version and exit'
@@ -50,38 +67,23 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': specify which image series to convert'
+  description: ": specify the codec to use when saving images\n-series: specify which\
+    \ image series to convert\n-map: specify file on disk to which name should be\
+    \ mapped\n-range: specify range of planes to convert (inclusive)"
   synonyms:
-  - -series
+  - -compression
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': specify file on disk to which name should be mapped'
-  synonyms:
-  - -map
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': specify range of planes to convert (inclusive)'
-  synonyms:
-  - -range
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': force multi-file datasets to be read as individual              files'
+  description: ": force multi-file datasets to be read as individual             \
+    \ files\n-nolookup: disable the conversion of lookup tables"
   synonyms:
   - -nogroup
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': disable the conversion of lookup tables'
-  synonyms:
-  - -nolookup
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': automatically adjust brightness and contrast before converting;
-    this may mean that the original pixel values are not preserved'
+  description: ": automatically adjust brightness and contrast before\nconverting;\
+    \ this may mean that the original pixel\nvalues are not preserved"
   synonyms:
   - -autoscale
   args: !EmptyFlagArg {}
@@ -93,45 +95,30 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ": crop images before converting; argument is 'x,y,w,h'"
+  description: ": never overwrite the output file, if it already exists\n-crop: crop\
+    \ images before converting; argument is 'x,y,w,h'"
   synonyms:
-  - -crop
+  - -nooverwrite
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': only convert the specified channel (indexed from 0)'
+  description: ": only convert the specified channel (indexed from 0)\n-z: only convert\
+    \ the specified Z section (indexed from 0)"
   synonyms:
   - -channel
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': only convert the specified Z section (indexed from 0)'
-  synonyms:
-  - -z
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': only convert the specified timepoint (indexed from 0)'
+  description: ": only convert the specified timepoint (indexed from 0)\n-padded:\
+    \ filename indexes for series, z, c and t will be zero padded\n-option: add the\
+    \ specified key/value pair to the options list"
   synonyms:
   - -timepoint
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ': filename indexes for series, z, c and t will be zero padded'
-  synonyms:
-  - -padded
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': add the specified key/value pair to the options list'
-  synonyms:
-  - -option
-  args: !EmptyFlagArg {}
-  optional: true
-command:
-- bfconvert
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

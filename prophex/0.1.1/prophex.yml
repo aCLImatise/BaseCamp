@@ -1,11 +1,14 @@
 &id001 !Command
-positional: []
-named: []
 command:
 - prophex
+positional: []
+named: []
 parent:
 subcommands:
 - !Command
+  command:
+  - prophex
+  - klcp
   positional:
   - !Positional
     description: ''
@@ -14,7 +17,7 @@ subcommands:
     optional: false
   named:
   - !Flag
-    description: k-mer length for k-LCP
+    description: length of k-mer
     synonyms:
     - -k
     args: !SimpleFlagArg
@@ -32,11 +35,9 @@ subcommands:
     - -i
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - prophex
-  - index
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: print help message
     synonyms:
@@ -45,13 +46,15 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-  help_text: "\nUsage:   prophex index [options] <idxbase>\nOptions: -k INT    k-mer\
-    \ length for k-LCP\n         -s        construct k-LCP and SA in parallel\n  \
-    \       -i        sampling distance for SA\n         -h        print help message\n\
-    \n"
+  help_text: "\nUsage:   prophex klcp [options] <idxbase>\n\nOptions: -k INT    length\
+    \ of k-mer\n         -s        construct k-LCP and SA in parallel\n         -i\
+    \        sampling distance for SA\n         -h        print help message\n\n"
   generated_using: &id002
   - -h
 - !Command
+  command:
+  - prophex
+  - query
   positional:
   - !Positional
     description: ''
@@ -110,11 +113,9 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  command:
-  - prophex
-  - query
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: print help message
     synonyms:
@@ -132,6 +133,39 @@ subcommands:
     \        -h        print help message\n\n"
   generated_using: *id002
 - !Command
+  command:
+  - prophex
+  - bwtdowngrade
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input.bwt
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: output.bwt
+    optional: false
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: print help message
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "\nUsage:   prophex bwtdowngrade <input.bwt> <output.bwt>\n         -h\
+    \        print help message\n\n"
+  generated_using: *id002
+- !Command
+  command:
+  - prophex
+  - index
   positional:
   - !Positional
     description: ''
@@ -140,7 +174,7 @@ subcommands:
     optional: false
   named:
   - !Flag
-    description: length of k-mer
+    description: k-mer length for k-LCP
     synonyms:
     - -k
     args: !SimpleFlagArg
@@ -158,11 +192,9 @@ subcommands:
     - -i
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - prophex
-  - klcp
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: print help message
     synonyms:
@@ -171,40 +203,15 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-  help_text: "\nUsage:   prophex klcp [options] <idxbase>\n\nOptions: -k INT    length\
-    \ of k-mer\n         -s        construct k-LCP and SA in parallel\n         -i\
-    \        sampling distance for SA\n         -h        print help message\n\n"
+  help_text: "\nUsage:   prophex index [options] <idxbase>\nOptions: -k INT    k-mer\
+    \ length for k-LCP\n         -s        construct k-LCP and SA in parallel\n  \
+    \       -i        sampling distance for SA\n         -h        print help message\n\
+    \n"
   generated_using: *id002
 - !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: input.bwt
-    optional: false
-  - !Positional
-    description: ''
-    position: 1
-    name: output.bwt
-    optional: false
-  named: []
   command:
   - prophex
-  - bwtdowngrade
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: print help message
-    synonyms:
-    - -h
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "\nUsage:   prophex bwtdowngrade <input.bwt> <output.bwt>\n         -h\
-    \        print help message\n\n"
-  generated_using: *id002
-- !Command
+  - bwt2fa
   positional:
   - !Positional
     description: ''
@@ -217,11 +224,9 @@ subcommands:
     name: output.fa
     optional: false
   named: []
-  command:
-  - prophex
-  - bwt2fa
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: print help message
     synonyms:
@@ -233,6 +238,7 @@ subcommands:
   help_text: "\nUsage:   prophex bwt2fa <idxbase> <output.fa>\n         -h       \
     \ print help message\n\n"
   generated_using: *id002
+usage: []
 help_flag:
 usage_flag:
 version_flag:

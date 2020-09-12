@@ -1,4 +1,6 @@
 !Command
+command:
+- irb
 positional:
 - !Positional
   description: ''
@@ -10,14 +12,190 @@ positional:
   position: 1
   name: arguments
   optional: true
-named: []
-command:
-- irb
+named:
+- !Flag
+  description: Suppress read of ~/.irbrc
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Bc mode (load mathn, fraction or matrix are available)
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set $DEBUG to true (same as `ruby -d')
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Same as `ruby -r'
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: load-module
+  optional: true
+- !Flag
+  description: Specify $LOAD_PATH directory
+  synonyms:
+  - -I
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Same as `ruby -U`
+  synonyms:
+  - -U
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Same as `ruby -E`
+  synonyms:
+  - -E
+  args: !SimpleFlagArg
+    name: enc
+  optional: true
+- !Flag
+  description: Same as `ruby -w`
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[level=2]       Same as `ruby -W`'
+  synonyms:
+  - -W
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set n[0-3] to method to create Binding Object,\nwhen new workspace\
+    \ was created"
+  synonyms:
+  - --context-mode
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Show result(default)
+  synonyms:
+  - --echo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't show result
+  synonyms:
+  - --noecho
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use `inspect' for output (default except for bc mode)
+  synonyms:
+  - --inspect
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't use inspect for output
+  synonyms:
+  - --noinspect
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use Readline extension module
+  synonyms:
+  - --readline
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't use Readline extension module
+  synonyms:
+  - --noreadline
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "prompt-mode\nSwitch prompt mode. Pre-defined prompt modes are\n`default',\
+    \ `simple', `xmp' and `inf-ruby'"
+  synonyms:
+  - --prompt
+  args: !SimpleFlagArg
+    name: prompt-mode/--prompt-mode
+  optional: true
+- !Flag
+  description: "Use prompt appropriate for inf-ruby-mode on emacs.\nSuppresses --readline."
+  synonyms:
+  - --inf-ruby-mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Simple prompt mode
+  synonyms:
+  - --sample-book-mode/--simple-prompt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: No prompt mode
+  synonyms:
+  - --noprompt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Share self with sub-irb.
+  synonyms:
+  - --single-irb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display trace for each execution of commands.
+  synonyms:
+  - --tracer
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Display backtrace top n and tail n. The default\nvalue is 16."
+  synonyms:
+  - --back-trace-limit
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Set internal debug level to n (not for popular use)
+  synonyms:
+  - --irb_debug
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Show details
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't show details
+  synonyms:
+  - --noverbose
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Print help
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Print the version of irb
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "Usage:  irb.rb [options] [programfile] [arguments]\n  -f\t\t    Suppress\
   \ read of ~/.irbrc\n  -m\t\t    Bc mode (load mathn, fraction or matrix are available)\n\
   \  -d                Set $DEBUG to true (same as `ruby -d')\n  -r load-module  \

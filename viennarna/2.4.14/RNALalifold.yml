@@ -1,36 +1,67 @@
 !Command
+command:
+- RNALalifold
 positional:
 - !Positional
-  description: -h, --help                    Print help and exit --detailed-help           Print
-    help, including all details and hidden options, and exit --full-help               Print
-    help, including hidden options, and exit -V, --version                 Print version
-    and exit
+  description: -h, --help                    Print help and exit
   position: 0
   name: structures.
   optional: false
+- !Positional
+  description: (default=`RNALalifold_results')
+  position: 0
+  name: file.
+  optional: false
+- !Positional
+  description: (default=off)
+  position: 1
+  name: alignment.
+  optional: false
+- !Positional
+  description: --shapeMethod=D[mX][bY]   Specify the method how to convert SHAPE
+  position: 0
+  name: predictions
+  optional: false
+- !Positional
+  description: (default=`D')
+  position: 0
+  name: contributions
+  optional: false
 named:
 - !Flag
-  description: Be verbose. (default=off)
+  description: "Print help, including all details and hidden\noptions, and exit"
+  synonyms:
+  - --detailed-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print help, including hidden options, and exit
+  synonyms:
+  - --full-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Be verbose.\n(default=off)"
   synonyms:
   - -v
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Be quiet. (default=off)
+  description: "Be quiet.\n(default=off)"
   synonyms:
   - -q
   - --quiet
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not automatically substitute nucleotide "T" with "U" (default=off)
+  description: "Do not automatically substitute nucleotide\n\"T\" with \"U\"\n(default=off)"
   synonyms:
   - --noconv
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '|S|F|M    File format of the input multiple sequence alignment (MSA).'
+  description: "|S|F|M    File format of the input multiple sequence\nalignment (MSA)."
   synonyms:
   - -f
   - --input-format
@@ -38,77 +69,68 @@ named:
     name: C
   optional: true
 - !Flag
-  description: Create comma separated output (csv) (default=off)
+  description: "Create comma separated output (csv)\n(default=off)"
   synonyms:
   - --csv
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[=prefix]            Produce output alignments and secondary structure
-    plots for each hit found.'
+  description: "[=prefix]            Produce output alignments and secondary\nstructure\
+    \ plots for each hit found."
   synonyms:
   - --aln
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[=prefix]        Produce colored and structure annotated subalignment
-    for each hit'
+  description: "[=prefix]        Produce colored and structure annotated\nsubalignment\
+    \ for each hit"
   synonyms:
   - --aln-EPS
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[=prefix]     Produce colored consensus secondary structure plots
-    in PostScript format'
+  description: "[=prefix]     Produce colored consensus secondary structure\nplots\
+    \ in PostScript format"
   synonyms:
   - --aln-EPS-ss
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "[=prefix]        Add hits to a multi-Stockholm formatted output file.\
-    \ (default=`RNALalifold_results')"
+  description: '[=prefix]        Add hits to a multi-Stockholm formatted output'
   synonyms:
   - --aln-stk
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Automatically generate an ID for each alignment. (default=off)
+  description: Automatically generate an ID for each
   synonyms:
   - --auto-id
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Prefix for automatically generated IDs (as used in output file names)
-    (default=`alignment')
+  description: "Prefix for automatically generated IDs (as used\nin output file names)\n\
+    (default=`alignment')"
   synonyms:
   - --id-prefix
   args: !SimpleFlagArg
     name: prefix
   optional: true
 - !Flag
-  description: Split the free energy contributions into separate parts (default=off)
+  description: "Split the free energy contributions into\nseparate parts\n(default=off)"
   synonyms:
   - --split-contributions
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ',file2       Use SHAPE reactivity data to guide structure predictions'
+  description: ',file2       Use SHAPE reactivity data to guide structure'
   synonyms:
   - --shape
   args: !SimpleFlagArg
     name: file1
   optional: true
 - !Flag
-  description: "[mX][bY]   Specify the method how to convert SHAPE reactivity data\
-    \ to pseudo energy contributions (default=`D')"
-  synonyms:
-  - --shapeMethod
-  args: !SimpleFlagArg
-    name: D
-  optional: true
-- !Flag
-  description: Set the maximum allowed separation of a base pair to span. I.e. no
-    pairs (i,j) with j-i>span will be allowed. (default=`70')
+  description: "Set the maximum allowed separation of a base\npair to span. I.e. no\
+    \ pairs (i,j) with\nj-i>span will be allowed.\n(default=`70')"
   synonyms:
   - -L
   - --maxBPspan
@@ -116,31 +138,32 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: Energy threshold in kcal/mol per nucleotide above which secondary structure
-    hits are omitted in the output. (default=`-0.1')
+  description: "Energy threshold in kcal/mol per nucleotide\nabove which secondary\
+    \ structure hits are\nomitted in the output.\n(default=`-0.1')"
   synonyms:
   - --threshold
   args: !SimpleFlagArg
     name: DOUBLE
   optional: true
 - !Flag
-  description: 'Output "most informative sequence" instead of simple consensus: For
-    each column of the alignment output the set of nucleotides with frequency greater
-    than average in IUPAC notation. (default=off)'
+  description: "Output \"most informative sequence\" instead of\nsimple consensus:\
+    \ For each column of the\nalignment output the set of nucleotides with\nfrequency\
+    \ greater than average in IUPAC\nnotation.\n(default=off)"
   synonyms:
   - --mis
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Incoorporate G-Quadruplex formation into the structure prediction algorithm
-    (default=off)
+  description: "Incoorporate G-Quadruplex formation into the\nstructure prediction\
+    \ algorithm\n(default=off)"
   synonyms:
   - -g
   - --gquad
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Rescale energy parameters to a temperature of temp C. Default is 37C.
+  description: "Rescale energy parameters to a temperature of\ntemp C. Default is\
+    \ 37C."
   synonyms:
   - -T
   - --temp
@@ -148,16 +171,16 @@ named:
     name: DOUBLE
   optional: true
 - !Flag
-  description: Do not include special tabulated stabilizing energies for tri-, tetra-
-    and hexaloop hairpins. Mostly for testing. (default=off)
+  description: "Do not include special tabulated stabilizing\nenergies for tri-, tetra-\
+    \ and hexaloop\nhairpins. Mostly for testing.\n(default=off)"
   synonyms:
   - '-4'
   - --noTetra
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: How to treat "dangling end" energies for bases adjacent to helices
-    in free ends and multi-loops (default=`2')
+  description: "How to treat \"dangling end\" energies for\nbases adjacent to helices\
+    \ in free ends and\nmulti-loops\n(default=`2')"
   synonyms:
   - -d
   - --dangles
@@ -165,26 +188,27 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: Produce structures without lonely pairs (helices of length 1). (default=off)
+  description: "Produce structures without lonely pairs\n(helices of length 1).\n\
+    (default=off)"
   synonyms:
   - --noLP
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not allow GU pairs (default=off)
+  description: "Do not allow GU pairs\n(default=off)"
   synonyms:
   - --noGU
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not allow GU pairs at the end of helices (default=off)
+  description: "Do not allow GU pairs at the end of helices\n(default=off)"
   synonyms:
   - --noClosingGU
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Read energy parameters from paramfile, instead of using the default
-    parameter set.
+  description: "Read energy parameters from paramfile, instead\nof using the default\
+    \ parameter set."
   synonyms:
   - -P
   - --paramFile
@@ -192,23 +216,24 @@ named:
     name: paramfile
   optional: true
 - !Flag
-  description: Set the weight of the covariance term in the energy function (default=`1.0')
+  description: "Set the weight of the covariance term in the\nenergy function\n(default=`1.0')"
   synonyms:
   - --cfactor
   args: !SimpleFlagArg
     name: DOUBLE
   optional: true
 - !Flag
-  description: Set the penalty for non-compatible sequences in the covariance term
-    of the energy function (default=`1.0')
+  description: "Set the penalty for non-compatible sequences in\nthe covariance term\
+    \ of the energy function\n(default=`1.0')"
   synonyms:
   - --nfactor
   args: !SimpleFlagArg
     name: DOUBLE
   optional: true
 - !Flag
-  description: use specified Ribosum Matrix instead of normal energy model. Matrixes
-    to use should be 6x6 matrices, the order of the terms is AU, CG, GC, GU, UA, UG.
+  description: "use specified Ribosum Matrix instead of normal\nenergy model. Matrixes\
+    \ to use should be 6x6\nmatrices, the order of the terms is AU, CG,\nGC, GU, UA,\
+    \ UG."
   synonyms:
   - -R
   - --ribosum_file
@@ -216,20 +241,25 @@ named:
     name: ribosumfile
   optional: true
 - !Flag
-  description: use ribosum scoring matrix. The matrix is chosen according to the minimal
-    and maximal pairwise identities of the sequences in the file. (default=off)
+  description: "use ribosum scoring matrix. The matrix is\nchosen according to the\
+    \ minimal and maximal\npairwise identities of the sequences in the\nfile.\n(default=off)"
   synonyms:
   - -r
   - --ribosum_scoring
   args: !EmptyFlagArg {}
   optional: true
-command:
-- RNALalifold
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Print version and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "RNALalifold 2.4.14\n\ncalculate locally stable secondary structures for\
   \ a set of aligned RNAs\n\nUsage: RNALalifold [options] <file1.aln>\n\nreads aligned\
   \ RNA sequences from stdin or file.aln and calculates locally\nstable RNA secondary\

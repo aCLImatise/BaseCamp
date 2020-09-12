@@ -1,0 +1,374 @@
+!Command
+command:
+- anvi-pan-genome
+positional:
+- !Positional
+  description: "--skip-hierarchical-clustering\nAnvi'o attempts to generate a hierarchical\
+    \ clustering\nof your gene clusters once it identifies them so you\ncan use `anvi-display-pan`\
+    \ to play with it. But if you\nwant to skip this step, this is your flag."
+  position: 0
+  name: clusters.
+  optional: false
+named:
+- !Flag
+  description: Anvi'o genomes storage file
+  synonyms:
+  - -g
+  - --genomes-storage
+  args: !SimpleFlagArg
+    name: GENOMES_STORAGE
+  optional: true
+- !Flag
+  description: "Genome names to 'focus'. You can use this parameter to\nlimit the\
+    \ genomes included in your analysis. You can\nprovide these names as a comma-separated\
+    \ list of\nnames, or you can put them in a file, where you have a\nsingle genome\
+    \ name in each line, and provide the file\npath."
+  synonyms:
+  - -G
+  - --genome-names
+  args: !SimpleFlagArg
+    name: GENOME_NAMES
+  optional: true
+- !Flag
+  description: "By default, anvi'o attempts to align amino acid\nsequences in each\
+    \ gene cluster using multiple sequnce\nalignment via muscle. You can use this\
+    \ flag to skip\nthat step and be upset later."
+  synonyms:
+  - --skip-alignments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "By default, anvi'o attempts to calculate homogeneity\nvalues for every\
+    \ gene cluster, given that they are\naligned. You can use this flag to have anvi'o\
+    \ skip\nhomogeneity calculations. Anvi'o will ignore this flag\nif you decide\
+    \ to skip alignments"
+  synonyms:
+  - --skip-homogeneity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "By default, anvi'o will use a homogeneity algorithm\nthat checks for\
+    \ horizontal and vertical geometric\nhomogeneity (along with functional). With\
+    \ this flag,\nyou can tell anvi'o to skip horizontal geometric\nhomogeneity calculations.\
+    \ It will be less accurate but\nquicker. Anvi'o will ignore this flag if you skip\n\
+    homogeneity calculations or alignments all together."
+  synonyms:
+  - --quick-homogeneity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The multiple sequence alignment program to use when\nmultiple sequence\
+    \ alignment is necessary. To see all\navailable options, use the flag `--list-aligners`."
+  synonyms:
+  - --align-with
+  args: !SimpleFlagArg
+    name: ALIGNER
+  optional: true
+- !Flag
+  description: "By default, anvi'o includes all partial gene calls\nfrom the analysis,\
+    \ which, in some cases, may inflate\nthe number of gene clusters identified and\
+    \ introduce\nextra heterogeneity within those gene clusters. Using\nthis flag,\
+    \ you can request anvi'o to exclude partial\ngene calls from the analysis (whether\
+    \ a gene call is\npartial or not is an information that comes directly\nfrom the\
+    \ gene caller used to identify genes during the\ngeneration of the contigs database)."
+  synonyms:
+  - --exclude-partial-gene-calls
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This program uses DIAMOND by default, however, if you\nlike, you can\
+    \ use good ol' blastp from NCBI instead."
+  synonyms:
+  - --use-ncbi-blast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The minimum minbit value. The minbit heuristic\nprovides a mean to\
+    \ set a to eliminate weak matches\nbetween two amino acid sequences. We learned\
+    \ it from\nITEP (Benedict MN et al, doi:10.1186/1471-2164-15-8),\nwhich is a comprehensive\
+    \ analysis workflow for\npangenomes, and decided to use it in the anvi'o\npangenomic\
+    \ workflow, as well. Briefly, If you have two\namino acid sequences, 'A' and 'B',\
+    \ the minbit is\ndefined as 'BITSCORE(A, B) / MIN(BITSCORE(A, A),\nBITSCORE(B,\
+    \ B))'. So the minbit score between two\nsequences goes to 1 if they are very\
+    \ similar over the\nentire length of the 'shorter' amino acid sequence,\nand goes\
+    \ to 0 if (1) they match over a very short\nstretch compared even to the length\
+    \ of the shorter\namino acid sequence or (2) the match betwen sequence\nidentity\
+    \ is low. The default is 0.5."
+  synonyms:
+  - --minbit
+  args: !SimpleFlagArg
+    name: MINBIT
+  optional: true
+- !Flag
+  description: "MCL inflation parameter, that defines the sensitivity\nof the algorithm\
+    \ during the identification of the gene\nclusters. More information on this parameter\
+    \ and it's\neffect on cluster granularity is here:\n(http://micans.org/mcl/man/mclfaq.html#faq7.2).\
+    \ The\ndefault is 2."
+  synonyms:
+  - --mcl-inflation
+  args: !SimpleFlagArg
+    name: INFLATION
+  optional: true
+- !Flag
+  description: "Do you not want singletons?\\ You don't? Well, this\nparameter will\
+    \ help you get rid of them (along with\ndoubletons, if you want). Anvi'o will\
+    \ remove gene\nclusters that occur less than the number you set using\nthis parameter\
+    \ from the analysis. The default is 1,\nwhich means everything will be kept. If\
+    \ you want to\nremove singletons, set it to 2, if you want to remove\ndoubletons\
+    \ as well, set it to 3, and so on."
+  synonyms:
+  - --min-occurrence
+  args: !SimpleFlagArg
+    name: NUM_OCCURRENCE
+  optional: true
+- !Flag
+  description: "Minimum percent identity between the two amino acid\nsequences for\
+    \ them to have an edge for MCL analysis.\nThis value will be used to filter hits\
+    \ from Diamond\nsearch results. Because percent identity is not a\npredictor of\
+    \ a good match (since it does not\ncommunicate many other important factors such\
+    \ as the\nalignment length between the two sequences and its\nproportion to the\
+    \ entire length of those involved), we\nsuggest you rely on 'minbit' parameter.\
+    \ But you know\nwhat? Maybe you shouldn't listen to anyone, and\nexperiment on\
+    \ your own! The default is 0 percent."
+  synonyms:
+  - --min-percent-identity
+  args: !SimpleFlagArg
+    name: PERCENT
+  optional: true
+- !Flag
+  description: "DIAMOND sensitivity. With this flag you can instruct\nDIAMOND to be\
+    \ 'sensitive', rather than 'fast' during\nthe search. It is likely the search\
+    \ will take\nremarkably longer. But, hey, if you are doing it for\nyour final\
+    \ analysis, maybe it should take longer and\nbe more accurate. This flag is only\
+    \ relevant if you\nare running DIAMOND."
+  synonyms:
+  - --sensitive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Name of the project. Please choose a short but\ndescriptive name (so\
+    \ anvi'o can use it whenever she\nneeds to name an output file, or add a new table\
+    \ in a\ndatabase, or name her first born)."
+  synonyms:
+  - -n
+  - --project-name
+  args: !SimpleFlagArg
+    name: PROJECT_NAME
+  optional: true
+- !Flag
+  description: "A plain text file that contains some description about\nthe project.\
+    \ You can use Markdwon syntax. The\ndescription text will be rendered and shown\
+    \ in all\nrelevant interfaces, including the anvi'o interactive\ninterface, or\
+    \ anvi'o summary outputs."
+  synonyms:
+  - --description
+  args: !SimpleFlagArg
+    name: TEXT_FILE
+  optional: true
+- !Flag
+  description: Directory path for output files
+  synonyms:
+  - -o
+  - --output-dir
+  args: !SimpleFlagArg
+    name: PAN_DB_DIR
+  optional: true
+- !Flag
+  description: "Overwrite if the output files and/or directories\nexist."
+  synonyms:
+  - -W
+  - --overwrite-output-destinations
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Maximum number of threads to use for multithreading\nwhenever possible.\
+    \ Very conservatively, the default is\n1. It is a good idea to not exceed the\
+    \ number of CPUs\n/ cores on your system. Plus, please be careful with\nthis option\
+    \ if you are running your commands on a SGE\n--if you are clusterizing your runs,\
+    \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
+    \ fast."
+  synonyms:
+  - -T
+  - --num-threads
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+  optional: true
+- !Flag
+  description: "If you want anvi'o to try to generate a hierarchical\nclustering of\
+    \ your gene clusters even if the number of\ngene clusters exceeds its suggested\
+    \ limit for\nhierarchical clustering, you can use this flag to\nenforce it. Are\
+    \ you are a rebel of some sorts? Or did\ncomputers made you upset? Express your\
+    \ anger towards\nmachine using this flag."
+  synonyms:
+  - --enforce-hierarchical-clustering
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The distance metric for the clustering of gene\nclusters. If you do\
+    \ not use this flag, the default\ndistance metric will be used for each clustering\n\
+    configuration which is \"euclidean\"."
+  synonyms:
+  - --distance
+  args: !SimpleFlagArg
+    name: DISTANCE_METRIC
+  optional: true
+- !Flag
+  description: "The same story with the `--distance`, except, the\nsystem default\
+    \ for this one is ward.\n"
+  synonyms:
+  - --linkage
+  args: !SimpleFlagArg
+    name: LINKAGE_METHOD
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: anvi-pan-genome [-h] -g GENOMES_STORAGE [-G GENOME_NAMES]\n   \
+  \                    [--skip-alignments] [--skip-homogeneity]\n                \
+  \       [--quick-homogeneity] [--align-with ALIGNER]\n                       [--exclude-partial-gene-calls]\
+  \ [--use-ncbi-blast]\n                       [--minbit MINBIT] [--mcl-inflation\
+  \ INFLATION]\n                       [--min-occurrence NUM_OCCURRENCE]\n       \
+  \                [--min-percent-identity PERCENT] [--sensitive]\n              \
+  \         [-n PROJECT_NAME] [--description TEXT_FILE]\n                       [-o\
+  \ PAN_DB_DIR] [-W] [-T NUM_THREADS]\n                       [--skip-hierarchical-clustering]\n\
+  \                       [--enforce-hierarchical-clustering]\n                  \
+  \     [--distance DISTANCE_METRIC] [--linkage LINKAGE_METHOD]\n\nA DIAMOND and MCL-based\
+  \ anvi'o workflow for pangenomics. You provide genomes\nfrom anywhere (whether they\
+  \ are external genomes, or anvi'o genome bins in\ncollections), and it gives you\
+  \ back a pangenome analysis.\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n\nGENOMES:\n  The very fancy genomes storage file.\
+  \ This file is generated by the program\n  `anvi-genomes-storage`. Please see the\
+  \ online tutorial on pangenomic\n  workflow if you don't know how to generate one.\n\
+  \n  -g GENOMES_STORAGE, --genomes-storage GENOMES_STORAGE\n                    \
+  \    Anvi'o genomes storage file\n  -G GENOME_NAMES, --genome-names GENOME_NAMES\n\
+  \                        Genome names to 'focus'. You can use this parameter to\n\
+  \                        limit the genomes included in your analysis. You can\n\
+  \                        provide these names as a comma-separated list of\n    \
+  \                    names, or you can put them in a file, where you have a\n  \
+  \                      single genome name in each line, and provide the file\n \
+  \                       path.\n\nPARAMETERS:\n  Important stuff Tom never pays attention\
+  \ (but you should).\n\n  --skip-alignments     By default, anvi'o attempts to align\
+  \ amino acid\n                        sequences in each gene cluster using multiple\
+  \ sequnce\n                        alignment via muscle. You can use this flag to\
+  \ skip\n                        that step and be upset later.\n  --skip-homogeneity\
+  \    By default, anvi'o attempts to calculate homogeneity\n                    \
+  \    values for every gene cluster, given that they are\n                      \
+  \  aligned. You can use this flag to have anvi'o skip\n                        homogeneity\
+  \ calculations. Anvi'o will ignore this flag\n                        if you decide\
+  \ to skip alignments\n  --quick-homogeneity   By default, anvi'o will use a homogeneity\
+  \ algorithm\n                        that checks for horizontal and vertical geometric\n\
+  \                        homogeneity (along with functional). With this flag,\n\
+  \                        you can tell anvi'o to skip horizontal geometric\n    \
+  \                    homogeneity calculations. It will be less accurate but\n  \
+  \                      quicker. Anvi'o will ignore this flag if you skip\n     \
+  \                   homogeneity calculations or alignments all together.\n  --align-with\
+  \ ALIGNER  The multiple sequence alignment program to use when\n               \
+  \         multiple sequence alignment is necessary. To see all\n               \
+  \         available options, use the flag `--list-aligners`.\n  --exclude-partial-gene-calls\n\
+  \                        By default, anvi'o includes all partial gene calls\n  \
+  \                      from the analysis, which, in some cases, may inflate\n  \
+  \                      the number of gene clusters identified and introduce\n  \
+  \                      extra heterogeneity within those gene clusters. Using\n \
+  \                       this flag, you can request anvi'o to exclude partial\n \
+  \                       gene calls from the analysis (whether a gene call is\n \
+  \                       partial or not is an information that comes directly\n \
+  \                       from the gene caller used to identify genes during the\n\
+  \                        generation of the contigs database).\n  --use-ncbi-blast\
+  \      This program uses DIAMOND by default, however, if you\n                 \
+  \       like, you can use good ol' blastp from NCBI instead.\n  --minbit MINBIT\
+  \       The minimum minbit value. The minbit heuristic\n                       \
+  \ provides a mean to set a to eliminate weak matches\n                        between\
+  \ two amino acid sequences. We learned it from\n                        ITEP (Benedict\
+  \ MN et al, doi:10.1186/1471-2164-15-8),\n                        which is a comprehensive\
+  \ analysis workflow for\n                        pangenomes, and decided to use\
+  \ it in the anvi'o\n                        pangenomic workflow, as well. Briefly,\
+  \ If you have two\n                        amino acid sequences, 'A' and 'B', the\
+  \ minbit is\n                        defined as 'BITSCORE(A, B) / MIN(BITSCORE(A,\
+  \ A),\n                        BITSCORE(B, B))'. So the minbit score between two\n\
+  \                        sequences goes to 1 if they are very similar over the\n\
+  \                        entire length of the 'shorter' amino acid sequence,\n \
+  \                       and goes to 0 if (1) they match over a very short\n    \
+  \                    stretch compared even to the length of the shorter\n      \
+  \                  amino acid sequence or (2) the match betwen sequence\n      \
+  \                  identity is low. The default is 0.5.\n  --mcl-inflation INFLATION\n\
+  \                        MCL inflation parameter, that defines the sensitivity\n\
+  \                        of the algorithm during the identification of the gene\n\
+  \                        clusters. More information on this parameter and it's\n\
+  \                        effect on cluster granularity is here:\n              \
+  \          (http://micans.org/mcl/man/mclfaq.html#faq7.2). The\n               \
+  \         default is 2.\n  --min-occurrence NUM_OCCURRENCE\n                   \
+  \     Do you not want singletons?\\ You don't? Well, this\n                    \
+  \    parameter will help you get rid of them (along with\n                     \
+  \   doubletons, if you want). Anvi'o will remove gene\n                        clusters\
+  \ that occur less than the number you set using\n                        this parameter\
+  \ from the analysis. The default is 1,\n                        which means everything\
+  \ will be kept. If you want to\n                        remove singletons, set it\
+  \ to 2, if you want to remove\n                        doubletons as well, set it\
+  \ to 3, and so on.\n  --min-percent-identity PERCENT\n                        Minimum\
+  \ percent identity between the two amino acid\n                        sequences\
+  \ for them to have an edge for MCL analysis.\n                        This value\
+  \ will be used to filter hits from Diamond\n                        search results.\
+  \ Because percent identity is not a\n                        predictor of a good\
+  \ match (since it does not\n                        communicate many other important\
+  \ factors such as the\n                        alignment length between the two\
+  \ sequences and its\n                        proportion to the entire length of\
+  \ those involved), we\n                        suggest you rely on 'minbit' parameter.\
+  \ But you know\n                        what? Maybe you shouldn't listen to anyone,\
+  \ and\n                        experiment on your own! The default is 0 percent.\n\
+  \  --sensitive           DIAMOND sensitivity. With this flag you can instruct\n\
+  \                        DIAMOND to be 'sensitive', rather than 'fast' during\n\
+  \                        the search. It is likely the search will take\n       \
+  \                 remarkably longer. But, hey, if you are doing it for\n       \
+  \                 your final analysis, maybe it should take longer and\n       \
+  \                 be more accurate. This flag is only relevant if you\n        \
+  \                are running DIAMOND.\n\nOTHERS:\n  Sweet parameters of convenience.\n\
+  \n  -n PROJECT_NAME, --project-name PROJECT_NAME\n                        Name of\
+  \ the project. Please choose a short but\n                        descriptive name\
+  \ (so anvi'o can use it whenever she\n                        needs to name an output\
+  \ file, or add a new table in a\n                        database, or name her first\
+  \ born).\n  --description TEXT_FILE\n                        A plain text file that\
+  \ contains some description about\n                        the project. You can\
+  \ use Markdwon syntax. The\n                        description text will be rendered\
+  \ and shown in all\n                        relevant interfaces, including the anvi'o\
+  \ interactive\n                        interface, or anvi'o summary outputs.\n \
+  \ -o PAN_DB_DIR, --output-dir PAN_DB_DIR\n                        Directory path\
+  \ for output files\n  -W, --overwrite-output-destinations\n                    \
+  \    Overwrite if the output files and/or directories\n                        exist.\n\
+  \  -T NUM_THREADS, --num-threads NUM_THREADS\n                        Maximum number\
+  \ of threads to use for multithreading\n                        whenever possible.\
+  \ Very conservatively, the default is\n                        1. It is a good idea\
+  \ to not exceed the number of CPUs\n                        / cores on your system.\
+  \ Plus, please be careful with\n                        this option if you are running\
+  \ your commands on a SGE\n                        --if you are clusterizing your\
+  \ runs, and asking for\n                        multiple threads to use, you may\
+  \ deplete your\n                        resources very fast.\n\nORGANIZING GENE\
+  \ CLUSTERs:\n  These are stuff that will change the clustering dendrogram of your\
+  \ gene\n  clusters.\n\n  --skip-hierarchical-clustering\n                      \
+  \  Anvi'o attempts to generate a hierarchical clustering\n                     \
+  \   of your gene clusters once it identifies them so you\n                     \
+  \   can use `anvi-display-pan` to play with it. But if you\n                   \
+  \     want to skip this step, this is your flag.\n  --enforce-hierarchical-clustering\n\
+  \                        If you want anvi'o to try to generate a hierarchical\n\
+  \                        clustering of your gene clusters even if the number of\n\
+  \                        gene clusters exceeds its suggested limit for\n       \
+  \                 hierarchical clustering, you can use this flag to\n          \
+  \              enforce it. Are you are a rebel of some sorts? Or did\n         \
+  \               computers made you upset? Express your anger towards\n         \
+  \               machine using this flag.\n  --distance DISTANCE_METRIC\n       \
+  \                 The distance metric for the clustering of gene\n             \
+  \           clusters. If you do not use this flag, the default\n               \
+  \         distance metric will be used for each clustering\n                   \
+  \     configuration which is \"euclidean\".\n  --linkage LINKAGE_METHOD\n      \
+  \                  The same story with the `--distance`, except, the\n         \
+  \               system default for this one is ward.\n"
+generated_using:
+- --help

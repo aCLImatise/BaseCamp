@@ -1,19 +1,19 @@
 !Command
-positional: []
+command:
+- phyluce_genetrees_run_raxml_genetrees
+positional:
+- !Positional
+  description: --output OUTPUT       The output directory to hold alignments
+  position: 0
+  name: format
+  optional: false
 named:
 - !Flag
-  description: The input directory containing alignments in phylip format
+  description: The input directory containing alignments in phylip
   synonyms:
   - --input
   args: !SimpleFlagArg
     name: INPUT
-  optional: true
-- !Flag
-  description: The output directory to hold alignments
-  synonyms:
-  - --output
-  args: !SimpleFlagArg
-    name: OUTPUT
   optional: true
 - !Flag
   description: The outgroup to use
@@ -23,7 +23,7 @@ named:
     name: OUTGROUP
   optional: true
 - !Flag
-  description: The number of RAxML threads to run (best to determine empirically)
+  description: "The number of RAxML threads to run (best to determine\nempirically)"
   synonyms:
   - --threads
   args: !SimpleFlagArg
@@ -55,8 +55,8 @@ named:
   - --verbosity
   args: !ChoiceFlagArg
     choices: !!set
-      WARN:
       CRITICAL:
+      WARN:
       INFO:
   optional: true
 - !Flag
@@ -66,10 +66,15 @@ named:
   args: !SimpleFlagArg
     name: LOG_PATH
   optional: true
-command:
-- phyluce_genetrees_run_raxml_genetrees
+- !Flag
+  description: ''
+  synonyms:
+  - --output
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

@@ -1,4 +1,6 @@
 !Command
+command:
+- tgStoreLoad
 positional:
 - !Positional
   description: ''
@@ -12,23 +14,48 @@ positional:
   optional: true
 named:
 - !Flag
-  description: ''
+  description: Path to the sequence store
   synonyms:
   - -S
   args: !SimpleFlagArg
     name: seqStore
   optional: true
 - !Flag
-  description: ''
+  description: <v>     Path to the tigStore and version to add tigs to
   synonyms:
   - -T
   args: !SimpleFlagArg
     name: tigStore
   optional: true
-command:
-- tgStoreLoad
+- !Flag
+  description: "Load the tig(s) from files listed in 'file-of-files'\n(WARNING: program\
+    \ will succeed if this file is empty)"
+  synonyms:
+  - -L
+  args: !SimpleFlagArg
+    name: file-of-files
+  optional: true
+- !Flag
+  description: Don't load into store, just report what would have happened
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Dump the cns files as ASCII, don't load into store
+  synonyms:
+  - -dump
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Test the cns files for various errors, don't load into store
+  synonyms:
+  - -test
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

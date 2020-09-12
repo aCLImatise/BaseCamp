@@ -1,18 +1,107 @@
 !Command
+command:
+- ProbScan
 positional:
 - !Positional
   description: ''
   position: 0
   name: input file
   optional: false
-named: []
-command:
-- ProbScan
+named:
+- !Flag
+  description: Print probabilities for all possible hairpin loops.
+  synonyms:
+  - -a
+  - -A
+  - --hairpin
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print probabilities for all possible bulge loops.
+  synonyms:
+  - -b
+  - -B
+  - --bulge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify that the sequence is DNA, and DNA parameters are to be used.\n\
+    Default is to use RNA parameters."
+  synonyms:
+  - -d
+  - -D
+  - --DNA
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print probabilities for all possible internal loops.
+  synonyms:
+  - -i
+  - -I
+  - --internal
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Provide RNA from sequence file. Partition function will be calculated\
+    \ (may\ntake a while); if you're going to query the same sequence repeatedly,\
+    \ you\ncould save a lot of time by running from a partition function save file\n\
+    produced by the 'partition' program."
+  synonyms:
+  - -s
+  - -S
+  - --sequence
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Print probabilities for all possible helices with this number of base\
+    \ pair\nstacks. To get single base pair stacks, use -e 1."
+  synonyms:
+  - -e
+  - -E
+  - --helix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Provide a file with multibranch loops. These multibranch loops'\n\
+    probabilities will be checked."
+  synonyms:
+  - -m
+  - -M
+  - --multibranch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Calculate probability for a user-specified loop. The loop must be\
+    \ provided\nas a set of pairs of nucleotide indices, where the nucs in the pair\
+    \ are\ndelimited by dashes and each pair is delimited by a comma; eg '-e 5-20'\n\
+    will show the probability of a hairpin loop closed by a pair between\nnucleotides\
+    \ 5 and 20, and '-e 10-120,15-70,75-110' will give the\nprobability of a three-way\
+    \ junction where the exiting helices are closed by\npairs at 10-120, 15-70, and\
+    \ 75-110.\n"
+  synonyms:
+  - -p
+  - -P
+  - --pairs
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Display the usage details message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Display version and copyright information for this interface.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "USAGE: ProbScan <input file> [options]\nAll flags are case-insensitive,\
   \ and grouping of flags is not allowed.\n\n=============================\n==== Required\
   \ Parameters ====\n=============================\n<input file>\n    The name of\

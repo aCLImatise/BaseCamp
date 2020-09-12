@@ -1,5 +1,18 @@
 !Command
-positional: []
+command:
+- sequnwinder
+positional:
+- !Positional
+  description: '--seq <path>: A directory containing fasta format files corresponding
+    to every named chromosome is required'
+  position: 0
+  name: AND
+  optional: false
+- !Positional
+  description: '--genseqs <DNA sequences around at TF binding sites; eg: ATGC...TGC     Shared;Proximal>'
+  position: 0
+  name: OR
+  optional: false
 named:
 - !Flag
   description: ': Ouput file prefix. All output will be put into a directory with
@@ -30,17 +43,17 @@ named:
     name: path
   optional: true
 - !Flag
-  description: ': A directory containing fasta format files corresponding to every
-    named chromosome is required'
+  description: This file should list the lengths of all chromosomes on separate lines
+    using the format chrName<tab>chrLength
   synonyms:
-  - --seq
+  - --geninfo
   args: !SimpleFlagArg
-    name: path
+    name: genome info file
   optional: true
 - !Flag
-  description: '<DNA sequences around at TF binding sites; eg: ATGC...TGC     Shared;Proximal>'
+  description: '<List of TF binding sites with annotations; eg: chr1:151736000  Shared;Proximal>'
   synonyms:
-  - --genseqs
+  - --genregs
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -52,7 +65,7 @@ named:
   optional: true
 - !Flag
   description: ': Flag to make random genomic regions as an extra outgroup class in
-    classification (Only applicable when genome is provide.) '
+    classification (Only applicable when genome is provide.)'
   synonyms:
   - --makerandregs
   args: !EmptyFlagArg {}
@@ -87,7 +100,7 @@ named:
   optional: true
 - !Flag
   description: ': Flag to merge subclasses with less than 200 sites with other relevant
-    classes. By default, all subclasses with less that 200 sites are removed. '
+    classes. By default, all subclasses with less that 200 sites are removed.'
   synonyms:
   - --mergelow
   args: !EmptyFlagArg {}
@@ -158,10 +171,9 @@ named:
   args: !SimpleFlagArg
     name: value
   optional: true
-command:
-- sequnwinder
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

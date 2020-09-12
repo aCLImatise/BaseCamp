@@ -1,32 +1,32 @@
 !Command
-positional: []
+command:
+- unicycler_check
+positional:
+- !Positional
+  description: --reads READS           FASTQ file of long reads
+  position: 0
+  name: sequences
+  optional: false
 named:
 - !Flag
-  description: Input SAM file of alignments (if this file doesn't exist, the alignment
-    will be performed with results saved to this file - you can use the aligner arguments
-    with this script)
+  description: "Input SAM file of alignments (if this file doesn't\nexist, the alignment\
+    \ will be performed with results\nsaved to this file - you can use the aligner\n\
+    arguments with this script)"
   synonyms:
   - --sam
   args: !SimpleFlagArg
     name: SAM
   optional: true
 - !Flag
-  description: FASTA file containing one or more reference sequences
+  description: FASTA file containing one or more reference
   synonyms:
   - --ref
   args: !SimpleFlagArg
     name: REF
   optional: true
 - !Flag
-  description: FASTQ file of long reads
-  synonyms:
-  - --reads
-  args: !SimpleFlagArg
-    name: READS
-  optional: true
-- !Flag
-  description: 'Minimum alignment length (bp) - exclude alignments shorter than this
-    length (default: 100)'
+  description: "Minimum alignment length (bp) - exclude alignments\nshorter than this\
+    \ length (default: 100)"
   synonyms:
   - --min_len
   args: !SimpleFlagArg
@@ -47,46 +47,46 @@ named:
     name: DEPTH_WINDOW_SIZE
   optional: true
 - !Flag
-  description: 'Threshold for high error rates, expressed as the fraction between
-    the mean error rate and the random alignment error rate (default: 0.3)'
+  description: "Threshold for high error rates, expressed as the\nfraction between\
+    \ the mean error rate and the random\nalignment error rate (default: 0.3)"
   synonyms:
   - --error_rate_threshold
   args: !SimpleFlagArg
     name: ERROR_RATE_THRESHOLD
   optional: true
 - !Flag
-  description: 'P-value for low/high depth thresholds (default: 0.001)'
+  description: "P-value for low/high depth thresholds (default:\n0.001)"
   synonyms:
   - --depth_p_val
   args: !SimpleFlagArg
     name: DEPTH_P_VAL
   optional: true
 - !Flag
-  description: 'Path and/or prefix for table files summarising reference errors for
-    reference windows (default: do not save window tables)'
+  description: "Path and/or prefix for table files summarising\nreference errors for\
+    \ reference windows (default: do\nnot save window tables)"
   synonyms:
   - --window_tables
   args: !SimpleFlagArg
     name: WINDOW_TABLES
   optional: true
 - !Flag
-  description: 'Path and/or prefix for table files summarising reference errors at
-    each base (default: do not save base tables)'
+  description: "Path and/or prefix for table files summarising\nreference errors at\
+    \ each base (default: do not save\nbase tables)"
   synonyms:
   - --base_tables
   args: !SimpleFlagArg
     name: BASE_TABLES
   optional: true
 - !Flag
-  description: 'Path for HTML report (default: do not save HTML report)'
+  description: "Path for HTML report (default: do not save HTML\nreport)"
   synonyms:
   - --html
   args: !SimpleFlagArg
     name: HTML
   optional: true
 - !Flag
-  description: 'Number of CPU threads used to align (default: the number of available
-    CPUs)'
+  description: "Number of CPU threads used to align (default: the\nnumber of available\
+    \ CPUs)"
   synonyms:
   - --threads
   args: !SimpleFlagArg
@@ -99,10 +99,16 @@ named:
   args: !SimpleFlagArg
     name: VERBOSITY
   optional: true
-command:
-- unicycler_check
+- !Flag
+  description: ''
+  synonyms:
+  - --reads
+  args: !SimpleFlagArg
+    name: READS
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -119,16 +125,16 @@ help_text: "usage: unicycler_check [-h] --sam SAM --ref REF --reads READS\n     
   \               [--depth_p_val DEPTH_P_VAL]\n                       [--window_tables\
   \ WINDOW_TABLES]\n                       [--base_tables BASE_TABLES] [--html HTML]\n\
   \                       [--threads THREADS] [--verbosity VERBOSITY]\n\nLong read\
-  \ assembly checker\n\n\e[1moptional arguments\e[0m:\n  -h, --help              show\
-  \ this help message and exit\n  --sam SAM               Input SAM file of alignments\
-  \ (if this file doesn't\n                          exist, the alignment will be\
-  \ performed with results\n                          saved to this file - you can\
-  \ use the aligner\n                          arguments with this script)\n  --ref\
-  \ REF               FASTA file containing one or more reference\n              \
-  \            sequences\n  --reads READS           FASTQ file of long reads\n  --min_len\
-  \ MIN_LEN       Minimum alignment length (bp) - exclude alignments\n           \
-  \               shorter than this length (default: 100)\n  --error_window_size ERROR_WINDOW_SIZE\n\
-  \                          Window size for error summaries (default: 100)\n  --depth_window_size\
+  \ assembly checker\n\noptional arguments:\n  -h, --help              show this help\
+  \ message and exit\n  --sam SAM               Input SAM file of alignments (if this\
+  \ file doesn't\n                          exist, the alignment will be performed\
+  \ with results\n                          saved to this file - you can use the aligner\n\
+  \                          arguments with this script)\n  --ref REF            \
+  \   FASTA file containing one or more reference\n                          sequences\n\
+  \  --reads READS           FASTQ file of long reads\n  --min_len MIN_LEN       Minimum\
+  \ alignment length (bp) - exclude alignments\n                          shorter\
+  \ than this length (default: 100)\n  --error_window_size ERROR_WINDOW_SIZE\n   \
+  \                       Window size for error summaries (default: 100)\n  --depth_window_size\
   \ DEPTH_WINDOW_SIZE\n                          Window size for depth summaries (default:\
   \ 100)\n  --error_rate_threshold ERROR_RATE_THRESHOLD\n                        \
   \  Threshold for high error rates, expressed as the\n                          fraction\

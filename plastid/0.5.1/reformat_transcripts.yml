@@ -1,9 +1,11 @@
 !Command
+command:
+- reformat_transcripts
 positional: []
 named:
 - !Flag
-  description: 'If specified and output format is GTF2, special characters in column
-    9 will be escaped (default: True)'
+  description: "If specified and output format is GTF2, special\ncharacters in column\
+    \ 9 will be escaped (default: True)"
   synonyms:
   - --no_escape
   args: !EmptyFlagArg {}
@@ -14,19 +16,19 @@ named:
   - --output_format
   args: !ChoiceFlagArg
     choices: !!set
-      GTF2:
       BED:
+      GTF2:
   optional: true
 - !Flag
-  description: Attributes (e.g. 'gene_id' to output as extra columns in extended BED
-    format (BED output only).
+  description: "Attributes (e.g. 'gene_id' to output as extra columns\nin extended\
+    \ BED format (BED output only)."
   synonyms:
   - --extra_columns
   args: !RepeatFlagArg
     name: EXTRA_COLUMNS
   optional: true
 - !Flag
-  description: "Value to use of an attribute in `extra_columns` is not defined for\
+  description: "Value to use of an attribute in `extra_columns` is not\ndefined for\
     \ a particular record (Default: 'na'"
   synonyms:
   - --empty_value
@@ -41,8 +43,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "Increase verbosity. With '-v', show every warning. With '-vv', turn\
-    \ warnings into exceptions. Cannot use with '-q'. (Default: show each type of\
+  description: "Increase verbosity. With '-v', show every warning.\nWith '-vv', turn\
+    \ warnings into exceptions. Cannot use\nwith '-q'. (Default: show each type of\
     \ warning once)"
   synonyms:
   - -v
@@ -50,82 +52,89 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Format of annotation_files (Default: GTF2). Note: GFF3 assembly assumes
-    SO v.2.5.2 feature ontologies, which may or may not match your specific file.'
+  description: "[BED | BigBed | GTF2 | GFF3] [infile.[BED | BigBed | GTF2 | GFF3]\
+    \ ...]\nZero or more annotation files (max 1 file if BigBed)"
+  synonyms:
+  - --annotation_files
+  args: !SimpleFlagArg
+    name: infile.
+  optional: true
+- !Flag
+  description: "Format of annotation_files (Default: GTF2). Note: GFF3\nassembly assumes\
+    \ SO v.2.5.2 feature ontologies, which\nmay or may not match your specific file."
   synonyms:
   - --annotation_format
   args: !ChoiceFlagArg
     choices: !!set
-      GFF3:
-      GTF2:
       BED:
       BigBed:
+      GTF2:
+      GFF3:
   optional: true
 - !Flag
-  description: If supplied, coding regions will be extended by 3 nucleotides at their
-    3' ends (except for GTF2 files that explicitly include `stop_codon` features).
-    Use if your annotation file excludes stop codons from CDS.
+  description: "If supplied, coding regions will be extended by 3\nnucleotides at\
+    \ their 3' ends (except for GTF2 files\nthat explicitly include `stop_codon` features).\
+    \ Use if\nyour annotation file excludes stop codons from CDS."
   synonyms:
   - --add_three
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'annotation_files are tabix-compressed and indexed (Default: False).
-    Ignored for BigBed files.'
+  description: "annotation_files are tabix-compressed and indexed\n(Default: False).\
+    \ Ignored for BigBed files."
   synonyms:
   - --tabix
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'annotation_files are sorted by chromosomal position (Default: False)'
+  description: "annotation_files are sorted by chromosomal position\n(Default: False)"
   synonyms:
   - --sorted
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Number of extra columns in BED file (e.g. in custom ENCODE formats)
-    or list of names for those columns. (Default: 0).'
+  description: "Number of extra columns in BED file (e.g. in custom\nENCODE formats)\
+    \ or list of names for those columns.\n(Default: 0)."
   synonyms:
   - --bed_extra_columns
   args: !RepeatFlagArg
     name: BED_EXTRA_COLUMNS
   optional: true
 - !Flag
-  description: 'Maximum desired memory footprint in MB to devote to BigBed/BigWig
-    files. May be exceeded by large queries. (Default: 0, No maximum)'
+  description: "Maximum desired memory footprint in MB to devote to\nBigBed/BigWig\
+    \ files. May be exceeded by large queries.\n(Default: 0, No maximum)"
   synonyms:
   - --maxmem
   args: !SimpleFlagArg
     name: MAXMEM
   optional: true
 - !Flag
-  description: 'GFF3 feature types to include as transcripts, even if no exons are
-    present (for GFF3 only; default: use SO v2.5.3 specification)'
+  description: "GFF3 feature types to include as transcripts, even if\nno exons are\
+    \ present (for GFF3 only; default: use SO\nv2.5.3 specification)"
   synonyms:
   - --gff_transcript_types
   args: !RepeatFlagArg
     name: GFF_TRANSCRIPT_TYPES
   optional: true
 - !Flag
-  description: 'GFF3 feature types to include as exons (for GFF3 only; default: use
-    SO v2.5.3 specification)'
+  description: "GFF3 feature types to include as exons (for GFF3 only;\ndefault: use\
+    \ SO v2.5.3 specification)"
   synonyms:
   - --gff_exon_types
   args: !RepeatFlagArg
     name: GFF_EXON_TYPES
   optional: true
 - !Flag
-  description: 'GFF3 feature types to include as CDS (for GFF3 only; default: use
-    SO v2.5.3 specification)'
+  description: "GFF3 feature types to include as CDS (for GFF3 only;\ndefault: use\
+    \ SO v2.5.3 specification)\n"
   synonyms:
   - --gff_cds_types
   args: !RepeatFlagArg
     name: GFF_CDS_TYPES
   optional: true
-command:
-- reformat_transcripts
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

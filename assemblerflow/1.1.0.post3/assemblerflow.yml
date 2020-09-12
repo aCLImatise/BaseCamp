@@ -1,4 +1,6 @@
 &id001 !Command
+command:
+- assemblerflow
 positional: []
 named:
 - !Flag
@@ -7,12 +9,18 @@ named:
   - --debug
   args: !EmptyFlagArg {}
   optional: true
-command:
-- assemblerflow
 parent:
 subcommands:
 - !Command
-  positional: []
+  command:
+  - assemblerflow
+  - build
+  positional:
+  - !Positional
+    description: -L, --detailed-list   Print a detailed description for all the currently
+    position: 0
+    name: exit.
+    optional: false
   named:
   - !Flag
     description: Space separated tasks of the pipeline
@@ -45,8 +53,8 @@ subcommands:
       name: PIPELINE_NAME
     optional: true
   - !Flag
-    description: Write only the pipeline files and not the templates, bin, and lib
-      folders.
+    description: "Write only the pipeline files and not the templates,\nbin, and lib\
+      \ folders."
     synonyms:
     - --pipeline-only
     args: !EmptyFlagArg {}
@@ -59,31 +67,22 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Check only the validity of the pipeline string and exit.
+    description: Check only the validity of the pipeline string and
     synonyms:
     - -c
     - --check-pipeline
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Print a detailed description for all the currently available processes
-    synonyms:
-    - -L
-    - --detailed-list
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: Print a short list of the currently available processes
+    description: "Print a short list of the currently available\nprocesses\n"
     synonyms:
     - -l
     - --short-list
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - assemblerflow
-  - build
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -109,6 +108,7 @@ subcommands:
     \ short list of the currently available\n                        processes\n"
   generated_using: &id002
   - --help
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

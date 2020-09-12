@@ -1,8 +1,26 @@
 !Command
-positional: []
+command:
+- RNAsubopt
+positional:
+- !Positional
+  description: "-C, --constraint              Calculate structures subject to constraints.\n\
+    (default=off)"
+  position: 0
+  name: program
+  optional: false
+- !Positional
+  description: (default=off)
+  position: 0
+  name: molecule.
+  optional: false
+- !Positional
+  description: (default=off)
+  position: 1
+  name: structures
+  optional: false
 named:
 - !Flag
-  description: Print help, including all details and hidden  options, and exit
+  description: "Print help, including all details and hidden\noptions, and exit"
   synonyms:
   - --detailed-help
   args: !EmptyFlagArg {}
@@ -14,21 +32,14 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Calculate structures subject to constraints. (default=off)
-  synonyms:
-  - -C
-  - --constraint
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Do not automatically substitude nucleotide  "T" with "U" (default=off)
+  description: "Do not automatically substitude nucleotide\n\"T\" with \"U\"\n(default=off)"
   synonyms:
   - --noconv
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Compute suboptimal structures with energy in a  certain range of the
-    optimum (kcal/mol).  Default is calculation of mfe structure only.
+  description: "Compute suboptimal structures with energy in a\ncertain range of the\
+    \ optimum (kcal/mol).\nDefault is calculation of mfe structure only."
   synonyms:
   - -e
   - --deltaEnergy
@@ -36,25 +47,25 @@ named:
     name: range
   optional: true
 - !Flag
-  description: Only print structures with energy within range  of the mfe after post
-    reevaluation of  energies.
+  description: "Only print structures with energy within range\nof the mfe after post\
+    \ reevaluation of\nenergies."
   synonyms:
   - --deltaEnergyPost
   args: !SimpleFlagArg
     name: range
   optional: true
 - !Flag
-  description: Sort the suboptimal structures by energy. (default=off)
+  description: "Sort the suboptimal structures by energy.\n(default=off)"
   synonyms:
   - -s
   - --sorted
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Instead of producing all suboptimals in an  energy range, produce a
-    random sample of  suboptimal structures, drawn with  probabilities equal to their
-    Boltzmann  weights via stochastic backtracking in the  partition function. The
-    -e and -p options are  mutually exclusive.
+  description: "Instead of producing all suboptimals in an\nenergy range, produce\
+    \ a random sample of\nsuboptimal structures, drawn with\nprobabilities equal to\
+    \ their Boltzmann\nweights via stochastic backtracking in the\npartition function.\
+    \ The -e and -p options are\nmutually exclusive."
   synonyms:
   - -p
   - --stochBT
@@ -62,29 +73,30 @@ named:
     name: number
   optional: true
 - !Flag
-  description: Assume a circular (instead of linear) RNA  molecule. (default=off)
+  description: Assume a circular (instead of linear) RNA
   synonyms:
   - -c
   - --circ
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Compute density of states instead of secondary  structures (default=off)
+  description: Compute density of states instead of secondary
   synonyms:
   - -D
   - --dos
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Compute Zuker suboptimals instead of all  suboptimal structures within
-    an engery band  arround the MFE. (default=off)
+  description: "Compute Zuker suboptimals instead of all\nsuboptimal structures within\
+    \ an engery band\narround the MFE.\n(default=off)"
   synonyms:
   - -z
   - --zuker
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Rescale energy parameters to a temperature of  temp C. Default is 37C.
+  description: "Rescale energy parameters to a temperature of\ntemp C. Default is\
+    \ 37C."
   synonyms:
   - -T
   - --temp
@@ -92,16 +104,16 @@ named:
     name: DOUBLE
   optional: true
 - !Flag
-  description: Do not include special tabulated stabilizing  energies for tri-, tetra-
-    and hexaloop  hairpins. Mostly for testing. (default=off)
+  description: "Do not include special tabulated stabilizing\nenergies for tri-, tetra-\
+    \ and hexaloop\nhairpins. Mostly for testing.\n(default=off)"
   synonyms:
   - '-4'
   - --noTetra
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: How to treat "dangling end" energies for  bases adjacent to helices
-    in free ends and  multi-loops (default=`2')
+  description: "How to treat \"dangling end\" energies for\nbases adjacent to helices\
+    \ in free ends and\nmulti-loops\n(default=`2')"
   synonyms:
   - -d
   - --dangles
@@ -109,43 +121,43 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: Produce structures without lonely pairs  (helices of length 1). (default=off)
+  description: "Produce structures without lonely pairs\n(helices of length 1).\n\
+    (default=off)"
   synonyms:
   - --noLP
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not allow GU pairs (default=off)
+  description: "Do not allow GU pairs\n(default=off)"
   synonyms:
   - --noGU
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not allow GU pairs at the end of helices (default=off)
+  description: "Do not allow GU pairs at the end of helices\n(default=off)"
   synonyms:
   - --noClosingGU
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Recalculate energies of structures using a  logarithmic energy function
-    for multi-loops  before output.  (default=off)
+  description: "Recalculate energies of structures using a\nlogarithmic energy function\
+    \ for multi-loops\nbefore output.  (default=off)"
   synonyms:
   - --logML
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Read energy parameters from paramfile, instead  of using the default
-    parameter set.
+  description: "Read energy parameters from paramfile, instead\nof using the default\
+    \ parameter set."
   synonyms:
   - -P
   - --paramFile
   args: !SimpleFlagArg
     name: paramfile
   optional: true
-command:
-- RNAsubopt
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Print help and exit
   synonyms:

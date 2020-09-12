@@ -1,14 +1,27 @@
 !Command
+command:
+- pmdtools
 positional:
 - !Positional
-  description: ''
+  description: --UDGhalf             only use Cs and Gs in CpG context, the first
+    and last
   position: 0
-  name: SAM formatted data with MD field present from stdin
+  name: PMDSprimthreshold
+  optional: false
+- !Positional
+  description: --flagss              flag SNPs (taking strand into account)
+  position: 0
+  name: customterminus
+  optional: false
+- !Positional
+  description: --header              output the SAM header
+  position: 1
+  name: refseq
   optional: false
 named:
 - !Flag
-  description: strand orientation aware penalization of base qualities for single
-    stranded libraries (use with --CpG for udg-treated ss libs)
+  description: "strand orientation aware penalization of base\nqualities for single\
+    \ stranded libraries (use with\n--CpG for udg-treated ss libs)"
   synonyms:
   - --adjustss
   args: !EmptyFlagArg {}
@@ -30,7 +43,7 @@ named:
     name: CHROMOSOME
   optional: true
 - !Flag
-  description: only process sequences with mapping quality at least this great
+  description: "only process sequences with mapping quality at least\nthis great"
   synonyms:
   - -m
   - --requiremapq
@@ -59,23 +72,23 @@ named:
     name: MINLENGTH
   optional: true
 - !Flag
-  description: only process sequences with max this GC content of the aligning reference
-    sequence
+  description: "only process sequences with max this GC content of the\naligning reference\
+    \ sequence"
   synonyms:
   - --maxGC
   args: !SimpleFlagArg
     name: MAXGC
   optional: true
 - !Flag
-  description: only process sequences with min this GC content of the aligning reference
-    sequence
+  description: "only process sequences with min this GC content of the\naligning reference\
+    \ sequence"
   synonyms:
   - --minGC
   args: !SimpleFlagArg
     name: MINGC
   optional: true
 - !Flag
-  description: only process bases with base quality at least this great
+  description: "only process bases with base quality at least this\ngreat"
   synonyms:
   - -q
   - --requirebaseq
@@ -83,8 +96,8 @@ named:
     name: BASEQ
   optional: true
 - !Flag
-  description: output base frequencies in the read at positions where there are C
-    or G in the reference
+  description: "output base frequencies in the read at positions where\nthere are\
+    \ C or G in the reference"
   synonyms:
   - -d
   - --deamination
@@ -110,18 +123,11 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: PMDSprimthreshold
+  description: ''
   synonyms:
   - --PMDSprimthreshold
   args: !SimpleFlagArg
     name: PMDSPRIMTHRESHOLD
-  optional: true
-- !Flag
-  description: only use Cs and Gs in CpG context, the first and last base are used
-    regardless of dinucleotide context
-  synonyms:
-  - --UDGhalf
-  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: use all bases (placeholder)
@@ -130,7 +136,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Ecoli CpG (first 5' position and two 3' positions and CpG context)
+  description: "Ecoli CpG (first 5' position and two 3' positions and\nCpG context)"
   synonyms:
   - --EcoliCpG
   args: !EmptyFlagArg {}
@@ -142,7 +148,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: mask to lower case bases where ref is C (taking strand into account)
+  description: "mask to lower case bases where ref is C (taking strand\ninto account)"
   synonyms:
   - --maskss
   args: !EmptyFlagArg {}
@@ -154,17 +160,11 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: customterminus
+  description: ''
   synonyms:
   - --customterminus
   args: !SimpleFlagArg
     name: CUSTOMTERMINUS
-  optional: true
-- !Flag
-  description: flag SNPs (taking strand into account)
-  synonyms:
-  - --flagss
-  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: dont use Cs and Gs in CpG context
@@ -173,45 +173,45 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: outputs the deamination rate at the first position only, but with a
-    standard error
+  description: "outputs the deamination rate at the first position\nonly, but with\
+    \ a standard error"
   synonyms:
   - --first
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: output deamination patterns for this many positions from the sequence
-    terminus (default=30)
+  description: "output deamination patterns for this many positions\nfrom the sequence\
+    \ terminus (default=30)"
   synonyms:
   - --range
   args: !SimpleFlagArg
     name: RANGE
   optional: true
 - !Flag
-  description: True biological polymorphism between the ancient individual and the
-    reference sequence
+  description: "True biological polymorphism between the ancient\nindividual and the\
+    \ reference sequence"
   synonyms:
   - --polymorphism_ancient
   args: !SimpleFlagArg
     name: POLYMORPHISM_ANCIENT
   optional: true
 - !Flag
-  description: True biological polymorphism between the contaminants and the reference
-    sequence
+  description: "True biological polymorphism between the contaminants\nand the reference\
+    \ sequence"
   synonyms:
   - --polymorphism_contamination
   args: !SimpleFlagArg
     name: POLYMORPHISM_CONTAMINATION
   optional: true
 - !Flag
-  description: parameter p in geometric probability distribution of PMD
+  description: "parameter p in geometric probability distribution of\nPMD"
   synonyms:
   - --PMDpparam
   args: !SimpleFlagArg
     name: PMDPPARAM
   optional: true
 - !Flag
-  description: constant C in geometric probability distribution of PMD
+  description: "constant C in geometric probability distribution of\nPMD"
   synonyms:
   - --PMDconstant
   args: !SimpleFlagArg
@@ -299,7 +299,7 @@ named:
     name: MASKTERMINALBASES
   optional: true
 - !Flag
-  description: only output sequences with PMD score above this threshold
+  description: "only output sequences with PMD score above this\nthreshold"
   synonyms:
   - -t
   - --threshold
@@ -307,30 +307,30 @@ named:
     name: THRESHOLD
   optional: true
 - !Flag
-  description: only output sequences with PMD score below this threshold
+  description: "only output sequences with PMD score below this\nthreshold"
   synonyms:
   - --upperthreshold
   args: !SimpleFlagArg
     name: UPPERTHRESHOLD
   optional: true
 - !Flag
-  description: only output sequences with percent identity above this threshold
+  description: "only output sequences with percent identity above this\nthreshold"
   synonyms:
   - --perc_identity
   args: !SimpleFlagArg
     name: PERC_IDENTITY
   optional: true
 - !Flag
-  description: apply PMD-aware adjustment of base quality scores specific to C>T and
-    G>A mismatches to the reference
+  description: "apply PMD-aware adjustment of base quality scores\nspecific to C>T\
+    \ and G>A mismatches to the reference"
   synonyms:
   - -a
   - --adjustbaseq
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: apply PMD-aware adjustment of base quality scores regardless of observed
-    bases
+  description: "apply PMD-aware adjustment of base quality scores\nregardless of observed\
+    \ bases"
   synonyms:
   - --adjustbaseq_all
   args: !EmptyFlagArg {}
@@ -355,18 +355,12 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: refseq
+  description: ''
   synonyms:
   - -r
   - --refseq
   args: !SimpleFlagArg
     name: REFSEQ
-  optional: true
-- !Flag
-  description: output the SAM header
-  synonyms:
-  - --header
-  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: two-terminus estimate of contamination
@@ -375,7 +369,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: position of base used fortwo-terminus estimate of contamination
+  description: "position of base used fortwo-terminus estimate of\ncontamination"
   synonyms:
   - --estimatebase
   args: !SimpleFlagArg
@@ -388,14 +382,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: add 'DS:Z:<PMDS>' field to SAM output, will overwrite if already present
+  description: "add 'DS:Z:<PMDS>' field to SAM output, will overwrite\nif already\
+    \ present"
   synonyms:
   - --writesamfield
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: only output reads with a C>T mismatch this many basepairs from the
-    5' end
+  description: "only output reads with a C>T mismatch this many\nbasepairs from the\
+    \ 5' end"
   synonyms:
   - -b
   - --basic
@@ -403,7 +398,7 @@ named:
     name: BASIC
   optional: true
 - !Flag
-  description: only output reads with a C>T mismatch in either 3' or 5' end
+  description: "only output reads with a C>T mismatch in either 3' or\n5' end"
   synonyms:
   - --terminal
   args: !EmptyFlagArg {}
@@ -414,10 +409,9 @@ named:
   - --stats
   args: !EmptyFlagArg {}
   optional: true
-command:
-- pmdtools
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

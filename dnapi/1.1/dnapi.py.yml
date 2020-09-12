@@ -1,0 +1,152 @@
+!Command
+command:
+- dnapi.py
+positional:
+- !Positional
+  description: including stdin or compressed file {zip,gz,tar,bz}
+  position: 0
+  name: FASTQ
+  optional: false
+named:
+- !Flag
+  description: "[KMER_BEG:KMER_END:INCREMENT | KMER_LEN]\nrange of kmers or a single\
+    \ kmer to predict 3'adapters\n(default: 9:11:2)"
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[RATIO_BEG:RATIO_END:INTCREMENT | RATIO]\nrange of ratios or a single\
+    \ ratio to filter less\nabundant kmers (default: 1.2:1.4:0.1)"
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: show other candidates if any
+  synonyms:
+  - --show-all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: read mapping command to be tested
+  synonyms:
+  - --map-command
+  args: !SimpleFlagArg
+    name: COMMAND
+  optional: true
+- !Flag
+  description: 'subsampling fraction of reads (default: 1.0)'
+  synonyms:
+  - --subsample-rate
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "output directory to write report and cleansed reads\n(default: ./dnapi_out)"
+  synonyms:
+  - --output-dir
+  args: !SimpleFlagArg
+    name: DIRECTORY
+  optional: true
+- !Flag
+  description: only display report and suppress output files
+  synonyms:
+  - --no-output-files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'place to make temporary directory (default: /tmp)'
+  synonyms:
+  - --temp-dir
+  args: !SimpleFlagArg
+    name: DIRECTORY
+  optional: true
+- !Flag
+  description: list of 3'adapters for evaluation
+  synonyms:
+  - --adapter-seq
+  args: !RepeatFlagArg
+    name: SEQ
+  optional: true
+- !Flag
+  description: "3'adapter match length to trim (default: 7)"
+  synonyms:
+  - --prefix-match
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: 'minimum read length to keep for mapping (default: 16)'
+  synonyms:
+  - --min-len
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: 'maximum read length to keep for mapping (default: 36)'
+  synonyms:
+  - --max-len
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: "trim specified number of bases from 5'ends after\nadapter removal\
+    \ (default: 0)"
+  synonyms:
+  - --trim-5p
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: "trim specified number of bases from 3'ends after\nadapter removal\
+    \ (default: 0)"
+  synonyms:
+  - --trim-3p
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: dnapi.py [options] FASTQ\n\nPredict or evaluate 3'adapter sequence(s)\n\
+  \npositional arguments:\n  FASTQ                 including stdin or compressed file\
+  \ {zip,gz,tar,bz}\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  --version             show program's version number and exit\n\
+  \nadapter prediction parameters:\n  -k [KMER_BEG:KMER_END:INCREMENT | KMER_LEN]\n\
+  \                        range of kmers or a single kmer to predict 3'adapters\n\
+  \                        (default: 9:11:2)\n  -r [RATIO_BEG:RATIO_END:INTCREMENT\
+  \ | RATIO]\n                        range of ratios or a single ratio to filter\
+  \ less\n                        abundant kmers (default: 1.2:1.4:0.1)\n  --show-all\
+  \            show other candidates if any\n\nexhaustive adapter search:\n  --map-command\
+  \ COMMAND\n                        read mapping command to be tested\n  --subsample-rate\
+  \ FLOAT\n                        subsampling fraction of reads (default: 1.0)\n\
+  \  --output-dir DIRECTORY\n                        output directory to write report\
+  \ and cleansed reads\n                        (default: ./dnapi_out)\n  --no-output-files\
+  \     only display report and suppress output files\n  --temp-dir DIRECTORY  place\
+  \ to make temporary directory (default: /tmp)\n\nevaluation of candidate adapters:\n\
+  \  --adapter-seq SEQ [SEQ ...]\n                        list of 3'adapters for evaluation\n\
+  \nadapter removal parameters:\n  --prefix-match LENGTH\n                       \
+  \ 3'adapter match length to trim (default: 7)\n  --min-len LENGTH      minimum read\
+  \ length to keep for mapping (default: 16)\n  --max-len LENGTH      maximum read\
+  \ length to keep for mapping (default: 36)\n  --trim-5p LENGTH      trim specified\
+  \ number of bases from 5'ends after\n                        adapter removal (default:\
+  \ 0)\n  --trim-3p LENGTH      trim specified number of bases from 3'ends after\n\
+  \                        adapter removal (default: 0)\n\nReport bug to: Junko Tsuji\
+  \ <jnktsj@gmail.com>\n"
+generated_using:
+- --help

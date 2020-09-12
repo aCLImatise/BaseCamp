@@ -1,13 +1,76 @@
 !Command
+command:
+- mprobability
 positional:
 - !Positional
-  description: ''
+  description: -p, --num-threads=THREADS  The number of pthreads to use.
   position: 0
-  name: OPTION...
-  optional: true
+  name: probability
+  optional: false
 named:
 - !Flag
-  description: The standard deviation of the mean length of the separation
+  description: "The reference sequence from which the reads are\nsupposed to have\
+    \ been generated"
+  synonyms:
+  - -a
+  - --assembly
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "The probability that a base is read accurately\n(default=0.98)"
+  synonyms:
+  - --accuracy
+  args: !SimpleFlagArg
+    name: PROBABILITY
+  optional: true
+- !Flag
+  description: "The number of standard deviations to include when\ncalculating the\
+    \ separation region probability\n(default=3)"
+  synonyms:
+  - --delta-std-dev
+  args: !SimpleFlagArg
+    name: DELTA
+  optional: true
+- !Flag
+  description: "The format ('fasta' or 'fastq') of the file\ncontaining the reads\
+    \ (default=fastq)"
+  synonyms:
+  - -f
+  - --reads-format
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: "Do not use seeds to speed up the calculations. Use\nfull dynamic programming.\
+    \ This is very slow"
+  synonyms:
+  - --no-seeds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print the header of each read before its
+  synonyms:
+  - --print-headers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The length of the exact seeds (default=30)
+  synonyms:
+  - -s
+  - --seed-length
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: "The mean length of the separation between the\npaired reads"
+  synonyms:
+  - --separation-mean
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: "The standard deviation of the mean length of the\nseparation"
   synonyms:
   - --separation-std-dev
   args: !SimpleFlagArg
@@ -19,10 +82,9 @@ named:
   - --use-mates
   args: !EmptyFlagArg {}
   optional: true
-command:
-- mprobability
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag: !Flag
   description: Give a short usage message

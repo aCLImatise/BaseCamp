@@ -1,4 +1,6 @@
 !Command
+command:
+- sequana_coverage
 positional:
 - !Positional
   description: ''
@@ -17,9 +19,9 @@ positional:
   optional: false
 named:
 - !Flag
-  description: 'Input file in BED or BAM format. If a BAM file is provided, it will
-    be converted locally to a BED file using genomecov, which must be installed. (default:
-    None)'
+  description: "Input file in BED or BAM format. If a BAM file is\nprovided, it will\
+    \ be converted locally to a BED file\nusing genomecov, which must be installed.\
+    \ (default:\nNone)"
   synonyms:
   - -i
   - --input
@@ -27,10 +29,10 @@ named:
     name: INPUT
   optional: true
 - !Flag
-  description: 'Chromosome number (if only one chromosome found, the single chromosome
-    is chosen automatically). Otherwise all chromosomes are analysed. You may want
-    to analyse only one in which case, use this parameter (e.g., -c 1). !!START AT
-    INDEX 0 !! (default: -1)'
+  description: "Chromosome number (if only one chromosome found, the\nsingle chromosome\
+    \ is chosen automatically). Otherwise\nall chromosomes are analysed. You may want\
+    \ to analyse\nonly one in which case, use this parameter (e.g., -c\n1). !!START\
+    \ AT INDEX 0 !! (default: -1)"
   synonyms:
   - -c
   - --chromosome
@@ -38,16 +40,30 @@ named:
     name: CHROMOSOME
   optional: true
 - !Flag
-  description: 'If the DNA of the organism is circular (typically viruses or bacteria),
-    set to True (default: False)'
+  description: "If the DNA of the organism is circular (typically\nviruses or bacteria),\
+    \ set to True (default: False)"
   synonyms:
   - -o
   - --circular
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Do not create any HTML reports. Save ROIs and statistics only. (default:
-    False)'
+  description: "name of the output (report) directory. (default:\nreport)"
+  synonyms:
+  - --output-directory
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not create any HTML reports. Save ROIs and\nstatistics only. (default:\
+    \ False)"
   synonyms:
   - --no-html
   args: !EmptyFlagArg {}
@@ -59,14 +75,14 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'set to DEBUG, INFO, WARNING, CRITICAL, ERROR (default: INFO)'
+  description: "set to DEBUG, INFO, WARNING, CRITICAL, ERROR (default:\nINFO)"
   synonyms:
   - --debug-level
   args: !SimpleFlagArg
     name: LOGGING_LEVEL
   optional: true
 - !Flag
-  description: 'set to DEBUG, INFO, WARNING, CRITICAL, ERROR (default: INFO)'
+  description: "set to DEBUG, INFO, WARNING, CRITICAL, ERROR (default:\nINFO)"
   synonyms:
   - --level
   args: !SimpleFlagArg
@@ -81,9 +97,9 @@ named:
     name: GENBANK
   optional: true
 - !Flag
-  description: 'If available, you can provide a reference (ENA/NCBI). It must have
-    the same length as the one used to create the BAM or BED file. If provided, it
-    is used to create the coverage versus GC content image (default: None)'
+  description: "If available, you can provide a reference (ENA/NCBI).\nIt must have\
+    \ the same length as the one used to create\nthe BAM or BED file. If provided,\
+    \ it is used to create\nthe coverage versus GC content image (default: None)"
   synonyms:
   - -r
   - --reference
@@ -91,7 +107,8 @@ named:
     name: REFERENCE
   optional: true
 - !Flag
-  description: 'Length of the running window to compute the GC content (default: 201)'
+  description: "Length of the running window to compute the GC content\n(default:\
+    \ 201)"
   synonyms:
   - -g
   - --window-gc
@@ -107,9 +124,9 @@ named:
     name: LEVELS
   optional: true
 - !Flag
-  description: 'Length of the running median window (default 20001, recommended for
-    bacteria). For short genome (below 100000 bases), we set this parameter to one
-    fifth of the genome length . (default: 20001)'
+  description: "Length of the running median window (default 20001,\nrecommended for\
+    \ bacteria). For short genome (below\n100000 bases), we set this parameter to\
+    \ one fifth of\nthe genome length . (default: 20001)"
   synonyms:
   - -w
   - --window-median
@@ -117,9 +134,9 @@ named:
     name: W_MEDIAN
   optional: true
 - !Flag
-  description: 'Number of mixture models to use (default 2, although if sequencing
-    depth is below 8, k is set to 1 automatically). To ignore that behaviour set k
-    to the required value (default: 2)'
+  description: "Number of mixture models to use (default 2, although\nif sequencing\
+    \ depth is below 8, k is set to 1\nautomatically). To ignore that behaviour set\
+    \ k to the\nrequired value (default: 2)"
   synonyms:
   - -k
   - --mixture-models
@@ -127,8 +144,8 @@ named:
     name: K
   optional: true
 - !Flag
-  description: 'lower threshold (zscore) of the confidence interval. Overwrite value
-    given by --threshold/-T (default: None)'
+  description: "lower threshold (zscore) of the confidence interval.\nOverwrite value\
+    \ given by --threshold/-T (default:\nNone)"
   synonyms:
   - -L
   - --low-threshold
@@ -136,8 +153,8 @@ named:
     name: LOW_THRESHOLD
   optional: true
 - !Flag
-  description: 'higher threshold (zscore) of the confidence interval. Overwrite value
-    given by --threshold/-T (default: None)'
+  description: "higher threshold (zscore) of the confidence interval.\nOverwrite value\
+    \ given by --threshold/-T (default:\nNone)"
   synonyms:
   - -H
   - --high-threshold
@@ -145,8 +162,8 @@ named:
     name: HIGH_THRESHOLD
   optional: true
 - !Flag
-  description: 'set lower and higher thresholds of the confidence interval. (default:
-    4)'
+  description: "set lower and higher thresholds of the confidence\ninterval. (default:\
+    \ 4)"
   synonyms:
   - -T
   - --threshold
@@ -154,9 +171,9 @@ named:
     name: THRESHOLD
   optional: true
 - !Flag
-  description: 'set lower and higher double threshold parameter (in [0,1]). Do not
-    use value close to zero. Ideally, around 0.5. lower value will tend to cluster
-    more than higher value (default: 0.5)'
+  description: "set lower and higher double threshold parameter (in\n[0,1]). Do not\
+    \ use value close to zero. Ideally,\naround 0.5. lower value will tend to cluster\
+    \ more than\nhigher value (default: 0.5)"
   synonyms:
   - -C
   - --clustering-parameter
@@ -164,44 +181,57 @@ named:
     name: DOUBLE_THRESHOLD
   optional: true
 - !Flag
-  description: '[minimum=1000000], --chunk-size [minimum=1000000] Length of the chunk
-    to be used for the analysis. (default: 5000000)'
+  description: "[minimum=1000000], --chunk-size [minimum=1000000]\nLength of the chunk\
+    \ to be used for the analysis.\n(default: 5000000)"
   synonyms:
   - -s
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[minimum=2], --binning [minimum=2] merge consecutive (non overlapping)
-    data points, taking the mean. This is useful for large genome (e.g. human). This
-    allows a faster computation, especially for CNV detection were only large windows
-    are of interest. For instance, using a binning of 50 or 100 allows the human genome
-    to be analysed. (default: None)'
+  description: "[minimum=2], --binning [minimum=2]\nmerge consecutive (non overlapping)\
+    \ data points,\ntaking the mean. This is useful for large genome (e.g.\nhuman).\
+    \ This allows a faster computation, especially\nfor CNV detection were only large\
+    \ windows are of\ninterest. For instance, using a binning of 50 or 100\nallows\
+    \ the human genome to be analysed. (default:\nNone)"
   synonyms:
   - -B
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Two consecutive ROIs are merged when their distance in bases is below
-    this parameter. If set to -1, not used. (default: -1)'
+  description: "Two consecutive ROIs are merged when their distance in\nbases is below\
+    \ this parameter. If set to -1, not used.\n(default: -1)"
   synonyms:
   - --cnv-clustering
   args: !SimpleFlagArg
     name: CNV_CLUSTERING
   optional: true
 - !Flag
-  description: 'Download the reference from one of these database (default ENA) (default:
-    ENA)'
+  description: ''
+  synonyms:
+  - --download-reference
+  args: !SimpleFlagArg
+    name: DOWNLOAD_REFERENCE
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --download-genbank
+  args: !SimpleFlagArg
+    name: DOWNLOAD_GENBANK
+  optional: true
+- !Flag
+  description: "Download the reference from one of these database\n(default ENA) (default:\
+    \ ENA)"
   synonyms:
   - --database
   args: !ChoiceFlagArg
     choices: !!set
-      EUtils:
       ENA:
+      EUtils:
   optional: true
-command:
-- sequana_coverage
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

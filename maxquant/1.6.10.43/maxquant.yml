@@ -1,4 +1,6 @@
 !Command
+command:
+- maxquant
 positional:
 - !Positional
   description: ''
@@ -35,14 +37,65 @@ positional:
   position: 6
   name: file
   optional: false
-named: []
-command:
-- maxquant
+named:
+- !Flag
+  description: "(Default: 1) Start processing from the\nspecified job id. Can be used\
+    \ to continue/redo\nparts of the processing. Job id's can be\nobtained in the\
+    \ MaxQuant GUI partial\nprocessing view or from --dryrun option. The\nfirst job\
+    \ id is 1."
+  synonyms:
+  - -p
+  - --partial-processing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(Default: 2147483647) Finish processing at the\nspecified job id.\
+    \ 1-based indexing is used."
+  synonyms:
+  - -e
+  - --partial-processing-end
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print job ids and job names table.
+  synonyms:
+  - -n
+  - --dryrun
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Create a template of MaxQuant parameter file.
+  synonyms:
+  - -c
+  - --create
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Change folder location for fasta and raw files\n(presuming all raw\
+    \ files are in the same\nfolder).Expecting three locations separated by\nspace\
+    \ - location of a new parameter file file,\na new folder of fasta files and a\
+    \ new folder\nof raw files."
+  synonyms:
+  - -f
+  - --changeFolder
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Display this help screen.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Display version information.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "MaxQuantCmd 1.6.10.43\nCopyright © Max-Planck-Institute of Biochemistry\
   \ 2010\nUSAGE:\nComplete run of an existing mqpar.xml file:\n  MaxQuantCmd.exe mqpar.xml\n\
   Print job ids/names table:\n  MaxQuantCmd.exe --dryrun mqpar.xml\nRerunning second\

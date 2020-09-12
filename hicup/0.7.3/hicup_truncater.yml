@@ -1,13 +1,77 @@
 !Command
-positional: []
-named: []
 command:
 - hicup_truncater
+positional: []
+named:
+- !Flag
+  description: Name of the optional configuration file
+  synonyms:
+  - --config
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Hi-C protocol did NOT include a fill-in of sticky ends prior to\n\
+    re-ligation and therefore reads shall be truncated at\nthe restriction site sequence.\
+    \ This feature is only supported for\nsingle restriction enzyme Hi-C."
+  synonyms:
+  - --nofill
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Directory to write output files
+  synonyms:
+  - --outdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Suppress all progress reports
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Restriction enzyme recognition sequence. e.g. A^GATCT,BglII\nHiCUP\
+    \ can accomodate more than one enzyme and N nucleotides\ne.g. A^GATCT,BglII:A^AGCTT,HindIII:^GANTC,myRE."
+  synonyms:
+  - --re1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Instead of specifying a restriction enzyme recognition sequence,\n\
+    specify the ligation sequences directly"
+  synonyms:
+  - --sequences
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of threads to use, allowing simultaneous processing  of\ndifferent\
+    \ files"
+  synonyms:
+  - --threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compress output using gzip
+  synonyms:
+  - --zip
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Print program help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Print the program version and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "\nHiCUP homepage: www.bioinformatics.babraham.ac.uk/projects/hicup\n\n\
   SYNOPSIS\n\nhicup_truncater script terminates reads at Hi-C ligation junctions\n\
   \nhicup_truncater [OPTIONS]... -config [CONFIGURATION FILE]...\nhicup_truncater\

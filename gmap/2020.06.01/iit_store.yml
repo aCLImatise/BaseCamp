@@ -1,4 +1,6 @@
 !Command
+command:
+- iit_store
 positional:
 - !Positional
   description: ''
@@ -12,19 +14,83 @@ positional:
   optional: false
 named:
 - !Flag
-  description: ''
+  description: Name of output iit file
   synonyms:
   - -o
+  - --output
   args: !SimpleFlagArg
-    name: outputfile
+    name: STRING
   optional: true
-command:
-- iit_store
+- !Flag
+  description: "Old format for intervals:\n<start> <optional end> <optional div> <optional\
+    \ type>"
+  synonyms:
+  - '-1'
+  - --oldformat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Process only the first word of each FASTA header, and ignore the rest
+    of the line
+  synonyms:
+  - --accession-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Annotation consists of separate fields
+  synonyms:
+  - -F
+  - --fields
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Parse input file in gff3 format
+  synonyms:
+  - -G
+  - --gff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: For gff input, the feature attribute to use (default is ID)
+  synonyms:
+  - -l
+  - --label
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Sorting of divisions: none, alpha, numeric-alpha, or chrom (default)\n\
+    numeric-alpha: chr1 chr1_random chr2 chr10 chr10_random chrM chrUn chrX chrY\n\
+    chrom: chr1 chr2 chr10 chrX chrY chrM chr1_random chr10_random chrUn\nNote 1:\
+    \ For sorting purposes, any initial 'chr' will be ignored\nNote 2: For chrom,\
+    \ X, Y, M, MT (or chrX, chrY, and so on) are special"
+  synonyms:
+  - -s
+  - --sort
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Desired iit version for output iit\n(default = 0, which means latest\
+    \ version)"
+  synonyms:
+  - -v
+  - --iitversion
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Show version
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "Usage: iit_store [OPTIONS...] -o outputfile inputfile, or\n       cat\
   \ inputfile | iit_store [OPTIONS...] -o outputfile\nwhere\n   outputfile is the\
   \ desired filename for the iit file\n       (.iit will be added as a suffix if necessary),\

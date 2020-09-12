@@ -1,19 +1,21 @@
 !Command
+command:
+- iit_get
 positional:
 - !Positional
-  description: ''
+  description: 'chr:'
   position: 0
-  name: OPTIONS...
-  optional: true
-- !Positional
-  description: ''
-  position: 1
-  name: iitfile
+  name: start
   optional: false
 - !Positional
-  description: ''
+  description: start
+  position: 1
+  name: start..end
+  optional: false
+- !Positional
+  description: Options
   position: 2
-  name: query
+  name: label
   optional: false
 named:
 - !Flag
@@ -68,13 +70,77 @@ named:
   args: !SimpleFlagArg
     name: INT
   optional: true
-command:
-- iit_get
+- !Flag
+  description: Low bound on a values IIT (default -Inf)
+  synonyms:
+  - -a
+  - --lowval
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: High bound on a values IIT (default +Inf)
+  synonyms:
+  - -b
+  - --highval
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: Align reads so given position is centered at given column
+  synonyms:
+  - -c
+  - --center
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Report only reads with upper-case letter at given position
+  synonyms:
+  - -H
+  - --centeruc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Report runlength IIT file in tally format
+  synonyms:
+  - -R
+  - --runlength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Report tally IIT file in tally format
+  synonyms:
+  - -T
+  - --tally
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Include zeroes in tally format
+  synonyms:
+  - -Z
+  - --zeroes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Statistics (count, npositions, mean) of tally format
+  synonyms:
+  - -N
+  - --stats
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Show version
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "Usage: iit_get [OPTIONS...] iitfile query\n       iit_get [OPTIONS...]\
   \ iitfile query types...\n       iit_get [OPTIONS...] iitfile\n\nwhere query is\
   \ one of the following forms:\n\n   chr:start..end\n   chr:start\n   chr:\n   start..end\n\

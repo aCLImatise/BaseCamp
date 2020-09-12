@@ -1,4 +1,6 @@
 !Command
+command:
+- crumble
 positional:
 - !Positional
   description: ''
@@ -12,10 +14,252 @@ positional:
   optional: false
 named:
 - !Flag
-  description: ': -p0 -Q75 -D150 -X1  - M0.5 -Z0.1 -V0.5 -P3.0 -s1.0,5 -i2.0,1 -m5'
+  description: (,opt...)   Input format and format-options [auto].
   synonyms:
-  - '-1'
+  - -I
+  args: !SimpleFlagArg
+    name: fmt
+  optional: true
+- !Flag
+  description: (,opt...)   Output format and format-options [SAM].
+  synonyms:
+  - -O
+  args: !SimpleFlagArg
+    name: fmt
+  optional: true
+- !Flag
+  description: Increase verbosity
+  synonyms:
+  - -v
   args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not add an @PG SAM header line
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: In highly confident regions, quality values above/below
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: qual_cutoff
+  optional: true
+- !Flag
+  description: "'qual_cutoff' [25] are quantised to 'qual_lower' [5]"
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: qual_lower
+  optional: true
+- !Flag
+  description: and 'qual_upper' [40] based on agreement to consensus.
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: qual_upper
+  optional: true
+- !Flag
+  description: Quantise qualities (with -[clu] options) in soft-clips too.
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Keep qualities for seqs with mapping quality <= mqual [0].
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: min_mqual
+  optional: true
+- !Flag
+  description: Whether mismatching bases can have qualities lowered [1]
+  synonyms:
+  - -L
+  args: !SimpleFlagArg
+    name: bool
+  optional: true
+- !Flag
+  description: If set, replace quals in good regions with low/high [unset]
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',add    Adjust indel size by (STR_size+add)*mul [1.0,2]'
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: STR_mul
+  optional: true
+- !Flag
+  description: ',add    Adjust SNP size by (STR_size+add)*mul [0.0,0]'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: STR_mul
+  optional: true
+- !Flag
+  description: Limit input to region chr:pos(-pos) []
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: region
+  optional: true
+- !Flag
+  description: Keep quality in regions contained in the supplied bed []
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: keep.bed
+  optional: true
+- !Flag
+  description: Comma separated list of aux tags to keep []
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: tag_list
+  optional: true
+- !Flag
+  description: Comma separated list of aux tags to discard []
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: tag_list
+  optional: true
+- !Flag
+  description: Output suspicious regions to out.bed []
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: out.bed
+  optional: true
+- !Flag
+  description: Keep qual if depth locally >= [999.0] times deeper than expected
+  synonyms:
+  - -P
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Keep if >= [0.20] reads have soft-clipping
+  synonyms:
+  - -C
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Keep if >= [1.00] reads have low mapping quality
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Keep if >= [1.00] indel sizes do not fit bi-modal dist.
+  synonyms:
+  - -Z
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Keep if <  [0.00] reads span indel
+  synonyms:
+  - -V
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Minimum snp call confidence [0]
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Minimum indel call confidence [50]
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Minimum discrepancy score [2.0]
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Minimum snp call confidence [70]
+  synonyms:
+  - -Q
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Minimum indel call confidence [125]
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Minimum discrepancy score [1.5]
+  synonyms:
+  - -X
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: P-block algorithm; quality values +/- 'int' [0]
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Quantise BD:Z: tags to two values (or one if both equal).'
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: qual_cutoff
+  optional: true
+- !Flag
+  description: If >= 'qual_cutoff' [0] replace by 'qual_upper' [0]
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: qual_upper
+  optional: true
+- !Flag
+  description: otherwise replace by 'qual_lower' [0].
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: qual_lower
+  optional: true
+- !Flag
+  description: 'Quantise BI:Z: tags to two values (or one if both equal).'
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: qual_cutoff
+  optional: true
+- !Flag
+  description: If >= 'qual_cutoff' [0] replace by 'qual_upper' [0]
+  synonyms:
+  - -G
+  args: !SimpleFlagArg
+    name: qual_upper
+  optional: true
+- !Flag
+  description: otherwise replace by 'qual_lower' [0].
+  synonyms:
+  - -E
+  args: !SimpleFlagArg
+    name: qual_lower
   optional: true
 - !Flag
   description: ': -p0 -Q75 -D150 -X1   -M0.5 -Z0.1 -V0.5 -P3.0 -s1.0,0 -i1.1,2 -m0'
@@ -47,10 +291,9 @@ named:
   - '-9'
   args: !EmptyFlagArg {}
   optional: true
-command:
-- crumble
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

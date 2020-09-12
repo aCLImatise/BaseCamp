@@ -1,21 +1,108 @@
 !Command
+command:
+- phyluce_assembly_get_match_counts
 positional: []
 named:
 - !Flag
   description: ''
   synonyms:
+  - --taxon-list-config
+  args: !SimpleFlagArg
+    name: TAXON_LIST_CONFIG
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --taxon-group
+  - --output
+  args: !SimpleFlagArg
+    name: TAXON_GROUP
+  optional: true
+- !Flag
+  description: "The SQL database file holding probe matches to\ntargeted loci (usually\
+    \ \"lastz/probe.matches.sqlite\".)"
+  synonyms:
   - --locus-db
   args: !SimpleFlagArg
     name: LOCUS_DB
   optional: true
-command:
-- phyluce_assembly_get_match_counts
-parent:
-subcommands: []
-help_flag: !Flag
+- !Flag
+  description: Generate an incomplete matrix of data.
+  synonyms:
+  - --incomplete-matrix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The logging level to use.
+  synonyms:
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices: !!set
+      CRITICAL:
+      WARN:
+      INFO:
+  optional: true
+- !Flag
+  description: The path to a directory to hold logs.
+  synonyms:
+  - --log-path
+  args: !SimpleFlagArg
+    name: LOG_PATH
+  optional: true
+- !Flag
+  description: "Return optimum groups of probes by enumeration\n(default) or sampling."
+  synonyms:
+  - --optimize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Optimize by sampling.
+  synonyms:
+  - --random
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The number of samples to take.
+  synonyms:
+  - --samples
+  args: !SimpleFlagArg
+    name: SAMPLES
+  optional: true
+- !Flag
+  description: The group size of samples.
+  synonyms:
+  - --sample-size
+  args: !SimpleFlagArg
+    name: SAMPLE_SIZE
+  optional: true
+- !Flag
+  description: "An SQLlite database file holding probe matches to\nother targeted\
+    \ loci"
+  synonyms:
+  - --extend-locus-db
+  args: !SimpleFlagArg
+    name: EXTEND_LOCUS_DB
+  optional: true
+- !Flag
+  description: Don't print probe names.
+  synonyms:
+  - --silent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: ''
   synonyms:
+  - --keep-counts
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
   - -h
+  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:

@@ -1,180 +1,171 @@
 !Command
-positional: []
+command:
+- plot_count_stats
+positional:
+- !Positional
+  description: --meta META           Full path to file containing metadata table.
+    This file
+  position: 0
+  name: CHROM_STATS
+  optional: false
 named:
 - !Flag
-  description: Full path to file containing table output by CHROM_STATS
-  synonyms:
-  - --input
-  args: !SimpleFlagArg
-    name: INPUT
-  optional: true
-- !Flag
-  description: "Full path to file containing metadata table. This file should have\
-    \ the following columns separated by tabs: Sample NameOfVariable1 NameOfVariable2.\
-    \ NameOfVariable1 and NameofVariable2 should be the names of whatever you're interested\
-    \ in plotting (e.g., Sex). NameOfVariable2 is optional. This script handles a\
-    \ max of two variables."
-  synonyms:
-  - --meta
-  args: !SimpleFlagArg
-    name: META
-  optional: true
-- !Flag
-  description: "'Prefix' of output files. This includes full path to desired file\
-    \ and desired file name before suffix (suffix will be .pdf)."
-  synonyms:
-  - --output_prefix
-  args: !SimpleFlagArg
-    name: OUTPUT_PREFIX
-  optional: true
-- !Flag
-  description: Text to remove from end of sample names in input file. Default is to
-    remove nothing. Note that the sample names in the input file have to match the
-    names in the meta file AFTER they undergo this step.
-  synonyms:
-  - --exclude_suffix
-  args: !SimpleFlagArg
-    name: EXCLUDE_SUFFIX
-  optional: true
-- !Flag
-  description: 'Chromosome to use a numerator on X-axis. For example, if one was comparing
-    chrX and chrY, and using chr19 to normalize, recommended values would be: --first_chr
-    chrX --second_chr chrY --const_chr chr19.'
+  description: ''
   synonyms:
   - --first_chr
+  - --second_chr
   args: !SimpleFlagArg
     name: FIRST_CHR
   optional: true
 - !Flag
-  description: 'Chromosome to use a numerator on Y-axis. For example, if one was comparing
-    chrX and chrY, and using chr19 to normalize, recommended values would be: --first_chr
-    chrX --second_chr chrY --const_chr chr19.'
-  synonyms:
-  - --second_chr
-  args: !SimpleFlagArg
-    name: SECOND_CHR
-  optional: true
-- !Flag
-  description: 'Chromosome to use denominator on both the X- and Y-axis. For example,
-    if one was comparing chrX and chrY, and using chr19 to normalize, recommended
-    values would be: --first_chr chrX --second_chr chrY --const_chr chr19.'
+  description: ''
   synonyms:
   - --const_chr
   args: !SimpleFlagArg
     name: CONST_CHR
   optional: true
 - !Flag
-  description: Way of designating variable 1 values in plot. Choices are 'color',
-    'shape', or 'size'. Must be used in conjunction with --var1_marker_vals. Default
-    is 'color'.
+  description: Full path to file containing table output by
+  synonyms:
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: "'Prefix' of output files. This includes full path to\ndesired file\
+    \ and desired file name before suffix\n(suffix will be .pdf)."
+  synonyms:
+  - --output_prefix
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+  optional: true
+- !Flag
+  description: "Text to remove from end of sample names in input file.\nDefault is\
+    \ to remove nothing. Note that the sample\nnames in the input file have to match\
+    \ the names in the\nmeta file AFTER they undergo this step."
+  synonyms:
+  - --exclude_suffix
+  args: !SimpleFlagArg
+    name: EXCLUDE_SUFFIX
+  optional: true
+- !Flag
+  description: "Way of designating variable 1 values in plot. Choices\nare 'color',\
+    \ 'shape', or 'size'. Must be used in\nconjunction with --var1_marker_vals. Default\
+    \ is\n'color'."
   synonyms:
   - --var1_marker
   args: !ChoiceFlagArg
     choices: !!set
-      shape:
       color:
+      shape:
       size:
   optional: true
 - !Flag
-  description: Marker values to use for variable 1 values. If --var1_marker is 'color',
-    then --var1_marker_vals should be a space-separated list of Matplotlib colors
-    (e.g., 'red blue green'). If --var1_marker is 'shape' then --var1_marker_vals
-    should be a space-separated list of Matplotlib scatter markers (e.g., 'x o D'
-    for x, cicle, and Diamond). Finally, if --var1_marker is 'size', then --var1_marker_vals
-    should be a space- separated list of Matplotlib marker sizes in units of points^2
-    (e.g., '5 10 15'). Default is 'red blue'.
+  description: "Marker values to use for variable 1 values. If\n--var1_marker is 'color',\
+    \ then --var1_marker_vals\nshould be a space-separated list of Matplotlib colors\n\
+    (e.g., 'red blue green'). If --var1_marker is 'shape'\nthen --var1_marker_vals\
+    \ should be a space-separated\nlist of Matplotlib scatter markers (e.g., 'x o\
+    \ D' for\nx, cicle, and Diamond). Finally, if --var1_marker is\n'size', then --var1_marker_vals\
+    \ should be a space-\nseparated list of Matplotlib marker sizes in units of\n\
+    points^2 (e.g., '5 10 15'). Default is 'red blue'."
   synonyms:
   - --var1_marker_vals
   args: !RepeatFlagArg
     name: VAR1_MARKER_VALS
   optional: true
 - !Flag
-  description: Way of designating variable 2 values in plot. Choices are 'color',
-    'shape', or 'size'. Must be used in conjunction with --var2_marker_vals. Default
-    is 'none', which will only process --var1_marker.
+  description: "Way of designating variable 2 values in plot. Choices\nare 'color',\
+    \ 'shape', or 'size'. Must be used in\nconjunction with --var2_marker_vals. Default\
+    \ is\n'none', which will only process --var1_marker."
   synonyms:
   - --var2_marker
   args: !ChoiceFlagArg
     choices: !!set
-      shape:
-      none:
       color:
+      none:
+      shape:
       size:
   optional: true
 - !Flag
-  description: "[VAR2_MARKER_VALS [VAR2_MARKER_VALS ...]] Marker values to use for\
-    \ variable 2 values. If --var2_marker is 'color', then --var2_marker_vals should\
-    \ be a space-separated list of Matplotlib colors (e.g., 'red blue green'). If\
-    \ --var2_marker is 'shape' then --var2_marker_vals should be a space-separated\
-    \ list of Matplotlib scatter markers (e.g., 'x o D' for x, cicle, and Diamond).\
-    \ Finally, if --var2_marker is 'size', then --var2_marker_vals should be a space-\
-    \ separated list of Matplotlib marker sizes in units of points^2 (e.g., '5 10\
-    \ 15'). Default is 'red blue'."
+  description: "[VAR2_MARKER_VALS [VAR2_MARKER_VALS ...]]\nMarker values to use for\
+    \ variable 2 values. If\n--var2_marker is 'color', then --var2_marker_vals\nshould\
+    \ be a space-separated list of Matplotlib colors\n(e.g., 'red blue green'). If\
+    \ --var2_marker is 'shape'\nthen --var2_marker_vals should be a space-separated\n\
+    list of Matplotlib scatter markers (e.g., 'x o D' for\nx, cicle, and Diamond).\
+    \ Finally, if --var2_marker is\n'size', then --var2_marker_vals should be a space-\n\
+    separated list of Matplotlib marker sizes in units of\npoints^2 (e.g., '5 10 15').\
+    \ Default is 'red blue'."
   synonyms:
   - --var2_marker_vals
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: If 'size' is not selected for --var1_marker or --var2_marker, use this
-    size for markers. Default is 100.
+  description: "If 'size' is not selected for --var1_marker or\n--var2_marker, use\
+    \ this size for markers. Default is\n100."
   synonyms:
   - --marker_size
   args: !SimpleFlagArg
     name: MARKER_SIZE
   optional: true
 - !Flag
-  description: If 'color' is not selected for --var1_marker or --var2_marker, use
-    this color for markers. Default is 'black'.
+  description: "If 'color' is not selected for --var1_marker or\n--var2_marker, use\
+    \ this color for markers. Default is\n'black'."
   synonyms:
   - --marker_color
   args: !SimpleFlagArg
     name: MARKER_COLOR
   optional: true
 - !Flag
-  description: If 'shape' is not selected for --var1_marker or --var2_marker, use
-    this shape for markers (see matplotlib for possible shapes). Default is 'o' for
-    circles.
+  description: "If 'shape' is not selected for --var1_marker or\n--var2_marker, use\
+    \ this shape for markers (see\nmatplotlib for possible shapes). Default is 'o'\
+    \ for\ncircles."
   synonyms:
   - --marker_shape
   args: !SimpleFlagArg
     name: MARKER_SHAPE
   optional: true
 - !Flag
-  description: Marker transparency ranging from 0.0 to 1.0 (1.0 being nontransparent).
-    Default is 0.5.
+  description: "Marker transparency ranging from 0.0 to 1.0 (1.0 being\nnontransparent).\
+    \ Default is 0.5."
   synonyms:
   - --marker_alpha
   args: !SimpleFlagArg
     name: MARKER_ALPHA
   optional: true
 - !Flag
-  description: Use this value to scale maker size in legend, if desired. Default is
-    1.0, or no scaling.
+  description: "Use this value to scale maker size in legend, if\ndesired. Default\
+    \ is 1.0, or no scaling."
   synonyms:
   - --legend_marker_scale
   args: !SimpleFlagArg
     name: LEGEND_MARKER_SCALE
   optional: true
 - !Flag
-  description: X axis title. Default is '<name of first chrom> / <name of const chrom>
-    ratio'. E.g., 'chrX / chr19 ratio'
+  description: "X axis title. Default is '<name of first chrom> /\n<name of const\
+    \ chrom> ratio'. E.g., 'chrX / chr19\nratio'"
   synonyms:
   - --x_title
   args: !SimpleFlagArg
     name: X_TITLE
   optional: true
 - !Flag
-  description: Y axis title. Default is '<name of second chrom> / <name of const chrom>
-    ratio'. E.g., 'chrY / chr19 ratio'
+  description: "Y axis title. Default is '<name of second chrom> /\n<name of const\
+    \ chrom> ratio'. E.g., 'chrY / chr19\nratio'\n"
   synonyms:
   - --y_title
   args: !SimpleFlagArg
     name: Y_TITLE
   optional: true
-command:
-- plot_count_stats
+- !Flag
+  description: ''
+  synonyms:
+  - --meta
+  args: !SimpleFlagArg
+    name: META
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

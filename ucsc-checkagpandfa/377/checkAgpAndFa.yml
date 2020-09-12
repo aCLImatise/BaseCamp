@@ -1,28 +1,41 @@
-!Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: in.agp
-  optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: in.fa
-  optional: false
+&id001 !Command
+command:
+- checkAgpAndFa
+positional: []
 named:
 - !Flag
-  description: "- Ignore seq (e.g. chrM for which we usually get sequence from GenBank\
+  description: "- Ignore seq (e.g. chrM for which we usually get\nsequence from GenBank\
     \ but don't have AGP)"
   synonyms:
   - -exclude
   args: !SimpleFlagArg
     name: seq
   optional: true
-command:
-- checkAgpAndFa
 parent:
-subcommands: []
+subcommands:
+- !Command
+  command:
+  - checkAgpAndFa
+  - in.agp
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using:
+  - -h
+usage: []
 help_flag:
 usage_flag:
 version_flag:

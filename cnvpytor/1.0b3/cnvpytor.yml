@@ -1,14 +1,319 @@
 !Command
-positional: []
+command:
+- cnvpytor
+positional:
+- !Positional
+  description: -view VIEW, --view VIEW
+  position: 0
+  name: plotting
+  optional: false
 named:
 - !Flag
-  description: '{Solarize_Light2,_classic_test_patch,bmh,classic,dark_background,fast,fivethirtyeight,ggplot,grayscale,seaborn,seaborn-bright,seaborn-colorblind,seaborn-dark,seaborn-dark-palette,seaborn-darkgrid,seaborn-deep,seaborn-muted,seaborn-notebook,seaborn-paper,seaborn-pastel,seaborn-poster,seaborn-talk,seaborn-ticks,seaborn-white,seaborn-whitegrid,tableau-colorblind10},
-    --plot_style {Solarize_Light2,_classic_test_patch,bmh,classic,dark_background,fast,fivethirtyeight,ggplot,grayscale,seaborn,seaborn-bright,seaborn-colorblind,seaborn-dark,seaborn-dark-palette,seaborn-darkgrid,seaborn-deep,seaborn-muted,seaborn-notebook,seaborn-paper,seaborn-pastel,seaborn-poster,seaborn-talk,seaborn-ticks,seaborn-white,seaborn-whitegrid,tableau-colorblind10}
-    available plot styles: Solarize_Light2, _classic_test_patch, bmh, classic, dark_background,
-    fast, fivethirtyeight, ggplot, grayscale, seaborn, seaborn-bright, seaborn-colorblind,
-    seaborn-dark, seaborn-dark-palette, seaborn-darkgrid, seaborn-deep, seaborn-muted,
-    seaborn-notebook, seaborn-paper, seaborn-pastel, seaborn-poster, seaborn-talk,
-    seaborn- ticks, seaborn-white, seaborn-whitegrid, tableau- colorblind10'
+  description: 'CNVnator hd5 file: data storage for all calculations'
+  synonyms:
+  - -root
+  - --root
+  args: !RepeatFlagArg
+    name: ROOT
+  optional: true
+- !Flag
+  description: download resource files
+  synonyms:
+  - -download
+  - --download_resources
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: list of chromosomes to apply calculation
+  synonyms:
+  - -chrom
+  - --chrom
+  args: !RepeatFlagArg
+    name: CHROM
+  optional: true
+- !Flag
+  description: 'verbose level: debug, info (default), warning, error'
+  synonyms:
+  - -v
+  - --verbose
+  args: !ChoiceFlagArg
+    choices: !!set
+      warning:
+      debug:
+      info:
+      error:
+      d:
+      none:
+      e:
+      i:
+      w:
+  optional: true
+- !Flag
+  description: log file
+  synonyms:
+  - -log
+  - --log_file
+  args: !SimpleFlagArg
+    name: LOG_FILE
+  optional: true
+- !Flag
+  description: maximal number of cores to use in calculation
+  synonyms:
+  - -j
+  - --max_cores
+  args: !SimpleFlagArg
+    name: MAX_CORES
+  optional: true
+- !Flag
+  description: read bam/sam/cram and store read depth information
+  synonyms:
+  - -rd
+  - --rd
+  args: !RepeatFlagArg
+    name: RD
+  optional: true
+- !Flag
+  description: reference fasta for CRAM
+  synonyms:
+  - -T
+  - --reference_filename
+  args: !SimpleFlagArg
+    name: REFERENCE_FILENAME
+  optional: true
+- !Flag
+  description: read fasta file and store GC/AT content
+  synonyms:
+  - -gc
+  - --gc
+  args: !SimpleFlagArg
+    name: GC
+  optional: true
+- !Flag
+  description: copy GC/AT content from another cnvnator file
+  synonyms:
+  - -cgc
+  - --copy_gc
+  args: !SimpleFlagArg
+    name: COPY_GC
+  optional: true
+- !Flag
+  description: "create histograms for specified bin size (multiple bin\nsizes separate\
+    \ by space)"
+  synonyms:
+  - -his
+  - --his
+  args: !RepeatFlagArg
+    name: HIS
+  optional: true
+- !Flag
+  description: "calculate statistics for specified bin size (multiple\nbin sizes separate\
+    \ by space)"
+  synonyms:
+  - -stat
+  - --stat
+  args: !RepeatFlagArg
+    name: STAT
+  optional: true
+- !Flag
+  description: "calculate segmentation for specified bin size\n(multiple bin sizes\
+    \ separate by space)"
+  synonyms:
+  - -partition
+  - --partition
+  args: !RepeatFlagArg
+    name: PARTITION
+  optional: true
+- !Flag
+  description: "CNV caller: [baf] bin_size [bin_size2 ...] (multiple\nbin sizes separate\
+    \ by space)"
+  synonyms:
+  - -call
+  - --call
+  args: !RepeatFlagArg
+    name: CALL
+  optional: true
+- !Flag
+  description: read SNP data from vcf files
+  synonyms:
+  - -vcf
+  - -snp
+  - --vcf
+  args: !RepeatFlagArg
+    name: VCF
+  optional: true
+- !Flag
+  description: read SNP data from vcf files
+  synonyms:
+  - -somatic_snv
+  - --somatic_snv
+  args: !RepeatFlagArg
+    name: SOMATIC_SNV
+  optional: true
+- !Flag
+  description: read SNP data from vcf files
+  synonyms:
+  - -vcf2rd
+  - --rd_from_vcf
+  args: !SimpleFlagArg
+    name: RD_FROM_VCF
+  optional: true
+- !Flag
+  description: read positions of snps, not counts (AD tag)
+  synonyms:
+  - -noAD
+  - --no_snp_counts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'counts tag (default: AD)'
+  synonyms:
+  - -ad
+  - --ad_tag
+  args: !SimpleFlagArg
+    name: AD_TAG
+  optional: true
+- !Flag
+  description: 'genotype tag (default: GT)'
+  synonyms:
+  - -gt
+  - --gt_tag
+  args: !SimpleFlagArg
+    name: GT_TAG
+  optional: true
+- !Flag
+  description: 'read depth tag (default: DP)'
+  synonyms:
+  - -dp
+  - --dp_tag
+  args: !SimpleFlagArg
+    name: DP_TAG
+  optional: true
+- !Flag
+  description: name for somatic VCF signal
+  synonyms:
+  - -callset
+  - --callset
+  args: !SimpleFlagArg
+    name: CALLSET
+  optional: true
+- !Flag
+  description: calculate SNP counts from bam files
+  synonyms:
+  - -pileup
+  - --pileup_bam
+  args: !RepeatFlagArg
+    name: PILEUP_BAM
+  optional: true
+- !Flag
+  description: calculate RD from SNP counts
+  synonyms:
+  - -snp2rd
+  - --rd_from_snp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: read fasta mask file and flag SNPs in P region
+  synonyms:
+  - -mask
+  - --mask
+  args: !SimpleFlagArg
+    name: MASK
+  optional: true
+- !Flag
+  description: flag SNPs in P region
+  synonyms:
+  - -mask_snps
+  - --mask_snps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: flag SNVs in P region
+  synonyms:
+  - -mask_snvs
+  - --mask_snvs
+  args: !SimpleFlagArg
+    name: MASK_SNVS
+  optional: true
+- !Flag
+  description: "read vcf file and flag SNPs that exist in database\nfile"
+  synonyms:
+  - -idvar
+  - --idvar
+  args: !SimpleFlagArg
+    name: IDVAR
+  optional: true
+- !Flag
+  description: "create BAF histograms for specified bin size (multiple\nbin sizes\
+    \ separate by space)"
+  synonyms:
+  - -baf
+  - --baf
+  args: !RepeatFlagArg
+    name: BAF
+  optional: true
+- !Flag
+  description: do not use P mask in BAF histograms
+  synonyms:
+  - -nomask
+  - --no_mask
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use id flag filtering in SNP histograms
+  synonyms:
+  - -useid
+  - --use_id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use information about phase while processing SNP data
+  synonyms:
+  - -usephase
+  - --use_phase
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: reduce noise in processing SNP data
+  synonyms:
+  - -reducenoise
+  - --reduce_noise
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "likelihood width used in processing SNP data\n(default=0.8)"
+  synonyms:
+  - -blw
+  - --baf_likelihood_width
+  args: !SimpleFlagArg
+    name: BAF_LIKELIHOOD_WIDTH
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -plot
+  - --plot
+  args: !RepeatFlagArg
+    name: PLOT
+  optional: true
+- !Flag
+  description: "[{rd,baf,likelihood} ...], --panels {rd,baf,likelihood} [{rd,baf,likelihood}\
+    \ ...]\nplot panels (with -plot regions)"
+  synonyms:
+  - -panels
+  args: !ChoiceFlagArg
+    choices: !!set
+      baf:
+      likelihood:
+      rd:
+  optional: true
+- !Flag
+  description: "{Solarize_Light2,_classic_test_patch,bmh,classic,dark_background,fast,fivethirtyeight,ggplot,grayscale,seaborn,seaborn-bright,seaborn-colorblind,seaborn-dark,seaborn-dark-palette,seaborn-darkgrid,seaborn-deep,seaborn-muted,seaborn-notebook,seaborn-paper,seaborn-pastel,seaborn-poster,seaborn-talk,seaborn-ticks,seaborn-white,seaborn-whitegrid,tableau-colorblind10},\
+    \ --plot_style {Solarize_Light2,_classic_test_patch,bmh,classic,dark_background,fast,fivethirtyeight,ggplot,grayscale,seaborn,seaborn-bright,seaborn-colorblind,seaborn-dark,seaborn-dark-palette,seaborn-darkgrid,seaborn-deep,seaborn-muted,seaborn-notebook,seaborn-paper,seaborn-pastel,seaborn-poster,seaborn-talk,seaborn-ticks,seaborn-white,seaborn-whitegrid,tableau-colorblind10}\n\
+    available plot styles: Solarize_Light2,\n_classic_test_patch, bmh, classic, dark_background,\n\
+    fast, fivethirtyeight, ggplot, grayscale, seaborn,\nseaborn-bright, seaborn-colorblind,\
+    \ seaborn-dark,\nseaborn-dark-palette, seaborn-darkgrid, seaborn-deep,\nseaborn-muted,\
+    \ seaborn-notebook, seaborn-paper,\nseaborn-pastel, seaborn-poster, seaborn-talk,\
+    \ seaborn-\nticks, seaborn-white, seaborn-whitegrid, tableau-\ncolorblind10"
   synonyms:
   - -style
   args: !EmptyFlagArg {}
@@ -89,15 +394,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[INFO [INFO ...]], --info [INFO [INFO ...]] print statistics for pythor
-    file(s)'
+  description: "[INFO [INFO ...]], --info [INFO [INFO ...]]\nprint statistics for\
+    \ pythor file(s)"
   synonyms:
   - -info
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[COMPARE [COMPARE ...]], --compare [COMPARE [COMPARE ...]] compere
-    two regions: -comp reg1 reg2 [n_bins]'
+  description: "[COMPARE [COMPARE ...]], --compare [COMPARE [COMPARE ...]]\ncompere\
+    \ two regions: -comp reg1 reg2 [n_bins]"
   synonyms:
   - -comp
   args: !EmptyFlagArg {}
@@ -116,8 +421,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[EXPORT [EXPORT ...]], --export [EXPORT [EXPORT ...]] Export to jbrowse
-    and cnvnator'
+  description: "[EXPORT [EXPORT ...]], --export [EXPORT [EXPORT ...]]\nExport to jbrowse\
+    \ and cnvnator\n"
   synonyms:
   - -export
   args: !EmptyFlagArg {}
@@ -128,31 +433,24 @@ named:
   - -version
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -root
-  args: !RepeatFlagArg
-    name: ROOT
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -download
-  args: !EmptyFlagArg {}
-  optional: true
-command:
-- cnvpytor
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: ''
+  description: show this help message and exit
   synonyms:
   - -h
+  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: show version number and exit
+  synonyms:
+  - -version
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "usage: cnvpytor [-h] [-version] [-root ROOT [ROOT ...]] [-download]\n\
   \                [-chrom CHROM [CHROM ...]]\n                [-v {none,debug,info,warning,error,d,e,i,w}]\
   \ [-log LOG_FILE]\n                [-j MAX_CORES] [-rd RD [RD ...]] [-T REFERENCE_FILENAME]\n\

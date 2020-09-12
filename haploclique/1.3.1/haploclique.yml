@@ -1,4 +1,6 @@
 !Command
+command:
+- haploclique
 positional:
 - !Positional
   description: use the original clever clique finder
@@ -10,7 +12,149 @@ positional:
   position: 1
   name: bronkerbosch
   optional: false
+- !Positional
+  description: -M FILE --mean_and_sd_filename=FILE     Required for option -I
+  position: 0
+  name: yet.
+  optional: false
 named:
+- !Flag
+  description: "edge calculator option\n[default: 0.99]"
+  synonyms:
+  - -q
+  - --edge_quasi_cutoff_cliques
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "edge calculator option\n[default: 0.97]"
+  synonyms:
+  - -k
+  - --edge_quasi_cutoff_mixed
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "edge calculator option\n[default: 0.95]"
+  synonyms:
+  - -g
+  - --edge_quasi_cutoff_single
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "edge calculator option\n[default: 0.9]"
+  synonyms:
+  - -Q
+  - --random_overlap_quality
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "Reads will be clustered with\nsingle nucleotide insertions or\ndeletions.\
+    \ Use for PacBio data."
+  synonyms:
+  - -m
+  - --frame_shift_merge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "edge calculator option\n[default: 0.9]"
+  synonyms:
+  - -o
+  - --min_overlap_cliques
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "edge calculator option\n[default: 0.6]"
+  synonyms:
+  - -j
+  - --min_overlap_single
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -A
+  - --allel_frequencies
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: variant calling is not supported
+  synonyms:
+  - -I
+  - --call_indels
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: '[default: 0.2]'
+  synonyms:
+  - -p
+  - --indel_edge_sig_level
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "Number of iterations.\nhaploclique will stop if the\nsuperreads converge.\n\
+    [default: -1]"
+  synonyms:
+  - -i
+  - --iterations
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "Filter out reads with low\nfrequency at the end.\n[default: 0.0]"
+  synonyms:
+  - -f
+  - --filter
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "Filter out single read cliques\nafter first iteration."
+  synonyms:
+  - -n
+  - --no_singletons
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Filter out reads witch are below\n<num> standard deviations.\n[default:\
+    \ 3.0]"
+  synonyms:
+  - -s
+  - --significance
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Write log to <file>.
+  synonyms:
+  - -L
+  - --log
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Used in simulation studies with known\nhaplotypes to document which\
+    \ reads\ncontributed to which final cliques (3 or 5)."
+  synonyms:
+  - -d
+  - --doc_haplotypes
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "ignore the tail probabilites during edge\ncalculation in <output>."
+  synonyms:
+  - -p0
+  - --no_prob0
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: Option to create GFF File from output. <output> is used as prefix.
   synonyms:
@@ -26,8 +170,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Set a threshold for the maximal number of cliques which should be considered
-    in the next iteration.
+  description: "Set a threshold for the maximal number of cliques which\nshould be\
+    \ considered in the next iteration."
   synonyms:
   - -mc
   - --max_cliques
@@ -42,10 +186,9 @@ named:
   args: !SimpleFlagArg
     name: NUM
   optional: true
-command:
-- haploclique
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Display this help text
   synonyms:

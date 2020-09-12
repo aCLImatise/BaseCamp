@@ -1,10 +1,18 @@
 !Command
-positional: []
+command:
+- lighter
+positional:
+- !Positional
+  description: '-K kmer_length genom_size: in this case, the genome size should be
+    relative accurate.'
+  position: 0
+  name: or
+  optional: false
 named:
 - !Flag
   description: ": seq_file is the path to the sequence file. Can use multiple -r to\
-    \ specifiy multiple sequence files The file can be fasta and fastq, and can be\
-    \ gzip'ed with extension *.gz. When the input file is *.gz, the corresponding\
+    \ specifiy multiple sequence files\nThe file can be fasta and fastq, and can be\
+    \ gzip'ed with extension *.gz.\nWhen the input file is *.gz, the corresponding\
     \ output file will also be gzip'ed."
   synonyms:
   - -r
@@ -12,16 +20,9 @@ named:
     name: seq_file
   optional: true
 - !Flag
-  description: 'genome_size alpha: (see README for information on setting alpha) or'
+  description: 'genome_size alpha: (see README for information on setting alpha)'
   synonyms:
   - -k
-  args: !SimpleFlagArg
-    name: kmer_length
-  optional: true
-- !Flag
-  description: 'genom_size: in this case, the genome size should be relative accurate.'
-  synonyms:
-  - -K
   args: !SimpleFlagArg
     name: kmer_length
   optional: true
@@ -102,10 +103,9 @@ named:
   - -v
   args: !EmptyFlagArg {}
   optional: true
-command:
-- lighter
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ': print the help message and quit'
   synonyms:

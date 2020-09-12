@@ -1,6 +1,184 @@
 !Command
+command:
+- rake
 positional: []
 named:
+- !Flag
+  description: =[OUT]            Enable full backtrace.  OUT can be stderr (default)
+    or stdout.
+  synonyms:
+  - --backtrace
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show commented tasks only
+  synonyms:
+  - --comments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[LEVEL]          Display job statistics. LEVEL=history displays a
+    complete job list'
+  synonyms:
+  - --job-stats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Trace the rules resolution.
+  synonyms:
+  - --rules
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Suppress backtrace lines matching regexp PATTERN. Ignored if --trace
+    is on.
+  synonyms:
+  - --suppress-backtrace
+  args: !SimpleFlagArg
+    name: PATTERN
+  optional: true
+- !Flag
+  description: Show all tasks, even uncommented ones (in combination with -T or -D)
+  synonyms:
+  - -A
+  - --all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Build all prerequisites, including those which are up-to-date.
+  synonyms:
+  - -B
+  - --build-all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[PATTERN]         Describe the tasks (matching optional PATTERN),
+    then exit.'
+  synonyms:
+  - -D
+  - --describe
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Execute some Ruby code and exit.
+  synonyms:
+  - -e
+  - --execute
+  args: !SimpleFlagArg
+    name: CODE
+  optional: true
+- !Flag
+  description: Execute some Ruby code, then continue with normal task processing.
+  synonyms:
+  - -E
+  - --execute-continue
+  args: !SimpleFlagArg
+    name: CODE
+  optional: true
+- !Flag
+  description: '[FILENAME]        Use FILENAME as the rakefile to search for.'
+  synonyms:
+  - -f
+  - --rakefile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use standard project Rakefile search paths, ignore system wide rakefiles.
+  synonyms:
+  - -G
+  - --no-system
+  - --nosystem
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Using system wide (global) rakefiles (usually '~/.rake/*.rake').
+  synonyms:
+  - -g
+  - --system
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Include LIBDIR in the search path for required modules.
+  synonyms:
+  - -I
+  - --libdir
+  args: !SimpleFlagArg
+    name: LIBDIR
+  optional: true
+- !Flag
+  description: '[NUMBER]              Specifies the maximum number of tasks to execute
+    in parallel. (default is number of CPU cores + 4)'
+  synonyms:
+  - -j
+  - --jobs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Treat all tasks as multitasks.
+  synonyms:
+  - -m
+  - --multitask
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do a dry run without executing actions.
+  synonyms:
+  - -n
+  - --dry-run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not search parent directories for the Rakefile.
+  synonyms:
+  - -N
+  - --no-search
+  - --nosearch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display the tasks and dependencies, then exit.
+  synonyms:
+  - -P
+  - --prereqs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Execute some Ruby code, print the result, then exit.
+  synonyms:
+  - -p
+  - --execute-print
+  args: !SimpleFlagArg
+    name: CODE
+  optional: true
+- !Flag
+  description: Do not log messages to standard output.
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Require MODULE before executing rakefile.
+  synonyms:
+  - -r
+  - --require
+  args: !SimpleFlagArg
+    name: MODULE
+  optional: true
+- !Flag
+  description: ",     Auto-import any .rake files in RAKELIBDIR. (default is 'rakelib')"
+  synonyms:
+  - -R
+  - --rakelibdir
+  args: !SimpleFlagArg
+    name: RAKELIBDIR
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --rakelib
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: Like --quiet, but also suppresses the 'in directory' announcement.
   synonyms:
@@ -46,10 +224,9 @@ named:
   - --no-deprecation-warnings
   args: !EmptyFlagArg {}
   optional: true
-command:
-- rake
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Display this help message.
   synonyms:

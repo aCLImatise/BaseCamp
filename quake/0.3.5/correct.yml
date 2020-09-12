@@ -1,30 +1,117 @@
 !Command
+command:
+- correct
 positional: []
 named:
 - !Flag
-  description: Output errors reads even if they can't be corrected, maintaining paired
-    end reads.
+  description: Fastq file of reads
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "File containing fastq file names, one per line or\ntwo per line for\
+    \ paired end reads."
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Write output files as gzipped.
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: K-mer size to correct.
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "File containing kmer counts in format `seq  count`.\nCan be gzipped."
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: File containing saved bithash.
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Separate trusted/untrusted kmers at cutoff <num>
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Separate trusted/untrusted kmers as a function of AT\ncontent, with\
+    \ cutoffs found in <file>, one per line"
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Use <num> openMP threads
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "=30\nReturn only reads corrected and/or trimmed to >= <num>\nbp"
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Quality value ascii scale, generally 64 or 33. If not\nspecified,\
+    \ it will guess."
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "=3\nUse BWA trim parameter <num>"
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Output errors reads even if they can't be corrected,\nmaintaining\
+    \ paired end reads."
   synonyms:
   - -u
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Output only the original read headers without correction messages
+  description: "Output only the original read headers without\ncorrection messages"
   synonyms:
   - --headers
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Output a log of all corrections into *.log as 'quality position new_nt
-    old_nt'
+  description: "Output a log of all corrections into *.log as\n'quality position new_nt\
+    \ old_nt'\n"
   synonyms:
   - --log
   args: !EmptyFlagArg {}
   optional: true
-command:
-- correct
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

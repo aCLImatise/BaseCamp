@@ -1,0 +1,228 @@
+!Command
+command:
+- runChicago.R
+positional: []
+named:
+- !Flag
+  description: Should chicagoPipeline print out memory use?
+  synonyms:
+  - -p
+  - --print-memory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Save the Chicago object as an RDa image (instead of the default RDS)
+  synonyms:
+  - -r
+  - --rda
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Save only the data part of the Chicago object, as a data frame (for
+    compatibility)
+  synonyms:
+  - --save-df-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Also plot examples for the full distance range
+  synonyms:
+  - --examples-full-range
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assess the enrichment for features for the full distance range [same
+    chromosome only; use --en-trans in addition to include trans-interactions] (can
+    be very slow!)
+  synonyms:
+  - --en-full-cis-range
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Include trans-interactions into enrichment analysis
+  synonyms:
+  - --en-trans
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Re-run feature enrichment analysis with Chicago output files. With
+    this option, <input-files> must be either a single Rds file (must contain full
+    Chicago objects) or '-', in which case the file location will be inferred automatically
+    from <output-prefix> and files added to the corresponding folder.
+  synonyms:
+  - -f
+  - --features-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: RDS file containing argument values
+  synonyms:
+  - -x
+  - --opts
+  args: !SimpleFlagArg
+    name: OPTS
+  optional: true
+- !Flag
+  description: Full path to Chicago settings file
+  synonyms:
+  - -s
+  - --settings-file
+  args: !SimpleFlagArg
+    name: SETTINGS-FILE
+  optional: true
+- !Flag
+  description: 'Folder with capture design files (note the settings file has priority
+    over these) [default: ]'
+  synonyms:
+  - -d
+  - --design-dir
+  args: !SimpleFlagArg
+    name: DESIGN-DIR
+  optional: true
+- !Flag
+  description: 'Score cutoff for writing out peaks and testing feature enrichment
+    [default: 5]'
+  synonyms:
+  - -c
+  - --cutoff
+  args: !SimpleFlagArg
+    name: CUTOFF
+  optional: true
+- !Flag
+  description: 'File format for writing out peaks: one or more of the following: seqMonk,interBed,washU_text,washU_track
+    (comma-separated) [default: washU_text]'
+  synonyms:
+  - -e
+  - --export-format
+  args: !SimpleFlagArg
+    name: EXPORT-FORMAT
+  optional: true
+- !Flag
+  description: 'Should the results be ordered by "score" or genomic "position"? [default:
+    position]'
+  synonyms:
+  - --export-order
+  args: !SimpleFlagArg
+    name: EXPORT-ORDER
+  optional: true
+- !Flag
+  description: 'The distance limit for plotting "proximal" examples [default: 1e+06]'
+  synonyms:
+  - --examples-prox-dist
+  args: !SimpleFlagArg
+    name: EXAMPLES-PROX-DIST
+  optional: true
+- !Flag
+  description: 'The name of the output directory (can be a full path) [default: <output-prefix>]'
+  synonyms:
+  - -o
+  - --output-dir
+  args: !SimpleFlagArg
+    name: OUTPUT-DIR
+  optional: true
+- !Flag
+  description: A comma-separated list of files with genomic feature coordinates for
+    computing peaks' enrichment
+  synonyms:
+  - --en-feat-files
+  args: !SimpleFlagArg
+    name: EN-FEAT-FILES
+  optional: true
+- !Flag
+  description: "Same as above but the supplied file contains the feature names and\n\
+    locations of feature files (in the format <feature-name> <feature-file-location>"
+  synonyms:
+  - --en-feat-list
+  args: !SimpleFlagArg
+    name: EN-FEAT-LIST
+  optional: true
+- !Flag
+  description: The folder, in which all feature files are located (if provided, --en-feature-file(s)
+    don't need to list the full path)
+  synonyms:
+  - --en-feat-folder
+  args: !SimpleFlagArg
+    name: EN-FEAT-FOLDER
+  optional: true
+- !Flag
+  description: 'The lower distance limit for computing enrichment for features [default:
+    0]'
+  synonyms:
+  - --en-min-dist
+  args: !SimpleFlagArg
+    name: EN-MIN-DIST
+  optional: true
+- !Flag
+  description: 'The upper distance limit for computing enrichment for features [default:
+    1e+06]'
+  synonyms:
+  - --en-max-dist
+  args: !SimpleFlagArg
+    name: EN-MAX-DIST
+  optional: true
+- !Flag
+  description: 'The number of negative samples for computing enrichment for features
+    [default: 100]'
+  synonyms:
+  - --en-sample-no
+  args: !SimpleFlagArg
+    name: EN-SAMPLE-NO
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n***runChicago.R\n\n\n\n\nusage: Rscript runChicago.R [--] [--help] [--print-memory]\
+  \ [--rda] [--save-df-only] [--examples-full-range] [--en-full-cis-range] [--en-trans]\
+  \ [--features-only] [--opts OPTS] [--settings-file SETTINGS-FILE] [--design-dir\
+  \ DESIGN-DIR] [--cutoff CUTOFF] [--export-format EXPORT-FORMAT] [--export-order\
+  \ EXPORT-ORDER] [--examples-prox-dist EXAMPLES-PROX-DIST] [--output-dir OUTPUT-DIR]\
+  \ [--en-feat-files EN-FEAT-FILES] [--en-feat-list EN-FEAT-LIST] [--en-feat-folder\
+  \ EN-FEAT-FOLDER] [--en-min-dist EN-MIN-DIST] [--en-max-dist EN-MAX-DIST] [--en-sample-no\
+  \ EN-SAMPLE-NO] <input-files> <output-prefix>\n\nRun Chicago from input files\n\n\
+  positional arguments:\n  <input-files>\t\t\tFull path to the input file (or comma-separated\
+  \ list of files)\n  <output-prefix>\t\t\tOutput file names prefix (cannot contain\
+  \ folders)\n\nflags:\n  -h, --help\t\t\tshow this help message and exit\n  -p, --print-memory\t\
+  \t\tShould chicagoPipeline print out memory use?\n  -r, --rda\t\t\tSave the Chicago\
+  \ object as an RDa image (instead of the default RDS)\n  --save-df-only\t\t\tSave\
+  \ only the data part of the Chicago object, as a data frame (for compatibility)\n\
+  \  --examples-full-range\t\t\tAlso plot examples for the full distance range\n \
+  \ --en-full-cis-range\t\t\tAssess the enrichment for features for the full distance\
+  \ range [same chromosome only; use --en-trans in addition to include trans-interactions]\
+  \ (can be very slow!)\n  --en-trans\t\t\tInclude trans-interactions into enrichment\
+  \ analysis\n  -f, --features-only\t\t\tRe-run feature enrichment analysis with Chicago\
+  \ output files. With this option, <input-files> must be either a single Rds file\
+  \ (must contain full Chicago objects) or '-', in which case the file location will\
+  \ be inferred automatically from <output-prefix> and files added to the corresponding\
+  \ folder.\n\noptional arguments:\n  -x, --opts OPTS\t\t\tRDS file containing argument\
+  \ values\n  -s, --settings-file SETTINGS-FILE\t\t\tFull path to Chicago settings\
+  \ file\n  -d, --design-dir DESIGN-DIR\t\t\tFolder with capture design files (note\
+  \ the settings file has priority over these) [default: ]\n  -c, --cutoff CUTOFF\t\
+  \t\tScore cutoff for writing out peaks and testing feature enrichment [default:\
+  \ 5]\n  -e, --export-format EXPORT-FORMAT\t\t\tFile format for writing out peaks:\
+  \ one or more of the following: seqMonk,interBed,washU_text,washU_track (comma-separated)\
+  \ [default: washU_text]\n  --export-order EXPORT-ORDER\t\t\tShould the results be\
+  \ ordered by \"score\" or genomic \"position\"? [default: position]\n  --examples-prox-dist\
+  \ EXAMPLES-PROX-DIST\t\t\tThe distance limit for plotting \"proximal\" examples\
+  \ [default: 1e+06]\n  -o, --output-dir OUTPUT-DIR\t\t\tThe name of the output directory\
+  \ (can be a full path) [default: <output-prefix>]\n  --en-feat-files EN-FEAT-FILES\t\
+  \t\tA comma-separated list of files with genomic feature coordinates for computing\
+  \ peaks' enrichment\n  --en-feat-list EN-FEAT-LIST\t\t\tSame as above but the supplied\
+  \ file contains the feature names and \n                 locations of feature files\
+  \ (in the format <feature-name> <feature-file-location>\n  --en-feat-folder EN-FEAT-FOLDER\t\
+  \t\tThe folder, in which all feature files are located (if provided, --en-feature-file(s)\
+  \ don't need to list the full path)\n  --en-min-dist EN-MIN-DIST\t\t\tThe lower\
+  \ distance limit for computing enrichment for features [default: 0]\n  --en-max-dist\
+  \ EN-MAX-DIST\t\t\tThe upper distance limit for computing enrichment for features\
+  \ [default: 1e+06]\n  --en-sample-no EN-SAMPLE-NO\t\t\tThe number of negative samples\
+  \ for computing enrichment for features [default: 100]\n"
+generated_using:
+- --help

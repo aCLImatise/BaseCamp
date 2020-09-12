@@ -1,11 +1,314 @@
 !Command
-positional: []
-named: []
 command:
 - cactus_caf
+positional: []
+named:
+- !Flag
+  description: ': Set the log level'
+  synonyms:
+  - -a
+  - --logLevel
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': The input alignments file'
+  synonyms:
+  - -b
+  - --alignments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': The location of the flower disk directory'
+  synonyms:
+  - -c
+  - --cactusDisk
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Lastz arguments'
+  synonyms:
+  - -d
+  - --lastzArguments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(array of ints, each greater than or equal to 1) : The rounds of annealing'
+  synonyms:
+  - -i
+  - --annealingRounds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(array of ints, each greater than or equal to 1 and each greater than
+    the last) : The rounds of deannealing'
+  synonyms:
+  - -o
+  - --deannealingRounds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(array of integers, each greater or equal to zero) : An array giving
+    the trim for each annealing round. If the array is shorter than the annealing
+    rounds then a trim value of 0 is assumed for annealing rounds greater than the
+    length of the trim array'
+  synonyms:
+  - -k
+  - --trim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': (float [0.0, 1.0]) Minimum tree coverage proportion of a block to
+    be included in the graph'
+  synonyms:
+  - -m
+  - --minimumTreeCoverage
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': (int >= 0) The number of bases to trim from the ends of each block
+    in a chain before accepting, this filtering is done after choosing the length
+    of chains'
+  synonyms:
+  - -n
+  - --blockTrim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': (int >= 0) Minimum number of sequences in a block to be included
+    in the output graph'
+  synonyms:
+  - -p
+  - --minimumDegree
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Number of ingroup sequences required in a block.'
+  synonyms:
+  - -q
+  - --minimumIngroupDegree
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Number of outgroup sequences required in a block.'
+  synonyms:
+  - -r
+  - --minimumOutgroupDegree
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Choose alignment filter:\nnone: no filtering,\nsingleCopyOutgroup:\
+    \ never merge two outgroup segments together\nrelaxedSingleCopyOutgroup: never\
+    \ merge two outgroup segments together if they are both already aligned to something\
+    \ else\nsingleCopy: Never align two segments from the same genome together\nrelaxedSingleCopy:\
+    \ Never align two segments from the same genome together if they are both already\
+    \ aligned to something else\nfilterSecondariesByMultipleSpecies: Apply no filtering\
+    \ to primary alignments, for secondary alignments do not sort them and filter\
+    \ them so that no two blocks are merged that each already contain multiple species."
+  synonyms:
+  - -t
+  - --alignmentFilter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': The minimum length of a sequence to include when blasting'
+  synonyms:
+  - -v
+  - --minimumSequenceLengthForBlast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': The components equal or less than log(n) * of this size will be
+    allowed in the cactus. Used to fight giant components.'
+  synonyms:
+  - -w
+  - --maxAdjacencyComponentSizeRatio
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': A file of alignments that will be enforced upon the cactus'
+  synonyms:
+  - -x
+  - --constraints
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': The minimum length required for a sequence to be considered as a
+    candidate to be chromosome.'
+  synonyms:
+  - -y
+  - --minLengthForChromosome
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Proportion of aligned bases to be not contained in an existing chromosome
+    to cause generation of a new chromosome.'
+  synonyms:
+  - -z
+  - --proportionOfUnalignedBasesForNewChromosome
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Maximum nedian length of sequences between linked ends to allow
+    before breaking chains.'
+  synonyms:
+  - -A
+  - --maximumMedianSequenceLengthBetweenLinkedEnds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Realign the lastz hits.'
+  synonyms:
+  - -B
+  - --realign
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Arguments for realignment.'
+  synonyms:
+  - -C
+  - --realignArguments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Number of trees to sample when removing ancient homologies. (default
+    1)'
+  synonyms:
+  - -D
+  - --phylogenyNumTrees
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Method of rooting trees: either 'outgroupBranch', 'longestBranch',\
+    \ or 'bestRecon' (default outgroupBranch)."
+  synonyms:
+  - -E
+  - --phylogenyRootingMethod
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Method of deciding which sampled tree is best: either 'reconCost'\
+    \ or ."
+  synonyms:
+  - -F
+  - --phylogenyScoringMethod
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': scale breakpoint distance by this factor while building phylogenies.
+    Default 0.0.'
+  synonyms:
+  - -G
+  - --phylogenyBreakpointScalingFactor
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Skip building trees for single-copy blocks. Default is not to skip.'
+  synonyms:
+  - -H
+  - --phylogenySkipSingleCopyBlocks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': maximum distance in bases to walk outside of a block gathering feature
+    columns'
+  synonyms:
+  - -I
+  - --phylogenyMaxBaseDistance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': maximum distance in blocks to walk outside of a block gathering
+    feature columns'
+  synonyms:
+  - -J
+  - --phylogenyMaxBlockDistance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': path to file to dump block trees and partitions to'
+  synonyms:
+  - -K
+  - --phylogenyDebugFile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': when splitting blocks, allow blocks to be created of only one ingroup.'
+  synonyms:
+  - -L
+  - --phylogenyKeepSingleDegreeBlocks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': neighbor joining or neighbor-joining guided by the species tree'
+  synonyms:
+  - -M
+  - --phylogenyTreeBuildingMethod
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': name of reference event (necessary for phylogeny estimation)'
+  synonyms:
+  - -P
+  - --referenceEventHeader
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': assume that this support value or greater means a very confident
+    split, and that they will not be changed by the greedy split algorithm. Do all
+    these very confident splits at once, to save a lot of computation time.'
+  synonyms:
+  - -Q
+  - --phylogenyDoSplitsWithSupportHigherThanThisAllAtOnce
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Number of threads in the tree-building thread pool. Must be greater
+    than 1. Default 2.'
+  synonyms:
+  - -R
+  - --numTreeBuildingThreads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Run the tree-building code and split ancient homologies away.'
+  synonyms:
+  - -S
+  - --phylogeny
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Minimum fraction of possible homologies required not to be considered
+    a transitively collapsed megablock.'
+  synonyms:
+  - -T
+  - --minimumBlockHomologySupport
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Weighting for the nucleotide information in the distance matrix
+    used to build each tree.'
+  synonyms:
+  - -U
+  - --phylogenyNucleotideScalingFactor
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Minimum degree required to be checked for being a megablock.'
+  synonyms:
+  - -V
+  - --minimumBlockDegreeToCheckSupport
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ': Print this help screen'
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "cactus_caf, version 0.2\n-a --logLevel : Set the log level\n-b --alignments\

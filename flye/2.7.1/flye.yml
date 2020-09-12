@@ -1,6 +1,22 @@
 !Command
+command:
+- flye
 positional: []
 named:
+- !Flag
+  description: '| --subassemblies) file1 [file_2 ...]'
+  synonyms:
+  - --nano-corr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: estimated genome size (for example, 5m or 2.6g)
+  synonyms:
+  - -g
+  - --genome-size
+  args: !SimpleFlagArg
+    name: size
+  optional: true
 - !Flag
   description: PacBio raw reads
   synonyms:
@@ -30,26 +46,11 @@ named:
     name: path
   optional: true
 - !Flag
-  description: ONT corrected reads
-  synonyms:
-  - --nano-corr
-  args: !RepeatFlagArg
-    name: path
-  optional: true
-- !Flag
   description: high-quality contigs input
   synonyms:
   - --subassemblies
   args: !RepeatFlagArg
     name: path
-  optional: true
-- !Flag
-  description: estimated genome size (for example, 5m or 2.6g)
-  synonyms:
-  - -g
-  - --genome-size
-  args: !SimpleFlagArg
-    name: size
   optional: true
 - !Flag
   description: Output directory
@@ -84,7 +85,7 @@ named:
     name: int
   optional: true
 - !Flag
-  description: reduced coverage for initial disjointig assembly [not set]
+  description: "reduced coverage for initial disjointig assembly [not\nset]"
   synonyms:
   - --asm-coverage
   args: !SimpleFlagArg
@@ -147,10 +148,9 @@ named:
   - --debug
   args: !EmptyFlagArg {}
   optional: true
-command:
-- flye
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

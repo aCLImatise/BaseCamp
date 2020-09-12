@@ -1,18 +1,159 @@
 !Command
+command:
+- asn2gb
 positional: []
 named:
 - !Flag
-  description: 'ASN.1 Type Single Record: a Any, e Seq-entry, b Bioseq, s Bioseq-set,
-    m Seq-submit, q Catenated Release File: t Batch Bioseq-set, u Batch Seq-submit'
+  description: "Input File Name [File In]\ndefault = stdin"
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output File Name [File Out]\ndefault = stdout"
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Format (b GenBank, e EMBL, p GenPept, t Feature Table, x INSDSet)\
+    \ [String]\ndefault = b"
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Mode (r Release, e Entrez, s Sequin, d Dump) [String]\ndefault = s"
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Style (n Normal, s Segment, m Master, c Contig) [String]\ndefault\
+    \ = n"
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Bit Flags (1 HTML, 2 XML, 4 ContigFeats, 8 ContigSrcs, 16 FarTransl)\
+    \ [Integer]\ndefault = 0"
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Custom Flags (4 HideFeats, 1792 HideRefs, 8192 HideSources, 262144\
+    \ HideTranslation) [Integer]\ndefault = 0"
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "ASN.1 Type\nSingle Record: a Any, e Seq-entry, b Bioseq, s Bioseq-set,\
+    \ m Seq-submit, q Catenated\nRelease File: t Batch Bioseq-set, u Batch Seq-submit"
   synonyms:
   - -a
   args: !EmptyFlagArg {}
   optional: true
-command:
-- asn2gb
+- !Flag
+  description: "Batch\n1 Report\n2 Sequin/Release\n3 asn2gb SSEC/nocleanup\n4 asn2flat\
+    \ BSEC/nocleanup\n5 asn2gb/asn2flat\n6 asn2gb NEW dbxref/OLD dbxref\n7 oldasn2gb/newasn2gb\
+    \ [Integer]\ndefault = 0\nrange from 0 to 7"
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Input File is Binary [T/F]  Optional\ndefault = F"
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Batch File is Compressed [T/F]  Optional\ndefault = F"
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Propagate Top Descriptors [T/F]  Optional\ndefault = F"
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Log file [File Out]  Optional
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Remote Fetching [T/F]  Optional\ndefault = F"
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Accession to Fetch (or Accession,retcode,flags where flags -1 fetches
+    external features) [String]  Optional
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Remote Annotation Fetch Test (use -A Accession,0,-1 instead) [T/F]\
+    \  Optional\ndefault = F"
+  synonyms:
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Ffdiff Executable [File In]  Optional\ndefault = /netopt/genbank/subtool/bin/ffdiff"
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Asn2Flat Executable [File In]  Optional\ndefault = asn2flat"
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "SeqLoc From [Integer]  Optional\ndefault = 0"
+  synonyms:
+  - -j
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "SeqLoc To [Integer]  Optional\ndefault = 0"
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "SeqLoc Minus Strand [T/F]  Optional\ndefault = F"
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Feature itemID [Integer]  Optional\ndefault = 0\n"
+  synonyms:
+  - -y
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: "Lock/Lookup Flags (8 LockProd, 16 LookupComp, 64 LookupProd) [Integer]\n\
+    default = 0"
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "\nasn2gb 18.2   arguments:\n\n  -i  Input File Name [File In]\n    default\

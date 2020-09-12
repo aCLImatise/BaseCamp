@@ -1,15 +1,7 @@
-!Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: in.chromGraph
-  optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: out.tab
-  optional: false
+&id001 !Command
+command:
+- chromGraphFromBin
+positional: []
 named:
 - !Flag
   description: '- restrict output to single chromosome'
@@ -18,10 +10,31 @@ named:
   args: !SimpleFlagArg
     name: chrX
   optional: true
-command:
-- chromGraphFromBin
 parent:
-subcommands: []
+subcommands:
+- !Command
+  command:
+  - chromGraphFromBin
+  - in.chromGraph
+  positional: []
+  named:
+  - !Flag
+    description: not a valid option
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: is
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-h is not a valid option\n"
+  generated_using:
+  - -h
+usage: []
 help_flag:
 usage_flag:
 version_flag:

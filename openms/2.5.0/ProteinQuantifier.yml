@@ -1,4 +1,6 @@
 !Command
+command:
+- ProteinQuantifier
 positional: []
 named:
 - !Flag
@@ -12,7 +14,7 @@ named:
 - !Flag
   description: "Protein inference results for the identification runs that were used\
     \ to annotate the input (e.g. from ProteinProphet via IDFileConverter or Fido\
-    \ via FidoAdapter). Information about indistinguishable proteins will be used\
+    \ via FidoAdapter).\nInformation about indistinguishable proteins will be used\
     \ for protein quantification. (valid formats: 'idXML')"
   synonyms:
   - -protein_groups
@@ -71,11 +73,11 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Distinguish between fraction and charge states of a peptide. For peptides,
-    abundances will be reported separately for each fraction and charge; for proteins,
-    abundances will be computed based only on the most prevalent charge observed of
-    each peptide (over all fractions). By default, abundances are summed over all
-    charge states.
+  description: "Distinguish between fraction and charge states of a peptide. For peptides,\
+    \ abundances will be reported separately for each fraction and charge;\nfor proteins,\
+    \ abundances will be computed based only on the most prevalent charge observed\
+    \ of each peptide (over all fractions).\nBy default, abundances are summed over\
+    \ all charge states."
   synonyms:
   - -best_charge_and_fraction
   args: !EmptyFlagArg {}
@@ -132,10 +134,9 @@ named:
   - --helphelp
   args: !EmptyFlagArg {}
   optional: true
-command:
-- ProteinQuantifier
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Shows options
   synonyms:
@@ -144,44 +145,44 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
-help_text: "\nProteinQuantifier -- Compute peptide and protein abundances\nFull documentation:\
-  \ http://www.openms.de/documentation/TOPP_ProteinQuantifier.html\nVersion: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND\
-  \ May 19 2020, 23:12:02, Revision: HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL,\
-  \ Sachsenberg T, Aiche S, Bielow C et al.. OpenMS: a flexible open-source software\
-  \ platform for mass spectrometry data analysis. Nat Meth. 2016; 13, 9: 741-748.\
-  \ doi:10.1038/nmeth.3959.\n\nUsage:\n  ProteinQuantifier <options>\n\nOptions (mandatory\
-  \ options marked with '*'):\n  -in <file>*                        Input file (valid\
-  \ formats: 'featureXML', 'consensusXML', 'idXML')\n  -protein_groups <file>    \
-  \         Protein inference results for the identification runs that were used to\
-  \ annotate the input (e.g. from ProteinProphet via IDFileConverter or Fido via FidoAdapter).\n\
-  \                                     Information about indistinguishable proteins\
-  \ will be used for protein quantification. (valid formats: 'idXML')\n  -design <file>\
-  \                     Input file containing the experimental design (valid formats:\
-  \ 'tsv')\n  -out <file>                        Output file for protein abundances\
-  \ (valid formats: 'csv')\n  -peptide_out <file>                Output file for peptide\
-  \ abundances (valid formats: 'csv')\n  -mztab <file>                      Output\
-  \ file (mzTab) (valid formats: 'mzTab')\n                                     \n\
-  \  -top <number>                      Calculate protein abundance from this number\
-  \ of proteotypic peptides (most abundant first; '0' for all) (default: '3' min:\
-  \ '0')\n  -average <choice>                  Averaging method used to compute protein\
-  \ abundances from peptide abundances (default: 'median' valid: 'median', 'mean',\
-  \ 'weighted_mean', 'sum')\n  -include_all                       Include results\
-  \ for proteins with fewer proteotypic peptides than indicated by 'top' (no effect\
-  \ if 'top' is 0 or 1)\n  -best_charge_and_fraction          Distinguish between\
-  \ fraction and charge states of a peptide. For peptides, abundances will be reported\
-  \ separately for each fraction and charge;\n                                   \
-  \  for proteins, abundances will be computed based only on the most prevalent charge\
-  \ observed of each peptide (over all fractions).\n                             \
-  \        By default, abundances are summed over all charge states.\n\nAdditional\
-  \ options for consensus maps (and identification results comprising multiple runs):\n\
-  \  -consensus:normalize               Scale peptide abundances so that medians of\
-  \ all samples are equal\n  -consensus:fix_peptides            Use the same peptides\
-  \ for protein quantification across all samples.\n                             \
-  \        With 'top 0', all peptides that occur in every sample are considered.\n\
-  \                                     Otherwise ('top N'), the N peptides that occur\
-  \ in the most samples (independently of each other) are selected,\n            \
-  \                         breaking ties by total abundance (there is no guarantee\
-  \ that the best co-ocurring peptides are chosen!).\n\n  -greedy_group_resolution\
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nProteinQuantifier\
+  \ -- Compute peptide and protein abundances\nFull documentation: http://www.openms.de/documentation/TOPP_ProteinQuantifier.html\n\
+  Version: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND Jul 16 2020, 21:29:13, Revision:\
+  \ HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow\
+  \ C et al.. OpenMS: a flexible open-source software platform for mass spectrometry\
+  \ data analysis. Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n\
+  \  ProteinQuantifier <options>\n\nOptions (mandatory options marked with '*'):\n\
+  \  -in <file>*                        Input file (valid formats: 'featureXML', 'consensusXML',\
+  \ 'idXML')\n  -protein_groups <file>             Protein inference results for the\
+  \ identification runs that were used to annotate the input (e.g. from ProteinProphet\
+  \ via IDFileConverter or Fido via FidoAdapter).\n                              \
+  \       Information about indistinguishable proteins will be used for protein quantification.\
+  \ (valid formats: 'idXML')\n  -design <file>                     Input file containing\
+  \ the experimental design (valid formats: 'tsv')\n  -out <file>                \
+  \        Output file for protein abundances (valid formats: 'csv')\n  -peptide_out\
+  \ <file>                Output file for peptide abundances (valid formats: 'csv')\n\
+  \  -mztab <file>                      Output file (mzTab) (valid formats: 'mzTab')\n\
+  \                                     \n  -top <number>                      Calculate\
+  \ protein abundance from this number of proteotypic peptides (most abundant first;\
+  \ '0' for all) (default: '3' min: '0')\n  -average <choice>                  Averaging\
+  \ method used to compute protein abundances from peptide abundances (default: 'median'\
+  \ valid: 'median', 'mean', 'weighted_mean', 'sum')\n  -include_all             \
+  \          Include results for proteins with fewer proteotypic peptides than indicated\
+  \ by 'top' (no effect if 'top' is 0 or 1)\n  -best_charge_and_fraction         \
+  \ Distinguish between fraction and charge states of a peptide. For peptides, abundances\
+  \ will be reported separately for each fraction and charge;\n                  \
+  \                   for proteins, abundances will be computed based only on the\
+  \ most prevalent charge observed of each peptide (over all fractions).\n       \
+  \                              By default, abundances are summed over all charge\
+  \ states.\n\nAdditional options for consensus maps (and identification results comprising\
+  \ multiple runs):\n  -consensus:normalize               Scale peptide abundances\
+  \ so that medians of all samples are equal\n  -consensus:fix_peptides          \
+  \  Use the same peptides for protein quantification across all samples.\n      \
+  \                               With 'top 0', all peptides that occur in every sample\
+  \ are considered.\n                                     Otherwise ('top N'), the\
+  \ N peptides that occur in the most samples (independently of each other) are selected,\n\
+  \                                     breaking ties by total abundance (there is\
+  \ no guarantee that the best co-ocurring peptides are chosen!).\n\n  -greedy_group_resolution\
   \ <choice>  Pre-process identifications with greedy resolution of shared peptides\
   \ based on the protein group probabilities. (Only works with an idXML file given\
   \ as protein_groups parameter). (default: 'false' valid: 'true', 'false')\n  -ratios\

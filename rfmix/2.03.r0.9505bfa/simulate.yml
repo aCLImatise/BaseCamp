@@ -1,6 +1,65 @@
 !Command
+command:
+- simulate
 positional: []
 named:
+- !Flag
+  description: "(required)\nName of input VCF file"
+  synonyms:
+  - -f
+  - --vcf
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "(required)\nSample subpop mapping file - also selects which samples\
+    \ will be used for simulation"
+  synonyms:
+  - -m
+  - --sample-map
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "(required)\nGenetic map file (required)"
+  synonyms:
+  - -g
+  - --genetic-map
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "(required)\nBasename (prefix) for output files (required)"
+  synonyms:
+  - -o
+  - --output-basename
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Growth rate of population per generation (1 = no growth, 1.5 = 50%
+    increase per generation, etc.)
+  synonyms:
+  - --growth-rate
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Stop growing population when it reaches specified size
+  synonyms:
+  - -s
+  - --maximum-size
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "(required)\nChromosome to select from the VCF file"
+  synonyms:
+  - -c
+  - --chromosome
+  args: !SimpleFlagArg
+    name: string
+  optional: true
 - !Flag
   description: Number of generations to simulate random mating admixture
   synonyms:
@@ -25,18 +84,17 @@ named:
     name: float
   optional: true
 - !Flag
-  description: Seed value for random number generation - integer value (maybe specified
-    inhexadecimal by preceeding with 0x), or the string "clock" to seed with the current
-    system time.
+  description: "Seed value for random number generation - integer value (maybe specified\
+    \ inhexadecimal by preceeding with 0x), or the string \"clock\" to seed with the\
+    \ current system time.\n"
   synonyms:
   - --random-seed
   args: !SimpleFlagArg
     name: string
   optional: true
-command:
-- simulate
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

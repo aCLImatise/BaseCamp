@@ -1,4 +1,6 @@
 !Command
+command:
+- analyzeHiC
 positional:
 - !Positional
   description: ''
@@ -19,6 +21,41 @@ named:
   synonyms:
   - -window
   args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(create matrix on this chromosome, default: whole genome)'
+  synonyms:
+  - -chr
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: <#> (start matrix at this position, default:0)
+  synonyms:
+  - -start
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (end matrix at this position, default: no limit)'
+  synonyms:
+  - -end
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: :xxxxxx-yyyyyy (UCSC formatted position instead of -chr/-start/-end)
+  synonyms:
+  - -pos
+  args: !SimpleFlagArg
+    name: chrN
+  optional: true
+- !Flag
+  description: "<#>, -end2 <#>, or -pos2 (Use these positions on the\ny-axis of the\
+    \ matrix.  Otherwise the matrix will be sysmetric)"
+  synonyms:
+  - -chr2
+  - -start2
+  args: !SimpleFlagArg
+    name: name
   optional: true
 - !Flag
   description: (specify regions to make matrix, unbalanced, use -p2 <peak file>)
@@ -56,10 +93,10 @@ named:
     name: filename
   optional: true
 - !Flag
-  description: <#> (normalize counts to "interactions per hundred square kilobases
-    per billion, default) Use '-normTotal <#>' and '-normArea <#>' to modify normalization
-    constants, area in bp^2 Use '-normTotal given' and '-normArea given' to disable
-    normalizations
+  description: "<#> (normalize counts to \"interactions per hundred square kilobases\
+    \ per billion, default)\nUse '-normTotal <#>' and '-normArea <#>' to modify normalization\
+    \ constants, area in bp^2\nUse '-normTotal given' and '-normArea given' to disable\
+    \ normalizations"
   synonyms:
   - -ihskb
   args: !EmptyFlagArg {}
@@ -95,11 +132,17 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "(report Pearson's correlation coeff, use \"-corrIters <#>\" to recursively\
-    \ calculate) -corrDepth <#> (merge regions in correlation so that minimum # expected\
-    \ tags per data point)"
+  description: (report Pearson's correlation coeff, use "-corrIters <#>" to recursively
+    calculate)
   synonyms:
   - -corr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (merge regions in correlation so that minimum # expected tags
+    per data point)'
+  synonyms:
+  - -corrDepth
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -177,6 +220,40 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: (force the creation of a fresh genome-wide background model)
+  synonyms:
+  - -force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (quit after creating the background model)
+  synonyms:
+  - -bgonly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Create custome bg from regions specified, i.e. -p/-pos)
+  synonyms:
+  - -createModel
+  args: !SimpleFlagArg
+    name: custom bg model output file
+  optional: true
+- !Flag
+  description: (Use Custom background model, -modelBg for -ped)
+  synonyms:
+  - -model
+  args: !SimpleFlagArg
+    name: custom bg model input file
+  optional: true
+- !Flag
+  description: "<# reads> (and the output is a PE tag file, initail PE tag directory\
+    \ not used\nUse makeTagDirectory ... -t outputfile to create the new directory)"
+  synonyms:
+  - -randomize
+  args: !SimpleFlagArg
+    name: bgmodel
+  optional: true
+- !Flag
   description: (output log p-values from old-style interaction calculations)
   synonyms:
   - -logp
@@ -245,6 +322,13 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: ''
+  synonyms:
+  - -ped
+  args: !SimpleFlagArg
+    name: background PE tag directory
+  optional: true
+- !Flag
   description: (Both matrix and interaction outputs will be in WashH BED format)
   synonyms:
   - -washu
@@ -304,10 +388,9 @@ named:
   args: !SimpleFlagArg
     name: output BED filename
   optional: true
-command:
-- analyzeHiC
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

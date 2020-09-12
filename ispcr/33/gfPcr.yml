@@ -1,4 +1,6 @@
 !Command
+command:
+- gfPcr
 positional:
 - !Positional
   description: ''
@@ -25,12 +27,38 @@ positional:
   position: 4
   name: rPrimer
   optional: false
-- !Positional
-  description: ''
-  position: 5
-  name: output
-  optional: false
 named:
+- !Flag
+  description: '- Maximum size of PCR product (default 4000)'
+  synonyms:
+  - -maxSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "- Minimum size of perfect match at 3' end of primer (default 15)"
+  synonyms:
+  - -minPerfect
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: '- Minimum size where there must be 2 matches for each mismatch (default
+    18)'
+  synonyms:
+  - -minGood
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "- Output format.  Either\nfa - fasta with position, primers in header\
+    \ (default)\nbed - tab delimited format. Fields: chrom/start/end/name/score/strand\n\
+    psl - blat format."
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: XXX
+  optional: true
 - !Flag
   description: '- Name to use in bed output.'
   synonyms:
@@ -38,10 +66,9 @@ named:
   args: !SimpleFlagArg
     name: XXX
   optional: true
-command:
-- gfPcr
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

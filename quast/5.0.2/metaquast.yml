@@ -1,4 +1,6 @@
 !Command
+command:
+- metaquast
 positional:
 - !Positional
   description: ''
@@ -7,283 +9,259 @@ positional:
   optional: false
 named:
 - !Flag
-  description: Genome is fungal (primarily affects gene prediction)
+  description: '<dirname>       Directory to store all result files [default: quast_results/results_<datetime>]'
   synonyms:
-  - --fungus
+  - -o
+  - --output-dir
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use optimal parameters for evaluation of large genomes In particular,
-    imposes '-e -m 3000 -i 500 -x 7000' (can be overridden manually)
+  description: <filename,filename,...>      Comma-separated list of reference genomes
+    or directory with reference genomes
   synonyms:
-  - --large
+  - -r
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Size of k used in --k-mer-stats [default: 101]'
+  description: Text file with list of reference genome names for downloading from
+    NCBI
+  synonyms:
+  - --references-list
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: "[type:]<filename>  File with genomic feature coordinates in the references\
+    \ (GFF, BED, NCBI or TXT)\nOptional 'type' can be specified for extracting only\
+    \ a specific feature type from GFF"
+  synonyms:
+  - -g
+  - --features
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<int>           Lower threshold for contig length [default: 500]'
+  synonyms:
+  - -m
+  - --min-contig
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<int>           Maximum number of threads [default: 25% of CPUs]'
+  synonyms:
+  - -t
+  - --threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Split assemblies by continuous fragments of N's and add such "contigs"
+    to the comparison
+  synonyms:
+  - -s
+  - --split-scaffolds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '"label, label, ..."      Names of assemblies to use in reports, comma-separated.
+    If contain spaces, use quotes'
+  synonyms:
+  - -l
+  - --labels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Take assembly names from their parent directory names
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Genome is eukaryotic (primarily affects gene prediction)\n--fungus\
+    \                          Genome is fungal (primarily affects gene prediction)\n\
+    --large                           Use optimal parameters for evaluation of large\
+    \ genomes\nIn particular, imposes '-e -m 3000 -i 500 -x 7000' (can be overridden\
+    \ manually)"
+  synonyms:
+  - -e
+  - --eukaryote
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Compute k-mer-based quality metrics (recommended for large genomes)\n\
+    This may significantly increase memory and time consumption on large genomes"
+  synonyms:
+  - -k
+  - --k-mer-stats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Size of k used in --k-mer-stats [default: 101]\n--circos         \
+    \                 Draw Circos plot"
   synonyms:
   - --k-mer-size
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Draw Circos plot
+  description: "Predict genes using MetaGeneMark\n--glimmer                      \
+    \   Use GlimmerHMM for gene prediction (instead of the default finder, see above)\n\
+    --gene-thresholds <int,int,...>   Comma-separated list of threshold lengths of\
+    \ genes to search with Gene Finding module\n[default: 0,300,1500,3000]\n--rna-finding\
+    \                     Predict ribosomal RNA genes using Barrnap"
   synonyms:
-  - --circos
+  - -f
+  - --gene-finding
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use GlimmerHMM for gene prediction (instead of the default finder,
-    see above)
+  description: "Count conserved orthologs using BUSCO (only on Linux)\n--operons \
+    \ <filename>             File with operon coordinates in the reference (GFF, BED,\
+    \ NCBI or TXT)\n--max-ref-number <int>            Maximum number of references\
+    \ (per each assembly) to download after looking in SILVA database.\nSet 0 for\
+    \ not looking in SILVA at all [default: 50]\n--blast-db <filename>           \
+    \  Custom BLAST database (.nsq file). By default, MetaQUAST searches references\
+    \ in SILVA database\n--use-input-ref-order             Use provided order of references\
+    \ in MetaQUAST summary plots (default order: by the best average value)\n--contig-thresholds\
+    \ <int,int,...> Comma-separated list of contig length thresholds [default: 0,1000,5000,10000,25000,50000]"
   synonyms:
-  - --glimmer
+  - -b
+  - --conserved-genes-finding
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '<int,int,...>   Comma-separated list of threshold lengths of genes
-    to search with Gene Finding module [default: 0,300,1500,3000]'
+  description: "Compute genome fraction, # genes, # operons in QUAST v1.* style.\n\
+    By default, QUAST filters Minimap's alignments to keep only best ones"
   synonyms:
-  - --gene-thresholds
+  - -u
+  - --use-all-alignments
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Predict ribosomal RNA genes using Barrnap
+  description: "The minimum alignment length [default: 65]\n--min-identity <float>\
+    \            The minimum alignment identity (80.0, 100.0) [default: 95.0]"
   synonyms:
-  - --rna-finding
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <filename>             File with operon coordinates in the reference
-    (GFF, BED, NCBI or TXT)
-  synonyms:
-  - --operons
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'Maximum number of references (per each assembly) to download after
-    looking in SILVA database. Set 0 for not looking in SILVA at all [default: 50]'
-  synonyms:
-  - --max-ref-number
+  - -i
+  - --min-alignment
   args: !SimpleFlagArg
     name: int
   optional: true
 - !Flag
-  description: Custom BLAST database (.nsq file). By default, MetaQUAST searches references
-    in SILVA database
+  description: "Use none, one, or all alignments of a contig when all of them\nare\
+    \ almost equally good (see --ambiguity-score) [default: one]"
   synonyms:
-  - --blast-db
+  - -a
+  - --ambiguity-usage
   args: !SimpleFlagArg
-    name: filename
+    name: none|one|all
   optional: true
 - !Flag
-  description: 'Use provided order of references in MetaQUAST summary plots (default
-    order: by the best average value)'
-  synonyms:
-  - --use-input-ref-order
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '<int,int,...> Comma-separated list of contig length thresholds [default:
-    0,1000,5000,10000,25000,50000]'
-  synonyms:
-  - --contig-thresholds
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'The minimum alignment identity (80.0, 100.0) [default: 95.0]'
-  synonyms:
-  - --min-identity
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: 'Score S for defining equally good alignments of a single contig. All
-    alignments are sorted  by decreasing LEN * IDY% value. All alignments with LEN
-    * IDY% < S * best(LEN * IDY%) are  discarded. S should be between 0.8 and 1.0
-    [default: 0.99]'
+  description: "Score S for defining equally good alignments of a single contig. All\
+    \ alignments are sorted\nby decreasing LEN * IDY% value. All alignments with LEN\
+    \ * IDY% < S * best(LEN * IDY%) are\ndiscarded. S should be between 0.8 and 1.0\
+    \ [default: 0.99]"
   synonyms:
   - --ambiguity-score
   args: !SimpleFlagArg
     name: float
   optional: true
 - !Flag
-  description: Disable --ambiguity-usage=all for the combined reference run, i.e.
-    use user-specified or default ('one') value of --ambiguity-usage
+  description: "Disable --ambiguity-usage=all for the combined reference run,\ni.e.\
+    \ use user-specified or default ('one') value of --ambiguity-usage"
   synonyms:
   - --unique-mapping
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Break contigs in any misassembly event when compute NAx and NGAx. By
-    default, QUAST breaks contigs only by extensive misassemblies (not local ones)
+  description: "Break contigs in any misassembly event when compute NAx and NGAx.\n\
+    By default, QUAST breaks contigs only by extensive misassemblies (not local ones)"
   synonyms:
   - --strict-NA
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '<int>    Max allowed scaffold gap length difference. All relocations
-    with inconsistency less than scaffold-gap-size are counted as scaffold gap misassemblies
-    [default: 10000]'
+  description: "<int>       Lower threshold for extensive misassembly size. All relocations\
+    \ with inconsistency\nless than extensive-mis-size are counted as local misassemblies\
+    \ [default: 1000]"
+  synonyms:
+  - -x
+  - --extensive-mis-size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<int>    Max allowed scaffold gap length difference. All relocations\
+    \ with inconsistency\nless than scaffold-gap-size are counted as scaffold gap\
+    \ misassemblies [default: 10000]"
   synonyms:
   - --scaffold-gap-max-size
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '<int>      Lower threshold for detecting partially unaligned contigs.
-    Such contig should have at least one unaligned fragment >= the threshold [default:
-    500]'
+  description: "<int>      Lower threshold for detecting partially unaligned contigs.\
+    \ Such contig should have\nat least one unaligned fragment >= the threshold [default:\
+    \ 500]"
   synonyms:
   - --unaligned-part-size
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not distinguish contigs with >= 50% unaligned bases as a separate
-    group By default, QUAST does not count misassemblies in them
+  description: "Do not distinguish contigs with >= 50% unaligned bases as a separate\
+    \ group\nBy default, QUAST does not count misassemblies in them"
   synonyms:
   - --skip-unaligned-mis-contigs
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Reference genome may be fragmented into small pieces (e.g. scaffolded
-    reference) '
+  description: "Reference genome may be fragmented into small pieces (e.g. scaffolded\
+    \ reference)\n--fragmented-max-indent  <int>    Mark translocation as fake if\
+    \ both alignments are located no further than N bases\nfrom the ends of the reference\
+    \ fragments [default: 85]\nRequires --fragmented option\n--upper-bound-assembly\
+    \            Simulate upper bound assembly based on the reference genome and reads\n\
+    --upper-bound-min-con  <int>      Minimal number of 'connecting reads' needed\
+    \ for joining upper bound contigs into a scaffold\n[default: 2 for mate-pairs\
+    \ and 1 for long reads]\n--est-insert-size  <int>          Use provided insert\
+    \ size in upper bound assembly simulation [default: auto detect from reads or\
+    \ 255]\n--plots-format  <str>             Save plots in specified format [default:\
+    \ pdf].\nSupported formats: emf, eps, pdf, png, ps, raw, rgba, svg, svgz\n--memory-efficient\
+    \                Run everything using one thread, separately per each assembly.\n\
+    This may significantly reduce memory consumption on large genomes\n--space-efficient\
+    \                 Create only reports and plots files. Aux files including .stdout,\
+    \ .stderr, .coords will not be created.\nThis may significantly reduce space consumption\
+    \ on large genomes. Icarus viewers also will not be built"
   synonyms:
   - --fragmented
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '<int>    Mark translocation as fake if both alignments are located
-    no further than N bases  from the ends of the reference fragments [default: 85]
-    Requires --fragmented option'
-  synonyms:
-  - --fragmented-max-indent
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Simulate upper bound assembly based on the reference genome and reads
-  synonyms:
-  - --upper-bound-assembly
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "<int>      Minimal number of 'connecting reads' needed for joining\
-    \ upper bound contigs into a scaffold [default: 2 for mate-pairs and 1 for long\
-    \ reads]"
-  synonyms:
-  - --upper-bound-min-con
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '<int>          Use provided insert size in upper bound assembly simulation
-    [default: auto detect from reads or 255]'
-  synonyms:
-  - --est-insert-size
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '<str>             Save plots in specified format [default: pdf]. Supported
-    formats: emf, eps, pdf, png, ps, raw, rgba, svg, svgz'
-  synonyms:
-  - --plots-format
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Run everything using one thread, separately per each assembly. This
-    may significantly reduce memory consumption on large genomes
-  synonyms:
-  - --memory-efficient
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Create only reports and plots files. Aux files including .stdout, .stderr,
-    .coords will not be created. This may significantly reduce space consumption on
-    large genomes. Icarus viewers also will not be built
-  synonyms:
-  - --space-efficient
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <filename>              File with interlaced forward and reverse paired-end
-    reads. (in FASTQ format, may be gzipped)
-  synonyms:
-  - --pe12
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <filename>              File with forward mate-pair reads (in FASTQ
+  description: <filename>              File with forward paired-end reads (in FASTQ
     format, may be gzipped)
   synonyms:
-  - --mp1
+  - '-1'
+  - --pe1
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: <filename>              File with reverse mate-pair reads (in FASTQ
-    format, may be gzipped)
+  description: "<filename>              File with reverse paired-end reads (in FASTQ\
+    \ format, may be gzipped)\n--pe12    <filename>              File with interlaced\
+    \ forward and reverse paired-end reads. (in FASTQ format, may be gzipped)\n--mp1\
+    \     <filename>              File with forward mate-pair reads (in FASTQ format,\
+    \ may be gzipped)\n--mp2     <filename>              File with reverse mate-pair\
+    \ reads (in FASTQ format, may be gzipped)\n--mp12    <filename>              File\
+    \ with interlaced forward and reverse mate-pair reads (in FASTQ format, may be\
+    \ gzipped)\n--single  <filename>              File with unpaired short reads (in\
+    \ FASTQ format, may be gzipped)\n--pacbio     <filename>           File with PacBio\
+    \ reads (in FASTQ format, may be gzipped)\n--nanopore   <filename>           File\
+    \ with Oxford Nanopore reads (in FASTQ format, may be gzipped)\n--ref-sam <filename>\
+    \              SAM alignment file obtained by aligning reads to reference genome\
+    \ file\n--ref-bam <filename>              BAM alignment file obtained by aligning\
+    \ reads to reference genome file\n--sam     <filename,filename,...> Comma-separated\
+    \ list of SAM alignment files obtained by aligning reads to assemblies\n(use the\
+    \ same order as for files with contigs)\n--bam     <filename,filename,...> Comma-separated\
+    \ list of BAM alignment files obtained by aligning reads to assemblies\n(use the\
+    \ same order as for files with contigs)\nReads (or SAM/BAM file) are used for\
+    \ structural variation detection and\ncoverage histogram building in Icarus\n\
+    --sv-bedpe  <filename>            File with structural variations (in BEDPE format)"
   synonyms:
-  - --mp2
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <filename>              File with interlaced forward and reverse mate-pair
-    reads (in FASTQ format, may be gzipped)
-  synonyms:
-  - --mp12
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <filename>              File with unpaired short reads (in FASTQ format,
-    may be gzipped)
-  synonyms:
-  - --single
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <filename>           File with PacBio reads (in FASTQ format, may be
-    gzipped)
-  synonyms:
-  - --pacbio
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <filename>           File with Oxford Nanopore reads (in FASTQ format,
-    may be gzipped)
-  synonyms:
-  - --nanopore
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: SAM alignment file obtained by aligning reads to reference genome file
-  synonyms:
-  - --ref-sam
-  args: !SimpleFlagArg
-    name: filename
-  optional: true
-- !Flag
-  description: BAM alignment file obtained by aligning reads to reference genome file
-  synonyms:
-  - --ref-bam
-  args: !SimpleFlagArg
-    name: filename
-  optional: true
-- !Flag
-  description: <filename,filename,...> Comma-separated list of SAM alignment files
-    obtained by aligning reads to assemblies (use the same order as for files with
-    contigs)
-  synonyms:
-  - --sam
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <filename,filename,...> Comma-separated list of BAM alignment files
-    obtained by aligning reads to assemblies (use the same order as for files with
-    contigs) Reads (or SAM/BAM file) are used for structural variation detection and
-    coverage histogram building in Icarus
-  synonyms:
-  - --bam
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <filename>            File with structural variations (in BEDPE format)
-  synonyms:
-  - --sv-bedpe
+  - '-2'
+  - --pe2
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -338,9 +316,10 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Do not align reads to assemblies Reads will be aligned to reference
-    and used for coverage analysis, upper bound assembly simulation, and structural
-    variation detection. Use this option if you do not need read statistics for assemblies.
+  description: "Do not align reads to assemblies\nReads will be aligned to reference\
+    \ and used for coverage analysis,\nupper bound assembly simulation, and structural\
+    \ variation detection.\nUse this option if you do not need read statistics for\
+    \ assemblies."
   synonyms:
   - --no-read-stats
   args: !EmptyFlagArg {}
@@ -365,22 +344,33 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Run MetaQUAST without references on the data from the test_data folder,
-    output to quast_test_output. MetaQUAST will download SILVA 16S rRNA database (~170
-    Mb) for searching reference genomes Internet connection is required
+  description: "Run MetaQUAST without references on the data from the test_data folder,\
+    \ output to quast_test_output.\nMetaQUAST will download SILVA 16S rRNA database\
+    \ (~170 Mb) for searching reference genomes\nInternet connection is required"
   synonyms:
   - --test-no-ref
   args: !EmptyFlagArg {}
   optional: true
-command:
-- metaquast.py
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Print full usage message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Print version
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "MetaQUAST: Quality Assessment Tool for Metagenome Assemblies\nVersion:\
-  \ 5.0.2\n\nUsage: python /tmp/tmpnnbnltmk/bin/metaquast.py [options] <files_with_contigs>\n\
+  \ 5.0.2\n\nUsage: python /usr/local/bin/metaquast [options] <files_with_contigs>\n\
   \nOptions:\n-o  --output-dir  <dirname>       Directory to store all result files\
   \ [default: quast_results/results_<datetime>]\n-r   <filename,filename,...>    \
   \  Comma-separated list of reference genomes or directory with reference genomes\n\

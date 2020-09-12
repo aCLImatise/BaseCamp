@@ -1,4 +1,6 @@
 !Command
+command:
+- OpenPepXLLF
 positional: []
 named:
 - !Flag
@@ -96,10 +98,9 @@ named:
   - --helphelp
   args: !EmptyFlagArg {}
   optional: true
-command:
-- OpenPepXLLF
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Shows options
   synonyms:
@@ -108,100 +109,100 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
-help_text: "\nOpenPepXLLF -- Tool for protein-protein cross linking with label-free\
-  \ linkers.\nFull documentation: http://www.openms.de/documentation/TOPP_OpenPepXLLF.html\n\
-  Version: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND May 19 2020, 23:12:02, Revision:\
-  \ HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow\
-  \ C et al.. OpenMS: a flexible open-source software platform for mass spectrometry\
-  \ data analysis. Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n\
-  \  OpenPepXLLF <options>\n\nOptions (mandatory options marked with '*'):\n  -in\
-  \ <file>*                                       Input file containing the spectra.\
-  \ (valid formats: 'mzML')\n  -database <file>*                                 Input\
-  \ file containing the protein database. (valid formats: 'fasta')\n  -decoy_string\
-  \ <text>                              String that was appended (or prefixed - see\
-  \ 'prefix' flag below) to the accessions in the protein database to indicate decoy\
-  \ proteins. (default: 'DECOY_')\n  -decoy_prefix <choice>                      \
-  \      Set to true, if the decoy_string is a prefix of accessions in the protein\
-  \ database. Otherwise it is a suffix. (default: 'true' valid: 'true', 'false')\n\
-  \nPrecursor filtering settings:\n  -precursor:mass_tolerance <value>           \
-  \      Width of precursor mass tolerance window (default: '10.0')\n  -precursor:mass_tolerance_unit\
-  \ <choice>           Unit of precursor mass tolerance. (default: 'ppm' valid: 'ppm',\
-  \ 'Da')\n  -precursor:min_charge <number>                    Minimum precursor charge\
-  \ to be considered. (default: '3')\n  -precursor:max_charge <number>           \
-  \         Maximum precursor charge to be considered. (default: '7')\n  -precursor:corrections\
-  \ <numbers>                  Monoisotopic peak correction. Matches candidates for\
-  \ possible monoisotopic precursor peaks for experimental mass m and given numbers\
-  \ n at masses (m - n * (C13-C12)). These should be ordered from more extreme to\
-  \ less extreme corrections. Numbers later in the list will be preferred in case\
-  \ of ambiguities. (default: '[2 1 0]')\n\nFragment peak matching settings:\n  -fragment:mass_tolerance\
-  \ <value>                  Fragment mass tolerance (default: '20.0')\n  -fragment:mass_tolerance_xlinks\
-  \ <value>           Fragment mass tolerance for cross-link ions (default: '20.0')\n\
-  \  -fragment:mass_tolerance_unit <choice>            Unit of fragment m (default:\
-  \ 'ppm' valid: 'ppm', 'Da')\n\nPeptide modification settings:\n  -modifications:fixed\
-  \ <list>                       Fixed modifications, specified using UniMod (www.unimod.org)\
-  \ terms, e.g. 'Carbamidomethyl (C)' (valid: '15N-oxobutanoic (N-term C)', '15N-oxobutanoic\
-  \ (Protein N-term S)', '15N-oxobutanoic (Protein N-term T)', '2-dimethylsuccinyl\
-  \ (C)', '2-monomethylsuccinyl (C)', '2-nitrobenzyl (Y)', '2-succinyl (C)', '2HPG\
-  \ (R)', '3-deoxyglucosone (R)', '3-phosphoglyceryl (K)', '3sulfo (N-term)', '4-ONE\
-  \ (C)', '4-ONE (H)', '4-ONE (K)', '4-ONE+Delta:H(-2)O(-1) (C)', '4-ONE+Delta:H(-2)O(-1)\
-  \ (H)', '4-ONE+Delta:H(-2)O(-1) (K)', '4AcAllylGal (C)', 'a-type-ion (C-term)',\
-  \ 'AccQTag (K)', 'AccQTag (N-term)', 'Acetyl (C)', 'Acetyl (H)', 'Acetyl (K)', 'Acetyl\
-  \ (N-term)', 'Acetyl (Protein N-term)', 'Acetyl (S)', 'Acetyl (T)', 'Acetyl (Y)',\
-  \ 'Acetyl:13C(2) (K)', 'Acetyl:13C(2) (Protein N-term)', 'Acetyl:2H(3) (H)', 'Acetyl:2H(3)\
-  \ (K)', 'Acetyl:2H(3) (N-term)', 'Acetyl:2H(3) (Protein N-term)', 'Acetyl:2H(3)\
-  \ (S)', 'Acetyl:2H(3) (T)', 'Acetyl:2H(3) (Y)', 'Acetyldeoxyhypusine (K)', 'Acetylhypusine\
-  \ (K)', 'ADP-Ribosyl (C)', 'ADP-Ribosyl (D)', 'ADP-Ribosyl (E)', 'ADP-Ribosyl (K)',\
-  \ 'ADP-Ribosyl (N)', 'ADP-Ribosyl (R)', 'ADP-Ribosyl (S)', 'ADP-Ribosyl (T)', 'AEBS\
-  \ (H)', 'AEBS (K)', 'AEBS (Protein N-term)', 'AEBS (S)', 'AEBS (Y)', 'AEC-MAEC (S)',\
-  \ 'AEC-MAEC (T)', 'AEC-MAEC:2H(4) (S)', 'AEC-MAEC:2H(4) (T)', 'AHA-Alkyne (M)',\
-  \ 'AHA-Alkyne-KDDDD (M)', 'AHA-SS (M)', 'AHA-SS_CAM (M)', 'Ahx2+Hsl (C-term)', 'Ala->Arg\
-  \ (A)', 'Ala->Asn (A)', 'Ala->Asp (A)', 'Ala->Cys (A)', 'Ala->Gln (A)', 'Ala->Glu\
-  \ (A)', 'Ala->Gly (A)', 'Ala->His (A)', 'Ala->Lys (A)', 'Ala->Met (A)', 'Ala->Phe\
-  \ (A)', 'Ala->Pro (A)', 'Ala->Ser (A)', 'Ala->Thr (A)', 'Ala->Trp (A)', 'Ala->Tyr\
-  \ (A)', 'Ala->Val (A)', 'Ala->Xle (A)', 'Amidated (C-term)', 'Amidated (Protein\
-  \ C-term)', 'Amidine (K)', 'Amidine (N-term)', 'Amidino (C)', 'Amino (Y)', 'Ammonia-loss\
-  \ (N)', 'Ammonia-loss (N-term C)', 'Ammonia-loss (Protein N-term S)', 'Ammonia-loss\
-  \ (Protein N-term T)', 'Ammonium (C-term)', 'Ammonium (D)', 'Ammonium (E)', 'AMTzHexNAc2\
-  \ (N)', 'AMTzHexNAc2 (S)', 'AMTzHexNAc2 (T)', 'Archaeol (C)', 'Arg (N-term)', 'Arg->Ala\
-  \ (R)', 'Arg->Asn (R)', 'Arg->Asp (R)', 'Arg->Cys (R)', 'Arg->Gln (R)', 'Arg->Glu\
-  \ (R)', 'Arg->GluSA (R)', 'Arg->Gly (R)', 'Arg->His (R)', 'Arg->Lys (R)', 'Arg->Met\
-  \ (R)', 'Arg->Npo (R)', 'Arg->Orn (R)', 'Arg->Phe (R)', 'Arg->Pro (R)', 'Arg->Ser\
-  \ (R)', 'Arg->Thr (R)', 'Arg->Trp (R)', 'Arg->Tyr (R)', 'Arg->Val (R)', 'Arg->Xle\
-  \ (R)', 'Arg-loss (C-term R)', 'Arg2PG (R)', 'Argbiotinhydrazide (R)', 'AROD (C)',\
-  \ 'Asn->Ala (N)', 'Asn->Arg (N)', 'Asn->Asp (N)', 'Asn->Cys (N)', 'Asn->Gln (N)',\
-  \ 'Asn->Glu (N)', 'Asn->Gly (N)', 'Asn->His (N)', 'Asn->Lys (N)', 'Asn->Met (N)',\
-  \ 'Asn->Phe (N)', 'Asn->Pro (N)', 'Asn->Ser (N)', 'Asn->Thr (N)', 'Asn->Trp (N)',\
-  \ 'Asn->Tyr (N)', 'Asn->Val (N)', 'Asn->Xle (N)', 'Asp->Ala (D)', 'Asp->Arg (D)',\
-  \ 'Asp->Asn (D)', 'Asp->Cys (D)', 'Asp->Gln (D)', 'Asp->Glu (D)', 'Asp->Gly (D)',\
-  \ 'Asp->His (D)', 'Asp->Lys (D)', 'Asp->Met (D)', 'Asp->Phe (D)', 'Asp->Pro (D)',\
-  \ 'Asp->Ser (D)', 'Asp->Thr (D)', 'Asp->Trp (D)', 'Asp->Tyr (D)', 'Asp->Val (D)',\
-  \ 'Asp->Xle (D)', 'Atto495Maleimide (C)', 'azole (C)', 'azole (S)', 'Bacillosamine\
-  \ (N)', 'BADGE (C)', 'BDMAPP (H)', 'BDMAPP (K)', 'BDMAPP (Protein N-term)', 'BDMAPP\
-  \ (W)', 'BDMAPP (Y)', 'Benzoyl (K)', 'Benzoyl (N-term)', 'benzylguanidine (K)',\
-  \ 'beta FNA (C)', 'beta FNA (K)', 'BHT (C)', 'BHT (H)', 'BHT (K)', 'BHTOH (C)',\
-  \ 'BHTOH (H)', 'BHTOH (K)', 'Biotin (K)', 'Biotin (N-term)', 'Biotin-HPDP (C)',\
-  \ 'Biotin-PEG-PRA (M)', 'Biotin-PEO-Amine (D)', 'Biotin-PEO-Amine (E)', 'Biotin-PEO-Amine\
-  \ (Protein C-term)', 'Biotin-phenacyl (C)', 'Biotin-phenacyl (H)', 'Biotin-phenacyl\
-  \ (S)', 'Biotin-tyramide (Y)', 'Biotin:Cayman-10013 (C)', 'Biotin:Cayman-10141 (C)',\
-  \ 'Biotin:Invitrogen-M1602 (C)', 'Biotin:Sigma-B1267 (C)', 'Biotin:Thermo-21325\
-  \ (K)', 'Biotin:Thermo-21330 (K)', 'Biotin:Thermo-21330 (N-term)', 'Biotin:Thermo-21345\
-  \ (Q)', 'Biotin:Thermo-21360 (X)', 'Biotin:Thermo-21901+2H2O (C)', 'Biotin:Thermo-21901+H2O\
-  \ (C)', 'Biotin:Thermo-21911 (C)', 'Biotin:Thermo-33033 (X)', 'Biotin:Thermo-33033-H\
-  \ (X)', 'Biotin:Thermo-88310 (K)', 'Biotin:Thermo-88317 (S)', 'Biotin:Thermo-88317\
-  \ (Y)', 'biotinAcrolein298 (C)', 'biotinAcrolein298 (H)', 'biotinAcrolein298 (K)',\
-  \ 'biotinAcrolein298 (Protein N-term)', 'BisANS (K)', 'bisANS-sulfonates (K)', 'bisANS-sulfonates\
-  \ (S)', 'bisANS-sulfonates (T)', 'BITC (C)', 'BITC (K)', 'BITC (N-term)', 'BMOE\
-  \ (C)', 'BMP-piperidinol (C)', 'BMP-piperidinol (M)', 'Bodipy (C)', 'Brij35 (N-term)',\
-  \ 'Brij58 (N-term)', 'Bromo (F)', 'Bromo (H)', 'Bromo (W)', 'Bromo (Y)', 'Bromobimane\
-  \ (C)', 'Butyryl (K)', 'C8-QAT (K)', 'C8-QAT (N-term)', 'CAF (N-term)', 'CAMthiopropanoyl\
-  \ (K)', 'CAMthiopropanoyl (Protein N-term)', 'Can-FP-biotin (S)', 'Can-FP-biotin\
-  \ (T)', 'Can-FP-biotin (Y)', 'Carbamidomethyl (C)', 'Carbamidomethyl (D)', 'Carbamidomethyl\
-  \ (E)', 'Carbamidomethyl (H)', 'Carbamidomethyl (K)', 'Carbamidomethyl (N-term)',\
-  \ 'Carbamidomethyl (S)', 'Carbamidomethyl (T)', 'Carbamidomethyl (U)', 'Carbamidomethyl\
-  \ (Y)', 'CarbamidomethylDTT (C)', 'Carbamyl (C)', 'Carbamyl (K)', 'Carbamyl (M)',\
-  \ 'Carbamyl (N-term)', 'Carbamyl (Protein N-term)', 'Carbamyl (R)', 'Carbamyl (S)',\
-  \ 'Carbamyl (T)', 'Carbamyl (Y)', 'Carbofuran (S)', 'Carboxy (D)', 'Carboxy (E)',\
-  \ 'Carboxy (K)', 'Carboxy (Protein N-term M)', 'Carboxy (W)', 'Carboxy->Thiocarboxy\
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nOpenPepXLLF --\
+  \ Tool for protein-protein cross linking with label-free linkers.\nFull documentation:\
+  \ http://www.openms.de/documentation/TOPP_OpenPepXLLF.html\nVersion: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND\
+  \ Jul 16 2020, 21:29:13, Revision: HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL,\
+  \ Sachsenberg T, Aiche S, Bielow C et al.. OpenMS: a flexible open-source software\
+  \ platform for mass spectrometry data analysis. Nat Meth. 2016; 13, 9: 741-748.\
+  \ doi:10.1038/nmeth.3959.\n\nUsage:\n  OpenPepXLLF <options>\n\nOptions (mandatory\
+  \ options marked with '*'):\n  -in <file>*                                     \
+  \  Input file containing the spectra. (valid formats: 'mzML')\n  -database <file>*\
+  \                                 Input file containing the protein database. (valid\
+  \ formats: 'fasta')\n  -decoy_string <text>                              String\
+  \ that was appended (or prefixed - see 'prefix' flag below) to the accessions in\
+  \ the protein database to indicate decoy proteins. (default: 'DECOY_')\n  -decoy_prefix\
+  \ <choice>                            Set to true, if the decoy_string is a prefix\
+  \ of accessions in the protein database. Otherwise it is a suffix. (default: 'true'\
+  \ valid: 'true', 'false')\n\nPrecursor filtering settings:\n  -precursor:mass_tolerance\
+  \ <value>                 Width of precursor mass tolerance window (default: '10.0')\n\
+  \  -precursor:mass_tolerance_unit <choice>           Unit of precursor mass tolerance.\
+  \ (default: 'ppm' valid: 'ppm', 'Da')\n  -precursor:min_charge <number>        \
+  \            Minimum precursor charge to be considered. (default: '3')\n  -precursor:max_charge\
+  \ <number>                    Maximum precursor charge to be considered. (default:\
+  \ '7')\n  -precursor:corrections <numbers>                  Monoisotopic peak correction.\
+  \ Matches candidates for possible monoisotopic precursor peaks for experimental\
+  \ mass m and given numbers n at masses (m - n * (C13-C12)). These should be ordered\
+  \ from more extreme to less extreme corrections. Numbers later in the list will\
+  \ be preferred in case of ambiguities. (default: '[2 1 0]')\n\nFragment peak matching\
+  \ settings:\n  -fragment:mass_tolerance <value>                  Fragment mass tolerance\
+  \ (default: '20.0')\n  -fragment:mass_tolerance_xlinks <value>           Fragment\
+  \ mass tolerance for cross-link ions (default: '20.0')\n  -fragment:mass_tolerance_unit\
+  \ <choice>            Unit of fragment m (default: 'ppm' valid: 'ppm', 'Da')\n\n\
+  Peptide modification settings:\n  -modifications:fixed <list>                  \
+  \     Fixed modifications, specified using UniMod (www.unimod.org) terms, e.g. 'Carbamidomethyl\
+  \ (C)' (valid: '15N-oxobutanoic (N-term C)', '15N-oxobutanoic (Protein N-term S)',\
+  \ '15N-oxobutanoic (Protein N-term T)', '2-dimethylsuccinyl (C)', '2-monomethylsuccinyl\
+  \ (C)', '2-nitrobenzyl (Y)', '2-succinyl (C)', '2HPG (R)', '3-deoxyglucosone (R)',\
+  \ '3-phosphoglyceryl (K)', '3sulfo (N-term)', '4-ONE (C)', '4-ONE (H)', '4-ONE (K)',\
+  \ '4-ONE+Delta:H(-2)O(-1) (C)', '4-ONE+Delta:H(-2)O(-1) (H)', '4-ONE+Delta:H(-2)O(-1)\
+  \ (K)', '4AcAllylGal (C)', 'a-type-ion (C-term)', 'AccQTag (K)', 'AccQTag (N-term)',\
+  \ 'Acetyl (C)', 'Acetyl (H)', 'Acetyl (K)', 'Acetyl (N-term)', 'Acetyl (Protein\
+  \ N-term)', 'Acetyl (S)', 'Acetyl (T)', 'Acetyl (Y)', 'Acetyl:13C(2) (K)', 'Acetyl:13C(2)\
+  \ (Protein N-term)', 'Acetyl:2H(3) (H)', 'Acetyl:2H(3) (K)', 'Acetyl:2H(3) (N-term)',\
+  \ 'Acetyl:2H(3) (Protein N-term)', 'Acetyl:2H(3) (S)', 'Acetyl:2H(3) (T)', 'Acetyl:2H(3)\
+  \ (Y)', 'Acetyldeoxyhypusine (K)', 'Acetylhypusine (K)', 'ADP-Ribosyl (C)', 'ADP-Ribosyl\
+  \ (D)', 'ADP-Ribosyl (E)', 'ADP-Ribosyl (K)', 'ADP-Ribosyl (N)', 'ADP-Ribosyl (R)',\
+  \ 'ADP-Ribosyl (S)', 'ADP-Ribosyl (T)', 'AEBS (H)', 'AEBS (K)', 'AEBS (Protein N-term)',\
+  \ 'AEBS (S)', 'AEBS (Y)', 'AEC-MAEC (S)', 'AEC-MAEC (T)', 'AEC-MAEC:2H(4) (S)',\
+  \ 'AEC-MAEC:2H(4) (T)', 'AHA-Alkyne (M)', 'AHA-Alkyne-KDDDD (M)', 'AHA-SS (M)',\
+  \ 'AHA-SS_CAM (M)', 'Ahx2+Hsl (C-term)', 'Ala->Arg (A)', 'Ala->Asn (A)', 'Ala->Asp\
+  \ (A)', 'Ala->Cys (A)', 'Ala->Gln (A)', 'Ala->Glu (A)', 'Ala->Gly (A)', 'Ala->His\
+  \ (A)', 'Ala->Lys (A)', 'Ala->Met (A)', 'Ala->Phe (A)', 'Ala->Pro (A)', 'Ala->Ser\
+  \ (A)', 'Ala->Thr (A)', 'Ala->Trp (A)', 'Ala->Tyr (A)', 'Ala->Val (A)', 'Ala->Xle\
+  \ (A)', 'Amidated (C-term)', 'Amidated (Protein C-term)', 'Amidine (K)', 'Amidine\
+  \ (N-term)', 'Amidino (C)', 'Amino (Y)', 'Ammonia-loss (N)', 'Ammonia-loss (N-term\
+  \ C)', 'Ammonia-loss (Protein N-term S)', 'Ammonia-loss (Protein N-term T)', 'Ammonium\
+  \ (C-term)', 'Ammonium (D)', 'Ammonium (E)', 'AMTzHexNAc2 (N)', 'AMTzHexNAc2 (S)',\
+  \ 'AMTzHexNAc2 (T)', 'Archaeol (C)', 'Arg (N-term)', 'Arg->Ala (R)', 'Arg->Asn (R)',\
+  \ 'Arg->Asp (R)', 'Arg->Cys (R)', 'Arg->Gln (R)', 'Arg->Glu (R)', 'Arg->GluSA (R)',\
+  \ 'Arg->Gly (R)', 'Arg->His (R)', 'Arg->Lys (R)', 'Arg->Met (R)', 'Arg->Npo (R)',\
+  \ 'Arg->Orn (R)', 'Arg->Phe (R)', 'Arg->Pro (R)', 'Arg->Ser (R)', 'Arg->Thr (R)',\
+  \ 'Arg->Trp (R)', 'Arg->Tyr (R)', 'Arg->Val (R)', 'Arg->Xle (R)', 'Arg-loss (C-term\
+  \ R)', 'Arg2PG (R)', 'Argbiotinhydrazide (R)', 'AROD (C)', 'Asn->Ala (N)', 'Asn->Arg\
+  \ (N)', 'Asn->Asp (N)', 'Asn->Cys (N)', 'Asn->Gln (N)', 'Asn->Glu (N)', 'Asn->Gly\
+  \ (N)', 'Asn->His (N)', 'Asn->Lys (N)', 'Asn->Met (N)', 'Asn->Phe (N)', 'Asn->Pro\
+  \ (N)', 'Asn->Ser (N)', 'Asn->Thr (N)', 'Asn->Trp (N)', 'Asn->Tyr (N)', 'Asn->Val\
+  \ (N)', 'Asn->Xle (N)', 'Asp->Ala (D)', 'Asp->Arg (D)', 'Asp->Asn (D)', 'Asp->Cys\
+  \ (D)', 'Asp->Gln (D)', 'Asp->Glu (D)', 'Asp->Gly (D)', 'Asp->His (D)', 'Asp->Lys\
+  \ (D)', 'Asp->Met (D)', 'Asp->Phe (D)', 'Asp->Pro (D)', 'Asp->Ser (D)', 'Asp->Thr\
+  \ (D)', 'Asp->Trp (D)', 'Asp->Tyr (D)', 'Asp->Val (D)', 'Asp->Xle (D)', 'Atto495Maleimide\
+  \ (C)', 'azole (C)', 'azole (S)', 'Bacillosamine (N)', 'BADGE (C)', 'BDMAPP (H)',\
+  \ 'BDMAPP (K)', 'BDMAPP (Protein N-term)', 'BDMAPP (W)', 'BDMAPP (Y)', 'Benzoyl\
+  \ (K)', 'Benzoyl (N-term)', 'benzylguanidine (K)', 'beta FNA (C)', 'beta FNA (K)',\
+  \ 'BHT (C)', 'BHT (H)', 'BHT (K)', 'BHTOH (C)', 'BHTOH (H)', 'BHTOH (K)', 'Biotin\
+  \ (K)', 'Biotin (N-term)', 'Biotin-HPDP (C)', 'Biotin-PEG-PRA (M)', 'Biotin-PEO-Amine\
+  \ (D)', 'Biotin-PEO-Amine (E)', 'Biotin-PEO-Amine (Protein C-term)', 'Biotin-phenacyl\
+  \ (C)', 'Biotin-phenacyl (H)', 'Biotin-phenacyl (S)', 'Biotin-tyramide (Y)', 'Biotin:Cayman-10013\
+  \ (C)', 'Biotin:Cayman-10141 (C)', 'Biotin:Invitrogen-M1602 (C)', 'Biotin:Sigma-B1267\
+  \ (C)', 'Biotin:Thermo-21325 (K)', 'Biotin:Thermo-21330 (K)', 'Biotin:Thermo-21330\
+  \ (N-term)', 'Biotin:Thermo-21345 (Q)', 'Biotin:Thermo-21360 (X)', 'Biotin:Thermo-21901+2H2O\
+  \ (C)', 'Biotin:Thermo-21901+H2O (C)', 'Biotin:Thermo-21911 (C)', 'Biotin:Thermo-33033\
+  \ (X)', 'Biotin:Thermo-33033-H (X)', 'Biotin:Thermo-88310 (K)', 'Biotin:Thermo-88317\
+  \ (S)', 'Biotin:Thermo-88317 (Y)', 'biotinAcrolein298 (C)', 'biotinAcrolein298 (H)',\
+  \ 'biotinAcrolein298 (K)', 'biotinAcrolein298 (Protein N-term)', 'BisANS (K)', 'bisANS-sulfonates\
+  \ (K)', 'bisANS-sulfonates (S)', 'bisANS-sulfonates (T)', 'BITC (C)', 'BITC (K)',\
+  \ 'BITC (N-term)', 'BMOE (C)', 'BMP-piperidinol (C)', 'BMP-piperidinol (M)', 'Bodipy\
+  \ (C)', 'Brij35 (N-term)', 'Brij58 (N-term)', 'Bromo (F)', 'Bromo (H)', 'Bromo (W)',\
+  \ 'Bromo (Y)', 'Bromobimane (C)', 'Butyryl (K)', 'C8-QAT (K)', 'C8-QAT (N-term)',\
+  \ 'CAF (N-term)', 'CAMthiopropanoyl (K)', 'CAMthiopropanoyl (Protein N-term)', 'Can-FP-biotin\
+  \ (S)', 'Can-FP-biotin (T)', 'Can-FP-biotin (Y)', 'Carbamidomethyl (C)', 'Carbamidomethyl\
+  \ (D)', 'Carbamidomethyl (E)', 'Carbamidomethyl (H)', 'Carbamidomethyl (K)', 'Carbamidomethyl\
+  \ (N-term)', 'Carbamidomethyl (S)', 'Carbamidomethyl (T)', 'Carbamidomethyl (U)',\
+  \ 'Carbamidomethyl (Y)', 'CarbamidomethylDTT (C)', 'Carbamyl (C)', 'Carbamyl (K)',\
+  \ 'Carbamyl (M)', 'Carbamyl (N-term)', 'Carbamyl (Protein N-term)', 'Carbamyl (R)',\
+  \ 'Carbamyl (S)', 'Carbamyl (T)', 'Carbamyl (Y)', 'Carbofuran (S)', 'Carboxy (D)',\
+  \ 'Carboxy (E)', 'Carboxy (K)', 'Carboxy (Protein N-term M)', 'Carboxy (W)', 'Carboxy->Thiocarboxy\
   \ (Protein C-term G)', 'Carboxyethyl (H)', 'Carboxyethyl (K)', 'Carboxyethylpyrrole\
   \ (K)', 'Carboxymethyl (C)', 'Carboxymethyl (K)', 'Carboxymethyl (N-term)', 'Carboxymethyl\
   \ (U)', 'Carboxymethyl (W)', 'Carboxymethyl:13C(2) (C)', 'CarboxymethylDMAP (N-term)',\
@@ -1535,25 +1536,25 @@ help_text: "\nOpenPepXLLF -- Tool for protein-protein cross linking with label-f
   \ in the search. (default: '5')\n  -peptide:missed_cleavages <number>          \
   \      Number of missed cleavages. (default: '2')\n  -peptide:enzyme <choice>  \
   \                        The enzyme used for peptide digestion. (default: 'Trypsin'\
-  \ valid: 'Trypsin', 'proline endopeptidase', 'glutamyl endopeptidase', 'Alpha-lytic\
-  \ protease', '2-iodobenzoate', 'Asp-N/B', 'Asp-N_ambic', 'Trypsin/P', 'V8-DE', 'V8-E',\
-  \ 'leukocyte elastase', 'Arg-C/P', 'iodosobenzoate', 'staphylococcal protease/D',\
+  \ valid: 'Asp-N/B', 'Asp-N_ambic', 'no cleavage', 'unspecific cleavage', 'Chymotrypsin',\
+  \ 'Chymotrypsin/P', 'Lys-C/P', 'PepsinA', 'TrypChymo', 'Trypsin/P', 'Lys-C', 'Lys-N',\
+  \ 'V8-DE', 'V8-E', 'leukocyte elastase', 'proline endopeptidase', 'glutamyl endopeptidase',\
+  \ 'Alpha-lytic protease', '2-iodobenzoate', 'iodosobenzoate', 'staphylococcal protease/D',\
   \ 'proline-endopeptidase/HKR', 'Glu-C+P', 'PepsinA + P', 'cyanogen-bromide', 'Clostripain/P',\
-  \ 'elastase-trypsin-chymotrypsin', 'no cleavage', 'unspecific cleavage', 'Chymotrypsin',\
-  \ 'Chymotrypsin/P', 'CNBr', 'Formic_acid', 'Lys-C', 'Asp-N', 'Lys-N', 'Lys-C/P',\
-  \ 'PepsinA', 'TrypChymo', 'Arg-C')\n\nDescription of the cross-linker reagent:\n\
-  \  -cross_linker:residue1 <list>                     Comma separated residues, that\
-  \ the first side of a bifunctional cross-linker can attach to (default: '[K N-term]')\n\
-  \  -cross_linker:residue2 <list>                     Comma separated residues, that\
-  \ the second side of a bifunctional cross-linker can attach to (default: '[K N-term]')\n\
-  \  -cross_linker:mass <value>                        Mass of the light cross-linker,\
-  \ linking two residues on one or two peptides (default: '138.068079600000004')\n\
-  \  -cross_linker:mass_mono_link <values>             Possible masses of the linker,\
-  \ when attached to only one peptide (default: '[156.078644309999987 155.094628714999999]')\n\
-  \  -cross_linker:name <text>                         Name of the searched cross-link,\
-  \ used to resolve ambiguity of equal masses (e.g. DSS or BS3) (default: 'DSS')\n\
-  \nAdditional algorithm settings:\n  -algorithm:number_top_hits <number>        \
-  \       Number of top hits reported for each spectrum pair (default: '5')\n  -algorithm:use_sequence_tags\
+  \ 'elastase-trypsin-chymotrypsin', 'Trypsin', 'Asp-N', 'Arg-C/P', 'Arg-C', 'CNBr',\
+  \ 'Formic_acid')\n\nDescription of the cross-linker reagent:\n  -cross_linker:residue1\
+  \ <list>                     Comma separated residues, that the first side of a\
+  \ bifunctional cross-linker can attach to (default: '[K N-term]')\n  -cross_linker:residue2\
+  \ <list>                     Comma separated residues, that the second side of a\
+  \ bifunctional cross-linker can attach to (default: '[K N-term]')\n  -cross_linker:mass\
+  \ <value>                        Mass of the light cross-linker, linking two residues\
+  \ on one or two peptides (default: '138.068079600000004')\n  -cross_linker:mass_mono_link\
+  \ <values>             Possible masses of the linker, when attached to only one\
+  \ peptide (default: '[156.078644309999987 155.094628714999999]')\n  -cross_linker:name\
+  \ <text>                         Name of the searched cross-link, used to resolve\
+  \ ambiguity of equal masses (e.g. DSS or BS3) (default: 'DSS')\n\nAdditional algorithm\
+  \ settings:\n  -algorithm:number_top_hits <number>               Number of top hits\
+  \ reported for each spectrum pair (default: '5')\n  -algorithm:use_sequence_tags\
   \                      Use sequence tags (de novo sequencing of short fragments)\
   \ to filter out candidates before scoring. This will make the search faster, but\
   \ can impact the sensitivity positively or negatively, depending on the dataset.\n\

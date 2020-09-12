@@ -1,5 +1,12 @@
 !Command
-positional: []
+command:
+- phyluce_align_filter_alignments
+positional:
+- !Positional
+  description: '[--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]'
+  position: 0
+  name: OUTPUT
+  optional: false
 named:
 - !Flag
   description: The directory containing the alignment files
@@ -21,12 +28,12 @@ named:
   - --input-format
   args: !ChoiceFlagArg
     choices: !!set
-      nexus:
-      clustal:
       fasta:
-      stockholm:
-      emboss:
       phylip:
+      stockholm:
+      nexus:
+      emboss:
+      clustal:
   optional: true
 - !Flag
   description: Output only alignments --containing-data-for a taxon
@@ -55,8 +62,8 @@ named:
   - --verbosity
   args: !ChoiceFlagArg
     choices: !!set
-      WARN:
       CRITICAL:
+      WARN:
       INFO:
   optional: true
 - !Flag
@@ -66,10 +73,9 @@ named:
   args: !SimpleFlagArg
     name: LOG_PATH
   optional: true
-command:
-- phyluce_align_filter_alignments
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

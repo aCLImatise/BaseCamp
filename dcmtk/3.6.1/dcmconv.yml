@@ -1,4 +1,6 @@
 !Command
+command:
+- dcmconv
 positional:
 - !Positional
   description: DICOM input filename to be converted
@@ -11,6 +13,12 @@ positional:
   name: dcmfile-out
   optional: false
 named:
+- !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: --quiet                quiet mode, print no warnings and errors
   synonyms:
@@ -30,15 +38,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-level            [l]evel: string constant (fatal, error, warn,
-    info, debug, trace) use level l for the logger'
+  description: "--log-level            [l]evel: string constant\n(fatal, error, warn,\
+    \ info, debug, trace)\nuse level l for the logger"
   synonyms:
   - -ll
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-config           [f]ilename: string use config file f for the
-    logger'
+  description: "--log-config           [f]ilename: string\nuse config file f for the\
+    \ logger"
   synonyms:
   - -lc
   args: !EmptyFlagArg {}
@@ -112,6 +120,27 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: retain elements as UN (default)
+  synonyms:
+  - -uc
+  - --retain-un
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: read as defined in dictionary (default)
+  synonyms:
+  - -sq
+  - --maxlength-dict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use delimitation items from dataset (default)
+  synonyms:
+  - -rd
+  - --use-delim-items
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: handle parse errors and stop parsing (default)
   synonyms:
   - -Ep
@@ -126,16 +155,16 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: try to approximate characters that cannot be represented through similar
-    looking characters
+  description: "try to approximate characters that cannot be\nrepresented through\
+    \ similar looking characters"
   synonyms:
   - -Ct
   - --transliterate
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: discard characters that cannot be represented in destination character
-    set
+  description: "discard characters that cannot be represented\nin destination character\
+    \ set"
   synonyms:
   - -Cd
   - --discard-illegal
@@ -167,26 +196,34 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: --length-undefined     write with undefined lengths
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: abort on oversized explicit sequences/items
   synonyms:
   - -eo
   - --abort-oversized
   args: !EmptyFlagArg {}
   optional: true
-command:
-- dcmconv
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: --help                 print this help text and exit --version              print
-    version information and exit --arguments            print expanded command line
-    arguments
+  description: --help                 print this help text and exit
   synonyms:
   - -h
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "$dcmtk: dcmconv v3.6.1 2016-11-02 $\n\ndcmconv: Convert DICOM file encoding\n\
   usage: dcmconv [options] dcmfile-in dcmfile-out\n\nparameters:\n  dcmfile-in   \
   \                 DICOM input filename to be converted\n  dcmfile-out          \

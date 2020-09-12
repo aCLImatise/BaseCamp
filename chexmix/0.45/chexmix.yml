@@ -1,6 +1,15 @@
 !Command
+command:
+- chexmix
 positional: []
 named:
+- !Flag
+  description: ''
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: output file prefix
+  optional: true
 - !Flag
   description: <number of threads to use (default=1)>
   synonyms:
@@ -19,6 +28,54 @@ named:
   synonyms:
   - --config
   args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: AND --seq <fasta seq directory reqd if finding motif>
+  synonyms:
+  - --geninfo
+  args: !SimpleFlagArg
+    name: genome info file
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --back
+  args: !SimpleFlagArg
+    name: Markov background model file reqd if finding motif
+  optional: true
+- !Flag
+  description: AND --format <SAM/BED/IDX>
+  synonyms:
+  - --expt
+  args: !SimpleFlagArg
+    name: file name
+  optional: true
+- !Flag
+  description: <file name (optional argument. must be same format as expt files)>
+  synonyms:
+  - --ctrl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <experiment design file name to use instead of --expt and --ctrl; see
+    website for format>
+  synonyms:
+  - --design
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<fixed per base limit (default: estimated from background model)>'
+  synonyms:
+  - --fixedpb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --poissongausspb
+  args: !SimpleFlagArg
+    name: filter per base using a Poisson threshold parameterized by a local Gaussian
+      sliding window
   optional: true
 - !Flag
   description: '[flag to use non-unique reads]'
@@ -83,6 +140,77 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: <max. model update rounds (default=3)>
+  synonyms:
+  - --round
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <max. window size for running a mixture model over binding events (default=2000)>
+  synonyms:
+  - --bmwindowmax
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[flag to turn off binding model updates]'
+  synonyms:
+  - --nomodelupdate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <minimum number of events to support an update using read distributions
+    (default=100)>
+  synonyms:
+  - --minmodelupdateevents
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <Poisson log threshold for potential region scanning (default=-6)>
+  synonyms:
+  - --prlogconf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<binding events must have at least this number of reads (default:
+    set automatically)>'
+  synonyms:
+  - --fixedalpha
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <alpha scaling factor; increase for stricter event calls (default=1.0)>
+  synonyms:
+  - --alphascale
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <beta scaling factor; prior on subtype assignment (default=0.05)>
+  synonyms:
+  - --betascale
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <epsilon scaling factor; increase for more weight on motif in subtype
+    assignment (default=0.2)>
+  synonyms:
+  - --epsilonscale
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <subtypes must have at least this percentage of associated binding
+    events; increase for fewer subtypes (default=0.05)>
+  synonyms:
+  - --minsubtypefrac
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --peakf
+  args: !SimpleFlagArg
+    name: file of peaks to initialize component positions
+  optional: true
+- !Flag
   description: OR --excludebed <file of regions to ignore in bed format>
   synonyms:
   - --exclude
@@ -115,6 +243,13 @@ named:
   synonyms:
   - --lenientplus
   args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --motfile
+  args: !SimpleFlagArg
+    name: file of motifs in transfac format to initialize subtype motifs
   optional: true
 - !Flag
   description: '<path to the meme bin dir (default: meme is in $PATH)>'
@@ -228,10 +363,9 @@ named:
   - --minfold
   args: !EmptyFlagArg {}
   optional: true
-command:
-- chexmix
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

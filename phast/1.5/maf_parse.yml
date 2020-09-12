@@ -1,4 +1,6 @@
 !Command
+command:
+- maf_parse
 positional:
 - !Positional
   description: ''
@@ -7,17 +9,29 @@ positional:
   optional: false
 named:
 - !Flag
-  description: Pretty-print alignment (use '.' when character matches corresponding
-    character in first sequence).  Ignored if --out-format SS is selected.
+  description: "|PHYLIP|FASTA|MPM|SS\n(Default MAF).  Output file format.  SS format\
+    \ is only\navailable un-ordered.  Note that some options, which involve\nreversing\
+    \ alignments based on strand, or stripping gaps,\ncannot be output in MAF format\
+    \ and use FASTA by default.\nAlso note that when output format is not MAF, the\
+    \ entire\noutput must be loaded into memory."
+  synonyms:
+  - --out-format
+  - -o
+  args: !SimpleFlagArg
+    name: MAF
+  optional: true
+- !Flag
+  description: "Pretty-print alignment (use '.' when character matches\ncorresponding\
+    \ character in first sequence).  Ignored if\n--out-format SS is selected."
   synonyms:
   - --pretty
   - -p
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Start index of sub-alignment (indexing starts with 1). Coordinates
-    are in terms of the reference sequence unless the --no-refseq option is used,
-    in which case they are in terms of alignment columns.  Default is 1.
+  description: "Start index of sub-alignment (indexing starts with 1).\nCoordinates\
+    \ are in terms of the reference sequence unless\nthe --no-refseq option is used,\
+    \ in which case they are in\nterms of alignment columns.  Default is 1."
   synonyms:
   - --start
   - -s
@@ -25,8 +39,8 @@ named:
     name: start_col
   optional: true
 - !Flag
-  description: End index of sub-alignment.  Default is length of alignment. Coordinates
-    defined as in --start option, above.
+  description: "End index of sub-alignment.  Default is length of alignment.\nCoordinates\
+    \ defined as in --start option, above."
   synonyms:
   - --end
   - -e
@@ -34,9 +48,9 @@ named:
     name: end_col
   optional: true
 - !Flag
-  description: Comma-separated list of sequences to include (default) exclude (if
-    --exclude).  Indicate by sequence number or name (numbering starts with 1 and
-    is evaluated *after* --order is applied).
+  description: "Comma-separated list of sequences to include (default)\nexclude (if\
+    \ --exclude).  Indicate by sequence number or name\n(numbering starts with 1 and\
+    \ is evaluated *after* --order is\napplied)."
   synonyms:
   - --seqs
   - -l
@@ -51,8 +65,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Change order of rows in alignment to match sequence names specified
-    in name_list.  The first name in the alignment becomes the reference sequence.
+  description: "Change order of rows in alignment to match sequence names\nspecified\
+    \ in name_list.  The first name in the alignment becomes\nthe reference sequence."
   synonyms:
   - --order
   - -O
@@ -60,19 +74,20 @@ named:
     name: name_list
   optional: true
 - !Flag
-  description: Do not assume first sequence in MAF is refseq.  Instead, use coordinates  given
-    by absolute position in alignment (starting from 1).
+  description: "Do not assume first sequence in MAF is refseq.  Instead, use\ncoordinates\
+    \  given by absolute position in alignment (starting\nfrom 1)."
   synonyms:
   - --no-refseq
   - -n
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Split MAF into pieces by length, and puts output in  outRootX.maf,
-    where X=1,2,...,numPieces.  outRoot can be modified with --out-root, and the minimum
-    number of digits in X can be modified with --out-root-digits. Splits between blocks,
-    so that each output file does not exceed specified length.  By default, length
-    is counted by distance spanned in alignment by refseq, unless --no-refseq is specified.
+  description: "Split MAF into pieces by length, and puts output in\noutRootX.maf,\
+    \ where X=1,2,...,numPieces.  outRoot can be\nmodified with --out-root, and the\
+    \ minimum number of digits in X\ncan be modified with --out-root-digits.\nSplits\
+    \ between blocks, so that each output file does not exceed\nspecified length.\
+    \  By default, length is counted by distance\nspanned in alignment by refseq,\
+    \ unless --no-refseq is specified."
   synonyms:
   - --split
   - -S
@@ -80,7 +95,8 @@ named:
     name: length
   optional: true
 - !Flag
-  description: Filename root for output files produced by --split (default "maf_parse").
+  description: "Filename root for output files produced by --split (default\n\"maf_parse\"\
+    )."
   synonyms:
   - --out-root
   - -r
@@ -88,8 +104,8 @@ named:
     name: name
   optional: true
 - !Flag
-  description: (for use with --split).  The minimum number of digits used to  index
-    each output file produced by split.
+  description: "(for use with --split).  The minimum number of digits used to\nindex\
+    \ each output file produced by split."
   synonyms:
   - --out-root-digits
   - -d
@@ -97,8 +113,49 @@ named:
     name: numdigits
   optional: true
 - !Flag
-  description: (Requires --features).  Split by groups in annotation file, as  defined
-    by specified tag.
+  description: "Annotations file.  May be GFF, BED, or genepred format.\nCoordinates\
+    \ assumed to be in frame of first sequence of\nalignment (reference sequence).\
+    \  By default, outputs subset of\nMAF which are labeled in annotations file. \
+    \ But can be used with\n--by-category, --by-group, and/or --do-cats to split MAF\
+    \ by\nannotation type.  Or if used with --mask-features, is only used\nto determine\
+    \ regions to mask.  Implies --strip-i-lines,\n--strip-e-lines"
+  synonyms:
+  - --features
+  - -g
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: "(Requires --features).  Split by category, as defined by\nannotations\
+    \ file and (optionally) category map (see --catmap)."
+  synonyms:
+  - --by-category
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(For use with --by-category) Output sub-alignments for only the\n\
+    specified categories."
+  synonyms:
+  - --do-cats
+  - -C
+  args: !SimpleFlagArg
+    name: cat_list
+  optional: true
+- !Flag
+  description: "|<string>\n(Optionally use with --by-category) Mapping of feature\
+    \ types to\ncategory numbers.  Can either give a filename or an \"inline\"\ndescription\
+    \ of a simple category map, e.g.,\n--catmap \"NCATS = 3 ; CDS 1-3\" or\n--catmap\
+    \ \"NCATS = 1; UTR 1\"."
+  synonyms:
+  - --catmap
+  - -c
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: "(Requires --features).  Split by groups in annotation file, as\ndefined\
+    \ by specified tag."
   synonyms:
   - --by-group
   - -P
@@ -106,9 +163,9 @@ named:
     name: tag
   optional: true
 - !Flag
-  description: Mask all bases with quality score <= n.  Note that n is in the same
-    units as displayed in the MAF (ranging from 0-9), and represents min(9, floor(PHRED_score/5)).  Bases
-    without any quality score will not be masked.
+  description: "Mask all bases with quality score <= n.  Note that n is in the\nsame\
+    \ units as displayed in the MAF (ranging from 0-9), and\nrepresents min(9, floor(PHRED_score/5)).\
+    \  Bases without any\nquality score will not be masked."
   synonyms:
   - --mask-bases
   - -b
@@ -116,11 +173,11 @@ named:
     name: qscore
   optional: true
 - !Flag
-  description: (For use with --mask-bases).  Write a file containing all the regions
-    masked for low quality.  The file will be in 0-based coordinates relative to the
-    refseq, with an additional column giving the name of the species masked.  Note
-    that low-quality bases masked at alignment columns with a gap in the reference
-    sequence may not be represented in the output file.
+  description: "(For use with --mask-bases).  Write a file containing all the\nregions\
+    \ masked for low quality.  The file will be in 0-based\ncoordinates relative to\
+    \ the refseq, with an additional column\ngiving the name of the species masked.\
+    \  Note that low-quality bases\nmasked at alignment columns with a gap in the\
+    \ reference sequence\nmay not be represented in the output file."
   synonyms:
   - --masked-file
   - -m
@@ -128,9 +185,9 @@ named:
     name: filename
   optional: true
 - !Flag
-  description: (Requires --features).  Mask all bases annotated in features in the
-    given species (can be a comma-delimited list of species).  Note that coordinates
-    are always in terms of refseq, even if a different species is being masked.
+  description: "(Requires --features).  Mask all bases annotated in features in the\n\
+    given species (can be a comma-delimited list of species).  Note that\ncoordinates\
+    \ are always in terms of refseq, even if a different species\nis being masked."
   synonyms:
   - --mask-features
   - -M
@@ -151,12 +208,11 @@ named:
   - -E
   args: !EmptyFlagArg {}
   optional: true
-command:
-- maf_parse
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: Print this help message.
+  description: "Print this help message.\n"
   synonyms:
   - --help
   - -h

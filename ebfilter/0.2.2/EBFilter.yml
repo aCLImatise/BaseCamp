@@ -1,4 +1,6 @@
 !Command
+command:
+- EBFilter
 positional:
 - !Positional
   description: the path to the mutation file
@@ -20,25 +22,23 @@ positional:
   position: 3
   name: output.vcf
   optional: false
+- !Positional
+  description: -t thread_num         the number of threads
+  position: 0
+  name: format
+  optional: false
 named:
 - !Flag
-  description: the format of mutation file vcf or annovar (tsv) format
+  description: the format of mutation file vcf or annovar (tsv)
   synonyms:
   - -f
   args: !ChoiceFlagArg
     choices: !!set
-      vcf:
       anno:
+      vcf:
   optional: true
 - !Flag
-  description: the number of threads
-  synonyms:
-  - -t
-  args: !SimpleFlagArg
-    name: thread_num
-  optional: true
-- !Flag
-  description: threshold for mapping quality for calculating base counts
+  description: "threshold for mapping quality for calculating base\ncounts"
   synonyms:
   - -q
   args: !SimpleFlagArg
@@ -65,8 +65,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: restrict the chromosomal region for mutation. active only if loption
-    is on
+  description: "restrict the chromosomal region for mutation. active\nonly if loption\
+    \ is on"
   synonyms:
   - --region
   args: !SimpleFlagArg
@@ -78,10 +78,16 @@ named:
   - --debug
   args: !EmptyFlagArg {}
   optional: true
-command:
-- EBFilter
+- !Flag
+  description: ''
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: thread_num
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

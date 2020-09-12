@@ -1,10 +1,7 @@
-!Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: file-name
-  optional: false
+&id001 !Command
+command:
+- mclpipeline
+positional: []
 named:
 - !Flag
   description: shows only what would be done.
@@ -35,6 +32,56 @@ named:
   synonyms:
   - --prepare-mcl
   args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: strip <suf> from file-name for use as base stem.
+  synonyms:
+  - --xi
+  args: !SimpleFlagArg
+    name: suf
+  optional: true
+- !Flag
+  description: attach <suf> to parse result.
+  synonyms:
+  - --xo-dat
+  args: !SimpleFlagArg
+    name: suf
+  optional: true
+- !Flag
+  description: attach <suf> to mcxassemble result.
+  synonyms:
+  - --xo-ass
+  args: !SimpleFlagArg
+    name: suf
+  optional: true
+- !Flag
+  description: use <suf> as mcl result attachment.
+  synonyms:
+  - --xo-mcl
+  args: !SimpleFlagArg
+    name: suf
+  optional: true
+- !Flag
+  description: append to mcl suffix.
+  synonyms:
+  - --xa-mcl
+  args: !SimpleFlagArg
+    name: suf
+  optional: true
+- !Flag
+  description: append to mcl file name.
+  synonyms:
+  - --xe-mcl
+  args: !SimpleFlagArg
+    name: suf
+  optional: true
+- !Flag
+  description: "attach <suf> to clmformat result.\nmnemonics: eXtension In, Out, Append,\
+    \ Extra."
+  synonyms:
+  - --xo-fmt
+  args: !SimpleFlagArg
+    name: suf
   optional: true
 - !Flag
   description: name of parse script
@@ -126,11 +173,17 @@ named:
     name: fname
   optional: true
 - !Flag
-  description: <-opt[=val]> add '-opt [val]' to mcl command line, e.g. --mcl-v=all
-    adds '-v all' to the mcl command line.
+  description: <-opt[=val]> add '-opt [val]' to mcl command line, e.g.
   synonyms:
   - --mcl
   args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: adds '-v all' to the mcl command line.
+  synonyms:
+  - --mcl-v
+  args: !SimpleFlagArg
+    name: all
   optional: true
 - !Flag
   description: collect clusters of size lq <num> in a single file.
@@ -165,10 +218,38 @@ named:
   - --fmt
   args: !EmptyFlagArg {}
   optional: true
-command:
-- mclpipeline
 parent:
-subcommands: []
+subcommands:
+- !Command
+  command:
+  - mclpipeline
+  - file-name
+  positional: []
+  named:
+  - !Flag
+    description: option is required
+    synonyms:
+    - --parser
+    args: !SimpleFlagArg
+      name: executable
+    optional: true
+  - !Flag
+    description: did not succeed, error in initialization part
+    synonyms:
+    - '-1'
+    args: !SimpleFlagArg
+      name: Run
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "--parser=<executable> option is required\n\n-1 Run did not succeed,\
+    \ error in initialization part\n"
+  generated_using: []
+usage: []
 help_flag: !Flag
   description: show this.
   synonyms:

@@ -1,4 +1,6 @@
 !Command
+command:
+- mafFrags
 positional:
 - !Positional
   description: ''
@@ -15,22 +17,48 @@ positional:
   position: 2
   name: in.bed
   optional: false
-- !Positional
-  description: ''
-  position: 3
-  name: out.maf
-  optional: false
 named:
+- !Flag
+  description: '- File with list of databases/organisms in order'
+  synonyms:
+  - -orgs
+  args: !SimpleFlagArg
+    name: org.txt
+  optional: true
+- !Flag
+  description: '- If set, in.bed is a bed 12 file, including exons'
+  synonyms:
+  - -bed12
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Only extract subset between thickStart/thickEnd'
+  synonyms:
+  - -thickOnly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Put native sequence first in maf'
+  synonyms:
+  - -meFirst
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Add MAF txstart region definitions ('r' lines) using BED name\n\
+    and output actual reference genome coordinates in MAF."
+  synonyms:
+  - -txStarts
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: '- output actual reference genome coordinates in MAF.'
   synonyms:
   - -refCoords
   args: !EmptyFlagArg {}
   optional: true
-command:
-- mafFrags
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

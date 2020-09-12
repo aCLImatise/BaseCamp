@@ -1,33 +1,54 @@
 !Command
+command:
+- tarchive2amos
 positional: []
 named:
 - !Flag
-  description: '- file containing clear ranges for the reads.  If this file is provided,
-    any sequence that does not appear in it is excluded from the output.'
+  description: "- XML file containing assembly in assembly archive format\nhttp://www.ncbi.nlm.nih.gov/Traces/assembly/assmbrowser.cgi\n\
+    usually named ASSEMBLY.xml in the tar-ball downloaded from NCBI"
+  synonyms:
+  - -assembly
+  args: !SimpleFlagArg
+    name: assembly
+  optional: true
+- !Flag
+  description: "- directory containing the trace information as downloaded\nfrom the\
+    \ NCBI, either from the assembly archive or through\na direct query in the trace\
+    \ archive.  This directory must contain\na file named TRACEINFO.xml as well as\
+    \ one or more subdirs\ncontaining the trace information for the organism(s) whose\n\
+    traces are being processed."
+  synonyms:
+  - -tracedir
+  args: !SimpleFlagArg
+    name: tracedir
+  optional: true
+- !Flag
+  description: "- file containing clear ranges for the reads.  If this file\nis provided,\
+    \ any sequence that does not appear in it is\nexcluded from the output."
   synonyms:
   - -c
   args: !SimpleFlagArg
     name: clip
   optional: true
 - !Flag
-  description: '- file containing mate-pair information as specified in the BAMBUS
-    documentation.  This file replaces information provided in .xml files'
+  description: "- file containing mate-pair information as specified in the\nBAMBUS\
+    \ documentation.  This file replaces information\nprovided in .xml files"
   synonyms:
   - -m
   args: !SimpleFlagArg
     name: mates
   optional: true
 - !Flag
-  description: '- file containing mean/stdev information for libraries. Overrides
-    .xml input.'
+  description: "- file containing mean/stdev information for libraries.\nOverrides\
+    \ .xml input."
   synonyms:
   - -l
   args: !SimpleFlagArg
     name: lib
   optional: true
 - !Flag
-  description: '- start numbering messages with id <id> (useful when appending to
-    a bank)'
+  description: "- start numbering messages with id <id>\n(useful when appending to\
+    \ a bank)"
   synonyms:
   - -i
   args: !SimpleFlagArg
@@ -48,17 +69,16 @@ named:
     name: maxlen
   optional: true
 - !Flag
-  description: '- default quality value assigned when no quality file is provided
-    (default 20)'
+  description: "- default quality value assigned when no quality file is\nprovided\
+    \ (default 20)"
   synonyms:
   - -qual
   args: !SimpleFlagArg
     name: qval
   optional: true
-command:
-- tarchive2amos
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

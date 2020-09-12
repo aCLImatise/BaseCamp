@@ -1,17 +1,103 @@
 !Command
-positional: []
+command:
+- locarna_rnafold_pp
+positional:
+- !Positional
+  description: -V,--version
+  position: 0
+  name: Help
+  optional: false
+- !Positional
+  description: -C,--use-struct-constraints
+  position: 0
+  name: Verbose
+  optional: false
 named:
 - !Flag
-  description: Force alifold for single sequences
+  description: ''
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: No lonely pairs
+  synonyms:
+  - --noLP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-1)\nLimit maximum base pair span (default=off)"
+  synonyms:
+  - --maxBPspan
+  args: !SimpleFlagArg
+    name: span
+  optional: true
+- !Flag
+  description: Compute stacking terms
+  synonyms:
+  - --stacking
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(2)\nDangling option value"
+  synonyms:
+  - --dangling
+  args: !SimpleFlagArg
+    name: param
+  optional: true
+- !Flag
+  description: Compute in-loop probabilities
+  synonyms:
+  - --in-loop
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(0.001)\nMinimal probability"
+  synonyms:
+  - -p
+  - --min-prob
+  args: !SimpleFlagArg
+    name: prob
+  optional: true
+- !Flag
+  description: "(0.0005)\nThreshold for prob_unpaired_in_loop"
+  synonyms:
+  - --p_unpaired_in_loop
+  args: !SimpleFlagArg
+    name: threshold
+  optional: true
+- !Flag
+  description: "(0.0005)\nThreshold for prob_basepair_in_loop"
+  synonyms:
+  - --p_basepair_in_loop
+  args: !SimpleFlagArg
+    name: threshold
+  optional: true
+- !Flag
+  description: "()\nOutput file"
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: "Force alifold for single sequences\n"
   synonyms:
   - --force-alifold
   args: !EmptyFlagArg {}
   optional: true
-command:
-- locarna_rnafold_pp
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "locarna_rnafold_pp -- compute RNA pair probabilities and write in pp-format\n\

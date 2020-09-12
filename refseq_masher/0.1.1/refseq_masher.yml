@@ -1,24 +1,27 @@
 &id001 !Command
+command:
+- refseq_masher
 positional: []
 named:
 - !Flag
-  description: Logging verbosity (-v for logging warnings; -vvv for logging debug
-    info)
+  description: "Logging verbosity (-v for logging warnings; -vvv for logging\ndebug\
+    \ info)"
   synonyms:
   - -v
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
-command:
-- refseq_masher
 parent:
 subcommands:
 - !Command
+  command:
+  - refseq_masher
+  - contains
   positional:
   - !Positional
-    description: ''
+    description: Input is expected to be one or more FASTA/FASTQ files or one or more
     position: 0
-    name: INPUT...
+    name: Screen
     optional: false
   named:
   - !Flag
@@ -43,7 +46,7 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Output top N results sorted by identity in ascending order (default=0/all)
+    description: "Output top N results sorted by identity in\nascending order (default=0/all)"
     synonyms:
     - -n
     - --top-n-results
@@ -51,7 +54,7 @@ subcommands:
       name: INTEGER
     optional: true
   - !Flag
-    description: Mash screen min identity to report (default=0.9)
+    description: "Mash screen min identity to report\n(default=0.9)"
     synonyms:
     - -i
     - --min-identity
@@ -59,7 +62,7 @@ subcommands:
       name: FLOAT
     optional: true
   - !Flag
-    description: Mash screen max p-value to report (default=0.01)
+    description: "Mash screen max p-value to report\n(default=0.01)"
     synonyms:
     - -v
     - --max-pvalue
@@ -67,18 +70,16 @@ subcommands:
       name: FLOAT
     optional: true
   - !Flag
-    description: Mash screen parallelism; number of threads to spawn (default=1)
+    description: "Mash screen parallelism; number of threads to\nspawn (default=1)"
     synonyms:
     - -p
     - --parallelism
     args: !SimpleFlagArg
       name: INTEGER
     optional: true
-  command:
-  - refseq_masher
-  - contains
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -96,15 +97,18 @@ subcommands:
     \           Output file path (default=\"-\"/stdout)\n  --output-type [tab|csv]\
     \      Output file type (tab|csv)\n  -n, --top-n-results INTEGER  Output top N\
     \ results sorted by identity in\n                               ascending order\
-    \ (default=0/all)\n\n  -i, --min-identity FLOAT     Mash screen min identity to\
-    \ report\n                               (default=0.9)\n\n  -v, --max-pvalue FLOAT\
+    \ (default=0/all)\n  -i, --min-identity FLOAT     Mash screen min identity to\
+    \ report\n                               (default=0.9)\n  -v, --max-pvalue FLOAT\
     \       Mash screen max p-value to report\n                               (default=0.01)\n\
-    \n  -p, --parallelism INTEGER    Mash screen parallelism; number of threads to\n\
-    \                               spawn (default=1)\n\n  -h, --help            \
-    \       Show this message and exit.\n"
+    \  -p, --parallelism INTEGER    Mash screen parallelism; number of threads to\n\
+    \                               spawn (default=1)\n  -h, --help              \
+    \     Show this message and exit.\n"
   generated_using: &id002
   - --help
 - !Command
+  command:
+  - refseq_masher
+  - matches
   positional:
   - !Positional
     description: ''
@@ -134,7 +138,7 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Output top N results sorted by distance in ascending order (default=5)
+    description: "Output top N results sorted by distance in\nascending order (default=5)"
     synonyms:
     - -n
     - --top-n-results
@@ -142,8 +146,8 @@ subcommands:
       name: INTEGER
     optional: true
   - !Flag
-    description: 'Mash sketch of reads: "Minimum copies of each k-mer required to
-      pass noise filter for reads" (default=8)'
+    description: "Mash sketch of reads: \"Minimum copies of\neach k-mer required to\
+      \ pass noise filter for\nreads\" (default=8)"
     synonyms:
     - -m
     - --min-kmer-threshold
@@ -151,19 +155,17 @@ subcommands:
       name: INTEGER
     optional: true
   - !Flag
-    description: Temporary analysis files path (where to save temp Mash sketch file)
-      (default="/tmp")
+    description: "Temporary analysis files path (where to save\ntemp Mash sketch file)\
+      \ (default=\"/tmp\")"
     synonyms:
     - -T
     - --tmp-dir
     args: !SimpleFlagArg
       name: DIRECTORY
     optional: true
-  command:
-  - refseq_masher
-  - matches
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -181,13 +183,14 @@ subcommands:
     \ file path (default=\"-\"/stdout)\n  --output-type [tab|csv]         Output file\
     \ type (tab|csv)\n  -n, --top-n-results INTEGER     Output top N results sorted\
     \ by distance in\n                                  ascending order (default=5)\n\
-    \n  -m, --min-kmer-threshold INTEGER\n                                  Mash sketch\
+    \  -m, --min-kmer-threshold INTEGER\n                                  Mash sketch\
     \ of reads: \"Minimum copies of\n                                  each k-mer\
     \ required to pass noise filter for\n                                  reads\"\
-    \ (default=8)\n\n  -T, --tmp-dir DIRECTORY         Temporary analysis files path\
+    \ (default=8)\n  -T, --tmp-dir DIRECTORY         Temporary analysis files path\
     \ (where to save\n                                  temp Mash sketch file) (default=\"\
-    /tmp\")\n\n  -h, --help                      Show this message and exit.\n"
+    /tmp\")\n  -h, --help                      Show this message and exit.\n"
   generated_using: *id002
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -206,7 +209,7 @@ help_text: "Usage: refseq_masher [OPTIONS] COMMAND [ARGS]...\n\n  Find the close
   \ matching NCBI RefSeq genomes or the genomes contained in\n  your contigs or reads.\n\
   \nOptions:\n  --version      Show the version and exit.\n  -v, --verbose  Logging\
   \ verbosity (-v for logging warnings; -vvv for logging\n                 debug info)\n\
-  \n  -h, --help     Show this message and exit.\n\nCommands:\n  contains  Find the\
+  \  -h, --help     Show this message and exit.\n\nCommands:\n  contains  Find the\
   \ NCBI RefSeq genomes contained in your sequence files...\n  matches   Find NCBI\
   \ RefSeq genome matches for an input genome fasta file...\n"
 generated_using: *id002

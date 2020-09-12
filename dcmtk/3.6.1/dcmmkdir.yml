@@ -1,4 +1,6 @@
 !Command
+command:
+- dcmmkdir
 positional:
 - !Positional
   description: ref. DICOM file (or directory to be scanned)
@@ -6,6 +8,12 @@ positional:
   name: dcmfile-in
   optional: false
 named:
+- !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: --quiet                  quiet mode, print no warnings and errors
   synonyms:
@@ -25,17 +33,35 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-level              [l]evel: string constant (fatal, error, warn,
-    info, debug, trace) use level l for the logger'
+  description: "--log-level              [l]evel: string constant\n(fatal, error,\
+    \ warn, info, debug, trace)\nuse level l for the logger"
   synonyms:
   - -ll
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--log-config             [f]ilename: string use config file f for
-    the logger'
+  description: "--log-config             [f]ilename: string\nuse config file f for\
+    \ the logger"
   synonyms:
   - -lc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --keep-filenames         expect filenames to be in DICOM format (def.)
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --no-recurse             do not recurse within directories (default)
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --no-consistency-check   do not check files for consistency
+  synonyms:
+  - -W
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -45,177 +71,185 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: do not reject images with non-standard transfer syntax (just warn)
+  description: "--strict                 exit with error if DICOMDIR type 1 attributes\n\
+    are missing in DICOM file (default)"
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "do not reject images with non-standard\ntransfer syntax (just warn)"
   synonyms:
   - -Nxc
   - --no-xfer-check
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: do not reject images with non-standard pixel encoding (just warn)
+  description: "do not reject images with non-standard\npixel encoding (just warn)"
   synonyms:
   - -Nec
   - --no-encoding-check
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: do not reject images with non-standard spatial resolution (just warn)
+  description: "do not reject images with non-standard\nspatial resolution (just warn)"
   synonyms:
   - -Nrc
   - --no-resolution-check
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--icon-image-size        [s]ize: integer (1..128) width and height
-    of the icon image (in pixel) (fixed: 128 for XA, 64 for CT/MR profile)'
+  description: "--icon-image-size        [s]ize: integer (1..128)\nwidth and height\
+    \ of the icon image (in pixel)\n(fixed: 128 for XA, 64 for CT/MR profile)"
   synonyms:
   - -Xs
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "--icon-file-prefix       [p]refix: string use PGM image 'prefix'+'dcmfile-in'\
-    \ as icon (default: create icon from DICOM image)"
+  description: "--icon-file-prefix       [p]refix: string\nuse PGM image 'prefix'+'dcmfile-in'\
+    \ as icon\n(default: create icon from DICOM image)"
   synonyms:
   - -Xi
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '--default-icon           [f]ilename: string use specified PGM image
-    if icon cannot be created automatically (default: black image)'
+  description: "--default-icon           [f]ilename: string\nuse specified PGM image\
+    \ if icon cannot be\ncreated automatically (default: black image)"
   synonyms:
   - -Xd
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: General Purpose Interchange on CD-R or DVD-RAM Media (STD-GEN-CD/DVD-RAM,
-    default)
+  description: "General Purpose Interchange on CD-R or\nDVD-RAM Media (STD-GEN-CD/DVD-RAM,\
+    \ default)"
   synonyms:
   - -Pgp
   - --general-purpose
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: General Purpose DVD Interchange with JPEG (STD-GEN-DVD-JPEG)
+  description: "General Purpose DVD Interchange with JPEG\n(STD-GEN-DVD-JPEG)"
   synonyms:
   - -Pdv
   - --general-dvd-jpeg
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: General Purpose DVD Interchange with JPEG 2000 (STD-GEN-DVD-J2K)
+  description: "General Purpose DVD Interchange with JPEG\n2000 (STD-GEN-DVD-J2K)"
   synonyms:
   - -Pd2
   - --general-dvd-j2k
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: General Purpose BD Interchange with JPEG (STD-GEN-BD-JPEG)
+  description: "General Purpose BD Interchange with JPEG\n(STD-GEN-BD-JPEG)"
   synonyms:
   - -Pbd
   - --general-bd-jpeg
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: General Purpose BD Interchange with JPEG 2000 (STD-GEN-BD-J2K)
+  description: "General Purpose BD Interchange with JPEG\n2000 (STD-GEN-BD-J2K)"
   synonyms:
   - -Pb2
   - --general-bd-j2k
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: General Purpose BD Interchange with MPEG2 MP@ML (STD-GEN-BD-MPEG2-MPML)
+  description: "General Purpose BD Interchange with MPEG2\nMP@ML (STD-GEN-BD-MPEG2-MPML)"
   synonyms:
   - -Pbm
   - --general-bd-mpeg2-mpml
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: General Purpose BD Interchange with MPEG2 MP@HL (STD-GEN-BD-MPEG2-MPHL)
+  description: "General Purpose BD Interchange with MPEG2\nMP@HL (STD-GEN-BD-MPEG2-MPHL)"
   synonyms:
   - -Pbh
   - --general-bd-mpeg2-mphl
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: General Purpose BD Interchange with MPEG-4 AVC/H.264 HiP@Level4.1 (STD-GEN-BD-MPEG4-HPLV41)
+  description: "General Purpose BD Interchange with MPEG-4\nAVC/H.264 HiP@Level4.1\n\
+    (STD-GEN-BD-MPEG4-HPLV41)"
   synonyms:
   - -Pba
   - --general-bd-mpeg4-hp
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: General Purpose BD Interchange with MPEG-4 AVC/H.264 BD-Compatible
-    HiP@Level4.1 (STD-GEN-BD-MPEG4-HPLV41BD)
+  description: "General Purpose BD Interchange with MPEG-4\nAVC/H.264 BD-Compatible\
+    \ HiP@Level4.1\n(STD-GEN-BD-MPEG4-HPLV41BD)"
   synonyms:
   - -Pbb
   - --general-bd-mpeg4-hpbd
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: General Purpose BD Interchange with MPEG-4 AVC/H.264 HiP@Level4.2 for
-    2D video (STD-GEN-BD-MPEG4-HPLV42-2D)
+  description: "General Purpose BD Interchange with MPEG-4\nAVC/H.264 HiP@Level4.2\
+    \ for 2D video\n(STD-GEN-BD-MPEG4-HPLV42-2D)"
   synonyms:
   - --general-bd-mpeg4-hp2d
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: General Purpose BD Interchange with MPEG-4 AVC/H.264 HiP@Level4.2 for
-    3D video (STD-GEN-BD-MPEG4-HPLV42-3D)
+  description: "General Purpose BD Interchange with MPEG-4\nAVC/H.264 HiP@Level4.2\
+    \ for 3D video\n(STD-GEN-BD-MPEG4-HPLV42-3D)"
   synonyms:
   - --general-bd-mpeg4-hp3d
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: General Purpose BD Interchange with MPEG-4 AVC/H.264 Stereo HiP@Level4.2
-    (STD-GEN-BD-MPEG4-SHPLV42)
+  description: "General Purpose BD Interchange with MPEG-4\nAVC/H.264 Stereo HiP@Level4.2\n\
+    (STD-GEN-BD-MPEG4-SHPLV42)"
   synonyms:
   - --general-bd-mpeg4-hpst
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: General Purpose USB/Flash Memory Interchange with JPEG (STD-GEN-USB/MMC/CF/SD-JPEG)
+  description: "General Purpose USB/Flash Memory Interchange\nwith JPEG (STD-GEN-USB/MMC/CF/SD-JPEG)"
   synonyms:
   - -Pfl
   - --usb-and-flash-jpeg
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: General Purpose USB/Flash Memory Interchange with JPEG 2000 (STD-GEN-USB/MMC/CF/SD-J2K)
+  description: "General Purpose USB/Flash Memory Interchange\nwith JPEG 2000 (STD-GEN-USB/MMC/CF/SD-J2K)"
   synonyms:
   - -Pf2
   - --usb-and-flash-j2k
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: General Purpose MIME Interchange (STD-GEN-MIME)
+  description: "General Purpose MIME Interchange\n(STD-GEN-MIME)"
   synonyms:
   - -Pmi
   - --general-mime
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: DVD Interchange with MPEG2 Main Profile @ Main Level (STD-DVD-MPEG2-MPML)
+  description: "DVD Interchange with MPEG2 Main Profile @\nMain Level (STD-DVD-MPEG2-MPML)"
   synonyms:
   - -Pmp
   - --mpeg2-mpml-dvd
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Basic Cardiac X-Ray Angiographic Studies on CD-R Media (STD-XABC-CD)
+  description: "Basic Cardiac X-Ray Angiographic Studies on\nCD-R Media (STD-XABC-CD)"
   synonyms:
   - -Pbc
   - --basic-cardiac
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 1024 X-Ray Angiographic Studies on CD-R Media (STD-XA1K-CD)
+  description: "1024 X-Ray Angiographic Studies on CD-R Media\n(STD-XA1K-CD)"
   synonyms:
   - -Pxa
   - --xray-angiographic
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 1024 X-Ray Angiographic Studies on DVD Media (STD-XA1K-DVD)
+  description: "1024 X-Ray Angiographic Studies on DVD Media\n(STD-XA1K-DVD)"
   synonyms:
   - -Pxd
   - --xray-angiographic-dvd
@@ -236,61 +270,73 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Ultrasound Single Frame for Image Display (STD-US-ID-SF-xxxx)
+  description: "Ultrasound Single Frame for Image Display\n(STD-US-ID-SF-xxxx)"
   synonyms:
   - -Pus
   - --ultrasound-id-sf
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Ultrasound Single Frame with Spatial Calibration (STD-US-SC-SF-xxxx)
+  description: "Ultrasound Single Frame with Spatial\nCalibration (STD-US-SC-SF-xxxx)"
   synonyms:
   - --ultrasound-sc-sf
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Ultrasound Single Frame with Combined Calibration (STD-US-CC-SF-xxxx)
+  description: "Ultrasound Single Frame with Combined\nCalibration (STD-US-CC-SF-xxxx)"
   synonyms:
   - --ultrasound-cc-sf
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Ultrasound Single & Multi-Frame for Image Display (STD-US-ID-MF-xxxx)
+  description: "Ultrasound Single & Multi-Frame for Image\nDisplay (STD-US-ID-MF-xxxx)"
   synonyms:
   - -Pum
   - --ultrasound-id-mf
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Ultrasound Single & Multi-Frame with Spatial Calibration (STD-UD-SC-MF-xxxx)
+  description: "Ultrasound Single & Multi-Frame with Spatial\nCalibration (STD-UD-SC-MF-xxxx)"
   synonyms:
   - --ultrasound-sc-mf
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Ultrasound Single & Multi-Frame with Combined Calibration (STD-UD-CC-MF-xxxx)
+  description: "Ultrasound Single & Multi-Frame with Combined\nCalibration (STD-UD-CC-MF-xxxx)"
   synonyms:
   - --ultrasound-cc-mf
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 12-lead ECG Interchange on Diskette (STD-WVFM-ECG-FD)
+  description: "12-lead ECG Interchange on Diskette\n(STD-WVFM-ECG-FD)"
   synonyms:
   - -Pec
   - --12-lead-ecg
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Hemodynamic Waveform Interchange on Diskette (STD-WVFM-HD-FD)
+  description: "Hemodynamic Waveform Interchange on Diskette\n(STD-WVFM-HD-FD)"
   synonyms:
   - -Phd
   - --hemodynamic-waveform
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: --replace                replace existing DICOMDIR (default)
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: --discard                do not write out DICOMDIR
   synonyms:
   - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: create a backup of existing DICOMDIR (def.)
+  synonyms:
+  - --create-backup
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -306,25 +352,33 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: --group-length-remove    write without group length elements (default)
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: --length-undefined       write with undefined lengths
   synonyms:
   - -e
   args: !EmptyFlagArg {}
   optional: true
-command:
-- dcmmkdir
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: --help                   print this help text and exit --version                print
-    version information and exit --arguments              print expanded command line
-    arguments
+  description: --help                   print this help text and exit
   synonyms:
   - -h
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "$dcmtk: dcmmkdir v3.6.1 2016-11-02 $\n\ndcmmkdir: Create a DICOMDIR file\n\
   usage: dcmmkdir [options] [dcmfile-in...]\n\nparameters:\n  dcmfile-in         \
   \              ref. DICOM file (or directory to be scanned)\n\ngeneral options:\n\

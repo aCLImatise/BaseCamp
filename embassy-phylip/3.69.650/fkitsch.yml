@@ -1,9 +1,21 @@
 !Command
-positional: []
+command:
+- fkitsch
+positional:
+- !Positional
+  description: '[-intreefile]        tree       Phylip tree file (optional)'
+  position: 0
+  name: matrices
+  optional: false
+- !Positional
+  description: 'Additional (Optional) qualifiers (* if not always prompted):'
+  position: 0
+  name: file
+  optional: false
 named:
 - !Flag
-  description: 'menu       [s] Type of data matrix (Values: s (Square); u (Upper triangular);
-    l (Lower triangular))'
+  description: "menu       [s] Type of data matrix (Values: s (Square);\nu (Upper\
+    \ triangular); l (Lower triangular))"
   synonyms:
   - -matrixtype
   args: !EmptyFlagArg {}
@@ -14,13 +26,36 @@ named:
   - -minev
   args: !EmptyFlagArg {}
   optional: true
-command:
-- fkitsch
+- !Flag
+  description: float      [2.0] Power (Any numeric value)
+  synonyms:
+  - -power
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: boolean    [N] Negative branch lengths allowed
+  synonyms:
+  - -negallowed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: boolean    [N] Subreplicates
+  synonyms:
+  - -replicates
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: boolean    [N] Print data at start of run
+  synonyms:
+  - -printdata
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: boolean    Report command line options and exit. More information on
-    associated and general qualifiers can be found with -help -verbose
+  description: "boolean    Report command line options and exit. More\ninformation\
+    \ on associated and general\nqualifiers can be found with -help -verbose\n"
   synonyms:
   - -help
   args: !EmptyFlagArg {}

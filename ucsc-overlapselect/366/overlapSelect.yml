@@ -1,6 +1,195 @@
 !Command
+command:
+- overlapSelect
 positional: []
 named:
+- !Flag
+  description: "- specify selectFile format:\npsl - PSL format (default for *.psl\
+    \ files).\npslq - PSL format, using query instead of target\ngenePred - genePred\
+    \ format (default for *.gp or\n*.genePred files).\nbed - BED format (default for\
+    \ *.bed files).\nIf BED doesn't have blocks, the bed range is used.\nchain - chain\
+    \ file format (default from .chain files)\nchainq - chain file format, using query\
+    \ instead of target"
+  synonyms:
+  - -selectFmt
+  args: !SimpleFlagArg
+    name: fmt
+  optional: true
+- !Flag
+  description: "- selectFile is tab-separate with coordinates\nas described by spec,\
+    \ which is one of:\no chromCol - chrom in this column followed by start and end.\n\
+    o chromCol,startCol,endCol,strandCol,name - chrom, start, end, and\nstrand in\
+    \ specified columns. Columns can be omitted from the end\nor left empty to not\
+    \ specify.\nNOTE: column numbers are zero-based"
+  synonyms:
+  - -selectCoordCols
+  args: !SimpleFlagArg
+    name: spec
+  optional: true
+- !Flag
+  description: '- Use only CDS in the selectFile'
+  synonyms:
+  - -selectCds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Use entire range instead of blocks from records in\nthe selectFile."
+  synonyms:
+  - -selectRange
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- specify inFile format, same values as -selectFmt.'
+  synonyms:
+  - -inFmt
+  args: !SimpleFlagArg
+    name: fmt
+  optional: true
+- !Flag
+  description: "- inFile is tab-separate with coordinates specified by\nspec, in format\
+    \ described above."
+  synonyms:
+  - -inCoordCols
+  args: !SimpleFlagArg
+    name: spec
+  optional: true
+- !Flag
+  description: '- Use only CDS in the inFile'
+  synonyms:
+  - -inCds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Use entire range instead of blocks of records in the inFile.'
+  synonyms:
+  - -inRange
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- select non-overlapping instead of overlapping records'
+  synonyms:
+  - -nonOverlapping
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- must be on the same strand to be considered overlapping'
+  synonyms:
+  - -strand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- must be on the opposite strand to be considered overlapping'
+  synonyms:
+  - -oppositeStrand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- don't compare records with the same coordinates and name.\nWarning:\
+    \ using only one of -inCds or -selectCds will result in different\ncoordinates\
+    \ for the same record."
+  synonyms:
+  - -excludeSelf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- only select overlapping records if they have the same id'
+  synonyms:
+  - -idMatch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- instead of computing overlap bases on individual select entries,\n\
+    compute it based on the total number of inFile bases overlap by selectFile\nrecords.\
+    \ -overlapSimilarity and -mergeOutput will not work with\nthis option."
+  synonyms:
+  - -aggregate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- minimum fraction of an inFile record that\nmust be overlapped by\
+    \ a single select record to be considered\noverlapping.  Note that this is only\
+    \ coverage by a single select\nrecord, not total coverage."
+  synonyms:
+  - -overlapThreshold
+  args: !SimpleFlagArg
+    name: '0.0'
+  optional: true
+- !Flag
+  description: "- select only inFile records with less than\nthis amount of overlap\
+    \ with a single record, provided they are selected\nby other criteria."
+  synonyms:
+  - -overlapThresholdCeil
+  args: !SimpleFlagArg
+    name: '1.1'
+  optional: true
+- !Flag
+  description: "- minimum fraction bases in inFile and selectFile\nrecords that overlap\
+    \ the same genomic locations.  This is computed\nby (2*overlapBase)/(inFileBase+selectFileBases).\n\
+    Note that this is only coverage by a single select record and this\nis bidirectional\
+    \ inFile and selectFile must overlap by this\namount.  A value of 1.0 will select\
+    \ identical records (or CDS if\nboth CDS options are specified.  Not currently\
+    \ supported with\n-aggregate."
+  synonyms:
+  - -overlapSimilarity
+  args: !SimpleFlagArg
+    name: '0.0'
+  optional: true
+- !Flag
+  description: "- select only inFile records with less than this\namount of similarity\
+    \ with a single record. provided they are selected by\nother criteria."
+  synonyms:
+  - -overlapSimilarityCeil
+  args: !SimpleFlagArg
+    name: '1.1'
+  optional: true
+- !Flag
+  description: =-1 - minimum number of bases of overlap, < 0 disables.
+  synonyms:
+  - -overlapBases
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- output overlap statistics instead of selected records.\nIf no overlap\
+    \ criteria is specified, all overlapping entries are\nreported, Otherwise only\
+    \ the pairs passing the criteria are\nreported. This results in a tab-separated\
+    \ file with the columns:\ninId selectId inOverlap selectOverlap overBases\nWhere\
+    \ inOverlap is the fraction of the inFile record overlapped by\nthe selectFile\
+    \ record and selectOverlap is the fraction of the\nselect record overlap by inFile\
+    \ records.  With -aggregate, output\nis:\ninId inOverlap inOverBases inBases"
+  synonyms:
+  - -statsOutput
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- like -statsOutput, however output all inFile records,\nincluding\
+    \ those that are not overlapped."
+  synonyms:
+  - -statsOutputAll
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- like -statsOutput, however output all selectFile and\ninFile records,\
+    \ including those that are not overlapped."
+  synonyms:
+  - -statsOutputBoth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- output file with be a merge of the input file with the\nselectFile\
+    \ records that selected it.  The format is\ninRec<tab>selectRec.\nif multiple\
+    \ select records hit, inRec is repeated. This will increase\nthe memory required.\
+    \ Not supported with -nonOverlapping or -aggregate."
+  synonyms:
+  - -mergeOutput
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- output a tab-separated file of pairs of\ninId selectId\nwith -aggregate,\
+    \ only a single column of inId is written"
+  synonyms:
+  - -idOutput
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: '- output rows that were dropped to this file.'
   synonyms:
@@ -15,10 +204,9 @@ named:
   args: !SimpleFlagArg
     name: n
   optional: true
-command:
-- overlapSelect
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

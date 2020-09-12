@@ -1,5 +1,25 @@
 !Command
-positional: []
+command:
+- DetectBeadSynthesisErrors
+positional:
+- !Positional
+  description: 'The data has multiple columns: the cell barcode, the number of UMIs,
+    then one'
+  position: 0
+  name: barcode.
+  optional: false
+- !Positional
+  description: Bases are ordered A,C,G,T for these columns.  An example output with
+    a single base
+  position: 0
+  name: bases.
+  optional: false
+- !Positional
+  description: This is typically the last base of the UMI.  If set to null, program
+    will use the
+  position: 1
+  name: errors.
+  optional: false
 named:
 - !Flag
   description: (default 4g)
@@ -15,15 +35,43 @@ named:
   args: !SimpleFlagArg
     name: echo
   optional: true
-command:
-- DetectBeadSynthesisErrors
+- !Flag
+  description: Displays options specific to this tool.
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --stdhelp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
-help_text: "USAGE: /tmp/tmpq7xcnqce/bin/DetectBeadSynthesisErrors [-m <jvm_heap_size>]\
-  \ [-v] program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
+version_flag: !Flag
+  description: Displays program version.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "USAGE: /usr/local/bin/DetectBeadSynthesisErrors [-m <jvm_heap_size>] [-v]\
+  \ program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
   \ command line before executing\n\nProgram options:\nUSAGE: DetectBeadSynthesisErrors\
   \ [options]\n\nFor each cell, gather up all the UMIs.  An error in synthesis will\
   \ result in the last base of the synthesis being fixed\nin >90% of the UMIs for\

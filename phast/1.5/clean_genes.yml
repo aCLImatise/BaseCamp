@@ -1,4 +1,6 @@
 !Command
+command:
+- clean_genes
 positional:
 - !Positional
   description: ''
@@ -12,8 +14,115 @@ positional:
   optional: false
 named:
 - !Flag
-  description: (Required with --msa-format MAF)  Complete reference  sequence for
-    alignment (FASTA format).
+  description: Require conserved start codons (all species)
+  synonyms:
+  - --start
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Require conserved stop codons (all species)
+  synonyms:
+  - --stop
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Require conserved splice sites (all species).  By default,\nonly GT-AG,\
+    \ GC-AG, and AT-AC splice sites are allowed (see also\n--splice-strict)"
+  synonyms:
+  - --splice
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Require that no frame-shift gap is present in any species.  Frame\n\
+    shifts are evaluated with respect to the reference sequence.  Gaps\nthat have\
+    \ non-multiple-of-three lengths are allowed if\ncompensatory gaps occur nearby\
+    \ (see source code for details)."
+  synonyms:
+  - --fshift
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Require that no premature stop codon is present in any species.
+  synonyms:
+  - --nonsense
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Implies --start, --stop, --splice, --fshift, and --nonsense.\nRecommended\
+    \ option for cross-species analysis."
+  synonyms:
+  - --conserved
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Maximum fraction of bases aligned to CDSs that are Ns in any\nspecies\
+    \ (<f> must be between 0 and 1).  Default is 0.05.  Set to 1\nto allow any number\
+    \ of Ns."
+  synonyms:
+  - --N-limit
+  - -N
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: "Require all cds gaps to be multiples of three in length.  Can be\n\
+    used with --conserved."
+  synonyms:
+  - --clean-gaps
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Implies --clean_gaps, usually used with --conserved.  Prohibits\n\
+    overlapping cds gaps in different sequences, gaps near cds\nboundaries, and gaps\
+    \ in the reference sequence within and between\nflanking features (splice sites,\
+    \ etc.; see code for details).\nDesigned for use in training a phylo-HMM with\
+    \ an indel model."
+  synonyms:
+  - --indel-strict
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Implies --splice.  Allow only GT-AG canonical splice sites.  Useful\n\
+    when training a gene finder with a simple model for splice sites."
+  synonyms:
+  - --splice-strict
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Group features according to specified tag (default\n\"transcript_id\"\
+    ).  If any feature within a group fails, the\nentire group will be discarded.\
+    \  By choosing to group features\naccording to different criteria, you can make\
+    \ the program\n\"clean\" the data set at different levels.  For example, to\n\
+    clean at the level of individual exons, add a tag like\n\"exon_id\" to indicate\
+    \ exons (see the program \"refeature\"),\nand then invoke clean_genes with \"\
+    --groupby exon_id\"."
+  synonyms:
+  - --groupby
+  - -g
+  args: !SimpleFlagArg
+    name: tag
+  optional: true
+- !Flag
+  description: "|PHYLIP|MPM|MAF|SS\nAlignment file format.  Default is to guess format\
+    \ from file\ncontents."
+  synonyms:
+  - --msa-format
+  - -i
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: "(Required with --msa-format MAF)  Complete reference\nsequence for\
+    \ alignment (FASTA format)."
   synonyms:
   - --refseq
   - -r
@@ -21,9 +130,9 @@ named:
     name: seqfile.fa
   optional: true
 - !Flag
-  description: (Default 0)  Offset of canonical "GT" with respect to boundary  on
-    *intron side* of annotated 5' splice sites.  Useful with annotations that describe
-    a window around the canonical splice site.
+  description: "(Default 0)  Offset of canonical \"GT\" with respect to boundary\n\
+    on *intron side* of annotated 5' splice sites.  Useful with\nannotations that\
+    \ describe a window around the canonical splice site."
   synonyms:
   - --offset5
   - -o
@@ -31,8 +140,8 @@ named:
     name: n
   optional: true
 - !Flag
-  description: (Default 0)  Offset of canonical "AG" with respect to boundary  on
-    intron side of annotated 3' splice sites.
+  description: "(Default 0)  Offset of canonical \"AG\" with respect to boundary\n\
+    on intron side of annotated 3' splice sites."
   synonyms:
   - --offset3
   - -p
@@ -72,17 +181,16 @@ named:
     name: fname
   optional: true
 - !Flag
-  description: Suppress output of "cleaned" features to stdout.  Useful if only log
-    file and/or stats are of interest.
+  description: "Suppress output of \"cleaned\" features to stdout.  Useful if only\n\
+    log file and/or stats are of interest."
   synonyms:
   - --no-output
   - -x
   args: !EmptyFlagArg {}
   optional: true
-command:
-- clean_genes
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Print this help message.
   synonyms:

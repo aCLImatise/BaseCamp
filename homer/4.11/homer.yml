@@ -1,4 +1,6 @@
 !Command
+command:
+- homer
 positional: []
 named:
 - !Flag
@@ -57,6 +59,174 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: ': remember mapping between mers and genes (default: approx)'
+  synonyms:
+  - -exact
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Weight sequences (according to addition columns in group file: 1st-gene
+    2nd-sequence)'
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Test all sequences as candidate motifs (default: only test target
+    sequences)'
+  synonyms:
+  - -T
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Do not autoscale sequences to be equal in foreground and background'
+  synonyms:
+  - -noautoscale
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Compute log-odds using frequency, default (0.25)'
+  synonyms:
+  - -freqAdjust
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': find dual motifs in the form A<gap>B where A and B can be rev-opposites'
+  synonyms:
+  - -dual
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': find dual motifs in the form A<gap>B or B<gap>A'
+  synonyms:
+  - -flip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<OFF,#(max to count)> : (counts multiple motifs per sequence | default:
+    2)'
+  synonyms:
+  - -zoopsapprox
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": don't search opposite strand (default->DNA:yes, Protein:no)"
+  synonyms:
+  - -norevopp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> : min mer size (6)'
+  synonyms:
+  - -min
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> : max mer size [also standard mer size] (10)'
+  synonyms:
+  - -max
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> : Find motifs of length # (default=10)'
+  synonyms:
+  - -len
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<#,#,#-#> : Find motifs with gaps(0)(i.e. -gap 3 -gap 2,4,5 -gap 1-10\n\
+    Gaps will only be in the center of motif and will only use even lengthed motifs"
+  synonyms:
+  - -gap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> : # of mismatches to check for degeneracy (1)'
+  synonyms:
+  - -mis
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> : # of IUPAC codes per mer that can be used during global optimization
+    (0)'
+  synonyms:
+  - -IUPAC
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<1,2,or3> : Type of IUPAC symbols used\n1: (default) Only N is used\n\
+    2: Only N and 2 bp symbols are used (i.e. R = A or G\n3: Full IUPAC code is used\
+    \ (includes 3-way symbols)"
+  synonyms:
+  - -iupactype
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> : number of seeds to check during profile optimization(50)'
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> : sets depth of optimization (closer to zero the more sensitive
+    (0.5))'
+  synonyms:
+  - -branch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> : maximum number of iterations during optimization (5)'
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': DO NOT remove aligned seeds'
+  synonyms:
+  - -rmalign
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: maximum percentage of negative genes that can contain the motif
+  synonyms:
+  - -maxneg
+  args: !SimpleFlagArg
+    name: 0 to 1
+  optional: true
+- !Flag
+  description: ": Program will heuristically avoid performing exhaustive\ncalculations\
+    \ (default: FAST)"
+  synonyms:
+  - -speed
+  args: !SimpleFlagArg
+    name: NORMAL|FAST
+  optional: true
+- !Flag
+  description: ": scoring algorithm (default: hypergeo)\nhypergeo - hypergeometric\
+    \ scoring (ZOOPS)\nbinomial - binomical scoring [for variable length seq] (ZOOPS)\
+    \ (requires exact)\napproxbinomial - binomical scoring [for variable length seq]\
+    \ (ZOOPS) (requires exact)\nsitehypergeo - hypergeometric scoring across seq positions\
+    \ (very slow)\nsitebinomial - binomial scoring across seq positions\nfisher <#>\
+    \ - fisher exact test (slow, # scales exponentially)\n<# = largest repetition\
+    \ to consider [default=2]>\nrank - group file must have sortable numeric value\n\
+    freqdiff - used by most bayesian/nnet programs\nlogit - used by most bayesian/nnet\
+    \ programs"
+  synonyms:
+  - -alg
+  args: !SimpleFlagArg
+    name: method
+  optional: true
+- !Flag
+  description: "[method options...]\nmarkov <#> - generate hmm from target sequences\
+    \ using a hmm of order #\nbmarkov <#> - generate hmm from background sequences\
+    \ using a hmm of order #\nmosaic - generate mosaic hmm from background sequences\
+    \ **coming soon**"
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: method
+  optional: true
+- !Flag
   description: ": filtering cutoff for ratio of N's in sequence (0.9)"
   synonyms:
   - -N
@@ -75,10 +245,9 @@ named:
   - -seqmore
   args: !EmptyFlagArg {}
   optional: true
-command:
-- homer
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

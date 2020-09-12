@@ -1,67 +1,136 @@
 !Command
+command:
+- migmap
 positional:
 - !Positional
-  description: ''
+  description: --allow-noncanonical                Report clonotypes that have
   position: 0
-  name: input.
+  name: mapping.
+  optional: false
+- !Positional
+  description: --use-kabat                         Will use KABAT nomenclature for
+  position: 0
+  name: file.
   optional: false
 named:
 - !Flag
-  description: Number of reads to take. [default = all]
+  description: "Will use all alleles during\nalignment (this is going to be\nslower).\
+    \ [default = use only major\n(*01) alleles]"
+  synonyms:
+  - --all-alleles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Report clonotypes with partial\nCDR3 mapping."
+  synonyms:
+  - --allow-incomplete
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Report clonotypes with no CDR3
+  synonyms:
+  - --allow-no-cdr3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Report clonotypes that have either\nstop codon or frameshift in their\n\
+    receptor sequence."
+  synonyms:
+  - --allow-noncoding
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Path to folder that contains\n'igblastn' and 'makeblastdb'\nbinaries.\
+    \ [default = assume they\nare added to $PATH and execute\nthem directly]"
+  synonyms:
+  - --blast-dir
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: "Will output mapping details for\neach read. [default = assemble\n\
+    clonotypes and output clonotype\nabundance table]"
+  synonyms:
+  - --by-read
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Path to a custom segments\ndatabase. [default = use built-in\ndatabase]"
+  synonyms:
+  - --custom-database
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: "Path to folder that contains data\nbundle (internal_data/ and\noptional_file/\
+    \ directories).\n[default = $install_dir/data/]"
+  synonyms:
+  - --data-dir
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: "<field1,field2,.../all>   Additional fields to provide for\noutput,\
+    \ allowed values:\nfr1nt,cdr1nt,fr2nt,cdr2nt,fr3nt,fr\n4nt,contignt,fr1aa,cdr1aa,fr2aa,cd\n\
+    r2aa,fr3aa,fr4aa,contigaa."
+  synonyms:
+  - --details
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of reads to take. [default\n= all]"
   synonyms:
   - -n
   args: !SimpleFlagArg
     name: int
   optional: true
 - !Flag
-  description: Number of cores to use. [default = all available processors]
+  description: "Number of cores to use. [default =\nall available processors]"
   synonyms:
   - -p
   args: !SimpleFlagArg
     name: int
   optional: true
 - !Flag
-  description: Threshold for average quality of mutations and N-regions of CDR3 [default
-    = 25]
+  description: "Threshold for average quality of\nmutations and N-regions of CDR3\n\
+    [default = 25]"
   synonyms:
   - -q
   args: !SimpleFlagArg
     name: 2..40
   optional: true
 - !Flag
-  description: '<chain1,...>                        Receptor gene and chain. Several
-    chains can be specified, separated with commas. Allowed values: [TRA, TRB, TRG,
-    TRD, IGH, IGL, IGK]. [required] --report <file>                     File to store
-    MIGMAP report. Will append report line if file exists.'
+  description: "<chain1,...>                        Receptor gene and chain. Several\n\
+    chains can be specified, separated\nwith commas. Allowed values: [TRA,\nTRB, TRG,\
+    \ TRD, IGH, IGL, IGK].\n[required]"
   synonyms:
   - -R
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Species. Allowed values: [human, mouse, rat, rabbit, rhesus_monkey].
-    [required]'
+  description: "File to store MIGMAP report. Will\nappend report line if file exists."
+  synonyms:
+  - --report
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Species. Allowed values: [human,\nmouse, rat, rabbit,\nrhesus_monkey].\
+    \ [required]"
   synonyms:
   - -S
   args: !SimpleFlagArg
     name: name
   optional: true
 - !Flag
-  description: <fastq[.gz]>             Output unmapped reads in specified file.
+  description: <fastq[.gz]>             Output unmapped reads in specified
   synonyms:
   - --unmapped
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: Will use KABAT nomenclature for CDR/FW partitioning. [default = use
-    IMGT nomenclature]
-  synonyms:
-  - --use-kabat
-  args: !EmptyFlagArg {}
-  optional: true
-command:
-- migmap
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Display this help message
   synonyms:

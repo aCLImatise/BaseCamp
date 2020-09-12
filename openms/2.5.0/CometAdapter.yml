@@ -1,4 +1,6 @@
 !Command
+command:
+- CometAdapter
 positional: []
 named:
 - !Flag
@@ -80,8 +82,8 @@ named:
   optional: true
 - !Flag
   description: "The enzyme used for peptide digestion. (default: 'Trypsin' valid:\
-    \ 'Asp-N', 'glutamyl endopeptidase', 'Arg-C', 'unspecific cleavage', 'Chymotrypsin',\
-    \ 'CNBr', 'Lys-C', 'Lys-N', 'PepsinA', 'Trypsin/P', 'Trypsin')"
+    \ 'unspecific cleavage', 'PepsinA', 'CNBr', 'Lys-N', 'Lys-C', 'glutamyl endopeptidase',\
+    \ 'Trypsin/P', 'Asp-N', 'Arg-C', 'Chymotrypsin', 'Trypsin')"
   synonyms:
   - -enzyme
   args: !SimpleFlagArg
@@ -1627,10 +1629,9 @@ named:
   - --helphelp
   args: !EmptyFlagArg {}
   optional: true
-command:
-- CometAdapter
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Shows options
   synonyms:
@@ -1639,38 +1640,39 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
-help_text: "\nCometAdapter -- Annotates MS/MS spectra using Comet.\nFull documentation:\
-  \ http://www.openms.de/documentation/TOPP_CometAdapter.html\nVersion: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND\
-  \ May 19 2020, 23:12:02, Revision: HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL,\
-  \ Sachsenberg T, Aiche S, Bielow C et al.. OpenMS: a flexible open-source software\
-  \ platform for mass spectrometry data analysis. Nat Meth. 2016; 13, 9: 741-748.\
-  \ doi:10.1038/nmeth.3959.\nTo cite CometAdapter:\n  Eng, Jimmy K. and Jahan, Tahmina\
-  \ A. and Hoopmann, Michael R.. Comet: An open-source MS/MS sequence database search\
-  \ tool. PROTEOMICS 2013; 13-1: 22--24. doi:10.1002/pmic.201200439.\n\nUsage:\n \
-  \ CometAdapter <options>\n\nOptions (mandatory options marked with '*'):\n  -in\
-  \ <file>*                            Input file (valid formats: 'mzML')\n  -out\
-  \ <file>*                           Output file (valid formats: 'idXML')\n  -database\
-  \ <file>*                      FASTA file (valid formats: 'FASTA')\n  -comet_executable\
-  \ <executable>*        The Comet executable. Provide a full or relative path, or\
-  \ make sure it can be found in your PATH environment.\n  -comet_version <choice>\
-  \                Comet version: (year,version,revision) (default: '2016.01 rev.\
-  \ 2')\n  -pin_out <file>                        Output file - for Percolator input\
-  \ (valid formats: 'tsv')\n  -default_params_file <file>            Default Comet\
-  \ params file. All parameters of this take precedence. A template file can be generated\
-  \ using comet.exe -p (valid formats: 'txt')\n  -precursor_mass_tolerance <tolerance>\
-  \  Precursor monoisotopic mass tolerance (Comet parameter: peptide_mass_tolerance).\
-  \  See also precursor_error_units to set the unit. (default: '10.0')\n  -precursor_error_units\
-  \ <choice>        Unit of precursor monoisotopic mass tolerance for parameter precursor_mass_tolerance\
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nCometAdapter --\
+  \ Annotates MS/MS spectra using Comet.\nFull documentation: http://www.openms.de/documentation/TOPP_CometAdapter.html\n\
+  Version: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND Jul 16 2020, 21:29:13, Revision:\
+  \ HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow\
+  \ C et al.. OpenMS: a flexible open-source software platform for mass spectrometry\
+  \ data analysis. Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\nTo cite\
+  \ CometAdapter:\n  Eng, Jimmy K. and Jahan, Tahmina A. and Hoopmann, Michael R..\
+  \ Comet: An open-source MS/MS sequence database search tool. PROTEOMICS 2013; 13-1:\
+  \ 22--24. doi:10.1002/pmic.201200439.\n\nUsage:\n  CometAdapter <options>\n\nOptions\
+  \ (mandatory options marked with '*'):\n  -in <file>*                          \
+  \  Input file (valid formats: 'mzML')\n  -out <file>*                          \
+  \ Output file (valid formats: 'idXML')\n  -database <file>*                    \
+  \  FASTA file (valid formats: 'FASTA')\n  -comet_executable <executable>*      \
+  \  The Comet executable. Provide a full or relative path, or make sure it can be\
+  \ found in your PATH environment.\n  -comet_version <choice>                Comet\
+  \ version: (year,version,revision) (default: '2016.01 rev. 2')\n  -pin_out <file>\
+  \                        Output file - for Percolator input (valid formats: 'tsv')\n\
+  \  -default_params_file <file>            Default Comet params file. All parameters\
+  \ of this take precedence. A template file can be generated using comet.exe -p (valid\
+  \ formats: 'txt')\n  -precursor_mass_tolerance <tolerance>  Precursor monoisotopic\
+  \ mass tolerance (Comet parameter: peptide_mass_tolerance).  See also precursor_error_units\
+  \ to set the unit. (default: '10.0')\n  -precursor_error_units <choice>        Unit\
+  \ of precursor monoisotopic mass tolerance for parameter precursor_mass_tolerance\
   \ (Comet parameter: peptide_mass_units) (default: 'ppm' valid: 'amu', 'ppm', 'Da')\n\
   \  -isotope_error <choice>                This parameter controls whether the peptide_mass_tolerance\
   \ takes into account possible isotope errors in the precursor mass measurement.\
   \ Use -8/-4/0/4/8 only for SILAC. (default: 'off' valid: 'off', '0/1', '0/1/2',\
   \ '-1/0/1/2/3', '-8/-4/0/4/8')\n  -enzyme <cleavage site>                The enzyme\
-  \ used for peptide digestion. (default: 'Trypsin' valid: 'Asp-N', 'glutamyl endopeptidase',\
-  \ 'Arg-C', 'unspecific cleavage', 'Chymotrypsin', 'CNBr', 'Lys-C', 'Lys-N', 'PepsinA',\
-  \ 'Trypsin/P', 'Trypsin')\n  -num_enzyme_termini <choice>           Specify the\
-  \ termini where the cleavage rule has to match (default: 'fully' valid: 'semi',\
-  \ 'fully', 'C-term unspecific', 'N-term unspecific')\n  -allowed_missed_cleavages\
+  \ used for peptide digestion. (default: 'Trypsin' valid: 'unspecific cleavage',\
+  \ 'PepsinA', 'CNBr', 'Lys-N', 'Lys-C', 'glutamyl endopeptidase', 'Trypsin/P', 'Asp-N',\
+  \ 'Arg-C', 'Chymotrypsin', 'Trypsin')\n  -num_enzyme_termini <choice>          \
+  \ Specify the termini where the cleavage rule has to match (default: 'fully' valid:\
+  \ 'semi', 'fully', 'C-term unspecific', 'N-term unspecific')\n  -allowed_missed_cleavages\
   \ <num>        Number of possible cleavage sites missed by the enzyme. It has no\
   \ effect if enzyme is unspecific cleavage. (default: '0' min: '0' max: '5')\n  -num_hits\
   \ <num>                        Number of peptide hits in output file (default: '5')\n\

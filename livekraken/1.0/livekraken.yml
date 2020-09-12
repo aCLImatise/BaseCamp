@@ -1,9 +1,79 @@
 !Command
+command:
+- livekraken
 positional: []
 named:
 - !Flag
-  description: 'Maximum tile to analyse, in XYZZ tile format. Default: Up to tile
-    2316 (for 96 tiles.) If this option is used, --bcl-tiles is ignored.'
+  description: "Name for Kraken DB\n(default: none)"
+  synonyms:
+  - --db
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: 'Number of threads (default: 1)'
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Input is FASTA format
+  synonyms:
+  - --fasta-input
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input is FASTQ format
+  synonyms:
+  - --fastq-input
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input is BCL format
+  synonyms:
+  - --bcl-input
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of sequencing cycles
+  synonyms:
+  - --bcl-length
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: First analysis cycle (>31)
+  synonyms:
+  - --bcl-start
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Spacing between classification
+  synonyms:
+  - --bcl-spacing
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "lanes to analyse (e.g. 1 3 4)\nDefault: Analyse all lanes found."
+  synonyms:
+  - --bcl-lanes
+  args: !RepeatFlagArg
+    name: The
+  optional: true
+- !Flag
+  description: "tiles to analyse (e.g. 1101 2115 2304)\nDefault: 96 tiles (2 sides\
+    \ -> 3 swaths -> 16 tiles)."
+  synonyms:
+  - --bcl-tiles
+  args: !RepeatFlagArg
+    name: The
+  optional: true
+- !Flag
+  description: "Maximum tile to analyse, in XYZZ tile format.\nDefault: Up to tile\
+    \ 2316 (for 96 tiles.)\nIf this option is used, --bcl-tiles is ignored."
   synonyms:
   - --bcl-max-tile
   args: !SimpleFlagArg
@@ -28,8 +98,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "In quick op., number of hits req'd for classification NOTE: this is\
-    \ ignored if --quick is not specified"
+  description: "In quick op., number of hits req'd for classification\nNOTE: this\
+    \ is ignored if --quick is not specified"
   synonyms:
   - --min-hits
   args: !SimpleFlagArg
@@ -50,8 +120,8 @@ named:
     name: FILENAME
   optional: true
 - !Flag
-  description: 'Print output to filename (default: stdout); "-" will suppress normal
-    output'
+  description: "Print output to filename (default: stdout); \"-\" will\nsuppress normal\
+    \ output"
   synonyms:
   - --output
   args: !SimpleFlagArg
@@ -76,16 +146,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Ensure each pair of reads have names that agree with each other; ignored
-    if --paired is not specified
+  description: "Ensure each pair of reads have names that agree\nwith each other;\
+    \ ignored if --paired is not specified"
   synonyms:
   - --check-names
   args: !EmptyFlagArg {}
   optional: true
-command:
-- livekraken
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Print this message
   synonyms:

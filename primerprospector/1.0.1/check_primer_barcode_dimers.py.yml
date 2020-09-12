@@ -1,0 +1,171 @@
+!Command
+command:
+- check_primer_barcode_dimers.py
+positional: []
+named:
+- !Flag
+  description: "Print information during execution -- useful for\ndebugging [default:\
+    \ False]"
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify an annealing temperature in degrees Celsius.\n[default: 50]"
+  synonyms:
+  - -t
+  - --annealing_temp
+  args: !SimpleFlagArg
+    name: ANNEALING_TEMP
+  optional: true
+- !Flag
+  description: "Specify a score threshold for the Gibbs energy\ncalculation, below\
+    \ which a barcode/primer combination\nis flagged for potential secondary structure.\n\
+    [default: -10.0]"
+  synonyms:
+  - -s
+  - --score_threshold
+  args: !SimpleFlagArg
+    name: SCORE_THRESHOLD
+  optional: true
+- !Flag
+  description: "Specify output directory for barcode/primer secondary\nstructure summary\
+    \ and graphs. [default: .]"
+  synonyms:
+  - -o
+  - --output_dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: "If enabled, barcodes will be appended to both primer 1\nand primer\
+    \ 2.  [default: False]"
+  synonyms:
+  - -B
+  - --paired_end_barcodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Suppress retention of output postscript graphs.\n[default: False]"
+  synonyms:
+  - -g
+  - --suppress_graphs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Filepath of barcodes to score input primer(s) against.\n[REQUIRED]"
+  synonyms:
+  - -b
+  - --barcodes
+  args: !SimpleFlagArg
+    name: BARCODES
+  optional: true
+- !Flag
+  description: "Primer, written in 5' to 3', that is linked to\nbarcodes tested. \
+    \ If linker sequence is present\nbetween primer and barcode, include it with this\n\
+    sequences. [REQUIRED]"
+  synonyms:
+  - -p
+  - --primer1
+  args: !SimpleFlagArg
+    name: PRIMER1
+  optional: true
+- !Flag
+  description: "Second primer, written in 5' to 3' orientation.  This\nprimer by default\
+    \ is not associated with any barcodes.\n[REQUIRED]"
+  synonyms:
+  - -P
+  - --primer2
+  args: !SimpleFlagArg
+    name: PRIMER2
+  optional: true
+- !Flag
+  description: "Specify energy parameters file for predicting\nsecondary structures.\
+    \  A DNA parameters file,\ndna_DM.par, is found in the DNA_parameters folder of\n\
+    Primer Prospector, and should be pointed to with this\nparameter.  If an incorrect\
+    \ file is used, the Vienna\nsoftware will use default parameters, which are for\n\
+    RNA folding, and could give misleading results.  The\nprovided DNA parameters\
+    \ file is a modified form of the\nDNA parameters from  David Mathews' RNAstructure\n\
+    program. [REQUIRED]\n"
+  synonyms:
+  - -e
+  - --energy_parameters
+  args: !SimpleFlagArg
+    name: ENERGY_PARAMETERS
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: check_primer_barcode_dimers.py [options] {-b/--barcodes BARCODES\
+  \ -p/--primer1 PRIMER1 -P/--primer2 PRIMER2 -e/--energy_parameters ENERGY_PARAMETERS}\n\
+  \n[] indicates optional input (order unimportant)\n{} indicates required input (order\
+  \ unimportant)\n\n\n\nThis module takes an input text file containing barcodes,\
+  \ line separated, and\nlisted in 5' to 3' direction.  Two primers are specified\
+  \ at the command line.\nThe first, primer 1, is the primer sequence (and linker)\
+  \ that is associated\nwith a barcode.  Primer 2 by default has no barcode associated\
+  \ with it, \nalthough barcode association with both primers can be enabled.\n\n\
+  Each barcode/primer combination that potentially will form secondary \nstructures\
+  \ will be listed with line number, barcode sequence, secondary \nstructure, and\
+  \ energy in an output text file.  Additionally, a postscript file\nshowing graphical\
+  \ output for the secondary structure will be generated in a \nsubdirectory of the\
+  \ output directory.  Degenerate primers will be listed in \nthe form(s) that are\
+  \ likely to have secondary structure.\n\n\nExample usage: \nPrint help message and\
+  \ exit\n check_primer_barcode_dimers.py -h\n\nExample: Standard Example\n check_primer_barcode_dimers.py\
+  \ [options] {-b barcode_filepath [required] -p primer_sequence_1 [required] -P primer_sequence_2\
+  \ [required] -e DNA_energy_parameters_filepath [required]}\n\nSet the annealing\
+  \ temperature to 65, set score threshold to -10, and point to the energy parameters\
+  \ file in the directory /home/BigErn/pprospector/DNA_parameters: \n check_primer_barcode_dimers.py\
+  \ -b barcodes.txt -p \"ACCTGACRGGTAATC\" -P \"CGACCAGTACG\" -t 65 -s -10 -e /home/BigErn/pprospector/DNA_parameters/dna_DM.par\n\
+  \nOptions:\n  --version             show program's version number and exit\n  -h,\
+  \ --help            show this help message and exit\n  -v, --verbose         Print\
+  \ information during execution -- useful for\n                        debugging\
+  \ [default: False]\n  -t ANNEALING_TEMP, --annealing_temp=ANNEALING_TEMP\n     \
+  \                   Specify an annealing temperature in degrees Celsius.\n     \
+  \                   [default: 50]\n  -s SCORE_THRESHOLD, --score_threshold=SCORE_THRESHOLD\n\
+  \                        Specify a score threshold for the Gibbs energy\n      \
+  \                  calculation, below which a barcode/primer combination\n     \
+  \                   is flagged for potential secondary structure.\n            \
+  \            [default: -10.0]\n  -o OUTPUT_DIR, --output_dir=OUTPUT_DIR\n      \
+  \                  Specify output directory for barcode/primer secondary\n     \
+  \                   structure summary and graphs. [default: .]\n  -B, --paired_end_barcodes\n\
+  \                        If enabled, barcodes will be appended to both primer 1\n\
+  \                        and primer 2.  [default: False]\n  -g, --suppress_graphs\n\
+  \                        Suppress retention of output postscript graphs.\n     \
+  \                   [default: False]\n\n  REQUIRED options:\n    The following options\
+  \ must be provided under all circumstances.\n\n    -b BARCODES, --barcodes=BARCODES\n\
+  \                        Filepath of barcodes to score input primer(s) against.\n\
+  \                        [REQUIRED]\n    -p PRIMER1, --primer1=PRIMER1\n       \
+  \                 Primer, written in 5' to 3', that is linked to\n             \
+  \           barcodes tested.  If linker sequence is present\n                  \
+  \      between primer and barcode, include it with this\n                      \
+  \  sequences. [REQUIRED]\n    -P PRIMER2, --primer2=PRIMER2\n                  \
+  \      Second primer, written in 5' to 3' orientation.  This\n                 \
+  \       primer by default is not associated with any barcodes.\n               \
+  \         [REQUIRED]\n    -e ENERGY_PARAMETERS, --energy_parameters=ENERGY_PARAMETERS\n\
+  \                        Specify energy parameters file for predicting\n       \
+  \                 secondary structures.  A DNA parameters file,\n              \
+  \          dna_DM.par, is found in the DNA_parameters folder of\n              \
+  \          Primer Prospector, and should be pointed to with this\n             \
+  \           parameter.  If an incorrect file is used, the Vienna\n             \
+  \           software will use default parameters, which are for\n              \
+  \          RNA folding, and could give misleading results.  The\n              \
+  \          provided DNA parameters file is a modified form of the\n            \
+  \            DNA parameters from  David Mathews' RNAstructure\n                \
+  \        program. [REQUIRED]\n"
+generated_using:
+- --help

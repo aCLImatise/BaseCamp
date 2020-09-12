@@ -1,0 +1,181 @@
+!Command
+command:
+- seal.sh
+positional:
+- !Positional
+  description: If this is set to false and processcontainedref
+  position: 0
+  name: validated.
+  optional: false
+- !Positional
+  description: 'monitor=600,0.01 would kill after 600 seconds '
+  position: 0
+  name: time.
+  optional: false
+- !Positional
+  description: Pairs will be discarded only if both are shorter.
+  position: 0
+  name: discarded.
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an\nout-of-memory exception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified March 28, 2018\n\nDescription:\
+  \  Performs high-speed alignment-free sequence quantification,\nby counting the\
+  \ number of long kmers that match between a read and\na set of reference sequences.\
+  \  Designed for RNA-seq with alternative splicing.\nPlease read bbmap/docs/guides/SealGuide.txt\
+  \ for more information.\n\nUsage:  seal.sh in=<input file> ref=<file,file,file...>\
+  \ rpkm=<file>\n\nInput may be fasta or fastq, compressed or uncompressed.\nIf you\
+  \ pipe via stdin/stdout, please include the file type; e.g. for gzipped \nfasta\
+  \ input, set in=stdin.fa.gz\n\nInput parameters:\nin=<file>           Main input.\
+  \ in=stdin.fq will pipe from stdin.\nin2=<file>          Input for 2nd read of pairs\
+  \ in a different file.\nref=<file,file>     Comma-delimited list of reference files\
+  \ or directories.\n                    Filenames may also be used without ref=,\
+  \ e.g. *.fa.\n                    In addition to filenames, you may also use the\
+  \ keywords:\n                    adapters, artifacts, phix, lambda, pjet, mtst,\
+  \ kapa.\nliteral=<seq,seq>   Comma-delimited list of literal reference sequences.\n\
+  touppercase=f       (tuc) Change all bases upper-case.\ninterleaved=auto    (int)\
+  \ t/f overrides interleaved autodetection.\nqin=auto            Input quality offset:\
+  \ 33 (Sanger), 64, or auto.\nreads=-1            If positive, quit after processing\
+  \ X reads or pairs.\ncopyundefined=f     (cu) Process non-AGCT IUPAC reference bases\
+  \ by making all\n                    possible unambiguous copies.  Intended for\
+  \ short motifs\n                    or adapter barcodes, as time/memory use is exponential.\n\
+  \nOutput parameters:\nout=<file>          (outmatch) Write reads here that contain\
+  \ kmers matching\n                    the reference. 'out=stdout.fq' will pipe to\
+  \ standard out.\nout2=<file>         (outmatch2) Use this to write 2nd read of pairs\
+  \ to a \n                    different file.\noutu=<file>         (outunmatched)\
+  \ Write reads here that do not contain kmers \n                    matching the\
+  \ database.\noutu2=<file>        (outunmatched2) Use this to write 2nd read of pairs\
+  \ to a \n                    different file.\npattern=<file>      Use this to write\
+  \ reads to one stream per ref sequence\n                    match, replacing the\
+  \ % character with the sequence name.\n                    For example, pattern=%.fq\
+  \ for ref sequences named dog and \n                    cat would create dog.fq\
+  \ and cat.fq.\nstats=<file>        Write statistics about which contamininants were\
+  \ detected.\nrefstats=<file>     Write statistics on a per-reference-file basis.\n\
+  rpkm=<file>         Write RPKM for each reference sequence (for RNA-seq).\ndump=<file>\
+  \         Dump kmer tables to a file, in fasta format.\nnzo=t               Only\
+  \ write statistics about ref sequences with nonzero hits.\noverwrite=t         (ow)\
+  \ Grant permission to overwrite files.\nshowspeed=t         (ss) 'f' suppresses\
+  \ display of processing speed.\nziplevel=2          (zl) Compression level; 1 (min)\
+  \ through 9 (max).\nfastawrap=80        Length of lines in fasta output.\nqout=auto\
+  \           Output quality offset: 33 (Sanger), 64, or auto.\nstatscolumns=5   \
+  \   (cols) Number of columns for stats output, 3 or 5.\n                    5 includes\
+  \ base counts.\nrename=f            Rename reads to indicate which sequences they\
+  \ matched.\nrefnames=f          Use names of reference files rather than scaffold\
+  \ IDs.\n                    With multiple reference files, this is more efficient\n\
+  \                    than tracking statistics on a per-sequence basis.\ntrd=f  \
+  \             Truncate read and ref names at the first whitespace.\nordered=f  \
+  \         Set to true to output reads in same order as input.\nkpt=t           \
+  \    (keepPairsTogether) Paired reads will always be assigned\n                \
+  \    to the same ref sequence.\n\nProcessing parameters:\nk=31                Kmer\
+  \ length used for finding contaminants.  Contaminants \n                    shorter\
+  \ than k will not be found.  k must be at least 1.\nrcomp=t             Look for\
+  \ reverse-complements of kmers in addition to \n                    forward kmers.\n\
+  maskmiddle=t        (mm) Treat the middle base of a kmer as a wildcard, to \n  \
+  \                  increase sensitivity in the presence of errors.\nminkmerhits=1\
+  \       (mkh) A read needs at least this many kmer hits to be \n               \
+  \     considered a match.\nminkmerfraction=0.0 (mkf) A reads needs at least this\
+  \ fraction of its total\n                    kmers to hit a ref, in order to be\
+  \ considered a match.\nhammingdistance=0   (hdist) Maximum Hamming distance for\
+  \ ref kmers (subs only).\n                    Memory use is proportional to (3*K)^hdist.\n\
+  qhdist=0            Hamming distance for query kmers; impacts speed, not memory.\n\
+  editdistance=0      (edist) Maximum edit distance from ref kmers (subs and \n  \
+  \                  indels).  Memory use is proportional to (8*K)^edist.\nforbidn=f\
+  \           (fn) Forbids matching of read kmers containing N.  \n              \
+  \      By default, these will match a reference 'A' if hdist>0\n               \
+  \     or edist>0, to increase sensitivity.\nmatch=all           Determines when\
+  \ to quit looking for kmer matches.  Values:\n                         all:    Attempt\
+  \ to match all kmers in each read.\n                         first:  Quit after\
+  \ the first matching kmer.\n                         unique: Quit after the first\
+  \ uniquely matching kmer.\nambiguous=random    (ambig) Set behavior on ambiguously-mapped\
+  \ reads (with an\n                    equal number of kmer matches to multiple sequences).\n\
+  \                         first:  Use the first best-matching sequence.\n      \
+  \                   toss:   Consider unmapped.\n                         random:\
+  \ Select one best-matching sequence randomly.\n                         all:   \
+  \ Use all best-matching sequences.\nclearzone=0         (cz) Threshhold for ambiguity.\
+  \  If the best match shares X \n                    kmers with the read, the read\
+  \ will be considered\n                    also ambiguously mapped to any sequence\
+  \ sharing at least\n                    [X minus clearzone] kmers.\necco=f     \
+  \         For overlapping paired reads only.  Performs error-\n                \
+  \    correction with BBMerge prior to kmer operations.\n\nContainment parameters:\n\
+  processcontainedref=f  Require a reference sequence to be fully contained by\n \
+  \                   an input sequence\nstorerefbases=f     Store reference bases\
+  \ so that ref containments can be\n                    validated.  If this is set\
+  \ to false and processcontainedref\n                    is true, then it will only\
+  \ require that the read share the\n                    same number of bases as are\
+  \ present in the ref sequence.\n\nTaxonomy parameters (only use when doing taxonomy):\n\
+  tax=<file>          Output destination for taxonomy information.\ntaxtree=<file>\
+  \      (tree) A serialized TaxTree (tree.taxtree.gz).\ngi=<file>           A serialized\
+  \ GiTable (gitable.int1d.gz). Only needed if \n                    reference sequence\
+  \ names start with 'gi|'.\nmincount=1          Only display taxa with at least this\
+  \ many hits.\nmaxnodes=-1         If positive, display at most this many top hits.\n\
+  minlevel=subspecies Do not display nodes below this taxonomic level.\nmaxlevel=life\
+  \       Do not display nodes above this taxonomic level.\nValid levels are subspecies,\
+  \ species, genus, family, order, class,\nphylum, kingdom, domain, life\n\nSpeed\
+  \ and Memory parameters:\nthreads=auto        (t) Set number of threads to use;\
+  \ default is number of \n                    logical processors.\nprealloc=f   \
+  \       Preallocate memory in table.  Allows faster table loading \n           \
+  \         and more efficient memory usage, for a large reference.\nmonitor=f   \
+  \        Kill this process if CPU usage drops to zero for a long\n             \
+  \       time.  monitor=600,0.01 would kill after 600 seconds \n                \
+  \    under 1% usage.\nrskip=1             Skip reference kmers to reduce memory\
+  \ usage.\n                    1 means use all, 2 means use every other kmer, etc.\n\
+  qskip=1             Skip query kmers to increase speed.  1 means use all.\nspeed=0\
+  \             Ignore this fraction of kmer space (0-15 out of 16) in both\n    \
+  \                reads and reference.  Increases speed and reduces memory.\nNote:\
+  \ Do not use more than one of 'speed', 'qskip', and 'rskip'.\n\nTrimming/Masking\
+  \ parameters:\nqtrim=f             Trim read ends to remove bases with quality below\
+  \ trimq.\n                    Performed AFTER looking for kmers.  Values: \n   \
+  \                      t (trim both ends), \n                         f (neither\
+  \ end), \n                         r (right end only), \n                      \
+  \   l (left end only).\ntrimq=6             Regions with average quality BELOW this\
+  \ will be trimmed.\nminlength=1         (ml) Reads shorter than this after trimming\
+  \ will be \n                    discarded.  Pairs will be discarded only if both\
+  \ are shorter.\nmaxlength=          Reads longer than this after trimming will be\
+  \ discarded.\n                    Pairs will be discarded only if both are longer.\n\
+  minavgquality=0     (maq) Reads with average quality (after trimming) below \n \
+  \                   this will be discarded.\nmaqb=0              If positive, calculate\
+  \ maq from this many initial bases.\nmaxns=-1            If non-negative, reads\
+  \ with more Ns than this \n                    (after trimming) will be discarded.\n\
+  forcetrimleft=0     (ftl) If positive, trim bases to the left of this position \n\
+  \                    (exclusive, 0-based).\nforcetrimright=0    (ftr) If positive,\
+  \ trim bases to the right of this position \n                    (exclusive, 0-based).\n\
+  forcetrimright2=0   (ftr2) If positive, trim this many bases on the right end. \n\
+  forcetrimmod=0      (ftm) If positive, right-trim length to be equal to zero,\n\
+  \                    modulo this number.\nrestrictleft=0      If positive, only\
+  \ look for kmer matches in the \n                    leftmost X bases.\nrestrictright=0\
+  \     If positive, only look for kmer matches in the \n                    rightmost\
+  \ X bases.\n\nJava Parameters:\n-Xmx                This will set Java's memory\
+  \ usage, overriding autodetection.\n                    -Xmx20g will specify 20\
+  \ gigs of RAM, and -Xmx200m will specify 200 megs.  \n                    The max\
+  \ is typically 85% of physical memory.\n-eoom               This flag will cause\
+  \ the process to exit if an \n                    out-of-memory exception occurs.\
+  \  Requires Java 8u92+.\n-da                 Disable assertions.\n\nPlease contact\
+  \ Brian Bushnell at bbushnell@lbl.gov if you encounter any problems.\n\n"
+generated_using:
+- --help

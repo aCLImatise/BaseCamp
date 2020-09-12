@@ -1,15 +1,324 @@
 !Command
-positional: []
+command:
+- cPecanLastz_D
+positional:
+- !Positional
+  description: (by default no chaining is performed)
+  position: 0
+  name: anti-diagonal
+  optional: false
 named:
 - !Flag
-  description: "[=count]    just produce the target position table, don't search for\
-    \ seeds"
+  description: the target sequence is also the query
+  synonyms:
+  - --self
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "set max bits for word hash;  use this to trade time for\nmemory, eliminating\
+    \ thrashing for heavy seeds\n(default is 28 bits)"
+  synonyms:
+  - --word
+  args: !SimpleFlagArg
+    name: bits
+  optional: true
+- !Flag
+  description: ",<M>       filter seed hits, requiring at least M matches and\nallowing\
+    \ no more than T transversions\n(default is no filtering)"
+  synonyms:
+  - --filter
+  args: !SimpleFlagArg
+    name: T
+  optional: true
+- !Flag
+  description: require just one seed hit
+  synonyms:
+  - --notwins
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "..<maxgap> require two nearby seed hits on the same diagonal\n(default\
+    \ is twins aren't required)"
+  synonyms:
+  - --twins
+  args: !SimpleFlagArg
+    name: min
+  optional: true
+- !Flag
+  description: "set number of entries in seed hit queue\n(default is 262144)"
+  synonyms:
+  - --seedqueue
+  args: !SimpleFlagArg
+    name: entries
+  optional: true
+- !Flag
+  description: "read anchor segments from a file, instead of\ndiscovering anchors\
+    \ via seeding"
+  synonyms:
+  - --segments
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: don't recover hash-collision seed hits
+  synonyms:
+  - --norecoverseeds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "recover hash-collision seed hits\n(default is not to recover seed\
+    \ hits)"
+  synonyms:
+  - --recoverseeds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: set step length (default is 1)
+  synonyms:
+  - --step
+  args: !SimpleFlagArg
+    name: length
+  optional: true
+- !Flag
+  description: =<diag,anti>    perform chaining with given penalties for diagonal
+    and
+  synonyms:
+  - --chain
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "do not output a trivial self-alignment block if the\ntarget and query\
+    \ happen to be identical"
+  synonyms:
+  - --notrivial
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "read substitution scores from a file\n(default is HOXD70)"
+  synonyms:
+  - --scores
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ',<P>        scores are +R/-P for match/mismatch'
+  synonyms:
+  - --match
+  args: !SimpleFlagArg
+    name: R
+  optional: true
+- !Flag
+  description: =<open,extend>    set gap open and extend penalties (default is 400.000000,30.000000)
+  synonyms:
+  - --gap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: set x-drop threshold (default is 10*sub[A][A])
+  synonyms:
+  - --xdrop
+  args: !SimpleFlagArg
+    name: score
+  optional: true
+- !Flag
+  description: set y-drop threshold (default is open+300extend)
+  synonyms:
+  - --ydrop
+  args: !SimpleFlagArg
+    name: score
+  optional: true
+- !Flag
+  description: "if x-drop extension encounters end of sequence, don't\ntrim back to\
+    \ peak score (use this for short reads)"
+  synonyms:
+  - --noxtrim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "if y-drop extension encounters end of sequence, don't\ntrim back to\
+    \ peak score (use this for short reads)"
+  synonyms:
+  - --noytrim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: infer scores from the sequences, then use them
+  synonyms:
+  - --infer
+  args: !SimpleFlagArg
+    name: control
+  optional: true
+- !Flag
+  description: "infer scores but don't use them (requires --infscores)\nall inference\
+    \ options are read from the control file"
+  synonyms:
+  - --inferonly
+  args: !SimpleFlagArg
+    name: control
+  optional: true
+- !Flag
+  description: '[=<file>]   write inferred scores to a file'
+  synonyms:
+  - --infscores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "set threshold for high scoring pairs (default is 3000.000000)\nungapped\
+    \ extensions scoring lower are discarded\n<score> can also be a percentage or\
+    \ base count"
+  synonyms:
+  - --hspthresh
+  args: !SimpleFlagArg
+    name: score
+  optional: true
+- !Flag
+  description: "set threshold for exact matches\nif specified, exact matches are found\
+    \ rather than high\nscoring pairs (replaces --hspthresh)"
+  synonyms:
+  - --exact
+  args: !SimpleFlagArg
+    name: length
+  optional: true
+- !Flag
+  description: ",<length> set threshold for mismatches\nif specified, N-mismatch segments\
+    \ are found rather\nthan high scoring pairs (replaces --hspthresh)"
+  synonyms:
+  - --mismatch
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "set threshold for HSPs during interpolation\n(default is no interpolation)"
+  synonyms:
+  - --inner
+  args: !SimpleFlagArg
+    name: score
+  optional: true
+- !Flag
+  description: "set threshold for gapped alignments\ngapped extensions scoring lower\
+    \ are discarded\n<score> can also be a percentage or base count\n(default is to\
+    \ use same value as --hspthresh)"
+  synonyms:
+  - --gappedthresh
+  args: !SimpleFlagArg
+    name: score
+  optional: true
+- !Flag
+  description: "[%]      set minimum score required of words 'in' a quantum ball"
+  synonyms:
+  - --ball
+  args: !SimpleFlagArg
+    name: score
+  optional: true
+- !Flag
+  description: "don't report mirror-image alignments when using --self\n(default is\
+    \ to skip processing them, but recreate them\nin the output)"
+  synonyms:
+  - --nomirror
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":traceback=<bytes>  space for trace-back information\n(default is\
+    \ 80.0M)"
+  synonyms:
+  - --allocate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[%] limit seed word-repeats in target\nwords occurring too often are\
+    \ not used in seed hits\n(default is no word-repeat limit)"
+  synonyms:
+  - --maxwordcount
+  args: !SimpleFlagArg
+    name: limit
+  optional: true
+- !Flag
+  description: "mask any position in target hit this many times\nzero indicates no\
+    \ masking\n(default is no masking)"
+  synonyms:
+  - --masking
+  args: !SimpleFlagArg
+    name: count
+  optional: true
+- !Flag
+  description: "[..<max>] filter alignments by percent identity\n0<=min<=max<=100;\
+    \  blocks (or HSPs) outside min..max\nare discarded\n(default is no identity filtering)"
+  synonyms:
+  - --identity
+  args: !SimpleFlagArg
+    name: min
+  optional: true
+- !Flag
+  description: "[..<max>] filter alignments by percentage of query covered\n0<=min<=max<=100;\
+    \  blocks (or HSPs) outside min..max\nare discarded\n(default is no query coverage\
+    \ filtering)"
+  synonyms:
+  - --coverage
+  args: !SimpleFlagArg
+    name: min
+  optional: true
+- !Flag
+  description: "[..<max>] filter alignments by percent continuity\n0<=min<=max<=100;\
+    \  blocks (or HSPs) outside min..max\nare discarded\n(default is no continuity\
+    \ filtering)"
+  synonyms:
+  - --continuity
+  args: !SimpleFlagArg
+    name: min
+  optional: true
+- !Flag
+  description: "specify output alignment file;  otherwise alignments\nare written\
+    \ to stdout"
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "specify output format; one of lav, axt, maf, cigar,\nrdotplot, text\
+    \ or general\n(use --help=formats for more details)\n(by default output is LAV)"
+  synonyms:
+  - --format
+  args: !SimpleFlagArg
+    name: type
+  optional: true
+- !Flag
+  description: "specify readgroup tags for SAM format\n(use --help=formats for more\
+    \ details)"
+  synonyms:
+  - --readgroup
+  args: !SimpleFlagArg
+    name: tags
+  optional: true
+- !Flag
+  description: Write a comment at the end of the output file
+  synonyms:
+  - --markend
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: create an output file suitable for plotting in R.
+  synonyms:
+  - --rdotplot
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "set info level (0 is minimum, 10 is everything)\n(default is 0)"
+  synonyms:
+  - --verbosity
+  args: !SimpleFlagArg
+    name: level
+  optional: true
+- !Flag
+  description: "[=count]    just produce the target position table, don't\nsearch\
+    \ for seeds"
   synonyms:
   - --tableonly
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: just produce the anchor segments table, don't perform gapped alignment
+  description: "just produce the anchor segments table, don't\nperform gapped alignment"
   synonyms:
   - --writesegments
   args: !SimpleFlagArg
@@ -23,17 +332,16 @@ named:
     name: file
   optional: true
 - !Flag
-  description: read the target seed word table from a file (this replaces the target
-    specifier)
+  description: "read the target seed word table from a file\n(this replaces the target\
+    \ specifier)"
   synonyms:
   - --targetcapsule
   args: !SimpleFlagArg
     name: file
   optional: true
-command:
-- cPecanLastz_D
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag

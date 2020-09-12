@@ -1,11 +1,107 @@
 !Command
-positional: []
-named: []
 command:
 - mashmap
+positional: []
+named:
+- !Flag
+  description: an input reference file (fasta/fastq)[.gz]
+  synonyms:
+  - -r
+  - --ref
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: a file containing list of reference files, one per line
+  synonyms:
+  - --refList
+  - --rl
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: an input query file (fasta/fastq)[.gz]
+  synonyms:
+  - -q
+  - --query
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: a file containing list of query files, one per line
+  synonyms:
+  - --ql
+  - --queryList
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "mapping segment length [default : 5,000]\nsequences shorter than segment\
+    \ length will be ignored"
+  synonyms:
+  - -s
+  - --segLength
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: disable splitting of input sequences during mapping [enabled by default]
+  synonyms:
+  - --noSplit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'threshold for identity [default : 85]'
+  synonyms:
+  - --perc_identity
+  - --pi
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: 'count of threads for parallel execution [default : 1]'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: 'output file name [default : mashmap.out]'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: 'kmer size <= 16 [default : 16]'
+  synonyms:
+  - -k
+  - --kmer
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "filter modes in mashmap: 'map', 'one-to-one' or 'none' [default: map]\n\
+    'map' computes best mappings for each query sequence\n'one-to-one' computes best\
+    \ mappings for query as well as reference sequence\n'none' disables filtering\n"
+  synonyms:
+  - -f
+  - --filter_mode
+  args: !SimpleFlagArg
+    name: value
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Print this help page
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "-----------------\nMashmap is an approximate long read or contig mapper\

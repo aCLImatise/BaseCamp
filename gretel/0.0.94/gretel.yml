@@ -1,5 +1,22 @@
 !Command
-positional: []
+command:
+- gretel
+positional:
+- !Positional
+  description: vcf
+  position: 0
+  name: bam
+  optional: false
+- !Positional
+  description: 'optional arguments:'
+  position: 1
+  name: contig
+  optional: false
+- !Positional
+  description: -o OUT, --out OUT     Output directory [default .]
+  position: 2
+  name: line.
+  optional: false
 named:
 - !Flag
   description: '1-indexed included start base position [default: 1]'
@@ -10,7 +27,7 @@ named:
     name: START
   optional: true
 - !Flag
-  description: '1-indexed inlcuded end base position [default: reference length]'
+  description: "1-indexed inlcuded end base position [default:\nreference length]"
   synonyms:
   - -e
   - --end
@@ -26,41 +43,33 @@ named:
     name: PATHS
   optional: true
 - !Flag
-  description: Master sequence (will be used to fill in homogeneous gaps in haplotypes,
-    otherwise --gapchar)
+  description: "Master sequence (will be used to fill in homogeneous\ngaps in haplotypes,\
+    \ otherwise --gapchar)"
   synonyms:
   - --master
   args: !SimpleFlagArg
     name: MASTER
   optional: true
 - !Flag
-  description: Character to fill homogeneous gaps in haplotypes if no --master [default
-    N]
+  description: Character to fill homogeneous gaps in haplotypes if no
   synonyms:
   - --gapchar
   args: !SimpleFlagArg
     name: GAPCHAR
   optional: true
 - !Flag
-  description: Character to output in haplotype for deletion (eg. -) [default is blank]
+  description: "Character to output in haplotype for deletion (eg. -)\n[default is\
+    \ blank]"
   synonyms:
   - --delchar
   args: !SimpleFlagArg
     name: DELCHAR
   optional: true
 - !Flag
-  description: Don't output anything other than a single summary line.
+  description: Don't output anything other than a single summary
   synonyms:
   - --quiet
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Output directory [default .]
-  synonyms:
-  - -o
-  - --out
-  args: !SimpleFlagArg
-    name: OUT
   optional: true
 - !Flag
   description: Number of BAM iterators [default 1]
@@ -71,24 +80,24 @@ named:
     name: THREADS
   optional: true
 - !Flag
-  description: A newline delimited list of read names to output debug data when parsing
-    the BAM
+  description: "A newline delimited list of read names to output debug\ndata when\
+    \ parsing the BAM"
   synonyms:
   - --debugreads
   args: !SimpleFlagArg
     name: DEBUGREADS
   optional: true
 - !Flag
-  description: A newline delimited list of 1-indexed genomic positions to output debug
-    data when parsing the BAM
+  description: "A newline delimited list of 1-indexed genomic\npositions to output\
+    \ debug data when parsing the BAM"
   synonyms:
   - --debugpos
   args: !SimpleFlagArg
     name: DEBUGPOS
   optional: true
 - !Flag
-  description: A comma delimited list of 1-indexed SNP positions to output debug data
-    when predicting haplotypes
+  description: "A comma delimited list of 1-indexed SNP positions to\noutput debug\
+    \ data when predicting haplotypes"
   synonyms:
   - --debughpos
   args: !SimpleFlagArg
@@ -109,16 +118,15 @@ named:
     name: DUMPSNPS
   optional: true
 - !Flag
-  description: enable a more permissive pileup by setting the pysam pileup stepper
-    to 'all', instead of 'samtools'. Note that this will allow improper pairs.
+  description: "enable a more permissive pileup by setting the pysam\npileup stepper\
+    \ to 'all', instead of 'samtools'. Note\nthat this will allow improper pairs."
   synonyms:
   - --pepper
   args: !EmptyFlagArg {}
   optional: true
-command:
-- gretel
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

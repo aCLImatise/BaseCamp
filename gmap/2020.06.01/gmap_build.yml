@@ -1,4 +1,6 @@
 !Command
+command:
+- gmap_build
 positional:
 - !Positional
   description: ''
@@ -11,6 +13,45 @@ positional:
   name: genome_fasta_files
   optional: false
 named:
+- !Flag
+  description: "Destination directory for installation (defaults to gmapdb\ndirectory\
+    \ specified at configure time)"
+  synonyms:
+  - -D
+  - --dir
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Genome name (required)
+  synonyms:
+  - -d
+  - --genomedb
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Substitute names for contigs, provided in a file.\nThe file can have\
+    \ two formats:\n1.  A file with one column per line, with each line\ncorresponding\
+    \ to a FASTA file, in the order given to\ngmap_build.  The chromosome name for\
+    \ each FASTA file will\nbe replaced with the desired chromosome name in the file.\n\
+    Every chromosome must have a corresponding line in the\nfile.\n2.  A file with\
+    \ two columns per line, separated by white\nspace.  In each line, the original\
+    \ FASTA chromosome name\nshould be in column 1 and the desired chromosome name\n\
+    will be in column 2.  Not every chromosome needs to be\nlisted, which provides\
+    \ an easy way to change a few\nchromosome names.\nThis file can be combined with\
+    \ the --sort=names option, in\nwhich the order of chromosomes is that given in\
+    \ the file.  In\nthis case, every chromosome must be listed in the file, and\n\
+    for chromosome names that should not be changed, column 2 can\nbe blank (or the\
+    \ same as column 1).  The option of a blank\ncolumn 2 is allowed only when specifying\
+    \ --sort=names,\nbecause otherwise, the program cannot distinguish between a\n\
+    1-column and 2-column names file."
+  synonyms:
+  - -n
+  - --names
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
 - !Flag
   description: 'k-mer value for genomic index (allowed: 15 or less, default is 15)'
   synonyms:
@@ -27,11 +68,11 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: 'Sort chromosomes using given method: none - use chromosomes as found
-    in FASTA file(s) (default) alpha - sort chromosomes alphabetically (chr10 before
-    chr 1) numeric-alpha - chr1, chr1U, chr2, chrM, chrU, chrX, chrY chrom - chr1,
-    chr2, chrM, chrX, chrY, chr1U, chrU names - sort chromosomes based on file provided
-    to --names flag'
+  description: "Sort chromosomes using given method:\nnone - use chromosomes as found\
+    \ in FASTA file(s) (default)\nalpha - sort chromosomes alphabetically (chr10 before\
+    \ chr 1)\nnumeric-alpha - chr1, chr1U, chr2, chrM, chrU, chrX, chrY\nchrom - chr1,\
+    \ chr2, chrM, chrX, chrY, chr1U, chrU\nnames - sort chromosomes based on file\
+    \ provided to --names flag"
   synonyms:
   - -s
   - --sort
@@ -75,10 +116,10 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: Circular chromosomes (either a list of chromosomes separated by a comma,
-    or a filename containing circular chromosomes, one per line).  If you use the
-    --names feature, then you should use the original name of the chromosome, not
-    the substitute name, for this option.
+  description: "Circular chromosomes (either a list of chromosomes separated\nby a\
+    \ comma, or a filename containing circular chromosomes,\none per line).  If you\
+    \ use the --names feature, then you\nshould use the original name of the chromosome,\
+    \ not the\nsubstitute name, for this option."
   synonyms:
   - -o
   - --circular
@@ -86,10 +127,10 @@ named:
     name: STRING
   optional: true
 - !Flag
-  description: 'File with alt scaffold info, listing alternate scaffolds, one per
-    line, tab-delimited, with the following fields: (1) alt_scaf_acc, (2) parent_name,
-    (3) orientation, (4) alt_scaf_start, (5) alt_scaf_stop, (6) parent_start, (7)
-    parent_end.'
+  description: "File with alt scaffold info, listing alternate scaffolds,\none per\
+    \ line, tab-delimited, with the following fields:\n(1) alt_scaf_acc, (2) parent_name,\
+    \ (3) orientation,\n(4) alt_scaf_start, (5) alt_scaf_stop, (6) parent_start, (7)\
+    \ parent_end."
   synonyms:
   - '-2'
   - --altscaffold
@@ -106,7 +147,7 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: Use MD file from NCBI for mapping contigs to chromosomal coordinates
+  description: "Use MD file from NCBI for mapping contigs to\nchromosomal coordinates"
   synonyms:
   - -M
   - --mdflag
@@ -114,9 +155,9 @@ named:
     name: STRING
   optional: true
 - !Flag
-  description: Find a chromosomal region in each FASTA header line. Useful for contigs
-    that have been mapped to chromosomal coordinates.  Ignored if the --mdflag is
-    provided.
+  description: "Find a chromosomal region in each FASTA header line.\nUseful for contigs\
+    \ that have been mapped\nto chromosomal coordinates.  Ignored if the --mdflag\
+    \ is provided."
   synonyms:
   - -C
   - --contigs-are-mapped
@@ -131,7 +172,7 @@ named:
     name: STRING
   optional: true
 - !Flag
-  description: FASTA file containing transcripts (required if specifying --transcriptomedb)
+  description: FASTA file containing transcripts (required if specifying
   synonyms:
   - -T
   - --transcripts
@@ -139,25 +180,17 @@ named:
     name: FILE
   optional: true
 - !Flag
-  description: Number of threads for GMAP alignment of transcripts to genome (default
-    8)
+  description: "Number of threads for GMAP alignment of transcripts to genome\n(default\
+    \ 8)\n"
   synonyms:
   - -t
   - --nthreads
   args: !SimpleFlagArg
     name: INT
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -d
-  args: !SimpleFlagArg
-    name: genome
-  optional: true
-command:
-- gmap_build
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

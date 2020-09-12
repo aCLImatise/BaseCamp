@@ -1,11 +1,80 @@
 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: start
-  optional: false
+command:
+- paraNode
+positional: []
 named:
+- !Flag
+  description: Log to the specified syslog facility - default local0.
+  synonyms:
+  - -logFacility
+  args: !SimpleFlagArg
+    name: facility
+  optional: true
+- !Flag
+  description: "minimum syslog priority to log, also filters file logging.\ndefaults\
+    \ to \"warn\""
+  synonyms:
+  - -logMinPriority
+  args: !SimpleFlagArg
+    name: pri
+  optional: true
+- !Flag
+  description: Log to file instead of syslog.
+  synonyms:
+  - -log
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Don't daemonize
+  synonyms:
+  - -debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Restrict access to connections from hub.
+  synonyms:
+  - -hub
+  args: !SimpleFlagArg
+    name: host
+  optional: true
+- !Flag
+  description: Set umask to run under - default 002.
+  synonyms:
+  - -umask
+  args: !SimpleFlagArg
+    name: '000'
+  optional: true
+- !Flag
+  description: :bin/i386  User dirs to add to path.
+  synonyms:
+  - -userPath
+  args: !SimpleFlagArg
+    name: bin
+  optional: true
+- !Flag
+  description: =/sbin:/local/bin  System dirs to add to path.
+  synonyms:
+  - -sysPath
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =value - add environment variable to jobs.  Maybe repeated.
+  synonyms:
+  - -env
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: "Up to this many milliseconds of random delay before\nstarting a job.\
+    \  This is mostly to avoid swamping NFS with\nfile opens when loading up an idle\
+    \ cluster.  Also it limits\nthe impact on the hub of very short jobs. Default\
+    \ 5000."
+  synonyms:
+  - -randomDelay
+  args: !SimpleFlagArg
+    name: N
+  optional: true
 - !Flag
   description: Number of CPUs to use - default 1.
   synonyms:
@@ -13,10 +82,9 @@ named:
   args: !SimpleFlagArg
     name: N
   optional: true
-command:
-- paraNode
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

@@ -1,24 +1,331 @@
 !Command
-positional: []
-named: []
 command:
 - NGseqBasic
+positional: []
+named:
+- !Flag
+  description: (the STDOUT log file name in your RUN COMMAND - see above )
+  synonyms:
+  - --outfile
+  args: !SimpleFlagArg
+    name: qsub.out
+  optional: true
+- !Flag
+  description: (the STDERR log file name in your RUN COMMAND - see above )
+  synonyms:
+  - --errfile
+  args: !SimpleFlagArg
+    name: qsub.err
+  optional: true
+- !Flag
+  description: (use orange-blue color scheme instead of red-green)
+  synonyms:
+  - --orangeBlue
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (input files are provided in file.fastq.gz compressed format )
+  synonyms:
+  - --gz
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (set this to be the number of lanes, if there are more than 1 lanes
+    in your fastq files)
+  synonyms:
+  - --lanes
+  args: !SimpleFlagArg
+    name: '2'
+  optional: true
+- !Flag
+  description: '- to run single end sequencing files (default behavior is paired end
+    files)'
+  synonyms:
+  - --singleEnd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': to how many processors we will parallelise the bowtie part of the
+    run'
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: '3'
+  optional: true
+- !Flag
+  description: / --bowtie2 (default is bowtie1 - decide if bowtie1 or bowtie2 is to
+    be used. bowtie2 is better to long reads - read lenght more than 70b, fragment
+    lenght more than 350b)
+  synonyms:
+  - --bowtie1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- memory allocated to Bowtie, defaults to 256mb - only affects bowtie1
+    run'
+  synonyms:
+  - --chunkmb
+  args: !SimpleFlagArg
+    name: '256'
+  optional: true
+- !Flag
+  description: run with bowtie parameter M=2 (if maps more than M times, report one
+    alignment in random) - only affects bowtie1 run
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: '2'
+  optional: true
+- !Flag
+  description: ': sets the TRUE fragment (max) lenght to 350bp. Bowtie1 default 250,
+    bowtie2 default 500, this script default 350. (Bowtie mappings resulting in fragments
+    longer than --maxins are not reported)'
+  synonyms:
+  - --maxins
+  args: !SimpleFlagArg
+    name: '350'
+  optional: true
+- !Flag
+  description: only pipe AFTER bowtie (assumes PIPE_mappedBamPaths.txt, see above)
+  synonyms:
+  - --noBowtie
+  args: !SimpleFlagArg
+    name: runs
+  optional: true
+- !Flag
+  description: "**/noFlash (run/do-not-run Flash - for unmapped reads 'try to merge\
+    \ overlapping short reads to longer single end read' to enhance mapping)"
+  synonyms:
+  - --flash
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- supported genomes mm9 mm10 hg18 hg19 (filter/do-not-filter blacklisted
+    regions out from the final bam file)'
+  synonyms:
+  - --blacklistFilter/noBlacklistFilter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': generate also footprint tracks (see footprint(FP) parameters below)'
+  synonyms:
+  - --footPrint
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': generate also peak call (see peak call(P) parameters below)'
+  synonyms:
+  - --peakCall
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': use Nextera adaptors in trimming, instead of standard illumina PE
+    adapters'
+  synonyms:
+  - --nextera
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "** (run/do-not-run TrimGalore for the data - Illumina PE standard\
+    \ adapter filter, trims on 3' end)"
+  synonyms:
+  - --trim/noTrim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (run trimming also for 5' end of the data - Illumina PE standard adapter
+    filter, combination of TrimGalore and cutadapt)
+  synonyms:
+  - --trim5
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": custom adapters 3' trimming, R1 and R2 (give both if PE custom trimming\
+    \ is needed, SE trimming needs only R1) - these adapters will be used instead\
+    \ of Illumina default / atac adapters. SEQUENCE has to be in CAPITAL letters ATCG"
+  synonyms:
+  - --ada3read1
+  - --ada3read2
+  args: !SimpleFlagArg
+    name: SEQUENCE
+  optional: true
+- !Flag
+  description: ": custom adapters 5' trimming, R1 and R2 (give both if PE custom trimming\
+    \ is needed, SE trimming needs only R1) - these adapters will be used instead\
+    \ of Illumina default / atac adapters. SEQUENCE has to be in CAPITAL letters ATCG"
+  synonyms:
+  - --ada5read1
+  - --ada5read2
+  args: !SimpleFlagArg
+    name: SEQUENCE
+  optional: true
+- !Flag
+  description: ': no windowing - instead plot 1b resolution raw read depths'
+  synonyms:
+  - --noWindow
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": custom window size (instead of default 300b) - this value has to\
+    \ be even number (or is rounded into one).\nIf no custom INCREMENT is given, increment\
+    \ is set to 10% of windowSize , i.e. the windowSize value has to be divisible\
+    \ by 10 (or will be rounded to behave as such)."
+  synonyms:
+  - --windowSize
+  args: !SimpleFlagArg
+    name: '300'
+  optional: true
+- !Flag
+  description: ": custom window increment (instead of default 10%). The value of windowIncr\
+    \ should be even number, given in BASES (10 bases : windowIncr=10), not percentages.\n\
+    If no custom windowSize is given, the windowSize will be set to 300bases, and\
+    \ increment rounded so that 300bases is divisible by the given increment (allows\
+    \ only values 10 and 30)."
+  synonyms:
+  - --windowIncr
+  args: !SimpleFlagArg
+    name: '30'
+  optional: true
+- !Flag
+  description: '(save fastq files UNMAPPED_1.fastq UNMAPPED_2.fastq for not-paired-mapped
+    reads : only for PE data)'
+  synonyms:
+  - --saveUnmapped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (save bam files singleEnd_bowtie_READ1.bam singleEnd_bowtie_READ2.bam
+    for unpaired mapped reads - not blacklisted/duplicate-filtered)
+  synonyms:
+  - --saveUnpaired
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (save bam files singleEnd_bowtie_filtered_READ1.bam singleEnd_bowtie_filtered_READ1.bam
+    for unpaired mapped reads - blacklisted/duplicate-filtered)
+  synonyms:
+  - --saveUnpairedFiltered
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (save original bam file bowtie_out.bam - straight from bowtie output)
+  synonyms:
+  - --saveUnfiltered
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (save original bam file mapped.bam - straight from bowtie output. Do
+    not print out unmapped reads (single end) / non-proper pairs (paired end).)
+  synonyms:
+  - --saveUnfilteredMapped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (run EXTRA bowtie-run before trimming, save the bam file UNTRIMMED_bowtie_out.bam
+    - straight from before-trimming bowtie output - includes all reads)
+  synonyms:
+  - --saveUntrimmed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (run EXTRA bowtie-run before trimming, save the bam file UNTRIMMED_onlyMapped_bowtie_out.bam
+    - straight from before-trimming bowtie output. Do not print out unmapped reads
+    (single end) / non-proper pairs (paired end).)
+  synonyms:
+  - --saveUntrimmedMapped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(save unpacked BDG files - default : save only BIGWIG packed versions
+    of these files'
+  synonyms:
+  - --saveBDG
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': if you are running peak calls / footprints via PYRAMID pipeline,
+    set this on.'
+  synonyms:
+  - --pyramidRerun
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': only run Peak Call (to finetune peak call part) - expects PIPE_previousRunPaths.txt
+    (see above)'
+  synonyms:
+  - --onlyPeakCall
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': only run Peak Call and FootPrinting (to finetune FootPrint windowing
+    and peak call parameters) - expects PIPE_previousRunPaths.txt (see above)'
+  synonyms:
+  - --onlyFPandPC
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": only generates data hub - NOTE !! this DOES NOT include data from\
+    \ any 'footprint / peak call rerun' folders - it hubs only the ORIGINAL data set\
+    \ - (expects PIPE_previousRunPaths.txt, see above)"
+  synonyms:
+  - --onlyHub
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': (windowing the signal for visualisation) - sliding window, where
+    overlap 2*WINDOW, and window size 4*WINDOW, resulting in 2*WINDOW size increments
+    in graph. Value 0 means NO WINDOWING (only raw 1b resolution track is given)'
+  synonyms:
+  - --windowFP
+  args: !SimpleFlagArg
+    name: '1'
+  optional: true
+- !Flag
+  description: ': (first filter)  RANGE of depthP - Each region should have at least
+    40 reads to be included to the peak call.'
+  synonyms:
+  - --depthP
+  args: !SimpleFlagArg
+    name: '40'
+  optional: true
+- !Flag
+  description: ': (second filter) Merges regions separated by 0bp or less.'
+  synonyms:
+  - --mergeP
+  args: !SimpleFlagArg
+    name: '0'
+  optional: true
+- !Flag
+  description: ': (third filter)  Regions (merged, depth-filtered) should be at least
+    20bp wide to be considered.'
+  synonyms:
+  - --contigP
+  args: !SimpleFlagArg
+    name: '20'
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ': prints this help'
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
-help_text: "NGseqBasic.sh - by Jelena Telenius, 03/11/2016\n\nrun started : Thu 25\
-  \ Jun 15:40:20 UTC 2020\n\nScript located at\n/tmp/tmp0i6rpzea/bin/../share/ngseqbasic-2.0.1-1/NGseqBasic.sh\n\
-  \nRUNNING IN MACHINE : \nacclimatize.novalocal\nrun called with parameters :\nNGseqBasic.sh\
-  \ --help\n\nLoading subroutines in ..\n\nPipeTopPath /tmp/tmp0i6rpzea/bin/../share/ngseqbasic-2.0.1-1\n\
-  PipePath /tmp/tmp0i6rpzea/bin/../share/ngseqbasic-2.0.1-1/bin/mainScripts\nconfFolder\
-  \ /tmp/tmp0i6rpzea/bin/../share/ngseqbasic-2.0.1-1/conf\nBashHelpersPath /tmp/tmp0i6rpzea/bin/../share/ngseqbasic-2.0.1-1/bin/bashHelpers\n\
-  PerlHelpersPath /tmp/tmp0i6rpzea/bin/../share/ngseqbasic-2.0.1-1/bin/perlHelpers\n\
-  \nCalling in the conf/*.sh scripts and their default setup ..\n\nSupported genomes\
-  \ : \nmm9 mm10 hg18 hg19 hg38 danRer7 danRer10 galGal4 dm3 \n\n\nBlacklist filtering\
-  \ available for these genomes : \nmm9 mm10 hg18 hg19 \n\n\nVERSION 20.1 FirstPortable\
-  \ NGseqBasic.sh\nmanual available in http://sara.molbiol.ox.ac.uk/public/telenius/NGseqBasicManual/intraWIMM/NGseqBasic_VS_20.pdf\n\
+help_text: "NGseqBasic.sh - by Jelena Telenius, 03/11/2016\n\nrun started : Wed Sep\
+  \  9 21:56:40 UTC 2020\n\nScript located at\n/usr/local/bin/../share/ngseqbasic-2.0.1-1/NGseqBasic.sh\n\
+  \nRUNNING IN MACHINE : \nrun called with parameters :\nNGseqBasic.sh --help\n\n\
+  Loading subroutines in ..\n\nPipeTopPath /usr/local/bin/../share/ngseqbasic-2.0.1-1\n\
+  PipePath /usr/local/bin/../share/ngseqbasic-2.0.1-1/bin/mainScripts\nconfFolder\
+  \ /usr/local/bin/../share/ngseqbasic-2.0.1-1/conf\nBashHelpersPath /usr/local/bin/../share/ngseqbasic-2.0.1-1/bin/bashHelpers\n\
+  PerlHelpersPath /usr/local/bin/../share/ngseqbasic-2.0.1-1/bin/perlHelpers\n\nCalling\
+  \ in the conf/*.sh scripts and their default setup ..\n\nSupported genomes : \n\
+  mm9 mm10 hg18 hg19 hg38 danRer7 danRer10 galGal4 dm3 \n\n\nBlacklist filtering available\
+  \ for these genomes : \nmm9 mm10 hg18 hg19 \n\n\nVERSION 20.1 FirstPortable NGseqBasic.sh\n\
+  manual available in http://sara.molbiol.ox.ac.uk/public/telenius/NGseqBasicManual/intraWIMM/NGseqBasic_VS_20.pdf\n\
   Web site (intra-house WIMM users) : http://userweb.molbiol.ox.ac.uk/public/telenius/PipeSite.html\n\
   Web site (out-house users): http://userweb.molbiol.ox.ac.uk/public/telenius/NGseqBasicManual/outHouseUsers/\n\
   \nFOR PAIRED END SEQUENCING DATA\n\n[1](bam-to-fastq) --> [1b] fastqc --> (trimming,\
@@ -29,7 +336,7 @@ help_text: "NGseqBasic.sh - by Jelena Telenius, 03/11/2016\n\nrun started : Thu 
   \ PAIR (mimicking the original DNaseI cut fragments)\n*) Blacklisted region filtering\
   \ works only for \nmm9 mm10 hg18 hg19 at the moment\n\nIs to be ran in the command\
   \ line like this :\nqsub -cwd -o qsub.out -e qsub.err -N MyPipeRun < ./run.sh\n\
-  Where run.sh is oneliner like : '/tmp/tmp0i6rpzea/bin/../share/ngseqbasic-2.0.1-1/bin/mainScripts/DnaseAndChip_pipe_1.sh\
+  Where run.sh is oneliner like : '/usr/local/bin/../share/ngseqbasic-2.0.1-1/bin/mainScripts/DnaseAndChip_pipe_1.sh\
   \ --genomes mm9,mm10' \nSupported genomes : mm9 mm10 hg18 hg19 hg38 danRer7 danRer10\
   \ galGal4 dm3 (see * note above about blacklisted region filtering)\n\nRun the script\
   \ in an empty folder - it will generate all the files and folders it needs.\n\n\
@@ -142,7 +449,7 @@ help_text: "NGseqBasic.sh - by Jelena Telenius, 03/11/2016\n\nrun started : Thu 
   \ (merged, depth-filtered) should be at least 20bp wide to be considered.\n\nMore\
   \ info : hands-on tutorial : http://userweb.molbiol.ox.ac.uk/public/telenius/MANUAL_for_pipe_030214/DnaseCHIPpipe_TUTORIAL.pdf,\
   \ comprehensive user manual : http://userweb.molbiol.ox.ac.uk/public/telenius/MANUAL_for_pipe_030214/DNasePipeUserManual_VS_100_180215.pdf\
-  \ , and comment lines (after the subroutine descriptions) in the script /tmp/tmp0i6rpzea/bin/../share/ngseqbasic-2.0.1-1/bin/mainScripts/DnaseAndChip_pipe_1.sh\n\
+  \ , and comment lines (after the subroutine descriptions) in the script /usr/local/bin/../share/ngseqbasic-2.0.1-1/bin/mainScripts/DnaseAndChip_pipe_1.sh\n\
   \n"
 generated_using:
 - --help

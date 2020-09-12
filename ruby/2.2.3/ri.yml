@@ -1,5 +1,12 @@
 !Command
+command:
+- ri
 positional:
+- !Positional
+  description: -l, --[no-]list                  List classes ri knows about.
+  position: 0
+  name: module.
+  optional: false
 - !Positional
   description: Defaults to true.
   position: 0
@@ -7,24 +14,17 @@ positional:
   optional: false
 named:
 - !Flag
-  description: ', --[no-]interactive           In interactive mode you can repeatedly
-    look up methods with autocomplete.'
+  description: ", --[no-]interactive           In interactive mode you can repeatedly\n\
+    look up methods with autocomplete."
   synonyms:
   - -i
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: ', --[no-]all                   Show all documentation for a class
-    or module.'
+    or'
   synonyms:
   - -a
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ', --[no-]list                  List classes ri knows about. --[no-]pager                 Send
-    output directly to stdout, rather than to a pager.'
-  synonyms:
-  - -l
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -42,20 +42,36 @@ named:
     name: WIDTH
   optional: true
 - !Flag
-  description: '[PORT]              Run RDoc server on the given port. The default
-    port is 8214.'
+  description: "[PORT]              Run RDoc server on the given port.\nThe default\
+    \ port is 8214."
   synonyms:
   - --server
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Uses the selected formatter. The default formatter is bs for paged
-    output and ansi otherwise. Valid formatters are: ansi bs markdown rdoc'
+  description: "Uses the selected formatter. The default\nformatter is bs for paged\
+    \ output and ansi\notherwise. Valid formatters are:\nansi bs markdown rdoc"
   synonyms:
   - -f
   - --format
   args: !SimpleFlagArg
     name: NAME
+  optional: true
+- !Flag
+  description: "List of directories from which to source\ndocumentation in addition\
+    \ to the standard\ndirectories.  May be repeated."
+  synonyms:
+  - -d
+  - --doc-dir
+  args: !SimpleFlagArg
+    name: DIRNAME
+  optional: true
+- !Flag
+  description: "Do not include documentation from\nthe Ruby standard library, site_lib,\n\
+    installed gems, or ~/.rdoc.\nUse with --doc-dir"
+  synonyms:
+  - --no-standard-docs
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: Dumps data from an ri cache or data file
@@ -64,10 +80,9 @@ named:
   args: !SimpleFlagArg
     name: CACHE
   optional: true
-command:
-- ri
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

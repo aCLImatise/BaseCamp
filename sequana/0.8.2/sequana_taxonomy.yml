@@ -1,26 +1,102 @@
 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: Welcome
-  optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: to
-  optional: false
-- !Positional
-  description: ''
-  position: 2
-  name: SEQUANA
-  optional: false
-named: []
 command:
 - sequana_taxonomy
+positional:
+- !Positional
+  description: --thread THREAD       number of threads to use (default 4)
+  position: 0
+  name: databases
+  optional: false
+named:
+- !Flag
+  description: /home/user/.config/sequana/kraken_toydb
+  synonyms:
+  - --databases
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --show-html
+  - --thread
+  args: !SimpleFlagArg
+    name: '4'
+  optional: true
+- !Flag
+  description: R1 fastq file (zipped)
+  synonyms:
+  - --file1
+  args: !SimpleFlagArg
+    name: FILE1
+  optional: true
+- !Flag
+  description: R2 fastq file (zipped)
+  synonyms:
+  - --file2
+  args: !SimpleFlagArg
+    name: FILE2
+  optional: true
+- !Flag
+  description: name of the output directory
+  synonyms:
+  - --output-directory
+  args: !SimpleFlagArg
+    name: DIRECTORY
+  optional: true
+- !Flag
+  description: keep temporary files (hierarchical case with several
+  synonyms:
+  - --keep-temp-files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "download an official sequana DB. The sequana_db1 is\nstored in a dedicated\
+    \ Synapse page (www.synapse.org).\nminikraken is downloaded from the kraken's\
+    \ author\npage, and toydb from sequana github."
+  synonyms:
+  - --download
+  args: !ChoiceFlagArg
+    choices: !!set
+      minikraken:
+      toydb:
+      sequana_db1:
+  optional: true
+- !Flag
+  description: save unclassified sequences to filename
+  synonyms:
+  - --unclassified-out
+  args: !SimpleFlagArg
+    name: UNCLASSIFIED_OUT
+  optional: true
+- !Flag
+  description: save unclassified sequences to filename
+  synonyms:
+  - --classified-out
+  args: !SimpleFlagArg
+    name: CLASSIFIED_OUT
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --level
+  args: !ChoiceFlagArg
+    choices: !!set
+      ERROR:
+      INFO:
+      DEBUG:
+      WARNING:
+      CRITICAL:
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "usage: Welcome to SEQUANA - Taxonomy standalone\n\n        This standalone\

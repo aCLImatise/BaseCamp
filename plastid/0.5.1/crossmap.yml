@@ -1,4 +1,6 @@
 !Command
+command:
+- crossmap
 positional:
 - !Positional
   description: Final mask file annotation, in BED format
@@ -6,15 +8,21 @@ positional:
   name: OUTBASE_READLENGTH_MISMATCHES_crossmap.bed
   optional: false
 - !Positional
-  description: K-mers derived from chromosome `CHROMOSOME`. These files can be reused
-    in subsequent runs allowing a different number of mismatches, using the ``--have_kmers``
-    option
+  description: "K-mers derived from chromosome `CHROMOSOME`. These\nfiles can be reused\
+    \ in subsequent runs allowing a different number of\nmismatches, using the ``--have_kmers``\
+    \ option"
   position: 1
   name: OUTBASE_READLENGTH_MISMATCHES_CHROMOSOME_kmers.fa
   optional: false
 - !Positional
-  description: Bowtie index of genome against which crossmap will be made. In most
-    cases, should be generated from the same sequences that are in `sequence_file`.
+  description: '- By default, crossmap creates BED files. Consider converting these
+    to'
+  position: 0
+  name: sequence
+  optional: false
+- !Positional
+  description: "Bowtie index of genome against which crossmap will be\nmade. In most\
+    \ cases, should be generated from the same\nsequences that are in `sequence_file`."
   position: 0
   name: ebwt
   optional: false
@@ -23,16 +31,21 @@ positional:
   position: 1
   name: outbase
   optional: false
+- !Positional
+  description: 'warning/error options:'
+  position: 0
+  name: chromosomes
+  optional: false
 named:
 - !Flag
-  description: 'K-mer length to generate from input file. (Default: 29)'
+  description: "K-mer length to generate from input file. (Default:\n29)"
   synonyms:
   - -k
   args: !SimpleFlagArg
     name: READ_LENGTH
   optional: true
 - !Flag
-  description: "Offset from 5' end of plus-strand read at which to attribute score\
+  description: "Offset from 5' end of plus-strand read at which to\nattribute score\
     \ (Default: 14)"
   synonyms:
   - --offset
@@ -40,22 +53,22 @@ named:
     name: OFFSET
   optional: true
 - !Flag
-  description: 'Number of mismatches tolerated in alignment. (Default: 0)'
+  description: "Number of mismatches tolerated in alignment. (Default:\n0)"
   synonyms:
   - --mismatches
   args: !SimpleFlagArg
     name: N
   optional: true
 - !Flag
-  description: 'Location of bowtie binary (Default: ``/usr/local/bin/bowtie``)'
+  description: "Location of bowtie binary (Default:\n``/usr/local/bin/bowtie``)"
   synonyms:
   - --bowtie
   args: !SimpleFlagArg
     name: BOWTIE
   optional: true
 - !Flag
-  description: If specified, use k-mer files from previous run. In this case 'sequence_file'
-    should be the value 'outbase' from the k-mer files you want to use.
+  description: "If specified, use k-mer files from previous run. In\nthis case 'sequence_file'\
+    \ should be the value\n'outbase' from the k-mer files you want to use."
   synonyms:
   - --have_kmers
   args: !EmptyFlagArg {}
@@ -67,7 +80,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Number of processes to use (should be <= number of chromosomes
+  description: Number of processes to use (should be <= number of
   synonyms:
   - -p
   - --processes
@@ -82,8 +95,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "Increase verbosity. With '-v', show every warning. With '-vv', turn\
-    \ warnings into exceptions. Cannot use with '-q'. (Default: show each type of\
+  description: "Increase verbosity. With '-v', show every warning.\nWith '-vv', turn\
+    \ warnings into exceptions. Cannot use\nwith '-q'. (Default: show each type of\
     \ warning once)"
   synonyms:
   - -v
@@ -91,21 +104,27 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Format of sequence_file (Default: fasta).'
+  description: "[fasta | fastq | twobit | genbank | embl]\nA file of DNA sequence"
+  synonyms:
+  - --sequence_file
+  args: !SimpleFlagArg
+    name: infile.
+  optional: true
+- !Flag
+  description: "Format of sequence_file (Default: fasta).\n"
   synonyms:
   - --sequence_format
   args: !ChoiceFlagArg
     choices: !!set
-      fastq:
-      genbank:
-      embl:
-      twobit:
       fasta:
+      genbank:
+      twobit:
+      fastq:
+      embl:
   optional: true
-command:
-- crossmap
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

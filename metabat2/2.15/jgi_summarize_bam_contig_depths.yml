@@ -1,0 +1,174 @@
+!Command
+command:
+- jgi_summarize_bam_contig_depths
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: options
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: sortedBam1
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: sortedBam2
+  optional: true
+named:
+- !Flag
+  description: 'arg  The file to put the contig by bam depth matrix (default: STDOUT)'
+  synonyms:
+  - --outputDepth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'arg  The minimum end-to-end % identity of qualifying reads (default:
+    97)'
+  synonyms:
+  - --percentIdentity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'arg  The file to output the sparse matrix of contigs which paired
+    reads span (default: none)'
+  synonyms:
+  - --pairedContigs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: arg  The prefix to output unmapped reads from each bam file suffixed
+    by 'bamfile.bam.fastq.gz'
+  synonyms:
+  - --unmappedFastq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not include variance from mean depth along the contig
+  synonyms:
+  - --noIntraDepthVariance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output a .depth file per bam for each contig base
+  synonyms:
+  - --showDepth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'arg  The minimum mapping quality necessary to count the read as mapped
+    (default: 0)'
+  synonyms:
+  - --minMapQual
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'arg  Weight per-base depth based on the MQ of the read (i.e uniqueness)
+    (default: 0.0 (disabled))'
+  synonyms:
+  - --weightMapQual
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When calculating depth & variance, include the 1-readlength edges (off
+    by default)
+  synonyms:
+  - --includeEdgeBases
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When calculating depth & variance, and not --includeEdgeBases, the
+    maximum length (default:75)
+  synonyms:
+  - --maxEdgeBases
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: arg  The reference file.  (It must be the same fasta that bams used)
+  synonyms:
+  - --referenceFasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: arg  The file to print the gc coverage histogram
+  synonyms:
+  - --outputGC
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: arg  The sliding window size for GC calculations
+  synonyms:
+  - --gcWindow
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: arg  The file to print the per read statistics
+  synonyms:
+  - --outputReadStats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: arg  The file to print the perfect kmer counts
+  synonyms:
+  - --outputKmers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: arg  The maximum length of the shreds
+  synonyms:
+  - --shredLength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: arg  The depth to generate overlapping shreds
+  synonyms:
+  - --shredDepth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: arg  The mimimum length of contig to include for mapping and shredding
+  synonyms:
+  - --minContigLength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: arg  The minimum depth along contig at which to break the contig
+  synonyms:
+  - --minContigDepth
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "jgi_summarize_bam_contig_depths 2.15 (Bioconda) 2020-07-03T13:02:15\n\
+  Usage: jgi_summarize_bam_contig_depths <options> sortedBam1 [ sortedBam2 ...]\n\
+  where options include:\n\t--outputDepth       arg  The file to put the contig by\
+  \ bam depth matrix (default: STDOUT)\n\t--percentIdentity   arg  The minimum end-to-end\
+  \ % identity of qualifying reads (default: 97)\n\t--pairedContigs     arg  The file\
+  \ to output the sparse matrix of contigs which paired reads span (default: none)\n\
+  \t--unmappedFastq     arg  The prefix to output unmapped reads from each bam file\
+  \ suffixed by 'bamfile.bam.fastq.gz'\n\t--noIntraDepthVariance   Do not include\
+  \ variance from mean depth along the contig\n\t--showDepth              Output a\
+  \ .depth file per bam for each contig base\n\t--minMapQual        arg  The minimum\
+  \ mapping quality necessary to count the read as mapped (default: 0)\n\t--weightMapQual\
+  \     arg  Weight per-base depth based on the MQ of the read (i.e uniqueness) (default:\
+  \ 0.0 (disabled))\n\t--includeEdgeBases       When calculating depth & variance,\
+  \ include the 1-readlength edges (off by default)\n\t--maxEdgeBases           When\
+  \ calculating depth & variance, and not --includeEdgeBases, the maximum length (default:75)\n\
+  \t--referenceFasta    arg  The reference file.  (It must be the same fasta that\
+  \ bams used)\n\nOptions that require a --referenceFasta\n\t--outputGC          arg\
+  \  The file to print the gc coverage histogram\n\t--gcWindow          arg  The sliding\
+  \ window size for GC calculations\n\t--outputReadStats   arg  The file to print\
+  \ the per read statistics\n\t--outputKmers       arg  The file to print the perfect\
+  \ kmer counts\n\nOptions to control shredding contigs that are under represented\
+  \ by the reads\n\t--shredLength       arg  The maximum length of the shreds\n\t\
+  --shredDepth        arg  The depth to generate overlapping shreds\n\t--minContigLength\
+  \   arg  The mimimum length of contig to include for mapping and shredding\n\t--minContigDepth\
+  \    arg  The minimum depth along contig at which to break the contig\n\n"
+generated_using:
+- --help

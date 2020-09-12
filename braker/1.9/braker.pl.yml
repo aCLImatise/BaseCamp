@@ -1,0 +1,263 @@
+!Command
+command:
+- braker.pl
+positional:
+- !Positional
+  description: Has higher priority than environment variable.
+  position: 0
+  name: to/augustus/
+  optional: false
+- !Positional
+  description: variable). Has higher priority than the environment variable.
+  position: 1
+  name: bamtools/
+  optional: false
+- !Positional
+  description: '--extrinsicCfgFile                   Optional. This file contains
+    the list of used sources for the '
+  position: 2
+  name: computation
+  optional: false
+- !Positional
+  description: variable). Has higher priority than environment variable.
+  position: 0
+  name: gmes_petap.pl/
+  optional: false
+- !Positional
+  description: "variable) to fix BAM files automatically, if necessary. Has higher\
+    \     \npriority than environment variable."
+  position: 1
+  name: samtools/
+  optional: false
+named:
+- !Flag
+  description: fasta file with DNA sequences
+  synonyms:
+  - --genome
+  args: !SimpleFlagArg
+    name: genome.fa
+  optional: true
+- !Flag
+  description: bam file with spliced alignments from RNA-Seq
+  synonyms:
+  - --bam
+  args: !SimpleFlagArg
+    name: rnaseq.bam
+  optional: true
+- !Flag
+  description: "Output alternative transcripts based on explicit evidence from\nhints\
+    \ (default is true)."
+  synonyms:
+  - --alternatives-from-evidence
+  args: !SimpleFlagArg
+    name: 'true'
+  optional: true
+- !Flag
+  description: =/path/        Set path to AUGUSTUS (if not specified as environment
+    variable).
+  synonyms:
+  - --AUGUSTUS_CONFIG_PATH
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =/path/to/            Set path to bamtools (if not specified as environment
+  synonyms:
+  - --BAMTOOLS_PATH
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specifies the maximum number of cores that can be used during
+  synonyms:
+  - --cores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "GeneMark-ET option: run algorithm with branch point model (most\n\
+    useful for fungal genomes)"
+  synonyms:
+  - --fungus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =/path/to/            Set path to GeneMark-ET (if not specified as
+    environment
+  synonyms:
+  - --GENEMARK_PATH
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output in GFF3 format.
+  synonyms:
+  - --gff3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Alternatively to calling braker.pl with a bam file, it is\npossible\
+    \ to call it with a file that contains introns extracted\nfrom RNA-Seq data in\
+    \ gff format. This flag also allows the usage\nof hints from additional extrinsic\
+    \ sources for gene prediction\nwith AUGUSTUS. To consider such additional extrinsic\
+    \ information,\nyou need to use the flag --optCfgFile to specify parameters for\n\
+    all sources in the hints file\n(including the source \"E\" for intron hints from\
+    \ RNA-Seq)."
+  synonyms:
+  - --hints
+  args: !SimpleFlagArg
+    name: hints.gff
+  optional: true
+- !Flag
+  description: Optional custom config file for AUGUSTUS (see --hints).
+  synonyms:
+  - --optCfgFile
+  args: !SimpleFlagArg
+    name: ppx.cfg
+  optional: true
+- !Flag
+  description: Overwrite existing files (except for species parameter files)
+  synonyms:
+  - --overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =/path/to/            Optionally set path to samtools (if not specified
+    as environment
+  synonyms:
+  - --SAMTOOLS_PATH
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Skip GeneMark-ET and use provided GeneMark-ET output (e.g. from a\n\
+    different source)"
+  synonyms:
+  - --skipGeneMark-ET
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skip optimize parameter step (not recommended).
+  synonyms:
+  - --skipOptimize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Softmasking option for soft masked genome files. Set to 'on' or '1'
+  synonyms:
+  - --softmasking
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Species name. Existing species will not be overwritten.\nUses Sp_1\
+    \ etc., if no species is assigned"
+  synonyms:
+  - --species
+  args: !SimpleFlagArg
+    name: sname
+  optional: true
+- !Flag
+  description: "Use the present config and parameter files if they exist for\n'species'"
+  synonyms:
+  - --useexisting
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Predict untranslated regions. Default is off.
+  synonyms:
+  - --UTR
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=/path/to/wd/            Set path to working directory. In the working\
+    \ directory results\nand temporary files are stored"
+  synonyms:
+  - --workingdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "It may happen that a \"good\" training gene, i.e. one that has intron\n\
+    support from RNA-Seq in all introns predicted by GeneMark, is in fact\ntoo short.\
+    \ This flag will discard such genes that have supported introns\nand a neighboring\
+    \ RNA-Seq supported intron upstream of the start codon within\nthe range of the\
+    \ maximum CDS size of that gene and with a multiplicity that\nis at least as high\
+    \ as 20% of the average intron multiplicity of that gene."
+  synonyms:
+  - --filterOutShort
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this help message
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version number of braker.pl
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "\nbraker.pl     Pipeline for predicting genes with GeneMark-ET and AUGUSTUS\
+  \ with RNA-Seq\n\nSYNOPSIS\n\nbraker.pl [OPTIONS] --genome=genome.fa --bam=rnaseq.bam\n\
+  \n\n  --genome=genome.fa          fasta file with DNA sequences\n  --bam=rnaseq.bam\
+  \            bam file with spliced alignments from RNA-Seq\n\n\n    \n    \nOPTIONS\n\
+  \n    --help                               Print this help message\n    --alternatives-from-evidence=true\
+  \    Output alternative transcripts based on explicit evidence from \n         \
+  \                                hints (default is true).\n    --AUGUSTUS_CONFIG_PATH=/path/\
+  \        Set path to AUGUSTUS (if not specified as environment variable).\n    \
+  \  to/augustus/                       Has higher priority than environment variable.\n\
+  \    --BAMTOOLS_PATH=/path/to/            Set path to bamtools (if not specified\
+  \ as environment \n      bamtools/                          variable). Has higher\
+  \ priority than the environment variable.\n    --cores                         \
+  \     Specifies the maximum number of cores that can be used during \n         \
+  \                                computation\n    --extrinsicCfgFile           \
+  \        Optional. This file contains the list of used sources for the \n      \
+  \                                   hints and their boni and mali. If not specified\
+  \ the file \"extrinsic.cfg\" \n                                         in the config\
+  \ directory $AUGUSTUS_CONFIG_PATH is copied and adjusted.\n    --fungus        \
+  \                     GeneMark-ET option: run algorithm with branch point model\
+  \ (most \n                                         useful for fungal genomes)\n\
+  \    --GENEMARK_PATH=/path/to/            Set path to GeneMark-ET (if not specified\
+  \ as environment \n      gmes_petap.pl/                     variable). Has higher\
+  \ priority than environment variable.\n    --gff3                              \
+  \ Output in GFF3 format.\n    --hints=hints.gff                    Alternatively\
+  \ to calling braker.pl with a bam file, it is \n                               \
+  \          possible to call it with a file that contains introns extracted \n  \
+  \                                       from RNA-Seq data in gff format. This flag\
+  \ also allows the usage\n                                         of hints from\
+  \ additional extrinsic sources for gene prediction \n                          \
+  \               with AUGUSTUS. To consider such additional extrinsic information,\n\
+  \                                         you need to use the flag --optCfgFile\
+  \ to specify parameters for \n                                         all sources\
+  \ in the hints file\n                                         (including the source\
+  \ \"E\" for intron hints from RNA-Seq).\n    --optCfgFile=ppx.cfg              \
+  \   Optional custom config file for AUGUSTUS (see --hints).\n    --overwrite   \
+  \                       Overwrite existing files (except for species parameter files)\n\
+  \    --SAMTOOLS_PATH=/path/to/            Optionally set path to samtools (if not\
+  \ specified as environment \n      samtools/                          variable)\
+  \ to fix BAM files automatically, if necessary. Has higher     \n              \
+  \                           priority than environment variable.\n    --skipGeneMark-ET\
+  \                    Skip GeneMark-ET and use provided GeneMark-ET output (e.g.\
+  \ from a\n                                         different source) \n    --skipOptimize\
+  \                       Skip optimize parameter step (not recommended).\n    --softmasking\
+  \                        Softmasking option for soft masked genome files. Set to\
+  \ 'on' or '1'\n    --species=sname                      Species name. Existing species\
+  \ will not be overwritten. \n                                         Uses Sp_1\
+  \ etc., if no species is assigned                          \n    --useexisting \
+  \                       Use the present config and parameter files if they exist\
+  \ for \n                                         'species'\n    --UTR          \
+  \                      Predict untranslated regions. Default is off.\n    --workingdir=/path/to/wd/\
+  \            Set path to working directory. In the working directory results\n \
+  \                                        and temporary files are stored\n    --filterOutShort\t\
+  \t\t It may happen that a \"good\" training gene, i.e. one that has intron\n\t\t\
+  \t\t\t support from RNA-Seq in all introns predicted by GeneMark, is in fact\n\t\
+  \t\t\t\t too short. This flag will discard such genes that have supported introns\n\
+  \t\t\t\t\t and a neighboring RNA-Seq supported intron upstream of the start codon\
+  \ within \n\t\t\t\t\t the range of the maximum CDS size of that gene and with a\
+  \ multiplicity that\n\t\t\t\t\t is at least as high as 20% of the average intron\
+  \ multiplicity of that gene.\n    --version                            print version\
+  \ number of braker.pl\n                           \n\nDESCRIPTION\n      \n  Example:\n\
+  \n    braker.pl [OPTIONS] --genome=genome.fa  --species=speciesname --bam=accepted_hits.bam\n\
+  \n"
+generated_using:
+- --help

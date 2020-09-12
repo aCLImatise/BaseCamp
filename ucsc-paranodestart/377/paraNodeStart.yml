@@ -1,11 +1,29 @@
 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: machineList
-  optional: false
+command:
+- paraNodeStart
+positional: []
 named:
+- !Flag
+  description: =/path/to/paraNode
+  synonyms:
+  - -exe
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Log to the specified syslog facility - default local0.
+  synonyms:
+  - -logFacility
+  args: !SimpleFlagArg
+    name: facility
+  optional: true
+- !Flag
+  description: "minimum syslog priority to log, also filters file logging.\ndefaults\
+    \ to \"warn\""
+  synonyms:
+  - -logMinPriority
+  args: !SimpleFlagArg
+    name: pri
+  optional: true
 - !Flag
   description: Log to file instead of syslog.
   synonyms:
@@ -60,10 +78,9 @@ named:
   - -rsh
   args: !EmptyFlagArg {}
   optional: true
-command:
-- paraNodeStart
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

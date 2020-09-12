@@ -1,4 +1,6 @@
 &id001 !Command
+command:
+- chado
 positional: []
 named:
 - !Flag
@@ -7,289 +9,30 @@ named:
   - -v
   args: !EmptyFlagArg {}
   optional: true
-command:
-- chado
 parent:
 subcommands:
-- !Command
-  positional:
-  - !Positional
-    description: name of the database
-    position: 0
-    name: dbname
-    optional: false
-  named:
-  - !Flag
-    description: verbose mode
-    synonyms:
-    - -V
-    - --verbose
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: YAML file containing connection details
-    synonyms:
-    - -c
-    - --config
-    args: !SimpleFlagArg
-      name: CONFIG
-    optional: true
-  - !Flag
-    description: 'connect with password (default: no password)'
-    synonyms:
-    - -p
-    - --use_password
-    args: !EmptyFlagArg {}
-    optional: true
+- &id002 !Command
   command:
   - chado
-  - connect
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "usage: chado connect [-h] [-V] [-c CONFIG | -p] dbname\n\nconnect to\
-    \ a CHADO database for an interactive session\n\npositional arguments:\n  dbname\
-    \                name of the database\n\noptional arguments:\n  -h, --help   \
-    \         show this help message and exit\n  -V, --verbose         verbose mode\n\
-    \  -c CONFIG, --config CONFIG\n                        YAML file containing connection\
-    \ details\n  -p, --use_password    connect with password (default: no password)\n"
-  generated_using: &id002
-  - --help
-- !Command
-  positional:
-  - !Positional
-    description: name of the database
-    position: 0
-    name: dbname
-    optional: false
-  named:
-  - !Flag
-    description: verbose mode
-    synonyms:
-    - -V
-    - --verbose
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: YAML file containing connection details
-    synonyms:
-    - -c
-    - --config
-    args: !SimpleFlagArg
-      name: CONFIG
-    optional: true
-  - !Flag
-    description: 'connect with password (default: no password)'
-    synonyms:
-    - -p
-    - --use_password
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: 'include header in CSV output (default: False)'
-    synonyms:
-    - -H
-    - --include_header
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: 'Character delimiting fields in CSV output (default: tab)'
-    synonyms:
-    - -d
-    - --delimiter
-    args: !SimpleFlagArg
-      name: DELIMITER
-    optional: true
-  - !Flag
-    description: 'file into which data are exported (default: stdout)'
-    synonyms:
-    - -o
-    - --output_file
-    args: !SimpleFlagArg
-      name: OUTPUT_FILE
-    optional: true
-  - !Flag
-    description: 'format of the file (default: csv)'
-    synonyms:
-    - -F
-    - --format
-    args: !ChoiceFlagArg
-      choices: !!set
-        csv:
-        json:
-    optional: true
-  - !Flag
-    description: file containing an SQL query
-    synonyms:
-    - -f
-    - --input_file
-    args: !SimpleFlagArg
-      name: INPUT_FILE
-    optional: true
-  - !Flag
-    description: SQL query
-    synonyms:
-    - -q
-    - --query
-    args: !SimpleFlagArg
-      name: QUERY
-    optional: true
-  command:
-  - chado
-  - query
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "usage: chado query [-h] [-V] [-c CONFIG | -p] [-H] [-d DELIMITER]\n\
-    \                   [-o OUTPUT_FILE] [-F {csv,json}] (-f INPUT_FILE | -q QUERY)\n\
-    \                   dbname\n\nquery a CHADO database and export the result to\
-    \ a text file\n\npositional arguments:\n  dbname                name of the database\n\
-    \noptional arguments:\n  -h, --help            show this help message and exit\n\
-    \  -V, --verbose         verbose mode\n  -c CONFIG, --config CONFIG\n        \
-    \                YAML file containing connection details\n  -p, --use_password\
-    \    connect with password (default: no password)\n  -H, --include_header  include\
-    \ header in CSV output (default: False)\n  -d DELIMITER, --delimiter DELIMITER\n\
-    \                        Character delimiting fields in CSV output (default:\n\
-    \                        tab)\n  -o OUTPUT_FILE, --output_file OUTPUT_FILE\n \
-    \                       file into which data are exported (default: stdout)\n\
-    \  -F {csv,json}, --format {csv,json}\n                        format of the file\
-    \ (default: csv)\n  -f INPUT_FILE, --input_file INPUT_FILE\n                 \
-    \       file containing an SQL query\n  -q QUERY, --query QUERY\n            \
-    \            SQL query\n"
-  generated_using: *id002
-- &id003 !Command
+  - export
   positional: []
   named: []
-  command:
-  - chado
-  - extract
   parent: *id001
   subcommands:
   - !Command
-    positional:
-    - !Positional
-      description: name of the database
-      position: 0
-      name: dbname
-      optional: false
-    named:
-    - !Flag
-      description: verbose mode
-      synonyms:
-      - -V
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: YAML file containing connection details
-      synonyms:
-      - -c
-      - --config
-      args: !SimpleFlagArg
-        name: CONFIG
-      optional: true
-    - !Flag
-      description: 'connect with password (default: no password)'
-      synonyms:
-      - -p
-      - --use_password
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'include header in CSV output (default: False)'
-      synonyms:
-      - -H
-      - --include_header
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Character delimiting fields in CSV output (default: tab)'
-      synonyms:
-      - -d
-      - --delimiter
-      args: !SimpleFlagArg
-        name: DELIMITER
-      optional: true
-    - !Flag
-      description: 'file into which data are exported (default: stdout)'
-      synonyms:
-      - -o
-      - --output_file
-      args: !SimpleFlagArg
-        name: OUTPUT_FILE
-      optional: true
-    - !Flag
-      description: 'format of the file (default: csv)'
-      synonyms:
-      - -F
-      - --format
-      args: !ChoiceFlagArg
-        choices: !!set
-          csv:
-          json:
-      optional: true
-    - !Flag
-      description: 'only extract public genomes (default: extract all)'
-      synonyms:
-      - --public_only
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - chado
-    - extract
-    - organisms
-    parent: *id003
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chado extract organisms [-h] [-V] [-c CONFIG | -p] [-H] [-d\
-      \ DELIMITER]\n                               [-o OUTPUT_FILE] [-F {csv,json}]\n\
-      \                               [--public_only]\n                          \
-      \     dbname\n\nlist all organisms in the CHADO database\n\npositional arguments:\n\
-      \  dbname                name of the database\n\noptional arguments:\n  -h,\
-      \ --help            show this help message and exit\n  -V, --verbose       \
-      \  verbose mode\n  -c CONFIG, --config CONFIG\n                        YAML\
-      \ file containing connection details\n  -p, --use_password    connect with password\
-      \ (default: no password)\n  -H, --include_header  include header in CSV output\
-      \ (default: False)\n  -d DELIMITER, --delimiter DELIMITER\n                \
-      \        Character delimiting fields in CSV output (default:\n             \
-      \           tab)\n  -o OUTPUT_FILE, --output_file OUTPUT_FILE\n            \
-      \            file into which data are exported (default: stdout)\n  -F {csv,json},\
-      \ --format {csv,json}\n                        format of the file (default:\
-      \ csv)\n  --public_only         only extract public genomes (default: extract\
-      \ all)\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: name of the database
-      position: 0
-      name: dbname
-      optional: false
+    - export
+    - gaf
+    positional: []
     named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -A
+      args: !SimpleFlagArg
+        name: DATABASE_AUTHORITY
+      optional: true
     - !Flag
       description: verbose mode
       synonyms:
@@ -313,571 +56,23 @@ subcommands:
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'include header in CSV output (default: False)'
-      synonyms:
-      - -H
-      - --include_header
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Character delimiting fields in CSV output (default: tab)'
-      synonyms:
-      - -d
-      - --delimiter
-      args: !SimpleFlagArg
-        name: DELIMITER
-      optional: true
-    - !Flag
-      description: 'file into which data are exported (default: stdout)'
-      synonyms:
-      - -o
-      - --output_file
-      args: !SimpleFlagArg
-        name: OUTPUT_FILE
-      optional: true
-    - !Flag
-      description: 'format of the file (default: csv)'
-      synonyms:
-      - -F
-      - --format
-      args: !ChoiceFlagArg
-        choices: !!set
-          csv:
-          json:
-      optional: true
-    - !Flag
-      description: restrict to a vocabulary, e.g. 'relationship'
-      synonyms:
-      - --vocabulary
-      args: !SimpleFlagArg
-        name: VOCABULARY
-      optional: true
-    - !Flag
-      description: restrict to a database, e.g. 'GO'
-      synonyms:
-      - --database
-      args: !SimpleFlagArg
-        name: DATABASE
-      optional: true
-    command:
-    - chado
-    - extract
-    - cvterms
-    parent: *id003
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chado extract cvterms [-h] [-V] [-c CONFIG | -p] [-H] [-d DELIMITER]\n\
-      \                             [-o OUTPUT_FILE] [-F {csv,json}]\n           \
-      \                  [--vocabulary VOCABULARY] [--database DATABASE]\n       \
-      \                      dbname\n\nlist all CV terms in the CHADO database\n\n\
-      positional arguments:\n  dbname                name of the database\n\noptional\
-      \ arguments:\n  -h, --help            show this help message and exit\n  -V,\
-      \ --verbose         verbose mode\n  -c CONFIG, --config CONFIG\n           \
-      \             YAML file containing connection details\n  -p, --use_password\
-      \    connect with password (default: no password)\n  -H, --include_header  include\
-      \ header in CSV output (default: False)\n  -d DELIMITER, --delimiter DELIMITER\n\
-      \                        Character delimiting fields in CSV output (default:\n\
-      \                        tab)\n  -o OUTPUT_FILE, --output_file OUTPUT_FILE\n\
-      \                        file into which data are exported (default: stdout)\n\
-      \  -F {csv,json}, --format {csv,json}\n                        format of the\
-      \ file (default: csv)\n  --vocabulary VOCABULARY\n                        restrict\
-      \ to a vocabulary, e.g. 'relationship'\n  --database DATABASE   restrict to\
-      \ a database, e.g. 'GO'\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: name of the database
-      position: 0
-      name: dbname
-      optional: false
-    named:
-    - !Flag
-      description: verbose mode
-      synonyms:
-      - -V
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: YAML file containing connection details
-      synonyms:
-      - -c
-      - --config
-      args: !SimpleFlagArg
-        name: CONFIG
-      optional: true
-    - !Flag
-      description: 'connect with password (default: no password)'
-      synonyms:
-      - -p
-      - --use_password
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'include header in CSV output (default: False)'
-      synonyms:
-      - -H
-      - --include_header
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Character delimiting fields in CSV output (default: tab)'
-      synonyms:
-      - -d
-      - --delimiter
-      args: !SimpleFlagArg
-        name: DELIMITER
-      optional: true
-    - !Flag
-      description: 'file into which data are exported (default: stdout)'
-      synonyms:
-      - -o
-      - --output_file
-      args: !SimpleFlagArg
-        name: OUTPUT_FILE
-      optional: true
-    - !Flag
-      description: 'format of the file (default: csv)'
-      synonyms:
-      - -F
-      - --format
-      args: !ChoiceFlagArg
-        choices: !!set
-          csv:
-          json:
-      optional: true
-    - !Flag
-      description: 'restrict to a certain organism, defined by its abbreviation/short
-        name (default: all)'
-      synonyms:
-      - -a
-      - --abbreviation
-      args: !SimpleFlagArg
-        name: ORGANISM
-      optional: true
-    - !Flag
-      description: 'restrict to public genomes (default: all)'
-      synonyms:
-      - --public_only
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - chado
-    - extract
-    - gene_products
-    parent: *id003
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chado extract gene_products [-h] [-V] [-c CONFIG | -p] [-H]\n\
-      \                                   [-d DELIMITER] [-o OUTPUT_FILE]\n      \
-      \                             [-F {csv,json}] [-a ORGANISM]\n              \
-      \                     [--public_only]\n                                   dbname\n\
-      \nlist all products of transcripts in the CHADO database\n\npositional arguments:\n\
-      \  dbname                name of the database\n\noptional arguments:\n  -h,\
-      \ --help            show this help message and exit\n  -V, --verbose       \
-      \  verbose mode\n  -c CONFIG, --config CONFIG\n                        YAML\
-      \ file containing connection details\n  -p, --use_password    connect with password\
-      \ (default: no password)\n  -H, --include_header  include header in CSV output\
-      \ (default: False)\n  -d DELIMITER, --delimiter DELIMITER\n                \
-      \        Character delimiting fields in CSV output (default:\n             \
-      \           tab)\n  -o OUTPUT_FILE, --output_file OUTPUT_FILE\n            \
-      \            file into which data are exported (default: stdout)\n  -F {csv,json},\
-      \ --format {csv,json}\n                        format of the file (default:\
-      \ csv)\n  -a ORGANISM, --abbreviation ORGANISM\n                        restrict\
-      \ to a certain organism, defined by its\n                        abbreviation/short\
-      \ name (default: all)\n  --public_only         restrict to public genomes (default:\
-      \ all)\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: name of the database
-      position: 0
-      name: dbname
-      optional: false
-    named:
-    - !Flag
-      description: verbose mode
-      synonyms:
-      - -V
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: YAML file containing connection details
-      synonyms:
-      - -c
-      - --config
-      args: !SimpleFlagArg
-        name: CONFIG
-      optional: true
-    - !Flag
-      description: 'connect with password (default: no password)'
-      synonyms:
-      - -p
-      - --use_password
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'include header in CSV output (default: False)'
-      synonyms:
-      - -H
-      - --include_header
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Character delimiting fields in CSV output (default: tab)'
-      synonyms:
-      - -d
-      - --delimiter
-      args: !SimpleFlagArg
-        name: DELIMITER
-      optional: true
-    - !Flag
-      description: 'file into which data are exported (default: stdout)'
-      synonyms:
-      - -o
-      - --output_file
-      args: !SimpleFlagArg
-        name: OUTPUT_FILE
-      optional: true
-    - !Flag
-      description: 'format of the file (default: csv)'
-      synonyms:
-      - -F
-      - --format
-      args: !ChoiceFlagArg
-        choices: !!set
-          csv:
-          json:
-      optional: true
-    - !Flag
-      description: 'restrict to a certain organism, defined by its abbreviation/short
-        name (default: all)'
-      synonyms:
-      - -a
-      - --abbreviation
-      args: !SimpleFlagArg
-        name: ORGANISM
-      optional: true
-    - !Flag
-      description: date for maximum age of updates, format 'YYYYMMDD'
-      synonyms:
-      - --start_date
-      args: !SimpleFlagArg
-        name: START_DATE
-      optional: true
-    - !Flag
-      description: "date for minimum age of updates, format 'YYYYMMDD' (default: today)"
-      synonyms:
-      - --end_date
-      args: !SimpleFlagArg
-        name: END_DATE
-      optional: true
-    - !Flag
-      description: 'restrict to public genomes (default: all)'
-      synonyms:
-      - --public_only
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - chado
-    - extract
-    - annotation_updates
-    parent: *id003
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chado extract annotation_updates [-h] [-V] [-c CONFIG | -p]\
-      \ [-H]\n                                        [-d DELIMITER] [-o OUTPUT_FILE]\n\
-      \                                        [-F {csv,json}] [-a ORGANISM]\n   \
-      \                                     --start_date START_DATE\n            \
-      \                            [--end_date END_DATE] [--public_only]\n       \
-      \                                 dbname\n\nlist annotation updates in a CHADO\
-      \ database\n\npositional arguments:\n  dbname                name of the database\n\
-      \noptional arguments:\n  -h, --help            show this help message and exit\n\
-      \  -V, --verbose         verbose mode\n  -c CONFIG, --config CONFIG\n      \
-      \                  YAML file containing connection details\n  -p, --use_password\
-      \    connect with password (default: no password)\n  -H, --include_header  include\
-      \ header in CSV output (default: False)\n  -d DELIMITER, --delimiter DELIMITER\n\
-      \                        Character delimiting fields in CSV output (default:\n\
-      \                        tab)\n  -o OUTPUT_FILE, --output_file OUTPUT_FILE\n\
-      \                        file into which data are exported (default: stdout)\n\
-      \  -F {csv,json}, --format {csv,json}\n                        format of the\
-      \ file (default: csv)\n  -a ORGANISM, --abbreviation ORGANISM\n            \
-      \            restrict to a certain organism, defined by its\n              \
-      \          abbreviation/short name (default: all)\n  --start_date START_DATE\n\
-      \                        date for maximum age of updates, format 'YYYYMMDD'\n\
-      \  --end_date END_DATE   date for minimum age of updates, format 'YYYYMMDD'\n\
-      \                        (default: today)\n  --public_only         restrict\
-      \ to public genomes (default: all)\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: name of the database
-      position: 0
-      name: dbname
-      optional: false
-    named:
-    - !Flag
-      description: verbose mode
-      synonyms:
-      - -V
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: YAML file containing connection details
-      synonyms:
-      - -c
-      - --config
-      args: !SimpleFlagArg
-        name: CONFIG
-      optional: true
-    - !Flag
-      description: 'connect with password (default: no password)'
-      synonyms:
-      - -p
-      - --use_password
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'include header in CSV output (default: False)'
-      synonyms:
-      - -H
-      - --include_header
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'Character delimiting fields in CSV output (default: tab)'
-      synonyms:
-      - -d
-      - --delimiter
-      args: !SimpleFlagArg
-        name: DELIMITER
-      optional: true
-    - !Flag
-      description: 'file into which data are exported (default: stdout)'
-      synonyms:
-      - -o
-      - --output_file
-      args: !SimpleFlagArg
-        name: OUTPUT_FILE
-      optional: true
-    - !Flag
-      description: 'format of the file (default: csv)'
-      synonyms:
-      - -F
-      - --format
-      args: !ChoiceFlagArg
-        choices: !!set
-          csv:
-          json:
-      optional: true
-    - !Flag
-      description: 'restrict to a certain organism, defined by its abbreviation/short
-        name (default: all)'
-      synonyms:
-      - -a
-      - --abbreviation
-      args: !SimpleFlagArg
-        name: ORGANISM
-      optional: true
-    - !Flag
-      description: 'restrict to public genomes (default: all)'
-      synonyms:
-      - --public_only
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - chado
-    - extract
-    - curator_comments
-    parent: *id003
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chado extract curator_comments [-h] [-V] [-c CONFIG | -p] [-H]\n\
-      \                                      [-d DELIMITER] [-o OUTPUT_FILE]\n   \
-      \                                   [-F {csv,json}] [-a ORGANISM]\n        \
-      \                              [--public_only]\n                           \
-      \           dbname\n\nlist curator comments to genes and gene products in a\
-      \ CHADO database\n\npositional arguments:\n  dbname                name of the\
-      \ database\n\noptional arguments:\n  -h, --help            show this help message\
-      \ and exit\n  -V, --verbose         verbose mode\n  -c CONFIG, --config CONFIG\n\
-      \                        YAML file containing connection details\n  -p, --use_password\
-      \    connect with password (default: no password)\n  -H, --include_header  include\
-      \ header in CSV output (default: False)\n  -d DELIMITER, --delimiter DELIMITER\n\
-      \                        Character delimiting fields in CSV output (default:\n\
-      \                        tab)\n  -o OUTPUT_FILE, --output_file OUTPUT_FILE\n\
-      \                        file into which data are exported (default: stdout)\n\
-      \  -F {csv,json}, --format {csv,json}\n                        format of the\
-      \ file (default: csv)\n  -a ORGANISM, --abbreviation ORGANISM\n            \
-      \            restrict to a certain organism, defined by its\n              \
-      \          abbreviation/short name (default: all)\n  --public_only         restrict\
-      \ to public genomes (default: all)\n"
-    generated_using: *id002
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "usage: chado extract [-h]\n                     {organisms,cvterms,gene_products,annotation_updates,curator_comments}\n\
-    \                     ...\n\nrun a pre-compiled query against the CHADO database\n\
-    \npositional arguments:\n  {organisms,cvterms,gene_products,annotation_updates,curator_comments}\n\
-    \    organisms           list all organisms in the CHADO database\n    cvterms\
-    \             list all CV terms in the CHADO database\n    gene_products     \
-    \  list all products of transcripts in the CHADO database\n    annotation_updates\
-    \  list annotation updates in a CHADO database\n    curator_comments    list curator\
-    \ comments to genes and gene products in a\n                        CHADO database\n\
-    \noptional arguments:\n  -h, --help            show this help message and exit\n\
-    \nFor detailed usage information type 'chado extract <command> -h'\n"
-  generated_using: *id002
-- &id004 !Command
-  positional: []
-  named: []
-  command:
-  - chado
-  - import
-  parent: *id001
-  subcommands:
-  - !Command
-    positional:
-    - !Positional
-      description: name of the database
-      position: 0
-      name: dbname
-      optional: false
-    named:
-    - !Flag
-      description: verbose mode
-      synonyms:
-      - -V
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: YAML file containing connection details
-      synonyms:
-      - -c
-      - --config
-      args: !SimpleFlagArg
-        name: CONFIG
-      optional: true
-    - !Flag
-      description: 'connect with password (default: no password)'
-      synonyms:
-      - -p
-      - --use_password
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - chado
-    - import
-    - essentials
-    parent: *id004
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chado import essentials [-h] [-V] [-c CONFIG | -p] dbname\n\
-      \nimport basic terms into the CHADO database (for setup)\n\npositional arguments:\n\
-      \  dbname                name of the database\n\noptional arguments:\n  -h,\
-      \ --help            show this help message and exit\n  -V, --verbose       \
-      \  verbose mode\n  -c CONFIG, --config CONFIG\n                        YAML\
-      \ file containing connection details\n  -p, --use_password    connect with password\
-      \ (default: no password)\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: name of the database
-      position: 0
-      name: dbname
-      optional: false
-    named:
-    - !Flag
-      description: verbose mode
-      synonyms:
-      - -V
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: YAML file containing connection details
-      synonyms:
-      - -c
-      - --config
-      args: !SimpleFlagArg
-        name: CONFIG
-      optional: true
-    - !Flag
-      description: 'connect with password (default: no password)'
-      synonyms:
-      - -p
-      - --use_password
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: file containing CV terms
+      description: GAF output file
       synonyms:
       - -f
-      - --input_file
+      - --output_file
       args: !SimpleFlagArg
-        name: INPUT_FILE
+        name: OUTPUT_FILE
       optional: true
     - !Flag
-      description: URL to a file containing CV terms
+      description: abbreviation/short name of the organism
       synonyms:
-      - -u
-      - --input_url
+      - -a
+      - --abbreviation
       args: !SimpleFlagArg
-        name: INPUT_URL
+        name: ORGANISM
       optional: true
     - !Flag
-      description: database authority of the terms in the file, e.g. 'GO'
+      description: "database from which the file is created, e.g.\n'UniProtKB'"
       synonyms:
       - -A
       - --database_authority
@@ -885,327 +80,27 @@ subcommands:
         name: DATABASE_AUTHORITY
       optional: true
     - !Flag
-      description: 'format of the file (default: obo)'
-      synonyms:
-      - -F
-      - --format
-      args: !ChoiceFlagArg
-        choices: !!set
-          obo:
-          owl:
-      optional: true
-    command:
-    - chado
-    - import
-    - ontology
-    parent: *id004
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chado import ontology [-h] [-V] [-c CONFIG | -p]\n        \
-      \                     (-f INPUT_FILE | -u INPUT_URL) -A\n                  \
-      \           DATABASE_AUTHORITY [-F {obo,owl}]\n                            \
-      \ dbname\n\nimport an ontology into the CHADO database\n\npositional arguments:\n\
-      \  dbname                name of the database\n\noptional arguments:\n  -h,\
-      \ --help            show this help message and exit\n  -V, --verbose       \
-      \  verbose mode\n  -c CONFIG, --config CONFIG\n                        YAML\
-      \ file containing connection details\n  -p, --use_password    connect with password\
-      \ (default: no password)\n  -f INPUT_FILE, --input_file INPUT_FILE\n       \
-      \                 file containing CV terms\n  -u INPUT_URL, --input_url INPUT_URL\n\
-      \                        URL to a file containing CV terms\n  -A DATABASE_AUTHORITY,\
-      \ --database_authority DATABASE_AUTHORITY\n                        database\
-      \ authority of the terms in the file, e.g. 'GO'\n  -F {obo,owl}, --format {obo,owl}\n\
-      \                        format of the file (default: obo)\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: name of the database
-      position: 0
-      name: dbname
-      optional: false
-    named:
-    - !Flag
-      description: verbose mode
-      synonyms:
-      - -V
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: YAML file containing connection details
-      synonyms:
-      - -c
-      - --config
-      args: !SimpleFlagArg
-        name: CONFIG
-      optional: true
-    - !Flag
-      description: 'connect with password (default: no password)'
-      synonyms:
-      - -p
-      - --use_password
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: FASTA input file
-      synonyms:
-      - -f
-      - --input_file
-      args: !SimpleFlagArg
-        name: INPUT_FILE
-      optional: true
-    - !Flag
-      description: abbreviation/short name of the organism
-      synonyms:
-      - -a
-      - --abbreviation
-      args: !SimpleFlagArg
-        name: ORGANISM
-      optional: true
-    - !Flag
-      description: 'type of the sequences (default: region)'
-      synonyms:
-      - -t
-      - --sequence_type
-      args: !ChoiceFlagArg
-        choices: !!set
-          chromosome:
-          region:
-          contig:
-          supercontig:
-      optional: true
-    command:
-    - chado
-    - import
-    - fasta
-    parent: *id004
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chado import fasta [-h] [-V] [-c CONFIG | -p] -f INPUT_FILE\
-      \ -a ORGANISM\n                          [-t {chromosome,supercontig,contig,region}]\n\
-      \                          dbname\n\nimport sequences from a FASTA file into\
-      \ the CHADO database\n\npositional arguments:\n  dbname                name\
-      \ of the database\n\noptional arguments:\n  -h, --help            show this\
-      \ help message and exit\n  -V, --verbose         verbose mode\n  -c CONFIG,\
-      \ --config CONFIG\n                        YAML file containing connection details\n\
-      \  -p, --use_password    connect with password (default: no password)\n  -f\
-      \ INPUT_FILE, --input_file INPUT_FILE\n                        FASTA input file\n\
-      \  -a ORGANISM, --abbreviation ORGANISM\n                        abbreviation/short\
-      \ name of the organism\n  -t {chromosome,supercontig,contig,region}, --sequence_type\
-      \ {chromosome,supercontig,contig,region}\n                        type of the\
-      \ sequences (default: region)\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: name of the database
-      position: 0
-      name: dbname
-      optional: false
-    named:
-    - !Flag
-      description: verbose mode
-      synonyms:
-      - -V
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: YAML file containing connection details
-      synonyms:
-      - -c
-      - --config
-      args: !SimpleFlagArg
-        name: CONFIG
-      optional: true
-    - !Flag
-      description: 'connect with password (default: no password)'
-      synonyms:
-      - -p
-      - --use_password
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: GFF3 input file
-      synonyms:
-      - -f
-      - --input_file
-      args: !SimpleFlagArg
-        name: INPUT_FILE
-      optional: true
-    - !Flag
-      description: abbreviation/short name of the organism
-      synonyms:
-      - -a
-      - --abbreviation
-      args: !SimpleFlagArg
-        name: ORGANISM
-      optional: true
-    - !Flag
-      description: FASTA input file with sequences
-      synonyms:
-      - --fasta
-      args: !SimpleFlagArg
-        name: FASTA
-      optional: true
-    - !Flag
-      description: 'type of the FASTA sequences, if present (default: region)'
-      synonyms:
-      - -t
-      - --sequence_type
-      args: !ChoiceFlagArg
-        choices: !!set
-          chromosome:
-          region:
-          contig:
-          supercontig:
-      optional: true
-    - !Flag
-      description: 'load a genome from scratch (default: load an update to an existing
-        genome)'
-      synonyms:
-      - --fresh_load
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: in case of a fresh load, purge all existing features of the organism
-      synonyms:
-      - --force
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: in case of an update, mark features not present in the input file
-        as obsolete
-      synonyms:
-      - --full_genome
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: in case of an update, delete feature attributes not present in
-        the input file
-      synonyms:
-      - --full_attributes
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - chado
-    - import
-    - gff
-    parent: *id004
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chado import gff [-h] [-V] [-c CONFIG | -p] -f INPUT_FILE -a\
-      \ ORGANISM\n                        [--fasta FASTA]\n                      \
-      \  [-t {chromosome,supercontig,contig,region}]\n                        [--fresh_load]\
-      \ [--force] [--full_genome]\n                        [--full_attributes]\n \
-      \                       dbname\n\nimport genomic data from a GFF3 file into\
-      \ the CHADO database\n\npositional arguments:\n  dbname                name\
-      \ of the database\n\noptional arguments:\n  -h, --help            show this\
-      \ help message and exit\n  -V, --verbose         verbose mode\n  -c CONFIG,\
-      \ --config CONFIG\n                        YAML file containing connection details\n\
-      \  -p, --use_password    connect with password (default: no password)\n  -f\
-      \ INPUT_FILE, --input_file INPUT_FILE\n                        GFF3 input file\n\
-      \  -a ORGANISM, --abbreviation ORGANISM\n                        abbreviation/short\
-      \ name of the organism\n  --fasta FASTA         FASTA input file with sequences\n\
-      \  -t {chromosome,supercontig,contig,region}, --sequence_type {chromosome,supercontig,contig,region}\n\
-      \                        type of the FASTA sequences, if present (default:\n\
-      \                        region)\n  --fresh_load          load a genome from\
-      \ scratch (default: load an update to\n                        an existing genome)\n\
-      \  --force               in case of a fresh load, purge all existing features\n\
-      \                        of the organism\n  --full_genome         in case of\
-      \ an update, mark features not present in the\n                        input\
-      \ file as obsolete\n  --full_attributes     in case of an update, delete feature\
-      \ attributes not\n                        present in the input file\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: name of the database
-      position: 0
-      name: dbname
-      optional: false
-    named:
-    - !Flag
-      description: verbose mode
-      synonyms:
-      - -V
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: YAML file containing connection details
-      synonyms:
-      - -c
-      - --config
-      args: !SimpleFlagArg
-        name: CONFIG
-      optional: true
-    - !Flag
-      description: 'connect with password (default: no password)'
-      synonyms:
-      - -p
-      - --use_password
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: GFF3 input file
-      synonyms:
-      - -f
-      - --input_file
-      args: !SimpleFlagArg
-        name: INPUT_FILE
-      optional: true
-    - !Flag
-      description: abbreviation/short name of the organism
-      synonyms:
-      - -a
-      - --abbreviation
-      args: !SimpleFlagArg
-        name: ORGANISM
-      optional: true
-    - !Flag
-      description: 'level to which GO terms are related in the database (default:
-        same level as in the input file)'
+      description: "level to which GO terms are related in the output file\n(default:\
+        \ same level as in the database)"
       synonyms:
       - -L
       - --annotation_level
       args: !ChoiceFlagArg
         choices: !!set
-          protein:
-          gene:
           default:
           transcript:
+          protein:
+          gene:
       optional: true
-    command:
-    - chado
-    - import
-    - gaf
-    parent: *id004
+    - !Flag
+      description: export all features, including obsoletes
+      synonyms:
+      - --include_obsolete
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -1215,57 +110,32 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
-    help_text: "usage: chado import gaf [-h] [-V] [-c CONFIG | -p] -f INPUT_FILE -a\
-      \ ORGANISM\n                        [-L {default,gene,transcript,protein}]\n\
-      \                        dbname\n\nimport gene annotation data from a GAF file\
-      \ into the CHADO database\n\npositional arguments:\n  dbname               \
-      \ name of the database\n\noptional arguments:\n  -h, --help            show\
-      \ this help message and exit\n  -V, --verbose         verbose mode\n  -c CONFIG,\
-      \ --config CONFIG\n                        YAML file containing connection details\n\
-      \  -p, --use_password    connect with password (default: no password)\n  -f\
-      \ INPUT_FILE, --input_file INPUT_FILE\n                        GFF3 input file\n\
-      \  -a ORGANISM, --abbreviation ORGANISM\n                        abbreviation/short\
-      \ name of the organism\n  -L {default,gene,transcript,protein}, --annotation_level\
-      \ {default,gene,transcript,protein}\n                        level to which\
-      \ GO terms are related in the database\n                        (default: same\
-      \ level as in the input file)\n"
-    generated_using: *id002
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
+    help_text: "usage: chado export gaf [-h] [-V] [-c CONFIG | -p] -f OUTPUT_FILE\
+      \ -a ORGANISM\n                        -A DATABASE_AUTHORITY\n             \
+      \           [-L {default,gene,transcript,protein}]\n                       \
+      \ [--include_obsolete]\n                        dbname\n\nexport gene annotation\
+      \ data from the CHADO database to a GAF file\n\npositional arguments:\n  dbname\
+      \                name of the database\n\noptional arguments:\n  -h, --help \
+      \           show this help message and exit\n  -V, --verbose         verbose\
+      \ mode\n  -c CONFIG, --config CONFIG\n                        YAML file containing\
+      \ connection details\n  -p, --use_password    connect with password (default:\
+      \ no password)\n  -f OUTPUT_FILE, --output_file OUTPUT_FILE\n              \
+      \          GAF output file\n  -a ORGANISM, --abbreviation ORGANISM\n       \
+      \                 abbreviation/short name of the organism\n  -A DATABASE_AUTHORITY,\
+      \ --database_authority DATABASE_AUTHORITY\n                        database\
+      \ from which the file is created, e.g.\n                        'UniProtKB'\n\
+      \  -L {default,gene,transcript,protein}, --annotation_level {default,gene,transcript,protein}\n\
+      \                        level to which GO terms are related in the output file\n\
+      \                        (default: same level as in the database)\n  --include_obsolete\
+      \    export all features, including obsoletes\n"
+    generated_using: &id003
     - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "usage: chado import [-h] {essentials,ontology,fasta,gff,gaf} ...\n\n\
-    import data from file into the CHADO database\n\npositional arguments:\n  {essentials,ontology,fasta,gff,gaf}\n\
-    \    essentials          import basic terms into the CHADO database (for setup)\n\
-    \    ontology            import an ontology into the CHADO database\n    fasta\
-    \               import sequences from a FASTA file into the CHADO\n          \
-    \              database\n    gff                 import genomic data from a GFF3\
-    \ file into the CHADO\n                        database\n    gaf             \
-    \    import gene annotation data from a GAF file into the\n                  \
-    \      CHADO database\n\noptional arguments:\n  -h, --help            show this\
-    \ help message and exit\n\nFor detailed usage information type 'chado import <command>\
-    \ -h'\n"
-  generated_using: *id002
-- &id005 !Command
-  positional: []
-  named: []
-  command:
-  - chado
-  - export
-  parent: *id001
-  subcommands:
   - !Command
-    positional:
-    - !Positional
-      description: name of the database
-      position: 0
-      name: dbname
-      optional: false
+    command:
+    - chado
+    - export
+    - fasta
+    positional: []
     named:
     - !Flag
       description: verbose mode
@@ -1312,9 +182,9 @@ subcommands:
       - --sequence_type
       args: !ChoiceFlagArg
         choices: !!set
+          genes:
           contigs:
           proteins:
-          genes:
       optional: true
     - !Flag
       description: name of the FASTA release
@@ -1330,12 +200,9 @@ subcommands:
       - --include_obsolete
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - chado
-    - export
-    - fasta
-    parent: *id005
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -1360,14 +227,13 @@ subcommands:
       \                       type of the sequences to be exported\n  -r RELEASE,\
       \ --release RELEASE\n                        name of the FASTA release\n  --include_obsolete\
       \    export all features, including obsoletes\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
-    positional:
-    - !Positional
-      description: name of the database
-      position: 0
-      name: dbname
-      optional: false
+    command:
+    - chado
+    - export
+    - gff
+    positional: []
     named:
     - !Flag
       description: verbose mode
@@ -1414,8 +280,8 @@ subcommands:
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: 'FASTA output file with sequences (default: paste to end of GFF
-        file)'
+      description: "FASTA output file with sequences (default: paste to\nend of GFF\
+        \ file)"
       synonyms:
       - --fasta_file
       args: !SimpleFlagArg
@@ -1427,12 +293,9 @@ subcommands:
       - --include_obsolete
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - chado
-    - export
-    - gff
-    parent: *id005
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -1457,114 +320,8 @@ subcommands:
       \                        FASTA output file with sequences (default: paste to\n\
       \                        end of GFF file)\n  --include_obsolete    export all\
       \ features, including obsoletes\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: name of the database
-      position: 0
-      name: dbname
-      optional: false
-    named:
-    - !Flag
-      description: verbose mode
-      synonyms:
-      - -V
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: YAML file containing connection details
-      synonyms:
-      - -c
-      - --config
-      args: !SimpleFlagArg
-        name: CONFIG
-      optional: true
-    - !Flag
-      description: 'connect with password (default: no password)'
-      synonyms:
-      - -p
-      - --use_password
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: GAF output file
-      synonyms:
-      - -f
-      - --output_file
-      args: !SimpleFlagArg
-        name: OUTPUT_FILE
-      optional: true
-    - !Flag
-      description: abbreviation/short name of the organism
-      synonyms:
-      - -a
-      - --abbreviation
-      args: !SimpleFlagArg
-        name: ORGANISM
-      optional: true
-    - !Flag
-      description: database from which the file is created, e.g. 'UniProtKB'
-      synonyms:
-      - -A
-      - --database_authority
-      args: !SimpleFlagArg
-        name: DATABASE_AUTHORITY
-      optional: true
-    - !Flag
-      description: 'level to which GO terms are related in the output file (default:
-        same level as in the database)'
-      synonyms:
-      - -L
-      - --annotation_level
-      args: !ChoiceFlagArg
-        choices: !!set
-          protein:
-          gene:
-          default:
-          transcript:
-      optional: true
-    - !Flag
-      description: export all features, including obsoletes
-      synonyms:
-      - --include_obsolete
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - chado
-    - export
-    - gaf
-    parent: *id005
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chado export gaf [-h] [-V] [-c CONFIG | -p] -f OUTPUT_FILE\
-      \ -a ORGANISM\n                        -A DATABASE_AUTHORITY\n             \
-      \           [-L {default,gene,transcript,protein}]\n                       \
-      \ [--include_obsolete]\n                        dbname\n\nexport gene annotation\
-      \ data from the CHADO database to a GAF file\n\npositional arguments:\n  dbname\
-      \                name of the database\n\noptional arguments:\n  -h, --help \
-      \           show this help message and exit\n  -V, --verbose         verbose\
-      \ mode\n  -c CONFIG, --config CONFIG\n                        YAML file containing\
-      \ connection details\n  -p, --use_password    connect with password (default:\
-      \ no password)\n  -f OUTPUT_FILE, --output_file OUTPUT_FILE\n              \
-      \          GAF output file\n  -a ORGANISM, --abbreviation ORGANISM\n       \
-      \                 abbreviation/short name of the organism\n  -A DATABASE_AUTHORITY,\
-      \ --database_authority DATABASE_AUTHORITY\n                        database\
-      \ from which the file is created, e.g.\n                        'UniProtKB'\n\
-      \  -L {default,gene,transcript,protein}, --annotation_level {default,gene,transcript,protein}\n\
-      \                        level to which GO terms are related in the output file\n\
-      \                        (default: same level as in the database)\n  --include_obsolete\
-      \    export all features, including obsoletes\n"
-    generated_using: *id002
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -1582,16 +339,20 @@ subcommands:
     \ the CHADO database to a\n                   GAF file\n\noptional arguments:\n\
     \  -h, --help       show this help message and exit\n\nFor detailed usage information\
     \ type 'chado export <command> -h'\n"
-  generated_using: *id002
-- &id006 !Command
-  positional: []
-  named: []
+  generated_using: *id003
+- &id004 !Command
   command:
   - chado
   - admin
+  positional: []
+  named: []
   parent: *id001
   subcommands:
   - !Command
+    command:
+    - chado
+    - admin
+    - create
     positional:
     - !Positional
       description: name of the database
@@ -1621,12 +382,9 @@ subcommands:
       - --use_password
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - chado
-    - admin
-    - create
-    parent: *id006
+    parent: *id004
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -1642,14 +400,13 @@ subcommands:
       \ help message and exit\n  -V, --verbose         verbose mode\n  -c CONFIG,\
       \ --config CONFIG\n                        YAML file containing connection details\n\
       \  -p, --use_password    connect with password (default: no password)\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
-    positional:
-    - !Positional
-      description: name of the database
-      position: 0
-      name: dbname
-      optional: false
+    command:
+    - chado
+    - admin
+    - setup
+    positional: []
     named:
     - !Flag
       description: verbose mode
@@ -1673,12 +430,29 @@ subcommands:
       - --use_password
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - chado
-    - admin
-    - drop
-    parent: *id006
+    - !Flag
+      description: 'Database schema (default: GMOD schema 1.31)'
+      synonyms:
+      - -s
+      - --schema
+      args: !ChoiceFlagArg
+        choices: !!set
+          gmod:
+          audit:
+          audit_backup:
+          basic:
+      optional: true
+    - !Flag
+      description: "File with database schema\n"
+      synonyms:
+      - -f
+      - --schema_file
+      args: !SimpleFlagArg
+        name: SCHEMA_FILE
+      optional: true
+    parent: *id004
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -1688,14 +462,122 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
-    help_text: "usage: chado admin drop [-h] [-V] [-c CONFIG | -p] dbname\n\ndrop\
-      \ a CHADO database\n\npositional arguments:\n  dbname                name of\
+    help_text: "usage: chado admin setup [-h] [-V] [-c CONFIG | -p]\n            \
+      \             [-s {gmod,basic,audit,audit_backup} | -f SCHEMA_FILE]\n      \
+      \                   dbname\n\nset up a blank CHADO database according to a given\
+      \ schema\n\npositional arguments:\n  dbname                name of the database\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  -V, --verbose         verbose mode\n  -c CONFIG, --config CONFIG\n      \
+      \                  YAML file containing connection details\n  -p, --use_password\
+      \    connect with password (default: no password)\n  -s {gmod,basic,audit,audit_backup},\
+      \ --schema {gmod,basic,audit,audit_backup}\n                        Database\
+      \ schema (default: GMOD schema 1.31)\n  -f SCHEMA_FILE, --schema_file SCHEMA_FILE\n\
+      \                        File with database schema\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - chado
+    - admin
+    - revoke
+    positional: []
+    named:
+    - !Flag
+      description: verbose mode
+      synonyms:
+      - -V
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: YAML file containing connection details
+      synonyms:
+      - -c
+      - --config
+      args: !SimpleFlagArg
+        name: CONFIG
+      optional: true
+    - !Flag
+      description: 'connect with password (default: no password)'
+      synonyms:
+      - -p
+      - --use_password
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Name of the role/user
+      synonyms:
+      - -r
+      - --role
+      args: !SimpleFlagArg
+        name: ROLE
+      optional: true
+    - !Flag
+      description: "Database schema (default: all)\n"
+      synonyms:
+      - -s
+      - --schema
+      args: !SimpleFlagArg
+        name: SCHEMA
+      optional: true
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: chado admin revoke [-h] [-V] [-c CONFIG | -p] -r ROLE [-s SCHEMA]\n\
+      \                          dbname\n\nrevoke privileges for a CHADO database\
+      \ from a user/role\n\npositional arguments:\n  dbname                name of\
       \ the database\n\noptional arguments:\n  -h, --help            show this help\
       \ message and exit\n  -V, --verbose         verbose mode\n  -c CONFIG, --config\
       \ CONFIG\n                        YAML file containing connection details\n\
-      \  -p, --use_password    connect with password (default: no password)\n"
-    generated_using: *id002
+      \  -p, --use_password    connect with password (default: no password)\n  -r\
+      \ ROLE, --role ROLE  Name of the role/user\n  -s SCHEMA, --schema SCHEMA\n \
+      \                       Database schema (default: all)\n"
+    generated_using: *id003
   - !Command
+    command:
+    - chado
+    - admin
+    - user/role
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: chado
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: admin
+      optional: false
+    named: []
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: chado admin [-h] {create,drop,dump,restore,setup,grant,revoke}\
+      \ ...\nchado admin: error: invalid choice: 'user/role' (choose from 'create',\
+      \ 'drop', 'dump', 'restore', 'setup', 'grant', 'revoke')\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - chado
+    - admin
+    - dump
     positional:
     - !Positional
       description: name of the database
@@ -1730,12 +612,9 @@ subcommands:
       - --use_password
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - chado
-    - admin
-    - dump
-    parent: *id006
+    parent: *id004
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -1752,8 +631,44 @@ subcommands:
       \ message and exit\n  -V, --verbose         verbose mode\n  -c CONFIG, --config\
       \ CONFIG\n                        YAML file containing connection details\n\
       \  -p, --use_password    connect with password (default: no password)\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
+    command:
+    - chado
+    - admin
+    - schema
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: chado
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: admin
+      optional: false
+    named: []
+    parent: *id004
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: chado admin [-h] {create,drop,dump,restore,setup,grant,revoke}\
+      \ ...\nchado admin: error: invalid choice: 'schema' (choose from 'create', 'drop',\
+      \ 'dump', 'restore', 'setup', 'grant', 'revoke')\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - chado
+    - admin
+    - restore
     positional:
     - !Positional
       description: name of the database
@@ -1788,12 +703,9 @@ subcommands:
       - --use_password
       args: !EmptyFlagArg {}
       optional: true
-    command:
-    - chado
-    - admin
-    - restore
-    parent: *id006
+    parent: *id004
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -1810,8 +722,12 @@ subcommands:
       \ and exit\n  -V, --verbose         verbose mode\n  -c CONFIG, --config CONFIG\n\
       \                        YAML file containing connection details\n  -p, --use_password\
       \    connect with password (default: no password)\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
+    command:
+    - chado
+    - admin
+    - drop
     positional:
     - !Positional
       description: name of the database
@@ -1841,32 +757,9 @@ subcommands:
       - --use_password
       args: !EmptyFlagArg {}
       optional: true
-    - !Flag
-      description: 'Database schema (default: GMOD schema 1.31)'
-      synonyms:
-      - -s
-      - --schema
-      args: !ChoiceFlagArg
-        choices: !!set
-          audit_backup:
-          gmod:
-          basic:
-          audit:
-      optional: true
-    - !Flag
-      description: File with database schema
-      synonyms:
-      - -f
-      - --schema_file
-      args: !SimpleFlagArg
-        name: SCHEMA_FILE
-      optional: true
-    command:
-    - chado
-    - admin
-    - setup
-    parent: *id006
+    parent: *id004
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: show this help message and exit
       synonyms:
@@ -1876,168 +769,14 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
-    help_text: "usage: chado admin setup [-h] [-V] [-c CONFIG | -p]\n            \
-      \             [-s {gmod,basic,audit,audit_backup} | -f SCHEMA_FILE]\n      \
-      \                   dbname\n\nset up a blank CHADO database according to a given\
-      \ schema\n\npositional arguments:\n  dbname                name of the database\n\
-      \noptional arguments:\n  -h, --help            show this help message and exit\n\
-      \  -V, --verbose         verbose mode\n  -c CONFIG, --config CONFIG\n      \
-      \                  YAML file containing connection details\n  -p, --use_password\
-      \    connect with password (default: no password)\n  -s {gmod,basic,audit,audit_backup},\
-      \ --schema {gmod,basic,audit,audit_backup}\n                        Database\
-      \ schema (default: GMOD schema 1.31)\n  -f SCHEMA_FILE, --schema_file SCHEMA_FILE\n\
-      \                        File with database schema\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: name of the database
-      position: 0
-      name: dbname
-      optional: false
-    named:
-    - !Flag
-      description: verbose mode
-      synonyms:
-      - -V
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: YAML file containing connection details
-      synonyms:
-      - -c
-      - --config
-      args: !SimpleFlagArg
-        name: CONFIG
-      optional: true
-    - !Flag
-      description: 'connect with password (default: no password)'
-      synonyms:
-      - -p
-      - --use_password
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Name of the role/user
-      synonyms:
-      - -r
-      - --role
-      args: !SimpleFlagArg
-        name: ROLE
-      optional: true
-    - !Flag
-      description: 'Database schema (default: all)'
-      synonyms:
-      - -s
-      - --schema
-      args: !SimpleFlagArg
-        name: SCHEMA
-      optional: true
-    - !Flag
-      description: 'Grant read-write access (default: read-only)'
-      synonyms:
-      - -w
-      - --write
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - chado
-    - admin
-    - grant
-    parent: *id006
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chado admin grant [-h] [-V] [-c CONFIG | -p] -r ROLE [-s SCHEMA]\
-      \ [-w]\n                         dbname\n\ngrant privileges for a CHADO database\
-      \ to a user/role\n\npositional arguments:\n  dbname                name of the\
-      \ database\n\noptional arguments:\n  -h, --help            show this help message\
-      \ and exit\n  -V, --verbose         verbose mode\n  -c CONFIG, --config CONFIG\n\
-      \                        YAML file containing connection details\n  -p, --use_password\
-      \    connect with password (default: no password)\n  -r ROLE, --role ROLE  Name\
-      \ of the role/user\n  -s SCHEMA, --schema SCHEMA\n                        Database\
-      \ schema (default: all)\n  -w, --write           Grant read-write access (default:\
-      \ read-only)\n"
-    generated_using: *id002
-  - !Command
-    positional:
-    - !Positional
-      description: name of the database
-      position: 0
-      name: dbname
-      optional: false
-    named:
-    - !Flag
-      description: verbose mode
-      synonyms:
-      - -V
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: YAML file containing connection details
-      synonyms:
-      - -c
-      - --config
-      args: !SimpleFlagArg
-        name: CONFIG
-      optional: true
-    - !Flag
-      description: 'connect with password (default: no password)'
-      synonyms:
-      - -p
-      - --use_password
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Name of the role/user
-      synonyms:
-      - -r
-      - --role
-      args: !SimpleFlagArg
-        name: ROLE
-      optional: true
-    - !Flag
-      description: 'Database schema (default: all)'
-      synonyms:
-      - -s
-      - --schema
-      args: !SimpleFlagArg
-        name: SCHEMA
-      optional: true
-    command:
-    - chado
-    - admin
-    - revoke
-    parent: *id006
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: chado admin revoke [-h] [-V] [-c CONFIG | -p] -r ROLE [-s SCHEMA]\n\
-      \                          dbname\n\nrevoke privileges for a CHADO database\
-      \ from a user/role\n\npositional arguments:\n  dbname                name of\
+    help_text: "usage: chado admin drop [-h] [-V] [-c CONFIG | -p] dbname\n\ndrop\
+      \ a CHADO database\n\npositional arguments:\n  dbname                name of\
       \ the database\n\noptional arguments:\n  -h, --help            show this help\
       \ message and exit\n  -V, --verbose         verbose mode\n  -c CONFIG, --config\
       \ CONFIG\n                        YAML file containing connection details\n\
-      \  -p, --use_password    connect with password (default: no password)\n  -r\
-      \ ROLE, --role ROLE  Name of the role/user\n  -s SCHEMA, --schema SCHEMA\n \
-      \                       Database schema (default: all)\n"
-    generated_using: *id002
+      \  -p, --use_password    connect with password (default: no password)\n"
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -2059,7 +798,166 @@ subcommands:
     \ a CHADO database from a\n                        user/role\n\noptional arguments:\n\
     \  -h, --help            show this help message and exit\n\nFor detailed usage\
     \ information type 'chado admin <command> -h'\n"
-  generated_using: *id002
+  generated_using: *id003
+- !Command
+  command:
+  - chado
+  - connect
+  positional:
+  - !Positional
+    description: name of the database
+    position: 0
+    name: dbname
+    optional: false
+  named:
+  - !Flag
+    description: verbose mode
+    synonyms:
+    - -V
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: YAML file containing connection details
+    synonyms:
+    - -c
+    - --config
+    args: !SimpleFlagArg
+      name: CONFIG
+    optional: true
+  - !Flag
+    description: 'connect with password (default: no password)'
+    synonyms:
+    - -p
+    - --use_password
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: chado connect [-h] [-V] [-c CONFIG | -p] dbname\n\nconnect to\
+    \ a CHADO database for an interactive session\n\npositional arguments:\n  dbname\
+    \                name of the database\n\noptional arguments:\n  -h, --help   \
+    \         show this help message and exit\n  -V, --verbose         verbose mode\n\
+    \  -c CONFIG, --config CONFIG\n                        YAML file containing connection\
+    \ details\n  -p, --use_password    connect with password (default: no password)\n"
+  generated_using: *id003
+- !Command
+  command:
+  - chado
+  - query
+  positional: []
+  named:
+  - !Flag
+    description: verbose mode
+    synonyms:
+    - -V
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: YAML file containing connection details
+    synonyms:
+    - -c
+    - --config
+    args: !SimpleFlagArg
+      name: CONFIG
+    optional: true
+  - !Flag
+    description: 'connect with password (default: no password)'
+    synonyms:
+    - -p
+    - --use_password
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'include header in CSV output (default: False)'
+    synonyms:
+    - -H
+    - --include_header
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Character delimiting fields in CSV output (default:\ntab)"
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: DELIMITER
+    optional: true
+  - !Flag
+    description: 'file into which data are exported (default: stdout)'
+    synonyms:
+    - -o
+    - --output_file
+    args: !SimpleFlagArg
+      name: OUTPUT_FILE
+    optional: true
+  - !Flag
+    description: 'format of the file (default: csv)'
+    synonyms:
+    - -F
+    - --format
+    args: !ChoiceFlagArg
+      choices: !!set
+        csv:
+        json:
+    optional: true
+  - !Flag
+    description: file containing an SQL query
+    synonyms:
+    - -f
+    - --input_file
+    args: !SimpleFlagArg
+      name: INPUT_FILE
+    optional: true
+  - !Flag
+    description: "SQL query\n"
+    synonyms:
+    - -q
+    - --query
+    args: !SimpleFlagArg
+      name: QUERY
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: chado query [-h] [-V] [-c CONFIG | -p] [-H] [-d DELIMITER]\n\
+    \                   [-o OUTPUT_FILE] [-F {csv,json}] (-f INPUT_FILE | -q QUERY)\n\
+    \                   dbname\n\nquery a CHADO database and export the result to\
+    \ a text file\n\npositional arguments:\n  dbname                name of the database\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -V, --verbose         verbose mode\n  -c CONFIG, --config CONFIG\n        \
+    \                YAML file containing connection details\n  -p, --use_password\
+    \    connect with password (default: no password)\n  -H, --include_header  include\
+    \ header in CSV output (default: False)\n  -d DELIMITER, --delimiter DELIMITER\n\
+    \                        Character delimiting fields in CSV output (default:\n\
+    \                        tab)\n  -o OUTPUT_FILE, --output_file OUTPUT_FILE\n \
+    \                       file into which data are exported (default: stdout)\n\
+    \  -F {csv,json}, --format {csv,json}\n                        format of the file\
+    \ (default: csv)\n  -f INPUT_FILE, --input_file INPUT_FILE\n                 \
+    \       file containing an SQL query\n  -q QUERY, --query QUERY\n            \
+    \            SQL query\n"
+  generated_using: *id003
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -2091,4 +989,4 @@ help_text: "usage: chado [-h] [-v]\n             {connect,query,extract,insert,d
   \    dumping a CHADO database\n\noptional arguments:\n  -h, --help            show\
   \ this help message and exit\n  -v, --version         show the version of the software\
   \ and exit\n\nFor detailed usage information type 'chado <command> -h'\n"
-generated_using: *id002
+generated_using: *id003

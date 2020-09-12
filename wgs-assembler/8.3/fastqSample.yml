@@ -1,0 +1,128 @@
+!Command
+command:
+- fastqSample
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: opts
+  optional: true
+named:
+- !Flag
+  description: input name (prefix) of the reads
+  synonyms:
+  - -I
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: total number of mate pairs in the input (if not supplied, will be counted)
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: T
+  optional: true
+- !Flag
+  description: length of a single read (if not supplied, will be determined)
+  synonyms:
+  - -L
+  args: !SimpleFlagArg
+    name: L
+  optional: true
+- !Flag
+  description: reads are unmated, expected in *.u.fastq
+  synonyms:
+  - -U
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output name (prefix) of the reads (default is same as -I)
+  synonyms:
+  - -O
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: automatically include coverage or number of reads in the output name
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ignore reads shorter than L bases
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: L
+  optional: true
+- !Flag
+  description: don't sample randomly, pick the longest reads
+  synonyms:
+  - -max
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: genome size
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: G
+  optional: true
+- !Flag
+  description: desired coverage in the output reads
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: C
+  optional: true
+- !Flag
+  description: "for mated reads, output 2N reads, or N pairs of reads\nfor unmated\
+    \ reads, output N reads"
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "output F * T pairs of reads (T as above in -t option)\n0.0 < F <=\
+    \ 1.0"
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: F
+  optional: true
+- !Flag
+  description: output reads/pairs until B bases is exceeded
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: B
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nusage: fastqSample [opts]\n  Input Specification\n    -I NAME  input\
+  \ name (prefix) of the reads\n    -T T     total number of mate pairs in the input\
+  \ (if not supplied, will be counted)\n    -L L     length of a single read (if not\
+  \ supplied, will be determined)\n    -U       reads are unmated, expected in *.u.fastq\n\
+  \n  Output Specification\n    -O NAME  output name (prefix) of the reads (default\
+  \ is same as -I)\n    -A       automatically include coverage or number of reads\
+  \ in the output name\n    -m L     ignore reads shorter than L bases\n    -max \
+  \    don't sample randomly, pick the longest reads\n\n  Method 1: specify desired\
+  \ output coverage:\n    -g G     genome size\n    -c C     desired coverage in the\
+  \ output reads\n\n  Method 2: specify desired number of output pairs\n    -p N \
+  \    for mated reads, output 2N reads, or N pairs of reads\n             for unmated\
+  \ reads, output N reads\n\n  Method 3: specify a desired fraction of the input:\n\
+  \    -f F     output F * T pairs of reads (T as above in -t option)\n          \
+  \   0.0 < F <= 1.0\n\n  Method 4: specify a desired total length\n    -b B     output\
+  \ reads/pairs until B bases is exceeded\n\n\nSamples reads from paired Illumina\
+  \ reads NAME.1.fastq and NAME.2.fastq and outputs:\n    NAME.Cx.1.fastq and N.Cx.2.fastq\
+  \ (for coverage based sampling)\n    NAME.n=N.1.fastq and N.n=N.2.fastq (for coverage\
+  \ based sampling)\n\nIf -T is not supplied, the number of reads will be counted\
+  \ for you.\n\nERROR: no name supplied with -I.\nERROR: no method supplied with -c,\
+  \ -p, -f or -b\n\n"
+generated_using:
+- --help

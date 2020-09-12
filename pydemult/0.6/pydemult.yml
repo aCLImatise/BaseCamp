@@ -1,32 +1,142 @@
 !Command
-positional: []
+command:
+- pydemult
+positional:
+- !Positional
+  description: --keep-empty          Keep empty sequences in demultiplexed output
+    files.
+  position: 0
+  name: unmatched.fastq.gz
+  optional: false
 named:
 - !Flag
-  description: ''
+  description: FASTQ file for demultiplexing.
   synonyms:
   - --fastq
+  - -f
   args: !SimpleFlagArg
     name: input.fastq.gz
   optional: true
 - !Flag
-  description: ''
+  description: Samplesheet containing barcodes and samplenames
   synonyms:
   - --samplesheet
+  - -s
   args: !SimpleFlagArg
     name: samplesheet.txt
   optional: true
-command:
-- pydemult
-parent:
-subcommands: []
-help_flag: !Flag
+- !Flag
+  description: Separator that is used in samplesheet
+  synonyms:
+  - --column-separator
+  args: !SimpleFlagArg
+    name: COLUMN_SEPARATOR
+  optional: true
+- !Flag
+  description: Name of the column containing barcodes
+  synonyms:
+  - --barcode-column
+  args: !SimpleFlagArg
+    name: Barcode
+  optional: true
+- !Flag
+  description: Name of the column containing sample names
+  synonyms:
+  - --sample-column
+  args: !SimpleFlagArg
+    name: Sample
+  optional: true
+- !Flag
+  description: "Regular expression to parse cell barcode (CB) and UMIs\n(UMI) from\
+    \ read names"
+  synonyms:
+  - --barcode-regex
+  - -b
+  args: !SimpleFlagArg
+    name: BARCODE_REGEX
+  optional: true
+- !Flag
+  description: Maximum allowed edit distance for barcodes
+  synonyms:
+  - --edit-distance
+  args: !SimpleFlagArg
+    name: '1'
+  optional: true
+- !Flag
+  description: The alphabet that is used to created edited barcodes
+  synonyms:
+  - --edit-alphabet
+  args: !SimpleFlagArg
+    name: ACGTN
+  optional: true
+- !Flag
+  description: "Buffer size for the FASTQ reader (in Bytes). Must be\nlarge enough\
+    \ to contain the largest entry."
+  synonyms:
+  - --buffer-size
+  args: !SimpleFlagArg
+    name: '4000000'
+  optional: true
+- !Flag
+  description: Output directory to write individual fastq files to.
+  synonyms:
+  - --output
+  - -o
+  args: !SimpleFlagArg
+    name: fastq
+  optional: true
+- !Flag
+  description: ".fastq.gz\nA suffix to append to individual fastq files."
+  synonyms:
+  - --output-file-suffix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write reads with unmatched barcodes into
+  synonyms:
+  - --write-unmatched
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of threads to use for multiprocessing.
+  synonyms:
+  - --threads
+  - -t
+  args: !SimpleFlagArg
+    name: '1'
+  optional: true
+- !Flag
+  description: Number of threads to use for writing
+  synonyms:
+  - --writer-threads
+  - -w
+  args: !SimpleFlagArg
+    name: '2'
+  optional: true
+- !Flag
   description: ''
   synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
   - -h
+  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "usage: pydemult [-h] --fastq input.fastq.gz --samplesheet samplesheet.txt\n\
   \                [--column-separator COLUMN_SEPARATOR]\n                [--barcode-column\
   \ Barcode] [--sample-column Sample]\n                [--barcode-regex BARCODE_REGEX]\

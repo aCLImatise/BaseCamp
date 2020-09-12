@@ -1,10 +1,259 @@
 !Command
+command:
+- blastpgp
 positional: []
 named:
+- !Flag
+  description: "Database [String]\ndefault = nr"
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Query File (not needed if restarting from scoremat) [File In]  Optional\n\
+    default = stdin"
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Multiple Hits window size [Integer]\ndefault = 40"
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Threshold for extending hits [Integer]\ndefault = 11"
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Expectation value (E) [Real]\ndefault = 10.0"
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: 'alignment view options:'
   synonyms:
   - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output File for Alignment [File Out]  Optional\ndefault = stdout"
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Dropoff (X) for blast extensions in bits (default if zero) [Real]\n\
+    default = 7.0"
+  synonyms:
+  - -y
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "0 for multiple hit, 1 for single hit [Integer]\ndefault = 0"
+  synonyms:
+  - -P
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Filter query sequence with SEG [String]\ndefault = F"
+  synonyms:
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Cost to open a gap [Integer]\ndefault = 11"
+  synonyms:
+  - -G
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Cost to extend a gap [Integer]\ndefault = 1"
+  synonyms:
+  - -E
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "X dropoff value for gapped alignment (in bits) [Integer]\ndefault\
+    \ = 15"
+  synonyms:
+  - -X
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of bits to trigger gapping [Real]\ndefault = 22.0"
+  synonyms:
+  - -N
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Start of required region in query [Integer]\ndefault = 1"
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "End of required region in query (-1 indicates end of query) [Integer]\n\
+    default = -1"
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of processors to use [Integer]\ndefault = 1"
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Show GI's in deflines [T/F]\ndefault = F"
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Constant in pseudocounts for multipass version; 0 uses entropy method;\
+    \ otherwise a value near 30 is recommended [Integer]\ndefault = 0"
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Maximum number of passes to use in  multipass version [Integer]\n\
+    default = 1"
+  synonyms:
+  - -j
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Believe the query defline [T/F]\ndefault = F"
+  synonyms:
+  - -J
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "X dropoff value for final gapped alignment (in bits) [Integer]\ndefault\
+    \ = 25"
+  synonyms:
+  - -Z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: SeqAlign file ('Believe the query defline' must be TRUE) [File Out]  Optional
+  synonyms:
+  - -O
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Matrix [String]\ndefault = BLOSUM62"
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of database sequences to show one-line descriptions for (V)\
+    \ [Integer]\ndefault = 500"
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of database sequence to show alignments for (B) [Integer]\n\
+    default = 250"
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output File for PSI-BLAST Checkpointing [File Out]  Optional
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input File for PSI-BLAST Restart [File In]  Optional
+  synonyms:
+  - -R
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Word size [Integer]\ndefault = 3"
+  synonyms:
+  - -W
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Effective length of the database (use zero for the real size) [Real]\n\
+    default = 0"
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of best hits from a region to keep [Integer]\ndefault = 0"
+  synonyms:
+  - -K
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Compute locally optimal Smith-Waterman alignments [T/F]\ndefault =\
+    \ F"
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Effective length of the search space (use zero for the real size)\
+    \ [Real]\ndefault = 0"
+  synonyms:
+  - -Y
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "program option for PHI-BLAST [String]\ndefault = blastpgp"
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Hit File for PHI-BLAST [File In]\ndefault = hit_file"
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Produce HTML output [T/F]\ndefault = F"
+  synonyms:
+  - -T
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output File for PSI-BLAST Matrix in ASCII [File Out]  Optional
+  synonyms:
+  - -Q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input Alignment File for PSI-BLAST Restart [File In]  Optional
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Restrict search of database to list of GI's [String]  Optional
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use lower case filtering of FASTA sequence [T/F]  Optional\ndefault\
+    \ = F"
+  synonyms:
+  - -U
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -25,11 +274,22 @@ named:
   - -u
   args: !EmptyFlagArg {}
   optional: true
-command:
-- blastpgp
+- !Flag
+  description: "Cost to decline alignment (disabled when 0) [Integer]\ndefault = 0\n"
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: "e-value threshold for inclusion in multipass model [Real]\ndefault\
+    \ = 0.002"
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "\nblastpgp 2.2.26   arguments:\n\n  -d  Database [String]\n    default\

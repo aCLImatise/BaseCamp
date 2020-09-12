@@ -1,20 +1,225 @@
 !Command
+command:
+- bq
 positional:
 - !Positional
-  description: ''
+  description: "(default: 'false')"
   position: 0
-  name: command
+  name: printing.
   optional: false
 - !Positional
-  description: ''
+  description: '--[no]use_gce_service_account: Use this when running on a Google Compute'
   position: 1
-  name: args
-  optional: true
+  name: requests.
+  optional: false
 named:
 - !Flag
-  description: ''
+  description: ": API endpoint to talk to.\n(default: 'https://www.googleapis.com')"
   synonyms:
-  - --global_flags
+  - --api
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": API version to use.\n(default: 'v2')"
+  synonyms:
+  - --api_version
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Turn on logging of all server requests and responses. If no string\n\
+    is provided, log to stdout; if a string is provided, instead log to that\nfile."
+  synonyms:
+  - --apilog
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": See https://developers.google.com/ident\nity/protocols/application-default-credentials\
+    \ for more info.\n(default: '')"
+  synonyms:
+  - --application_default_credential_file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Path to configuration file. The configuration file specifies new\n\
+    defaults for any flags, and can be overrridden by specifying the flag on the\n\
+    command line. If the --bigqueryrc flag is not specified, the BIGQUERYRC\nenvironment\
+    \ variable is used. If that is not specified, the path\n\"~/.bigqueryrc\" is used.\n\
+    (default: '/root/.bigqueryrc')"
+  synonyms:
+  - --bigqueryrc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Location of CA certificates file.\n(default: '')"
+  synonyms:
+  - --ca_certificates_file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Filename used for storing the BigQuery OAuth token.\n(default: '/root/.bigquery.v2.token')"
+  synonyms:
+  - --credential_file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Default dataset to use for requests. (Ignored when not\napplicable.)\n\
+    (default: '')"
+  synonyms:
+  - --dataset_id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Filename for JSON document to read for discovery.\n(default: '')"
+  synonyms:
+  - --discovery_file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": <none|json|prettyjson|csv|sparse|pretty>: Format for command output.\n\
+    Options include:\npretty: formatted table output\nsparse: simpler table output\n\
+    prettyjson: easy-to-read JSON format\njson: maximally compact JSON\ncsv: csv format\
+    \ with header\nThe first three are intended to be human-readable, and the latter\
+    \ three are\nfor passing to another program. If no format is selected, one will\
+    \ be chosen\nbased on the command run."
+  synonyms:
+  - --format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": A unique job_id to use for the request. If not specified, this\n\
+    client will generate a job_id. Applies only to commands that launch jobs,\nsuch\
+    \ as cp, extract, load, and query."
+  synonyms:
+  - --job_id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Additional key-value pairs to include in the properties field\n\
+    of the job configuration;\nrepeat this option to specify a list of values"
+  synonyms:
+  - --job_property
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Specifies the max number of rows to return per read.\n(an integer)"
+  synonyms:
+  - --max_rows_per_request
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Default project to use for requests.\n(default: '')"
+  synonyms:
+  - --project_id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": The name or IP address of the proxy host to use for\nconnecting\
+    \ to GCP.\n(default: '')"
+  synonyms:
+  - --proxy_address
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": The password to use when authenticating with proxy host.\n(default:\
+    \ '')"
+  synonyms:
+  - --proxy_password
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": The port number to use to connect to the proxy host.\n(default:\
+    \ '')"
+  synonyms:
+  - --proxy_port
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": The user name to use when authenticating with proxy host.\n(default:\
+    \ '')"
+  synonyms:
+  - --proxy_username
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",--[no]quiet: If True, ignore status updates while jobs are running.\n\
+    (default: 'false')"
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Use this service account email address for authorization.\nFor example,\
+    \ 1234567890@developer.gserviceaccount.com.\n(default: '')"
+  synonyms:
+  - --service_account
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": File to be used as a credential store for\nservice accounts. Must\
+    \ be set if using a service account."
+  synonyms:
+  - --service_account_credential_file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Filename that contains the service account\nprivate key. Required\
+    \ if --service_account is specified.\n(default: '')"
+  synonyms:
+  - --service_account_private_key_file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Password for private key. This\npassword must match the password\
+    \ you set on the key when you created it in\nthe Google APIs Console. Defaults\
+    \ to the default Google APIs Console private\nkey password.\n(default: 'notasecret')"
+  synonyms:
+  - --service_account_private_key_password
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",--[no]synchronous_mode: If True, wait for command completion before\n\
+    returning, and use the job completion status for error codes. If False,\nsimply\
+    \ create the job, and use the success of job creation as the error\ncode.\n(default:\
+    \ 'true')"
+  synonyms:
+  - -sync
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': A tracing token of the form "token:<token>" to include in api'
+  synonyms:
+  - --trace
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Host name to use when running a local web server to handle\nredirects\
+    \ during OAuth authorization.\n(default: 'localhost')"
+  synonyms:
+  - --auth_host_name
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Port to use when running a local web server to handle\nredirects\
+    \ during OAuth authorization.;\nrepeat this option to specify a list of values\n\
+    (default: '[8080, 8090]')\n(an integer)"
+  synonyms:
+  - --auth_host_port
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Insert flag definitions from the given file into the command line.\n\
+    (default: '')"
+  synonyms:
+  - --flagfile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": comma-separated list of flag names that it is okay to specify on\n\
+    the command line even if the program does not define a flag with that name.\n\
+    IMPORTANT: flags in this list that have arguments MUST use the --flag=value\n\
+    format.\n(default: '')"
+  synonyms:
+  - --undefok
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -23,10 +228,15 @@ named:
   - --command_flags
   args: !EmptyFlagArg {}
   optional: true
-command:
-- bq
+- !Flag
+  description: ''
+  synonyms:
+  - --global_flags
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:
@@ -41,12 +251,12 @@ help_text: "Python script for interacting with BigQuery.\n\n\nUSAGE: bq.py [--gl
   \ The configuration file specifies new\n    defaults for any flags, and can be overrridden\
   \ by specifying the flag on the\n    command line. If the --bigqueryrc flag is not\
   \ specified, the BIGQUERYRC\n    environment variable is used. If that is not specified,\
-  \ the path\n    \"~/.bigqueryrc\" is used.\n    (default: '/home/ubuntu/.bigqueryrc')\n\
+  \ the path\n    \"~/.bigqueryrc\" is used.\n    (default: '/root/.bigqueryrc')\n\
   \  --ca_certificates_file: Location of CA certificates file.\n    (default: '')\n\
   \  --credential_file: Filename used for storing the BigQuery OAuth token.\n    (default:\
-  \ '/home/ubuntu/.bigquery.v2.token')\n  --dataset_id: Default dataset to use for\
-  \ requests. (Ignored when not\n    applicable.)\n    (default: '')\n  --[no]debug_mode:\
-  \ Show tracebacks on Python exceptions.\n    (default: 'false')\n  --[no]disable_ssl_validation:\
+  \ '/root/.bigquery.v2.token')\n  --dataset_id: Default dataset to use for requests.\
+  \ (Ignored when not\n    applicable.)\n    (default: '')\n  --[no]debug_mode: Show\
+  \ tracebacks on Python exceptions.\n    (default: 'false')\n  --[no]disable_ssl_validation:\
   \ Disables HTTPS certificates validation. This is\n    off by default.\n    (default:\
   \ 'false')\n  --discovery_file: Filename for JSON document to read for discovery.\n\
   \    (default: '')\n  --[no]enable_gdrive: When set to true, requests new OAuth\

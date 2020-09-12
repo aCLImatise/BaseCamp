@@ -1,0 +1,77 @@
+!Command
+command:
+- scatter-regions
+positional:
+- !Positional
+  description: "The input file. The format is detected by the\nextension. Supported\
+    \ extensions are: '.bed', '.dict',\n'.fai', '.vcf', '.vcf.gz', '.bcf'."
+  position: 0
+  name: INPUT
+  optional: false
+named:
+- !Flag
+  description: "The prefix of the ouput files. Output will be named\nlike: <PREFIX><N>.bed,\
+    \ in which N is an incrementing\nnumber. Default 'scatter-'."
+  synonyms:
+  - -p
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: "If set, contigs are allowed to be split up over\nmultiple files."
+  synonyms:
+  - -S
+  - --split-contigs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If set prints paths of the output files to STDOUT.\nThis makes the\
+    \ program usable in scripts and\nworfklows."
+  synonyms:
+  - -P
+  - --print-paths
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The maximum size for the regions over which to\nscatter. If contigs\
+    \ are not split, and a contig is\nbigger than the maximum size, the contig will\
+    \ be\nplaced in its own file. Default: 1000000000.\n"
+  synonyms:
+  - -s
+  - --scatter-size
+  args: !SimpleFlagArg
+    name: SCATTER_SIZE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: scatter-regions [-h] [-p PREFIX] [-S] [-P] [-s SCATTER_SIZE] INPUT\n\
+  \nGiven a sequence dict, fasta index or a bed file, scatter over the defined\ncontigs/regions.\
+  \ Creates a bed file where the contigs add up approximately to\nthe given scatter\
+  \ size.\n\npositional arguments:\n  INPUT                 The input file. The format\
+  \ is detected by the\n                        extension. Supported extensions are:\
+  \ '.bed', '.dict',\n                        '.fai', '.vcf', '.vcf.gz', '.bcf'.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -p PREFIX, --prefix PREFIX\n                        The prefix of the ouput files.\
+  \ Output will be named\n                        like: <PREFIX><N>.bed, in which\
+  \ N is an incrementing\n                        number. Default 'scatter-'.\n  -S,\
+  \ --split-contigs   If set, contigs are allowed to be split up over\n          \
+  \              multiple files.\n  -P, --print-paths     If set prints paths of the\
+  \ output files to STDOUT.\n                        This makes the program usable\
+  \ in scripts and\n                        worfklows.\n  -s SCATTER_SIZE, --scatter-size\
+  \ SCATTER_SIZE\n                        The maximum size for the regions over which\
+  \ to\n                        scatter. If contigs are not split, and a contig is\n\
+  \                        bigger than the maximum size, the contig will be\n    \
+  \                    placed in its own file. Default: 1000000000.\n"
+generated_using:
+- --help

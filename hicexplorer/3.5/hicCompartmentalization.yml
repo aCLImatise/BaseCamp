@@ -1,0 +1,109 @@
+!Command
+command:
+- hicCompartmentalization
+positional: []
+named:
+- !Flag
+  description: "Plot to represent the polarization of A/B\ncompartments."
+  synonyms:
+  - --outputFileName
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUTFILENAME
+  optional: true
+- !Flag
+  description: HiCExplorer matrices in h5/cool format.
+  synonyms:
+  - --obsexp_matrices
+  - -m
+  args: !RepeatFlagArg
+    name: OBSEXP_MATRICES
+  optional: true
+- !Flag
+  description: "a PCA vector as a bedgraph file with no header. In\ncase of several\
+    \ matrices with different conditions,\nie. controltreatment, the PCA of control\
+    \ can be used.\nNote that only one PCA can be provided."
+  synonyms:
+  - --pca
+  args: !SimpleFlagArg
+    name: PCA
+  optional: true
+- !Flag
+  description: 'number of quantiles. (Default: 30).'
+  synonyms:
+  - --quantile
+  - -q
+  args: !SimpleFlagArg
+    name: QUANTILE
+  optional: true
+- !Flag
+  description: 'precentage of outlier to remove. (Default: 0).'
+  synonyms:
+  - --outliers
+  args: !SimpleFlagArg
+    name: OUTLIERS
+  optional: true
+- !Flag
+  description: output .npz file includes all the generated matrices
+  synonyms:
+  - --outputMatrix
+  args: !SimpleFlagArg
+    name: OUTPUTMATRIX
+  optional: true
+- !Flag
+  description: "set nan for the distances mentioned as offset from\nmain diagonal,\
+    \ only positive values are accepted!\nExample: if --offset 0, then values of main\
+    \ diagonal\nwill set to nan and if --offset 0 1 then on top of the\nmain diagonal,\
+    \ +1 and -1 diagonal values are also set\nto nan."
+  synonyms:
+  - --offset
+  args: !RepeatFlagArg
+    name: OFFSET
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show the help message and exit.
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: hicCompartmentalization --obsexp_matrices OBSEXP_MATRICES\n   \
+  \                            [OBSEXP_MATRICES ...] --pca PCA\n                 \
+  \              --outputFileName OUTPUTFILENAME\n                               [--quantile\
+  \ QUANTILE] [--outliers OUTLIERS]\n                               [--outputMatrix\
+  \ OUTPUTMATRIX]\n                               [--offset OFFSET [OFFSET ...]] [-h]\
+  \ [--version]\n\nRearrange the average interaction frequencies using the first PC\
+  \ values to\nrepresent the global compartmentalization signal. To our knowledge\
+  \ this has\nbeen first introduced and implemented by Wibke Schwarzer et al. 2017\
+  \ (Nature.\n2017 Nov 2; 551(7678): 51–56) $ hicCompartmentalization --obsexp_matrices\n\
+  obsExpMatrix.h5 --pca pc1.bedgraph -o global_signal.png\n\nRequired arguments:\n\
+  \  --obsexp_matrices OBSEXP_MATRICES [OBSEXP_MATRICES ...], -m OBSEXP_MATRICES [OBSEXP_MATRICES\
+  \ ...]\n                        HiCExplorer matrices in h5/cool format.\n  --pca\
+  \ PCA             a PCA vector as a bedgraph file with no header. In\n         \
+  \               case of several matrices with different conditions,\n          \
+  \              ie. controltreatment, the PCA of control can be used.\n         \
+  \               Note that only one PCA can be provided.\n  --outputFileName OUTPUTFILENAME,\
+  \ -o OUTPUTFILENAME\n                        Plot to represent the polarization\
+  \ of A/B\n                        compartments.\n\nOptional arguments:\n  --quantile\
+  \ QUANTILE, -q QUANTILE\n                        number of quantiles. (Default:\
+  \ 30).\n  --outliers OUTLIERS   precentage of outlier to remove. (Default: 0).\n\
+  \  --outputMatrix OUTPUTMATRIX\n                        output .npz file includes\
+  \ all the generated matrices\n  --offset OFFSET [OFFSET ...]\n                 \
+  \       set nan for the distances mentioned as offset from\n                   \
+  \     main diagonal, only positive values are accepted!\n                      \
+  \  Example: if --offset 0, then values of main diagonal\n                      \
+  \  will set to nan and if --offset 0 1 then on top of the\n                    \
+  \    main diagonal, +1 and -1 diagonal values are also set\n                   \
+  \     to nan.\n  -h                    show the help message and exit.\n  --version\
+  \             show program's version number and exit\n"
+generated_using:
+- -h

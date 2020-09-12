@@ -1,4 +1,6 @@
 !Command
+command:
+- maf2hal
 positional:
 - !Positional
   description: ''
@@ -10,12 +12,89 @@ positional:
   position: 1
   name: halFile
   optional: false
-named: []
-command:
-- maf2hal
+named:
+- !Flag
+  description: ":                  append maf as subtree to existing alignment. reference\n\
+    must alaready be present in hal dabase as a leaf. [default\n= 0]"
+  synonyms:
+  - --append
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":      maximum size in bytes of regular hdf5 cache [default =\n15728640]"
+  synonyms:
+  - --cacheBytes
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':        number of metadata slots in hdf5 cache [default = 113]'
+  synonyms:
+  - --cacheMDC
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":        number of regular slots in hdf5 cache.  should be a prime\n\
+    number ~= 10 * DefaultCacheRDCBytes / chunk [default =\n599999]"
+  synonyms:
+  - --cacheRDC
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':         w0 parameter fro hdf5 cache [default = 0.75]'
+  synonyms:
+  - --cacheW0
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':           hdf5 chunk size [default = 1000]'
+  synonyms:
+  - --chunk
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':         hdf5 compression factor [0:none - 9:max] [default = 2]'
+  synonyms:
+  - --deflate
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":                load all data in memory (and disable hdf5 cache)\
+    \ [default\n= 0]"
+  synonyms:
+  - --inMemory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":       name of reference genome in MAF (first found if empty)\n[default\
+    \ = \"\"]"
+  synonyms:
+  - --refGenome
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":   comma-separated (no spaces) list of target genomes (others\nare\
+    \ excluded) (vist all if empty) [default = \"\"]\n"
+  synonyms:
+  - --targetGenomes
+  args: !SimpleFlagArg
+    name: value
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ':                    dsiplay this help page [default = 0]'
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: " \n\nmaf2hal v2.1: import maf into hal database.\n\nUSAGE:\nmaf2hal [Options]\

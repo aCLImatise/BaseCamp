@@ -1,23 +1,93 @@
 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: input file
-  optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: ct file
-  optional: false
-named: []
 command:
 - MaxExpect
+positional:
+- !Positional
+  description: <ct file>
+  position: 0
+  name: specified.
+  optional: false
+named:
+- !Flag
+  description: "This flag only matters if the input file is a sequence file and has\
+    \ been\nspecified as such. Specify that the sequence is DNA, and DNA parameters\
+    \ are\nto be used.\nDefault is to use RNA parameters."
+  synonyms:
+  - -d
+  - -D
+  - --DNA
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Identify the input file format as a sequence file.
+  synonyms:
+  - --sequence
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the name of a folding alphabet and associated nearest neighbor\n\
+    parameters. The alphabet is the prefix for the thermodynamic parameter\nfiles,\
+    \ e.g. \"rna\" for RNA parameters or \"dna\" for DNA parameters or a\ncustom extended/modified\
+    \ alphabet. The thermodynamic parameters need to\nreside in the at the location\
+    \ indicated by environment variable DATAPATH.\nThe default is \"rna\" (i.e. use\
+    \ RNA parameters). This option overrides the\n--DNA flag."
+  synonyms:
+  - -a
+  - --alphabet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the weight which should be placed on base pairs.\nDefault\
+    \ is 1.0."
+  synonyms:
+  - -g
+  - -g
+  - --gamma
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a maximum percent energy difference.\nDefault is 50 (ie, 50,\
+    \ not 0.5)."
+  synonyms:
+  - -p
+  - -P
+  - --percent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a maximum number of structures.\nDefault is 1000 structures."
+  synonyms:
+  - -s
+  - -S
+  - --structures
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a window size.\nDefault is 5 nucleotides.\n"
+  synonyms:
+  - -w
+  - -W
+  - --window
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Display the usage details message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Display version and copyright information for this interface.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "USAGE: MaxExpect <input file> <ct file> [options]\nAll flags are case-insensitive,\
   \ and grouping of flags is not allowed.\n\n=============================\n==== Required\
   \ Parameters ====\n=============================\n<input file>\n    The name of\

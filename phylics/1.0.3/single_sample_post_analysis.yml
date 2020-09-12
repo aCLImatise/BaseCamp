@@ -1,4 +1,6 @@
 !Command
+command:
+- single_sample_post_analysis
 positional:
 - !Positional
   description: Sample name.
@@ -26,35 +28,41 @@ positional:
   name: distance_metric
   optional: false
 - !Positional
-  description: Path to the desired output directory where the merged files have to
-    be stored
+  description: "Path to the desired output directory where the merged\nfiles have\
+    \ to be stored"
   position: 5
   name: outdir
   optional: false
 named:
 - !Flag
-  description: Seed to initialize the pseudo-random generator used to perform the
-    permutation test.
+  description: "Seed to initialize the pseudo-random generator used to\nperform the\
+    \ permutation test."
   synonyms:
   - --seed
   args: !SimpleFlagArg
     name: N
   optional: true
 - !Flag
-  description: If this option is specified, only the clustering part is executed with
-    the specified number of clusters, unless --reinit option is specified (see below).
+  description: "If this option is specified, only the clustering part\nis executed\
+    \ with the specified number of clusters,\nunless --reinit option is specified\
+    \ (see below)."
   synonyms:
   - --reclust
   args: !SimpleFlagArg
     name: n_clusters
   optional: true
 - !Flag
-  description: This option has effect only if combined with the --clustering option.
-    It allows to recompute the entire analysis and then recluster with the specified
-    number of clusters.
+  description: This option has effect only if combined with the
   synonyms:
   - --reinit
   args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: It allows to recompute the entire
+  synonyms:
+  - --clustering
+  args: !SimpleFlagArg
+    name: option.
   optional: true
 - !Flag
   description: Verbose execution.
@@ -62,10 +70,9 @@ named:
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
-command:
-- single_sample_post_analysis
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -94,4 +101,4 @@ help_text: "usage: single_sample_post_analysis [-h] [--seed N] [--reclust n_clus
   \            analysis and then recluster with the specified number\n           \
   \             of clusters.\n  --verbose             Verbose execution.\n"
 generated_using:
-- -h
+- --help

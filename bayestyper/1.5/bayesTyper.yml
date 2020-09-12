@@ -1,11 +1,14 @@
 &id001 !Command
-positional: []
-named: []
 command:
 - bayesTyper
+positional: []
+named: []
 parent:
 subcommands:
 - !Command
+  command:
+  - bayesTyper
+  - cluster
   positional: []
   named:
   - !Flag
@@ -35,7 +38,7 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: '[ --output-prefix ] arg (=bayestyper) output prefix.'
+    description: "[ --output-prefix ] arg (=bayestyper)\noutput prefix."
     synonyms:
     - -o
     args: !EmptyFlagArg {}
@@ -55,8 +58,8 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: '[ --min-number-of-unit-variants ] arg (=5000000) minimum number
-      of variants per inference unit.'
+    description: "[ --min-number-of-unit-variants ] arg (=5000000)\nminimum number\
+      \ of variants per inference unit."
     synonyms:
     - -u
     args: !EmptyFlagArg {}
@@ -70,26 +73,24 @@ subcommands:
       name: arg
     optional: true
   - !Flag
-    description: (=0.5) minimum fraction of identical kmers required between an allele
-      and the downstream reference sequence in order for it to be classified as a
-      copy number.
+    description: "(=0.5)\nminimum fraction of identical kmers required between an\
+      \ allele and the downstream reference sequence in order for it to\nbe classified\
+      \ as a copy number."
     synonyms:
     - --copy-number-variant-threshold
     args: !SimpleFlagArg
       name: arg
     optional: true
   - !Flag
-    description: (=32) maximum number of haplotype candidates per sample.
+    description: "(=32)\nmaximum number of haplotype candidates per sample.\n"
     synonyms:
     - --max-number-of-sample-haplotypes
     args: !SimpleFlagArg
       name: arg
     optional: true
-  command:
-  - bayesTyper
-  - cluster
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: '[ --help ]                         produce help message for options'
     synonyms:
@@ -98,7 +99,7 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-  help_text: "\n[18/06/2020 17:10:49] You are using BayesTyper (v1.5 )\n\n## BayesTyper\
+  help_text: "\n[09/09/2020 17:46:21] You are using BayesTyper (v1.5 )\n\n## BayesTyper\
     \ cluster options ##:\n\n  -h [ --help ]                         produce help\
     \ message for options\n\n== Required ==:\n  -v [ --variant-file ] arg        \
     \     variant file (vcf format).\n  -s [ --samples-file ] arg             samples\
@@ -120,6 +121,9 @@ subcommands:
   generated_using: &id002
   - --help
 - !Command
+  command:
+  - bayesTyper
+  - genotype
   positional: []
   named:
   - !Flag
@@ -130,9 +134,9 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: '[ --cluster-data-dir ] arg         cluster data directory containing
-      intercluster_regions.txt.gz, multigroup_kmers.bloom[Meta|Data] &  parameter_kmers.fa.gz
-      (BayesTyper cluster output).'
+    description: "[ --cluster-data-dir ] arg         cluster data directory containing\
+      \ intercluster_regions.txt.gz, multigroup_kmers.bloom[Meta|Data] &\nparameter_kmers.fa.gz\
+      \ (BayesTyper cluster output)."
     synonyms:
     - -c
     args: !EmptyFlagArg {}
@@ -158,7 +162,7 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: '[ --output-prefix ] arg (=bayestyper) output prefix.'
+    description: "[ --output-prefix ] arg (=bayestyper)\noutput prefix."
     synonyms:
     - -o
     args: !EmptyFlagArg {}
@@ -185,9 +189,9 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: '[ --chromosome-ploidy-file ] arg   chromosome gender ploidy file
-      (see github documentation for format specifications). Human ploidy levels will
-      be assumed if no file is given.'
+    description: "[ --chromosome-ploidy-file ] arg   chromosome gender ploidy file\
+      \ (see github documentation for format specifications). Human ploidy levels\
+      \ will be assumed\nif no file is given."
     synonyms:
     - -y
     args: !EmptyFlagArg {}
@@ -222,8 +226,8 @@ subcommands:
       name: arg
     optional: true
   - !Flag
-    description: (=500) maximum number of kmers used for genotype inference after
-      subsampling across a haplotype candidate for each variant.
+    description: "(=500)\nmaximum number of kmers used for genotype inference after\
+      \ subsampling across a haplotype candidate for each variant."
     synonyms:
     - --max-haplotype-variant-kmers
     args: !SimpleFlagArg
@@ -260,17 +264,15 @@ subcommands:
       name: arg
     optional: true
   - !Flag
-    description: '[=arg(=1)] (=0) disable filtering of sampled alleles with a low
-      fraction of observed kmers (FAK).'
+    description: "[=arg(=1)] (=0)\ndisable filtering of sampled alleles with a low\
+      \ fraction of observed kmers (FAK).\n"
     synonyms:
     - --disable-observed-kmers
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - bayesTyper
-  - genotype
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: '[ --help ]                         produce help message for options'
     synonyms:
@@ -279,7 +281,7 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-  help_text: "\n[18/06/2020 17:10:53] You are using BayesTyper (v1.5 )\n\n## BayesTyper\
+  help_text: "\n[09/09/2020 17:46:22] You are using BayesTyper (v1.5 )\n\n## BayesTyper\
     \ genotype options ##:\n\n  -h [ --help ]                         produce help\
     \ message for options\n\n== Required ==:\n  -v [ --variant-clusters-file ] arg\
     \    variant_clusters.bin file (BayesTyper cluster output).\n  -c [ --cluster-data-dir\
@@ -313,10 +315,11 @@ subcommands:
     \ [=arg(=1)] (=0)\n                                        disable filtering of\
     \ sampled alleles with a low fraction of observed kmers (FAK).\n\n"
   generated_using: *id002
+usage: []
 help_flag:
 usage_flag:
 version_flag:
-help_text: "\n[18/06/2020 17:10:48] You are using BayesTyper (v1.5 )\n\nUsage: bayesTyper\
+help_text: "\n[09/09/2020 17:46:19] You are using BayesTyper (v1.5 )\n\nUsage: bayesTyper\
   \ <command> [options]\n\nCommands:\n\n\tcluster\t\tcreate variant clusters\n\tgenotype\t\
   genotype variant clusters\n\n"
 generated_using: *id002

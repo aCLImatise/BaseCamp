@@ -1,18 +1,122 @@
 !Command
+command:
+- design
 positional:
 - !Positional
   description: ''
   position: 0
   name: ct structure file
   optional: false
-named: []
-command:
-- design
+named:
+- !Flag
+  description: "Specify that the sequence is DNA, and DNA parameters are to be used.\
+    \ The\ndefault is to use RNA parameters."
+  synonyms:
+  - -d
+  - --dna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify that use pre-selected sequence segments should be used. The\
+    \ default\nis that all nucleotides are chosen at random."
+  synonyms:
+  - -p
+  - --preselect
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use a timer to measure the duration of the design process and print\
+    \ the\nelapsed time to standard output."
+  synonyms:
+  - -t
+  - --timer
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the name of a folding alphabet and associated nearest neighbor\n\
+    parameters. The alphabet is the prefix for the thermodynamic parameter\nfiles,\
+    \ e.g. \"rna\" for RNA parameters or \"dna\" for DNA parameters or a\ncustom extended/modified\
+    \ alphabet. The thermodynamic parameters need to\nreside in the at the location\
+    \ indicated by environment variable DATAPATH.\nThe default is \"rna\" (i.e. use\
+    \ RNA parameters). This option overrides the\n--DNA flag."
+  synonyms:
+  - -a
+  - --alphabet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The maximum allowed ensemble defect per nucleotide.
+  synonyms:
+  - -e
+  - --error
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Max-depth: The maximum extent to which the structure will be sub-divided\
+    \ in\nthe binary decomposition. The default is 5."
+  synonyms:
+  - -md
+  - --maxdepth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The maximum number of times a leaf can be re-optimized at random.\
+    \ The\ndefault is 3."
+  synonyms:
+  - -ml
+  - --maxleaf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The maximum number of times a nucleotide will be mutated during\n\
+    defect-weighted reoptimization. The default is 4."
+  synonyms:
+  - -mm
+  - --maxmutate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The maximum number of redesigns per parent node. The default is 10.
+  synonyms:
+  - -mr
+  - --maxredesign
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the output file. By default the resulting designed sequence\
+    \ is\nwritten to standard output only. This flag instructs the program to output\n\
+    the structure (in ct format) to the specified file."
+  synonyms:
+  - -o
+  - --output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a random seed. This is required to get exactly reproducible\n\
+    results. (The default is to use a seed based on the current system time).\n"
+  synonyms:
+  - -s
+  - --seed
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Display the usage details message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Display version and copyright information for this interface.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "USAGE: design <ct structure file> [options]\nAll flags are case-insensitive,\
   \ and grouping of flags is not allowed.\n\n=============================\n==== Required\
   \ Parameters ====\n=============================\n<ct structure file>\n    The input\

@@ -1,4 +1,6 @@
 !Command
+command:
+- dcmpssnd
 positional:
 - !Positional
   description: configuration file to be read
@@ -27,6 +29,12 @@ positional:
   optional: false
 named:
 - !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: --quiet       quiet mode, print no warnings and errors
   synonyms:
   - -q
@@ -45,33 +53,36 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[l]evel: string constant (fatal, error, warn, info, debug, trace)
-    use level l for the logger'
+  description: "[l]evel: string constant\n(fatal, error, warn, info, debug, trace)\n\
+    use level l for the logger"
   synonyms:
   - -ll
   - --log-level
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[f]ilename: string use config file f for the logger'
+  description: "[f]ilename: string\nuse config file f for the logger\n"
   synonyms:
   - -lc
   - --log-config
   args: !EmptyFlagArg {}
   optional: true
-command:
-- dcmpssnd
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: --help        print this help text and exit --version     print version
-    information and exit --arguments   print expanded command line arguments
+  description: --help        print this help text and exit
   synonyms:
   - -h
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "$dcmtk: dcmpssnd v3.6.1 2016-11-02 $\n\ndcmpssnd: Network send for presentation\
   \ state viewer\nusage: dcmpssnd [options] config-file target study [series] [instance]\n\
   \nparameters:\n  config-file        configuration file to be read\n  target    \

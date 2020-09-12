@@ -1,5 +1,12 @@
 !Command
-positional: []
+command:
+- anise
+positional:
+- !Positional
+  description: AUTO TUNING
+  position: 0
+  name: repeat.
+  optional: false
 named:
 - !Flag
   description: Set verbosity to a minimum.
@@ -50,6 +57,31 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: 'Input FASTA file with reference. Valid filetypes are: fa and fasta.'
+  synonyms:
+  - -ir
+  - --input-reference
+  args: !SimpleFlagArg
+    name: IN.fa
+  optional: true
+- !Flag
+  description: 'Input VCF file with insert site candidates. Valid filetype is: vcf.'
+  synonyms:
+  - -iv
+  - --input-vcf
+  args: !SimpleFlagArg
+    name: IN.vcf
+  optional: true
+- !Flag
+  description: "{sam,bam}\nInput SAM/BAM mapping file. Valid filetypes are: sam and\
+    \ bam."
+  synonyms:
+  - -im
+  - --input-mapping
+  args: !SimpleFlagArg
+    name: IN.
+  optional: true
+- !Flag
   description: 'Output FASTA with contigs Valid filetypes are: fa and fasta.'
   synonyms:
   - -of
@@ -58,8 +90,8 @@ named:
     name: OUT.fa
   optional: true
 - !Flag
-  description: 'Output SAM/BAM file with mapping fo reads to contigs in --output-fasta.
-    Valid filetypes are: sam and bam.'
+  description: "Output SAM/BAM file with mapping fo reads to contigs in\n--output-fasta.\
+    \ Valid filetypes are: sam and bam."
   synonyms:
   - -om
   - --output-mapping
@@ -80,8 +112,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Maximal recursion depth. 0 for infinity. In range [0..inf]. Default:
-    50.'
+  description: "Maximal recursion depth. 0 for infinity. In range [0..inf]. Default:\n\
+    50."
   synonyms:
   - --recursion-max-steps
   args: !SimpleFlagArg
@@ -94,59 +126,60 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Factor to use for the maximal read computation. ANISE stops for a
-    site if more than the number of reads expected from the expected coverage times
-    the max reads factor are assigned to the site. In range [1..inf]. Default: 2.'
+  description: "Factor to use for the maximal read computation. ANISE stops for a\n\
+    site if more than the number of reads expected from the expected\ncoverage times\
+    \ the max reads factor are assigned to the site. In\nrange [1..inf]. Default:\
+    \ 2."
   synonyms:
   - --max-reads-factor
   args: !SimpleFlagArg
     name: FLOAT
   optional: true
 - !Flag
-  description: 'If there are more than this number of reads for a site in the initial
-    round then no assembly is performed. In range [0..inf]. Default: 4000.'
+  description: "If there are more than this number of reads for a site in the\ninitial\
+    \ round then no assembly is performed. In range [0..inf].\nDefault: 4000."
   synonyms:
   - --stop-initial-read-count
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: 'If there are more than this number of reads for a site in a later
-    round then no triplet library extension is performed. In range [0..inf]. Default:
-    3000.'
+  description: "If there are more than this number of reads for a site in a later\n\
+    round then no triplet library extension is performed. In range\n[0..inf]. Default:\
+    \ 3000."
   synonyms:
   - --stop-tex-read-count
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: 'If there are more than this number of reads for a site in a later
-    round then no assembly is performed. In range [0..inf]. Default: 30000.'
+  description: "If there are more than this number of reads for a site in a later\n\
+    round then no assembly is performed. In range [0..inf]. Default:\n30000."
   synonyms:
   - --stop-read-count
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: 'If the length sum of all reads for a site divided by the length sum
-    of its contigs is higher than this value before assembly then the site is deactivated.
-    Set to 0 to deactivate check. In range [0..inf]. Default: 100.'
+  description: "If the length sum of all reads for a site divided by the length sum\n\
+    of its contigs is higher than this value before assembly then the\nsite is deactivated.\
+    \ Set to 0 to deactivate check. In range\n[0..inf]. Default: 100."
   synonyms:
   - --stop-coverage
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: 'The bandwidth to use in the realignment step. In range [0..inf]. Default:
-    40.'
+  description: "The bandwidth to use in the realignment step. In range [0..inf].\n\
+    Default: 40."
   synonyms:
   - --realignment-bandwidth
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: 'The border from the profile to extract around alignments. In range
-    [0..inf]. Default: 30.'
+  description: "The border from the profile to extract around alignments. In range\n\
+    [0..inf]. Default: 30."
   synonyms:
   - --realignment-border
   args: !SimpleFlagArg
@@ -159,24 +192,24 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Variant of the Tammi method to use for repeat separation (simple or
-    phred). One of phred and simple. Default: simple.'
+  description: "Variant of the Tammi method to use for repeat separation (simple or\n\
+    phred). One of phred and simple. Default: simple."
   synonyms:
   - --repsep-tammi-method
   args: !SimpleFlagArg
     name: STR
   optional: true
 - !Flag
-  description: 'Repeat separation per-base error for simple Tammi method. In range
-    [0.0..1.0]. Default: 0.01.'
+  description: "Repeat separation per-base error for simple Tammi method. In range\n\
+    [0.0..1.0]. Default: 0.01."
   synonyms:
   - --repsep-p-err
   args: !SimpleFlagArg
     name: FLOAT
   optional: true
 - !Flag
-  description: 'Repeat separation maximal random correlation. In range [0.0..1.0].
-    Default: 0.00001.'
+  description: "Repeat separation maximal random correlation. In range [0.0..1.0].\n\
+    Default: 0.00001."
   synonyms:
   - --repsep-max-random-correlation
   args: !SimpleFlagArg
@@ -197,15 +230,16 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: 'Repeat separation minimal overlap value. In range [0..inf]. Default:
-    2.'
+  description: "Repeat separation minimal overlap value. In range [0..inf]. Default:\n\
+    2."
   synonyms:
   - --repsep-min-overlap
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: 'Repeat separation start compression. In range [2..inf]. Default: 100.'
+  description: "Repeat separation start compression. In range [2..inf]. Default:\n\
+    100."
   synonyms:
   - --repsep-start-compression-at
   args: !SimpleFlagArg
@@ -218,16 +252,16 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Factor to multiple fragment size stddev with to get allowed error.
-    In range [0..inf]. Default: 8.'
+  description: "Factor to multiple fragment size stddev with to get allowed error.\n\
+    In range [0..inf]. Default: 8."
   synonyms:
   - --fragment-size-factor
   args: !SimpleFlagArg
     name: FACTOR
   optional: true
 - !Flag
-  description: 'Number of records to use for automatic library evaluation. Set to
-    0 to evaluate all. In range [0..inf]. Default: 100000.'
+  description: "Number of records to use for automatic library evaluation. Set to\
+    \ 0\nto evaluate all. In range [0..inf]. Default: 100000."
   synonyms:
   - --auto-library-num-records
   args: !SimpleFlagArg
@@ -255,25 +289,25 @@ named:
     name: FACTOR
   optional: true
 - !Flag
-  description: 'Radius around insert site to cut for initial contigs. In range [100..inf].
-    Default: 1000.'
+  description: "Radius around insert site to cut for initial contigs. In range\n[100..inf].\
+    \ Default: 1000."
   synonyms:
   - --assembly-site-window-radius
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: 'Radius around insert site to cut for collecting clippings. Set to
-    -1 (default) to consider all records with >= 15 clipped bases. In range [-1..inf].
-    Default: -1.'
+  description: "Radius around insert site to cut for collecting clippings. Set to\
+    \ -1\n(default) to consider all records with >= 15 clipped bases. In range\n[-1..inf].\
+    \ Default: -1."
   synonyms:
   - --assembly-site-fringe-radius
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: 'Error rate of internal read mapping step in percent. In range [0..20].
-    Default: 5.'
+  description: "Error rate of internal read mapping step in percent. In range\n[0..20].\
+    \ Default: 5."
   synonyms:
   - --read-mapping-error-rate
   args: !SimpleFlagArg
@@ -287,16 +321,16 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: 'Overlapper min overlap rate in percent of the longer read. In range
-    [0..inf]. Default: 40.'
+  description: "Overlapper min overlap rate in percent of the longer read. In range\n\
+    [0..inf]. Default: 40."
   synonyms:
   - --overlapper-min-overlap-ratio
   args: !SimpleFlagArg
     name: PERCENT
   optional: true
 - !Flag
-  description: 'Overlapper maximum error rate in percent. In range [0..30]. Default:
-    5.'
+  description: "Overlapper maximum error rate in percent. In range [0..30]. Default:\n\
+    5."
   synonyms:
   - --overlapper-max-error-rate
   args: !SimpleFlagArg
@@ -337,25 +371,24 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: 'Minimal base support for non-N call in consensus calling. Default:
-    2.'
+  description: "Minimal base support for non-N call in consensus calling. Default:\n\
+    2."
   synonyms:
   - --consensus-min-base-support
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: 'Minimal contig length in percent of average read length. Default:
-    150.'
+  description: "Minimal contig length in percent of average read length. Default:\n\
+    150."
   synonyms:
   - --consensus-min-contig-length-rate
   args: !SimpleFlagArg
     name: PERCENT
   optional: true
-command:
-- anise
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Displays this help message.
   synonyms:

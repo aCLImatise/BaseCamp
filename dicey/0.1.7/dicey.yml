@@ -1,43 +1,25 @@
 &id001 !Command
-positional: []
-named: []
 command:
 - dicey
+positional: []
+named: []
 parent:
 subcommands:
 - !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: genome.fa.gz
-    optional: false
-  named:
-  - !Flag
-    description: '[ --output ] arg (="genome.fm9")  output file'
-    synonyms:
-    - -o
-    args: !EmptyFlagArg {}
-    optional: true
   command:
   - dicey
-  - index
-  parent: *id001
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
-  help_text: "Usage: dicey index [OPTIONS] genome.fa.gz\n\nGeneric options:\n  -?\
-    \ [ --help ]                        show help message\n  -o [ --output ] arg (=\"\
-    genome.fm9\")  output file\n\n"
-  generated_using: &id002
-  - --help
-- !Command
+  - search
   positional:
   - !Positional
-    description: ''
+    description: --divalent arg (=1.5)                 concentration of divalent ions
+      in mMol
     position: 0
-    name: CATTACTAACATCAGT
+    name: mMol
+    optional: false
+  - !Positional
+    description: --dntp arg (=0.59999999999999998)     the sum  of all dNTPs in mMol
+    position: 1
+    name: nMol
     optional: false
   named:
   - !Flag
@@ -47,76 +29,7 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: '[ --outfile ] arg                  gzipped output file'
-    synonyms:
-    - -o
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: '[ --maxmatches ] arg (=1000)       max. number of matches'
-    synonyms:
-    - -m
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: '[ --maxNeighborhood ] arg (=10000) max. neighborhood size'
-    synonyms:
-    - -x
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: '[ --distance ] arg (=1)            neighborhood distance'
-    synonyms:
-    - -d
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: '[ --hamming ]                      use hamming neighborhood instead
-      of  edit distance'
-    synonyms:
-    - -n
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: '[ --forward ]                      only forward matches'
-    synonyms:
-    - -f
-    args: !EmptyFlagArg {}
-    optional: true
-  command:
-  - dicey
-  - hunt
-  parent: *id001
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
-  help_text: "Usage: dicey hunt [OPTIONS] -g Danio_rerio.fa.gz CATTACTAACATCAGT\n\n\
-    Generic options:\n  -? [ --help ]                         show help message\n\
-    \  -g [ --genome ] arg                   genome file\n  -o [ --outfile ] arg \
-    \                 gzipped output file\n  -m [ --maxmatches ] arg (=1000)     \
-    \  max. number of matches\n  -x [ --maxNeighborhood ] arg (=10000) max. neighborhood\
-    \ size\n  -d [ --distance ] arg (=1)            neighborhood distance\n  -n [\
-    \ --hamming ]                      use hamming neighborhood instead of \n    \
-    \                                    edit distance\n  -f [ --forward ]       \
-    \               only forward matches\n\n"
-  generated_using: *id002
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: sequences.fasta
-    optional: false
-  named:
-  - !Flag
-    description: '[ --genome ] arg                   genome file'
-    synonyms:
-    - -g
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: '[ --config ] arg (="./src/primer3_config/") primer3 config directory'
+    description: "[ --config ] arg (=\"./src/primer3_config/\")\nprimer3 config directory"
     synonyms:
     - -i
     args: !EmptyFlagArg {}
@@ -158,8 +71,8 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: '[ --hamming ]                      use hamming neighborhood instead
-      of  edit distance'
+    description: "[ --hamming ]                      use hamming neighborhood instead\
+      \ of\nedit distance"
     synonyms:
     - -n
     args: !EmptyFlagArg {}
@@ -177,77 +90,61 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: (=-1)             max. penalty for products (-1 = keep  all)
+    description: "(=-1)             max. penalty for products (-1 = keep\nall)"
     synonyms:
     - --cutoffPenalty
     args: !SimpleFlagArg
       name: arg
     optional: true
   - !Flag
-    description: (=0.59999999999999998) multiplication factor for deviation of  primer
-      Tm penalty
+    description: "(=0.59999999999999998)\nmultiplication factor for deviation of\n\
+      primer Tm penalty"
     synonyms:
     - --penaltyTmDiff
     args: !SimpleFlagArg
       name: arg
     optional: true
   - !Flag
-    description: (=0.40000000000000002) multiplication factor for Tm pair  difference
-      penalty
+    description: "(=0.40000000000000002)\nmultiplication factor for Tm pair\ndifference\
+      \ penalty"
     synonyms:
     - --penaltyTmMismatch
     args: !SimpleFlagArg
       name: arg
     optional: true
   - !Flag
-    description: (=0.001)          multiplication factor for amplicon  length penalty
+    description: "(=0.001)          multiplication factor for amplicon\nlength penalty"
     synonyms:
     - --penaltyLength
     args: !SimpleFlagArg
       name: arg
     optional: true
   - !Flag
-    description: (=37)                   temperature for entropie and entalpie  calculation
-      in Celsius
+    description: "(=37)                   temperature for entropie and entalpie\n\
+      calculation in Celsius"
     synonyms:
     - --enttemp
     args: !SimpleFlagArg
       name: arg
     optional: true
   - !Flag
-    description: (=50)                concentration of monovalent ions in  mMol
+    description: (=50)                concentration of monovalent ions in
     synonyms:
     - --monovalent
     args: !SimpleFlagArg
       name: arg
     optional: true
   - !Flag
-    description: (=1.5)                 concentration of divalent ions in mMol
-    synonyms:
-    - --divalent
-    args: !SimpleFlagArg
-      name: arg
-    optional: true
-  - !Flag
     description: (=50)                       concentration of annealing(!) Oligos
-      in nMol
+      in
     synonyms:
     - --dna
     args: !SimpleFlagArg
       name: arg
     optional: true
-  - !Flag
-    description: (=0.59999999999999998)     the sum  of all dNTPs in mMol
-    synonyms:
-    - --dntp
-    args: !SimpleFlagArg
-      name: arg
-    optional: true
-  command:
-  - dicey
-  - search
   parent: *id001
   subcommands: []
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -280,8 +177,82 @@ subcommands:
     \ ions in mMol\n  --dna arg (=50)                       concentration of annealing(!)\
     \ Oligos in\n                                        nMol\n  --dntp arg (=0.59999999999999998)\
     \     the sum  of all dNTPs in mMol\n\n"
+  generated_using: &id002
+  - --help
+- !Command
+  command:
+  - dicey
+  - hunt
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: CATTACTAACATCAGT
+    optional: false
+  named:
+  - !Flag
+    description: '[ --genome ] arg                   genome file'
+    synonyms:
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --outfile ] arg                  gzipped output file'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --maxmatches ] arg (=1000)       max. number of matches'
+    synonyms:
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --maxNeighborhood ] arg (=10000) max. neighborhood size'
+    synonyms:
+    - -x
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --distance ] arg (=1)            neighborhood distance'
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[ --hamming ]                      use hamming neighborhood instead\
+      \ of\nedit distance"
+    synonyms:
+    - -n
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --forward ]                      only forward matches'
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: dicey hunt [OPTIONS] -g Danio_rerio.fa.gz CATTACTAACATCAGT\n\n\
+    Generic options:\n  -? [ --help ]                         show help message\n\
+    \  -g [ --genome ] arg                   genome file\n  -o [ --outfile ] arg \
+    \                 gzipped output file\n  -m [ --maxmatches ] arg (=1000)     \
+    \  max. number of matches\n  -x [ --maxNeighborhood ] arg (=10000) max. neighborhood\
+    \ size\n  -d [ --distance ] arg (=1)            neighborhood distance\n  -n [\
+    \ --hamming ]                      use hamming neighborhood instead of \n    \
+    \                                    edit distance\n  -f [ --forward ]       \
+    \               only forward matches\n\n"
   generated_using: *id002
 - !Command
+  command:
+  - dicey
+  - mappability
   positional:
   - !Positional
     description: ''
@@ -290,7 +261,102 @@ subcommands:
     optional: false
   named:
   - !Flag
-    description: '[ --blacklist ] arg (="blacklist.bed") blacklist in BED format'
+    description: '[ --outfile ] arg (="map.fa.gz")   gzipped output file'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --readlength ] arg (=51)         read length'
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --chromosome ] arg (=-1)         chromosome index (-1: all)'
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --chunkStart ] arg (=-1)         chunk start (optional)'
+    synonyms:
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --chunkEnd ] arg (=-1)           chunk end (optional)'
+    synonyms:
+    - -n
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --maxEditDistance ] arg (=1)     max. edit distance'
+    synonyms:
+    - -e
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --maxNeighborhood ] arg (=10000) max. neighborhood size'
+    synonyms:
+    - -x
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: dicey mappability [OPTIONS] Danio_rerio.fa.gz\n\nGeneric options:\n\
+    \  -? [ --help ]                         show help message\n  -o [ --outfile ]\
+    \ arg (=\"map.fa.gz\")   gzipped output file\n  -r [ --readlength ] arg (=51)\
+    \         read length\n  -c [ --chromosome ] arg (=-1)         chromosome index\
+    \ (-1: all)\n  -m [ --chunkStart ] arg (=-1)         chunk start (optional)\n\
+    \  -n [ --chunkEnd ] arg (=-1)           chunk end (optional)\n  -e [ --maxEditDistance\
+    \ ] arg (=1)     max. edit distance\n  -x [ --maxNeighborhood ] arg (=10000) max.\
+    \ neighborhood size\n\n"
+  generated_using: *id002
+- !Command
+  command:
+  - dicey
+  - index
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: genome.fa.gz
+    optional: false
+  named:
+  - !Flag
+    description: '[ --output ] arg (="genome.fm9")  output file'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: dicey index [OPTIONS] genome.fa.gz\n\nGeneric options:\n  -?\
+    \ [ --help ]                        show help message\n  -o [ --output ] arg (=\"\
+    genome.fm9\")  output file\n\n"
+  generated_using: *id002
+- !Command
+  command:
+  - dicey
+  - blacklist
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: Danio_rerio.fa.gz
+    optional: false
+  named:
+  - !Flag
+    description: "[ --blacklist ] arg (=\"blacklist.bed\")\nblacklist in BED format"
     synonyms:
     - -b
     args: !EmptyFlagArg {}
@@ -301,11 +367,9 @@ subcommands:
     - -o
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - dicey
-  - blacklist
   parent: *id001
   subcommands: []
+  usage: []
   help_flag:
   usage_flag:
   version_flag:
@@ -315,6 +379,74 @@ subcommands:
     \           blacklist in BED format\n  -o [ --outfile ] arg (=\"map.fa.gz\") \
     \  gzipped output file\n\n"
   generated_using: *id002
+- !Command
+  command:
+  - dicey
+  - chop
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: Danio_rerio.fa.gz
+    optional: false
+  named:
+  - !Flag
+    description: '[ --fq1 ] arg (=read1)       read1 output prefix'
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --fq2 ] arg (=read2)       read2 output prefix'
+    synonyms:
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --length ] arg (=101)      read length'
+    synonyms:
+    - -l
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --insertsize ] arg (=501)  insert size'
+    synonyms:
+    - -i
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --se ]                     generate single-end data'
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --chromosome ]             generate reads by chromosome'
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --revcomp ]                reverse complement all reads'
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: dicey chop [OPTIONS] Danio_rerio.fa.gz\n\nGeneric options:\n\
+    \  -? [ --help ]                   show help message\n  -f [ --fq1 ] arg (=read1)\
+    \       read1 output prefix\n  -g [ --fq2 ] arg (=read2)       read2 output prefix\n\
+    \  -l [ --length ] arg (=101)      read length\n  -i [ --insertsize ] arg (=501)\
+    \  insert size\n  -s [ --se ]                     generate single-end data\n \
+    \ -c [ --chromosome ]             generate reads by chromosome\n  -r [ --revcomp\
+    \ ]                reverse complement all reads\n\n"
+  generated_using: *id002
+usage: []
 help_flag:
 usage_flag:
 version_flag:

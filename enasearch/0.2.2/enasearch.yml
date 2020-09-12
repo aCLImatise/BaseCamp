@@ -1,86 +1,26 @@
 &id001 !Command
-positional: []
-named: []
 command:
 - enasearch
+positional: []
+named: []
 parent:
 subcommands:
 - !Command
-  positional: []
-  named:
-  - !Flag
-    description: Id of a result (accessible with get_results)  [required]
-    synonyms:
-    - --result
-    args: !SimpleFlagArg
-      name: TEXT
-    optional: true
-  command:
-  - enasearch
-  - get_filter_fields
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: Show this message and exit.
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "Usage: enasearch get_filter_fields [OPTIONS]\n\n  Get the filter fields\
-    \ of a result to build a query.\n\n  This function returns the fields that can\
-    \ be used to build a query on a\n  result on ENA. Each field is described on a\
-    \ line with field id, its\n  description, its type and to which results it is\
-    \ related\n\nOptions:\n  --result TEXT  Id of a result (accessible with get_results)\
-    \  [required]\n  -h, --help     Show this message and exit.\n"
-  generated_using: &id002
-  - --help
-- !Command
-  positional: []
-  named:
-  - !Flag
-    description: Id of a result (accessible with get_results)  [required]
-    synonyms:
-    - --result
-    args: !SimpleFlagArg
-      name: TEXT
-    optional: true
-  command:
-  - enasearch
-  - get_returnable_fields
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: Show this message and exit.
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "Usage: enasearch get_returnable_fields [OPTIONS]\n\n  Get the fields\
-    \ extractable for a result.\n\n  This function returns the fields as a list.\n\
-    \nOptions:\n  --result TEXT  Id of a result (accessible with get_results)  [required]\n\
-    \  -h, --help     Show this message and exit.\n"
-  generated_using: *id002
-- !Command
-  positional: []
-  named:
-  - !Flag
-    description: Id of a result (accessible with get_results)  [required]
-    synonyms:
-    - --result
-    args: !SimpleFlagArg
-      name: TEXT
-    optional: true
   command:
   - enasearch
   - get_sortable_fields
+  positional: []
+  named:
+  - !Flag
+    description: Id of a result (accessible with get_results)  [required]
+    synonyms:
+    - --result
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -96,22 +36,56 @@ subcommands:
     \ on a line with field\n  id, its description, its type and to which results it\
     \ is related\n\nOptions:\n  --result TEXT  Id of a result (accessible with get_results)\
     \  [required]\n  -h, --help     Show this message and exit.\n"
-  generated_using: *id002
+  generated_using: &id002
+  - --help
 - !Command
+  command:
+  - enasearch
+  - get_returnable_fields
   positional: []
   named:
   - !Flag
-    description: Accession id (study accessions (ERP, SRP, DRP, PRJ prefixes), experiment
-      accessions (ERX, SRX, DRX prefixes), sample accessions (ERS, SRS, DRS, SAM prefixes)
-      and run accessions))  [required]
+    description: Id of a result (accessible with get_results)  [required]
+    synonyms:
+    - --result
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Usage: enasearch get_returnable_fields [OPTIONS]\n\n  Get the fields\
+    \ extractable for a result.\n\n  This function returns the fields as a list.\n\
+    \nOptions:\n  --result TEXT  Id of a result (accessible with get_results)  [required]\n\
+    \  -h, --help     Show this message and exit.\n"
+  generated_using: *id002
+- !Command
+  command:
+  - enasearch
+  - retrieve_analysis_report
+  positional: []
+  named:
+  - !Flag
+    description: "Accession id (study accessions (ERP, SRP, DRP, PRJ\nprefixes), experiment\
+      \ accessions (ERX, SRX, DRX prefixes),\nsample accessions (ERS, SRS, DRS, SAM\
+      \ prefixes) and run\naccessions))  [required]"
     synonyms:
     - --accession
     args: !SimpleFlagArg
       name: TEXT
     optional: true
   - !Flag
-    description: Fields to return (accessible with get_analysis_fields) [multiple
-      or comma-separated]
+    description: "Fields to return (accessible with get_analysis_fields)\n[multiple\
+      \ or comma-separated]"
     synonyms:
     - --fields
     args: !SimpleFlagArg
@@ -124,11 +98,9 @@ subcommands:
     args: !SimpleFlagArg
       name: PATH
     optional: true
-  command:
-  - enasearch
-  - retrieve_analysis_report
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -144,61 +116,75 @@ subcommands:
     \ TEXT  Accession id (study accessions (ERP, SRP, DRP, PRJ\n                 \
     \   prefixes), experiment accessions (ERX, SRX, DRX prefixes),\n             \
     \       sample accessions (ERS, SRS, DRS, SAM prefixes) and run\n            \
-    \        accessions))  [required]\n\n  --fields TEXT     Fields to return (accessible\
+    \        accessions))  [required]\n  --fields TEXT     Fields to return (accessible\
     \ with get_analysis_fields)\n                    [multiple or comma-separated]\n\
-    \n  --file PATH       File to save the report\n  -h, --help        Show this message\
+    \  --file PATH       File to save the report\n  -h, --help        Show this message\
     \ and exit.\n"
   generated_using: *id002
 - !Command
-  positional: []
+  command:
+  - enasearch
+  - retrieve_data
+  positional:
+  - !Positional
+    description: fasta and fastq
+    position: 0
+    name: of
+    optional: false
+  - !Positional
+    description: by a -)
+    position: 1
+    name: separated
+    optional: false
   named:
   - !Flag
-    description: Ids for records to return (other than Taxon and Project) [multiple]  [required]
+    description: "Ids for records to return (other than Taxon and\nProject) [multiple]\
+      \  [required]"
     synonyms:
     - --ids
     args: !SimpleFlagArg
       name: TEXT
     optional: true
   - !Flag
-    description: Display option to specify the display format (accessible with get_display_options)  [required]
+    description: "Display option to specify the display format\n(accessible with get_display_options)\
+      \  [required]"
     synonyms:
     - --display
     args: !SimpleFlagArg
       name: TEXT
     optional: true
   - !Flag
-    description: Download option to specify that records are to be saved in a file
-      (used with file option, list accessible with get_download_options)
+    description: "Download option to specify that records are to be\nsaved in a file\
+      \ (used with file option, list\naccessible with get_download_options)"
     synonyms:
     - --download
     args: !SimpleFlagArg
       name: TEXT
     optional: true
   - !Flag
-    description: File to save the content of the search (used with download option)
+    description: "File to save the content of the search (used with\ndownload option)"
     synonyms:
     - --file
     args: !SimpleFlagArg
       name: PATH
     optional: true
   - !Flag
-    description: RANGE  First record to get (used only for display different of  fasta
-      and fastq
+    description: RANGE  First record to get (used only for display different
     synonyms:
     - --offset
     args: !SimpleFlagArg
       name: INTEGER
     optional: true
   - !Flag
-    description: RANGE  Number of records to retrieve (used only for display different
-      of fasta and fastq
+    description: "RANGE  Number of records to retrieve (used only for display\ndifferent\
+      \ of fasta and fastq"
     synonyms:
     - --length
     args: !SimpleFlagArg
       name: INTEGER
     optional: true
   - !Flag
-    description: Range for subsequences (integer start and stop separated  by a -)
+    description: Range for subsequences (integer start and stop
     synonyms:
     - --subseq_range
     args: !SimpleFlagArg
@@ -216,11 +202,9 @@ subcommands:
     - --header
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - enasearch
-  - retrieve_data
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -237,35 +221,39 @@ subcommands:
     \ can be redirected to a file and directly display to the\n  standard output given\
     \ the display chosen.\n\nOptions:\n  --ids TEXT              Ids for records to\
     \ return (other than Taxon and\n                          Project) [multiple]\
-    \  [required]\n\n  --display TEXT          Display option to specify the display\
+    \  [required]\n  --display TEXT          Display option to specify the display\
     \ format\n                          (accessible with get_display_options)  [required]\n\
-    \n  --download TEXT         Download option to specify that records are to be\n\
+    \  --download TEXT         Download option to specify that records are to be\n\
     \                          saved in a file (used with file option, list\n    \
-    \                      accessible with get_download_options)\n\n  --file PATH\
-    \             File to save the content of the search (used with\n            \
-    \              download option)\n\n  --offset INTEGER RANGE  First record to get\
-    \ (used only for display different\n                          of  fasta and fastq\n\
-    \n  --length INTEGER RANGE  Number of records to retrieve (used only for display\n\
-    \                          different of fasta and fastq\n\n  --subseq_range TEXT\
+    \                      accessible with get_download_options)\n  --file PATH  \
+    \           File to save the content of the search (used with\n              \
+    \            download option)\n  --offset INTEGER RANGE  First record to get (used\
+    \ only for display different\n                          of  fasta and fastq\n\
+    \  --length INTEGER RANGE  Number of records to retrieve (used only for display\n\
+    \                          different of fasta and fastq\n  --subseq_range TEXT\
     \     Range for subsequences (integer start and stop\n                       \
-    \   separated  by a -)\n\n  --expanded              Determine if a CON record\
-    \ is expanded\n  --header                To obtain only the header of a record\n\
+    \   separated  by a -)\n  --expanded              Determine if a CON record is\
+    \ expanded\n  --header                To obtain only the header of a record\n\
     \  -h, --help              Show this message and exit.\n"
   generated_using: *id002
 - !Command
+  command:
+  - enasearch
+  - retrieve_run_report
   positional: []
   named:
   - !Flag
-    description: Accession id (study accessions (ERP, SRP, DRP, PRJ prefixes), experiment
-      accessions (ERX, SRX, DRX prefixes), sample accessions (ERS, SRS, DRS, SAM prefixes)
-      and run accessions))  [required]
+    description: "Accession id (study accessions (ERP, SRP, DRP, PRJ\nprefixes), experiment\
+      \ accessions (ERX, SRX, DRX prefixes),\nsample accessions (ERS, SRS, DRS, SAM\
+      \ prefixes) and run\naccessions))  [required]"
     synonyms:
     - --accession
     args: !SimpleFlagArg
       name: TEXT
     optional: true
   - !Flag
-    description: Fields to return (accessible with get_run_fields) [multiple or comma-separated]
+    description: "Fields to return (accessible with get_run_fields)\n[multiple or\
+      \ comma-separated]"
     synonyms:
     - --fields
     args: !SimpleFlagArg
@@ -278,11 +266,9 @@ subcommands:
     args: !SimpleFlagArg
       name: PATH
     optional: true
-  command:
-  - enasearch
-  - retrieve_run_report
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -298,12 +284,45 @@ subcommands:
     \ TEXT  Accession id (study accessions (ERP, SRP, DRP, PRJ\n                 \
     \   prefixes), experiment accessions (ERX, SRX, DRX prefixes),\n             \
     \       sample accessions (ERS, SRS, DRS, SAM prefixes) and run\n            \
-    \        accessions))  [required]\n\n  --fields TEXT     Fields to return (accessible\
-    \ with get_run_fields)\n                    [multiple or comma-separated]\n\n\
-    \  --file PATH       File to save the report\n  -h, --help        Show this message\
-    \ and exit.\n"
+    \        accessions))  [required]\n  --fields TEXT     Fields to return (accessible\
+    \ with get_run_fields)\n                    [multiple or comma-separated]\n  --file\
+    \ PATH       File to save the report\n  -h, --help        Show this message and\
+    \ exit.\n"
   generated_using: *id002
 - !Command
+  command:
+  - enasearch
+  - type...
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: enasearch
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: COMMAND
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: ARGS
+    optional: true
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: enasearch [OPTIONS] COMMAND [ARGS]...\nTry \"enasearch -h\" for\
+    \ help.\n\nError: No such command \"type...\".\n"
+  generated_using: *id002
+- !Command
+  command:
+  - enasearch
+  - retrieve_taxons
   positional: []
   named:
   - !Flag
@@ -314,52 +333,53 @@ subcommands:
       name: TEXT
     optional: true
   - !Flag
-    description: Display option to specify the display format (accessible with get_display_options)  [required]
+    description: "Display option to specify the display format\n(accessible with get_display_options)\
+      \  [required]"
     synonyms:
     - --display
     args: !SimpleFlagArg
       name: TEXT
     optional: true
   - !Flag
-    description: Id of a taxonomy result (accessible with get_taxonomy_results)
+    description: "Id of a taxonomy result (accessible with\nget_taxonomy_results)"
     synonyms:
     - --result
     args: !SimpleFlagArg
       name: TEXT
     optional: true
   - !Flag
-    description: Download option to specify that records are to be saved in a file
-      (used with file option, list accessible with get_download_options)
+    description: "Download option to specify that records are to be\nsaved in a file\
+      \ (used with file option, list\naccessible with get_download_options)"
     synonyms:
     - --download
     args: !SimpleFlagArg
       name: TEXT
     optional: true
   - !Flag
-    description: File to save the content of the search (used with download option)
+    description: "File to save the content of the search (used with\ndownload option)"
     synonyms:
     - --file
     args: !SimpleFlagArg
       name: PATH
     optional: true
   - !Flag
-    description: RANGE  First record to get (used only for display different of fasta
-      and fastq
+    description: "RANGE  First record to get (used only for display different\nof\
+      \ fasta and fastq"
     synonyms:
     - --offset
     args: !SimpleFlagArg
       name: INTEGER
     optional: true
   - !Flag
-    description: RANGE  Number of records to retrieve (used only for display different
-      of fasta and fastq
+    description: "RANGE  Number of records to retrieve (used only for display\ndifferent\
+      \ of fasta and fastq"
     synonyms:
     - --length
     args: !SimpleFlagArg
       name: INTEGER
     optional: true
   - !Flag
-    description: Range for subsequences (integer start and stop separated by a -)
+    description: "Range for subsequences (integer start and stop\nseparated by a -)"
     synonyms:
     - --subseq_range
     args: !SimpleFlagArg
@@ -377,11 +397,9 @@ subcommands:
     - --header
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - enasearch
-  - retrieve_taxons
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -399,106 +417,108 @@ subcommands:
     \ to a file and directly display to the\n  standard output given the display chosen.\n\
     \nOptions:\n  --ids TEXT              Ids for taxon to return [multiple]  [required]\n\
     \  --display TEXT          Display option to specify the display format\n    \
-    \                      (accessible with get_display_options)  [required]\n\n \
-    \ --result TEXT           Id of a taxonomy result (accessible with\n         \
-    \                 get_taxonomy_results)\n\n  --download TEXT         Download\
-    \ option to specify that records are to be\n                          saved in\
-    \ a file (used with file option, list\n                          accessible with\
-    \ get_download_options)\n\n  --file PATH             File to save the content\
-    \ of the search (used with\n                          download option)\n\n  --offset\
-    \ INTEGER RANGE  First record to get (used only for display different\n      \
-    \                    of fasta and fastq\n\n  --length INTEGER RANGE  Number of\
-    \ records to retrieve (used only for display\n                          different\
-    \ of fasta and fastq\n\n  --subseq_range TEXT     Range for subsequences (integer\
-    \ start and stop\n                          separated by a -)\n\n  --expanded\
-    \              Determine if a CON record is expanded\n  --header             \
-    \   To obtain only the header of a record\n  -h, --help              Show this\
-    \ message and exit.\n"
+    \                      (accessible with get_display_options)  [required]\n  --result\
+    \ TEXT           Id of a taxonomy result (accessible with\n                  \
+    \        get_taxonomy_results)\n  --download TEXT         Download option to specify\
+    \ that records are to be\n                          saved in a file (used with\
+    \ file option, list\n                          accessible with get_download_options)\n\
+    \  --file PATH             File to save the content of the search (used with\n\
+    \                          download option)\n  --offset INTEGER RANGE  First record\
+    \ to get (used only for display different\n                          of fasta\
+    \ and fastq\n  --length INTEGER RANGE  Number of records to retrieve (used only\
+    \ for display\n                          different of fasta and fastq\n  --subseq_range\
+    \ TEXT     Range for subsequences (integer start and stop\n                  \
+    \        separated by a -)\n  --expanded              Determine if a CON record\
+    \ is expanded\n  --header                To obtain only the header of a record\n\
+    \  -h, --help              Show this message and exit.\n"
   generated_using: *id002
 - !Command
+  command:
+  - enasearch
+  - search_data
   positional: []
   named:
   - !Flag
-    description: Use free text search, otherwise the data warehouse is used
+    description: "Use free text search, otherwise the data warehouse\nis used"
     synonyms:
     - --free_text_search
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Query string, made up of filtering conditions, joined by logical
-      ANDs, ORs and NOTs and bound by double quotes; the filter fields for a query
-      are accessible with get_filter_fields and the type of filters with get_filter_types  [required]
+    description: "Query string, made up of filtering conditions,\njoined by logical\
+      \ ANDs, ORs and NOTs and bound by\ndouble quotes; the filter fields for a query\
+      \ are\naccessible with get_filter_fields and the type of\nfilters with get_filter_types\
+      \  [required]"
     synonyms:
     - --query
     args: !SimpleFlagArg
       name: TEXT
     optional: true
   - !Flag
-    description: Id of a result (accessible with get_results) [required]
+    description: "Id of a result (accessible with get_results)\n[required]"
     synonyms:
     - --result
     args: !SimpleFlagArg
       name: TEXT
     optional: true
   - !Flag
-    description: Display option to specify the display format (accessible with get_display_options)  [required]
+    description: "Display option to specify the display format\n(accessible with get_display_options)\
+      \  [required]"
     synonyms:
     - --display
     args: !SimpleFlagArg
       name: TEXT
     optional: true
   - !Flag
-    description: Download option to specify that records are to be saved in a file
-      (used with file option, list accessible with get_download_options)
+    description: "Download option to specify that records are to be\nsaved in a file\
+      \ (used with file option, list\naccessible with get_download_options)"
     synonyms:
     - --download
     args: !SimpleFlagArg
       name: TEXT
     optional: true
   - !Flag
-    description: File to save the content of the search (used with download option)
+    description: "File to save the content of the search (used with\ndownload option)"
     synonyms:
     - --file
     args: !SimpleFlagArg
       name: PATH
     optional: true
   - !Flag
-    description: Fields to return (accessible with get_returnable_fields, used only
-      for report as display value) [multiple or comma-separated]
+    description: "Fields to return (accessible with\nget_returnable_fields, used only\
+      \ for report as\ndisplay value) [multiple or comma-separated]"
     synonyms:
     - --fields
     args: !SimpleFlagArg
       name: TEXT
     optional: true
   - !Flag
-    description: Fields to sort the results (accessible with get_sortable_fields,
-      used only for report as display value) [multiple or comma-separated]
+    description: "Fields to sort the results (accessible with\nget_sortable_fields,\
+      \ used only for report as display\nvalue) [multiple or comma-separated]"
     synonyms:
     - --sortfields
     args: !SimpleFlagArg
       name: TEXT
     optional: true
   - !Flag
-    description: RANGE  First record to get (used only for display different of fasta
-      and fastq
+    description: "RANGE  First record to get (used only for display different\nof\
+      \ fasta and fastq"
     synonyms:
     - --offset
     args: !SimpleFlagArg
       name: INTEGER
     optional: true
   - !Flag
-    description: RANGE  Number of records to retrieve (used only for display different
-      of fasta and fastq
+    description: "RANGE  Number of records to retrieve (used only for display\ndifferent\
+      \ of fasta and fastq"
     synonyms:
     - --length
     args: !SimpleFlagArg
       name: INTEGER
     optional: true
-  command:
-  - enasearch
-  - search_data
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -514,29 +534,62 @@ subcommands:
     \ times the search\n  function)\n\n  The output can be redirected to a file and\
     \ directly display to the\n  standard output given the display chosen.\n\nOptions:\n\
     \  --free_text_search      Use free text search, otherwise the data warehouse\n\
-    \                          is used\n\n  --query TEXT            Query string,\
-    \ made up of filtering conditions,\n                          joined by logical\
-    \ ANDs, ORs and NOTs and bound by\n                          double quotes; the\
-    \ filter fields for a query are\n                          accessible with get_filter_fields\
+    \                          is used\n  --query TEXT            Query string, made\
+    \ up of filtering conditions,\n                          joined by logical ANDs,\
+    \ ORs and NOTs and bound by\n                          double quotes; the filter\
+    \ fields for a query are\n                          accessible with get_filter_fields\
     \ and the type of\n                          filters with get_filter_types  [required]\n\
-    \n  --result TEXT           Id of a result (accessible with get_results)\n   \
-    \                       [required]\n\n  --display TEXT          Display option\
-    \ to specify the display format\n                          (accessible with get_display_options)\
-    \  [required]\n\n  --download TEXT         Download option to specify that records\
+    \  --result TEXT           Id of a result (accessible with get_results)\n    \
+    \                      [required]\n  --display TEXT          Display option to\
+    \ specify the display format\n                          (accessible with get_display_options)\
+    \  [required]\n  --download TEXT         Download option to specify that records\
     \ are to be\n                          saved in a file (used with file option,\
-    \ list\n                          accessible with get_download_options)\n\n  --file\
+    \ list\n                          accessible with get_download_options)\n  --file\
     \ PATH             File to save the content of the search (used with\n       \
-    \                   download option)\n\n  --fields TEXT           Fields to return\
+    \                   download option)\n  --fields TEXT           Fields to return\
     \ (accessible with\n                          get_returnable_fields, used only\
     \ for report as\n                          display value) [multiple or comma-separated]\n\
-    \n  --sortfields TEXT       Fields to sort the results (accessible with\n    \
-    \                      get_sortable_fields, used only for report as display\n\
-    \                          value) [multiple or comma-separated]\n\n  --offset\
-    \ INTEGER RANGE  First record to get (used only for display different\n      \
-    \                    of fasta and fastq\n\n  --length INTEGER RANGE  Number of\
-    \ records to retrieve (used only for display\n                          different\
-    \ of fasta and fastq\n\n  -h, --help              Show this message and exit.\n"
+    \  --sortfields TEXT       Fields to sort the results (accessible with\n     \
+    \                     get_sortable_fields, used only for report as display\n \
+    \                         value) [multiple or comma-separated]\n  --offset INTEGER\
+    \ RANGE  First record to get (used only for display different\n              \
+    \            of fasta and fastq\n  --length INTEGER RANGE  Number of records to\
+    \ retrieve (used only for display\n                          different of fasta\
+    \ and fastq\n  -h, --help              Show this message and exit.\n"
   generated_using: *id002
+- !Command
+  command:
+  - enasearch
+  - get_filter_fields
+  positional: []
+  named:
+  - !Flag
+    description: Id of a result (accessible with get_results)  [required]
+    synonyms:
+    - --result
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Usage: enasearch get_filter_fields [OPTIONS]\n\n  Get the filter fields\
+    \ of a result to build a query.\n\n  This function returns the fields that can\
+    \ be used to build a query on a\n  result on ENA. Each field is described on a\
+    \ line with field id, its\n  description, its type and to which results it is\
+    \ related\n\nOptions:\n  --result TEXT  Id of a result (accessible with get_results)\
+    \  [required]\n  -h, --help     Show this message and exit.\n"
+  generated_using: *id002
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -558,8 +611,8 @@ help_text: "Usage: enasearch [OPTIONS] COMMAND [ARGS]...\n\n  The Python library
   \ Get the list of possible formats to display the...\n  get_download_options   \
   \   Get the options for download of data from ENA.\n  get_filter_fields        \
   \ Get the filter fields of a result to build a...\n  get_filter_types          Return\
-  \ the filters usable for the different\n                            type...\n\n\
-  \  get_results               Get the possible results (type of data).\n  get_returnable_fields\
+  \ the filters usable for the different\n                            type...\n  get_results\
+  \               Get the possible results (type of data).\n  get_returnable_fields\
   \     Get the fields extractable for a result.\n  get_run_fields            Get\
   \ the fields extractable for a run.\n  get_sortable_fields       Get the fields\
   \ of a result that can sorted.\n  get_taxonomy_results      Get list of taxonomy\

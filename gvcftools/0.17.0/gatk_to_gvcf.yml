@@ -1,29 +1,26 @@
 !Command
+command:
+- gatk_to_gvcf
 positional:
 - !Positional
-  description: ''
+  description: --no-block-compression                Turn off block compression
   position: 0
-  name: 'all_sites '
-  optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: gVCF
+  name: file
   optional: false
 named:
 - !Flag
-  description: 'Read mean depth for each chromosome from file,  and use these values
-    for maximum site depth  filteration. File should contain one line per  chromosome,
-    where each line begins with:  "chrom_name<TAB>depth" (default: no chrom depth
-    filtration)'
+  description: "Read mean depth for each chromosome from file,\nand use these values\
+    \ for maximum site depth\nfilteration. File should contain one line per\nchromosome,\
+    \ where each line begins with:\n\"chrom_name<TAB>depth\" (default: no chrom depth\n\
+    filtration)"
   synonyms:
   - --chrom-depth-file
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: (=3.0) If a chrom depth file is supplied then loci  with depth exceeding
-    the mean chrom depth times this value are filtered
+  description: "(=3.0) If a chrom depth file is supplied then loci\nwith depth exceeding\
+    \ the mean chrom depth times\nthis value are filtered"
   synonyms:
   - --max-depth-factor
   args: !SimpleFlagArg
@@ -93,15 +90,15 @@ named:
     name: arg
   optional: true
 - !Flag
-  description: Clear all default filters. Any individual  filter threshold changes
-    above will still be in effect
+  description: "Clear all default filters. Any individual\nfilter threshold changes\
+    \ above will still be in\neffect"
   synonyms:
   - --no-default-filters
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: (=0.2) If AD present, only compress non-variant  site if 1-AD[0]/DP
-    < value
+  description: "(=0.2) If AD present, only compress non-variant\nsite if 1-AD[0]/DP\
+    \ < value"
   synonyms:
   - --min-blockable-nonref
   args: !SimpleFlagArg
@@ -114,38 +111,31 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: (=0.3)       Non-variant blocks are restricted to  range [x,y], y <=
-    max(x+3,x*(1+block-ra nge-factor))
+  description: "(=0.3)       Non-variant blocks are restricted to\nrange [x,y], y\
+    \ <= max(x+3,x*(1+block-ra\nnge-factor))"
   synonyms:
   - --block-range-factor
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: (=BLOCKAVG_min30p3a) VCF INFO key used to annotate  compressed non-variant
-    blocks
+  description: "(=BLOCKAVG_min30p3a)\nVCF INFO key used to annotate\ncompressed non-variant\
+    \ blocks"
   synonyms:
   - --block-label
   args: !SimpleFlagArg
     name: arg
   optional: true
 - !Flag
-  description: Write non-variant block stats to the  file
+  description: Write non-variant block stats to the
   synonyms:
   - --block-stats
   args: !SimpleFlagArg
     name: arg
   optional: true
-- !Flag
-  description: Turn off block compression
-  synonyms:
-  - --no-block-compression
-  args: !EmptyFlagArg {}
-  optional: true
-command:
-- gatk_to_gvcf
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: '[ --help ]         print this message'
   synonyms:

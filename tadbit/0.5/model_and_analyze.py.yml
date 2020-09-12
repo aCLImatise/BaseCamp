@@ -1,0 +1,413 @@
+!Command
+command:
+- model_and_analyze.py
+positional: []
+named:
+- !Flag
+  description: path to a configuration file with predefined parameters
+  synonyms:
+  - --cfg
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: load precomputed models in outdir, skip optimization, modeling
+  synonyms:
+  - --analyze_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do the optimization of the region and exit
+  synonyms:
+  - --optimize_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: skip optimization, model with inputparameters only.
+  synonyms:
+  - --model_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[False] exit after searching for TADs'
+  synonyms:
+  - --tad_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[1] Number of CPUs to use'
+  synonyms:
+  - --ncpus
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: path to search for data files (just pass file namein "data")
+  synonyms:
+  - --root_path
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "path to file(s) with Hi-C data matrix. If many, experiments will be\n\
+    summed up. I.e.: --data replicate_1.txt replicate_2.txt"
+  synonyms:
+  - --data
+  args: !RepeatFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "path to pickle file(s) with Hi-C data matrix biases. Use same order\n\
+    as data. If data are bam files use these biases to skip\nnormalization"
+  synonyms:
+  - --biases
+  args: !RepeatFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: '[file name] experiment name(s). Use same order as data.'
+  synonyms:
+  - --xname
+  args: !RepeatFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: path to file(s) with normalizedHi-C data matrix.
+  synonyms:
+  - --norm
+  args: !RepeatFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: '[95%] maximum percentage of zeroes allowed per column.'
+  synonyms:
+  - --perc_zeros
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "[None] minimum number of reads mapped to a bin (recommended value\n\
+    could be 2500). If set this option overrides the perc_zero\nfiltering... This\
+    \ option is slightly slower."
+  synonyms:
+  - --min_count
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: chromosome name
+  synonyms:
+  - --crm
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: genomic coordinate from which to start modeling
+  synonyms:
+  - --beg
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: genomic coordinate corresponding to the bin 0 of the input matrices
+  synonyms:
+  - --chrom_start
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: genomic coordinate where to end modeling
+  synonyms:
+  - --end
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: resolution of the Hi-C experiment
+  synonyms:
+  - --res
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "file format and extension for figures and plots (can be any\nsupported\
+    \ by matplotlib, png, eps...)"
+  synonyms:
+  - --fig_format
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: out directory for results
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: '[False] search for TADs in experiments'
+  synonyms:
+  - --tad
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[False] search for centromeric region'
+  synonyms:
+  - --centromere
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[all together] How to group Hi-C experiments for the detection of\n\
+    TAD borders. I.e.: \"--exp_group 2 2 1\" first 2 experiments used\ntogether, next\
+    \ 2 also, and last alone (batch_mode option used)"
+  synonyms:
+  - --group
+  args: !RepeatFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: range of numbers for maxdist, i.e. 400:1000:100 -- or just a number
+  synonyms:
+  - --maxdist
+  args: !SimpleFlagArg
+    name: LIST
+  optional: true
+- !Flag
+  description: range of numbers for upfreq, i.e. 0:1.2:0.3 -- or just a number
+  synonyms:
+  - --upfreq
+  args: !SimpleFlagArg
+    name: LIST
+  optional: true
+- !Flag
+  description: range of numbers for lowfreq, i.e. -1.2:0:0.3 -- or just a number
+  synonyms:
+  - --lowfreq
+  args: !SimpleFlagArg
+    name: LIST
+  optional: true
+- !Flag
+  description: "[0.01] range of numbers to be test as optimal scale value, i.e.\n\
+    0.005:0.01:0.001 -- Can also pass only one number"
+  synonyms:
+  - --scale
+  args: !SimpleFlagArg
+    name: LIST
+  optional: true
+- !Flag
+  description: "[2] range of numbers to be test as optimal distance cutoff parameter\n\
+    (distance, in number of beads, from which to consider 2 beads as\nbeing close),\
+    \ i.e. 1:5:0.5 -- Can also pass only one number"
+  synonyms:
+  - --dcutoff
+  args: !SimpleFlagArg
+    name: LIST
+  optional: true
+- !Flag
+  description: '[500] number of models to generate for optimization'
+  synonyms:
+  - --nmodels_opt
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: '[100] number of models to keep for optimization'
+  synonyms:
+  - --nkeep_opt
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "[False] do not take into account previous optimizations. Usefull for\n\
+    running in parallel in a cluster for example."
+  synonyms:
+  - --force_opt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[5000] number of models to generate for modeling'
+  synonyms:
+  - --nmodels_mod
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: '[1000] number of models to keep for modeling'
+  synonyms:
+  - --nkeep_mod
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: '[1] seed number from which to start modeling'
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'species name, with no spaces, i.e.: homo_sapiens'
+  synonyms:
+  - --species
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: cell type name
+  synonyms:
+  - --cell
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: 'experiment type name (i.e.: Hi-C)'
+  synonyms:
+  - --exp_type
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: 'NCBI ID of the original assembly (i.e.: NCBI36 for human)'
+  synonyms:
+  - --assembly
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: name of the enzyme used to digest chromatin (i.e. HindIII)
+  synonyms:
+  - --enzyme
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: NCBI identifier of the experiment
+  synonyms:
+  - --identifier
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: project name
+  synonyms:
+  - --project
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "[2 3 4 5 6 7 8 9 10 11 12 13 14 15 16] list of numbers representing\n\
+    the analysis to be done. Choose between: 0) do nothing 1) column\nfiltering 2)\
+    \ TAD borders 3) TAD alignment 4) optimization plot 5)\ncorrelation real/models\
+    \ 6) z-score plot 7) constraints 8) objective\nfunction 9) centroid 10) consistency\
+    \ 11) density 12) contact map 13)\nwalking angle 14) persistence length 15) accessibility\
+    \ 16)\ninteraction"
+  synonyms:
+  - --analyze
+  args: !RepeatFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: '[False] do not generate cmm files for each model (Chimera input)'
+  synonyms:
+  - --not_write_cmm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[False] do not generate xyz files for each model (3D coordinates)'
+  synonyms:
+  - --not_write_xyz
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[False] do not generate json file.'
+  synonyms:
+  - --not_write_json
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag: !Flag
+  description: show detailed usage documentation, with examples and exit
+  synonyms:
+  - --usage
+  args: !EmptyFlagArg {}
+  optional: true
+version_flag:
+help_text: "usage: model_and_analyze.py [options] [--cfg CONFIG_PATH]\n\noptional\
+  \ arguments:\n  -h, --help               show this help message and exit\n  --usage\
+  \                  show detailed usage documentation, with examples and exit\n \
+  \ --cfg PATH               path to a configuration file with predefined parameters\n\
+  \  --analyze_only           load precomputed models in outdir, skip optimization,\
+  \ modeling\n  --optimize_only          do the optimization of the region and exit\n\
+  \  --model_only             skip optimization, model with inputparameters only.\n\
+  \  --tad_only               [False] exit after searching for TADs\n  --ncpus INT\
+  \              [1] Number of CPUs to use\n\nGeneral arguments:\n  --root_path PATH\
+  \         path to search for data files (just pass file namein \"data\")\n  --data\
+  \ PATH [PATH ...]   path to file(s) with Hi-C data matrix. If many, experiments\
+  \ will be\n                           summed up. I.e.: --data replicate_1.txt replicate_2.txt\n\
+  \  --biases PATH [PATH ...]\n                           path to pickle file(s) with\
+  \ Hi-C data matrix biases. Use same order\n                           as data. If\
+  \ data are bam files use these biases to skip\n                           normalization\n\
+  \  --xname STR [STR ...]    [file name] experiment name(s). Use same order as data.\n\
+  \  --norm PATH [PATH ...]   path to file(s) with normalizedHi-C data matrix.\n \
+  \ --perc_zeros FLOAT       [95%] maximum percentage of zeroes allowed per column.\n\
+  \  --min_count INT          [None] minimum number of reads mapped to a bin (recommended\
+  \ value\n                           could be 2500). If set this option overrides\
+  \ the perc_zero\n                           filtering... This option is slightly\
+  \ slower.\n  --crm NAME               chromosome name\n  --beg INT             \
+  \   genomic coordinate from which to start modeling\n  --chrom_start INT       \
+  \ genomic coordinate corresponding to the bin 0 of the input matrices\n  --end INT\
+  \                genomic coordinate where to end modeling\n  --res INT         \
+  \       resolution of the Hi-C experiment\n  --fig_format STR         file format\
+  \ and extension for figures and plots (can be any\n                           supported\
+  \ by matplotlib, png, eps...)\n  --outdir PATH            out directory for results\n\
+  \nTAD detection arguments:\n  --tad                    [False] search for TADs in\
+  \ experiments\n  --centromere             [False] search for centromeric region\n\
+  \  --group INT [INT ...]    [all together] How to group Hi-C experiments for the\
+  \ detection of\n                           TAD borders. I.e.: \"--exp_group 2 2\
+  \ 1\" first 2 experiments used\n                           together, next 2 also,\
+  \ and last alone (batch_mode option used)\n\nOptimization of IMP arguments:\n  --maxdist\
+  \ LIST           range of numbers for maxdist, i.e. 400:1000:100 -- or just a number\n\
+  \  --upfreq LIST            range of numbers for upfreq, i.e. 0:1.2:0.3 -- or just\
+  \ a number\n  --lowfreq LIST           range of numbers for lowfreq, i.e. -1.2:0:0.3\
+  \ -- or just a number\n  --scale LIST             [0.01] range of numbers to be\
+  \ test as optimal scale value, i.e.\n                           0.005:0.01:0.001\
+  \ -- Can also pass only one number\n  --dcutoff LIST           [2] range of numbers\
+  \ to be test as optimal distance cutoff parameter\n                           (distance,\
+  \ in number of beads, from which to consider 2 beads as\n                      \
+  \     being close), i.e. 1:5:0.5 -- Can also pass only one number\n  --nmodels_opt\
+  \ INT        [500] number of models to generate for optimization\n  --nkeep_opt\
+  \ INT          [100] number of models to keep for optimization\n  --force_opt  \
+  \            [False] do not take into account previous optimizations. Usefull for\n\
+  \                           running in parallel in a cluster for example.\n\nModeling\
+  \ with optimal IMP arguments:\n  --nmodels_mod INT        [5000] number of models\
+  \ to generate for modeling\n  --nkeep_mod INT          [1000] number of models to\
+  \ keep for modeling\n  --seed INT               [1] seed number from which to start\
+  \ modeling\n\nDescriptive, optional arguments:\n  --species STRING         species\
+  \ name, with no spaces, i.e.: homo_sapiens\n  --cell STRING            cell type\
+  \ name\n  --exp_type STRING        experiment type name (i.e.: Hi-C)\n  --assembly\
+  \ STRING        NCBI ID of the original assembly (i.e.: NCBI36 for human)\n  --enzyme\
+  \ STRING          name of the enzyme used to digest chromatin (i.e. HindIII)\n \
+  \ --identifier STRING      NCBI identifier of the experiment\n  --project STRING\
+  \         project name\n\nOutput arguments:\n  --analyze INT [INT ...]  [2 3 4 5\
+  \ 6 7 8 9 10 11 12 13 14 15 16] list of numbers representing\n                 \
+  \          the analysis to be done. Choose between: 0) do nothing 1) column\n  \
+  \                         filtering 2) TAD borders 3) TAD alignment 4) optimization\
+  \ plot 5)\n                           correlation real/models 6) z-score plot 7)\
+  \ constraints 8) objective\n                           function 9) centroid 10)\
+  \ consistency 11) density 12) contact map 13)\n                           walking\
+  \ angle 14) persistence length 15) accessibility 16)\n                         \
+  \  interaction\n  --not_write_cmm          [False] do not generate cmm files for\
+  \ each model (Chimera input)\n  --not_write_xyz          [False] do not generate\
+  \ xyz files for each model (3D coordinates)\n  --not_write_json         [False]\
+  \ do not generate json file.\n"
+generated_using:
+- --help

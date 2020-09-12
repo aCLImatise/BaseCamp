@@ -1,6 +1,62 @@
 !Command
-positional: []
+command:
+- ProcessRepeats
+positional:
+- !Positional
+  description: AUTHORS
+  position: 0
+  name: Biology
+  optional: false
 named:
+- !Flag
+  description: "Post process RepeatMasker results run on sequence from this species.\n\
+    Default is human."
+  synonyms:
+  - -species
+  args: !SimpleFlagArg
+    name: query species
+  optional: true
+- !Flag
+  description: "Skips most processing, does not produce a .tbl file unless the\ncustome\
+    \ library is in the \">name#class\" format."
+  synonyms:
+  - -lib
+  args: !SimpleFlagArg
+    name: libfile
+  optional: true
+- !Flag
+  description: "Does not display simple repeats or low_complexity DNA in the\nannotation."
+  synonyms:
+  - -nolow
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skips steps specific to interspersed repeats, saving lots of time.
+  synonyms:
+  - -noint
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Outputs ambiguous DNA transposon fragments using a lower case name.\n\
+    All other repeats are listed in upper case. Ambiguous fragments\nmatch multiple\
+    \ repeat elements and can only be called based on\nflanking repeat information."
+  synonyms:
+  - -lcambig
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Creates an untouched annotation file besides the manipulated file.
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "an additional output file in cross_match format (for\nparsing)."
+  synonyms:
+  - -xm
+  args: !SimpleFlagArg
+    name: Creates
+  optional: true
 - !Flag
   description: Creates an additional output file in ACeDB format.
   synonyms:
@@ -14,27 +70,30 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Creates an output file listing only potentially polymorphic simple
-    repeats.
+  description: "Creates an output file listing only potentially polymorphic simple\n\
+    repeats."
   synonyms:
   - -poly
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Leaves out final column with unique number for each element (was default).
+  description: "Leaves out final column with unique number for each element (was\n\
+    default)."
   synonyms:
   - -no_id
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Calculates repeat densities excluding long stretches of Ns in the query.
+  description: "Calculates repeat densities excluding long stretches of Ns in the\n\
+    query."
   synonyms:
   - -excln
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Results in sometimes negative coordinates for L1 elements; all L1 subfamilies
-    are aligned over the ORF2 region, sometimes improving interpretation of data.
+  description: "Results in sometimes negative coordinates for L1 elements; all L1\n\
+    subfamilies are aligned over the ORF2 region, sometimes improving\ninterpretation\
+    \ of data."
   synonyms:
   - -orf2
   args: !EmptyFlagArg {}
@@ -46,7 +105,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Instructs ProcessRepeats to mask the sequence file using the annotation.
+  description: "Instructs ProcessRepeats to mask the sequence file using the\nannotation."
   synonyms:
   - -maskSource
   args: !SimpleFlagArg
@@ -64,11 +123,15 @@ named:
   - -xsmall
   args: !EmptyFlagArg {}
   optional: true
-command:
-- ProcessRepeats
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: "(elp)\nDetailed help"
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "NAME\n    ProcessRepeats - Post process results from RepeatMasker and\

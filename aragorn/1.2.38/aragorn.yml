@@ -1,4 +1,6 @@
 !Command
+command:
+- aragorn
 positional:
 - !Positional
   description: ''
@@ -22,33 +24,196 @@ named:
     name: outfile
   optional: true
 - !Flag
-  description: Assume that each sequence has a circular topology. Search wraps around
-    each end. Default setting.
+  description: Search for tmRNA genes.
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Search for tRNA genes.\nBy default, all are detected. If one of\n\
+    -m or -t is specified, then the other\nis not detected unless specified as well."
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Search for Metazoan mitochondrial tRNA genes.\ntRNA genes with introns\
+    \ not detected. -i,-sr switchs\nignored. Composite Metazoan mitochondrial\ngenetic\
+    \ code used."
+  synonyms:
+  - -mt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Search for Mammalian mitochondrial tRNA\ngenes. -i switch ignored.\
+    \ -tv switch set.\nMammalian mitochondrial genetic code used."
+  synonyms:
+  - -mtmam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Same as -mt but low scoring tRNA genes are\nnot reported."
+  synonyms:
+  - -mtx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Overlapping metazoan mitochondrial tRNA genes\non opposite strands\
+    \ are reported."
+  synonyms:
+  - -mtd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use standard genetic code.
+  synonyms:
+  - -gcstd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use composite Metazoan mitochondrial genetic code.
+  synonyms:
+  - -gcmet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use Vertebrate mitochondrial genetic code.
+  synonyms:
+  - -gcvert
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use Invertebrate mitochondrial genetic code.
+  synonyms:
+  - -gcinvert
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use Yeast mitochondrial genetic code.
+  synonyms:
+  - -gcyeast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use Mold/Protozoan/Coelenterate mitochondrial genetic code.
+  synonyms:
+  - -gcprot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use Ciliate genetic code.
+  synonyms:
+  - -gcciliate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use Echinoderm/Flatworm mitochondrial genetic code
+  synonyms:
+  - -gcflatworm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use Euplotid genetic code.
+  synonyms:
+  - -gceuplot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use Bacterial/Plant chloroplast genetic code.
+  synonyms:
+  - -gcbact
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use alternative Yeast genetic code.
+  synonyms:
+  - -gcaltyeast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use Ascidian mitochondrial genetic code.
+  synonyms:
+  - -gcascid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use alternative Flatworm mitochondrial genetic code.
+  synonyms:
+  - -gcaltflat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use Blepharisma genetic code.
+  synonyms:
+  - -gcblep
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use Chlorophycean mitochondrial genetic code.
+  synonyms:
+  - -gcchloroph
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use Trematode mitochondrial genetic code.
+  synonyms:
+  - -gctrem
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use Scenedesmus obliquus mitochondrial genetic code.
+  synonyms:
+  - -gcscen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use Thraustochytrium mitochondrial genetic code.
+  synonyms:
+  - -gcthraust
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use Pterobranchia mitochondrial genetic code.
+  synonyms:
+  - -gcptero
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use Gracilibacteria genetic code.\nIndividual modifications can be\
+    \ appended using"
+  synonyms:
+  - -gcgrac
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Assume that each sequence has a circular\ntopology. Search wraps around\
+    \ each end.\nDefault setting."
   synonyms:
   - -c
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Assume that each sequence has a linear topology. Search does not wrap.
+  description: "Assume that each sequence has a linear\ntopology. Search does not\
+    \ wrap."
   synonyms:
   - -l
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Double. Search both strands of each sequence. Default setting.
+  description: "Double. Search both strands of each\nsequence. Default setting."
   synonyms:
   - -d
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: or -s+    Single. Do not search the complementary (antisense) strand
-    of each sequence.
+  description: "or -s+    Single. Do not search the complementary\n(antisense) strand\
+    \ of each sequence."
   synonyms:
   - -s
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Single complementary. Do not search the sense strand of each sequence.
+  description: "Single complementary. Do not search the sense\nstrand of each sequence."
   synonyms:
   - -sc
   - -s-
@@ -56,15 +221,15 @@ named:
     name: or
   optional: true
 - !Flag
-  description: Same as -i, but allow tRNA genes with long introns to overlap shorter
-    tRNA genes.
+  description: "Same as -i, but allow tRNA genes with long\nintrons to overlap shorter\
+    \ tRNA genes."
   synonyms:
   - -io
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Same as -i, but fix intron between positions 37 and 38 on C-loop (one
-    base after anticodon).
+  description: "Same as -i, but fix intron between positions\n37 and 38 on C-loop\
+    \ (one base after anticodon)."
   synonyms:
   - -if
   args: !EmptyFlagArg {}
@@ -76,10 +241,10 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Same as -i, but report tRNA genes with minimum length <min> bases rather
-    than search for tRNA genes with minimum length <min> bases. With this switch,
-    <min> acts as an output filter, minimum intron length for searching is still 0
-    bases.
+  description: "Same as -i, but report tRNA genes with minimum\nlength <min> bases\
+    \ rather than search for\ntRNA genes with minimum length <min> bases.\nWith this\
+    \ switch, <min> acts as an output filter,\nminimum intron length for searching\
+    \ is still 0 bases."
   synonyms:
   - -ir
   args: !EmptyFlagArg {}
@@ -91,29 +256,29 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use the stricter canonical 1-2 bp spacer1 and 1 bp spacer2. Ignored
-    if -mt set. Default is to allow 3 bp spacer1 and 0-2 bp spacer2, which may degrade
-    selectivity.
+  description: "Use the stricter canonical 1-2 bp spacer1 and\n1 bp spacer2. Ignored\
+    \ if -mt set. Default is to\nallow 3 bp spacer1 and 0-2 bp spacer2, which may\n\
+    degrade selectivity."
   synonyms:
   - -ss
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Display 4-base sequence on 3' end of astem regardless of predicted
-    amino-acyl acceptor length.
+  description: "Display 4-base sequence on 3' end of astem\nregardless of predicted\
+    \ amino-acyl acceptor length."
   synonyms:
   - -j
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Allow some divergence of 3' amino-acyl acceptor sequence from NCCA.
+  description: "Allow some divergence of 3' amino-acyl acceptor\nsequence from NCCA."
   synonyms:
   - -jr
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Allow some divergence of 3' amino-acyl acceptor sequence from NCCA,
-    and display 4 bases.
+  description: "Allow some divergence of 3' amino-acyl acceptor\nsequence from NCCA,\
+    \ and display 4 bases."
   synonyms:
   - -jr4
   args: !EmptyFlagArg {}
@@ -137,14 +302,14 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Same as -fo, with sequence and gene numbering, but no spaces. as (<species>|<species>)
-    instead of ???
+  description: "Same as -fo, with sequence and gene numbering, but no spaces.\nas\
+    \ (<species>|<species>) instead of ???"
   synonyms:
   - -fons
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Verbose. Prints out information during search to STDERR.
+  description: "Verbose. Prints out information during\nsearch to STDERR."
   synonyms:
   - -v
   args: !EmptyFlagArg {}
@@ -162,28 +327,28 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Display message if predicted iso-acceptor species does not match species
-    in sequence name (if present).
+  description: "Display message if predicted iso-acceptor species\ndoes not match\
+    \ species in sequence name (if present)."
   synonyms:
   - -aa
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: <num>     Change annotated tRNA length mismatch reporting threshold
-    to <num> bases when searching GENBANK files. Default is 10 bases.
+  description: "<num>     Change annotated tRNA length mismatch reporting threshold\
+    \ to\n<num> bases when searching GENBANK files. Default is 10 bases."
   synonyms:
   - -amt
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: <num>     Change annotated tmRNA length mismatch reporting threshold
-    to <num> bases when searching GENBANK files. Default is 30 bases.
+  description: "<num>     Change annotated tmRNA length mismatch reporting threshold\
+    \ to\n<num> bases when searching GENBANK files. Default is 30 bases."
   synonyms:
   - -amm
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Dont print configuration line (which switches and files were used).
+  description: "Dont print configuration line (which switches\nand files were used)."
   synonyms:
   - -q
   args: !EmptyFlagArg {}
@@ -201,24 +366,24 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Same as -w, but for 6 or 8 base anticodon loops, print possible iso-acceptor
-    species For tRNA genes, batch mode output is in the form: Sequence name N genes
-    found 1 tRNA-<species> [locus 1] <Apos> (nnn) i(<intron position>,<intron length>)
-    .           .           N tRNA-<species> [Locus N] <Apos> (nnn) i(<intron position>,<intron
-    length>) N is the number of genes found <species> is the tRNA iso-acceptor species
-    <Apos> is the tRNA anticodon relative position (nnn) is the tRNA anticodon base
-    triplet i means the tRNA gene has a C-loop intron For tmRNA genes, output is in
-    the form: n tmRNA(p) [Locus n] <tag offset>,<tag end offset> <tag peptide> p means
-    the tmRNA gene is permuted'
+  description: "Same as -w, but for 6 or 8 base anticodon\nloops, print possible iso-acceptor\
+    \ species\nFor tRNA genes, batch mode output is in the form:\nSequence name\n\
+    N genes found\n1 tRNA-<species> [locus 1] <Apos> (nnn)\ni(<intron position>,<intron\
+    \ length>)\n.\n.\nN tRNA-<species> [Locus N] <Apos> (nnn)\ni(<intron position>,<intron\
+    \ length>)\nN is the number of genes found\n<species> is the tRNA iso-acceptor\
+    \ species\n<Apos> is the tRNA anticodon relative position\n(nnn) is the tRNA anticodon\
+    \ base triplet\ni means the tRNA gene has a C-loop intron\nFor tmRNA genes, output\
+    \ is in the form:\nn tmRNA(p) [Locus n] <tag offset>,<tag end offset>\n<tag peptide>\n\
+    p means the tmRNA gene is permuted"
   synonyms:
   - -wa
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Get around problem with some windows gcc compilers (found so far in
-    Strawberry Perl and Active Perl) when reading Unix files. Execution speed may
-    be slower for large files. Execution speed will be a lot slower for files with
-    many small sequences.
+  description: "Get around problem with some windows gcc compilers\n(found so far\
+    \ in Strawberry Perl and Active Perl)\nwhen reading Unix files.\nExecution speed\
+    \ may be slower for large files.\nExecution speed will be a lot slower for files\n\
+    with many small sequences.\n"
   synonyms:
   - -wunix
   args: !EmptyFlagArg {}
@@ -229,10 +394,9 @@ named:
   - -ifro
   args: !EmptyFlagArg {}
   optional: true
-command:
-- aragorn
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag:

@@ -1,137 +1,46 @@
 &id001 !Command
+command:
+- pybel
 positional: []
 named:
 - !Flag
-  description: 'Database connection string.  [default: sqlite:////home/ubuntu/.pybel/pybel_0.13.0_cache.db]'
+  description: "Database connection string.  [default:\nsqlite:////root/.pybel/pybel_0.13.0_cache.db]"
   synonyms:
   - -c
   - --connection
   args: !SimpleFlagArg
     name: TEXT
   optional: true
-command:
-- pybel
 parent:
 subcommands:
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: PATH
-    optional: false
-  named: []
-  command:
-  - pybel
-  - compile
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: Show this message and exit.
-    synonyms:
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "Usage: pybel compile [OPTIONS] PATH\n\n  Compile a BEL script to a graph.\n\
-    \nOptions:\n  --allow-naked-names             Enable lenient parsing for naked\
-    \ names\n  --allow-nested                  Enable lenient parsing for nested statements\n\
-    \  --disallow-unqualified-translocations\n                                  Disallow\
-    \ unqualified translocations\n  --no-identifier-validation      Turn off identifier\
-    \ validation\n  --no-citation-clearing          Turn off citation clearing\n \
-    \ -r, --required-annotations TEXT\n                                  Specify multiple\
-    \ required annotations\n  --skip-tqdm\n  -v, --verbose\n  --help             \
-    \             Show this message and exit.\n"
-  generated_using: &id002
-  - --help
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: path
-    optional: false
-  named: []
-  command:
-  - pybel
-  - insert
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: Show this message and exit.
-    synonyms:
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "Usage: pybel insert [OPTIONS] path\n\n  Insert a graph to the database.\n\
-    \nOptions:\n  --help  Show this message and exit.\n"
-  generated_using: *id002
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: AGENTS
-    optional: true
-  named:
-  - !Flag
-    description: Upload to local database.
-    synonyms:
-    - --local
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: URL of BEL Commons. Defaults to https://bel- commons.scai.fraunhofer.de
-    synonyms:
-    - --host
-    args: !SimpleFlagArg
-      name: TEXT
-    optional: true
-  command:
-  - pybel
-  - machine
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: Show this message and exit.
-    synonyms:
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "Usage: pybel machine [OPTIONS] [AGENTS]...\n\n  Get content from the\
-    \ INDRA machine and upload to BEL Commons.\n\nOptions:\n  --local      Upload\
-    \ to local database.\n  --host TEXT  URL of BEL Commons. Defaults to https://bel-\n\
-    \               commons.scai.fraunhofer.de\n\n  --help       Show this message\
-    \ and exit.\n"
-  generated_using: *id002
-- &id003 !Command
-  positional: []
-  named: []
+- &id002 !Command
   command:
   - pybel
   - manage
+  positional: []
+  named: []
   parent: *id001
   subcommands:
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Confirm the action without prompting.
-      synonyms:
-      - --yes
-      args: !EmptyFlagArg {}
-      optional: true
     command:
     - pybel
     - manage
-    - drop
-    parent: *id003
+    - networks
+    positional:
+    - !Positional
+      description: Drop a network by its identifier or drop all networks.
+      position: 0
+      name: drop
+      optional: false
+    - !Positional
+      description: List network names, versions, and optionally, descriptions.
+      position: 1
+      name: ls
+      optional: false
+    named: []
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -140,11 +49,17 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
-    help_text: "Usage: pybel manage drop [OPTIONS]\n\n  Drop the database.\n\nOptions:\n\
-      \  --yes   Confirm the action without prompting.\n  --help  Show this message\
-      \ and exit.\n"
-    generated_using: *id002
+    help_text: "Usage: pybel manage networks [OPTIONS] COMMAND [ARGS]...\n\n  Manage\
+      \ networks.\n\nOptions:\n  --help  Show this message and exit.\n\nCommands:\n\
+      \  drop  Drop a network by its identifier or drop all networks.\n  ls    List\
+      \ network names, versions, and optionally, descriptions.\n"
+    generated_using: &id003
+    - --help
   - !Command
+    command:
+    - pybel
+    - manage
+    - edges
     positional:
     - !Positional
       description: ''
@@ -157,20 +72,21 @@ subcommands:
       name: ARGS
       optional: true
     named: []
-    command:
-    - pybel
-    - manage
-    - edges
-    parent: *id003
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
-    help_text: "Usage: pybel manage edges [OPTIONS] COMMAND [ARGS]...\nTry 'pybel\
-      \ manage edges --help' for help.\n\nError: no such option: -h\n"
+    help_text: "Usage: pybel manage edges [OPTIONS] COMMAND [ARGS]...\nTry \"pybel\
+      \ manage edges --help\" for help.\n\nError: no such option: -h\n"
     generated_using: &id004
     - -h
   - !Command
+    command:
+    - pybel
+    - manage
+    - namespaces
     positional:
     - !Positional
       description: Drop a namespace by URL.
@@ -188,12 +104,9 @@ subcommands:
       name: ls
       optional: false
     named: []
-    command:
-    - pybel
-    - manage
-    - namespaces
-    parent: *id003
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag: !Flag
       description: Show this message and exit.
       synonyms:
@@ -206,40 +119,12 @@ subcommands:
       \ namespaces.\n\nOptions:\n  --help  Show this message and exit.\n\nCommands:\n\
       \  drop    Drop a namespace by URL.\n  insert  Add a namespace by URL.\n  ls\
       \      List cached namespaces.\n"
-    generated_using: *id002
+    generated_using: *id003
   - !Command
-    positional:
-    - !Positional
-      description: Drop a network by its identifier or drop all networks.
-      position: 0
-      name: drop
-      optional: false
-    - !Positional
-      description: List network names, versions, and optionally, descriptions.
-      position: 1
-      name: ls
-      optional: false
-    named: []
     command:
     - pybel
     - manage
-    - networks
-    parent: *id003
-    subcommands: []
-    help_flag: !Flag
-      description: Show this message and exit.
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "Usage: pybel manage networks [OPTIONS] COMMAND [ARGS]...\n\n  Manage\
-      \ networks.\n\nOptions:\n  --help  Show this message and exit.\n\nCommands:\n\
-      \  drop  Drop a network by its identifier or drop all networks.\n  ls    List\
-      \ network names, versions, and optionally, descriptions.\n"
-    generated_using: *id002
-  - !Command
+    - nodes
     positional:
     - !Positional
       description: ''
@@ -252,18 +137,44 @@ subcommands:
       name: ARGS
       optional: true
     named: []
-    command:
-    - pybel
-    - manage
-    - nodes
-    parent: *id003
+    parent: *id002
     subcommands: []
+    usage: []
     help_flag:
     usage_flag:
     version_flag:
-    help_text: "Usage: pybel manage nodes [OPTIONS] COMMAND [ARGS]...\nTry 'pybel\
-      \ manage nodes --help' for help.\n\nError: no such option: -h\n"
+    help_text: "Usage: pybel manage nodes [OPTIONS] COMMAND [ARGS]...\nTry \"pybel\
+      \ manage nodes --help\" for help.\n\nError: no such option: -h\n"
     generated_using: *id004
+  - !Command
+    command:
+    - pybel
+    - manage
+    - drop
+    positional: []
+    named:
+    - !Flag
+      description: Confirm the action without prompting.
+      synonyms:
+      - --yes
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id002
+    subcommands: []
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pybel manage drop [OPTIONS]\n\n  Drop the database.\n\nOptions:\n\
+      \  --yes   Confirm the action without prompting.\n  --help  Show this message\
+      \ and exit.\n"
+    generated_using: *id003
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -277,20 +188,35 @@ subcommands:
     \ Drop the database.\n  edges       Manage edges.\n  examples    Load examples\
     \ to the database.\n  namespaces  Manage namespaces.\n  networks    Manage networks.\n\
     \  nodes       Manage nodes.\n  summarize   Summarize the contents of the database.\n"
-  generated_using: *id002
+  generated_using: *id003
 - !Command
+  command:
+  - pybel
+  - neo
   positional:
   - !Positional
     description: ''
     position: 0
     name: path
     optional: false
-  named: []
-  command:
-  - pybel
-  - neo
+  named:
+  - !Flag
+    description: Connection string for neo4j upload.
+    synonyms:
+    - --connection
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --password
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -302,27 +228,21 @@ subcommands:
   help_text: "Usage: pybel neo [OPTIONS] path\n\n  Upload to neo4j.\n\nOptions:\n\
     \  --connection TEXT  Connection string for neo4j upload.\n  --password TEXT\n\
     \  --help             Show this message and exit.\n"
-  generated_using: *id002
+  generated_using: *id003
 - !Command
+  command:
+  - pybel
+  - summarize
   positional:
   - !Positional
     description: ''
     position: 0
     name: path
     optional: false
-  named:
-  - !Flag
-    description: URL of BEL Commons. Defaults to https://bel- commons.scai.fraunhofer.de
-    synonyms:
-    - --host
-    args: !SimpleFlagArg
-      name: TEXT
-    optional: true
-  command:
-  - pybel
-  - post
+  named: []
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -331,12 +251,146 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-  help_text: "Usage: pybel post [OPTIONS] path\n\n  Upload a graph to BEL Commons.\n\
-    \nOptions:\n  --host TEXT  URL of BEL Commons. Defaults to https://bel-\n    \
-    \           commons.scai.fraunhofer.de\n\n  --help       Show this message and\
-    \ exit.\n"
-  generated_using: *id002
+  help_text: "Usage: pybel summarize [OPTIONS] path\n\n  Summarize a graph.\n\nOptions:\n\
+    \  --help  Show this message and exit.\n"
+  generated_using: *id003
 - !Command
+  command:
+  - pybel
+  - warnings
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: path
+    optional: false
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Usage: pybel warnings [OPTIONS] path\n\n  List warnings from a graph.\n\
+    \nOptions:\n  --help  Show this message and exit.\n"
+  generated_using: *id003
+- !Command
+  command:
+  - pybel
+  - insert
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: path
+    optional: false
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Usage: pybel insert [OPTIONS] path\n\n  Insert a graph to the database.\n\
+    \nOptions:\n  --help  Show this message and exit.\n"
+  generated_using: *id003
+- !Command
+  command:
+  - pybel
+  - compile
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: PATH
+    optional: false
+  named:
+  - !Flag
+    description: Enable lenient parsing for naked names
+    synonyms:
+    - --allow-naked-names
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Enable lenient parsing for nested statements
+    synonyms:
+    - --allow-nested
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Disallow unqualified translocations
+    synonyms:
+    - --disallow-unqualified-translocations
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Turn off identifier validation
+    synonyms:
+    - --no-identifier-validation
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Turn off citation clearing
+    synonyms:
+    - --no-citation-clearing
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specify multiple required annotations
+    synonyms:
+    - -r
+    - --required-annotations
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --skip-tqdm
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Usage: pybel compile [OPTIONS] PATH\n\n  Compile a BEL script to a graph.\n\
+    \nOptions:\n  --allow-naked-names             Enable lenient parsing for naked\
+    \ names\n  --allow-nested                  Enable lenient parsing for nested statements\n\
+    \  --disallow-unqualified-translocations\n                                  Disallow\
+    \ unqualified translocations\n  --no-identifier-validation      Turn off identifier\
+    \ validation\n  --no-citation-clearing          Turn off citation clearing\n \
+    \ -r, --required-annotations TEXT\n                                  Specify multiple\
+    \ required annotations\n  --skip-tqdm\n  -v, --verbose\n  --help             \
+    \             Show this message and exit.\n"
+  generated_using: *id003
+- !Command
+  command:
+  - pybel
+  - serialize
   positional:
   - !Positional
     description: ''
@@ -386,11 +440,9 @@ subcommands:
     args: !SimpleFlagArg
       name: FILENAME
     optional: true
-  command:
-  - pybel
-  - serialize
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -406,55 +458,99 @@ subcommands:
     \ a GraphML file. Use .graphml for Cytoscape.\n  --json FILENAME  Path to output\
     \ a node-link JSON file.\n  --bel FILENAME   Output canonical BEL.\n  --help \
     \          Show this message and exit.\n"
-  generated_using: *id002
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: path
-    optional: false
-  named: []
+  generated_using: *id003
+- &id005 !Command
   command:
   - pybel
-  - summarize
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: Show this message and exit.
+  - post
+  positional: []
+  named:
+  - !Flag
+    description: URL of BEL Commons. Defaults to https://bel-
     synonyms:
-    - --help
-    args: !EmptyFlagArg {}
+    - --host
+    args: !SimpleFlagArg
+      name: TEXT
     optional: true
+  parent: *id001
+  subcommands:
+  - !Command
+    command:
+    - pybel
+    - post
+    - commons.scai.fraunhofer.de
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: pybel
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: post
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: path
+      optional: false
+    named: []
+    parent: *id005
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pybel post [OPTIONS] path\nTry \"pybel post --help\" for help.\n\
+      \nError: Invalid value for \"path\": Could not open file: commons.scai.fraunhofer.de:\
+      \ No such file or directory\n"
+    generated_using: []
+  usage: []
+  help_flag:
   usage_flag:
   version_flag:
-  help_text: "Usage: pybel summarize [OPTIONS] path\n\n  Summarize a graph.\n\nOptions:\n\
-    \  --help  Show this message and exit.\n"
-  generated_using: *id002
+  help_text: "Usage: pybel post [OPTIONS] path\n\n  Upload a graph to BEL Commons.\n\
+    \nOptions:\n  --host TEXT  URL of BEL Commons. Defaults to https://bel-\n    \
+    \           commons.scai.fraunhofer.de\n  --help       Show this message and exit.\n"
+  generated_using: *id003
 - !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: path
-    optional: false
-  named: []
   command:
   - pybel
-  - warnings
-  parent: *id001
-  subcommands: []
-  help_flag: !Flag
-    description: Show this message and exit.
+  - machine
+  positional:
+  - !Positional
+    description: --help       Show this message and exit.
+    position: 0
+    name: commons.scai.fraunhofer.de
+    optional: false
+  named:
+  - !Flag
+    description: Upload to local database.
     synonyms:
-    - --help
+    - --local
     args: !EmptyFlagArg {}
     optional: true
+  - !Flag
+    description: URL of BEL Commons. Defaults to https://bel-
+    synonyms:
+    - --host
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
   usage_flag:
   version_flag:
-  help_text: "Usage: pybel warnings [OPTIONS] path\n\n  List warnings from a graph.\n\
-    \nOptions:\n  --help  Show this message and exit.\n"
-  generated_using: *id002
+  help_text: "Usage: pybel machine [OPTIONS] [AGENTS]...\n\n  Get content from the\
+    \ INDRA machine and upload to BEL Commons.\n\nOptions:\n  --local      Upload\
+    \ to local database.\n  --host TEXT  URL of BEL Commons. Defaults to https://bel-\n\
+    \               commons.scai.fraunhofer.de\n  --help       Show this message and\
+    \ exit.\n"
+  generated_using: *id003
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -468,13 +564,13 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
-help_text: "Usage: pybel [OPTIONS] COMMAND [ARGS]...\n\n  PyBEL CLI on /tmp/tmpsk8rtvkh/bin/python3.6\n\
+help_text: "Usage: pybel [OPTIONS] COMMAND [ARGS]...\n\n  PyBEL CLI on /usr/local/bin/python3.7\n\
   \nOptions:\n  --version              Show the version and exit.\n  -c, --connection\
-  \ TEXT  Database connection string.  [default:\n                         sqlite:////home/ubuntu/.pybel/pybel_0.13.0_cache.db]\n\
-  \n  --help                 Show this message and exit.\n\nCommands:\n  compile \
-  \   Compile a BEL script to a graph.\n  insert     Insert a graph to the database.\n\
+  \ TEXT  Database connection string.  [default:\n                         sqlite:////root/.pybel/pybel_0.13.0_cache.db]\n\
+  \  --help                 Show this message and exit.\n\nCommands:\n  compile  \
+  \  Compile a BEL script to a graph.\n  insert     Insert a graph to the database.\n\
   \  machine    Get content from the INDRA machine and upload to BEL Commons.\n  manage\
   \     Manage the database.\n  neo        Upload to neo4j.\n  post       Upload a\
   \ graph to BEL Commons.\n  serialize  Serialize a graph to various formats.\n  summarize\
   \  Summarize a graph.\n  warnings   List warnings from a graph.\n"
-generated_using: *id002
+generated_using: *id003

@@ -1,79 +1,14 @@
 &id001 !Command
+command:
+- cmph
 positional: []
 named:
 - !Flag
   description: ''
   synonyms:
-  - -v
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -V
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -k
+  - -m
   args: !SimpleFlagArg
-    name: nkeys
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -f
-  args: !SimpleFlagArg
-    name: hash_function
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -g
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -c
-  args: !SimpleFlagArg
-    name: algorithm_dependent_value
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -s
-  args: !SimpleFlagArg
-    name: seed
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -a
-  args: !SimpleFlagArg
-    name: algorithm
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -M
-  args: !SimpleFlagArg
-    name: memory_in_MB
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -b
-  args: !SimpleFlagArg
-    name: algorithm_dependent_value
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -t
-  args: !SimpleFlagArg
-    name: keys_per_bin
+    name: file.mph
   optional: true
 - !Flag
   description: ''
@@ -85,15 +20,83 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -m
+  - -t
   args: !SimpleFlagArg
-    name: file.mph
+    name: keys_per_bin
   optional: true
-command:
-- cmph
+- !Flag
+  description: ''
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: algorithm_dependent_value
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: memory_in_MB
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: algorithm
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: seed
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: algorithm_dependent_value
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: hash_function
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: nkeys
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands:
 - !Command
+  command:
+  - cmph
+  - keysfile
   positional:
   - !Positional
     description: line separated file with keys
@@ -102,22 +105,23 @@ subcommands:
     optional: false
   named:
   - !Flag
-    description: 'c value determines: * the number of vertices in the graph for the
-      algorithms BMZ and CHM * the number of bits per key required in the FCH algorithm
-      * the load factor in the CHD_PH algorithm'
+    description: "c value determines:\n* the number of vertices in the graph for the\
+      \ algorithms BMZ and CHM\n* the number of bits per key required in the FCH algorithm\n\
+      * the load factor in the CHD_PH algorithm"
     synonyms:
     - -c
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: algorithm - valid values are * bmz * bmz8 * chm * brz * fch * bdz
-      * bdz_ph * chd_ph * chd
+    description: "algorithm - valid values are\n* bmz\n* bmz8\n* chm\n* brz\n* fch\n\
+      * bdz\n* bdz_ph\n* chd_ph\n* chd"
     synonyms:
     - -a
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: hash function (may be used multiple times) - valid values are * jenkins
+    description: "hash function (may be used multiple times) - valid values are\n\
+      * jenkins"
     synonyms:
     - -f
     args: !EmptyFlagArg {}
@@ -153,53 +157,51 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: 'minimum perfect hash function file '
+    description: minimum perfect hash function file
     synonyms:
     - -m
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: 'main memory availability (in MB) used in BRZ algorithm '
+    description: main memory availability (in MB) used in BRZ algorithm
     synonyms:
     - -M
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: 'temporary directory used in BRZ algorithm '
+    description: temporary directory used in BRZ algorithm
     synonyms:
     - -d
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: 'the meaning of this parameter depends on the algorithm selected
-      in the -a option: * For BRZ it is used to make the maximal number of keys in
-      a bucket lower than 256. In this case its value should be an integer in the
-      range [64,175]. Default is 128. * For BDZ it is used to determine the size of
-      some precomputed rank information and its value should be an integer in the
-      range [3,10]. Default is 7. The larger is this value, the more compact are the
-      resulting functions and the slower are them at evaluation time. * For CHD and
-      CHD_PH it is used to set the average number of keys per bucket and its value
-      should be an integer in the range [1,32]. Default is 4. The larger is this value,
-      the slower is the construction of the functions. This parameter has no effect
-      for other algorithms.'
+    description: "the meaning of this parameter depends on the algorithm selected\
+      \ in the -a option:\n* For BRZ it is used to make the maximal number of keys\
+      \ in a bucket lower than 256.\nIn this case its value should be an integer in\
+      \ the range [64,175]. Default is 128.\n* For BDZ it is used to determine the\
+      \ size of some precomputed rank\ninformation and its value should be an integer\
+      \ in the range [3,10]. Default\nis 7. The larger is this value, the more compact\
+      \ are the resulting functions\nand the slower are them at evaluation time.\n\
+      * For CHD and CHD_PH it is used to set the average number of keys per bucket\n\
+      and its value should be an integer in the range [1,32]. Default is 4. The\n\
+      larger is this value, the slower is the construction of the functions.\nThis\
+      \ parameter has no effect for other algorithms."
     synonyms:
     - -b
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: set the number of keys per bin for a t-perfect hashing function.
-      A t-perfect hash function allows at most t collisions in a given bin. This parameter
-      applies only to the CHD and CHD_PH algorithms. Its value should be an integer
-      in the range [1,128]. Defaul is 1
+    description: "set the number of keys per bin for a t-perfect hashing function.\
+      \ A t-perfect\nhash function allows at most t collisions in a given bin. This\
+      \ parameter applies\nonly to the CHD and CHD_PH algorithms. Its value should\
+      \ be an integer in the\nrange [1,128]. Defaul is 1"
     synonyms:
     - -t
     args: !EmptyFlagArg {}
     optional: true
-  command:
-  - cmph
-  - keysfile
   parent: *id001
   subcommands: []
+  usage: []
   help_flag: !Flag
     description: print this help message
     synonyms:
@@ -240,6 +242,7 @@ subcommands:
     \ file with keys\n"
   generated_using:
   - -h
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:

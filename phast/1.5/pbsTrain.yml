@@ -1,25 +1,55 @@
 !Command
+command:
+- pbsTrain
 positional:
 - !Positional
-  description: ''
+  description: By default, n is given the largest possible value such
   position: 0
-  name: file.stats
+  name: dimension.
+  optional: false
+- !Positional
+  description: 'EXAMPLES:'
+  position: 0
+  name: size.
+  optional: false
+- !Positional
+  description: 0.043485        0.797886        0.029534        0.129096
+  position: 0
+  name: '170085'
+  optional: false
+- !Positional
+  description: 0.191119        0.046081        0.695205        0.067595
+  position: 1
+  name: '158006'
+  optional: false
+- !Positional
+  description: 0.047309        0.122834        0.043852        0.786004
+  position: 2
+  name: '221937'
+  optional: false
+- !Positional
+  description: 0.781156        0.044520        0.126179        0.048146
+  position: 3
+  name: '221585'
+  optional: false
+- !Positional
+  description: 0.067254        0.697947        0.045959        0.188840
+  position: 4
+  name: '159472'
   optional: false
 named:
 - !Flag
-  description: Number of "rows" per dimension in the simplex grid.  Default is maximum
-    possible for code size.
+  description: Output is a code file that can be used with
   synonyms:
-  - --nrows
-  - -n
+  - --suff-stats
   args: !SimpleFlagArg
-    name: n
+    name: option.
   optional: true
 - !Flag
-  description: Number of bytes per encoded probabilistic base (default 1). The size
-    of the code will be 256^b - 1 (one letter in the code is reserved for gaps).  Values
-    as large as 4 are allowed for b, but in the current implementation, performance
-    considerations effectively limit it to 2 or 3.
+  description: "Number of bytes per encoded probabilistic base (default 1).\nThe size\
+    \ of the code will be 256^b - 1 (one letter in the code\nis reserved for gaps).\
+    \  Values as large as 4 are allowed for\nb, but in the current implementation,\
+    \ performance\nconsiderations effectively limit it to 2 or 3."
   synonyms:
   - --nbytes
   - -b
@@ -27,17 +57,26 @@ named:
     name: b
   optional: true
 - !Flag
-  description: Skip greedy optimization -- just assign a single representative point
-    to each region of the probability simplex, equal to the (weighted) mean of all
-    vectors from the training data that fall in that region.
+  description: "Number of \"rows\" per dimension in the simplex grid.  Default\nis\
+    \ maximum possible for code size."
+  synonyms:
+  - --nrows
+  - -n
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: "Skip greedy optimization -- just assign a single\nrepresentative point\
+    \ to each region of the probability\nsimplex, equal to the (weighted) mean of\
+    \ all vectors from the\ntraining data that fall in that region."
   synonyms:
   - --no-greedy
   - -G
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Ignore the data entirely; just use the centroid of each simplex partition.  The
-    dimension of the simplex must be given (<dim>) but no data file is required.
+  description: "Ignore the data entirely; just use the centroid of each\nsimplex partition.\
+    \  The dimension of the simplex must be given\n(<dim>) but no data file is required."
   synonyms:
   - --no-train
   - -x
@@ -52,12 +91,11 @@ named:
   args: !SimpleFlagArg
     name: file
   optional: true
-command:
-- pbsTrain
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
-  description: Print this help message.
+  description: "Print this help message.\n"
   synonyms:
   - --help
   - -h

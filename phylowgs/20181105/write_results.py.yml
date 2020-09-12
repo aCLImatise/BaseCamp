@@ -1,0 +1,72 @@
+!Command
+command:
+- write_results.py
+positional:
+- !Positional
+  description: Name identifying dataset
+  position: 0
+  name: dataset_name
+  optional: false
+- !Positional
+  description: File containing sampled trees
+  position: 1
+  name: tree_file
+  optional: false
+- !Positional
+  description: Output file for JSON-formatted tree summaries
+  position: 2
+  name: tree_summary_output
+  optional: false
+- !Positional
+  description: Output file for JSON-formatted list of mutations
+  position: 3
+  name: mutlist_output
+  optional: false
+- !Positional
+  description: "Output file for JSON-formatted list of SSMs and CNVs\nassigned to\
+    \ each subclone"
+  position: 4
+  name: mutass_output
+  optional: false
+named:
+- !Flag
+  description: "Include SSM names in output (which may be sensitive\ndata) (default:\
+    \ False)"
+  synonyms:
+  - --include-ssm-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum number or percent of SSMs to retain a subclone\n(default:\
+    \ 0.01)\n"
+  synonyms:
+  - --min-ssms
+  args: !SimpleFlagArg
+    name: MIN_SSMS
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: write_results.py [-h] [--include-ssm-names] [--min-ssms MIN_SSMS]\n\
+  \                        dataset_name tree_file tree_summary_output\n          \
+  \              mutlist_output mutass_output\n\nWrite JSON files describing trees\n\
+  \npositional arguments:\n  dataset_name         Name identifying dataset\n  tree_file\
+  \            File containing sampled trees\n  tree_summary_output  Output file for\
+  \ JSON-formatted tree summaries\n  mutlist_output       Output file for JSON-formatted\
+  \ list of mutations\n  mutass_output        Output file for JSON-formatted list\
+  \ of SSMs and CNVs\n                       assigned to each subclone\n\noptional\
+  \ arguments:\n  -h, --help           show this help message and exit\n  --include-ssm-names\
+  \  Include SSM names in output (which may be sensitive\n                       data)\
+  \ (default: False)\n  --min-ssms MIN_SSMS  Minimum number or percent of SSMs to\
+  \ retain a subclone\n                       (default: 0.01)\n"
+generated_using:
+- --help

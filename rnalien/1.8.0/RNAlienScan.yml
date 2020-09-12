@@ -1,6 +1,136 @@
 !Command
+command:
+- RNAlienScan
 positional: []
 named:
+- !Flag
+  description: Path to input fasta file
+  synonyms:
+  - -i
+  - --inputfastafilepath
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: Path to input alignment file
+  synonyms:
+  - -p
+  - --inputalignmentfilepath
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: Path to input genome fasta files
+  synonyms:
+  - -b
+  - --inputgenomesfastafilepath
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: "Path to output directory. Default:\ncurrent working directory"
+  synonyms:
+  - -o
+  - --outputpath
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: "Only candidate sequences with a\nnormalized structure conservation\
+    \ index\n(nSCI) higher than this value are\naccepted. Default: 1"
+  synonyms:
+  - -z
+  - --inputnscicutoff
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "Evalue cutoff for cmsearch filtering.\nDefault: 0.001"
+  synonyms:
+  - -e
+  - --inputevaluecutoff
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "Filter blast hits per genomic length.\nDefault: True"
+  synonyms:
+  - -l
+  - --lengthfilter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Filter blast hits by coverage of at\nleast 80%. Default: True"
+  synonyms:
+  - -a
+  - --coveragefilter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Only the best blast hit per taxonomic\nentry is considered. Default:\
+    \ False"
+  synonyms:
+  - -s
+  - --singlehitpertax
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Toggles blast query softmasking,\nmeaning masking of non-conserved\
+    \ regions\non the query. Default: False"
+  synonyms:
+  - -f
+  - --blastsoftmasking
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Method for selection of queries\n(filtering,clustering). Default:\n\
+    filtering"
+  synonyms:
+  - -m
+  - --inputqueryselectionmethod
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: "Number of queries used for candidate\nsearch. Default: 5"
+  synonyms:
+  - -n
+  - --inputquerynumber
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Number of available cpu slots/cores.\nDefault: 1"
+  synonyms:
+  - -c
+  - --threads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Optional session id that is used\ninstead of automatically generated\
+    \ one."
+  synonyms:
+  - -d
+  - --sessionidentificator
+  args: !SimpleFlagArg
+    name: ITEM
+  optional: true
+- !Flag
+  description: 'Perform evaluation step. Default: True'
+  synonyms:
+  - -x
+  - --performevaluation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Just prints installed tool versions\nand performs connection check.\
+    \ Default:\nFalse"
+  synonyms:
+  - -g
+  - --checksetup
+  args: !EmptyFlagArg {}
+  optional: true
 - !Flag
   description: Print just the version number
   synonyms:
@@ -21,10 +151,9 @@ named:
   - --quiet
   args: !EmptyFlagArg {}
   optional: true
-command:
-- RNAlienScan
 parent:
 subcommands: []
+usage: []
 help_flag:
 usage_flag:
 version_flag: !Flag

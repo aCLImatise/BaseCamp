@@ -1,4 +1,6 @@
 !Command
+command:
+- scrm
 positional: []
 named:
 - !Flag
@@ -23,17 +25,17 @@ named:
     name: l
   optional: true
 - !Flag
-  description: <s1> ... <sn> [<M>]   Use an island model with npop populations, where
-    s1 to sn individuals are sampled each population. Optionally assume a symmetric
-    migration rate of M.
+  description: "<s1> ... <sn> [<M>]   Use an island model with npop populations,\n\
+    where s1 to sn individuals are sampled each population.\nOptionally assume a symmetric\
+    \ migration rate of M."
   synonyms:
   - -I
   args: !SimpleFlagArg
     name: npop
   optional: true
 - !Flag
-  description: <s1> ... <sn> [<M>]     Sample s1 to sn indiviuals from their corresponding
-    populations at time t.
+  description: "<s1> ... <sn> [<M>]     Sample s1 to sn indiviuals from their\ncorresponding\
+    \ populations at time t."
   synonyms:
   - -eI
   args: !SimpleFlagArg
@@ -63,8 +65,8 @@ named:
     name: i
   optional: true
 - !Flag
-  description: <i> <j> <M>   Set the migration rate from population j to population
-    i to M at time t.
+  description: "<i> <j> <M>   Set the migration rate from population j to\npopulation\
+    \ i to M at time t."
   synonyms:
   - -em
   args: !SimpleFlagArg
@@ -85,25 +87,25 @@ named:
     name: t
   optional: true
 - !Flag
-  description: '<i> <p>  Population admixture. Replaces a fraction of 1-p of population
-    i with individuals a from population npop + 1 which is ignored afterwards (forward
-    in time). '
+  description: "<i> <p>  Population admixture. Replaces a fraction of 1-p of\npopulation\
+    \ i with individuals a from population npop + 1\nwhich is ignored afterwards (forward\
+    \ in time)."
   synonyms:
   - -es
   args: !SimpleFlagArg
     name: t
   optional: true
 - !Flag
-  description: <i> <j> <p>  Partial Population admixture. Replaces a fraction of 1-p
-    of population i with individuals a from population j.
+  description: "<i> <j> <p>  Partial Population admixture. Replaces a fraction of\
+    \ 1-p of\npopulation i with individuals a from population j."
   synonyms:
   - -eps
   args: !SimpleFlagArg
     name: t
   optional: true
 - !Flag
-  description: <i> <j>  Speciation event at time t. Creates population j from individuals
-    of population i.
+  description: "<i> <j>  Speciation event at time t. Creates population j\nfrom individuals\
+    \ of population i."
   synonyms:
   - -ej
   args: !SimpleFlagArg
@@ -138,8 +140,8 @@ named:
     name: i
   optional: true
 - !Flag
-  description: <i> <a>  Change the exponential growth rate of population i to a at
-    time t.
+  description: "<i> <a>  Change the exponential growth rate of population i to a\n\
+    at time t."
   synonyms:
   - -eg
   args: !SimpleFlagArg
@@ -153,16 +155,16 @@ named:
     name: a
   optional: true
 - !Flag
-  description: <a>      Change the exponential growth rate of all populations to a
-    at time t.
+  description: "<a>      Change the exponential growth rate of all populations to\
+    \ a\nat time t."
   synonyms:
   - -eG
   args: !SimpleFlagArg
     name: t
   optional: true
 - !Flag
-  description: Set the mutation rate to theta = 4N0*mu, where mu is the  neutral mutation
-    rate per locus.
+  description: "Set the mutation rate to theta = 4N0*mu, where mu is the\nneutral\
+    \ mutation rate per locus."
   synonyms:
   - -t
   args: !SimpleFlagArg
@@ -193,9 +195,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[ms|rel|abs] Scaling of sequence positions. Either relative (rel)
-    to the locus length between 0 and 1, absolute (abs) in base pairs or as in ms
-    (default).'
+  description: "[ms|rel|abs] Scaling of sequence positions. Either\nrelative (rel)\
+    \ to the locus length between 0 and 1,\nabsolute (abs) in base pairs or as in\
+    \ ms (default)."
   synonyms:
   - -SC
   args: !EmptyFlagArg {}
@@ -208,18 +210,45 @@ named:
     name: FILE
   optional: true
 - !Flag
-  description: Prints information about the demographic model.
+  description: "[<SEED2> <SEED3>]   The random seed to use. Takes up to three\ninteger\
+    \ numbers."
   synonyms:
-  - --print-model
+  - -seed
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+- !Flag
+  description: "Specify the number of significant digits used in the output.\nDefaults\
+    \ to 6."
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: digits
+  optional: true
+- !Flag
+  description: ','
+  synonyms:
+  - -print-model
   args: !EmptyFlagArg {}
   optional: true
-command:
-- scrm
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Prints this text.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Prints the version of scrm.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "scrm - Fast & accurate coalescent simulations\nVersion 1.7.4\n\nUsage\n\
   --------------------------------------------------------\nCall scrm follow by two\
   \ integers and an arbitrary number\nof options described below:\n\n  scrm <n_samp>\

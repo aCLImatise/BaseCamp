@@ -1,18 +1,85 @@
 !Command
+command:
+- EDcalculator
 positional:
 - !Positional
   description: ''
   position: 0
   name: ct structure file
   optional: false
-named: []
-command:
-- EDcalculator
+named:
+- !Flag
+  description: "Specify that the sequence is DNA, and DNA parameters are to be used.\
+    \ The\ndefault is to use RNA parameters."
+  synonyms:
+  - -d
+  - --dna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output just the *Normalized* ensemble defect as a pure number (with\
+    \ no\nadditional description)."
+  synonyms:
+  - -r
+  - --raw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the name of a folding alphabet and associated nearest neighbor\n\
+    parameters. The alphabet is the prefix for the thermodynamic parameter\nfiles,\
+    \ e.g. \"rna\" for RNA parameters or \"dna\" for DNA parameters or a\ncustom extended/modified\
+    \ alphabet. The thermodynamic parameters need to\nreside in the at the location\
+    \ indicated by environment variable DATAPATH.\nThe default is \"rna\" (i.e. use\
+    \ RNA parameters). This option overrides the\n--DNA flag."
+  synonyms:
+  - -a
+  - --alphabet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a constraints file to be applied.\nDefault is to have no constraints\
+    \ applied."
+  synonyms:
+  - -c
+  - -C
+  - --constraint
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output the results to the specified file instead of to the screen\n\
+    (stdout)."
+  synonyms:
+  - -f
+  - --file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the index of a particular structure for which to calculate\
+    \ the\ndefect. The default is -1, which means to calculate the defect for all\n\
+    structures.\n"
+  synonyms:
+  - -n
+  - --number
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: Display the usage details message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: Display version and copyright information for this interface.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
 help_text: "USAGE: EDCalculator <ct structure file> [options]\nAll flags are case-insensitive,\
   \ and grouping of flags is not allowed.\n\n=============================\n==== Required\
   \ Parameters ====\n=============================\n<ct structure file>\n    The input\

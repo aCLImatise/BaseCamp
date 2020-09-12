@@ -1,5 +1,12 @@
 !Command
-positional: []
+command:
+- mutmap
+positional:
+- !Positional
+  description: -t , --threads     Number of threads. If you specify the number
+  position: 0
+  name: exist.
+  optional: false
 named:
 - !Flag
   description: '[-T] [-e <DATABASE>]'
@@ -16,26 +23,19 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ', --cultivar    fastq or bam of cultivar. If you specify fastq, please
-    separate pairs by comma, e.g. -c fastq1,fastq2. You can use this optiion multiple
-    times'
+  description: ", --cultivar    fastq or bam of cultivar. If you specify\nfastq, please\
+    \ separate pairs by comma,\ne.g. -c fastq1,fastq2. You can use this\noptiion multiple\
+    \ times"
   synonyms:
   - -c
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ', --bulk        fastq or bam of mutnat bulk. If you specify fastq,
-    please separate pairs by comma, e.g. -b fastq1,fastq2. You can use this optiion
-    multiple times'
+  description: ", --bulk        fastq or bam of mutnat bulk. If you specify\nfastq,\
+    \ please separate pairs by comma,\ne.g. -b fastq1,fastq2. You can use this\noptiion\
+    \ multiple times"
   synonyms:
   - -b
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ', --threads     Number of threads. If you specify the number below
-    one, then MutMap will use the threads as many as possible. [2]'
-  synonyms:
-  - -t
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -51,22 +51,22 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ', --max-depth   Maximum depth of variants which will be used. This
-    cutoff will be applied in both of cultivar and bulk. [250]'
+  description: ", --max-depth   Maximum depth of variants which will be used.\nThis\
+    \ cutoff will be applied in both of cultivar\nand bulk. [250]"
   synonyms:
   - -D
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ', --min-depth   Minimum depth of variants which will be used. This
-    cutoff will be applied in both of cultivar and bulk. [8]'
+  description: ", --min-depth   Minimum depth of variants which will be used.\nThis\
+    \ cutoff will be applied in both of cultivar\nand bulk. [8]"
   synonyms:
   - -d
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ', --N-rep       Number of replicates for simulation to make  null
-    distribution. [5000]'
+  description: ", --N-rep       Number of replicates for simulation to make\nnull\
+    \ distribution. [5000]"
   synonyms:
   - -N
   args: !EmptyFlagArg {}
@@ -79,33 +79,33 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ', --adapter     FASTA of adapter sequences. This will be used when
-    you specify "-T" for trimming.'
+  description: ", --adapter     FASTA of adapter sequences. This will be used\nwhen\
+    \ you specify \"-T\" for trimming."
   synonyms:
   - -a
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "Parameters for trimmomatic. Input parameters must be separated by\
-    \ comma with following order: phred, ILLUMINACLIP, LEADING, TRAILING, SLIDINGWINDOW,\
-    \ MINLEN. If you want to remove adapters of illumina, please specify FASTA of\
-    \ the adapter sequences with \"--adapter\". Specified name will be inserted into\
-    \ <ADAPTER_FASTA>. If you don't specify it, adapter trimming will be skipped.\
-    \ [33,<ADAPTER_FASTA>:2:30:10,20,20,4:15,75]"
+  description: "Parameters for trimmomatic. Input parameters\nmust be separated by\
+    \ comma with following\norder: phred, ILLUMINACLIP, LEADING, TRAILING,\nSLIDINGWINDOW,\
+    \ MINLEN. If you want to remove\nadapters of illumina, please specify FASTA of\n\
+    the adapter sequences with \"--adapter\". Specified\nname will be inserted into\
+    \ <ADAPTER_FASTA>. If you\ndon't specify it, adapter trimming will be skipped.\n\
+    [33,<ADAPTER_FASTA>:2:30:10,20,20,4:15,75]"
   synonyms:
   - --trim-params
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ', --snpEff      Predict causal variant using SnpEff. Please check
-    available databases in SnpEff.'
+  description: ", --snpEff      Predict causal variant using SnpEff. Please\ncheck\
+    \ available databases in SnpEff."
   synonyms:
   - -e
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Maximum memory per thread when bam sorted; suffix K/M/G recognized.
-    [1G]
+  description: "Maximum memory per thread when bam sorted;\nsuffix K/M/G recognized.\
+    \ [1G]"
   synonyms:
   - --mem
   args: !EmptyFlagArg {}
@@ -123,25 +123,24 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ', --adjust-MQ   "adjust-MQ" in mpileup. Default parameter is suited
-    for BWA. [50]'
+  description: ", --adjust-MQ   \"adjust-MQ\" in mpileup. Default parameter\nis suited\
+    \ for BWA. [50]"
   synonyms:
   - -C
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Consider multiple test correction derived by Huang et al. (2019). Please
-    spesify a species name. With this option. QTL-seq produces a theoretical threshold.
-    Currently, Arabidopsis, Cucumber, Maize, Rapeseed, Rice, Tobacco, Tomato, Wheat,
-    and Yeast are supported.
+  description: "Consider multiple test correction derived by\nHuang et al. (2019).\
+    \ Please spesify a species name.\nWith this option. QTL-seq produces a theoretical\
+    \ threshold.\nCurrently, Arabidopsis, Cucumber, Maize, Rapeseed,\nRice, Tobacco,\
+    \ Tomato, Wheat, and Yeast are supported."
   synonyms:
   - --species
   args: !EmptyFlagArg {}
   optional: true
-command:
-- mutmap
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

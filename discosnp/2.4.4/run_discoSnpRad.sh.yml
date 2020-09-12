@@ -1,0 +1,207 @@
+!Command
+command:
+- run_discoSnpRad.sh
+positional: []
+named:
+- !Flag
+  description: "<file name of a file of file(s)>\nThe input read files indicated in\
+    \ a file of file(s)\nExample: -r bank.fof with bank.fof containing the two lines\n\
+    data_sample/reads_sequence1.fasta\ndata_sample/reads_sequence2.fasta.gz"
+  synonyms:
+  - -r
+  - --fof
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "| --k_size value <int value>\nSet the length of used kmers. Must fit\
+    \ the compiled value.\nDefault=31"
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "| --min_coverage value <int value>\nSet the minimal coverage per read\
+    \ set: Used by kissnp2 (don't use kmers with lower coverage) and kissreads (read\
+    \ coherency threshold).\nThis coverage can be automatically detected per read\
+    \ set (in this case use \"auto\" or specified per read set, see the documentation.)\n\
+    Default=3"
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "| -R\nlower recall / higher precision mode. With this parameter no\
+    \ symmetrical crossroads may be traversed during bubble detection (by default\
+    \ up to 5 symmetrical crossroads may be traversed during bubble detection)."
+  synonyms:
+  - --high_precision
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "| --graph <file name>\nreuse a previously created graph (.h5 file)\
+    \ with same prefix and same k and c parameters."
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "| --prefix <string>\nAll out files will start with this prefix. Default=\"\
+    discoRes\""
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "| --max_coverage <int value>\nSet the maximal coverage for each read\
+    \ set: Used by kissnp2 (don't use kmers with higher coverage).\nDefault=2^31-1"
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "| --no_low_complexity\nRemove low complexity bubbles"
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "| --deletion_max_size <int value>\ndiscoSnpRad will search for deletions\
+    \ of size from 1 to D included. Default=0"
+  synonyms:
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[src_path]\nperforms clustering of variants with short_read_connector\n\
+    src_path: **absolute** path to short_read_connector directory, containing the\
+    \ \"short_read_connector.sh\" file.\n-Note1: short read connector must be compiled.\n\
+    -Note2: if no value is given, it assumes short_read_connector.sh is in the PATH\
+    \ env variable.\n-Note3: with this option, discoSnpRad outputs a vcf file containing\
+    \ the variants clustered by locus"
+  synonyms:
+  - -S
+  - --src
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Discards cluster containing more than this number of variants. (Default\
+    \ 150)\nRequires the -S or --src option"
+  synonyms:
+  - --max_size_cluster
+  args: !SimpleFlagArg
+    name: int value
+  optional: true
+- !Flag
+  description: Remove variants with more than max_missing % missing values. (Default
+    0.95, removes variants detected in 5% and less populations)
+  synonyms:
+  - --max_missing
+  args: !SimpleFlagArg
+    name: float value
+  optional: true
+- !Flag
+  description: Remove variants whose rank is smaller than this threshold. (Default
+    0.4)
+  synonyms:
+  - --min_rank
+  args: !SimpleFlagArg
+    name: float value
+  optional: true
+- !Flag
+  description: "| --max_snp_per_bubble <int>\ndiscoSnpRad will search up to P SNPs\
+    \ in a unique bubble. Default=5"
+  synonyms:
+  - -P
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "| --max_substitutions <int>\nSet the number of authorized substitutions\
+    \ used while mapping reads on found SNPs (kissreads). Default=10"
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "| --max_threads <int>\nMax number of used threads. 0 means all threads\n\
+    default 0"
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Wraith mode: only show all discoSnpRad commands without running them'
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Verbose 0 (avoids progress output) or 1 (enables progress output) --
+    default=1.
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: 0 or 1
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "| --help\nPrints this message and exist"
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n\n ************\n *** HELP ***\n ************\nrun_discoSnpRad.sh, pipelining\
+  \ kissnp2 and kissreads and clustering per locus for calling SNPs and small indels\
+  \ from RAD-seq data without the need of a reference genome\nVersion: 2.3.X\nCookbook:\
+  \ You may find a Cookbook here https://github.com/GATB/DiscoSnp/blob/master/discoSnpRAD/COOKBOOK.md\
+  \ providing classical use cases.\nUsage: ./run_discoSnpRad.sh --fof read_file_of_files\
+  \ --src [src_path] [OPTIONS]\nMANDATORY\n      -r|--fof <file name of a file of\
+  \ file(s)>\n           The input read files indicated in a file of file(s)\n   \
+  \        Example: -r bank.fof with bank.fof containing the two lines\n         \
+  \    data_sample/reads_sequence1.fasta\n             data_sample/reads_sequence2.fasta.gz\n\
+  \      Note: DiscoSnp-RAD uses files demultiplexed to samples. Each sample corresponds\
+  \ to exactly one line in the input file of files.\n\nPARAMETERS\n      -k | --k_size\
+  \ value <int value>\n           Set the length of used kmers. Must fit the compiled\
+  \ value.\n           Default=31\n      -c | --min_coverage value <int value>\n \
+  \          Set the minimal coverage per read set: Used by kissnp2 (don't use kmers\
+  \ with lower coverage) and kissreads (read coherency threshold).\n           This\
+  \ coverage can be automatically detected per read set (in this case use \"auto\"\
+  \ or specified per read set, see the documentation.)\n           Default=3\n   \
+  \   --high_precision | -R\n           lower recall / higher precision mode. With\
+  \ this parameter no symmetrical crossroads may be traversed during bubble detection\
+  \ (by default up to 5 symmetrical crossroads may be traversed during bubble detection).\n\
+  \nOPTIONS\n      -g | --graph <file name>\n           reuse a previously created\
+  \ graph (.h5 file) with same prefix and same k and c parameters.\n      -p | --prefix\
+  \ <string>\n           All out files will start with this prefix. Default=\"discoRes\"\
+  \n      -C | --max_coverage <int value>\n           Set the maximal coverage for\
+  \ each read set: Used by kissnp2 (don't use kmers with higher coverage).\n     \
+  \      Default=2^31-1\n      -l | --no_low_complexity\n           Remove low complexity\
+  \ bubbles\n      -D | --deletion_max_size <int value>\n           discoSnpRad will\
+  \ search for deletions of size from 1 to D included. Default=0\n\nCLUSTERING OPTION\n\
+  \      -S|--src [src_path]\n           performs clustering of variants with short_read_connector\n\
+  \           src_path: **absolute** path to short_read_connector directory, containing\
+  \ the \"short_read_connector.sh\" file. \n           -Note1: short read connector\
+  \ must be compiled.\n           -Note2: if no value is given, it assumes short_read_connector.sh\
+  \ is in the PATH env variable.\n           -Note3: with this option, discoSnpRad\
+  \ outputs a vcf file containing the variants clustered by locus\n      --max_size_cluster\
+  \ <int value> \n           Discards cluster containing more than this number of\
+  \ variants. (Default 150)\n           Requires the -S or --src option\n\nFILTERING\
+  \ OPTION\n      --max_missing <float value> \n           Remove variants with more\
+  \ than max_missing % missing values. (Default 0.95, removes variants detected in\
+  \ 5% and less populations)\n      --min_rank <float value>\n           Remove variants\
+  \ whose rank is smaller than this threshold. (Default 0.4)\n\nADVANCED OPTIONS\n\
+  \      -P | --max_snp_per_bubble <int>\n           discoSnpRad will search up to\
+  \ P SNPs in a unique bubble. Default=5\n      -d | --max_substitutions <int>\n \
+  \          Set the number of authorized substitutions used while mapping reads on\
+  \ found SNPs (kissreads). Default=10\n\nMISC.\n      -u | --max_threads <int>\n\
+  \           Max number of used threads. 0 means all threads\n           default\
+  \ 0\n      -w      Wraith mode: only show all discoSnpRad commands without running\
+  \ them\n      -v <0 or 1>\n           Verbose 0 (avoids progress output) or 1 (enables\
+  \ progress output) -- default=1.\n      -h | --help\n           Prints this message\
+  \ and exist\n\nAny further question: read the readme file or contact us via the\
+  \ Biostar forum: https://www.biostars.org/t/discosnp/\n"
+generated_using:
+- --help

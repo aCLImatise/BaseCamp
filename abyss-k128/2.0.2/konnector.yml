@@ -1,4 +1,6 @@
 !Command
+command:
+- konnector
 positional: []
 named:
 - !Flag
@@ -26,9 +28,9 @@ named:
     name: N
   optional: true
 - !Flag
-  description: kmer coverage threshold for error correction [2]. This option specifies
-    the number of levels in the cascading Bloom filter; it has no effect if the Bloom
-    filter is loaded from an external file.
+  description: "kmer coverage threshold for error correction [2].\nThis option specifies\
+    \ the number of levels in the\ncascading Bloom filter; it has no effect if the\
+    \ Bloom\nfilter is loaded from an external file."
   synonyms:
   - -c
   - --min-coverage
@@ -36,8 +38,8 @@ named:
     name: N
   optional: true
 - !Flag
-  description: max branches in de Bruijn graph traversal; use 'nolimit' for no limit
-    [350]
+  description: "max branches in de Bruijn graph traversal;\nuse 'nolimit' for no limit\
+    \ [350]"
   synonyms:
   - -B
   - --max-branches
@@ -53,10 +55,10 @@ named:
     name: FILE
   optional: true
 - !Flag
-  description: use an additional Bloom filter to avoid assembling the same region
-    of the genome multiple times. This option is highly recommended when the -E (--extend)
-    option and has no effect otherwise. As a rule of thumb, the Bloom filter size
-    should be about twice the target genome size [disabled]
+  description: "use an additional Bloom filter to avoid\nassembling the same region\
+    \ of the genome\nmultiple times. This option is highly\nrecommended when the -E\
+    \ (--extend) option\nand has no effect otherwise. As a rule of\nthumb, the Bloom\
+    \ filter size should be\nabout twice the target genome size [disabled]"
   synonyms:
   - -D
   - --dup-bloom-size
@@ -64,24 +66,24 @@ named:
     name: N
   optional: true
 - !Flag
-  description: find and fix single-base errors when reads have no kmers in bloom filter
-    [disabled]
+  description: "find and fix single-base errors when reads\nhave no kmers in bloom\
+    \ filter [disabled]"
   synonyms:
   - -e
   - --fix-errors
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: in addition to finding a connecting path, extend the reads outwards
-    to the next dead end or branching point in the de Brujin graph. If the reads were
-    not successfully connected, extend them inwards as well.
+  description: "in addition to finding a connecting path,\nextend the reads outwards\
+    \ to the next\ndead end or branching point in the de Brujin\ngraph. If the reads\
+    \ were not successfully\nconnected, extend them inwards as well."
   synonyms:
   - -E
   - --extend
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: output merged reads in FASTQ format (default is FASTA)
+  description: "output merged reads in FASTQ format\n(default is FASTA)"
   synonyms:
   - --fastq
   args: !EmptyFlagArg {}
@@ -148,14 +150,14 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: do not trim masked bases from the ends of reads [default]
+  description: "do not trim masked bases from the ends\nof reads [default]"
   synonyms:
   - --no-trim-masked
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: max mismatches between paths and reads; use 'nolimit' for no limit
-    [nolimit]
+  description: "max mismatches between paths and reads; use\n'nolimit' for no limit\
+    \ [nolimit]"
   synonyms:
   - -m
   - --read-mismatches
@@ -163,8 +165,8 @@ named:
     name: N
   optional: true
 - !Flag
-  description: max mismatches between all alternate paths; use 'nolimit' for no limit
-    [2]
+  description: "max mismatches between all alternate paths;\nuse 'nolimit' for no\
+    \ limit [2]"
   synonyms:
   - -M
   - --max-mismatches
@@ -172,8 +174,8 @@ named:
     name: N
   optional: true
 - !Flag
-  description: disable all limits; equivalent to '-B nolimit -m nolimit -M nolimit
-    -P nolimit'
+  description: "disable all limits; equivalent to\n'-B nolimit -m nolimit -M nolimit\
+    \ -P nolimit'"
   synonyms:
   - -n
   - --no-limits
@@ -194,15 +196,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: output a separate pseudoread for each alternate path connecting a read
-    pair (default is to create a consensus sequence of all connecting paths)
+  description: "output a separate pseudoread for each alternate\npath connecting a\
+    \ read pair (default is to create\na consensus sequence of all connecting paths)"
   synonyms:
   - -p
   - --alt-paths-mode
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: merge at most N alternate paths; use 'nolimit' for no limit [2]
+  description: "merge at most N alternate paths; use 'nolimit'\nfor no limit [2]"
   synonyms:
   - -P
   - --max-paths
@@ -210,7 +212,8 @@ named:
     name: N
   optional: true
 - !Flag
-  description: trim bases from the ends of reads whose quality is less than the threshold
+  description: "trim bases from the ends of reads whose\nquality is less than the\
+    \ threshold"
   synonyms:
   - -q
   - --trim-quality
@@ -218,20 +221,20 @@ named:
     name: N
   optional: true
 - !Flag
-  description: zero quality is `!' (33), typically for FASTQ and SAM files [default]
+  description: "zero quality is `!' (33), typically\nfor FASTQ and SAM files [default]"
   synonyms:
   - --standard-quality
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: zero quality is `@' (64), typically for qseq and export files
+  description: "zero quality is `@' (64), typically\nfor qseq and export files"
   synonyms:
   - --illumina-quality
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: quality score for bases corrected or inserted by konnector; only relevant
-    when --fastq is in effect [40]
+  description: "quality score for bases corrected or inserted\nby konnector; only\
+    \ relevant when --fastq is\nin effect [40]"
   synonyms:
   - -Q
   - --corrected-qual
@@ -246,8 +249,8 @@ named:
     name: STR
   optional: true
 - !Flag
-  description: mem limit for graph searches; multiply by the number of threads (-j)
-    to get the total mem used for graph traversal [500M]
+  description: "mem limit for graph searches; multiply by the\nnumber of threads (-j)\
+    \ to get the total mem used\nfor graph traversal [500M]"
   synonyms:
   - -s
   - --search-mem
@@ -270,7 +273,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: min percent seq identity between consensus seq and reads [0]
+  description: "min percent seq identity between consensus seq\nand reads [0]"
   synonyms:
   - -x
   - --read-identity
@@ -278,17 +281,16 @@ named:
     name: N
   optional: true
 - !Flag
-  description: min percent seq identity across alternate connecting paths [0]
+  description: "min percent seq identity across alternate\nconnecting paths [0]"
   synonyms:
   - -X
   - --path-identity
   args: !SimpleFlagArg
     name: N
   optional: true
-command:
-- konnector
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: display this help and exit
   synonyms:

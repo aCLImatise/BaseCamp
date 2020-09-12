@@ -1,4 +1,6 @@
 !Command
+command:
+- shuffle
 positional:
 - !Positional
   description: ''
@@ -6,6 +8,27 @@ positional:
   name: seqfile
   optional: false
 named:
+- !Flag
+  description: ': make <n> samples per input seq (default 1)'
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ': save shuffled sequences to file <f>'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: ': truncate/delete inputs to fixed length <n>'
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: n
+  optional: true
 - !Flag
   description: ': shuffle but preserve both mono- and di-symbol composition'
   synonyms:
@@ -44,8 +67,8 @@ named:
     name: n
   optional: true
 - !Flag
-  description: ': make [-n] iid seqs of length [-t] of type [--dna|--amino]; when
-    -i is set, no <seqfile> argument is used'
+  description: ": make [-n] iid seqs of length [-t] of type [--dna|--amino];\nwhen\
+    \ -i is set, no <seqfile> argument is used"
   synonyms:
   - -i
   args: !EmptyFlagArg {}
@@ -82,8 +105,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ': <seqfile> is a QRNA/FASTA pairwise alignment file; shuffle the pairwise
-    alignments, preserving gap position'
+  description: ": <seqfile> is a QRNA/FASTA pairwise alignment file;\nshuffle the\
+    \ pairwise alignments, preserving gap position"
   synonyms:
   - --qrna
   args: !EmptyFlagArg {}
@@ -101,11 +124,15 @@ named:
   - -options
   args: !EmptyFlagArg {}
   optional: true
-command:
-- shuffle
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ': help; print version and usage info'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "shuffle - generated shuffled (or otherwise randomized) sequence\nSQUID\

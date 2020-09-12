@@ -1,14 +1,11 @@
 !Command
+command:
+- glpsol
 positional:
 - !Positional
-  description: ''
+  description: -m filename, --model filename
   position: 0
-  name: options...
-  optional: true
-- !Positional
-  description: ''
-  position: 1
-  name: filename
+  name: language
   optional: false
 named:
 - !Flag
@@ -30,29 +27,20 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'read LP/MIP problem in GLPK format '
+  description: read LP/MIP problem in GLPK format
   synonyms:
   - --glp
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: read LP/MIP model written in GNU MathProg modeling language
+  description: read LP/MIP model written in GNU MathProg modeling
   synonyms:
   - --math
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: read model section and optional data section from filename (same as
-    --math)
-  synonyms:
-  - -m
-  - --model
-  args: !SimpleFlagArg
-    name: filename
-  optional: true
-- !Flag
-  description: read data section from filename (for --math only); if model file also
-    has data section, it is ignored
+  description: "read data section from filename (for --math only);\nif model file\
+    \ also has data section, it is ignored"
   synonyms:
   - -d
   - --data
@@ -60,8 +48,8 @@ named:
     name: filename
   optional: true
 - !Flag
-  description: send display output to filename (for --math only); by default the output
-    is sent to terminal
+  description: "send display output to filename (for --math only);\nby default the\
+    \ output is sent to terminal"
   synonyms:
   - -y
   - --display
@@ -69,8 +57,9 @@ named:
     name: filename
   optional: true
 - !Flag
-  description: initialize pseudo-random number generator used in MathProg model with
-    specified seed (any integer); if seed value is ?, some random seed will be used
+  description: "initialize pseudo-random number generator used in\nMathProg model\
+    \ with specified seed (any integer);\nif seed value is ?, some random seed will\
+    \ be used"
   synonyms:
   - --seed
   args: !SimpleFlagArg
@@ -107,7 +96,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: read solution from filename rather to find it with the solver
+  description: "read solution from filename rather to find it with\nthe solver"
   synonyms:
   - -r
   - --read
@@ -155,15 +144,15 @@ named:
     name: filename
   optional: true
 - !Flag
-  description: write sensitivity analysis report to filename in printable format (simplex
-    only)
+  description: "write sensitivity analysis report to filename in\nprintable format\
+    \ (simplex only)"
   synonyms:
   - --ranges
   args: !SimpleFlagArg
     name: filename
   optional: true
 - !Flag
-  description: 'limit solution time to nnn seconds '
+  description: limit solution time to nnn seconds
   synonyms:
   - --tmlim
   args: !SimpleFlagArg
@@ -292,7 +281,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: use as initial basis previously saved with -w (disables LP presolver)
+  description: "use as initial basis previously saved with -w\n(disables LP presolver)"
   synonyms:
   - --ini
   args: !SimpleFlagArg
@@ -371,8 +360,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: consider all integer variables as continuous (allows solving MIP as
-    pure LP)
+  description: "consider all integer variables as continuous\n(allows solving MIP\
+    \ as pure LP)"
   synonyms:
   - --nomip
   args: !EmptyFlagArg {}
@@ -390,25 +379,26 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'branch on most fractional variable '
+  description: branch on most fractional variable
   synonyms:
   - --mostf
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: branch using heuristic by Driebeck and Tomlin (default)
+  description: "branch using heuristic by Driebeck and Tomlin\n(default)"
   synonyms:
   - --drtom
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: branch using hybrid pseudocost heuristic (may be useful for hard instances)
+  description: "branch using hybrid pseudocost heuristic (may be\nuseful for hard\
+    \ instances)"
   synonyms:
   - --pcost
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'backtrack using depth first search '
+  description: backtrack using depth first search
   synonyms:
   - --dfs
   args: !EmptyFlagArg {}
@@ -426,7 +416,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: backtrack using node with best local bound (default)
+  description: "backtrack using node with best local bound\n(default)"
   synonyms:
   - --bestb
   args: !EmptyFlagArg {}
@@ -444,7 +434,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: replace general integer variables by binary ones (assumes --intopt)
+  description: "replace general integer variables by binary ones\n(assumes --intopt)"
   synonyms:
   - --binarize
   args: !EmptyFlagArg {}
@@ -456,8 +446,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[nnn]     apply proximity search heuristic (nnn is time limit in seconds;
-    default is 60)'
+  description: "[nnn]     apply proximity search heuristic (nnn is time limit\nin\
+    \ seconds; default is 60)"
   synonyms:
   - --proxy
   args: !EmptyFlagArg {}
@@ -500,24 +490,23 @@ named:
     name: tol
   optional: true
 - !Flag
-  description: translate integer feasibility problem to CNF-SAT and solve it with
-    MiniSat solver
+  description: "translate integer feasibility problem to CNF-SAT\nand solve it with\
+    \ MiniSat solver"
   synonyms:
   - --minisat
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: add inequality obj <= bound (minimization) or obj >= bound (maximization)
-    to integer feasibility problem (assumes --minisat)
+  description: "add inequality obj <= bound (minimization) or\nobj >= bound (maximization)\
+    \ to integer feasibility\nproblem (assumes --minisat)"
   synonyms:
   - --objbnd
   args: !SimpleFlagArg
     name: bound
   optional: true
-command:
-- glpsol
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: display this help information and exit
   synonyms:

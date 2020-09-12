@@ -1,196 +1,375 @@
-!Command
-positional: []
-named:
-- !Flag
-  description: '<pe1>          comma-separated list of fasta/q paired-end #1 files,
-    paired with files in <pe2>'
-  synonyms:
-  - '-1'
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '<pe2>          comma-separated list of fasta/q paired-end #2 files,
-    paired with files in <pe1>'
-  synonyms:
-  - '-2'
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <pe12>         comma-separated list of interleaved fasta/q paired-end
-    files
-  synonyms:
-  - --12
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <se>           comma-separated list of fasta/q single-end files
-  synonyms:
-  - -r/--read
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <string>       gene list
-  synonyms:
-  - -g/--gene-list
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <int>          minimum multiplicity for filtering k-mers [1]
-  synonyms:
-  - -c/--min-count
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <int,int,..>   comma-separated list of kmer size (in range 15-127)
-    the last k must be a multiple of 3) [30,36,45]
-  synonyms:
-  - -k/--k-list
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <int>          prune the search if the score does not improve after
-    <int> steps [20]
-  synonyms:
-  - -p/--prune-len
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <float>        penalty for coverage one edges (in [0,1]) [0.5]
-  synonyms:
-  - -l/--low-cov-penalty
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <int>          max tip length [150]
-  synonyms:
-  - --max-tip-len
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: do not add mercy kmers
-  synonyms:
-  - --no-mercy
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <float>        max memory in byte to be used in SdBG construction [0.9]
-    (if set between 0-1, fraction of the machine's total memory)
-  synonyms:
-  - -m/--memory
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "<int>          SdBG builder memory mode [1] 0: minimum; 1: moderate;\
-    \ others: use all memory specified by '-m/--memory'."
-  synonyms:
-  - --mem-flag
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: use GPU
-  synonyms:
-  - --use-gpu
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '<float>        GPU memory in byte to be used. Default: auto detect
-    to use up all free GPU memory [0]'
-  synonyms:
-  - --gpu-mem
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '<int>          number of CPU threads, at least 2. Default: auto detect
-    to use all CPU threads [auto]'
-  synonyms:
-  - -t/--num-cpu-threads
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <string>       output directory [./megagta_out]
-  synonyms:
-  - -o/--out-dir
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <int>          minimum length of contigs to output [450]
-  synonyms:
-  - --min-contig-len
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: keep all temporary files
-  synonyms:
-  - --keep-tmp-files
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: continue a MEGAHIT run from its last available check point. please
-    set the output directory correctly when using this option.
-  synonyms:
-  - --continue
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: print the usage message
-  synonyms:
-  - -h/--help
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: print version
-  synonyms:
-  - -v/--version
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: verbose mode
-  synonyms:
-  - --verbose
-  args: !EmptyFlagArg {}
-  optional: true
+&id001 !Command
 command:
-- megagta.py
+- megagta
+positional: []
+named: []
 parent:
-subcommands: []
+subcommands:
+- !Command
+  command:
+  - megagta
+  - search
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: search
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: succinct_dbg
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: gene_list
+    optional: false
+  - !Positional
+    description: ''
+    position: 3
+    name: starting_kmers_prefix
+    optional: false
+  - !Positional
+    description: ''
+    position: 4
+    name: output_prefix
+    optional: false
+  - !Positional
+    description: ''
+    position: 5
+    name: prune_len
+    optional: false
+  - !Positional
+    description: ''
+    position: 6
+    name: low_cov_penalty
+    optional: false
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: search <succinct_dbg> <gene_list> <starting_kmers_prefix> <output_prefix>\
+    \ <prune_len> <low_cov_penalty> [num_threads=0]\n"
+  generated_using: &id002
+  - --help
+- !Command
+  command:
+  - megagta
+  - findstart
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: findstart
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: ref_seq
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: read.lib
+    optional: false
+  - !Positional
+    description: ''
+    position: 3
+    name: k_size
+    optional: false
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: findstart <ref_seq> <read.lib> <k_size> [num_threads=0]\n"
+  generated_using: &id003 []
+- !Command
+  command:
+  - megagta
+  - readstat
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: cat
+    optional: false
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: cat *.fq | readstat\n"
+  generated_using: *id002
+- !Command
+  command:
+  - megagta
+  - denovo
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: denovo
+    optional: false
+  named:
+  - !Flag
+    description: succinct de Bruijn graph name
+    synonyms:
+    - -s
+    - --sdbg_name
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: (=out)         output prefix
+    synonyms:
+    - -o
+    - --output_prefix
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: (=0)         number of cpu threads
+    synonyms:
+    - -t
+    - --num_cpu_threads
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: (=-1)            max length for tips to be removed. -1 for 2k
+    synonyms:
+    - --max_tip_len
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: do not remove bubbles
+    synonyms:
+    - --no_bubble
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (=400)        min length of a standalone contig to output to final.contigs.fa
+    synonyms:
+    - --min_standalone
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: (=0)              min length of contig to output
+    synonyms:
+    - --min_contig
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "denovo: unrecognized option '--help'\nuknown option\nUsage: denovo -s\
+    \ sdbg_name -o output_prefix\noptions:\n  -s, --sdbg_name arg                \
+    \    succinct de Bruijn graph name\n  -o, --output_prefix arg (=out)         output\
+    \ prefix\n  -t, --num_cpu_threads arg (=0)         number of cpu threads\n   \
+    \   --max_tip_len arg (=-1)            max length for tips to be removed. -1 for\
+    \ 2k\n      --no_bubble                        do not remove bubbles\n      --min_standalone\
+    \ arg (=400)        min length of a standalone contig to output to final.contigs.fa\n\
+    \      --min_contig arg (=0)              min length of contig to output\n\n"
+  generated_using: *id002
+- !Command
+  command:
+  - megagta
+  - filterbylen
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: cat
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: contigs.fa
+    optional: false
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: cat contigs.fa | filterbylen <min_len>\n"
+  generated_using: *id003
+- !Command
+  command:
+  - megagta
+  - translate
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: translate
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: nucl_seq
+    optional: false
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: translate <nucl_seq> \n"
+  generated_using: *id003
+- !Command
+  command:
+  - megagta
+  - buildgraph
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: sdbg_builder
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: read2sdbg
+    optional: false
+  named:
+  - !Flag
+    description: (=21)                 kmer size
+    synonyms:
+    - -k
+    - --kmer_k
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: (=2)      min frequency to output an edge
+    synonyms:
+    - -m
+    - --min_kmer_frequency
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: (=0)                Max memory to be used. 90% of the free memory
+      is recommended.
+    synonyms:
+    - --host_mem
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: (=0)                 gpu memory to be used. 0 for auto detect.
+    synonyms:
+    - --gpu_mem
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: (=0)         number of CPU threads. At least 2.
+    synonyms:
+    - --num_cpu_threads
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: (=0)      number of threads for output. Must be less than num_cpu_threads
+    synonyms:
+    - --num_output_threads
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: input fast[aq] file, can be gzip'ed. "-" for stdin.
+    synonyms:
+    - --read_lib_file
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: input assisting fast[aq] file (FILE_NAME.info should exist), can
+      be gzip'ed.
+    synonyms:
+    - --assist_seq
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: (=out)         output prefix
+    synonyms:
+    - --output_prefix
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: "(=1)                memory options. 0: minimize memory usage; 1:\
+      \ automatically use moderate memory; other: use all available mem specified\
+      \ by '--host_mem'"
+    synonyms:
+    - --mem_flag
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: to add mercy edges.
+    synonyms:
+    - --need_mercy
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: out
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "buildgraph: unrecognized option '--help'\nuknown option\nUsage: sdbg_builder\
+    \ read2sdbg --read_lib_file fastx_file -o out\nOptions:\n  -k, --kmer_k arg (=21)\
+    \                 kmer size\n  -m, --min_kmer_frequency arg (=2)      min frequency\
+    \ to output an edge\n      --host_mem arg (=0)                Max memory to be\
+    \ used. 90% of the free memory is recommended.\n      --gpu_mem arg (=0)     \
+    \            gpu memory to be used. 0 for auto detect.\n      --num_cpu_threads\
+    \ arg (=0)         number of CPU threads. At least 2.\n      --num_output_threads\
+    \ arg (=0)      number of threads for output. Must be less than num_cpu_threads\n\
+    \      --read_lib_file arg                input fast[aq] file, can be gzip'ed.\
+    \ \"-\" for stdin.\n      --assist_seq arg                   input assisting fast[aq]\
+    \ file (FILE_NAME.info should exist), can be gzip'ed.\n      --output_prefix arg\
+    \ (=out)         output prefix\n      --mem_flag arg (=1)                memory\
+    \ options. 0: minimize memory usage; 1: automatically use moderate memory; other:\
+    \ use all available mem specified by '--host_mem'\n      --need_mercy        \
+    \               to add mercy edges.\n\n"
+  generated_using: *id002
+usage: []
 help_flag:
 usage_flag:
 version_flag:
-help_text: "MegaGTA v0.1-alpha\n\nCopyright (c) The University of Hong Kong\n\nUsage:\n\
-  \  megagta.py [options] {-1 <pe1> -2 <pe2> | --12 <pe12> | -r <se>} -g gene_list.txt\
-  \ [-o <out_dir>]\n\n  Input options that can be specified for multiple times (supporting\
-  \ plain text and gz/bz2 extensions)\n    -1                       <pe1>        \
-  \  comma-separated list of fasta/q paired-end #1 files, paired with files in <pe2>\n\
-  \    -2                       <pe2>          comma-separated list of fasta/q paired-end\
-  \ #2 files, paired with files in <pe1>\n    --12                     <pe12>    \
-  \     comma-separated list of interleaved fasta/q paired-end files\n    -r/--read\
-  \                <se>           comma-separated list of fasta/q single-end files\n\
-  \    \n    -g/--gene-list           <string>       gene list\n\nOptional Arguments:\n\
-  \  Basic assembly options:\n    -c/--min-count           <int>          minimum\
-  \ multiplicity for filtering k-mers [1]\n    -k/--k-list              <int,int,..>\
-  \   comma-separated list of kmer size (in range 15-127)\n                      \
-  \                      the last k must be a multiple of 3) [30,36,45]\n    -p/--prune-len\
-  \           <int>          prune the search if the score does not improve after\
-  \ <int> steps [20]\n    -l/--low-cov-penalty     <float>        penalty for coverage\
-  \ one edges (in [0,1]) [0.5]\n    --max-tip-len            <int>          max tip\
-  \ length [150]\n    --no-mercy                              do not add mercy kmers\n\
-  \n  Hardware options:\n    -m/--memory              <float>        max memory in\
-  \ byte to be used in SdBG construction [0.9]\n                                 \
-  \           (if set between 0-1, fraction of the machine's total memory)\n    --mem-flag\
-  \               <int>          SdBG builder memory mode [1]\n                  \
-  \                          0: minimum; 1: moderate; others: use all memory specified\
-  \ by '-m/--memory'.\n    --use-gpu                               use GPU\n    --gpu-mem\
-  \                <float>        GPU memory in byte to be used. Default: auto detect\
-  \ to use up all free GPU memory [0]\n    -t/--num-cpu-threads     <int>        \
-  \  number of CPU threads, at least 2. Default: auto detect to use all CPU threads\
-  \ [auto]\n\n  Output options:\n    -o/--out-dir             <string>       output\
-  \ directory [./megagta_out]\n    --min-contig-len         <int>          minimum\
-  \ length of contigs to output [450]\n    --keep-tmp-files                      \
-  \  keep all temporary files\n\nOther Arguments:\n    --continue                \
-  \              continue a MEGAHIT run from its last available check point.\n   \
-  \                                         please set the output directory correctly\
-  \ when using this option.\n    -h/--help                               print the\
-  \ usage message\n    -v/--version                            print version\n   \
-  \ --verbose                               verbose mode\n\n"
-generated_using:
-- --help
+help_text: "Usage: megagta <sub_program> [sub options]\n    sub-programs:\n      \
+  \ buildlib              build read library\n       buildgraph            build the\
+  \ SdBG\n       denovo                de novo assemble contigs from SDBG\n      \
+  \ findstart             find starting kmers\n       search                A* search\n\
+  \       dumpversion           dump MEGAHIT-GT version\n       readstat         \
+  \     get sequence stat from fastq/a files\n       filterbylen           filter\
+  \ contigs by length\n       translate             translate DNA to Protein\n"
+generated_using: *id002

@@ -1,9 +1,18 @@
 !Command
+command:
+- diamond_add_taxonomy
 positional:
 - !Positional
-  description: ''
+  description: A new output file is created with 7 extra columns on the right hand
+    side
   position: 0
-  name: DIAMOND_OUTPUT_FILE
+  name: staxids
+  optional: false
+- !Positional
+  description: The taxonomy lookup is performed using the NCBI taxonomy database via
+    ete3
+  position: 0
+  name: column.
   optional: false
 named:
 - !Flag
@@ -14,33 +23,32 @@ named:
     name: PATH
   optional: true
 - !Flag
-  description: Name for the processed database, will be loaded if it exists
+  description: "Name for the processed database, will be\nloaded if it exists"
   synonyms:
   - --taxdb_filename
   args: !SimpleFlagArg
     name: PATH
   optional: true
 - !Flag
-  description: 'Output format used by DIAMOND (most include staxids)  [default: 6
-    qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore
-    slen qlen qcovhsp stitle staxids]'
+  description: "Output format used by DIAMOND (most include\nstaxids)  [default: 6\
+    \ qseqid sseqid pident\nlength mismatch gapopen qstart qend sstart\nsend evalue\
+    \ bitscore slen qlen qcovhsp stitle\nstaxids]"
   synonyms:
   - --diamond_output_format
   args: !SimpleFlagArg
     name: TEXT
   optional: true
 - !Flag
-  description: Output file to write output with expanded taxonomy information (TSV
-    format)
+  description: "Output file to write output with expanded\ntaxonomy information (TSV\
+    \ format)"
   synonyms:
   - --output_file
   args: !SimpleFlagArg
     name: FILENAME
   optional: true
-command:
-- diamond_add_taxonomy
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -65,13 +73,13 @@ help_text: "Usage: diamond_add_taxonomy [OPTIONS] DIAMOND_OUTPUT_FILE\n\n  annot
   \ from NCBI taxdump.tar.gz by ete3 NCBITaxa\n\nOptions:\n  --taxdump_filename PATH\
   \       Path to local copy of NCBI taxdump.tar.gz file\n  --taxdb_filename PATH\
   \         Name for the processed database, will be\n                           \
-  \     loaded if it exists\n\n  --diamond_output_format TEXT  Output format used\
-  \ by DIAMOND (most include\n                                staxids)  [default:\
-  \ 6 qseqid sseqid pident\n                                length mismatch gapopen\
-  \ qstart qend sstart\n                                send evalue bitscore slen\
-  \ qlen qcovhsp stitle\n                                staxids]\n\n  --output_file\
-  \ FILENAME        Output file to write output with expanded\n                  \
-  \              taxonomy information (TSV format)\n\n  --help                   \
-  \     Show this message and exit.\n"
+  \     loaded if it exists\n  --diamond_output_format TEXT  Output format used by\
+  \ DIAMOND (most include\n                                staxids)  [default: 6 qseqid\
+  \ sseqid pident\n                                length mismatch gapopen qstart\
+  \ qend sstart\n                                send evalue bitscore slen qlen qcovhsp\
+  \ stitle\n                                staxids]\n  --output_file FILENAME   \
+  \     Output file to write output with expanded\n                              \
+  \  taxonomy information (TSV format)\n  --help                        Show this\
+  \ message and exit.\n"
 generated_using:
 - --help

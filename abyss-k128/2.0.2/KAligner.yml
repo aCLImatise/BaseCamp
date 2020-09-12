@@ -1,16 +1,38 @@
 !Command
+command:
+- KAligner
 positional:
 - !Positional
   description: ''
   position: 0
   name: kmer
   optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: OPTION
-  optional: true
 named:
+- !Flag
+  description: k-mer size and minimum alignment length
+  synonyms:
+  - -k
+  - -l
+  - --kmer
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "split the target into N sections and align\nreads to section S [1/1]"
+  synonyms:
+  - -s
+  - --section
+  args: !SimpleFlagArg
+    name: S/N
+  optional: true
+- !Flag
+  description: "duplicate k-mer in the target\n[default]"
+  synonyms:
+  - -i
+  - --ignore-multimap
+  args: !SimpleFlagArg
+    name: ignore
+  optional: true
 - !Flag
   description: allow duplicate k-mer in the target
   synonyms:
@@ -25,8 +47,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: use N threads [2] up to one per query file or if N is 0 use one thread
-    per query file
+  description: "use N threads [2] up to one per query file\nor if N is 0 use one thread\
+    \ per query file"
   synonyms:
   - -j
   - --threads
@@ -58,16 +80,9 @@ named:
   - --seq
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -k
-  args: !EmptyFlagArg {}
-  optional: true
-command:
-- KAligner
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: display this help and exit
   synonyms:

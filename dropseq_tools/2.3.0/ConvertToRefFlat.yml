@@ -1,5 +1,12 @@
 !Command
-positional: []
+command:
+- ConvertToRefFlat
+positional:
+- !Positional
+  description: SEQUENCE_DICTIONARY=File
+  position: 0
+  name: Required.
+  optional: false
 named:
 - !Flag
   description: (default 4g)
@@ -15,16 +22,44 @@ named:
   args: !SimpleFlagArg
     name: echo
   optional: true
-command:
-- ConvertToRefFlat
+- !Flag
+  description: Displays options specific to this tool.
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --stdhelp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
-help_flag:
+usage: []
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
-help_text: "USAGE: /tmp/tmpq7xcnqce/bin/ConvertToRefFlat [-m <jvm_heap_size>] [-v]\
-  \ program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
-  \ command line before executing\n\nProgram options:\nUSAGE: ConvertToRefFlat [options]\n\
+version_flag: !Flag
+  description: Displays program version.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "USAGE: /usr/local/bin/ConvertToRefFlat [-m <jvm_heap_size>] [-v] program\
+  \ args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final command\
+  \ line before executing\n\nProgram options:\nUSAGE: ConvertToRefFlat [options]\n\
   \nIf you really want to have refFlat files instead of GTF files, then this is for\
   \ you.  Pretty handy for Picard tools that\naccept refFlat instead of GTF files.\n\
   Version: 2.3.0(34e6572_1555443285)\n\n\nOptions:\n\n--help\n-h                 \

@@ -1,4 +1,6 @@
 !Command
+command:
+- scHicCluster
 positional:
 - !Positional
   description: ''
@@ -12,8 +14,16 @@ positional:
   optional: false
 named:
 - !Flag
-  description: 'scHi-C matrix, -m scool scHi-C matrix The single cell Hi-C interaction
-    matrices to cluster. Needs to be in scool format (default: None)'
+  description: "File name to save the resulting clusters (default:\nclusters.txt)"
+  synonyms:
+  - --outFileName
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+  optional: true
+- !Flag
+  description: "scHi-C matrix, -m scool scHi-C matrix\nThe single cell Hi-C interaction\
+    \ matrices to cluster.\nNeeds to be in scool format (default: None)"
   synonyms:
   - --matrix
   args: !SimpleFlagArg
@@ -28,7 +38,7 @@ named:
     name: NUMBEROFCLUSTERS
   optional: true
 - !Flag
-  description: 'Algorithm to cluster the Hi-C matrices (default: spectral)'
+  description: "Algorithm to cluster the Hi-C matrices (default:\nspectral)"
   synonyms:
   - --clusterMethod
   - -cm
@@ -45,21 +55,21 @@ named:
     name: CHROMOSOMES
   optional: true
 - !Flag
-  description: 'Dimension reduction methods, knn with euclidean distance, pca (default:
-    none)'
+  description: "Dimension reduction methods, knn with euclidean\ndistance, pca (default:\
+    \ none)"
   synonyms:
   - --dimensionReductionMethod
   - -drm
   args: !ChoiceFlagArg
     choices: !!set
-      none:
       knn:
+      none:
       pca:
   optional: true
 - !Flag
-  description: 'Number of to be used computed nearest neighbors for the knn graph.
-    Default is either the default value or the number of the provided cells, whatever
-    is smaller. (default: 100)'
+  description: "Number of to be used computed nearest neighbors for\nthe knn graph.\
+    \ Default is either the default value or\nthe number of the provided cells, whatever\
+    \ is smaller.\n(default: 100)"
   synonyms:
   - --numberOfNearestNeighbors
   - -k
@@ -67,26 +77,17 @@ named:
     name: NUMBEROFNEARESTNEIGHBORS
   optional: true
 - !Flag
-  description: 'File name to save the resulting clusters (default: clusters.txt)'
-  synonyms:
-  - --outFileName
-  - -o
-  args: !SimpleFlagArg
-    name: OUTFILENAME
-  optional: true
-- !Flag
-  description: 'Number of threads. Using the python multiprocessing module. (default:
-    4)'
+  description: "Number of threads. Using the python multiprocessing\nmodule. (default:\
+    \ 4)"
   synonyms:
   - --threads
   - -t
   args: !SimpleFlagArg
     name: THREADS
   optional: true
-command:
-- scHicCluster
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: show this help message and exit
   synonyms:

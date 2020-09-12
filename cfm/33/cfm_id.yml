@@ -1,0 +1,110 @@
+!Command
+command:
+- cfm-id
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: spectrum_file
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: id
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: candidate_file
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: num_highest
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: ppm_mass_tol
+  optional: false
+- !Positional
+  description: ''
+  position: 5
+  name: abs_mass_tol
+  optional: false
+- !Positional
+  description: ''
+  position: 6
+  name: prob_thresh_for_prune
+  optional: false
+- !Positional
+  description: ''
+  position: 7
+  name: param_filename
+  optional: false
+- !Positional
+  description: ''
+  position: 8
+  name: config_filename
+  optional: false
+- !Positional
+  description: ''
+  position: 9
+  name: score_type
+  optional: false
+- !Positional
+  description: ''
+  position: 10
+  name: apply_postprocessing
+  optional: false
+- !Positional
+  description: ''
+  position: 11
+  name: output_filename
+  optional: false
+- !Positional
+  description: ''
+  position: 12
+  name: output_msp_or_mgf
+  optional: false
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n\n\nUsage: cfm-id.exe <spectrum_file> <id> <candidate_file> <num_highest>\
+  \ <ppm_mass_tol> <abs_mass_tol> <prob_thresh_for_prune> <param_filename> <config_filename>\
+  \ <score_type> <apply_postprocessing> <output_filename> <output_msp_or_mgf>\n\n\n\
+  \nspectrum_file:\nThe filename where the input spectra can be found. This can be\
+  \ a .msp file in which the desired spectrum is listed under a corresponding id (next\
+  \ arg). Or it could be a single file with a list of peaks 'mass intensity' delimited\
+  \ by lines, with either 'low','med' and 'high' lines beginning spectra of different\
+  \ energy levels, or 'energy0', 'energy1', etc. e.g.\nenergy0\n65.02 40.0\n86.11\
+  \ 60.0\nenergy1\n65.02 100.0 ... etc\n\nid:\nAn identifier for the target molecule\
+  \ (Used to retrieve input spectrum from msp (if used). Otherwise not used but printed\
+  \ to output, in case of multiple concatenated results)\n\ncandidate_file:\nThe filename\
+  \ where the input list of candidate structures can be found - line separated 'id\
+  \ smiles_or_inchi' pairs.\n\nnum_highest (opt):\nThe number of (ranked) candidates\
+  \ to return or -1 for all (if not given, returns all in ranked order)\n\nppm_mass_tol\
+  \ (opt):\nThe mass tolerance in ppm to use when matching peaks within the dot product\
+  \ comparison - will use higher resulting tolerance of ppm and abs (if not given\
+  \ defaults to 10ppm)\n\nabs_mass_tol (opt):\nThe mass tolerance in abs Da to use\
+  \ when matching peaks within the dot product comparison - will use higher resulting\
+  \ tolerance of ppm and abs ( if not given defaults to 0.01Da)\n\nprob_thresh_for_prune\
+  \ (opt):\nThe probabiltiy threshold at which to prune unlikely fragmnetations (default\
+  \ 0.001)\n\nparam_filename (opt):\nThe filename where the parameters of a trained\
+  \ cfm model can be found (if not given, assumes param_output.log in current directory)\n\
+  \nconfig_filename (opt):\nThe filename where the configuration parameters of the\
+  \ cfm model can be found (if not given, assumes param_config.txt in current directory)\n\
+  \nscore_type (opt):\nThe type of scoring function to use when comparing spectra.\
+  \ Options: Jaccard (default for ESI-MS/MS), DotProduct (default for EI-MS)\n\napply_postprocessing\
+  \ (opt):\nWhether or not to post-process predicted spectra to take the top 80% of\
+  \ energy (at least 5 peaks), or the highest 30 peaks (whichever comes first) (0\
+  \ = OFF (default for EI-MS), 1 = ON (default for ESI-MS/MS)).\n\noutput_filename\
+  \ (opt):\nThe filename of the output file to write to (if not given, prints to stdout)\n\
+  \noutput_msp_or_mgf (opt):\nThe filename for an output msp or mgf file to record\
+  \ predicted candidate spectra (if not given, doesn't save predicted spectra)\n"
+generated_using:
+- --help

@@ -1,4 +1,6 @@
 !Command
+command:
+- unicycler
 positional: []
 named:
 - !Flag
@@ -8,7 +10,7 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: FASTQ file of first short reads in each pair (required)
+  description: "FASTQ file of first short reads in each pair\n(required)"
   synonyms:
   - '-1'
   - --short1
@@ -16,7 +18,7 @@ named:
     name: SHORT1
   optional: true
 - !Flag
-  description: FASTQ file of second short reads in each pair (required)
+  description: "FASTQ file of second short reads in each pair\n(required)"
   synonyms:
   - '-2'
   - --short2
@@ -48,34 +50,34 @@ named:
     name: OUT
   optional: true
 - !Flag
-  description: 'Level of stdout and log file information (default: 1) 0 = no stdout,
-    1 = basic progress indicators, 2 = extra info, 3 = debugging info'
+  description: "Level of stdout and log file information (default: 1)\n0 = no stdout,\
+    \ 1 = basic progress indicators,\n2 = extra info, 3 = debugging info"
   synonyms:
   - --verbosity
   args: !SimpleFlagArg
     name: VERBOSITY
   optional: true
 - !Flag
-  description: 'Exclude contigs from the FASTA file which are shorter than this length
-    (default: 100)'
+  description: "Exclude contigs from the FASTA file which are\nshorter than this length\
+    \ (default: 100)"
   synonyms:
   - --min_fasta_length
   args: !SimpleFlagArg
     name: MIN_FASTA_LENGTH
   optional: true
 - !Flag
-  description: 'Level of file retention (default: 1) 0 = only keep final files: assembly
-    (FASTA, GFA and log), 1 = also save graphs at main checkpoints, 2 = also keep
-    SAM (enables fast rerun in different mode), 3 = keep all temp files and save all
-    graphs (for debugging)'
+  description: "Level of file retention (default: 1)\n0 = only keep final files: assembly\
+    \ (FASTA,\nGFA and log),\n1 = also save graphs at main checkpoints,\n2 = also\
+    \ keep SAM (enables fast rerun in different mode),\n3 = keep all temp files and\
+    \ save all graphs (for debugging)"
   synonyms:
   - --keep
   args: !SimpleFlagArg
     name: KEEP
   optional: true
 - !Flag
-  description: 'Produce a VCF by mapping the short reads to the final assembly (experimental,
-    default: do not produce a vcf file)'
+  description: "Produce a VCF by mapping the short reads to the\nfinal assembly (experimental,\
+    \ default: do not\nproduce a vcf file)"
   synonyms:
   - --vcf
   args: !EmptyFlagArg {}
@@ -89,29 +91,28 @@ named:
     name: THREADS
   optional: true
 - !Flag
-  description: 'Bridging mode (default: normal) conservative = smaller contigs, lowest
-    misassembly rate normal = moderate contig size and misassembly rate bold = longest
-    contigs, higher misassembly rate'
+  description: "Bridging mode (default: normal)\nconservative = smaller contigs, lowest\
+    \ misassembly\nrate\nnormal = moderate contig size and misassembly rate\nbold\
+    \ = longest contigs, higher misassembly rate"
   synonyms:
   - --mode
   args: !ChoiceFlagArg
     choices: !!set
-      normal:
       conservative:
+      normal:
       bold:
   optional: true
 - !Flag
-  description: 'The expected number of linear (i.e. non-circular) sequences in the
-    underlying sequence (default: 0)'
+  description: "The expected number of linear (i.e. non-circular)\nsequences in the\
+    \ underlying sequence (default: 0)\n"
   synonyms:
   - --linear_seqs
   args: !SimpleFlagArg
     name: LINEAR_SEQS
   optional: true
-command:
-- unicycler
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: Show this help message and exit
   synonyms:
@@ -141,37 +142,36 @@ help_text: "usage: unicycler [-h] [--help_all] [--version] [-1 SHORT1] [-2 SHORT
   \ \\\\_____//     \e[0m\e[93m\e[1m\\____/ |_| |_||_| \\___| \\__, | \\___||_| \\\
   ___||_|\n\e[0m\e[93m\e[1m                                        __/ |\n\e[0m\e\
   [93m\e[1m                                       |___/\e[0m\n\n\e[1mUnicycler: an\
-  \ assembly pipeline for bacterial genomes\e[0m\n\n\e[1mHelp\e[0m:\n  -h, --help\
-  \              Show this help message and exit\n  --help_all              Show a\
-  \ help message with all program options\n  --version               Show Unicycler's\
-  \ version number\n\n\e[1mInput\e[0m:\n  -1 SHORT1, --short1 SHORT1\n           \
-  \               FASTQ file of first short reads in each pair\n                 \
-  \         (required)\n  -2 SHORT2, --short2 SHORT2\n                          FASTQ\
-  \ file of second short reads in each pair\n                          (required)\n\
-  \  -s UNPAIRED, --unpaired UNPAIRED\n                          FASTQ file of unpaired\
-  \ short reads (optional)\n  -l LONG, --long LONG    FASTQ or FASTA file of long\
-  \ reads (optional)\n\n\e[1mOutput\e[0m:\n  -o OUT, --out OUT       Output directory\
-  \ (required)\n  --verbosity VERBOSITY   Level of stdout and log file information\
-  \ (default: 1)\n                            0 = no stdout, 1 = basic progress indicators,\n\
-  \                            2 = extra info, 3 = debugging info\n  --min_fasta_length\
-  \ MIN_FASTA_LENGTH\n                          Exclude contigs from the FASTA file\
-  \ which are\n                          shorter than this length (default: 100)\n\
-  \  --keep KEEP             Level of file retention (default: 1)\n              \
-  \              0 = only keep final files: assembly (FASTA,\n                   \
-  \         GFA and log),\n                            1 = also save graphs at main\
-  \ checkpoints,\n                            2 = also keep SAM (enables fast rerun\
-  \ in different mode),\n                            3 = keep all temp files and save\
-  \ all graphs (for debugging)\n  --vcf                   Produce a VCF by mapping\
-  \ the short reads to the\n                          final assembly (experimental,\
-  \ default: do not\n                          produce a vcf file)\n\n\e[1mOther\e\
-  [0m:\n  -t THREADS, --threads THREADS\n                          Number of threads\
-  \ used (default: 8)\n  --mode {conservative,normal,bold}\n                     \
-  \     Bridging mode (default: normal)\n                            conservative\
-  \ = smaller contigs, lowest misassembly\n                                      \
-  \     rate\n                            normal = moderate contig size and misassembly\
-  \ rate\n                            bold = longest contigs, higher misassembly rate\n\
-  \  --linear_seqs LINEAR_SEQS\n                          The expected number of linear\
-  \ (i.e. non-circular)\n                          sequences in the underlying sequence\
-  \ (default: 0)\n"
+  \ assembly pipeline for bacterial genomes\e[0m\n\nHelp:\n  -h, --help          \
+  \    Show this help message and exit\n  --help_all              Show a help message\
+  \ with all program options\n  --version               Show Unicycler's version number\n\
+  \nInput:\n  -1 SHORT1, --short1 SHORT1\n                          FASTQ file of\
+  \ first short reads in each pair\n                          (required)\n  -2 SHORT2,\
+  \ --short2 SHORT2\n                          FASTQ file of second short reads in\
+  \ each pair\n                          (required)\n  -s UNPAIRED, --unpaired UNPAIRED\n\
+  \                          FASTQ file of unpaired short reads (optional)\n  -l LONG,\
+  \ --long LONG    FASTQ or FASTA file of long reads (optional)\n\nOutput:\n  -o OUT,\
+  \ --out OUT       Output directory (required)\n  --verbosity VERBOSITY   Level of\
+  \ stdout and log file information (default: 1)\n                            0 =\
+  \ no stdout, 1 = basic progress indicators,\n                            2 = extra\
+  \ info, 3 = debugging info\n  --min_fasta_length MIN_FASTA_LENGTH\n            \
+  \              Exclude contigs from the FASTA file which are\n                 \
+  \         shorter than this length (default: 100)\n  --keep KEEP             Level\
+  \ of file retention (default: 1)\n                            0 = only keep final\
+  \ files: assembly (FASTA,\n                            GFA and log),\n         \
+  \                   1 = also save graphs at main checkpoints,\n                \
+  \            2 = also keep SAM (enables fast rerun in different mode),\n       \
+  \                     3 = keep all temp files and save all graphs (for debugging)\n\
+  \  --vcf                   Produce a VCF by mapping the short reads to the\n   \
+  \                       final assembly (experimental, default: do not\n        \
+  \                  produce a vcf file)\n\nOther:\n  -t THREADS, --threads THREADS\n\
+  \                          Number of threads used (default: 8)\n  --mode {conservative,normal,bold}\n\
+  \                          Bridging mode (default: normal)\n                   \
+  \         conservative = smaller contigs, lowest misassembly\n                 \
+  \                          rate\n                            normal = moderate contig\
+  \ size and misassembly rate\n                            bold = longest contigs,\
+  \ higher misassembly rate\n  --linear_seqs LINEAR_SEQS\n                       \
+  \   The expected number of linear (i.e. non-circular)\n                        \
+  \  sequences in the underlying sequence (default: 0)\n"
 generated_using:
 - --help

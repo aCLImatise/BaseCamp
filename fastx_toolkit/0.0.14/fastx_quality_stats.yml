@@ -1,66 +1,134 @@
 !Command
+command:
+- fastx_quality_stats
 positional:
 - !Positional
-  description: = number of bases found in this column.
+  description: = column number (1 to 36 for a 36-cycles read solexa file)
   position: 0
+  name: column
+  optional: false
+- !Positional
+  description: = number of bases found in this column.
+  position: 1
   name: count
   optional: false
 - !Positional
   description: = Lowest quality score value found in this column.
-  position: 1
+  position: 2
   name: min
   optional: false
 - !Positional
   description: = Highest quality score value found in this column.
-  position: 2
+  position: 3
   name: max
   optional: false
 - !Positional
   description: = Sum of quality score values for this column.
-  position: 3
+  position: 4
   name: sum
   optional: false
 - !Positional
   description: = Mean quality score value for this column.
-  position: 4
+  position: 5
   name: mean
   optional: false
 - !Positional
   description: = 1st quartile quality score.
-  position: 5
+  position: 6
   name: Q1
   optional: false
 - !Positional
   description: = Median quality score.
-  position: 6
+  position: 7
   name: med
   optional: false
 - !Positional
   description: = 3rd quartile quality score.
-  position: 7
+  position: 8
   name: Q3
   optional: false
 - !Positional
   description: = Inter-Quartile range (Q3-Q1).
-  position: 8
+  position: 9
   name: IQR
   optional: false
 - !Positional
   description: = 'Left-Whisker' value (for boxplotting).
-  position: 9
+  position: 10
   name: lW
   optional: false
 - !Positional
   description: = 'Right-Whisker' value (for boxplotting).
+  position: 11
+  name: rW
+  optional: false
+- !Positional
+  description: 'For each nucleotide in the cycle (ALL/A/C/G/T/N):'
+  position: 0
+  name: max-count
+  optional: false
+- !Positional
+  description: = number of bases found in this column.
+  position: 1
+  name: count
+  optional: false
+- !Positional
+  description: = Lowest quality score value found in this column.
+  position: 2
+  name: min
+  optional: false
+- !Positional
+  description: = Highest quality score value found in this column.
+  position: 3
+  name: max
+  optional: false
+- !Positional
+  description: = Sum of quality score values for this column.
+  position: 4
+  name: sum
+  optional: false
+- !Positional
+  description: = Mean quality score value for this column.
+  position: 5
+  name: mean
+  optional: false
+- !Positional
+  description: = 1st quartile quality score.
+  position: 6
+  name: Q1
+  optional: false
+- !Positional
+  description: = Median quality score.
+  position: 7
+  name: med
+  optional: false
+- !Positional
+  description: = 3rd quartile quality score.
+  position: 8
+  name: Q3
+  optional: false
+- !Positional
+  description: = Inter-Quartile range (Q3-Q1).
+  position: 9
+  name: IQR
+  optional: false
+- !Positional
+  description: = 'Left-Whisker' value (for boxplotting).
   position: 10
+  name: lW
+  optional: false
+- !Positional
+  description: = 'Right-Whisker' value (for boxplotting).
+  position: 11
   name: rW
   optional: false
 named:
 - !Flag
   description: ''
   synonyms:
-  - -N
-  args: !EmptyFlagArg {}
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILE
   optional: true
 - !Flag
   description: ''
@@ -72,14 +140,12 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: OUTFILE
+  - -N
+  args: !EmptyFlagArg {}
   optional: true
-command:
-- fastx_quality_stats
 parent:
 subcommands: []
+usage: []
 help_flag: !Flag
   description: ''
   synonyms:
